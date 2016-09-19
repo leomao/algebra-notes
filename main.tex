@@ -138,6 +138,7 @@
 \newcommand{\Ray}[1]{\overrightarrow{{#1}}}
 \newcommand{\Segment}[1]{\overline{{#1}}}
 %%%% Math symbol %%%%
+\newcommand{\defeq}{\vcentcolon=}
 \newcommand{\Nb}{\mathbb{N}}
 \newcommand{\Zb}{\mathbb{Z}}
 \newcommand{\Qb}{\mathbb{Q}}
@@ -149,6 +150,24 @@
 \newcommand{\Rbx}{\mathbb{R}^\times}
 \newcommand{\Cbx}{\mathbb{C}^\times}
 \newcommand{\Hbx}{\mathbb{H}^\times}
+
+% cycle group \cycle{1,2,3} => (1 2 3)
+\ExplSyntaxOn
+\NewDocumentCommand{\cycle}{ O{\;} m }
+ {
+  (
+  \alec_cycle:nn { #1 } { #2 }
+  )
+ }
+
+\seq_new:N \l_alec_cycle_seq
+\cs_new_protected:Npn \alec_cycle:nn #1 #2
+ {
+  \seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
+  \seq_use:Nn \l_alec_cycle_seq { #1 }
+ }
+\ExplSyntaxOff
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\proofname}{\bf pf:}
 \newtheoremstyle{mystyle}% custom style
@@ -163,15 +182,14 @@
 \theoremstyle{mystyle}
 \newtheorem{theorem}{Theorem}
 \newtheorem{formula}{Formula}
-\newtheorem{condition}{Condition}
-\newtheorem{supposition}{Supposition}
 \newtheorem{conclusion}{Conclusion}
 \newtheorem{corollary}{Corollary}
 \newtheorem{lemma}{Lemma}
 \newtheorem{remark}{Remark}
 \newtheorem{definition}{Def}
-\newtheorem{exercise}{Ex}
-\newtheorem{example}{Eg}
+\newtheorem{exercise}{Ex}[subsection]
+\newtheorem{example}{Eg}[subsection]
+\newtheorem{fact}{Fact}
 
 %%%%%%%%%%%%%%Title information%%%%%%%%%%%%%%
 \title{Algebra}
