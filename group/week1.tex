@@ -1,0 +1,163 @@
+%! TEX root=../main.tex
+\section{Group theory}
+
+\subsection{Basic}
+
+\begin{definition}
+  A non-empty set $G$ with a binary function $f: G \times G \to G,
+  (a, b) \mapsto ab$
+  is a {\it group} if it satisfies
+  \begin{enumerate}
+    \item $(ab)c = a(bc)$.
+    \item $\exists 1 \in G$ s.t. $1a = a1 = a, \forall a \in G$.
+    \item $\exists a^{-1} \in G$ s.t. $aa^{-1} = a^{-1}a = 1$.
+  \end{enumerate}
+\end{definition}
+
+CONCON
+
+\begin{definition}
+  Let $G$ be a group. Then $G$ is said to be {\it abelian} if
+  $\forall a, b \in G, ab = ba$.
+\end{definition}
+
+\begin{exercise}
+  Let $G$ be a semigroup. Then TFAE (the following are equivalent)
+  \begin{enumerate}
+    \item $G$ is a group.
+    \item For all $a, b \in G$ and the equations $bx=a, yb=a$, each of them
+      has a solution in $G$.
+    \item $\exists e \in G$ s.t. $ae=a \; \forall a \in G$ and if we fix
+      such $e$, then $\forall b \in G \; \exists b' \in G$ s.t. $bb' = e$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Let $G$ be a group. Show that
+  \begin{enumerate}
+    \item $\forall a \in G, a^2 = 1$, then $G$ is abelian.
+    \item $G$ is abelian $\iff \forall a, b \in G, (ab)^n = a^n b^n$ for three
+      consecutive integer $n$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{definition}
+  Let $G$ be a group and $H \subseteq G, H \ne \phi$.
+  Then $H$ is said to be a subgroup of $G$, denoted by $H \le G$, if
+  \begin{enumerate}
+    \item $\forall a, b \in H, ab \in H$.
+    \item $1 \in H$.
+    \item $\forall a \in H, a^{-1} \in H$.
+  \end{enumerate}
+  \underline{useful criterion}:
+  $H \le G \iff \forall a, b \in H, ab^{-1} \in H$.
+  \begin{proof} \mbox{}
+    \begin{description}[style=nextline]
+      \item[$\Rightarrow$] $b \in H \implies b^{-1} \in H$, and $a \in H$, so
+        $a b^{-1} \in H$.
+      \item[$\Leftarrow$]
+        \begin{enumerate}
+          \item $H \ne \phi \implies \exists a \in H \implies
+            aa^{-1} = 1 \in H$.
+          \item $1, a \in H \implies 1 a^{-1} = a^{-1} \in H$.
+          \item $a, b^{-1} \in H \implies a (b^{-1})^{-1} = ab \in H$.
+            \qedhere
+        \end{enumerate}
+    \end{description}
+  \end{proof}
+\end{definition}
+
+\begin{example}
+  $(\Zb, +, 0) \le (\Qb, +, 0) \le (\Rb, +, 0) \le (\Cb, +, 0)$ ;
+  $(\Qbx, \times, 1) \le (\Rbx, \times, 1) \le (\Cbx, \times, 1)$
+\end{example}
+
+\begin{example} \mbox{}
+  \begin{itemize}
+    \item Special linear group $\text{SL}(n, \Fb) = \{\, A \in
+      \text{GL}(n, \Fb) \mid \det A = 1 \,\}$
+    \item Orthogonal group $\text{O}(n) = \{\, A \in \text{GL}(n, \Rb)
+      \mid \tr{A} A = I_n \,\}$
+    \item Unitary group $\text{U}(n) = \{\, A \in \text{GL}(n, \Cb) \mid
+      A^* A = I_n \,\}$
+    \item Special orthogonal group $\text{SO}(n) = \text{SL}(n, \Rb) \cap
+      \text{O}(n)$
+    \item Special unitary group $\text{SU}(n) = \text{SL}(n, \Cb) \cap
+      \text{U}(n)$
+  \end{itemize}
+\end{example}
+
+\begin{definition}
+  Let $f: G_1 \to G_2$. f is called an {\it isomorphism} if
+  \begin{enumerate}
+    \item $f$ is 1-1 and onto.
+    \item $\forall a, b \in G_1, f(ab) = f(a)f(b)$. ({\it homomorphism})
+  \end{enumerate}
+  , denoted by $G_1 \cong G_2$.
+\end{definition}
+
+\begin{remark} (practice)
+  \begin{enumerate}
+    \item $f(1) = 1$.
+    \item $f(a^{-1}) = f(a)^{-1}$.
+    \item If $f$ is an isomorphism, then $\exists f^{-1}$ is also a
+      homomorphism.
+  \end{enumerate}
+\end{remark}
+
+\begin{example} \mbox{}
+  \begin{itemize}
+    \item $\text{U}(1) = \{\, z \in \Cbx \mid \bar{z}z = 1 \,\},
+      z = \cos \theta + \sin \theta i$
+    \item $\text{SO}(2) = \left\{ \begin{pmatrix}
+        \cos \theta & - \sin\theta \\
+        \sin \theta & \cos\theta
+      \end{pmatrix} : \theta \in \Rb \right\}$
+  \end{itemize}
+  notice that $\text{U}(1) \cong \text{SO}(2)$.
+  $S^1 = \{\, (a, b) \in \Rb^2 \mid a^2 + b^2 = 1 \,\}$, 可被賦予群的結構.
+\end{example}
+
+\begin{example}
+  Let $A \in \text{SU}(2) \implies A = \begin{pmatrix}
+    \alpha & \beta \\
+    -\bar{\beta} & \bar{\alpha} \end{pmatrix},
+    \alpha\bar{\alpha} + \beta\bar{\beta} = 1, \alpha, \beta \in \Cb$.
+\end{example}
+
+\underline{Quaternion}(四元數): $\Hb = \{\,
+  a + bi + cj + dk \mid a, b, c, d \in \Rb \,\}$ with $i^2 = j^2 = k^2 = -1,
+  ij = k, jk = i, ki = j (\implies ij = -ji)$.
+
+Let $x = a + bi + cj + dk, \bar{x} = a - bi - cj - dk$, then
+$N(x) = x\bar{x} = a^2 + b^2 + c^2 + d^2$, For $x \ne 0, N(x) \ne 0,
+x^{-1} = \frac{1}{N(x)} \bar{x}$
+
+Now, for $x = a + bi + cj + dk = (a + bi) + (c + di) j$.
+So $\text{SU}(2) \cong \{\, x \in \Hbx \mid N(x) = 1 \,\}$.
+$S^3 = \{\, (a, b, c, d) \in \Rb^4 \mid a^2 + b^2 + c^2 + d^2 = 1 \,\}$,
+可被賦予群的結構.
+
+$\bigstar$ The only spheres with continuous group law are $S^1, S^3$.
+
+\begin{exercise}
+  Find a way to regard $M_{n\times n}(\Hb)$ as a subset of
+  $M_{2n \times 2n}(\Cb)$, which preserves addition and multiplication,
+  and then there is a way to characterize $\text{GL}(n, \Hb)$.
+\end{exercise}
+
+\begin{definition}[symplectic group]
+  $\text{Sp}(n, \Fb) = \{\, A \in \text{GL}(2n, \Fb) \mid \tr{A} JA = J \,\}$
+  where $J = \begin{pmatrix} O & I_n \\ -I_n & O \end{pmatrix}$.
+  ($\tr{A} JA = J$ preserving non-degenerate skew-symmetric forms)
+
+  $\text{Sp}(n) = \{\, A \in \text{GL}(n, \Hb) \mid A^* A = I_n \,\}$.
+\end{definition}
+
+\begin{exercise}
+  Show $\text{Sp}(n) \cong \text{U}(2n) \cap \text{Sp}(n, \Cb)$.
+\end{exercise}
+
+\underline{Ques}: Find the smallest subgroup of $\text{SU}(2)$ containing
+$\begin{pmatrix}i & 0 \\ 0 & -i\end{pmatrix}$.
+
