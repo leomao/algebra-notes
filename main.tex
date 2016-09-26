@@ -151,8 +151,14 @@
 \newcommand{\Cbx}{\mathbb{C}^\times}
 \newcommand{\Hbx}{\mathbb{H}^\times}
 
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Ker}{Ker}
 \newcommand{\ob}{\overline}
 \DeclareMathOperator{\ord}{ord}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle} % generator
+%\newcommand*\quot[2]{{^{\textstyle #1}\Big/_{\textstyle #2}}}
+\newcommand*\quot[2]{{#1}/{#2}}
+\newcommand\bij{\lhook\joinrel\twoheadrightarrow}
 
 % cycle group \cycle{1,2,3} => (1 2 3)
 \ExplSyntaxOn
@@ -186,14 +192,14 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{formula}{Formula}
 \newtheorem{conclusion}{Conclusion}
-\newtheorem{corollary}{Corollary}
 \newtheorem{lemma}{Lemma}
 \newtheorem{remark}{Remark}
 \newtheorem{definition}{Def}
 \newtheorem{exercise}{Ex}[subsection]
 \newtheorem{example}{Eg}[subsection]
-\newtheorem{fact}{Fact}
-\newtheorem{prop}{Prop}
+\newtheorem{fact}{Fact}[subsection]
+\newtheorem{prop}{Prop}[subsection]
+\newtheorem{coro}{Coro}[subsection]
 
 %%%%%%%%%%%%%%Title information%%%%%%%%%%%%%%
 \title{Algebra}
@@ -208,6 +214,7 @@
 %%%%%%%%%%%%%include file here%%%%%%%%%%%%%%%
 \include{group/week1}
 \include{group/week2}
+\include{group/week3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{plain}
 % \bibliography{journal.bib}

@@ -1,0 +1,169 @@
+%! TEX root=../main.tex
+\subsection{Week 3}
+\subsubsection{Coset and Qoutient Group}
+Let $f: G_1 \to G_2$ be a group homo. Define $\Image f \defeq f(G_1)$.
+
+Notice that $\Image f \le G_2$.
+\begin{proof}
+  Let $z_1 = f(a_1), z_2 = f(a_2)$, then
+  $z_1z_2^{-1} = f(a_1)f(a_2)^{-1} = f(a_1)f(a_2^{-1}) = f(a_1a_2^{-1}) \in
+  \Image f$.
+\end{proof}
+
+\begin{definition}
+  $\Ker f \defeq \{\, x \in G_1 \mid f(x) = 1 \,\} \le G_1$.
+\end{definition}
+
+\begin{fact} \mbox{}
+  \begin{enumerate}
+    \item $x \in (\Ker f) a \iff f(x) = f(a)$.
+    \item $\Ker f = \{ 1 \} \iff f$ is 1-1.
+  \end{enumerate}
+\end{fact}
+
+\begin{definition}
+  Let $H \le G$, $\forall a \in G, Ha$ is called a {\bf right coset} of $H$
+  in $G$.
+\end{definition}
+
+\begin{fact} \mbox{}
+  \begin{enumerate}
+    \item For 2 right cosets $Ha, Hb$, either $Ha = Hb$ or $Ha \cap Hb = \phi$
+      must hold.
+    \item $\{\, Ha : a\in G \,\}$ forms a partition of $G$.
+  \end{enumerate}
+\end{fact}
+
+\begin{theorem}[Lagrange]
+  Let $\abs{G} < \infty$ and $H \le G$, $\abs{H} \mid \abs{G}$.
+  \begin{proof}
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  $r$ is called the {\bf index} of $H$ in $G$, denoted by $[G:H]$.
+  (The concept of index can be extended to infinite $G, H$.)
+\end{remark}
+
+\begin{coro}
+  If $\abs{G} = p$ is a prime in $\Zb$, then $G$ is cyclic.
+  \begin{proof}
+  \end{proof}
+\end{coro}
+
+\begin{coro}
+  If $\abs{G} < \infty, a \in G$, then $a^{\abs{G}} = 1$.
+  \begin{proof}
+  \end{proof}
+\end{coro}
+
+\begin{remark} \mbox{}
+  \begin{enumerate}
+    \item Let $H \le G, a \in G$, $aH$ is called a {\bf left coset}.
+    \item $\{ \text{right cosets of $H$} \} \leftrightarrow
+      \{ \text{right cosets of $H$} \}$ by $Ha \mapsto a^{-1}H$.
+  \end{enumerate}
+\end{remark}
+
+\underline{Ques}: How to make $\{\, aH : a \in G \,\}$ to be a group?
+For $aH, bH$, we must have $(aH)(bH) = abH$.
+
+In general, $(aH)(bH) = abH$ is not well-defined.
+
+\begin{example}
+  Let $H = \gen{\cycle{1,2}} \le S_3$. $a_1 = \cycle{1,3}, a_2 = \cycle{1,2,3},
+b_1 = \cycle{1,3,2}, b_2 = \cycle{2,3}$. 出慘點
+\end{example}
+
+If we hope $a_1b_1H = a_2b_2H$, then we need $(a_1b_1)^{-1}a_2b_2 \in H$.
+\[
+  b_1^{-1}a_1^{-1}a_2b_2 = b_1^{-1}b_2b_2^{-1}a_1^{-1}a_2b_2
+\]
+Notice that $b_1^{-1}b_2, a_1^{-1}a_2 \in H$, so we need
+$b_2^{-1}a_1^{-1}a_2b_2 \in H$.
+
+\begin{definition}
+  Let $H \le G$. $H$ is said to be {\bf normal subgroup} of $G$ if
+  $\forall g \in G, h \in H, g^{-1}hg \in H \quad
+  (\text{or~} g^{-1}Hg \subseteq H)$, denoted by $H \lhd G$.
+\end{definition}
+
+\begin{definition}
+  Let $H \lhd G$. The set $\{\, aH \mid a \in G \,\}$ forms a group under
+  $(aH)(bH) = abH, a,b \in G$. We call it the {\bf quotient group}
+  of $G$ by $H$, denoted by $\quot{G}{H}$.
+
+  (Note: The indentity is $H = hH$ and $(aH)^{-1} = a^{-1}H$.)
+\end{definition}
+
+\begin{remark}
+  Define $q: G \to \quot{G}{H}, a \mapsto aH$, called the quotient homomorphism.
+\end{remark}
+
+\begin{exercise}
+  Let $H \le G$. Then TFAE
+  \begin{enumerate}[(a)]
+    \item $H \lhd G$.
+    \item $\forall x \in G, xHx^{-1} = H$.
+    \item $\forall x \in G, xH = Hx$. \label{eq:xh=hx}
+    \item $\forall x, y \in G, (xH)(yH) = (xy)H$.
+  \end{enumerate}
+\end{exercise}
+
+\underline{Ques}: How to find a normal subgroup of $G$?
+
+\begin{prop} \mbox{}
+  \begin{enumerate}
+    \item If $G$ is abelian, then $\forall H \le G \leadsto H \lhd G$.
+      (done by \ref{eq:xh=hx})
+    \item If $H \le G$ with $[G:H] = 2$, then $H \lhd G$.
+      \begin{example}
+        $n \le 3, [S_n:A_n] = 2 \implies A_n \lhd S_n$.
+      \end{example}
+      \begin{proof}
+        We can write $G = H \cup Ha = H \cup aH \implies aH = Ha,
+        \forall a \not\in H$.
+      \end{proof}
+  \end{enumerate}
+\end{prop}
+
+\begin{exercise}
+  If $H \le S_n$ and $\exists \sigma \in H$ is odd, then $[H:H\cap A_n] = 2$.
+\end{exercise}
+
+\begin{definition}
+  Define the center of $G$ to be $Z_G = \{\, a \in G
+  \mid ax = xa, \forall x \in G \,\} \le G$.
+\end{definition}
+
+\begin{prop} \mbox{}
+  \begin{enumerate}
+    \item $Z_G \lhd G$. (by \ref{eq:xh=hx} and def.)
+    \item If $\quot{G}{Z_G}$ is cyclic, then $G$ is abelian.
+      \begin{proof}
+        Let $\quot{G}{Z_G} = \gen{aZ_G}$, (let $\ob{a} \defeq aZ_G$) for some
+        $a \in G$.
+        For $x_1, x_2 \in G$, let $x_1 = a^{k_1}z_1, x_2 = a^{k_2}z_2$, then
+        $x_1x_2 = a^{k_1+k_2}z_1z_2 = x_2x_1$. ($z_i$ 可以各種交換)
+      \end{proof}
+  \end{enumerate}
+\end{prop}
+
+\begin{definition}
+  The commutator of $G$ is define to be $[G,G] = \gen{xyx^{-1}y^{-1} \mid
+  x,y \in G}$.
+\end{definition}
+
+\begin{prop}
+  $[G,G] \lhd G$ ; $[G,G] = 1 \iff G$ is abelian.
+  \begin{proof}
+    $\forall x \in G, a \in [G,G], xax^{-1} = xax^{-1}a^{-1}a$ and
+    $xax^{-1}a^{-1}, a \in [G,G]$.
+  \end{proof}
+\end{prop}
+
+\begin{exercise}
+  Let $H \le G$. Then  $H \lhd G$ and $\quot{G}{H}$ is abelian $\iff$
+  $[G,G] \le H$.
+  (hint: $\quot{G}{[G,G]}$ is "max" among all abelian quotient groups)
+\end{exercise}
