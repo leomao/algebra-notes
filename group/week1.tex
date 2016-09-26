@@ -21,26 +21,6 @@ CONCON
   $\forall a, b \in G, ab = ba$.
 \end{definition}
 
-\begin{exercise}
-  Let $G$ be a semigroup. Then TFAE (the following are equivalent)
-  \begin{enumerate}
-    \item $G$ is a group.
-    \item For all $a, b \in G$ and the equations $bx=a, yb=a$, each of them
-      has a solution in $G$.
-    \item $\exists e \in G$ s.t. $ae=a \; \forall a \in G$ and if we fix
-      such $e$, then $\forall b \in G \; \exists b' \in G$ s.t. $bb' = e$.
-  \end{enumerate}
-\end{exercise}
-
-\begin{exercise}
-  Let $G$ be a group. Show that
-  \begin{enumerate}
-    \item $\forall a \in G, a^2 = 1$, then $G$ is abelian.
-    \item $G$ is abelian $\iff \forall a, b \in G, (ab)^n = a^n b^n$ for three
-      consecutive integer $n$.
-  \end{enumerate}
-\end{exercise}
-
 \begin{definition}
   Let $G$ be a group and $H \subseteq G, H \ne \phi$.
   Then $H$ is said to be a subgroup of $G$, denoted by $H \le G$, if
@@ -140,12 +120,6 @@ $S^3 = \{\, (a, b, c, d) \in \Rb^4 \mid a^2 + b^2 + c^2 + d^2 = 1 \,\}$,
 
 $\bigstar$ The only spheres with continuous group law are $S^1, S^3$.
 
-\begin{exercise}
-  Find a way to regard $M_{n\times n}(\Hb)$ as a subset of
-  $M_{2n \times 2n}(\Cb)$, which preserves addition and multiplication,
-  and then there is a way to characterize $\text{GL}(n, \Hb)$.
-\end{exercise}
-
 \begin{definition}[symplectic group]
   $\text{Sp}(n, \Fb) = \{\, A \in \text{GL}(2n, \Fb) \mid \tr{A} JA = J \,\}$
   where $J = \begin{pmatrix} O & I_n \\ -I_n & O \end{pmatrix}$.
@@ -154,10 +128,38 @@ $\bigstar$ The only spheres with continuous group law are $S^1, S^3$.
   $\text{Sp}(n) = \{\, A \in \text{GL}(n, \Hb) \mid A^* A = I_n \,\}$.
 \end{definition}
 
+\underline{Ques}: Find the smallest subgroup of $\text{SU}(2)$ containing
+$\begin{pmatrix}i & 0 \\ 0 & -i\end{pmatrix}$.
+
+% exercises
+
+\begin{exercise}
+  Let $G$ be a semigroup. Then TFAE (the following are equivalent)
+  \begin{enumerate}
+    \item $G$ is a group.
+    \item For all $a, b \in G$ and the equations $bx=a, yb=a$, each of them
+      has a solution in $G$.
+    \item $\exists e \in G$ s.t. $ae=a \; \forall a \in G$ and if we fix
+      such $e$, then $\forall b \in G \; \exists b' \in G$ s.t. $bb' = e$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Let $G$ be a group. Show that
+  \begin{enumerate}
+    \item $\forall a \in G, a^2 = 1$, then $G$ is abelian.
+    \item $G$ is abelian $\iff \forall a, b \in G, (ab)^n = a^n b^n$ for three
+      consecutive integer $n$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Find a way to regard $M_{n\times n}(\Hb)$ as a subset of
+  $M_{2n \times 2n}(\Cb)$, which preserves addition and multiplication,
+  and then there is a way to characterize $\text{GL}(n, \Hb)$.
+\end{exercise}
+
 \begin{exercise}
   Show $\text{Sp}(n) \cong \text{U}(2n) \cap \text{Sp}(n, \Cb)$.
 \end{exercise}
-
-\underline{Ques}: Find the smallest subgroup of $\text{SU}(2)$ containing
-$\begin{pmatrix}i & 0 \\ 0 & -i\end{pmatrix}$.
 

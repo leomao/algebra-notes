@@ -100,16 +100,6 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
   Define $q: G \to \quot{G}{H}, a \mapsto aH$, called the quotient homomorphism.
 \end{remark}
 
-\begin{exercise}
-  Let $H \le G$. Then TFAE
-  \begin{enumerate}[(a)]
-    \item $H \lhd G$.
-    \item $\forall x \in G, xHx^{-1} = H$.
-    \item $\forall x \in G, xH = Hx$. \label{eq:xh=hx}
-    \item $\forall x, y \in G, (xH)(yH) = (xy)H$.
-  \end{enumerate}
-\end{exercise}
-
 \underline{Ques}: How to find a normal subgroup of $G$?
 
 \begin{prop} \mbox{}
@@ -126,10 +116,6 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
       \end{proof}
   \end{enumerate}
 \end{prop}
-
-\begin{exercise}
-  If $H \le S_n$ and $\exists \sigma \in H$ is odd, then $[H:H\cap A_n] = 2$.
-\end{exercise}
 
 \begin{definition}
   Define the center of $G$ to be $Z_G = \{\, a \in G
@@ -162,8 +148,30 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
   \end{proof}
 \end{prop}
 
+% exercises
+
+\begin{exercise}
+  no subgroup of $A_4$ has order $6$.
+  (converse of Lagrange thm. is false.)
+\end{exercise}
+
+\begin{exercise}
+  Let $H \le G$. Then TFAE
+  \begin{enumerate}[(a)]
+    \item $H \lhd G$.
+    \item $\forall x \in G, xHx^{-1} = H$.
+    \item $\forall x \in G, xH = Hx$. \label{eq:xh=hx}
+    \item $\forall x, y \in G, (xH)(yH) = (xy)H$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  If $H \le S_n$ and $\exists \sigma \in H$ is odd, then $[H:H\cap A_n] = 2$.
+\end{exercise}
+
 \begin{exercise}
   Let $H \le G$. Then  $H \lhd G$ and $\quot{G}{H}$ is abelian $\iff$
   $[G,G] \le H$.
   (hint: $\quot{G}{[G,G]}$ is "max" among all abelian quotient groups)
 \end{exercise}
+

@@ -84,24 +84,10 @@ $\sigma \cycle{j_1, \dots, j_m} \sigma^{-1} =
   $\gen{S}$.
 \end{definition}
 
-\begin{exercise} \mbox{}
-  \begin{enumerate}
-    \item $S_n = \gen{\cycle{1,2},\cycle{2,3},\dots,\cycle{n-1,n}}, \quad n \ge 2$.
-    \item $S_n = \gen{\cycle{1,2},\cycle{1,2,\dots,n}}, \quad n \ge 2$.
-  \end{enumerate}
-\end{exercise}
-
 \begin{definition}
   $A_n = \{ \text{even permutations of $S_n$} \} \le S_n,
   \abs{A_n} = \frac{n!}{2}$.
 \end{definition}
-
-\begin{exercise} \mbox{}
-  \begin{enumerate}
-    \item $A_n = \gen{\cycle{1,2,3},\cycle{1,2,4},\dots,\cycle{1,2,n}}, n \ge 3$.
-    \item $A_n = \gen{\cycle{1,2,3},\cycle{2,3,4},\dots,\cycle{n-2,n-1,n}}, n \ge 3$.
-  \end{enumerate}
-\end{exercise}
 
 \begin{remark}
   $\gen{S} = \bigcap\limits_{S \subseteq H \le G} H =
@@ -181,13 +167,6 @@ $= \gen{ \text{rotations}, \text{reflections} }$.
     so $W = \gen{ v_1, v_2 }$.
   \end{proof}
 \end{prop}
-
-\begin{exercise} \mbox{}
-  \begin{enumerate}
-    \item If $\rm T$ is orthogonal, then $W^\bot$ is also $\rm T$-invariant.
-    \item Use induction on $n$ to show the main result.
-  \end{enumerate}
-\end{exercise}
 
 For $n = 3, A \in \text{O}(3)$, we have $A \sim \begin{pmatrix}
   \cos\alpha & -\sin\alpha & \\
@@ -298,25 +277,13 @@ For $n = 3, A \in \text{O}(3)$, we have $A \sim \begin{pmatrix}
   \end{proof}
 \end{prop}
 
-\begin{exercise} \mbox{}
-  \begin{enumerate}
-    \item $\ord(a) = \ord(a^{-1}) = n$.
-    \item $\gen{a^r} = \gen{a^{\gcd(n, r)}}$.
-    \item $\gen{a^{r_1}} = \gen{a^{r_2}} \iff \gcd(n, r_1) = \gcd(n, r_2)$.
-    \item $\forall m \mid n, \exists! H \le \gen{a}$ s.t.
-      $\abs{H} = m$. Conversely, if $H \le \gen{a}$, then $\abs{H} \mid n$.
-  \end{enumerate}
-\end{exercise}
-
 \begin{prop}
   Let $G = \gen{a}$. Then
   \begin{enumerate}
     \item $\ord(a) = n \implies G \cong \quot{\Zb}{n\Zb}$
     \item $\ord(a) = \infty \implies G \cong \Zb$
   \end{enumerate}
-  \begin{exercise}
-    Show this.
-  \end{exercise}
+  \label{prop:eqzg}
 \end{prop}
 
 \begin{definition}
@@ -338,16 +305,6 @@ For $n = 3, A \in \text{O}(3)$, we have $A \sim \begin{pmatrix}
       (1, g_2)(g_1, 1) \implies g_1g_2 = g_2g_1$.
   \end{itemize}
 \end{remark}
-
-\begin{exercise} TFAE
-  \begin{enumerate}
-    \item $G$ is the internal direct product of $G_1, G_2$.
-    \item $\forall a \in G, \exists! g_1 \in G_1, g_2 \in G_2$ s.t.
-      $a = g_1g_2$ ; $\forall g_1 \in G_1, g_2 \in G_2, g_1g_2 = g_2g_1$.
-    \item $G_1 \cap G_2 = \{ 1 \}$ ; $G = G_1G_2$ ;
-      $\forall g_1 \in G_1, g_2 \in G_2, g_1g_2 = g_2g_1$.
-  \end{enumerate}
-\end{exercise}
 
 \begin{example} \mbox{}
   \begin{enumerate}
@@ -379,3 +336,51 @@ For $n = 3, A \in \text{O}(3)$, we have $A \sim \begin{pmatrix}
     \end{description}
   \end{proof}
 \end{prop}
+
+% exercises
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item $S_n = \gen{\cycle{1,2},\cycle{2,3},\dots,\cycle{n-1,n}}, \quad n \ge 2$.
+    \item $S_n = \gen{\cycle{1,2},\cycle{1,2,\dots,n}}, \quad n \ge 2$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item $A_n = \gen{\cycle{1,2,3},\cycle{1,2,4},\dots,\cycle{1,2,n}}, n \ge 3$.
+    \item $A_n = \gen{\cycle{1,2,3},\cycle{2,3,4},\dots,\cycle{n-2,n-1,n}}, n \ge 3$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item If $\rm T$ is orthogonal, then $W^\bot$ is also $\rm T$-invariant.
+    \item Use induction on $n$ to show the main result.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item $\ord(a) = \ord(a^{-1}) = n$.
+    \item $\gen{a^r} = \gen{a^{\gcd(n, r)}}$.
+    \item $\gen{a^{r_1}} = \gen{a^{r_2}} \iff \gcd(n, r_1) = \gcd(n, r_2)$.
+    \item $\forall m \mid n, \exists! H \le \gen{a}$ s.t.
+      $\abs{H} = m$. Conversely, if $H \le \gen{a}$, then $\abs{H} \mid n$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Show Prop \ref{prop:eqzg}.
+\end{exercise}
+
+\begin{exercise} TFAE
+  \begin{enumerate}
+    \item $G$ is the internal direct product of $G_1, G_2$.
+    \item $\forall a \in G, \exists! g_1 \in G_1, g_2 \in G_2$ s.t.
+      $a = g_1g_2$ ; $\forall g_1 \in G_1, g_2 \in G_2, g_1g_2 = g_2g_1$.
+    \item $G_1 \cap G_2 = \{ 1 \}$ ; $G = G_1G_2$ ;
+      $\forall g_1 \in G_1, g_2 \in G_2, g_1g_2 = g_2g_1$.
+  \end{enumerate}
+\end{exercise}
+
