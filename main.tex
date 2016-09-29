@@ -7,6 +7,7 @@
 %%%%%%%%%%%%%%%%%%%Package%%%%%%%%%%%%%%%%%%%
 \usepackage[margin=3cm]{geometry}
 \usepackage{mathtools,amsthm,amssymb}
+\usepackage{centernot}
 \usepackage{yhmath}
 \usepackage{graphicx}
 \usepackage{fontspec}
@@ -146,13 +147,16 @@
 \newcommand{\Cb}{\mathbb{C}}
 \newcommand{\Hb}{\mathbb{H}}
 \newcommand{\Fb}{\mathbb{F}}
+\newcommand{\Fbx}{\mathbb{F}^\times}
 \newcommand{\Qbx}{\mathbb{Q}^\times}
 \newcommand{\Rbx}{\mathbb{R}^\times}
 \newcommand{\Cbx}{\mathbb{C}^\times}
 \newcommand{\Hbx}{\mathbb{H}^\times}
 
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\Image}{Im}
-\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Ker}{ker}
 \newcommand{\ob}{\overline}
 \DeclareMathOperator{\ord}{ord}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle} % generator

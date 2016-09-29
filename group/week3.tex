@@ -1,6 +1,6 @@
 %! TEX root=../main.tex
 \subsection{Week 3}
-\subsubsection{Coset and Qoutient Group}
+\subsubsection{Coset and Quotient Group}
 Let $f: G_1 \to G_2$ be a group homo. Define $\Image f \defeq f(G_1)$.
 
 Notice that $\Image f \le G_2$.
@@ -44,6 +44,11 @@ Notice that $\Image f \le G_2$.
   $r$ is called the {\bf index} of $H$ in $G$, denoted by $[G:H]$.
   (The concept of index can be extended to infinite $G, H$.)
 \end{remark}
+
+\begin{exercise}
+  no subgroup of $A_4$ has order $6$.
+  (converse of Lagrange thm. is false.)
+\end{exercise}
 
 \begin{coro}
   If $\abs{G} = p$ is a prime in $\Zb$, then $G$ is cyclic.
@@ -100,6 +105,16 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
   Define $q: G \to \quot{G}{H}, a \mapsto aH$, called the quotient homomorphism.
 \end{remark}
 
+\begin{exercise}
+  Let $H \le G$. Then TFAE
+  \begin{enumerate}[(a)]
+    \item $H \lhd G$.
+    \item $\forall x \in G, xHx^{-1} = H$.
+    \item $\forall x \in G, xH = Hx$. \label{eq:xh=hx}
+    \item $\forall x, y \in G, (xH)(yH) = (xy)H$.
+  \end{enumerate}
+\end{exercise}
+
 \underline{Ques}: How to find a normal subgroup of $G$?
 
 \begin{prop} \mbox{}
@@ -148,23 +163,6 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
   \end{proof}
 \end{prop}
 
-% exercises
-
-\begin{exercise}
-  no subgroup of $A_4$ has order $6$.
-  (converse of Lagrange thm. is false.)
-\end{exercise}
-
-\begin{exercise}
-  Let $H \le G$. Then TFAE
-  \begin{enumerate}[(a)]
-    \item $H \lhd G$.
-    \item $\forall x \in G, xHx^{-1} = H$.
-    \item $\forall x \in G, xH = Hx$. \label{eq:xh=hx}
-    \item $\forall x, y \in G, (xH)(yH) = (xy)H$.
-  \end{enumerate}
-\end{exercise}
-
 \begin{exercise} \mbox{}
   \begin{enumerate}
     \item If $H \le S_n$ and $\exists \sigma \in H$ is odd, then $[H:H\cap A_n] = 2$.
@@ -178,3 +176,161 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
   (hint: $\quot{G}{[G,G]}$ is "max" among all abelian quotient groups)
 \end{exercise}
 
+
+\subsubsection{Isomorphism theorems \& Factor theorem}
+\begin{theorem}[1st isomorphism theorem]
+  Let $f: G_1 \to G_2$ be a group homo. Then $\quot{G_1}{\Ker f} \cong \Image f$.
+  \begin{proof}
+    Define $\varphi: a \Ker f \mapsto f(a)$.
+    \begin{itemize}
+      \item well-defined: $a \Ker f = b \Ker f \implies a^{-1}b \in \Ker f
+        \implies f(a^{-1}b) = 1 \implies f(a)^{-1}f(b) = 1 \implies f(a)=f(b)$.
+      \item group homo: $\varphi\left((a \Ker f)(b\Ker f)\right) = 
+        \varphi(ab \Ker f) = f(ab) = f(a)f(b) =
+        \varphi(a\Ker f)\varphi(b\Ker f)$.
+      \item onto: by def. of $\Image f$.
+      \item 1-1: $f(a) = f(b) \implies a \Ker f = b \Ker f$ (easy).
+      \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}[Factor theorem]
+  Let $f: G_1 \to G_2$ b.e a group homo. and $H \le \Ker f$. Then
+  $\exists$ a group homo. $\varphi: \quot{G}{H} \to G_2$ s.t.
+  一個ㄛ圖
+\end{theorem}
+
+\begin{example}
+  Let $G = \gen{a}$ with $\ord(a) = n$. Then $G \cong \quot{\Zb}{n\Zb}$.
+  (1st isom. thm.)
+\end{example}
+
+\begin{example}
+  $\varphi: \Zb \to \quot{\Zb}{2\Zb}, 4\Zb \le 2\Zb$, so by factor thm.,
+  $\quot{\Zb}{4\Zb} \to \quot{\Zb}{2\Zb}$.
+\end{example}
+
+\begin{example}
+  $\det: \text{GL}(n, \Fb) \to \Fbx \implies
+  \quot{\text{GL}(n, \Fb)}{\text{SL}(n, \Fb)} \cong \Fbx$
+\end{example}
+
+\begin{example}
+  $\sgn: S_n \to \{ \pm 1 \} \implies \quot{S_n}{A_n} \cong \{ \pm 1 \}$
+\end{example}
+
+\begin{theorem}[2nd isomorphism theorem]
+  Let $H \le G, K \lhd G$. Then $\quot{HK}{K} \cong \quot{H}{H\cap K}$.
+  \begin{proof}
+    First, $\begin{cases}H\le G \\ K \lhd G\end{cases} \implies HK = KH
+      \implies HK \le G$ ; $K \lhd G \implies K \lhd HK$.
+
+    Define $\varphi: H \to \quot{HK}{K}, h \mapsto hK$. which is a group homo.
+    \begin{itemize}
+      \item onto: $\forall (hk) K, hkK = hK$, so $\varphi(h) = hK = hkK$.
+      \item Find $\Ker \varphi$: $a \in \Ker \varphi \iff \begin{cases}
+          a \in H \\
+          aK = K
+        \end{cases} \iff a \in H \cap K$, so $\Ker \varphi = H\cap K$.
+    \end{itemize}
+    Then by 1st isom. thm.
+  \end{proof}
+\end{theorem}
+
+\begin{example}
+  $G = \text{GL}(2, \Cb), H = \text{SL}(2, \Cb), K = \Cbx I_2 = Z_G \lhd G$.
+
+  By 2nd isom. thm., $\quot{G}{K} \cong \quot{H}{\{\pm I_2\}}$.
+  ($G = HK, \{\pm I_2 \} = H \cap K$)
+
+  projective linear group: $\text{PGL}(2, \Cb) = \quot{G}{K}$.
+
+  projective special linear group: $\text{PSL}(2, \Cb) = \quot{H}{H\cap K}$.
+\end{example}
+
+齊次座標...OTL
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Let $H_1 \lhd G_1, H_2 \lhd G_2$. Then $(H_1 \times H_2) \lhd
+      (G_1 \times G_2)$ and $\quot{G_1\times G_2}{H_1\times H_2} \cong
+      \quot{G_1}{H_1} \times \quot{G_2}{H_2}$.
+    \item Let $H \lhd G, K \lhd G$ s.t. $G = HK$. Then
+      $\quot{G}{H\cap K} \cong \quot{G}{H} \times \quot{G}{K}$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Let $H \lhd G$ with $[G:H] = p$, which is a prime in $\Zb$. Then
+  $\forall K \le G$, either \begin{enumerate*}[(1)]
+    \item $K \le H$ or
+    \item $G = HK$ and $[K:K\cap H] = p$.
+  \end{enumerate*}
+\end{exercise}
+
+\begin{theorem}[3rd isomorphism theorem]
+  Let $K \lhd G$.
+  \begin{enumerate}
+    \item There is a 1-1 correspondence between $\{\, H \le G \mid K \le H \,\}$
+      and $\{ \text{subgroups of $\quot{G}{K}$} \}$. ($H \lhd G$ ... normal)
+      \begin{proof}
+        Define $\varphi: H \mapsto \quot{H}{K}$. ($\quot{H}{K} \le \quot{G}{K}$)
+        \begin{itemize}
+          \item 1-1: Assume $\quot{H_1}{K} = \quot{H_2}{K}$.
+            For $a \in H_1$, $aK \in \quot{H_1}{K} = \quot{H_2}{K}$.
+            so $\exists b \in H_2$ s.t. $aK = bK \implies b^{-1}a \in K \le H_2
+            \implies a \in b H_2 = H_2$. So $H_1 \le H_2$. By symmetry,
+            $H_2 \le H_1$, and thus $H_1 = H_2$.
+          \item onto: Given a subgroup $Q$ of $\quot{G}{K}$, consider
+            $H = q^{-1}(Q)$ where $q: G\to \quot{G}{K}$.
+            \begin{itemize}
+              \item $H \le G$: $\forall a, b \in H, q(a), q(b) \in Q \implies
+                q(a)q(b)^{-1} \in Q \implies q(ab^{-1}) \in Q \implies
+                ab^{-1} \in H \implies H \le G$.
+              \item $K \le H$: $\forall a \in K, q(a) = aK = K \in Q \implies
+                a \in H \implies K \le H$.
+              \item $Q = \quot{H}{K}$: $\forall aK \in Q, aK = q(a) \implies
+                a \in H \implies aK \in \quot{H}{K} \implies
+                Q \subseteq \quot{H}{K}$.
+                And $\forall aK \in \quot{H}{K} (a \in H), q(a) \in Q \implies
+                  \quot{H}{K} \subseteq Q$. So $Q = \quot{H}{K}$.
+            \end{itemize}
+          \item $H \lhd G, K \le H \iff \forall g\in G, gHg^{-1} = H, K \le H
+            \iff \forall \ob{g} \in \quot{G}{H}, \ob{g}(\quot{H}{K})\ob{g}^{-1}
+            = \quot{H}{K} \iff \quot{H}{K} \lhd {G}{K}$. \qedhere
+        \end{itemize}
+      \end{proof}
+    \item If $H \lhd G$ with $K \le H$, then $\quot{(\quot{G}{K})}{(\quot{H}{K})}
+      \cong \quot{G}{H}$.
+      \begin{proof}
+        Define $\varphi: G \to\quot{(\quot{G}{K})}{(\quot{H}{K})}$ with
+        $\varphi: a \mapsto aK(\quot{H}{K})$.
+        \begin{itemize}
+          \item onto: ... easy.
+          \item Find $\Ker \varphi$: $a \in \Ker \varphi \iff aK(\quot{H}{K})
+            = \quot{H}{K} \iff aK \in \quot{H}{K} \iff a \in H$.
+        \end{itemize}
+        By 1st isom. thm., $\quot{(\quot{G}{K})}{(\quot{H}{K})} \cong
+        \quot{G}{H}$.
+      \end{proof}
+  \end{enumerate}
+\end{theorem}
+
+\begin{example}
+  $\quot{m\Zb + n\Zb}{m\Zb} \cong \quot{n\Zb}{m\Zb \cap n\Zb}$.
+  ($m\Zb + n\Zb = \gcd(m,n)\Zb, m\Zb \cap n\Zb = \lcm(m,n)\Zb$)
+\end{example}
+
+\underline{Ques}: $\quot{G}{K} \cong \quot{G'}{K'}$ and $K \cong K'
+\centernot\implies G \cong G'$.
+
+\begin{example}
+  $Q_8$ and $D_4$
+  交給陳力
+\end{example}
+
+Extension problem: given two groups $A, B$, how to find $G$ and $K \lhd G$,
+s.t. $K \cong A, \quot{G}{K} \cong B$?
+($1 \to H \to G \to \quot{G}{H} \to 1$, short exact sequence)
+
+ (e.g. $G = A \times B, K = A \times \{1\}$)
