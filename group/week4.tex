@@ -1,0 +1,109 @@
+%! TEX root=../main.tex
+\subsection{Week 4}
+\subsubsection{Universal property and direct sum \& product}
+In general, let $f_1: G_1 \to G, f_2: G_2 \to G$ are group homo.
+$f_1 \times f_2: G_1 \times G_2 \to G, (a, b) \mapsto f_1(a)f_2(b)$.
+But we have $(a, b) = (a, 1)(1, b) = (1, b)(a, 1)$, so
+$f_1(a)f_2(b) = f_2(b)f_1(a) \implies $ need $G$ to be abelian.
+
+So we intend to define the direct sum in the category of abelian group.
+
+\underline{Notation}: For abelian groups, we use ``$+$'' to denote the group
+operation and ``$0$'' to denote the identity.
+
+\begin{definition}
+  Given a non-empty family of abelian groups $\{\, G_s \mid s \in \Lambda \,\}$,
+  a (external) direct sum of $\{\, G_s \mid s \in \Lambda \,\}$ is an
+  abelian group $\bigoplus_{s\in \Lambda} G_s$ with the embedding mappings
+  $i_{s_0}: G_{s_0} \to \bigoplus_{s\in \Lambda} G_s,
+  \forall s_0 \in \Lambda$ satisfying the universal property:
+
+  for any abelian group $H$ and group homo. $\varphi_s: G_s \to H
+  \forall s \in \Lambda, \quad \exists!$ group homo. $\varphi:
+  \bigoplus_{s\in \Lambda} G_s \to H$ s.t. 又一個ㄛ圖
+\end{definition}
+
+\begin{theorem}
+  $\bigoplus_{s\in \Lambda} G_s$ exists and is unique up to isomorphisms.
+
+  \begin{proof}
+    Existence: $\bigoplus_{s\in \Lambda} G_s = \{\, (g_s)_{s\in \Lambda}
+      \mid g_s \in G_s, \text{~almost all of the $g_s$' are $0$} \,\}$ and
+      \[ i_{s_0}: G_{s_0} \to \bigoplus_{s\in \Lambda} G_s,
+        a_{s_0} \mapsto (g_{s_0})_{s\in \Lambda} \text{~with~}
+        g_{s_0} = a_{s_0}, g_s = 0, \forall s \ne s_0. \]
+        group operaion: $(g_s)_{s \in \Lambda} + (g_s')_{s \in \Lambda}
+        \defeq (g_s + g_s')_{s \in \Lambda} \in
+        \bigoplus_{s\in \Lambda} G_s$.
+        這邊也一個ㄛ圖
+
+    Uniqueness: Assume $\exists$ another $G$ satisfies the universal property,
+    一個大ㄛ圖 ($G, \bigoplus_{s\in \Lambda} G_s$ 互相有唯一個映射可以
+    keep $i_{s_0}$, $\varphi \circ \psi = \text{id}_{G}, \psi \circ \varphi
+    = \text{id}_{\bigoplus_{s\in \Lambda} G_s}$)
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  Given a non-empty family of groups $\{\, G_s \mid s \in \Lambda \,\}$,
+  a direct product of $\{\, G_s \mid s \in \Lambda \,\}$ is a group
+  $\prod_{s\in \Lambda} G_s$ with projections
+  $p_{s_0}: \prod_{s\in \Lambda} G_s \to G_{s_0}, \forall s_0 \in \Lambda$
+  satifsfying the following universal property:
+
+  for any group $H$ with group homo.
+  $\varphi_s: H \to G_s, \forall s \in \Lambda$, $\exists! \varphi:
+  H \to \prod_{s\in \Lambda} G_s$ s.t. 又一個ㄛ圖
+\end{definition}
+
+\begin{theorem}
+  $\prod_{s\in \Lambda} G_s$ exists and is unique up to isomorphisms.
+
+  \begin{proof}
+    Existence: $\prod_{s\in \Lambda} G_s = \{\, (g_s)_{s\in \Lambda}
+      \mid g_s \in G_s \,\}$ and
+      \[ p_{s_0}: \prod_{s\in \Lambda} G_s \to G_{s_0},
+        (g_{s_0})_{s\in \Lambda} \mapsto g_{s_0}, \forall s_0 \in \Lambda \]
+      \begin{itemize}
+        \item group operaion: $(g_s)_{s \in \Lambda} \cdot (g_s')_{s \in \Lambda}
+          \defeq (g_s g_s')_{s \in \Lambda} \in \prod_{s\in \Lambda} G_s$.
+        \item Define $\varphi$:
+          這邊也一個ㄛ圖
+          which is uniquely defined.
+      \end{itemize}
+
+    Uniqueness: Assume $\exists$ another $G$ satisfies the universal property,
+    一個大ㄛ圖 ($G, \prod_{s\in \Lambda} G_s$ 互相有唯一個映射可以
+    keep $i_{s_0}$, $\varphi \circ \psi = \text{id}_{G}, \psi \circ \varphi
+    = \text{id}_{\prod_{s\in \Lambda} G_s}$)
+  \end{proof}
+\end{theorem}
+
+\begin{exercise}
+  Google the definition of the {\bf direct limit} and show the existence and
+  uniqueness.
+\end{exercise}
+
+\begin{exercise}
+  Google the definition of the {\bf inverse limit} and show the existence and
+  uniqueness.
+\end{exercise}
+
+\underline{Motivation}: $\zeta_m$ is called an $m$-th root of unity if
+$\zeta_m^m = 1$.
+\[ \varinjlim\limits_n \quot{\Zb}{2^n\Zb} \cong
+\{\, \text{$2^n$-th roots of unity} : n \in \Nb \,\} \]
+
+
+\[ \varinjlim\limits_n \quot{\Zb}{2^n\Zb} =
+  \quot{(\bigoplus_{n\in\Nb} \quot{\Zb}{2^n\Zb})}{
+  \gen{ i_k(a) - i_j(f_{kj}(a)) \mid k \le j, a \in \quot{\Zb}{2^k\Zb} }}
+\]
+where $f_{kj}: \quot{\Zb}{2^k\Zb} \to \quot{\Zb}{2^j\Zb}$.
+
+Inverse limit:
+\[
+  \varprojlim \quot{\Zb}{2^n\Zb} = \left\{\,
+    (n_1, n_2, \dots ) \in \prod_n \quot{\Zb}{2^n\Zb} \middle|
+    \forall i < j, n_i \equiv n_j \pmod 2^{i+1}   \,\right\}
+\]
