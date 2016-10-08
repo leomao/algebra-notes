@@ -107,3 +107,211 @@ Inverse limit:
     (n_1, n_2, \dots ) \in \prod_n \quot{\Zb}{2^n\Zb} \middle|
     \forall i < j, n_i \equiv n_j \pmod 2^{i+1}   \,\right\}
 \]
+
+\subsubsection{Rings and fields}
+
+\begin{definition}
+  A {\bf ring} is sa non-empty set $R$ with two operations $R\times R \to R$
+  \[
+    (a, b) \mapsto a + b \quad \text{and} \quad (a, b) \mapsto ab
+  \]
+  satisfying
+  \begin{enumerate}
+    \item $(R, +, 0)$ is an abelian group.
+    \item $(R, \cdot)$ is a semigroup. (if it is a monoid, then it is called
+      ``a ring with 1.'')
+    \item (Distributive laws) $\forall a, b, c \in \Rb, \begin{cases}
+      a(b + c) = ab + ac\\ (b + c)a = ba + ca\end{cases}$
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  $\Zb, \Rb, \Cb, \quot{\Zb}{n\Zb}, M_{n\times n}(\Fb)$
+\end{example}
+
+\begin{example}
+  Let $G$ be an abelian group.
+  Define (endomorphism, automorphism)
+  \[
+    \text{End}(G) \defeq \{\, \text{group homo.~} G \to G \,\} \quad
+    \text{Aut}(G) \defeq \{\, \text{group isom.~} G \to G \,\}
+  \]
+  A natural ring structure on $\text{End}(G)$ is:
+  \[
+    \forall a \in G, \begin{cases}
+      (f+g)(a) \defeq f(a)g(a) \\
+      (f\cdot g)(a) \defeq f(g(a))
+    \end{cases}
+  \]
+\end{example}
+
+\begin{example}
+  $\Zb\left[\sqrt{2}\right] = \left\{\,
+  a + b\sqrt{2} \relmiddle| a, b \in \Zb \,\right\} \subset \Rb$.
+\end{example}
+
+\begin{definition}
+  Let $R$ be a ring with $1$.
+  \begin{enumerate}[(a)]
+    \item $\forall a \in R, a \ne 0$, a in called a unit if
+      $\exists a^{-1} \in R$.
+  \item $\left(R^\times = \{\text{units in $R$}\}, \cdot, 1)\right)$ forms
+    a group.
+  \item $R$ is called a division ring if $R \setminus \{0\} = R^\times$.
+  \item $R$ is said to be commutative if $ab = ba, \forall a, b \in R$.
+  \item $R$ is a field if $R$ is a commutative division ring.
+  \item $a \ne 0$ is called a left zero divisor if $\exists b \in R, b \ne 0$
+    s.t. $ab = 0$.
+  \item $a$ is called a zero divisor if $a$ is either a left or right zero
+    divisor.
+  \item $R$ is called an integral domain if $R$ is a commutative ring without
+    zero divisors.
+  \end{enumerate}
+\end{definition}
+
+\underline{Fact}:
+\begin{enumerate}
+  \item fields $\implies$ integral domains.
+  \item finite + integral domain $\implies$ fields.
+    \begin{proof}
+      Let $R = \{ 0, a_1, \dots, a_n \}$, for $a \in R, a \ne 0$,
+      $aa_i = aa_j \implies a(a_i - a_j) = 0 \implies i = j$.
+      So $\{0, aa_1, \dots, aa_n \} = R \implies \exists a_i$ s.t. $aa_i = 1$.
+    \end{proof}
+\end{enumerate}
+
+\begin{prop}
+  TFAE
+  \begin{enumerate}
+    \item $\quot{\Zb}{n\Zb}$ is an integral domain.
+    \item $\quot{\Zb}{n\Zb}$ is a field.
+    \item $n = p$ is a prime.
+  \end{enumerate}
+  easy to prove.
+\end{prop}
+
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item $f: R_1 \to R_2$ is called a ring homomorphism if
+      $\forall a, b \in R, \begin{cases}
+        f(a+b) &= f(a) + f(b) \\
+        f(ab) &= f(a)f(b)
+      \end{cases}$.
+    \item $\Image f$ is a subring of $R_2$.
+    \item $\Ker f = \{\, x \in R_1 \mid f(x) = 0 \,\}$ is an additive group of
+      $R_1$ and $\forall r \in R_1, x \in \Ker f, f(rx) = f(r)f(x) = f(r)0 = 0
+      \implies rx \in \Ker f, xr \in \Ker f$.
+    \item $\quot{R_1}{\Ker f}$ is an additive group and
+      $\quot{R_1}{\Ker f} \cong \Image f$ (additive isomorphism).
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Let $I$ be an additive subgroup of $R$.
+  $I$ is called an ideal if $\forall r \in R, x \in I, rx \in I, xr \in I$.
+
+  $\left(\quot{R}{I}, +, \cdot \right)$ forms a quotient ring under
+  \[ \forall r_1, r_2 \in R, (r_1+I)(r_2+I) = r_1r_2 + I \]
+  well-defined: easy to show.
+\end{definition}
+
+\begin{exercise}
+  State and show the isomorphism theorems and the factor theorem.
+\end{exercise}
+
+\begin{prop}
+  If $R$ is a ring with $1$, then $\exists!$ ring homo. $\varphi: \Zb \to R$
+  s.t. $\varphi(1) = 1$.
+  \begin{proof}
+    $\varphi(n) = \varphi(1) + \dots + \varphi(1) = nr$, so $\varphi$ is
+    well-defined.
+
+    Original:
+    Consider $\varphi_r: \Zb \to R, 1 \mapsto r$, for $r \in R$.
+    ($\varphi(n) = \varphi(1) + \dots + \varphi(1) = nr$)
+
+    If $\varphi_r$ is a rong homo., then $\varphi_r(nm) = nmr$ and
+    $\varphi_r(n)\varphi_r(m) = nrmr = nmr^2$.
+    So $nmr = nmr^2 \implies r = r^2 \implies r = 1$ (if $r \ne 0$).
+  \end{proof}
+  \label{prop:phi1e1}
+\end{prop}
+
+\begin{definition}
+  In Prop \ref{prop:phi1e1}, $\Ker \varphi = m\Zb$ for some $m > 0$.
+  We call $m$ the characteristic of $R$, denoted by $\Char R = m$.
+\end{definition}
+
+\begin{prop} \mbox{}
+  \begin{enumerate}
+    \item If $R$ is an integral domain, then $\Char R = 0 \text{~or~} p$,
+      where $p$ is a prime. (try to prove this)
+    \item In the case of $\Char R = p$,
+      $\forall a, b \in R, (a + b)^p = a^p + b^p$.
+      \begin{proof}
+        \[ (a+b)^p = a^p + \binom{p}{1}a^{p-1}b + \dots + b^p = a^p + b^p \]
+        because $p \mid \binom{p}{1} \implies \binom{p}{i}a^{p-i}b^{i} = 0$.
+      \end{proof}
+  \end{enumerate}
+\end{prop}
+
+\begin{exercise}
+  Let $F$ be a field. Show that
+  \begin{enumerate}
+    \item if $\Char F = 0$, then $\Qb \hookrightarrow \text{subfield of~} F$.
+    \item if $\Char F = p$, then
+      $\quot{\Zb}{p\Zb} \hookrightarrow \text{subfield of~} F$.
+  \end{enumerate}
+  \label{ex:4-4}
+\end{exercise}
+
+\begin{theorem}
+  If $F$ is a finite field, then $\abs{F} = p^n$ for some $n \in \Nb$ and
+  $p$ is a prime.
+  \begin{proof}
+    By Ex. \ref{ex:4-4}, $\Char F = p$, $p$ is a prime and $\quot{\Zb}{p\Zb}
+    \hookrightarrow F$.
+
+    We have $\quot{\Zb}{p\Zb} \times F \to F, (r, v) \mapsto rv$.
+    $F$ can be rearded as a vector space over $\quot{\Zb}{p\Zb}$.
+
+    Let $\dim_{\quot{\Zb}{p\Zb}} F = n$, then $F \cong
+    \left(\quot{\Zb}{p\Zb}\right)^n \implies \abs{F} = n$.
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}
+  Let $F$ be a field. Then any finite subgroup $G$ of $(F^\times, \cdot, 1)$
+  is cyclic.
+
+  \begin{proof}
+    Let $\abs{G} = n$. Define $h$ to be the max order of an element in $G$,
+    say $a^h = 1$.
+
+    If $h = n$, then $\abs{\gen{a}} = h = n = \abs{G}$ and $\gen{a} \subseteq G$,
+    so $G = \gen{a}$.
+
+    Otherwise, $h < n$. We know that $x^h - 1$ has at most $h$ roots.
+    So $\exists b \in G$ is not a root of $x^h - 1$.
+    Let $\ord(b) = h'$, so $h' \mid n$ and $h' \not\mid h$.
+    So $\exists$ a prime $p$ s.t. $p^r \mid h'$ but $p^r \not\mid h$.
+
+    Write $h = mp^s, s < r$ and $\gcd(m, p) = 1 \implies
+    \ord \left( a^{p^s} \right) = m$.
+
+    Write $h' = qp^r \implies \ord \left( b^q \right) = p^r$.
+
+    Since $\gcd(m, p^r) = 1, \ord\left(a^{p^s} b^q \right) = mp^r > mp^s = h$,
+    which is a contradiction.
+  \end{proof}
+\end{theorem}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Let $a, b \in G$ with $ab = ba$ and $\ord(a) = m, \ord(b) = n$.
+      If $\gcd(m, n) = 1$, then $\ord(ab) = mn$.
+      In general, is the order of $ab$ equal to $\lcm(m, n)$?
+    \item Let $G$ be a finite group and $H, K \le G$. Then
+      $\abs{HK} = \frac{\abs{H}\abs{K}}{\abs{H \cap K}}$.
+  \end{enumerate}
+\end{exercise}

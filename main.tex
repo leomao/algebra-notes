@@ -157,6 +157,7 @@
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\Image}{Im}
 \DeclareMathOperator{\Ker}{ker}
+\DeclareMathOperator{\Char}{char}
 \newcommand{\ob}{\overline}
 \DeclareMathOperator{\ord}{ord}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle} % generator
@@ -180,6 +181,8 @@
   \seq_use:Nn \l_alec_cycle_seq { #1 }
  }
 \ExplSyntaxOff
+
+\newcommand\relmiddle[1]{\mathrel{}\middle#1\mathrel{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\proofname}{\bf pf:}
