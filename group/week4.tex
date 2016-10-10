@@ -223,16 +223,10 @@ Inverse limit:
   If $R$ is a ring with $1$, then $\exists!$ ring homo. $\varphi: \Zb \to R$
   s.t. $\varphi(1) = 1$.
   \begin{proof}
-    $\varphi(n) = \varphi(1) + \dots + \varphi(1) = nr$, so $\varphi$ is
-    well-defined.
-
-    Original:
-    Consider $\varphi_r: \Zb \to R, 1 \mapsto r$, for $r \in R$.
-    ($\varphi(n) = \varphi(1) + \dots + \varphi(1) = nr$)
-
-    If $\varphi_r$ is a rong homo., then $\varphi_r(nm) = nmr$ and
-    $\varphi_r(n)\varphi_r(m) = nrmr = nmr^2$.
-    So $nmr = nmr^2 \implies r = r^2 \implies r = 1$ (if $r \ne 0$).
+    Let $\varphi: \Zb \to R$ is a ring homo. s.t. $\varphi(1) = 1$. Then
+    $\forall n \in \Zb, \varphi(n) = \varphi(1) + \dots + \varphi(1) = n1$.
+    Now $\forall n, m \in \Zb, \varphi(n)\varphi(m) = (n1)(m1) = n(m1) = (nm)1$
+    by the distributive law. So $\varphi$ is well-defined and unique.
   \end{proof}
   \label{prop:phi1e1}
 \end{prop}
