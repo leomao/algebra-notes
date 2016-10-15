@@ -1,0 +1,116 @@
+%! TEX root=../main.tex
+\subsection{Week 5}
+\subsubsection{Group actions \RNum{1}}
+
+\begin{definition}
+  A group $G$ is said to act on a nonempty set $X$ if $\exists$ a map
+  $G \times X \to X$ with $(g, x) \mapsto gx$ s.t.
+  \begin{enumerate}
+    \item $1x = x$
+    \item $(g_1g_2)x = g_1(g_2 x) \quad \forall g_1, g_2 \in G$
+  \end{enumerate}
+\end{definition}
+
+\begin{prop}
+  $\{ \text{actions of $G$} \} \leftrightarrow
+  \{ \text{group homo.~} G \to S_X \}$
+  \begin{proof}
+    Given an action $(g, x) \mapsto gx$, consider $\varphi: G \to S_X$ s.t.
+    $\varphi: g \mapsto (\tau_g: x \mapsto gx)$.
+    \begin{itemize}
+      \item 1-1: $gx = gy \implies g^{-1}(gx) = y \implies x = y$.
+      \item onto: $\forall y \in X$, let $x = g^{-1}y$, then $y = gx$.
+      \item group homo.: $\varphi(gg') = (\tau_{gg'}: x \mapsto gg'x)
+        = \tau_g \circ \tau_g' = \varphi(g)\varphi(g')$.
+    \end{itemize}
+    Conversely, given a group homo. $\varphi: G \to S_X$, consider
+    $(g, x) \mapsto \varphi(g)(x)$.
+    \begin{itemize}
+      \item $1x = \varphi(1)(x) = \text{Id}(x) = x$.
+      \item $g_1g_2x = \varphi(g_1g_2)(x) = \varphi(g_1) \circ \varphi(g_2)(x)
+        = g_1(g_2x)$. \qedhere
+    \end{itemize}
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  A representation of $G$ on a vector space $V$ is a group action of $G$ on
+  $V$ linearly. i.e. $\exists$ group homo. $\varphi: G \to \text{GL}(V)$.
+\end{definition}
+
+\begin{example}
+  \[
+    \quot{\Zb}{m\Zb} \to \text{SO}(2), \quad
+    \ob{k} \mapsto \begin{pmatrix}
+      \cos \frac{2k\pi}{m} & -\sin \frac{2k\pi}{m} \\
+      \sin \frac{2k\pi}{m} & \cos \frac{2k\pi}{m}
+    \end{pmatrix}
+  \]
+\end{example}
+
+\begin{example}
+  \[
+    S_n \to \text{GL}(n, \Rb), \quad
+    \sigma \mapsto (\tau_\sigma: e_i \mapsto e_{\sigma(i)})
+  \]
+\end{example}
+
+\begin{remark} \mbox{}
+  \begin{enumerate}
+    \item An action $G \times X \to X$ is said to be faithful if the
+      corresponding group homo. $\varphi: G \toone S_X$, denoted by
+      $G \acts X$.
+    \item In general, $\ker \varphi = \{\, g \in G \mid gx = x \quad
+      \forall x \in X \,\} = \bigcap_{x \in X} \{\, g \mid gx = x \,\}$.
+
+      Define $G_x = \{\, g \mid gx = x \,\} \le G$ is the isotropy subgroup
+      of $G$ at $x$. (the stabilizer of $G$ at $x$)
+    \item $\varphi: G \to S_X \implies \quot{G}{\Ker \varphi} \toone S_X$.
+      So $\quot{G}{\Ker \varphi} \times X \to X$ is faithful.
+    \item Let $\mathcal{C}(X) = \{\, f: X \to \Cb \,\}$. If $G \acts X$, then
+      $G \acts \mathcal{C}(X)$ by
+      $G \times \mathcal{C}(X) \to \mathcal{C}(X)$ with
+      $(g, f) \mapsto g f(x) = f(g^{-1}x)$.
+
+      The reason: $(g_1g_2)f(x) = f((g_1g_2)^{-1}x) = f(g_2^{-1}g_1^{-1}x)
+      = g_1(g_2 f)(x)$.
+  \end{enumerate}
+\end{remark}
+
+\begin{definition}
+  Let $G \acts X$ and $x \in X$.
+  \begin{itemize}
+    \item The {\bf orbit} of $x$ is defined to be
+      $Gx = \{\, gx \mid g \in G \,\}$.
+    \item $G \acts X$ is said to be transitive if $\exists$ only one orbit.
+      i.e. $\forall x, y \in X, \exists g \in G$ s.t. $y = gx$.
+  \end{itemize}
+  The set of orbits forms a partition: $x \sim y \iff \exists g \in G
+  \text{~s.t.~} y = gx$.
+\end{definition}
+
+\begin{prop}
+  Let $G \acts X$ and $x \in X$. Then $\abs{Gx} = [G : G_x]$.
+
+  In particular, $\abs{G} < \infty \implies \abs{G} = \abs{Gx}\abs{G_x}
+  \quad \forall x \in X$.
+  \begin{proof}
+    Define $\psi: Gx \to \{ \text{left coset of~} G_x \}$ as
+    $\psi: gx \mapsto g G_x$.
+    \begin{itemize}
+      \item well-defined and 1-1:
+        $g_1x = g_2x \iff g_2^{-1}g_1x = x \iff g_2^{-1}g_1 \in G_x \iff
+        g_2^{-1}g_1G_x = G_x \iff g_1G_x = g_2G_x$.
+      \item onto: $\forall g \in G, \psi(gx) = gG_x$. \qedhere
+    \end{itemize}
+  \end{proof}
+\end{prop}
+
+\subsubsection{Action by left multiplication}
+\begin{itemize}
+  \item The action $G \times G \to G, \quad (g, x) \mapsto gx$ is associated
+    with $\varphi: G \toone S_G$.
+    It is faithful (Caylet theorem) and transitive.
+  \item Let $H \le G$ and $X \defeq \{ \text{left coset of~} H \}$.
+\end{itemize}
+

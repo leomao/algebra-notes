@@ -164,6 +164,9 @@
 %\newcommand*\quot[2]{{^{\textstyle #1}\Big/_{\textstyle #2}}}
 \newcommand*\quot[2]{{#1}/{#2}}
 \newcommand\bij{\lhook\joinrel\twoheadrightarrow}
+\newcommand\toone{\hookrightarrow}
+\newcommand\onto{\twoheadrightarrow}
+\newcommand\acts{\curvearrowright}
 
 % cycle group \cycle{1,2,3} => (1 2 3)
 \ExplSyntaxOn
@@ -183,6 +186,7 @@
 \ExplSyntaxOff
 
 \newcommand\relmiddle[1]{\mathrel{}\middle#1\mathrel{}}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\proofname}{\bf pf:}
@@ -223,6 +227,7 @@
 \include{group/week2}
 \include{group/week3}
 \include{group/week4}
+\include{group/week5}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{plain}
 % \bibliography{journal.bib}
