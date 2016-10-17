@@ -1,0 +1,170 @@
+%! TEX root=../main.tex
+\subsection{Week 6}
+\subsubsection{Group actions \RNum{2}}
+
+\begin{definition}
+  Let $G \acts X$ and $\abs{X} < \infty$.
+  Write $\Fix G \defeq \{\, x \in X \mid gx = x \quad \forall g \in G \,\}$.
+\end{definition}
+
+\begin{itemize}
+  \item $x \in \Fix G$, $Gx = \{ x \}$.
+  \item $x \not\in \Fix G$, $\abs{Gx} = [G : G_x]$.
+\end{itemize}
+
+Let $\{ G_{x_1}, \dots, G_{x_n} \}$ be the set of distinct orbits.
+After rearrangement, assume $x_1, \dots, x_r \in \Fix G,
+x_{r+1}, \dots, x_n \not\in \Fix G$. Then
+\[
+  \abs{X} = \abs{\Fix G} + \sum_{i=r+1}^{n} [G : G_{x_i}]
+\]
+
+\begin{theorem}[class equation]
+  Let $\abs{G} < \infty$. Then either $G = Z_G$ or
+  $\exists a_1, \dots, a_m \in G \setminus Z_G$ s.t.
+  \[
+    \abs{G} = \abs{Z_G} + \sum_{i=1}^{n} [G : G_{a_i}]
+  \]
+  \begin{proof}
+    Consider the action $(g, x) \mapsto gxg^{-1}$, then
+    \[
+      \Fix G = \{\, x \in G \mid gxg^{-1} = x \quad \forall g \in G \,\}
+      = Z_G
+    \]
+    It follows from the above argument.
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  $G$ is called a $p$-group if $\abs{G} = p^n$, where $p$ is a prime,
+  $n \in \Nb$.
+\end{definition}
+
+\begin{prop}
+  If $G$ is a $p$-group, then $Z_G \ne \{ 1 \}$.
+  \begin{proof}
+    Let $\abs{G} = p^n$. If $G = Z_G$, then done.
+    Otherwise, by the class equation (use action by conjugation),
+    $\abs{G} = \abs{Z_G} + \sum_{i=1}^{n} [G : G_{a_i}], \quad a_i \not\in Z_G$.
+
+    $G_{a_i} = Z_G(a_i)$, so $a_i \not\in Z_G \implies Z_G(a_i) \lneq G
+    \implies p \mid [G:Z_G(a_i)] = \frac{\abs{G}}{\abs{Z_G(a_i)}}$.
+
+    So $\abs{Z_G} = \abs{G} - \sum_{i=1}^{n} [G : Z_G(a_i)]
+    \implies p \mid \abs{Z_G} \implies Z_G \ne \{ 1 \}$.
+  \end{proof}
+  \label{prop:pgroup}
+\end{prop}
+
+\begin{prop}
+  If $\abs{G} = p^2$, then $G$ is abelian.
+  ($\quot{\Zb}{p\Zb} \times \quot{\Zb}{p\Zb}$ and $\quot{\Zb}{p^2\Zb}$)
+  \begin{proof}
+    Assume that $G$ is not abelian.
+    By prop \ref{prop:pgroup}, $\abs{Z_G} = p \implies \abs{\quot{G}{Z_G}} = p
+    \implies \quot{G}{Z_G}$ is cyclic $\implies G$ is abelian. (contradiction)
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  If $\abs{G} = p^3$ and $G$ is not abelian, then $\abs{Z_G} = p$.
+
+  (Abelian: $\quot{\Zb}{p\Zb} \times \quot{\Zb}{p\Zb} \times \quot{\Zb}{p\Zb},
+  \quot{\Zb}{p^2\Zb} \times \quot{\Zb}{p\Zb}, \quot{\Zb}{p^3\Zb}$)
+
+  \label{prop:w6p3}
+\end{prop}
+
+\begin{prop}
+  Let $\abs{G} = p^n$. Then $\forall 0 \le k \le n, \exists G_k \lhd G$ s.t.
+  $\abs{G_k} = p^k$ and $G_i \lneq G_{i+1}$.
+
+  In general, for a finite group $G$, $\exists {\{1\}} =
+  G_r \lhd G_{r-1} \lhd \dots \lhd G_1 \lhd G_0 = G$ s.t. $\quot{G_i}{G_{i+1}}$
+  is cyclic.
+
+  we call $G$ a solvable group.
+
+  \begin{proof}
+    By induction on $n$, $n = 1$ is trivial.
+    For $n > 1$, assume that the statement a holds for $n-1$.
+    By prop \ref{prop:pgroup}, $Z_G \ne \{1\}$. $\exists a \in Z_G, a \ne 1$.
+    Let $\ord(a) = p^l$, then $\ord(a^{p^{l-1}}) = p$.
+    $\implies$ in any case, $\exists a \in Z_G$ with $\ord(a) = p$.
+
+    Now $\abs*{\quot{G}{\gen{a}}} = p^{n-1}$, so by induction hypothesis,
+    $\forall 0 \le k \le n - 1, \exists \ob{G_k} \lhd \quot{G}{\gen{a}}$ s.t.
+    $\abs*{\ob{G_k}} = p^k, \ob{G_i} \lneq \ob{G_{i+1}}$.
+
+    By 3rd isom. thm., $\exists G_{k+1} \lhd G$ s.t. $\ob{G_k} =
+    \quot{G_{k+1}}{\gen{a}}, G_j \lneq G_{j+1}$ and $\abs{G_{k+1}} = p^{k+1}$.
+
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  Let a $p$-group $G \acts X$ with $\abs{X} < \infty$.
+  Then $\abs{X} \equiv \abs{\Fix G} \pmod p$.
+  \label{prop:useful}
+\end{prop}
+
+\begin{theorem}[Cauchy theorem]
+  Let $p \Div \abs{G}$. Then $\exists a \in G$ s.t. $\ord(a) = p$. Consider 
+  \[ X = \{\, (a_1, \dots, a_p) \mid a_i \in G, a_1a_2\dots a_p = 1\,\} \]
+  and the action $\quot{\Zb}{p\Zb} \times X \to X$:
+  \[
+    (\ob{k}, (a_1, \dots, a_p)) \mapsto (a_{k+1}, \dots, a_p, a_1, \dots, a_k)
+  \]
+  (This is well-defined since $ab = 1 \implies ba = 1$ in a group.)
+  We find that $(a_1, \dots, a_p) \in \Fix \quot{\Zb}{p\Zb} \iff a_1 = a_2
+  \dots a_p$.
+  By prop \ref{prop:useful}, $\abs*{\Fix \quot{\Zb}{p\Zb}} \equiv \abs{X}
+  \pmod p$. And $\abs{X} = \abs{G}^{p-1} \equiv 0 \pmod p$.
+  Since $(1, \dots, 1) \in \Fix \quot{\Zb}{p\Zb}, \abs*{\quot{\Zb}{p\Zb}} \ne 0
+  \implies \abs*{\quot{\Zb}{p\Zb}} \ge p$.
+
+  So $\exists (a, \dots, a) \in \Fix \quot{\Zb}{p\Zb} \implies a^p = 1$w
+\end{theorem}
+
+\underline{Application}: Let $\abs{G} = p^3$ and $G$ be non-abelian
+($p$ is odd).
+By prop \ref{prop:w6p3}, $\abs*{\quot{G}{Z_G}} = p^2$. Since $G$ is non-abelian,
+we have $\quot{G}{Z_G} \cong \quot{\Zb}{p\Zb} \times \quot{\Zb}{p\Zb}$.
+That is, $\forall a \in G, a^p \in Z_G$.
+
+So,
+\[
+  \exists \varphi: G \to Z_G \cong C_p \text{~with~}
+  \varphi: a \mapsto a^p
+\]
+
+Since $\quot{G}{Z_G}$ is abelian, $[G,G] \le Z_G$. And
+\[
+  \begin{cases}
+    \abs{[G,G]} \Div \abs{Z_G} = p \\
+    G \text{~is non-abelian}
+  \end{cases}
+  \implies [G,G] = Z_G
+\]
+
+\begin{definition}
+  $[x, y] = x^{-1}y^{-1}xy \in [G,G], [x,y]^p = 1$.
+\end{definition}
+
+So $a^p b^p = a^p b^p [b, a]^p$ ... 換換換 總共需要 $p(p-1)/2$
+\[ a^p b^p = (ab)^p [b,a]^{\frac{p(p-1)}{2}} = (ab)^p \]
+
+So $\varphi$ is a group homo.
+
+Now if $\Ker \varphi = G \quad (\forall a \in G, a^p = 1)$,
+i.e. $\varphi$ is trivial, then $\varphi$ is useless. 
+Else, $\exists a \in G$ s.t. $\ord(a) = p^2$, then
+$H = \gen{a} \lhd G$. ($[G:H] = p$ is the smallest prime dividing $\abs{G}$)
+
+Also, in this case, $\varphi: G \onto Z_G \implies 
+\quot{G}{\Ker \varphi} \cong Z_G$. Let $E = \Ker \varphi$, $\abs{E} = p^2$.
+By the def. of $\Ker \varphi$, $E \cong \quot{\Zb}{p\Zb} \times
+\quot{\Zb}{p\Zb}$.
+
+We find that $H \cap E = \gen{a^p}$. Pick $b \in E \setminus H$ and let
+$K = \gen{b} \implies \abs{K} = p, H \cap K = \{ 1 \}, HK = G$.
