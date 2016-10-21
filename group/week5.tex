@@ -110,7 +110,87 @@
 \begin{itemize}
   \item The action $G \times G \to G, \quad (g, x) \mapsto gx$ is associated
     with $\varphi: G \toone S_G$.
-    It is faithful (Caylet theorem) and transitive.
+    It is faithful (Cayley theorem) and transitive.
   \item Let $H \le G$ and $X \defeq \{ \text{left coset of~} H \}$.
+    The group action $(g, xH) \mapsto gxH \leadsto \varphi: G \to S_X$.
+    \[
+      \ker \varphi = \bigcap_{x \in G} \tikz[anchor=base, baseline]{
+      \node (conj-of-H) {$\underbrace{xHx^{-1}}$}; } \le H
+    \]
+    \begin{tikzpicture}[overlay]
+      \node[inner sep=0pt,outer sep=0pt] (t) at ($(conj-of-H) + (2, -0.5)$) {
+         \footnotesize a conjugate of $H$};
+       \path[->,shorten >= 6pt] ($(conj-of-H.base) + (0, -0.3)$) edge
+         [bend right=10] (t.west) ;
+    \end{tikzpicture}
+    which is the largest normal subgroup in $G$ contained in $H$.
+    \begin{proof}
+      If $\begin{cases} N \lhd G \\ N \le H\end{cases}, \forall x \in G,
+        xNx^{-1} \le xHx^{-1} \implies N = N(xx^{-1}) = xNx^{-1} \le xHx^{-1}$.
+    \end{proof}
 \end{itemize}
 
+\begin{prop}
+  Let $H \le G$ with $[G:H] = p$ being the smallest prime dividing $\abs{G}$.
+  Then $H \lhd G$.
+  \begin{proof}
+    Let $X = \{ a_1H, \dots, a_pH \}$ (all left coests of $H$) and
+    $\varphi: G \to S_p$ be the associated group homo. for the group action
+    $(g, a_iH) \mapsto ga_iH$.
+
+    By the 1st isom. thm., $\quot{G}{\Ker\varphi} \toone S_p$.
+
+    By Lagrange thm. $\abs*{\quot{G}{\Ker\varphi}} \Div \abs{S_p} = p!$ and
+    $\abs*{\quot{G}{\Ker\varphi}} \Div \abs{G} \implies
+    \abs*{\quot{G}{\Ker\varphi}} \Div p$.
+
+    So $\abs*{\quot{G}{\Ker\varphi}} = 1 \text{~or~} p$.
+
+    If $\abs*{\quot{G}{\Ker\varphi}} = 1 \implies G = \Ker\varphi \le H \lneq G$,
+    which is a contradiction.
+
+    So $\abs*{\quot{G}{\Ker\varphi}} = p \implies [G:\Ker\varphi] = p
+    \implies [G:H][H:\Ker\varphi] = p \implies [H:\Ker\varphi] = 1
+    \implies H = \Ker\varphi \lhd G$.
+  \end{proof}
+\end{prop}
+
+\subsubsection{Action by conjugation}
+\begin{itemize}
+  \item The action $G \times G \to G \quad (g,x) \mapsto gxg^{-1}$ is
+    associated with the group homo. $\varphi: G \to S_G \quad g \mapsto
+    (\tau_g: x \mapsto gxg^{-1})$.
+    \[
+      \Inn(G) \defeq \{\, \tau_g \mid g \in G \,\}
+    \]
+
+    \begin{fact} 
+      $\tau_g$ is an automorphism. (isom. $G \to G$)
+    \end{fact}
+
+    So $\varphi: G \onto \Inn(G) \le \Aut(G) \le S_G$.
+
+    $\Ker\varphi = \{\, g\in G \mid gxg^{-1} = x \quad \forall x \in G \,\}
+    = Z_G$.
+
+    By the 1st isom. thm., $\quot{G}{\Ker\varphi} \cong \Inn(G)$.
+    \begin{itemize}
+      \item The conjugacy class:
+        $Gx = \{\, gxg^{-1} \mid g \in G \,\} = \text{Cl}(x)$.
+      \item The centralizer of $x$ in $G$:
+        $G_x = \{\, g \in G \mid gxg^{-1} = x \,\} = Z_G(x)$.
+    \end{itemize}
+    \[
+      \abs{\text{Cl}(x)} = [G:Z_G(x)], \text{~if~} \abs{G} < \infty, 
+      \abs{G} = \abs{\text{Cl}(x)}\abs{Z_G(x)}
+    \]
+  \item For $H \lhd G$, define $G \times H \to H \quad (g, h) \mapsto ghg^{-1}$
+    with the group homo. $\varphi: G \to \Aut(H)$.
+    \[
+      \Ker\varphi = \{\, g\in G \mid gxg^{-1} = x \quad \forall x \in H \,\}
+      = Z_G(H)
+      \implies \quot{G}{Z_G(H)} \le \Aut(H)
+    \]
+  \item The normalizer of $H$ in $G$:
+    $N_G(H) = \{\, g\in G \mid gHg^{-1} \le H \,\}$
+\end{itemize}

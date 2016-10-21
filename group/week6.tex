@@ -4,19 +4,19 @@
 
 \begin{definition}
   Let $G \acts X$ and $\abs{X} < \infty$.
-  Write $\Fix G \defeq \{\, \times \in \times \mid gx = \times \quad \forall g \in G \,\}$.
+  Write $\Fix G \defeq \{\, x \in X \mid gx = x \quad \forall g \in G \,\}$.
 \end{definition}
 
 \begin{itemize}
-  \item $x \in \Fix G$, $Gx = \{ \times \}$.
+  \item $x \in \Fix G$, $Gx = \{ x \}$.
   \item $x \not\in \Fix G$, $\abs{Gx} = [G : G_x]$.
 \end{itemize}
 
-Let $\{ G_{\times_1}, \dots, G_{\times_n} \}$ be the set of distinct orbits.
-After rearrangement, assume $\times_1, \dots, \times_r \in \Fix G,
-\times_{r+1}, \dots, \times_n \not\in \Fix G$. Then
+Let $\{ G_{x_1}, \dots, G_{x_n} \}$ be the set of distinct orbits.
+After rearrangement, assume $x_1, \dots, x_r \in \Fix G,
+x_{r+1}, \dots, x_n \not\in \Fix G$. Then
 \[
-  \abs{X} = \abs{\Fix G} + \sum_{i=r+1}^{n} [G : G_{\times_i}]
+  \abs{X} = \abs{\Fix G} + \sum_{i=r+1}^{n} [G : G_{x_i}]
 \]
 
 \begin{theorem}[class equation]
@@ -28,7 +28,7 @@ After rearrangement, assume $\times_1, \dots, \times_r \in \Fix G,
   \begin{proof}
     Consider the action $(g, x) \mapsto gxg^{-1}$, then
     \[
-      \Fix G = \{\, \times \in G \mid gxg^{-1} = \times \quad \forall g \in G \,\}
+      \Fix G = \{\, x \in G \mid gxg^{-1} = x \quad \forall g \in G \,\}
       = Z_G
     \]
     It follows from the above argument.
@@ -109,9 +109,9 @@ After rearrangement, assume $\times_1, \dots, \times_r \in \Fix G,
 \end{prop}
 
 \begin{theorem}[Cauchy theorem]
-  Let $p \Div \abs{G}$. Then $\exists a \in G$ s.t. $\ord(a) = p$. Consider 
-  \[ \times = \{\, (a_1, \dots, a_p) \mid a_i \in G, a_1a_2\dots a_p = 1\,\} \]
-  and the action $\quot{\Zb}{p\Zb} \times \times \to X$:
+  Let $p \Div \abs{G}$. Then $\exists a \in G$ s.t. $\ord(a) = p$. Consider
+  \[ X = \{\, (a_1, \dots, a_p) \mid a_i \in G, a_1a_2\dots a_p = 1\,\} \]
+  and the action $\quot{\Zb}{p\Zb} \times X \to X$:
   \[
     (\ob{k}, (a_1, \dots, a_p)) \mapsto (a_{k+1}, \dots, a_p, a_1, \dots, a_k)
   \]
@@ -157,11 +157,11 @@ So $a^p b^p = a^p b^p [b, a]^p$ ... 換換換 總共需要 $p(p-1)/2$
 So $\varphi$ is a group homo.
 
 Now if $\Ker \varphi = G \quad (\forall a \in G, a^p = 1)$,
-i.e. $\varphi$ is trivial, then $\varphi$ is useless. 
+i.e. $\varphi$ is trivial, then $\varphi$ is useless.
 Else, $\exists a \in G$ s.t. $\ord(a) = p^2$, then
 $H = \gen{a} \lhd G$. ($[G:H] = p$ is the smallest prime dividing $\abs{G}$)
 
-Also, in this case, $\varphi: G \onto Z_G \implies 
+Also, in this case, $\varphi: G \onto Z_G \implies
 \quot{G}{\Ker \varphi} \cong Z_G$. Let $E = \Ker \varphi$, $\abs{E} = p^2$.
 By the def. of $\Ker \varphi$, $E \cong \quot{\Zb}{p\Zb} \times
 \quot{\Zb}{p\Zb}$.
@@ -186,11 +186,11 @@ $\implies$ elements in $KH$ has unique representation ? 好事喔\\
 $KH \iff K \times H$ 1-1 corresp, $(kh) \iff (k, h)$
 \end{observation}
 
-Group operation : 
+Group operation :
 $\forall k_1, k_2 \in K, h_1, h_2 \in H, (k_1 h_1) (k_2 h_2) = k_1 k_2 (k_2^{-1} h_1 k_2) h_2$ \\
 Let $\tau : K \implies \Aut(H), k \implies \tau(k) : h\implies khk^{-1}$ (類似 $\in \Inn(H)$ )
 
-\begin{definition}[Semi-Direct Product (慘好積)] 
+\begin{definition}[Semi-Direct Product (慘好積)]
   $K \times_{\tau} H = \{(k, h) | k\in K, h \in H\}$ with group operation :
 $(k_1, h_1)(k_2, h_2) = (k_1 k_2, \tau(k_2^{-1})(h_1)(h_2))$
 where $\tau : K \implies \Aut(H)$  (need not to be inner homomorphism)
@@ -198,7 +198,7 @@ where $\tau : K \implies \Aut(H)$  (need not to be inner homomorphism)
 
 Properties:
 \begin{itemize}
-  \item Associativity: Good, ex 
+  \item Associativity: Good, ex
   \item The identity = $(1, 1)$
   \item Inverse : $(k, h)^{-1} = (k^{-1}, \tau(k)(h^{-1}))$
   \item $K \cong K \times \{1\} \leq K \times_{\tau} H$ :
@@ -207,9 +207,9 @@ Properties:
   \item $H \lhd K \times_t H : (k, h) (1, h')(k, h)^{-1} = (k, hh')(k^{-1}, \tau(k)(h^{-1}))
     = (1, \tau(k)(hh')\tau(k)(h^{-1})) \in H$
 
-  \item $\tau(k)(h) = khk^{-1}$ : 
+  \item $\tau(k)(h) = khk^{-1}$ :
     $(k, 1)(1, h)(k^{-1}, 1) = (k, h)(k^{-1}, 1) = (1, \tau(k)(h))$
-  \item If $\tau$ is trivial \implies $K \times_t H \cong K \times H$
+  \item If $\tau$ is trivial $\implies K \times_t H \cong K \times H$
 \end{itemize}
 
 \begin{remark}
@@ -229,7 +229,8 @@ $\Aut(\Zb/p\Zb) \cong (\Zb/p\Zb)^\times \cong C_{p-1}$
 \end{fact}
 Sol : $\phi_k: \Zb/p\Zb \implies \Zb/p\Zb, \bar{1} \implies \bar{k}$
 
-$\phi_k_2 o \phi_k_1 (T) = \phi_k_2(\bar(k_1)) = \phi_k_2(T+\cdots+T) = \bar(k_2) + \cdots \bar{k_2} = \bar{k_1 k_2}$
+$\phi_{k_2} o \phi_{k_1} (T) = \phi_{k_2}(\bar(k_1)) = \phi_{k_2}(T+\cdots+T)
+= \bar(k_2) + \cdots \bar{k_2} = \bar{k_1 k_2}$
 
 Let $K = C_3, H = C_7$, define $\tau : C_3 \implies \Aut(C_7) \cong C_6, a \implies \phi_2$
 $phi_k : b \implies b^k$
@@ -239,13 +240,13 @@ $G = \gen{a, b | a^3=1, b^7=1, aba^{-1}=b^2}$
 \begin{example}
 p : odd, $|G| = p^3$, $G$ is non-abelian.
 \end{example}
-(sol) 
+(sol)
 $\phi: G \implies Z(G), a \implies a^p$ non trivial
 case $\exists a \in G $ with $\ord(a) = p^2$.
 Let $H = <a>$ here $\phi$ is onto and $E = \ker \phi \cong \Zb/p\Zb \times \Zb/p\Zb$
 And $|H \cap E| = p$
 $H \lhd G$ because $[G: H]=p$
-Pick $b \in E \ H$ and let $K = <b>$ \implies $|K| = p, K \cap H = \{1\}$
+Pick $b \in E \ H$ and let $K = <b> \implies |K| = p, K \cap H = \{1\}$
 so $|G| = |KH| = p^3$
 
 \begin{fact}
@@ -253,7 +254,7 @@ $\Aut(Z/p^2 Z) \cong (Z/p^2 Z)^\times$
 \end{fact}
 Sol : $\phi_k: \Zb/p^2\Zb \implies \Zb/p^2\Zb, \bar{1} \implies \bar{k}, \gcd(k, p) = 1$
 
-Find a group homo $\tau : K \implies \Aut(H)$  
+Find a group homo $\tau : K \implies \Aut(H)$
 because $(1+p)^p \equiv 1 \mod p^2$, $\ord(\bar{1+p}) \in \Zb/p^2\Zb$
 Let $P = \gen{\bar{1+p}}$ is the only subgroup of order $p$.
 (if $\exists |Q| = p$, $P \neq Q$ then $P \cap Q = 1$, $|PQ| = p^2$, miserable.)
@@ -272,7 +273,7 @@ Let $T$ be the group of translations on $R^n$, $T \cong (R^n, +, 0), t \implies 
 
 Let $\tau : O(n) \implies \Aut(T), A \implies L_A : R^n \implies R^n, v \implies Av$
 
-\implies $\Isom(R^n) = O(n) \times_\tau R^n$
+$\implies \Isom(R^n) = O(n) \times_\tau R^n$
 
 \begin{example}
 Quaternium $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ is not a semi-deriect product of any two proper subgroups.
