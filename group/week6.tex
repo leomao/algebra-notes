@@ -156,14 +156,14 @@ So $a^p b^p = a^p b^p [b, a]^p$ ... 換換換 總共需要 $p(p-1)/2$
 
 So $\varphi$ is a group homo.
 
-Now if $\Ker \varphi = G \quad (\forall a \in G, a^p = 1)$,
+Now if $\ker \varphi = G \quad (\forall a \in G, a^p = 1)$,
 i.e. $\varphi$ is trivial, then $\varphi$ is useless.
 Else, $\exists a \in G$ s.t. $\ord(a) = p^2$, then
 $H = \gen{a} \lhd G$. ($[G:H] = p$ is the smallest prime dividing $\abs{G}$)
 
 Also, in this case, $\varphi: G \onto Z_G \implies
-\quot{G}{\Ker \varphi} \cong Z_G$. Let $E = \Ker \varphi$, $\abs{E} = p^2$.
-By the def. of $\Ker \varphi$, $E \cong \quot{\Zb}{p\Zb} \times
+\quot{G}{\ker \varphi} \cong Z_G$. Let $E = \ker \varphi$, $\abs{E} = p^2$.
+By the def. of $\ker \varphi$, $E \cong \quot{\Zb}{p\Zb} \times
 \quot{\Zb}{p\Zb}$.
 
 We find that $H \cap E = \gen{a^p}$. Pick $b \in E \setminus H$ and let
@@ -183,17 +183,17 @@ Let $K, H$ be two groups, and $G=K \times H \implies K \times \{1\} \lhd K \time
 \begin{observation}
 $K \leq G, H \lhd G, K \cap H = \{1\}$ (K 慘 H 好，簡稱慘好集) \\
 $\implies$ elements in $KH$ has unique representation ? 好事喔\\
-$KH \iff K \times H$ 1-1 corresp, $(kh) \iff (k, h)$
+$KH \iff K \times H$ 1-1 corresp, $(kh) \leftrightarrow (k, h)$
 \end{observation}
 
 Group operation :
 $\forall k_1, k_2 \in K, h_1, h_2 \in H, (k_1 h_1) (k_2 h_2) = k_1 k_2 (k_2^{-1} h_1 k_2) h_2$ \\
-Let $\tau : K \implies \Aut(H), k \implies \tau(k) : h\implies khk^{-1}$ (類似 $\in \Inn(H)$ )
+Let $\tau : K \to \Aut(H), k \mapsto (\tau(k) : h\mapsto khk^{-1})$ (類似 $\in \Inn(H)$ )
 
 \begin{definition}[Semi-Direct Product (慘好積)]
   $K \times_{\tau} H = \{(k, h) | k\in K, h \in H\}$ with group operation :
 $(k_1, h_1)(k_2, h_2) = (k_1 k_2, \tau(k_2^{-1})(h_1)(h_2))$
-where $\tau : K \implies \Aut(H)$  (need not to be inner homomorphism)
+where $\tau : K \to \Aut(H)$  (need not to be inner homomorphism)
 \end{definition}
 
 Properties:
@@ -225,40 +225,41 @@ Construct a non-abelian group of order 21.
 \end{example}
 
 \begin{fact}
-$\Aut(\Zb/p\Zb) \cong (\Zb/p\Zb)^\times \cong C_{p-1}$
+  $\Aut(\quot{\Zb}{p\Zb}) \cong (\quot{\Zb}{p\Zb})^\times \cong C_{p-1}$
 \end{fact}
-Sol : $\phi_k: \Zb/p\Zb \implies \Zb/p\Zb, \bar{1} \implies \bar{k}$
+Sol : $\phi_k: \quot{\Zb}{p\Zb} \to \quot{\Zb}{p\Zb}, \bar{1} \mapsto \bar{k}$
 
 $\phi_{k_2} o \phi_{k_1} (T) = \phi_{k_2}(\bar(k_1)) = \phi_{k_2}(T+\cdots+T)
 = \bar(k_2) + \cdots \bar{k_2} = \bar{k_1 k_2}$
 
-Let $K = C_3, H = C_7$, define $\tau : C_3 \implies \Aut(C_7) \cong C_6, a \implies \phi_2$
-$phi_k : b \implies b^k$
+Let $K = C_3, H = C_7$, define $\tau : C_3 \to \Aut(C_7) \cong C_6, a \mapsto \phi_2$
+
+$\phi_k : b \mapsto b^k$
 
 $G = \gen{a, b | a^3=1, b^7=1, aba^{-1}=b^2}$
 
 \begin{example}
-p : odd, $|G| = p^3$, $G$ is non-abelian.
+  p : odd, $\abs{G} = p^3$, $G$ is non-abelian.
 \end{example}
 (sol)
-$\phi: G \implies Z(G), a \implies a^p$ non trivial
+$\phi: G \to Z(G), a \mapsto a^p$ non trivial
 case $\exists a \in G $ with $\ord(a) = p^2$.
-Let $H = <a>$ here $\phi$ is onto and $E = \ker \phi \cong \Zb/p\Zb \times \Zb/p\Zb$
-And $|H \cap E| = p$
+Let $H = \gen{a}$ here $\phi$ is onto and $E = \ker \phi \cong \quot{\Zb}{p\Zb} \times \quot{\Zb}{p\Zb}$
+And $\abs{H \cap E} = p$
 $H \lhd G$ because $[G: H]=p$
-Pick $b \in E \ H$ and let $K = <b> \implies |K| = p, K \cap H = \{1\}$
-so $|G| = |KH| = p^3$
+Pick $b \in E \setminus H$ and let $K = \gen{b} \implies \abs{K} = p, K \cap H = \{1\}$
+so $\abs{G} = \abs{KH} = p^3$
 
 \begin{fact}
-$\Aut(Z/p^2 Z) \cong (Z/p^2 Z)^\times$
+  $\Aut(\quot{\Zb}{p^2 \Zb}) \cong (\quot{\Zb}{p^2 \Zb})^\times$
 \end{fact}
-Sol : $\phi_k: \Zb/p^2\Zb \implies \Zb/p^2\Zb, \bar{1} \implies \bar{k}, \gcd(k, p) = 1$
+Sol : $\phi_k: \quot{\Zb}{p^2\Zb} \to \quot{\Zb}{p^2\Zb}, \bar{1} \mapsto \bar{k}, \gcd(k, p) = 1$
 
 Find a group homo $\tau : K \implies \Aut(H)$
-because $(1+p)^p \equiv 1 \mod p^2$, $\ord(\bar{1+p}) \in \Zb/p^2\Zb$
-Let $P = \gen{\bar{1+p}}$ is the only subgroup of order $p$.
+because $(1+p)^p \equiv 1 \mod p^2$, $\ord(\bar{1+p}) \in \quot{\Zb}{p^2\Zb}$
+Let $P = \gen*{\ob{1+p}}$ is the only subgroup of order $p$.
 (if $\exists |Q| = p$, $P \neq Q$ then $P \cap Q = 1$, $|PQ| = p^2$, miserable.)
-So let $\tau : b \implies \phi_{1+p} : a \implies a^{1+p}$
+So let $\tau : b \mapsto (\phi_{1+p} : a \mapsto a^{1+p})$
 so $G = \gen{a, b | a^{p^2}=1, b^p = 1, bab^{-1} = a^{1+p}}$ is a non-abelian group of order $p^3$.
 
 \begin{example}
@@ -266,12 +267,12 @@ Isometry of $R^n$
 \end{example}
 
 \begin{definition}[Isometry]
-An isometry of $R^n$ is a function $h: R^n \implies R^n$ that preserves the distance between vectors.
+An isometry of $R^n$ is a function $h: R^n \to R^n$ that preserves the distance between vectors.
 \end{definition}
 $h = t \circ k$ where $t$ is translation, $k$ is an isometry fixing the origin, i.e. $k \in O(n)$.
-Let $T$ be the group of translations on $R^n$, $T \cong (R^n, +, 0), t \implies t(0)$.
+Let $T$ be the group of translations on $R^n$, $T \cong (R^n, +, 0), t \mapsto t(0)$.
 
-Let $\tau : O(n) \implies \Aut(T), A \implies L_A : R^n \implies R^n, v \implies Av$
+Let $\tau : O(n) \to \Aut(T), A \mapsto L_A : R^n \to R^n, v \mapsto Av$
 
 $\implies \Isom(R^n) = O(n) \times_\tau R^n$
 
@@ -281,26 +282,30 @@ Quaternium $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$ is not a semi-deriect product 
 pf: since $\{\pm 1\}$ is contained in any non-trivial subgroups, can't find $H \cap K = \{1\}$.
 
 \begin{example}
-$A_4$, $V_4 = \{1, (12)(34), (14)(23), (13)(24)\} \lhd A_4, V_4 \cong \Zb/2\Zb \times \Zb/2\Zb$
+  $A_4$, $V_4 = \{1, (12)(34), (14)(23), (13)(24)\} \lhd A_4, V_4 \cong \quot{\Zb}{2\Zb} \times \quot{\Zb}{2\Zb}$
 \end{example}
-Let $H_{ao} = \gen{(123)} \cong C_3$, define $\tau : H_{ao} \implies \Aut(V_4) \cong GL_2(\Zb/2\Zb)$
-$(123) \implies (\bar{0} \bar{1}; \bar{1} \bar{1})$
+Let $H = \gen{(123)} \cong C_3$, define $\tau : H \to \Aut(V_4) \cong GL_2(\quot{\Zb}{2\Zb})$
+$(123) \mapsto (\bar{0} \bar{1}; \bar{1} \bar{1})$
 so $A_4 \cong C_3 \times_\tau V_4$.
 
 \begin{exercise}
-Construct $D_n$ as a semi-direct product of $\Zb/n\Zb$ and $\Zb/2\Zb$.
+  Construct $D_n$ as a semi-direct product of $\quot{\Zb}{n\Zb}$ and
+  $\quot{\Zb}{2\Zb}$.
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise} \mbox{}
   \begin{enumerate}
-    \item Show that $S_4$ is a semi-direct product of $V_4$ and $H = \{\sigma \in S_4 | \sigma(4) = 4\} \sim S_3$.
+    \item Show that $S_4$ is a semi-direct product of $V_4$ and $H = \{\, \sigma \in S_4 | \sigma(4) = 4 \,\} \sim S_3$.
     \item Show that $S_n$ is a semi-direct product of $A_n$ and $H = \gen{(12)}$.
   \end{enumerate}
 \end{exercise}
 
-\begin{remark}
+\begin{remark} \mbox{}
   \begin{itemize}
-    \item $\Aut(\Zb/p\Zb \times \Zb/p\Zb) \cong GL_2(\Zb/p\Zb)$ (regarded as a vector space over $\Zb/p\Zb$)
-    \item $\Aut(\Zb/p\Zb \times \Zb/q\Zb) \cong \Aut(\Zb/p\Zb) \times \Aut(\Zb/q\Zb) \cong C_{p-1} \times C_{q-1}$
+    \item $\Aut(\quot{\Zb}{p\Zb} \times \quot{\Zb}{p\Zb}) \cong GL_2(\quot{\Zb}{p\Zb})$
+      (regarded as a vector space over $\quot{\Zb}{p\Zb}$)
+    \item $\Aut(\quot{\Zb}{p\Zb} \times \quot{\Zb}{p\Zb}) \cong
+      \Aut(\quot{\Zb}{p\Zb}) \times \Aut(\quot{\Zb}{q\Zb}) \cong
+      C_{p-1} \times C_{q-1}$
   \end{itemize}
 \end{remark}

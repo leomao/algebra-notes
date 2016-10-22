@@ -65,8 +65,8 @@
 
       Define $G_x = \{\, g \mid gx = x \,\} \le G$ is the isotropy subgroup
       of $G$ at $x$. (the stabilizer of $G$ at $x$)
-    \item $\varphi: G \to S_X \implies \quot{G}{\Ker \varphi} \toone S_X$.
-      So $\quot{G}{\Ker \varphi} \times X \to X$ is faithful.
+    \item $\varphi: G \to S_X \implies \quot{G}{\ker \varphi} \toone S_X$.
+      So $\quot{G}{\ker \varphi} \times X \to X$ is faithful.
     \item Let $\mathcal{C}(X) = \{\, f: X \to \Cb \,\}$. If $G \acts X$, then
       $G \acts \mathcal{C}(X)$ by
       $G \times \mathcal{C}(X) \to \mathcal{C}(X)$ with
@@ -138,20 +138,20 @@
     $\varphi: G \to S_p$ be the associated group homo. for the group action
     $(g, a_iH) \mapsto ga_iH$.
 
-    By the 1st isom. thm., $\quot{G}{\Ker\varphi} \toone S_p$.
+    By the 1st isom. thm., $\quot{G}{\ker\varphi} \toone S_p$.
 
-    By Lagrange thm. $\abs*{\quot{G}{\Ker\varphi}} \Div \abs{S_p} = p!$ and
-    $\abs*{\quot{G}{\Ker\varphi}} \Div \abs{G} \implies
-    \abs*{\quot{G}{\Ker\varphi}} \Div p$.
+    By Lagrange thm. $\abs*{\quot{G}{\ker\varphi}} \Div \abs{S_p} = p!$ and
+    $\abs*{\quot{G}{\ker\varphi}} \Div \abs{G} \implies
+    \abs*{\quot{G}{\ker\varphi}} \Div p$.
 
-    So $\abs*{\quot{G}{\Ker\varphi}} = 1 \text{~or~} p$.
+    So $\abs*{\quot{G}{\ker\varphi}} = 1 \text{~or~} p$.
 
-    If $\abs*{\quot{G}{\Ker\varphi}} = 1 \implies G = \Ker\varphi \le H \lneq G$,
+    If $\abs*{\quot{G}{\ker\varphi}} = 1 \implies G = \ker\varphi \le H \lneq G$,
     which is a contradiction.
 
-    So $\abs*{\quot{G}{\Ker\varphi}} = p \implies [G:\Ker\varphi] = p
-    \implies [G:H][H:\Ker\varphi] = p \implies [H:\Ker\varphi] = 1
-    \implies H = \Ker\varphi \lhd G$.
+    So $\abs*{\quot{G}{\ker\varphi}} = p \implies [G:\ker\varphi] = p
+    \implies [G:H][H:\ker\varphi] = p \implies [H:\ker\varphi] = 1
+    \implies H = \ker\varphi \lhd G$.
   \end{proof}
 \end{prop}
 
@@ -170,10 +170,10 @@
 
     So $\varphi: G \onto \Inn(G) \le \Aut(G) \le S_G$.
 
-    $\Ker\varphi = \{\, g\in G \mid gxg^{-1} = x \quad \forall x \in G \,\}
+    $\ker\varphi = \{\, g\in G \mid gxg^{-1} = x \quad \forall x \in G \,\}
     = Z_G$.
 
-    By the 1st isom. thm., $\quot{G}{\Ker\varphi} \cong \Inn(G)$.
+    By the 1st isom. thm., $\quot{G}{\ker\varphi} \cong \Inn(G)$.
     \begin{itemize}
       \item The conjugacy class:
         $Gx = \{\, gxg^{-1} \mid g \in G \,\} = \text{Cl}(x)$.
@@ -187,7 +187,7 @@
   \item For $H \lhd G$, define $G \times H \to H \quad (g, h) \mapsto ghg^{-1}$
     with the group homo. $\varphi: G \to \Aut(H)$.
     \[
-      \Ker\varphi = \{\, g\in G \mid gxg^{-1} = x \quad \forall x \in H \,\}
+      \ker\varphi = \{\, g\in G \mid gxg^{-1} = x \quad \forall x \in H \,\}
       = Z_G(H)
       \implies \quot{G}{Z_G(H)} \le \Aut(H)
     \]

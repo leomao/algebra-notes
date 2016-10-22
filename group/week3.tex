@@ -11,13 +11,13 @@ Notice that $\Image f \le G_2$.
 \end{proof}
 
 \begin{definition}
-  $\Ker f \defeq \{\, x \in G_1 \mid f(x) = 1 \,\} \le G_1$.
+  $\ker f \defeq \{\, x \in G_1 \mid f(x) = 1 \,\} \le G_1$.
 \end{definition}
 
 \begin{fact} \mbox{}
   \begin{enumerate}
-    \item $x \in (\Ker f) a \iff f(x) = f(a)$.
-    \item $\Ker f = \{ 1 \} \iff f$ is 1-1.
+    \item $x \in (\ker f) a \iff f(x) = f(a)$.
+    \item $\ker f = \{ 1 \} \iff f$ is 1-1.
   \end{enumerate}
 \end{fact}
 
@@ -179,23 +179,23 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
 
 \subsubsection{Isomorphism theorems \& Factor theorem}
 \begin{theorem}[1st isomorphism theorem]
-  Let $f: G_1 \to G_2$ be a group homo. Then $\quot{G_1}{\Ker f} \cong \Image f$.
+  Let $f: G_1 \to G_2$ be a group homo. Then $\quot{G_1}{\ker f} \cong \Image f$.
   \begin{proof}
-    Define $\varphi: a \Ker f \mapsto f(a)$.
+    Define $\varphi: a \ker f \mapsto f(a)$.
     \begin{itemize}
-      \item well-defined: $a \Ker f = b \Ker f \implies a^{-1}b \in \Ker f
+      \item well-defined: $a \ker f = b \ker f \implies a^{-1}b \in \ker f
         \implies f(a^{-1}b) = 1 \implies f(a)^{-1}f(b) = 1 \implies f(a)=f(b)$.
-      \item group homo: $\varphi\left((a \Ker f)(b\Ker f)\right) = 
-        \varphi(ab \Ker f) = f(ab) = f(a)f(b) =
-        \varphi(a\Ker f)\varphi(b\Ker f)$.
+      \item group homo: $\varphi\left((a \ker f)(b\ker f)\right) = 
+        \varphi(ab \ker f) = f(ab) = f(a)f(b) =
+        \varphi(a\ker f)\varphi(b\ker f)$.
       \item onto: by def. of $\Image f$.
-      \item 1-1: $f(a) = f(b) \implies a \Ker f = b \Ker f$ (easy).
+      \item 1-1: $f(a) = f(b) \implies a \ker f = b \ker f$ (easy).
       \end{itemize}
   \end{proof}
 \end{theorem}
 
 \begin{theorem}[Factor theorem]
-  Let $f: G_1 \to G_2$ be a group homo. and $H \lhd G_1, H \le \Ker f$. Then
+  Let $f: G_1 \to G_2$ be a group homo. and $H \lhd G_1, H \le \ker f$. Then
   $\exists$ a group homo. $\varphi: \quot{G}{H} \to G_2$ s.t.
   一個ㄛ圖
 \end{theorem}
@@ -228,10 +228,10 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
     Define $\varphi: H \to \quot{HK}{K}, h \mapsto hK$. which is a group homo.
     \begin{itemize}
       \item onto: $\forall (hk) K, hkK = hK$, so $\varphi(h) = hK = hkK$.
-      \item Find $\Ker \varphi$: $a \in \Ker \varphi \iff \begin{cases}
+      \item Find $\ker \varphi$: $a \in \ker \varphi \iff \begin{cases}
           a \in H \\
           aK = K
-        \end{cases} \iff a \in H \cap K$, so $\Ker \varphi = H\cap K$.
+        \end{cases} \iff a \in H \cap K$, so $\ker \varphi = H\cap K$.
     \end{itemize}
     Then by 1st isom. thm.
   \end{proof}
@@ -307,7 +307,7 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
         $\varphi: a \mapsto aK(\quot{H}{K})$.
         \begin{itemize}
           \item onto: ... easy.
-          \item Find $\Ker \varphi$: $a \in \Ker \varphi \iff aK(\quot{H}{K})
+          \item Find $\ker \varphi$: $a \in \ker \varphi \iff aK(\quot{H}{K})
             = \quot{H}{K} \iff aK \in \quot{H}{K} \iff a \in H$.
         \end{itemize}
         By 1st isom. thm., $\quot{(\quot{G}{K})}{(\quot{H}{K})} \cong
