@@ -229,8 +229,8 @@ Construct a non-abelian group of order 21.
 \end{fact}
 Sol : $\phi_k: \quot{\Zb}{p\Zb} \to \quot{\Zb}{p\Zb}, \bar{1} \mapsto \bar{k}$
 
-$\phi_{k_2} o \phi_{k_1} (T) = \phi_{k_2}(\bar(k_1)) = \phi_{k_2}(T+\cdots+T)
-= \bar(k_2) + \cdots \bar{k_2} = \bar{k_1 k_2}$
+$\phi_{k_2} o \phi_{k_1} (T) = \phi_{k_2}(\bar{k_1}) = \phi_{k_2}(T+\cdots+T)
+= \bar{k_2} + \cdots \bar{k_2} = \ob{k_1 k_2}$
 
 Let $K = C_3, H = C_7$, define $\tau : C_3 \to \Aut(C_7) \cong C_6, a \mapsto \phi_2$
 
@@ -256,7 +256,8 @@ so $\abs{G} = \abs{KH} = p^3$
 Sol : $\phi_k: \quot{\Zb}{p^2\Zb} \to \quot{\Zb}{p^2\Zb}, \bar{1} \mapsto \bar{k}, \gcd(k, p) = 1$
 
 Find a group homo $\tau : K \implies \Aut(H)$
-because $(1+p)^p \equiv 1 \mod p^2$, $\ord(\bar{1+p}) \in \quot{\Zb}{p^2\Zb}$
+because $(1+p)^p \equiv 1 \mod p^2$, $\ord\left(\ob{1+p}\right) \in
+\quot{\Zb}{p^2\Zb}$
 Let $P = \gen*{\ob{1+p}}$ is the only subgroup of order $p$.
 (if $\exists |Q| = p$, $P \neq Q$ then $P \cap Q = 1$, $|PQ| = p^2$, miserable.)
 So let $\tau : b \mapsto (\phi_{1+p} : a \mapsto a^{1+p})$
