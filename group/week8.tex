@@ -1,0 +1,197 @@
+%1 TEX root=../main.tex
+\subsection{Week 8}
+\subsubsection{Fundamental theorem of finitely generated abelian groups}
+
+\begin{theorem}[Main theorem]
+  Let $R$ be a PID and $M$ be a finitely generated $R$-module.
+  Then $M \cong \quot{R}{d_1 R} \oplus \dots \oplus \quot{R}{d_l R} \oplus R^s,
+  d_i \in R$ with $d_i \Div d_{i+1} \quad \forall i = 1, \dots, l-1$
+  for some $s \in \Zb^{\ge 0}$.
+
+  \begin{proof}
+    Let $M = \gen{x_1, \dots, x_n}_R$ and consider
+    \[
+      \arraycolsep=1pt
+      \begin{array}{rcl}
+        \varphi: & R^n & \onto M \\
+                 & e_i & \to x_i
+      \end{array}
+    \]
+    By 1st isom. thm., $\quot{R^n}{\ker \varphi} \cong M$.
+
+    We know $\ker \varphi \cong R^m$ ($e_i' \mapsto f_i, e_i' \in R^m$)
+    for some $m \le n$ and
+    $\forall x \in \ker\varphi \quad \exists! x_1, \dots, x_m \in R$ s.t.
+    $x = \sum_{i=1}^m x_i f_i$.
+
+    Note that $\ker \varphi \subseteq R^n$. So we can write
+    $f_i = \sum_{j=1}^n a_{ji}e_j \quad \forall i = 1,\dots, m$.
+    Then $x = \sum x_i \sum a_{ji}e_j =
+    \sum \left(\sum a_{ji}x_i\right) e_j$.
+
+    $R$ is a PID $\implies \exists P \in \text{GL}_n(R), Q \in \text{GL}_m(R)$
+    s.t.
+    \[
+      PAQ = \begin{pmatrix}
+      d_1 \\
+      & \ddots \\
+      & & d_r \\
+      & & & 0 \\
+      & & & & \ddots
+      \end{pmatrix}
+      \quad \text{with} \quad
+      d_i \Div d_{i+1} \quad \forall i = 1, \dots, r-1
+    \]
+  \end{proof}
+
+  $\arraycolsep=3pt
+  \begin{array}{rcl}
+    R & \onto & \quot{Rw_i}{Rd_i'w_i} \\
+    1 & \to & \ob{w_i} \\
+    r & \to & \ob{rw_i}
+  \end{array}
+    $
+\end{theorem}
+
+\begin{remark}
+  If $R$ is commutative, then ``$R^n \cong R^m \implies n = m$.''
+\end{remark}
+
+\begin{theorem}
+  Let $G$ be a finitely generated abelian group. Then
+  Then $G \cong \quot{\Zb}{d_1 \Zb} \oplus \dots \oplus \quot{\Zb}{d_l \Zb}
+  \oplus R^s, d_i \in \Zb$ with $d_i \Div d_{i+1} \quad
+  \forall i = 1, \dots, l-1$ for some $s \in \Zb^{\ge 0}$.
+
+  Since $G$ can be regarded as a f.g. $\Zb$-module and $\Zb$ is a PID,
+  it follows from the main theorem.
+
+  $\Tor(G) = \quot{\Zb}{d_1 \Zb} \oplus \dots \oplus \quot{\Zb}{d_l \Zb}
+  \le G$ and $\quot{G}{\Tor(G)} \cong \Zb^s$ (free part of $G$).
+\end{theorem}
+
+\begin{fact}
+  If $d = p_1^{m_1}p_2^{m_2}\dots p_s^{m_s}$, then
+  $\quot{\Zb}{d\Zb} \cong \quot{\Zb}{p_1^{m_1}\Zb} \oplus
+  \quot{\Zb}{p_2^{m_2}\Zb} \oplus \dots \oplus \quot{\Zb}{p_s^{m_s}\Zb}$.
+\end{fact}
+
+\begin{theorem}[Chinese Remainder theorem]
+  Let $R$ be a commutative ring with $1$ and $I_1, \dots, I_n$ be ideals of $R$.
+  Then
+  \[
+    \arraycolsep=3pt
+    \begin{array}{rccl}
+      \varphi: & R & \to & \quot{R}{I_1} \times \dots \times \quot{R}{I_n} \\
+               & r & \mapsto & (\ob{r}, \dots, \ob{r})
+    \end{array}
+    \text{~is a ring homo.}
+  \]
+  and
+  \begin{enumerate}[(1)]
+    \item if $I_i, I_j$ are coprime $\forall i \ne j$, then
+      $I_1I_2\dots I_n = I_1 \cap I_2 \cap \dots \cap I_n$.
+    \item $\varphi$ is subjective $\iff$ $I_i, I_j$ are coprime
+      $\forall i \ne j$.
+    \item $\varphi$ is injective $\iff$ $I_1 \cap I_2 \cap \dots \cap I_n
+      = \{ 0 \}$.
+  \end{enumerate}
+  So if $I_i, I_j$ are coprime $\forall i \ne j$, then
+  \[
+    \quot{R}{I_1I_2\dots I_n} \cong
+    \quot{R}{I_1} \times \dots \times \quot{R}{I_n}.
+  \]
+
+  $I_i, I_j$ are coprime $\iff$ $I_i + I_j = R$.
+
+  \begin{proof}
+    we only need to prove (1), (2).
+
+    \begin{enumerate}[(1)]
+      \item By induction on $n$. $n = 2$, need $I_1\cap I_2 = \subseteq I_1I_2$.
+        Indded, $I_1\cap I_2 = (I_1\cap I_2)R = (I_1\cap I_2)(I_1+I_2)
+        \subseteq I_1I_2$.
+
+        For $n > 2$, since $I_i + I_n = R \quad \forall i = 1,\dots, n-1$,
+        $\exists x_i \in I_i, y_i \in I_n$ s.t. $x_i + y_i = 1 \quad
+        \forall i = 1,\dots, n-1$.
+
+        So $x_1x_2\dots x_{n-1} = (1-y_1)(1-y_2)\dots(1-y_{n-1})$
+        ($I_1I_2\dots I_{n-1} = 1 + I_n$) $\implies I_1I_2\dots I_{n-1}
+        + I_n = R$.
+
+        Now, $I_1I_2\dots I_n = (I_1\dots I_{n-1})I_n =
+        (I_1\dots I_{n-1})\cap I_n = I_1\cap \dots \cap I_n$.
+      \item ``$\Rightarrow$'': WLOG, we may let $I_i = I_1, I_j = I_2$.
+        We have $x \in R$ s.t.
+        \[
+          \varphi(x) = (\ob{1}, \ob{0}, \dots, \ob{0})
+          \quad \text{i.e.~}
+          \ob{x} = \ob{1} \text{~in~} \quot{R}{I_1}
+        \]
+        Write $x \equiv 1 \pmod {I_1}$.
+        Since $1 - x \in I_1, x \in I_2$ and $(1 - x) + x = 1$, $I_1 + I_2 = R$.
+
+        ``$\Leftarrow$'': $\forall y \in \text{RHS}$,
+        $y = (\ob{r_1}, \dots, \ob{r_n})$.
+        If we may find that $x_i \in R$ s.t.
+        $\varphi(x_i) = (\ob{0}, \dots, \ob{1}, \ob{0}, \dots, \ob{0})$,
+        then
+        \[
+          \varphi\left(\sum_{i=1}^n r_ix_i \right) = y
+        \]
+
+        It is enough to show, for example, $\exists x \in R$ s.t.
+        $\varphi(x) = (\ob{1}, \ob{0}, \dots, \ob{0})$.
+
+        Since $I_1 + I_i = R \quad \forall i = 2, \dots, n$,
+        $\exists x_i \in I_1, y_i \in I_i$ s.t. $x_i + y_i = 1
+        \forall i = 2, \dots, n$.
+
+        So let $x = y_2\dots y_n = (1-x_2)\dots(1-x_n)$.
+        We have $x \in I_2, \dots, I_n$ and $x \equiv 1 \pmod {I_1}$.
+    \end{enumerate}
+  \end{proof}
+\end{theorem}
+
+\begin{example}
+  $\abs{G} = 72$ and $G$ is abelian:
+  \[
+    72 = 2 \times 36 = 3 \times 24 = 2 \times 2 \times 18
+    = 6 \times 12 = 2 \times 6 \times 6
+  \]
+  Invariant factors
+
+  Elementary divisors
+\end{example}
+
+\begin{definition}
+  The exponent of $G$ with $\abs{G} < \infty$ is
+  \[
+    \Exp(G) \defeq \min \left\{
+      m \in \Nb \middle| g^m = 1 \quad \forall g \in G
+    \right\}
+  \]
+\end{definition}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Let $G$ be abelian with $\abs{G} = n$. Show that if $d \div n$, then
+      $\exists H \le G$ s.t. $\abs{H} = d$.
+    \item If $n=540, d=90$, then construct all possible $G$ and
+      corresponding $H$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Let $G$ be abelian with $\abs{G} < \infty$. Show that $G$ is cyclic
+  $\iff \Exp(G) = \abs{G}$.
+\end{exercise}
+
+\begin{exercise}
+  Let $f_i(x) \in \Zb[x], i = 1, \dots, k$ with $\deg f_i = d$ and
+  $p_1, \dots, p_k$ be distinct primes.
+  Show that $\exists f(x) \in \Zb[x]$ with $\deg f = d$ s.t.
+  $\ob{f}(x) = \ob{f_i}(x)$ in 
+  $\quot{\Zb}{p_i\Zb}[x] \quad \forall i = 1, \dots k$.
+\end{exercise}
