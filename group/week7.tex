@@ -300,7 +300,9 @@ The classification of all finite simple groups is given as follows:
 \begin{theorem}
   If $R$ is a PID, then any submodule of $R^n$ is free of rank $\le n$.
   \begin{proof}
-    By induction on $n$, $n = 1$, $\forall I \subseteq R, \exists a \in R$ s.t.
+    By induction on $n$. If $n = 1$, notice that any submodule is an ideal $I$ by 
+    the closure of submodule. Then since $R$ is a PID,
+    $\forall I \subseteq R, \exists a \in R$ s.t.
     $I = \gen{a}_R = Ra \cong R$ ({\bf as a $R$-module}).
 
     Let $n > 1$ and $N$ be a submodule of $R^n$.
@@ -323,9 +325,11 @@ The classification of all finite simple groups is given as follows:
         \ker \pi \subseteq \ker \pi_1 \cong R^{n-1}$.
         \begin{itemize}
           \item $Rx \cap \ker\pi = \{0\}$:
-            $rx \in Rx \cap \ker\pi \implies \pi(rx) = 0 \implies r = 0
-            \implies rx = 0$
-          \item $\forall y \in N, \pi(y) = r_0a $ for some $r_0 \in R$,
+            $rx \in Rx \cap \ker\pi \implies \pi(rx) = 0$, then $r\pi(x) = 0$. 
+            But integral domain doesn't have zero divisors, so $r = 0$ and hence
+            $rx = 0$.
+          \item $N \supseteq Rx \oplus \ker\pi$: Obvious since $Rx, \ker\pi \subseteq N$.
+          \item $N \subseteq Rx \oplus \ker\pi$: $\forall y \in N, \pi(y) = r_0a $ for some $r_0 \in R$,
             $\pi(y - r_0x) = 0 \implies y - r_0x \in \ker\pi$.
             So $N \subseteq Rx \oplus \ker\pi$. \qedhere
         \end{itemize}
