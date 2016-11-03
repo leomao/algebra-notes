@@ -201,3 +201,184 @@
   $f(x) = a_d x^d + \dots + a_0,
   \ob{f}(x) = \ob{a_d} x^d + \dots + \ob{a_0}$
 \end{exercise}
+
+\subsection{Sylow theorems}
+
+\begin{definition}
+  Let $\abs{G} = p^\alpha r$ with $p \nmid r$.
+  \begin{enumerate}
+    \item If $H \le G$ with $\abs{H} = p^\alpha$, then we call $H$ a Sylow
+      $p$-subgroup of $G$.
+    \item $\text{Syl}_p(G) =$ the set of all Sylow $p$-subgroups of $G$.
+    \item $n_p = \abs{\text{Syl}_p(G)}$.
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}[Key lemma]
+  Let $P \in \text{Syl}_p(G)$ and $Q$ be a $p$-subgroup of $G$. Then
+  $Q \cap N_G(P) = Q \cap P$.
+
+  \begin{proof}
+    By Lagrange theorem, $H = Q \cap N_G(P)$ is also a $p$-subgroup of
+    $N_G(P)$ since $\abs{H} \Div \abs{Q}$.
+
+    Since $\begin{cases}
+      P \lhd N_G(P) \\
+      H \le N_G(P)
+    \end{cases} \implies HP \le N_G(P)$, we have
+    \[
+      \abs{HP} = \frac{\abs{H}\abs{P}}{\abs{H\cap P}} = p^{\alpha+k-s}
+    \]
+    where $\abs{H\cap P} = p^s, s \le k$. Then
+    $p^{\alpha+k-s} \Div \abs*{N_G(P)} \Div \abs{G} = p^\alpha r$.
+
+    So $k = s \implies H = H \cap P \implies H \le P \cap Q$.
+  \end{proof}
+\end{lemma}
+
+\begin{theorem}[Sylow \RNum{1}]
+  $\forall 0 \le k \le \alpha$, $\exists H \le G$ s.t. $\abs{H} = p^k$.
+  In particular, $\text{Syl}_p(G) \ne \phi$.
+
+  \begin{proof}
+    By induction on $\abs{G}$. If $\abs{G} = 1$, then $k = 0$, $H = \{1\}$.
+
+    Assume $\abs{G} > 1, k \ge 1, \alpha \ge 1$.
+
+    \begin{description}
+      \item[case 1:] $p \Div \abs{Z_G}$. By Cauchy theorem,
+        $\exists a \in Z_G$ with $\ord(a) = p$.
+        Then $\gen{a} \lhd G$ and $\abs*{\quot{G}{\gen{a}}} = p^{\alpha-1} r
+        \le \abs{G}$.
+        If $k=1$, then $H = \gen{a}$.
+        Otherwise, we may assume that $1\le k-1\le \alpha-1$. By induction
+        hypothesis, $\exists H' = \quot{G}{\gen{a}}$ s.t. $\abs{H'} = p^{k-1}$.
+        By 3rd isom. thm., we can write $H' = \quot{H}{\gen{a}}$ and thus
+        $\abs{H} = p^k$.
+      \item[case 2:] $p \nDiv \abs{Z_G}$. By the class equation,
+        $\abs{G} = \abs{Z_G} + \sum_{i=1}^m \frac{\abs{G}}{\abs{Z_G(a_i)}},
+        a_i \in Z_G$.
+
+        In this cases, $\exists a_j$ s.t.
+        $p \nDiv \frac{\abs{G}}{\abs{Z_G(a_j)}} \implies
+        p^\alpha \Div \abs{Z_G(a_j)}$. And $Z_G(a_j) \lneq G$ since
+        $a_j \not\in Z_G$.
+        By induction hypothesis, $\exists H \le Z_G(a_j) \le G$ s.t.
+        $\abs{H} = p^k$. \qedhere
+    \end{description}
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}[Sylow \RNum{2}]
+  Let $P \in \text{Syl}_p(G)$ and $Q$ be a $p$-subgroup of $G$. Then
+  $\exists a \in G$ s.t. $Q \le aPa^{-1}$.
+  In particular, $\forall P_1, P_2 \in \text{Syl}_p(G), \exists a \in G$
+  s.t. $P_2 = aP_1a^{-1}$.
+  \begin{proof}
+    Let $X = \{\, \text{left cosets of $P$} \,\}$ and consider
+    $\arraycolsep=1pt \begin{array}{rcl}
+      Q \times X & \to & X \\
+      (a, xP) & \mapsto & axP
+    \end{array}$.
+
+    Observe that $xP \in \Fix Q \iff axP = xP \quad \forall a \in Q \iff
+    x^{-1}axP = P \quad \forall a \in Q \iff
+    x^{-1}ax \in P \quad \forall a \in Q \iff
+    a \in xPx^{-1} \quad \forall a \in Q$.
+
+    We know $\abs{\Fix Q} \equiv \abs{X} \pmod p$ and $p \mid r \implies$
+    $\abs{\Fix Q} \ne 0 \iff \exists a \in G, Q \le aPa^{-1}$.
+
+    In particular, $\begin{cases}
+      P_2 \le aP_1a^{-1} \\
+      \abs{P_2} = \abs{aP_1a^{-1}}
+    \end{cases} \implies P_2 = aP_1a^{-1}$.
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}[Sylow \RNum{3}]
+  $n_p \equiv 1 \pmod p$ and $n_p \mid r$.
+  \begin{proof}
+    \begin{itemize}
+      \item Consider $\arraycolsep=1pt \begin{array}{ccrcl}
+          &P \times &\text{Syl}_p(G) & \to & \text{Syl}_p(G) \\
+          (&a, &Q) & \mapsto & aQa^{-1}
+        \end{array}$ where $P \in \text{Syl}_p(G)$.
+
+        $P' \in \Fix P \iff aP'a^{-1} = P' \quad \forall a \in P
+        \iff P \le N_G(P') \cap P = P' \cap P \iff P' = P$.
+
+        So $\Fix P = \{ P \} \implies n_p \equiv \abs{\Fix P} = 1 \pmod p$.
+
+      \item Consider $\arraycolsep=1pt \begin{array}{ccrcl}
+          &G \times &\text{Syl}_p(G) & \to & \text{Syl}_p(G) \\
+          (&a, &Q) & \mapsto & aQa^{-1}
+        \end{array} \implies$ There is only one orbit $\text{Syl}_p(G)$.
+        
+        We know $\abs{\text{Syl}_p(G)} = \frac{\abs{G}}{\abs{G_Q}}$
+        and $G_Q = N_G(Q)$. Then $n_p = \frac{\abs{G}}{\abs{G_Q}} \Div \abs{G}$.
+        So $n_p \Div p^\alpha r \implies n_p \Div r$.
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{prop}
+  Let $\abs{G} = pq$ where $p, q$ are primes with $\begin{cases}
+    p < q \\
+    q \not\equiv 1 \pmod p.
+  \end{cases}$
+  Then $G \cong C_{pq}$.
+  \begin{proof}
+    $n_p = 1+kp \mid q \implies n_p = 1$ i.e.
+    $H \in \text{Syl}_p(G) \implies H \lhd G$.
+
+    $n_q = 1+kq \mid p \implies n_q = 1$ i.e.
+    $K \in \text{Syl}_q(G) \implies K \lhd G$.
+
+    Since $\gcd(p, q) = 1$, $H \cap K = 1$.
+    Hence $G = H \times K \cong C_p \times C_q \cong C_{pq}$.
+  \end{proof}
+\end{prop}
+
+\begin{example}
+  Consider $\abs{G} = 255 = 3 \times 5 \times 17$.
+  \begin{enumerate}
+    \item 找兩個 normal subgroup (17, 5 or 3)
+    \item quot 掉後發現剩下的是 abelian $\leadsto$ $[G, G]$ 在裡面
+    \item $[G, G] = 1$
+    \item 唱 f.g. xxx thm. 得到 $G \cong \Zb_3 \times \Zb_5 \times \Zb_{17}$.
+    \item 中國剩飯定理 $G \cong C_{255}$.
+  \end{enumerate}
+\end{example}
+
+\begin{exercise}
+  If $\abs{G} = 7 \times 11 \times 19$, then $G$ is abelian.
+\end{exercise}
+
+\begin{example}
+  No group $G$ of order $48 = 2^4 \times 3$ is simple.
+  \begin{enumerate}
+    \item $n_2 = 1 + 2k \Div 3 \leadsto n_2 = 1 \text{~or~} 3$.
+    \item $n_2 = 1$ then OK.
+    \item Assume $n_2 = 3$. Let $P \in \text{Syl}_2(G),
+      X = \{\, \text{left cosets of $P$} \,\}$ ($\abs{X} = 3$).
+    \item Consider $\arraycolsep=1pt \begin{array}{ccrcl}
+        &G \times &X & \to & X \\
+        (&a, &xP) & \mapsto & axP
+      \end{array} \leadsto \varphi: G \to S_3$.
+    \item 考慮 $\ker\varphi$.
+  \end{enumerate}
+\end{example}
+
+\begin{exercise}
+  No group $G$ of order $36$ is simple.
+\end{exercise}
+
+\begin{exercise}
+  No group $G$ of order $30$ is simple.
+\end{exercise}
+
+\begin{exercise}
+  Let $\abs{G} = 385$. Show that $\exists P \in \text{Syl}_7(G)$ s.t.
+  $P \le Z_G$.
+\end{exercise}
