@@ -1,0 +1,92 @@
+%1 TEX root=../main.tex
+\subsection{Week 9}
+\subsubsection{Classification}
+
+To classify groups of small orders: 
+\begin{itemize}
+  \item $\abs{G} = 1$: $G = \{1\}$
+  \item $\abs{G} = 2$: $G \cong C_2$
+  \item $\abs{G} = 3$: $G \cong C_3$
+  \item $\abs{G} = 4$: $G \cong \Zb_4 \text{~or~} \Zb_2 \times \Zb_2$
+  \item $\abs{G} = 5$: $G \cong C_5$
+  \item $\abs{G} = 6$: $n_3 = 1, n_2 = 1 \text{~or~} 3$. Let $H \in \Syl_3(G)$ and $H \lhd G$. Let $K \in \Syl_2(G)$. Also $H \cap K = \{1\}$ and $HK = G$ then $G \cong K \times_{\tau} H$
+    \begin{itemize}
+      \item If $\tau$ is trivial: $G \cong K \times H \cong C_2 \times C_3 \cong C_6$
+      \item $\tau: b \mapsto \phi_2: \gen{a} \to \gen{a}$: $G \cong K \times_{\tau} H \cong \gen{a,b \mid a^3 = 1, b^2 = 1, bab^{-1} = a^2 = a^{-1}} \cong D_3$
+    \end{itemize}
+  \item $\abs{G} = 7$: $G \cong C_7$
+  \item $\abs{G} = 8$:
+    \begin{itemize}
+      \item If abelian: $\Zb_8$ or $\Zb_4 \times \Zb_2$ or $\Zb_2 \times \Zb_2 \times \Zb_2$
+      \item If non-abelian:
+        \begin{itemize}
+          \item $\not\exists a \in G$ with $\ord(a) = 8$
+          \item Not each $a \in G$ with $a^2 = 1$, otherwise $G$ is abelian.
+          \item $\exists a \in G$ with $\ord(a) = 4$: Let $H = \gen{a}$ and $H \lhd G$ since $[G:H] = 2$. Pick $b \in G \setminus H$ and $K = \gen{b}$
+            \begin{itemize}
+              \item $\ord(b) = 2$: $H \cap K = \{1\}$ and $HK = G$ then $G \cong K \times_{\tau} H$, $\tau: b \mapsto \phi: a \mapsto a^3$: $G \cong K \times_{\tau} H \cong \gen{a,b \mid a^4 = 1, b^2 = 1, bab^{-1} = a^3 = a^{-1}} \cong D_4$
+              \item $\ord(b) = 4$: $H \cap K = \gen{a^2 = b^2}$. Then consider $bab^{-1} \in H \implies bab^{-1} = 1,a,a^2,a^3$
+                \begin{enumerate}
+                  \item $1,a$ obviously wrong.
+                  \item $bab^{-1} = a^2$: $a = a^2aa^{-2} = b^2ab^{-2} = a^4 \implies a^3 = 1$ 矛盾
+                  \item So $bab^{-1} = a^3 = a^{-1}$.
+                \end{enumerate}
+                $G \cong \gen{a,b \mid a^4 = 1, b^4 = 1, a^2 = b^2, bab^{-1} = a^3 = a^{-1}} \cong Q_8$
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+  \item $\abs{G} = 9$: $G \cong \Zb_9 \text{~or~} \Zb_3 \times \Zb_3$
+  \item $\abs{G} = 10$: $G \cong K \times H \cong C_2 \times C_5 \cong C_{10}$ or $G \cong D_5$
+  \item $\abs{G} = 11$: $G \cong C_{11}$
+  \item $\abs{G} = 12$: Claim: If $\abs{G} = 12$, then either $G$ has a normal Sylow $3$-subgroup or $G \cong A_4$.
+    \begin{proof}
+      By Sylow 3, $n_3 = 1+3k \mid 4 \implies n_3 = 1 \text{~or~} 4$.
+      \begin{itemize}
+        \item If $n_3 = 1$, then $G$ has a normal Sylow $3$-subgroup.
+        \item Otherwise, let $P \in \Syl_3(G)$ and $X = \left\{ \text{left cosets of }P \right\}, \abs{X} = 4$.
+          Consider $G \times X \to X$ defined by $(a,xP) \mapsto axP$ with $\phi: G \to S_4$.
+          And $\ker \phi \le P$, $\abs{P} = 3$ and $P \centernot{\lhd} G$ (since $n_3=4$), so $\ker \phi = \{1\}$.
+
+          And since $n_3 = 4$, there are $8$ elements of order $3$ which corresponds 
+          to $8$ $3$-sycles in $A_4$, thus $\abs{\Image \phi \cap A_4} \ge 8$.
+          But $\abs{\Image \phi \cap A_4} \Div \abs{A_4} = 12 \implies \Image \phi = A_4$
+      \end{itemize}
+    \end{proof}
+    Now, for the case where $\exists H \in \Syl_3(G)$ and $H \lhd G$.
+    Let $K \in \Syl_2(G)$, then $K \cap H = \{1\}$ and $KH = G \implies G \cong K \times_\tau H$
+    for some $\tau: K \to \Aut(H) = \{\text{id}, \phi_2\}$
+    \begin{itemize}
+      \item $\tau$ is trivial: $\Zb_{12}$ or $\Zb_2 \times \Zb_6$.
+      \item $\gen{b} = K \cong \Zb_4$: $\tau(b) = \phi_2 \implies G = \gen{a,b \mid a^3=1, b^4=1, bab^{-1} = a^{-1}} \not\cong D_6,A_4$
+      \item $\gen{b} = K \cong \Zb_2 \times \Zb_2$: Let $K = \gen{b,c\mid b^2=1, c^2=1, bc=cb}$,
+        then $\tau: b \mapsto \phi_2$ and $c \mapsto \text{id}$ (the other cases are equivalent to this one),
+        $G = \gen{a,b,c \mid a^3 = 1, b^2 = 1, c^2 = 1, bc=cb,bab^{-1} = a^{-1}, cac^{-1} = a} \cong \gen{a,b\mid a^3=1,b^2=1, bab^{-1} = a^{-1}} \times \gen{c} \cong D_3 \times C_2 \cong D_6$
+        \begin{fact}
+          For odd $n$, $D_{2n} \cong D_n \times \quot{\Zb}{2\Zb}$.
+          \begin{proof}
+            \[D_{2n} = \gen{a,b\mid a^{2n}=1,b^2=1, bab^{-1} = a^{-1}}\]
+            \[H = \gen{a^2,b\mid (a^2)^{n}=1,b^2=1, b(a^2)b^{-1} = a^{-2}} \cong D_n\]
+            \[K = \gen{a^n} \cong C_2\]
+            And $n$ is odd, so $H \cap K = \{1\}$ and $D_{2n} \cong D_n \times C_2$
+          \end{proof}
+        \end{fact}
+    \end{itemize}
+  \item $\abs{G} = 13$: $G \cong C_{13}$
+  \item $\abs{G} = 14$: $G \cong C_{14} \text{~or~} D_7$
+  \item $\abs{G} = 15$: $G \cong C_{15}$
+\end{itemize}
+
+\begin{exercise} \mbox{}
+  Assume that $K$ is cyclic and $H$ is an arbitrary group.
+  Let $\tau_1: K \to \Aut(H)$, $\tau_2: K \to \Aut(H)$ with $\tau_1(K) \sim \tau_2(K)$ (conjugate).
+  If $\abs{K} = \infty$, then assume that $\tau_1$ and $\tau_2$ are injective. Show that $K \times_{\tau_1} H \cong K \times_{\tau_2} H$.
+\end{exercise}
+
+\begin{exercise}
+  Classify $G$ if $\abs{G} = p^3$ with $p$ an odd prime and each nontrivial element of $G$ has order $p$.
+\end{exercise}
+
+\begin{exercise}
+  Classify groups of order $30$.
+\end{exercise}
+
