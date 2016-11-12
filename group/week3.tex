@@ -197,7 +197,12 @@ $b_2^{-1}a_1^{-1}a_2b_2 \in H$.
 \begin{theorem}[Factor theorem]
   Let $f: G_1 \to G_2$ be a group homo. and $H \lhd G_1, H \le \ker f$. Then
   $\exists$ a group homo. $\varphi: \quot{G}{H} \to G_2$ s.t.
-  一個ㄛ圖
+  \[
+    \begin{tikzcd}
+      G_1 \arrow{r}{q} \arrow[swap]{dr}{f} & \quot{G}{H} \arrow{d}{\varphi} \\
+      & G_2
+    \end{tikzcd}
+  \]
 \end{theorem}
 
 \begin{example}

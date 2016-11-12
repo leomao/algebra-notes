@@ -1,14 +1,13 @@
 %1 TEX root=../main.tex
 \subsection{Week 10}
 \subsubsection{Free groups}
-A free group generate by a non-empty set $X$ is that 
+A free group generate by a non-empty set $X$ is that
 there are no relations satisfied by any of elements in $X$.
 
 \begin{definition}
-  A free group on $X$ is a group $F$ with an inclusion map $i:: X \mapsto F$ satisfying the 
-  following universal property: For any group $G$ and any map $f:: X \mapsto G$, 
-  exists a unique group homo $\phi :: F \mapsto G$ that the following diagram commutes.
-
+  A free group on $X$ is a group $F$ with an inclusion map $i: X \to F$ satisfying the
+  following universal property: For any group $G$ and any map $f: X \to G$,
+  exists a unique group homo $\phi : F \to G$ that the following diagram commutes.
   \[
     \begin{tikzcd}
     X \arrow{r}{i} \arrow[swap]{dr}{f} & F \arrow{d}{\phi} \\
@@ -22,20 +21,20 @@ there are no relations satisfied by any of elements in $X$.
 \end{theorem}
 
 \begin{proof}
-  For $X$, we create a new disjoint set $X^{-1} = \{ x^{-1} : x \in X\}$ 
+  For $X$, we create a new disjoint set $X^{-1} = \{ x^{-1} : x \in X\}$
   and an element $1 \notin X \cup X^{-1}$.
 
-  Define $F(X) = \{ 1 \} \cup \left\{ x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} : 
-   m \in \mathbb{N} , x_i \in X, \delta_i = \pm 1, x_{i+1}^{\delta_{i+1}} \neq 
-   \left( x_i^{\delta_i} \right)^{-1}\right\}$, and 
-  \[ x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} = 
+  Define $F(X) = \{ 1 \} \cup \left\{ x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} :
+   m \in \mathbb{N} , x_i \in X, \delta_i = \pm 1, x_{i+1}^{\delta_{i+1}} \neq
+   \left( x_i^{\delta_i} \right)^{-1}\right\}$, and
+  \[ x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} =
     y_1^{\epsilon_1} y_2^{\epsilon_2} \cdots y_m^{\epsilon_m}  \iff n = m \text{ and }
     \delta_i = \epsilon_i \text{ and } x_i = y_i , \forall i \]
 
-  For each $y \in X \cup X^{-1}$, we define $\sigma_y :: F(X) \mapsto F(X)$ by 
+  For each $y \in X \cup X^{-1}$, we define $\sigma_y : F(X) \to F(X)$ by
   \[
-    \sigma_y (x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m}) 
-    = 
+    \sigma_y (x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m})
+    =
     \begin{cases}
       y x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} & \text{if } x_1^{\delta_1} \neq y^{-1} \\
       \begin{cases}
@@ -45,76 +44,82 @@ there are no relations satisfied by any of elements in $X$.
     \end{cases}
   \]
 
-  Then $\sigma_y$ is a permutation of $F(X)$, since if 
-  $ \sigma_y(x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m}) = 
+  Then $\sigma_y$ is a permutation of $F(X)$, since if
+  $ \sigma_y(x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m}) =
   \sigma_y(y_1^{\epsilon_1} y_2^{\epsilon_2} \cdots y_m^{\epsilon_m}) $.
   \begin{itemize}
-    \item[m = n:] either $x_1^{\delta_1} = y_1^{\epsilon_1} = y^{-1}$ or not, 
-      then either $x_2^{\delta_1} x_3^{\delta_2} \cdots x_m^{\delta_m} = 
-  y_2^{\epsilon_1} y_3^{\epsilon_2} \cdots y_m^{\epsilon_m}$ or 
-  $y x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} = 
-  y y_1^{\epsilon_1} y_2^{\epsilon_2} \cdots y_m^{\epsilon_m}$. Both of them leads to 
-  $x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} = 
+    \item[m = n:] either $x_1^{\delta_1} = y_1^{\epsilon_1} = y^{-1}$ or not,
+      then either $x_2^{\delta_1} x_3^{\delta_2} \cdots x_m^{\delta_m} =
+  y_2^{\epsilon_1} y_3^{\epsilon_2} \cdots y_m^{\epsilon_m}$ or
+  $y x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} =
+  y y_1^{\epsilon_1} y_2^{\epsilon_2} \cdots y_m^{\epsilon_m}$. Both of them leads to
+  $x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m} =
   y_1^{\epsilon_1} y_2^{\epsilon_2} \cdots y_m^{\epsilon_m}$.
   \item[m = n+2:] Omimi
   \end{itemize}
   Also $\sigma_y$ is onto since omimi. And notice that $\sigma_{y^{-1}} \circ \sigma_y = id_{F(X)}$
 
-  Define $A = \langle \sigma_x : x \in X \rangle \leq S_{F(X)}$. and define $\phi:: F(X) \mapsto A$ by
+  Define $A = \langle \sigma_x : x \in X \rangle \leq S_{F(X)}$. and define $\phi: F(X) \to A$ by
   $\phi(1) = id_{F(X)}$ and \\ $x_1^{\delta_1} \cdots x_m^{\delta_m} \mapsto \sigma_{x_1}^{\delta_1}
-  \cdots \sigma_{x_m}^{\delta_m}$. The it is omimi that $\phi$ is a bijection. So we define 
+  \cdots \sigma_{x_m}^{\delta_m}$. The it is omimi that $\phi$ is a bijection. So we define
   $x::X \cdot y::X = \phi^{-1}( \phi(x) \circ \phi(y) )$.
 
-  The $\phi$  in the universal property could be defined as 
+  The $\phi$  in the universal property could be defined as
   $\phi(x_1^{\delta_1} x_2^{\delta_2} \cdots x_m^{\delta_m}) = f(x_1)^{\delta_1} \cdots f(x_m)^{\delta_m}$.
 \end{proof}
 
 \begin{prop}
-  Let $G = \langle a_1, \cdots , a_n \rangle$ and $X = \{ x_1, \cdots, x_m \}$. Then 
-  $G \cong F(X) / K$ for some normal subgroup $K$. $K$ is called the subgroup of relations 
+  Let $G = \langle a_1, \cdots , a_n \rangle$ and $X = \{ x_1, \cdots, x_m \}$. Then
+  $G \cong \quot{F(X)}{K}$ for some normal subgroup $K$. $K$ is called the subgroup of relations
   connecting the generators.
 
-  Define $f = x_i :: X_i \mapsto a_i :: G$. By universal property, $\exists \phi 
-  = x_i :: F(X) \mapsto a_i :: G$. Then 
-  $F(x) / \ker \phi \cong G$.
+  Define $f = x_i :: X_i \to a_i :: G$. By universal property, $\exists \phi
+  = x_i :: F(X) \mapsto a_i :: G$. Then
+  $\quot{F(x)}{\ker \phi} \cong G$.
 \end{prop}
 
 \begin{definition}
   Let $X = \{x_1, x_2, \cdots, x_n\}$ and $R \subset F(X)$.
-  Let $N(R)$ be the smallest normal subgroup of $F(X)$ containing $R$, 
-  Then $G = F(X) / N(R)$ is written as $\langle x_1, \cdots, x_n \mid \text{elements of } R \rangle$, 
-  which is called a presentation of $G$. If $\abs{R} < \infty$, then $G$ is said to be finitely 
+  Let $N(R)$ be the smallest normal subgroup of $F(X)$ containing $R$,
+  Then $G = \quot{F(X)}{N(R)}$ is written as $\langle x_1, \cdots, x_n \mid \text{elements of } R \rangle$,
+  which is called a presentation of $G$. If $\abs{R} < \infty$, then $G$ is said to be finitely
   presented.
 \end{definition}
 
 \begin{example}
-  \[ D_n = \langle 
+  \[ D_n = \gen*{
     \begin{bmatrix}
-      \cos \frac{2\pi}{n} -
+      \cos \frac{2\pi}{n} & -\sin \frac{2\pi}{n} \\
+      \sin \frac{2\pi}{n} &  \cos \frac{2\pi}{n}
+    \end{bmatrix},
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & -1
     \end{bmatrix}
+    }
   \]
 
   We find that $x^n , y^2 , xyxy \in \ker \phi$. Then $R = \{ x^n , y^2 , xyxy \} \subseteq \ker \phi
-  \implies N(R) \leq \ker \phi$.  By factor theorem, $\exists \bar{\phi} :: F(X) / N(R) \mapsto D_n$.
-  But notice that 
-  \[ \abs{F(x) / N(R)}  \leq 2n$ \]
-  since $xyxy = 1 \implies xy = yx^{-1}$, so every element could be turn into 
+  \implies N(R) \leq \ker \phi$.  By factor theorem, $\exists \bar{\phi} :: \quot{F(X)}{N(R)} \to D_n$.
+  But notice that
+  \[ \abs*{\quot{F(x)}{N(R)}}  \leq 2n \]
+  since $xyxy = 1 \implies xy = yx^{-1}$, so every element could be turn into
   $x^i y^j$. Hence $\bar{\phi}$ is an isomorphism.
 \end{example}
 
 \begin{prop}
-  Let $X = \{x_1, x_2, \cdots, x_n\}$. Then $F(X) / [F(X) , F(X)] \cong \mathbb{Z}^n$.
+  Let $X = \{x_1, x_2, \cdots, x_n\}$. Then $\quot{F(X)}{[F(X), F(X)]} \cong \mathbb{Z}^n$.
 \end{prop}
 
 \begin{proof}
   Define $f = x_i :: X \mapsto e_i :: \mathbb{Z}^n$. Then $\phi = x_i :: F(X) \mapsto e_i :: \mathbb{Z}^n$.
-  By 1st isomorphism theorem $F(X) / \ker \phi \cong \mathbb{Z}^n$ which is abelian, 
+  By 1st isomorphism theorem $\quot{F(X)}{\ker \phi} \cong \mathbb{Z}^n$ which is abelian,
   so $[F(X), F(X)] \leq \ker \phi$.
-  By factor theorem, 一個ㄛ圖. 
+  By factor theorem, 一個ㄛ圖.
 
-  We Claim that $\bar{\phi}$ is 1-1.
+  Claim that $\bar{\phi}$ is 1-1.
   \begin{proof}
-    Since $F(X) / [F(X), F(X)]$ is abelian, $\forall a \in F(X) / [F(X), F(X)]$, we can write
+    Since $\quot{F(X)}{[F(X), F(X)]}$ is abelian, $\forall a \in \quot{F(X)}{[F(X), F(X)]}$, we can write
     $a = \bar{x}_1^{n_1} \bar{x}_2^{n_2} \cdots \bar{x}_m^{n_m}$.
     If $\bar{\phi}(\bar{a}) = (m_1, \cdots, m_n) = 0$ in $\mathbb{Z}^n$, then $m_i = 0,\, \forall i
     \implies a = 1$
