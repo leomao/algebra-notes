@@ -94,7 +94,7 @@
   \begin{enumerate}[(1)]
     \item if $I_i, I_j$ are coprime $\forall i \ne j$, then
       $I_1I_2\dots I_n = I_1 \cap I_2 \cap \dots \cap I_n$.
-    \item $\varphi$ is subjective $\iff$ $I_i, I_j$ are coprime
+    \item $\varphi$ is surjective $\iff$ $I_i, I_j$ are coprime
       $\forall i \ne j$.
     \item $\varphi$ is injective $\iff$ $I_1 \cap I_2 \cap \dots \cap I_n
       = \{ 0 \}$.
@@ -111,7 +111,7 @@
     we only need to prove (1), (2).
 
     \begin{enumerate}[(1)]
-      \item By induction on $n$. $n = 2$, need $I_1\cap I_2 = \subseteq I_1I_2$.
+      \item By induction on $n$. $n = 2$, need $I_1\cap I_2 \subseteq I_1I_2$.
         Indded, $I_1\cap I_2 = (I_1\cap I_2)R = (I_1\cap I_2)(I_1+I_2)
         \subseteq I_1I_2$.
 
@@ -286,7 +286,7 @@
     x^{-1}ax \in P \quad \forall a \in Q \iff
     a \in xPx^{-1} \quad \forall a \in Q$.
 
-    We know $\abs{\Fix Q} \equiv \abs{X} \pmod p$ and $p \mid r \implies$
+    We know $\abs{\Fix Q} \equiv \abs{X} \pmod p$ and $p \nmid r \implies$
     $\abs{\Fix Q} \ne 0 \iff \exists a \in G, Q \le aPa^{-1}$.
 
     In particular, $\begin{cases}
