@@ -193,4 +193,13 @@
     \]
   \item The normalizer of $H$ in $G$:
     $N_G(H) = \{\, g\in G \mid gHg^{-1} = H \,\}$
+
 \end{itemize}
+\begin{theorem}[Normalizer-Centralizer theorem]
+  If $H \leq G$ and define $C_G(H) = \{ g \in G : g h g^{-1} = h, \forall h \in H \}$, then
+  $N_G(H) / C_G(H) \toone \Aut(H)$. 
+\end{theorem}
+\begin{proof}
+  Define $\phi = g :: N_G(H) \mapsto (h \mapsto g h g^{-1}) :: \Aut(H)$. Then 
+  $\ker \phi = C_G(H)$, so $N_G(H) / C_G(H) \cong \img \phi \leq \Aut(H)$.
+\end{proof}

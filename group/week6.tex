@@ -256,10 +256,9 @@ so $\abs{G} = \abs{KH} = p^3$
 Sol : $\phi_k: \quot{\Zb}{p^2\Zb} \to \quot{\Zb}{p^2\Zb}, \bar{1} \mapsto \bar{k}, \gcd(k, p) = 1$
 
 Find a group homo $\tau : K \implies \Aut(H)$
-because $(1+p)^p \equiv 1 \mod p^2$, $\ord\left(\ob{1+p}\right) \in
-\quot{\Zb}{p^2\Zb}$
+because $(1+p)^p \equiv 1 \mod p^2$, $\ord\left(\ob{1+p}\right) = p$.
 Let $P = \gen*{\ob{1+p}}$ is the only subgroup of order $p$.
-(if $\exists |Q| = p$, $P \neq Q$ then $P \cap Q = 1$, $|PQ| = p^2$, miserable.)
+(if $\exists |Q| = p$, $P \neq Q$ then $P \cap Q = 1$, $|PQ| = p^2$ but $\abs{G} = p (p-1)$, miserable.)
 So let $\tau : b \mapsto (\phi_{1+p} : a \mapsto a^{1+p})$
 so $G = \gen{a, b | a^{p^2}=1, b^p = 1, bab^{-1} = a^{1+p}}$ is a non-abelian group of order $p^3$.
 
