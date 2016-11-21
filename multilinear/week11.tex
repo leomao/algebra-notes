@@ -1,0 +1,230 @@
+%1 TEX root=../main.tex
+\section{Multilinear algebra}
+\subsection{Week 11}
+\subsubsection{Bilinear forms \& Groups preserving bilinear forms}
+
+\begin{definition}
+  Let $V$ be a vector space over a field $F$.
+  \begin{itemize}
+    \item A function $f: V \times V \to F$ is called a bilinear form if
+      \[
+        \begin{cases}
+          f(rx_1 + x_2, y) &= rf(x_1, y) + f(x_2, y) \\
+          f(x, ry_1 + y_2) &= rf(x, y_1) + f(x, y_2)
+        \end{cases}
+        \qquad \forall x_1, x_2, x, y_1, y_2, y \in V, r \in F
+      \]
+    \item $B_F(V, V) = \{\, \text{bilinear forms on $V$} \,\}$ can be regarded
+      as a vector space over $F$.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  Let $\dim V = n$ and $\beta = \{ v_1, \dots, v_n \}$ be a basis for $V$.
+  Then $\exists$ an isomorphism $\psi_\beta: B_F(V, V) \to M_{n\times n}(F)$.
+  \begin{proof}
+    For $v, w \in V$, write $v = \sum_i a_iv_i, w = \sum_j b_j v_j$, i.e.
+    $[v]_\beta = \begin{pmatrix}a_1\\ \vdots \\ a_n\end{pmatrix},
+    [w]_\beta = \begin{pmatrix}b_1\\ \vdots \\ b_n\end{pmatrix}$.
+
+    For $f \in B_F(V, V)$, $f(v, w) = \sum_i \sum_j a_ib_j f(v_i, v_j)
+    = \begin{pmatrix}a_1 & \dots & a_n\end{pmatrix}
+    \begin{pmatrix} \\ f(v_i, v_j) \\ \\ \end{pmatrix}
+    \begin{pmatrix}b_1 \\ \vdots \\ b_n\end{pmatrix}$.
+
+    Define $\psi_\beta(f) = A$ with $A_{ij} = f(v_i, v_j)$.
+    \begin{itemize}
+      \item $\psi_\beta$ is a linear transformation.
+      \item $\psi_\beta$ is 1-1.
+      \item $\psi_\beta$ is onto: $\forall A \in M_{n\times n}(F)$, we define
+        $f(v, w) = [v]_\beta^t A [w]_\beta$.
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  Let $f \in B_F(V, V)$
+  \begin{itemize}
+    \item $f$ is said to be symmetric if
+      $f(v, w) = f(w, v) \quad \forall v, w \in V$.
+    \item $f$ is said to be skew-symmetric if
+      $f(v, w) = -f(w, v) \quad \forall v, w \in V$.
+    \item $f$ is said to be alternating if $f(v, v) = 0 \quad \forall v \in V$.
+  \end{itemize}
+\end{definition}
+
+\begin{remark} \mbox{}
+  \begin{itemize}
+    \item Alternating $\implies$ skew-symmetric.
+    \item If $\Char F \ne 2$, skew-symmetric $\implies$ alternating.
+    \item If $\Char F = 2$, symmetric $=$ skew-symmetric.
+    \item $\forall f \in B_F(V, V)$ with $\Char F \ne 2$,
+      \begin{align*}
+        f_s(u, v) = \frac{1}{2}\left(f(u, v) + f(v, u)\right) \\
+        f_a(u, v) = \frac{1}{2}\left(f(u, v) - f(v, u)\right)
+      \end{align*}
+      and $f(u, v) = f_s(u, v) + f_a(u, v)$.
+  \end{itemize}
+\end{remark}
+
+So we only need to study ``symmetric'' \& ``alternating''.
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item If $A$ and $B$ are congruent $(B = Q^tAQ)$ in $M_{n\times n}(F)$,
+      then they define the same bilinear form.
+    \item $f$ is
+      $\begin{cases}
+        \text{symmetric} \\
+        \text{skew-symmetric}
+      \end{cases} \iff \psi_\beta(f) \text{~is~}
+      \begin{cases}
+        \text{symmetric} (A_t = A)\\
+        \text{skew-symmetric} (A_t = -A)
+      \end{cases}$
+  \end{enumerate}
+\end{exercise}
+
+\begin{observation*}
+  Let $f \in B_F(V, V)$ and $v_0 \in V$.
+  \begin{align*}
+    L_f(v_0) &= f(v_0, \cdot) \in V' = Hom(V, F):
+    \text{the dual space of $V$} \\
+    R_f(v_0) &= f(\cdot, v_0) \in V'
+  \end{align*}
+\end{observation*}
+
+The left radical of $f:
+\Lrad(f) = N(L_f) = \{\, v\in V \mid f(v, w) = 0 \quad \forall w \in V \,\}$.
+
+The right radical of $f:
+\Rrad(f) = N(R_f) = \{\, w\in V \mid f(v, w) = 0 \quad \forall v \in V \,\}$.
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item $\rank(\psi_\beta(f)) = \rank(R_f) = \rank(L_f)$.
+    \item If $\dim V = n$, then TFAE ($\implies f:$ non degenerate)
+      \begin{enumerate}[(a)]
+        \item $\rank(f) = n$.
+        \item $\forall v \in V, v \ne 0, \exists w \in V$ s.t. $f(v,w) \ne 0$.
+        \item $\Lrad(f) = \{0\}$.
+        \item $L_f: V \to V'$ is isom.
+      \end{enumerate}
+      (also, right)
+  \end{enumerate}
+\end{exercise}
+
+\begin{theorem}[Principal Axis theorem]
+  Let $\dim V = n$ and $\Char F \ne 2$.
+  If $f \in B_F(V, V)$ is symmetric, then $\exists \beta$ s.t. $\psi_\beta(f)$
+  is diagonal.
+
+  \begin{proof}
+    It is sufficient to find $\beta = \{v_1, \dots, v_n\}$ s.t.
+    $f(v_i, v_j) = 0 \quad \forall i \ne j$.
+
+    If $f = 0$, then done! Assume $f \ne 0$.
+    By induction on $n$: If $n = 1$, done.
+    Let $n > 1$.
+
+    \underline{Claim 1}: $\exists v_1 \in V$ s.t. $f(v_1, v_1) \ne 0$.
+    Assume that $f(v, v) = 0 \quad \forall v \in V$.
+    \[
+      f(v, w) = \frac{1}{4}f(v+w,v+w) - \frac{1}{4}f(v-w,v-w) = 0
+    \]
+    So $f = 0$, which is a contradiction.
+
+    Now let $v_1 \in V$ with $f(v_1, v_1) \ne 0$. Let $W = \gen{v_1}_F$ and
+    $W^\perp = \{\, w \in V \mid f(v_1, w) = 0 \,\} \subseteq V$.
+
+    \underline{Claim 2}: $V = W \oplus W^\perp$
+    \begin{itemize}
+      \item $V = W + W^\perp$: 
+      \item $W \cap W^\perp = \{0\}$: obviously.
+    \end{itemize}
+
+    Since $f \Big|_{W^\perp \times W^\perp}$ is a symmetric bilinear form
+    on $W^\perp$ and $\dim W^\perp < \dim V$.
+    By induction hypothesis, $\exists \{ v_2, \dots, v_n \}$ a basis for
+    $W^\perp$ s.t. $f(v_i, v_j) \ne 0 \quad \forall i \ne j$. Then
+    $\beta = \{v_1, \dots, v_n \}$.
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}[Sylvester's theorem]
+  Let $f \in B_\Rb(V, V)$ be symmetric with $\dum V = n$. Then $\exists \beta$
+  s.t. $\psi_\beta(f) = \begin{pmatrix}
+    1 \\
+    & \ddots \\
+    & & 1 \\
+    & & & -1 \\
+    & & & & \ddots \\
+    & & & & & -1 \\
+    & & & & & & 0 \\
+    & & & & & & & \ddots \\
+    & & & & & & & & 0 \\
+  \end{pmatrix}$.
+
+  The triple (\# of 1, \# of -1, \# of 0) is well-defined.
+  (called the signature of $f$)
+  \begin{proof}
+
+
+    Assume $V^+ = \gen{v_1, \dots, v_p}_F, V^- = \gen{v_{p+1}, \dots, v_{r}}_R,
+    V^\perp = \gen{v_{r+1}, \dots, v_n}_F$. ($V = V^+ \oplus V^- \oplus V^\perp$)
+
+    Claim: If $W$ is a subspace of $V$ s.t. $f$ is positive-definite on $W$,
+    then $W, V^-, V^\perp$ are independent.
+
+    ... omimi
+  \end{proof}
+\end{theorem}
+
+\begin{exercise}
+  Let $f \in B_F(V, V)$ with $\Char F \ne 2$.
+  If $f$ is skew-symmetric, then $\exists \beta$ s.t.
+  \[
+    \psi_\beta(f) = \begin{pmatrix}
+      0 & 1 \\
+      -1 & 0 \\
+      & & 0 & 1 \\
+      & & -1 & 0 \\
+      & & & & \ddots \\
+      & & & & & 0 & 1 \\
+      & & & & & -1 & 0 \\
+      & & & & & & & 0 \\
+      & & & & & & & & \ddots \\
+      & & & & & & & & & 0
+    \end{pmatrix}
+  \]
+\end{exercise}
+
+\begin{exercise}
+  Study Hermitian form
+\end{exercise}
+
+${\sf T}: V \isoto V, f\in B_F(V, V)$.
+${\sf T}$ preserves $f$ if $f({\sf T}(v), {\sf T}(w)) = f(v, w) \quad
+\forall v,w \in V$.
+
+In matrix form, let $\beta$ be a basis for $V$,
+$M =[{\sf T}]_\beta, A = \psi_\beta(f)$, then $A = M^tAM$.
+
+\begin{itemize}
+  \item $f \in B_\Rb(V,V)$ symmetric, non-degenerate:
+    $\exists \beta$ s.t. $\psi_\beta(f) = \begin{pmatrix}I_p \\ & -I_q\end{pmatrix}$.
+
+    Then $\{\, {\sf T}: V \isoto V \text{~preserves~} f \,\} \leftrightarrow
+    \left\{\,
+      M \in \text{GL}_n(\Rb) \mathrel{\middle\vert}
+      M^t\begin{pmatrix}I_p \\ & -I_q\end{pmatrix}M = \begin{pmatrix}I_p \\ & -I_q\end{pmatrix}
+      \,\right\} = \text{O}(p, q)$.
+  \item $f \in B_\Rb(V,V)$ skew-symmetric, non-degenerate: $n = 2k$,
+    $\exists \beta$ s.t. $\psi_\beta(f) = J$.
+
+    Then $\{\, {\sf T}: V \isoto V \text{~preserves~} f \,\} \leftrightarrow
+    \left\{\,
+      M \in \text{GL}_n(\Rb) \mathrel{\middle\vert}
+      M^tJM = J
+    \,\right\}$.
+\end{itemize}
