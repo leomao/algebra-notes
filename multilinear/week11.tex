@@ -152,7 +152,7 @@ The right radical of $f:
 \end{theorem}
 
 \begin{theorem}[Sylvester's theorem]
-  Let $f \in B_\Rb(V, V)$ be symmetric with $\dum V = n$. Then $\exists \beta$
+  Let $f \in B_\Rb(V, V)$ be symmetric with $\dim V = n$. Then $\exists \beta$
   s.t. $\psi_\beta(f) = \begin{pmatrix}
     1 \\
     & \ddots \\
@@ -216,7 +216,7 @@ $M =[{\sf T}]_\beta, A = \psi_\beta(f)$, then $A = M^tAM$.
 
     Then $\{\, {\sf T}: V \isoto V \text{~preserves~} f \,\} \leftrightarrow
     \left\{\,
-      M \in \text{GL}_n(\Rb) \mathrel{\middle\vert}
+      M \in \text{GL}_n(\Rb) \middle|
       M^t\begin{pmatrix}I_p \\ & -I_q\end{pmatrix}M = \begin{pmatrix}I_p \\ & -I_q\end{pmatrix}
       \,\right\} = \text{O}(p, q)$.
   \item $f \in B_\Rb(V,V)$ skew-symmetric, non-degenerate: $n = 2k$,
@@ -224,7 +224,188 @@ $M =[{\sf T}]_\beta, A = \psi_\beta(f)$, then $A = M^tAM$.
 
     Then $\{\, {\sf T}: V \isoto V \text{~preserves~} f \,\} \leftrightarrow
     \left\{\,
-      M \in \text{GL}_n(\Rb) \mathrel{\middle\vert}
+      M \in \text{GL}_n(\Rb) \middle|
       M^tJM = J
     \,\right\}$.
 \end{itemize}
+
+\subsubsection{Tensor product}
+From now on, $R$ is assumed to be commutative with $1$.
+
+\begin{definition}
+Let $M_1, \dots, M_n, L$ be $R$-modules.
+
+A function $F: M_1 \times \dots \times M_n \to L$ is said to be $n$-multilinear
+if $\forall i$,
+\[
+  f(x_1, \dots, rx_i + x_i', \dots, x_n) =
+  rf(x_1, \dots, x_i, \dots, x_n) + f(x_1, \dots, x_i', \dots, x_n)
+  \quad \forall r \in R, x_i, x_i' \in M_i
+\]
+If $n = 2$, $f$ is called a bilinear map.
+\end{definition}
+
+\begin{definition}
+  Let $M, N$ be $R$-modules. A tensor product of $M$ and $N$ is an $R$-module
+  $M \otimes_R N$ with a bilinear map $\rho: M\times N \to M\otimes_R N$
+  satisfying the following universal property:
+
+  for any $R$-momdule $W$ and any bilinear map $f: M\times N \to W$,
+  $\exists!$ $R$-module homomorphism $\varphi: M \otimes_R N \to W$,
+  \[
+    \begin{tikzcd}
+    M\times N \arrow{r}{\rho} \arrow[swap]{dr}{f}
+      & M \otimes_R N \arrow{d}{\varphi} \\
+    & W
+    \end{tikzcd}
+  \]
+\end{definition}
+
+\begin{theorem}[Main theorem]
+  $M \otimes_R N$ exists and is unique up to isom.
+  \begin{proof}
+    Let $X = M\times N$ and
+    $\displaystyle V_1 = \bigoplus_{(x, y) \in X} R(x, y)$.
+    \begin{itemize}
+      \item $(x_1, y_1) + (x_2, y_2) \ne (x_1+x_2, y_1+y_2)$.
+      \item $r(x, y) \ne (rx, ry)$.
+      \item $r(r_1(x_1, y_1) + \dots + r_n(x_n, y_n)) =
+        rr_1(x_1, y_1) + \dots + rr_n(x_n, y_n)$.
+    \end{itemize}
+    Let $V_0 = \gen*{
+      \begin{gathered}
+        (x_1+x_2, y) - (x_1, y) - (x_2, y), \\
+        (x, y_1+y_2) - (x, y_1) - (x, y_2), \\
+        r(x, y) - (rx, y), r(x, y) - (x, ry)
+      \end{gathered}
+      \middle| x_1, x_2, x \in M, y_1, y_2, y \in N, r \in R
+    }_R$.
+
+    Define $M \otimes_R N = \quot{V_1}{V_0}$ which is an $R$-module and
+    $\arraycolsep=1pt
+    \begin{array}{rcl}
+      \rho: M \times N & \to & M \otimes_R N \\
+      (x, y) & \mapsto & (x, y) + V_0 = x \otimes y
+    \end{array}$
+    which is $R$-bilinear. (check yourself)
+
+    Universal property: $\forall (x, y) \in M \times N$,
+    $\arraycolsep=1pt
+    \begin{array}{rcl}
+      R(x, y) & \to & W \\
+      r(x, y) & \mapsto & rf(x, y)
+    \end{array}$. So, by the universal property of $\oplus$,
+    $\exists!$ $R$-module homo. $\varphi_1: V_1 \to W$:
+    \[
+      \begin{tikzcd}
+      M\times N \arrow{r}{i} \arrow[swap]{dr}{f}
+        & V_1 \arrow{d}{\varphi_1} \\
+      & W
+      \end{tikzcd}
+    \]
+    Cliam: $V_0 \subseteq \ker \varphi_1$. (check yourself)
+    Then by factor theorem,
+    \[
+      \begin{tikzcd}[cramped, column sep=tiny]
+        \exists! \varphi: \quot{V_1}{V_0} \arrow{rr} & & W \\
+        & M \times N \arrow{ul} \arrow{ur} &
+      \end{tikzcd}
+      \qedhere
+    \]
+  \end{proof}
+\end{theorem}
+
+\begin{example}
+  $\Qb \otimes_\Zb \quot{\Zb}{n\Zb} = 0$.
+\end{example}
+
+\begin{example}
+  $\Rb[x, y] \cong \Rb[x] \otimes_\Rb \Rb[y]$.
+  \begin{proof}
+    $\arraycolsep=1pt
+    \begin{array}{rcl}
+      \Rb[x] \times \Rb[y] & \to & \Rb[x, y] \\
+      ( f(x), g(y) ) & \mapsto & f(x)g(y)
+    \end{array}$
+    is bilinear $\leadsto$
+    $\arraycolsep=1pt
+    \begin{array}{rcl}
+      \exists! \varphi: \Rb[x] \otimes_\Rb \Rb[y] & \to & \Rb[x, y] \\
+       f(x) \otimes g(y) & \mapsto & f(x)g(y)
+    \end{array}$.
+
+    Conversely, 
+    $\arraycolsep=1pt
+    \begin{array}{rcl}
+      \Rb[x, y] & \to & \Rb[x] \otimes_\Rb \Rb[y] \\
+      h(x, y) = \sum a_{ij} x^i y^j & \mapsto & \sum a_{ij} x_i \otimes y_j
+    \end{array}$.
+  \end{proof}
+\end{example}
+
+\begin{prop}
+  If $M = \gen{x_1, \dots, x_n}_R$ and $N = \gen{y_1, \dots, y_m}_R$. Then
+  \[ M \otimes_R N = \gen{x_i \otimes y_j \mid i = 1, \dots, n;
+  j = 1, \dots, m}_R. \]
+  In particular, if $R$ is a field $F$, then
+  $\dim_F M\otimes_F N = (\dim_F M)(\dim_F N)$.
+  \begin{proof}
+    Note that $M \otimes_R N = \gen{x \otimes y \mid x \in M, y \in N}$.
+    Let $x = \sum_i a_ix_i, y = \sum_j b_jy_j$. Then
+    $x\otimes y = \sum_i \sum_j a_ib_j x_i \otimes y_j$.
+  \end{proof}
+\end{prop}
+
+Some canonical isomorphisms:
+\begin{itemize}
+  \item $(M \otimes_R N) \otimes_R L \cong M \otimes_R (N \otimes_R L)$.
+    \begin{proof}
+      $\forall z \in L$, 
+      $\arraycolsep=1pt
+      \begin{array}{rcl}
+        M \times N & \to & M \otimes_R (N \otimes_R L) \\
+        (x, y) & \mapsto & x \otimes (y \otimes z)
+      \end{array}$ is bilinear.
+      $\exists!$ $R$-mod homo.
+      $\varphi_1: M \otimes_R N \to M\otimes_R(N\otimes_R L)$.
+      Similarly,
+      $\arraycolsep=1pt
+      \begin{array}{rcl}
+        (M \otimes_R N) \otimes L & \to & M \otimes_R (N \otimes_R L) \\
+        \left(\sum x_i\otimes y_i, z\right) & \mapsto &
+        \sum x_i \otimes (y_i \otimes z)
+      \end{array}$ is bilinear. (since $\varphi_1$)
+      $\exists!$ $R$-mod homo.
+      $\varphi: (M \otimes_R N) \otimes_R L \to M \otimes_R (N \otimes_R L)$.
+      By the symmetric construction, we have $\varphi^{-1}$.
+    \end{proof}
+  \item $(M \oplus M') \otimes_R N \cong (M \otimes_R N)\oplus(M'\otimes_R N)$.
+
+    $(M \oplus M') \times N \to (M \otimes_R N)\oplus(M'\otimes_R N)$ is
+    bilinear. $((x, x'), y) \mapsto (x\otimes y, x'\otimes y)$
+
+    $M \times N \to (M \oplus M') \otimes_R N$ is bilinear.
+    $(x, y) \mapsto (x, 0) \otimes y$
+\end{itemize}
+
+\begin{exercise}\mbox{}
+  \begin{enumerate}
+    \item $R \otimes_R M \cong M$.
+    \item $M \otimes_R N \cong N \otimes_R M$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  $\quot{R}{I} \otimes_R N \cong \quot{N}{IN}$ where
+  $IN \defeq \left\{ \sum a_ix_i \mid a_i \in I, x_i \in N \right\}$.
+\end{exercise}
+
+\begin{exercise}
+  Compute
+  $
+  \dim_\Qb (\Qb \otimes_\Zb \Qb), 
+  \dim_\Rb (\Rb \otimes_\Rb \Cb), 
+  \dim_\Rb (\Cb \otimes_\Rb \Cb), 
+  \dim_\Cb (\Cb \otimes_\Rb \Cb)
+  $
+\end{exercise}
