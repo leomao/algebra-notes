@@ -38,6 +38,7 @@
       \item $\psi_\beta$ is 1-1.
       \item $\psi_\beta$ is onto: $\forall A \in M_{n\times n}(F)$, we define
         $f(v, w) = [v]_\beta^t A [w]_\beta$.
+        \qedhere
     \end{itemize}
   \end{proof}
 \end{theorem}
@@ -69,6 +70,8 @@
 
 So we only need to study ``symmetric'' \& ``alternating''.
 
+\newpage
+
 \begin{exercise} \mbox{}
   \begin{enumerate}
     \item If $A$ and $B$ are congruent $(B = Q^tAQ)$ in $M_{n\times n}(F)$,
@@ -79,8 +82,8 @@ So we only need to study ``symmetric'' \& ``alternating''.
         \text{skew-symmetric}
       \end{cases} \iff \psi_\beta(f) \text{~is~}
       \begin{cases}
-        \text{symmetric} (A_t = A)\\
-        \text{skew-symmetric} (A_t = -A)
+        \text{symmetric} (A^t = A)\\
+        \text{skew-symmetric} (A^t = -A)
       \end{cases}$
   \end{enumerate}
 \end{exercise}
@@ -88,7 +91,7 @@ So we only need to study ``symmetric'' \& ``alternating''.
 \begin{observation*}
   Let $f \in B_F(V, V)$ and $v_0 \in V$.
   \begin{align*}
-    L_f(v_0) &= f(v_0, \cdot) \in V' = Hom(V, F):
+    L_f(v_0) &= f(v_0, \cdot) \in V' = \Hom(V, F):
     \text{the dual space of $V$} \\
     R_f(v_0) &= f(\cdot, v_0) \in V'
   \end{align*}
@@ -146,7 +149,7 @@ The right radical of $f:
     Since $f \Big|_{W^\perp \times W^\perp}$ is a symmetric bilinear form
     on $W^\perp$ and $\dim W^\perp < \dim V$.
     By induction hypothesis, $\exists \{ v_2, \dots, v_n \}$ a basis for
-    $W^\perp$ s.t. $f(v_i, v_j) \ne 0 \quad \forall i \ne j$. Then
+    $W^\perp$ s.t. $f(v_i, v_j) = 0 \quad \forall i \ne j$. Then
     $\beta = \{v_1, \dots, v_n \}$.
   \end{proof}
 \end{theorem}
