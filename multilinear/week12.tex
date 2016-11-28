@@ -1,0 +1,145 @@
+%1 TEX root=../main.tex
+\subsection{Week 12}
+\subsubsection{Tensor product \RNum{2}}
+
+By universal property, we get
+$\{ R\text{-bilinear maps~} M \times N \to L \} \leftrightarrow
+\Hom_R(M \otimes_R N, L)$.
+
+Similarly, 
+\begin{gather*}
+  \Hom\left(\bigoplus_{s\in \Lambda} M_s, L\right) \cong
+  \prod_{s\in \Lambda} \Hom\left(M_s, L\right) \\
+  \Hom\left(N, \prod_{s\in \Lambda} M_s\right) \cong
+  \prod_{s\in \Lambda} \Hom\left(N, M_s\right) \\
+\end{gather*}
+
+\begin{fact}
+  $f\in \Hom_R(M, M'), g \in \Hom_R(N, N') \leadsto
+  f\otimes g \in \Hom_R(M\otimes N, M'\otimes N')$ by
+  $f \otimes g(x \otimes y) = f(x) \otimes g(y)$.
+  \begin{proof}
+    Define
+    $\arraycolsep=1pt
+    \begin{array}{rcl}
+      h: M \times N & \to & M' \otimes_R N' \\
+      (x, y) & \mapsto & f(x) \otimes g(y)
+    \end{array}$
+  \end{proof}
+\end{fact}
+
+Restrition and extension of scalars.
+
+Let $f: R \to S$ be a ring homomorphism and $R, S$ be commutative with $1$.
+Then $S$ can be regarded as an $R$-module.
+    $\arraycolsep=1pt
+    \left(\begin{array}{rcl}
+      R \times S & \to & S \\
+      (r, x) & \mapsto & f(r)x
+    \end{array}\right)$.
+
+If $M$ is a $S$-module, then $M$ is also an $R$-module.
+    $\arraycolsep=1pt
+    \left(\begin{array}{rcl}
+      R \times M & \to & M \\
+      (r, a) & \mapsto & f(r)a
+    \end{array}\right)$.
+
+If $N$ is an $R$-module, then $S \otimes_R N$ an $S$-module.
+    $\arraycolsep=1pt
+    \left(\begin{array}{rrcl}
+      S & \times (S \otimes_R N) & \to & S \otimes_R N \\
+      (r, & x\otimes a) & \mapsto & rx \otimes a
+    \end{array}\right)$.
+
+\begin{example}[Important example]
+  Let $V$ be a real vector space. The complexification of $V$ is
+  $V^\Cb \defeq \Cb \otimes_\Rb V$ which is a $\Cb$-vector space.
+\end{example}
+
+\begin{exercise}
+  Let $K \subseteq L$ be an inclusion of fields and let $E$ be a vector space
+  over $K$. Show that $E^L \defeq L \otimes_K E$ satisfies the following
+  universal property: For any vector space $U$ over $L$ and any
+  $K$-linear map $f: E \to U$, $\exists!$ $L$-linear map $\varphi$:
+  \[
+    \begin{tikzcd}[cramped, column sep=tiny]
+      \varphi: 1\otimes x :: E^L \arrow{rr} & & f(x) :: U \\
+      & x :: E \arrow{ul} \arrow{ur}{f} &
+    \end{tikzcd}
+    \qedhere
+  \]
+\end{exercise}
+
+\begin{exercise}
+  $E \to E^L$ is a covariant functor from the category of vector spaces over
+  $K$ to the category of vector spaces over $L$.
+\end{exercise}
+
+\begin{example}
+  $\Zb^n \cong \Zb^m \leadsto
+  \Qb \otimes_\Zb \Zb^n \cong \Qb \otimes_\Zb \Zb^m \leadsto n = m$.
+\end{example}
+
+\begin{example}
+  $G \cong \quot{\Zb}{d_1\Zb} \oplus \dots \oplus \quot{\Zb}{d_l\Zb}
+  \oplus \Zb^s, \Qb \otimes_\Zb G = \Qb^s$.
+\end{example}
+
+Let $M, N$ and $U$ be $R$-module. Then
+\[
+  \Hom_R\left(M \otimes_R N, U\right) \cong
+  \Hom_R\left(N, \Hom_R(M, U)\right)
+\]
+
+\begin{proof} \mbox{}
+  \begin{itemize}
+    \item For $f \in \Hom_R\left(M \otimes_R N, U\right)$ and $a \in N$,
+      define $f_a: x :: M \mapsto f(x \otimes a) :: U$.
+      \begin{itemize}
+        \item linear: easy.
+        \item $\ob{f}: a \mapsto f_a$ is an $R$-mod homo.: easy.
+        \item $\tau: f \mapsto \ob{f}$ is an $R$-mod homo.:
+          $\tau(rf+g)(a)(x) = (rf+g)_a(x) = (rf+g)(x\otimes a)
+          = rf(x\otimes a) + g(x\otimes a) = \dots
+          = r\tau(f)(a)(x) + \tau(g)(a)(x)$
+      \end{itemize}
+    \item For $g \in \Hom_R\left(N, \Hom_R(M, U)\right)$,
+      define $g': (x, a) :: M \times N \mapsto g(a)(x) :: U$.
+      \begin{itemize}
+        \item $g'$ is $R$-bilinear: easy.
+        \item $\exists! \tilde{g}: x\otimes a \mapsto g(a)(x)$.
+        \item $\sigma: g\mapsto \tidle{g}$ is an $R$-mod homo.: easy.
+      \end{itemize}
+    \item $\sigma \tau = \text{id}, \tau \sigma = \text{id}$: easy...
+      \qedhere
+  \end{itemize}
+\end{proof}
+
+\begin{exercise}
+  $\Hom_R(M, \cdot), M \otimes_R \cdot$ are covariant functors from the
+  category of $R$-modules to itself.
+  (is an adjoint pair)
+\end{exercise}
+
+\begin{fact}
+  $\Hom_R(R, M) \cong M$. By $f \mapsto f(1)$.
+\end{fact}
+
+\begin{itemize}
+  \item $0 \to \Zb \xrightarrow{2} \Zb$.
+  \item $\Qb \to \quot{\Qb}{\Zb} \to 0$.
+\end{itemize}
+
+Let $V, W$ be vector spaces over $F$. Then
+$V^* \otimes_F W \cong \Hom_F(V, W)$.
+\begin{proof}
+  Let $\alpha = \{e_1, \dots, e_n\}$ and $\beta = \{f_1,\dots, f_m\}$ be
+  bases for $V$ and $W$ respectively.
+  Via $\alpha, \beta$, $\Hom_F(V, W) \cong
+  \gen*{E_{ij} \middle|
+  \begin{aligned}i &= 1,\dots,m\\j &= 1,\dots,n\end{aligned}}_F$.
+  $V^* \otimes W \cong
+  \gen*{e_j^* \otimes f_i \middle|
+  \begin{aligned}i &= 1,\dots,m\\j &= 1,\dots,n\end{aligned}}_F$.
+\end{proof}
