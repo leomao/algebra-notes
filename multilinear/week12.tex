@@ -109,7 +109,7 @@ Let $M, N$ and $U$ be $R$-module. Then
       \begin{itemize}
         \item $g'$ is $R$-bilinear: easy.
         \item $\exists! \tilde{g}: x\otimes a \mapsto g(a)(x)$.
-        \item $\sigma: g\mapsto \tidle{g}$ is an $R$-mod homo.: easy.
+        \item $\sigma: g\mapsto \tilde{g}$ is an $R$-mod homo.: easy.
       \end{itemize}
     \item $\sigma \tau = \text{id}, \tau \sigma = \text{id}$: easy...
       \qedhere
@@ -143,3 +143,166 @@ $V^* \otimes_F W \cong \Hom_F(V, W)$.
   \gen*{e_j^* \otimes f_i \middle|
   \begin{aligned}i &= 1,\dots,m\\j &= 1,\dots,n\end{aligned}}_F$.
 \end{proof}
+
+\subsubsection{Tensor algebra}
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item Let $R$ be a commutative ring with $1$.
+      An $R$-algebra is a ring $A$ which is also an $R$-module s.t. the
+      multiplication map $A \times A \to A$ is $R$-bilinear.
+      ( $r(ab) = (ra)b = a(rb)$ )
+    \item Let $A$ be an $R$-algebra. A grading of $A$ is a collection of
+      $R$-submodules $\{ A_n \}_{n=0}^\infty$ ($n$-th homogeneous part) s.t.
+      \[
+        A = \bigoplus_{n=0}^\infty A_n \quad \text{and} \quad
+        A_nA_m \subseteq A_{n+m} \quad \forall n,m
+      \]
+    \item A graded $R$-algebra is an $R$-algebra with a chosen grading.
+    \item $\mathfrak{M}_R$ is the category of $R$-modules.
+    \item $\mathfrak{Gr}_R$ is the category of graded $R$-modules.
+      ($f: A \to A'$ with $f(A_n) \subseteq A_n'$)
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  $A = R[x], A_n = \gen{x^n}_R$. If $I = \gen{x+1}_A$, $I$ is not graded.
+  $I = \gen{x^2}_A$ is graded.
+\end{example}
+
+\begin{exercise}
+  TFAE
+  \begin{enumerate}[(1)]
+    \item $I$ is graded.
+    \item $\forall a \in I$ write $a = a_{k_1} + a_{k_2} + \dots + a_{k_m},
+      a_{k_i} \in A_{k_i} \implies a_{k_i} \in I$.
+      ($a_{k_i}$ is the homogenuous component of $a$)
+    \item $\quot{A}{I}$ is a graded ring with
+      $\left(\quot{A}{I}\right)_n = \quot{A_n + I}{I}
+      \cong \quot{A_n}{I \cap A_n}$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}[(1)]
+    \item If $I$ is a f.g. graded ideal, then $I$ has a finite system of
+      generators consisting of homogeneous elements alone.
+    \item $I, J$ are graded $\implies I+J, IJ, I \cap J$ are graded.
+  \end{enumerate}
+\end{exercise}
+
+\underline{Observation}:
+Let $\{ M_i \}_{i=1}^\infty$ be a collection of $R$-modules.
+\begin{itemize}
+  \item $M_1 \otimes_R M_2$ exists.
+  \item $(M_1 \otimes_R M_2) \otimes_R M_3 \cong
+    M_1 \otimes_R (M_2 \otimes_R M_3) \implies
+    M_1 \otimes_R M_2 \otimes_R M_3$ is well-defined.
+    Universal property: for any $R$-module $L$ and a $3$-multilinear map
+    $f: M_1 \times M_2 \times M_3 \to L$. (拆括號囉)
+  \item By induction, $M_1 \otimes \dots \otimes M_n$ is well-defined and
+    satisfies the universal property. ($n$-multilinear map)
+\end{itemize}
+
+Goal: For a give $R$-module $M$, we intend to construct an graded $R$-algebra
+$T(M)$ containing $M$ that is ``universal'' w.r.t. $R$-algebras containing $M$.
+
+That is, for any $R$-algebra $A$ containing $M$ and a $R$-module homo.
+$\varphi: M \to A$.
+
+$\varphi = (\exists! \psi: T(M) \to A) \circ (M \to T(M))$. \\[.5em]
+\underline{Contruction}:
+\begin{itemize}
+  \item $\forall k \in \Nb$, $T_k(M) \defeq
+    \underbrace{M\otimes \dots \otimes M}_{k \text{~times}}$,
+    $x_1\otimes x_2\otimes \dots \otimes x_k \in T_k(M)$ is called a $k$-tensor.
+
+    $T^0(M) \defeq R$ and
+    \[
+      T(M) \defeq \bigoplus_{k=0}^\infty T^k(M) = R \oplus T^1(M) \oplus \dots
+    \]
+  \item multiplication map on $T(M)$:
+    \[
+      \begin{tikzcd}[cramped, row sep=tiny]
+        T^i(M) \times T^j(M) \arrow[r] & T^{i+j}(M) \\
+        (x_1\otimes \dots \otimes x_i, y_1\otimes \dots \otimes y_j)
+        \arrow[r, mapsto]
+        & x_1\otimes \dots \otimes x_i\otimes y_1\otimes \dots\otimes y_j \\
+      \end{tikzcd}
+    \]
+  \item Distribution law: easy.
+\end{itemize}
+
+Universal property:
+For any $R$-algebra $A$ containing $M$ and a $R$-module homo.
+$\varphi: M \to A$.
+$\forall k \ge 2$, we define
+$f_k: M \times \dots \times M \to A$
+\[
+  \arraycolsep=1pt
+  \begin{array}{rcl}
+    f_k: & M \times \dots \times M & \to A \\
+         & (x_1, \dots, x_k) & \mapsto
+    \varphi(x_1) \dots \varphi(x_k)
+  \end{array}
+\]
+$f_k$ is $k$-multilinear $\leadsto$
+\[
+  \arraycolsep=1pt
+  \begin{array}{rcl}
+    \exists! \tilde{f_k}: & M \otimes \dots \otimes M & \to A \\
+         & x_1 \otimes \dots\otimes x_k & \mapsto
+    \varphi(x_1) \dots \varphi(x_k)
+  \end{array}
+\]
+By universal property of $\bigoplus$, $\exists!$ a $R$-module homo.
+$\tilde\varphi$:
+$\exists! \tilde\varphi: T(M) \to A$.
+\[
+  \begin{tikzcd}[cramped, column sep=tiny]
+    \tilde\varphi: T(M) \arrow{rr} & & A \\
+      & T^k(M) \arrow{ul}{i} \arrow{ur}{f_k} &
+  \end{tikzcd}
+\]
+
+$\tilde\varphi$ is an $R$-algebra homomorphism.
+
+\begin{definition}
+  $T(M)$ is called the tensor algebra of $M$.
+\end{definition}
+
+\begin{exercise}
+  $T$ is a covariant functor from $\Mf_R$ to $\Grf_R$.
+\end{exercise}
+
+\begin{prop}
+  Let $V$ be a vector space over $F$ with a basis $\beta = \{
+  v_1, \dots, v_n \}$. Then
+  \[
+    \left\{
+      v_{i_1} \otimes \dots v_{i_k} \middle|
+      \forall j = 1, \dots, k,\; i_j = 1, \dots, n
+    \right\}
+  \]
+  forms a basis for $T^k(V)$. $\dim_F T^k(V) = n^k$.
+\end{prop}
+
+$T(V)$ can be regarded as a non-commutative polynomial algebra over $F$.
+\\[.5em]
+$\odot$ Symmetrization ($\Char F = 0$)
+\[
+  \begin{tikzcd}[cramped, row sep=tiny]
+    V \times \dots \times V \arrow[r] & T^n(V) \\
+    (x_1, \dots, x_n) \arrow[r, mapsto]
+    & \displaystyle \frac{1}{n!}\sum_{\tau \in S_n}
+    x_{\tau(1)}\otimes \dots \otimes x_{\tau(n)}
+  \end{tikzcd}
+\]
+is $n$-multilinear.
+
+The symmetrizer operator $\sigma: T^n(V) \to T^n(V)$,
+$\tilde{S}^n(V) \defeq \sigma(T^n(V)) \subseteq T^n(V)$.
+
+\underline{Claim}:
+$T^n(V) = \tilde{S}^n(V) \oplus C^n(V)$ where
+\[ C^n(V) = C(V) \cap T^n(V) \quad
+C(V) = \gen{v\otimes w - w\otimes v \mid v, w\in V} \]
