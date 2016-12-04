@@ -17,7 +17,7 @@ Similarly,
 \begin{fact}
   $f\in \Hom_R(M, M'), g \in \Hom_R(N, N') \leadsto
   f\otimes g \in \Hom_R(M\otimes N, M'\otimes N')$ by
-  $f \otimes g(x \otimes y) = f(x) \otimes g(y)$.
+  $(f \otimes g)(x \otimes y) = f(x) \otimes g(y)$.
   \begin{proof}
     Define
     $\arraycolsep=1pt
@@ -126,6 +126,11 @@ Let $M, N$ and $U$ be $R$-module. Then
   $\Hom_R(R, M) \cong M$. By $f \mapsto f(1)$.
 \end{fact}
 
+\begin{definition}
+  An exact sequence $A \xrightarrow{f_1} B \xrightarrow{f_2} \cdots$ is 
+  a sequence satisfied $\text{im}\; f_k = \ker f_{k+1}$.
+\end{definition}
+
 \begin{itemize}
   \item $0 \to \Zb \xrightarrow{2} \Zb$.
   \item $\Qb \to \quot{\Qb}{\Zb} \to 0$.
@@ -169,6 +174,12 @@ $V^* \otimes_F W \cong \Hom_F(V, W)$.
   $I = \gen{x^2}_A$ is graded.
 \end{example}
 
+{\color{red}
+\begin{definition}
+  An ideal $I$ is graded in a graded ring $A$ if and only if
+  $I = \raisebox{0.3ex}{\bigoplus} I \cap A_n$. \footnote{This is not mentioned in class}
+\end{definition} }
+
 \begin{exercise}
   TFAE
   \begin{enumerate}[(1)]
@@ -177,7 +188,7 @@ $V^* \otimes_F W \cong \Hom_F(V, W)$.
       a_{k_i} \in A_{k_i} \implies a_{k_i} \in I$.
       ($a_{k_i}$ is the homogenuous component of $a$)
     \item $\quot{A}{I}$ is a graded ring with
-      $\left(\quot{A}{I}\right)_n = \quot{A_n + I}{I}
+      $\left(\quot{A}{I}\right)_n = \quot{(A_n + I)}{I}
       \cong \quot{A_n}{I \cap A_n}$.
   \end{enumerate}
 \end{exercise}
@@ -203,24 +214,25 @@ Let $\{ M_i \}_{i=1}^\infty$ be a collection of $R$-modules.
     satisfies the universal property. ($n$-multilinear map)
 \end{itemize}
 
-Goal: For a give $R$-module $M$, we intend to construct an graded $R$-algebra
+Goal: For a given $R$-module $M$, we intend to construct an graded $R$-algebra
 $T(M)$ containing $M$ that is ``universal'' w.r.t. $R$-algebras containing $M$.
 
-That is, for any $R$-algebra $A$ containing $M$ and a $R$-module homo.
-$\varphi: M \to A$.
+That is, a tensor algebra is a pair $(T(M), i)$ where $T(M)$ is an R-algebra and 
+$i :: M \to T(M)$, such that for any $R$-algebra $A$ containing $M$, which is to say that exist a 
+$R$-module homomorphism $\varphi: M \to A$, then exists an R-module homomorphism $\psi :: T(M) \to A$ such 
+that $\varphi = \psi \circ i$. \\
 
-$\varphi = (\exists! \psi: T(M) \to A) \circ (M \to T(M))$. \\[.5em]
 \underline{Contruction}:
 \begin{itemize}
   \item $\forall k \in \Nb$, $T_k(M) \defeq
-    \underbrace{M\otimes \dots \otimes M}_{k \text{~times}}$,
+    \underbrace{M\otimes \dots \otimes M}_{k \text{~times}}$, each
     $x_1\otimes x_2\otimes \dots \otimes x_k \in T_k(M)$ is called a $k$-tensor.
 
     $T^0(M) \defeq R$ and
     \[
       T(M) \defeq \bigoplus_{k=0}^\infty T^k(M) = R \oplus T^1(M) \oplus \dots
     \]
-  \item multiplication map on $T(M)$:
+  \item define multiplication on $T(M)$ by:
     \[
       \begin{tikzcd}[cramped, row sep=tiny]
         T^i(M) \times T^j(M) \arrow[r] & T^{i+j}(M) \\
@@ -232,8 +244,8 @@ $\varphi = (\exists! \psi: T(M) \to A) \circ (M \to T(M))$. \\[.5em]
   \item Distribution law: easy.
 \end{itemize}
 
-Universal property:
-For any $R$-algebra $A$ containing $M$ and a $R$-module homo.
+Proving the universal property:
+For any $R$-algebra $A$ containing $M$ and an $R$-module homo.
 $\varphi: M \to A$.
 $\forall k \ge 2$, we define
 $f_k: M \times \dots \times M \to A$
@@ -254,9 +266,8 @@ $f_k$ is $k$-multilinear $\leadsto$
     \varphi(x_1) \dots \varphi(x_k)
   \end{array}
 \]
-By universal property of $\bigoplus$, $\exists!$ a $R$-module homo.
-$\tilde\varphi$:
-$\exists! \tilde\varphi: T(M) \to A$.
+By universal property of $\bigoplus$, exists a unique $R$-module homo.
+$\tilde\varphi :: T(M) \to A$ which make the following diagram commutes.
 \[
   \begin{tikzcd}[cramped, column sep=tiny]
     \tilde\varphi: T(M) \arrow{rr} & & A \\
