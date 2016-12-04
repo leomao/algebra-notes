@@ -281,8 +281,10 @@ If $n = 2$, $f$ is called a bilinear map.
 \begin{theorem}[Main theorem]
   $M \otimes_R N$ exists and is unique up to isom.
   \begin{proof}
-    Let $X = M\times N$ and
-    $\displaystyle V_1 = \bigoplus_{(x, y) \in X} R(x, y)$.
+    Let $X = M\times N$.
+    First we construct the free module
+    $\displaystyle V_1 = \bigoplus_{(x, y) \in X} R \cdot (x, y)$. \\
+    Notice that in $V_1$,
     \begin{itemize}
       \item $(x_1, y_1) + (x_2, y_2) \ne (x_1+x_2, y_1+y_2)$.
       \item $r(x, y) \ne (rx, ry)$.
@@ -320,7 +322,7 @@ If $n = 2$, $f$ is called a bilinear map.
       & W
       \end{tikzcd}
     \]
-    Cliam: $V_0 \subseteq \ker \varphi_1$. (check yourself)
+    Claim: $V_0 \subseteq \ker \varphi_1$. (check yourself)
     Then by factor theorem,
     \[
       \begin{tikzcd}[cramped, column sep=tiny]
@@ -384,25 +386,35 @@ Some canonical isomorphisms:
         (x, y) & \mapsto & x \otimes (y \otimes z)
       \end{array}$ is bilinear.
       $\exists!$ $R$-mod homo.
-      $\varphi_1: M \otimes_R N \to M\otimes_R(N\otimes_R L)$.
+      $\varphi_z: M \otimes_R N \to M\otimes_R(N\otimes_R L)$.
       Similarly,
       $\arraycolsep=1pt
       \begin{array}{rcl}
-        (M \otimes_R N) \otimes L & \to & M \otimes_R (N \otimes_R L) \\
+        (M \otimes_R N) \times L & \to & M \otimes_R (N \otimes_R L) \\
         \left(\sum x_i\otimes y_i, z\right) & \mapsto &
         \sum x_i \otimes (y_i \otimes z)
-      \end{array}$ is bilinear. (since $\varphi_1$)
-      $\exists!$ $R$-mod homo.
+      \end{array}$ is bilinear. (The right is due to $\varphi_z$ linear, and 
+      the left is because $x \otimes (y \otimes (rz_1 + z_2)) = rx \otimes (y \otimes z_1) + 
+      x \otimes (y \otimes z_2)$.)
+      Hence exists unique $R$-mod homo.
       $\varphi: (M \otimes_R N) \otimes_R L \to M \otimes_R (N \otimes_R L)$.
-      By the symmetric construction, we have $\varphi^{-1}$.
+      By the symmetric construction, we have $\varphi^{-1}$ and $\varphi^{-1} \circ 
+      \varphi = \varphi \circ \varphi^{-1} = 1$, so the two are isomorphic.
     \end{proof}
   \item $(M \oplus M') \otimes_R N \cong (M \otimes_R N)\oplus(M'\otimes_R N)$.
 
-    $(M \oplus M') \times N \to (M \otimes_R N)\oplus(M'\otimes_R N)$ is
-    bilinear. $((x, x'), y) \mapsto (x\otimes y, x'\otimes y)$
+    The mapping $\psi :: (M \oplus M') \times N \to (M \otimes_R N)\oplus(M'\otimes_R N)$
+    by $\psi = ((x, x'), y) \mapsto (x\otimes y, x'\otimes y)$ is biliear, hence 
+    exists R-mod homomorphism $\varphi :: (M \oplus M') \otimes_R N \to (M \otimes_R N)\oplus(M'\otimes_R N)$.
 
-    $M \times N \to (M \oplus M') \otimes_R N$ is bilinear.
-    $(x, y) \mapsto (x, 0) \otimes y$
+    On the other hand, The mapping $(x, y) :: M \times N \mapsto (x, 0) \otimes y :: (M \oplus M') \otimes_R N$ 
+    is bilinear. So exists $\phi_1 :: M \otimes N \to (M \oplus M') \otimes_R N$, similarly there exists
+    $\phi_2 :: M' \otimes N \to (M \oplus M') \otimes_R N$. Now by the universal property of direct sum, 
+    there exists $\phi :: (M \otimes_R N)\oplus(M'\otimes_R N) \to (M \oplus M') \otimes_R N$.
+    After a careful examine, we have
+    \[ \varphi = (x, x') \otimes y \mapsto (x \otimes y, x' \otimes y),
+      \phi = (x \otimes y, x' \otimes y) \mapsto (x, x') \otimes y \]
+    Thus $\phi = \varphi^{-1}$ and hence the two are isomorphic.
 \end{itemize}
 
 \begin{exercise}\mbox{}
