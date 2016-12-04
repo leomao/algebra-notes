@@ -142,8 +142,10 @@ The right radical of $f:
 
     \underline{Claim 2}: $V = W \oplus W^\perp$
     \begin{itemize}
-      \item $V = W + W^\perp$: 
-      \item $W \cap W^\perp = \{0\}$: obviously.
+      \item $V = W + W^\perp$: For all $v \in V$, let $a = f(v, v_1) / f(v_1, v_1)$, then $v = a v_1 + (v - a v_1)
+        \triangleq w + w'$ where $w \in W$ and $f(w', v_1) = f(v - a v_1, v_1) = f(v, v_1) - a f(v_1, v_1)
+        = 0$. So $w' \in W^\perp$ and thus $V = W + W^\perp$.
+      \item $W \cap W^\perp = \{0\}$: obviously since if $a v_1 \in W$, $f(a v_1, v_1) = 0 \iff a = 0 \iff a v_1 = 0$.
     \end{itemize}
 
     Since $f \Big|_{W^\perp \times W^\perp}$ is a symmetric bilinear form
@@ -179,7 +181,15 @@ The right radical of $f:
     Claim: If $W$ is a subspace of $V$ s.t. $f$ is positive-definite on $W$,
     then $W, V^-, V^\perp$ are independent.
 
-    ... omimi
+    Let $\gen{w_1, w_2, \cdots, w_s}$ be a basis of $W$. If
+    \[ a_1 w_1 + a_2 w_2 + \cdots + a_s w_s = b_{p+1} v_{p+1} + \cdots + b_r v_r + 
+      c_{r+1} v_{r+1} + \cdots + c_n v_n. \]
+    Let $w \triangleq a_1 w_1 + \cdots + a_s w_s, v \triangleq b_{p+1} v_{p+1} + \cdots + b_r v_r + 
+    c_{r+1} v_{r+1} + \cdots + c_n v_n$. Since $w = v$, $f(w, w) = f(v, v)$. 
+    but $f(w, w) = \sum a_i^2 \geq 0$ and $f(v, v) = - \sum b_i^2 \leq 0$. Hence $a_i = 0, b_i = 0$.
+    Since $v_{r+1}, \cdots, v_n$ is linear independent, $c_i = 0$. Therefor these vectors are linear 
+    independent.
+
   \end{proof}
 \end{theorem}
 
