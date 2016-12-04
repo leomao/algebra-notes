@@ -6,7 +6,7 @@ By universal property, we get
 $\{ R\text{-bilinear maps~} M \times N \to L \} \leftrightarrow
 \Hom_R(M \otimes_R N, L)$.
 
-Similarly, 
+Similarly,
 \begin{gather*}
   \Hom\left(\bigoplus_{s\in \Lambda} M_s, L\right) \cong
   \prod_{s\in \Lambda} \Hom\left(M_s, L\right) \\
@@ -127,7 +127,7 @@ Let $M, N$ and $U$ be $R$-module. Then
 \end{fact}
 
 \begin{definition}
-  An exact sequence $A \xrightarrow{f_1} B \xrightarrow{f_2} \cdots$ is 
+  An exact sequence $A \xrightarrow{f_1} B \xrightarrow{f_2} \cdots$ is
   a sequence satisfied $\text{im}\; f_k = \ker f_{k+1}$.
 \end{definition}
 
@@ -174,11 +174,12 @@ $V^* \otimes_F W \cong \Hom_F(V, W)$.
   $I = \gen{x^2}_A$ is graded.
 \end{example}
 
-{\color{red}
 \begin{definition}
+  \color{red}
   An ideal $I$ is graded in a graded ring $A$ if and only if
-  $I = \raisebox{0.3ex}{\bigoplus} I \cap A_n$. \footnote{This is not mentioned in class}
-\end{definition} }
+  $I = \raisebox{0.3ex}{$\bigoplus$} I \cap A_n$.
+  \footnote{This is not mentioned in class}
+\end{definition}
 
 \begin{exercise}
   TFAE
@@ -217,16 +218,17 @@ Let $\{ M_i \}_{i=1}^\infty$ be a collection of $R$-modules.
 Goal: For a given $R$-module $M$, we intend to construct an graded $R$-algebra
 $T(M)$ containing $M$ that is ``universal'' w.r.t. $R$-algebras containing $M$.
 
-That is, a tensor algebra is a pair $(T(M), i)$ where $T(M)$ is an R-algebra and 
-$i :: M \to T(M)$, such that for any $R$-algebra $A$ containing $M$, which is to say that exist a 
-$R$-module homomorphism $\varphi: M \to A$, then exists an R-module homomorphism $\psi :: T(M) \to A$ such 
-that $\varphi = \psi \circ i$. \\
+That is, a tensor algebra is a pair $(T(M), i)$ where $T(M)$ is an $R$-algebra
+and $i :: M \to T(M)$, such that for any $R$-algebra $A$ containing $M$,
+which is to say that exist a $R$-module homomorphism $\varphi: M \to A$,
+then exists an $R$-algebra homomorphism $\psi :: T(M) \to A$ such
+that $\varphi = \psi \circ i$. \\[.5em]
 
-\underline{Contruction}:
+\underline{Construction}:
 \begin{itemize}
-  \item $\forall k \in \Nb$, $T_k(M) \defeq
+  \item $\forall k \in \Nb$, $T^k(M) \defeq
     \underbrace{M\otimes \dots \otimes M}_{k \text{~times}}$, each
-    $x_1\otimes x_2\otimes \dots \otimes x_k \in T_k(M)$ is called a $k$-tensor.
+    $x_1\otimes x_2\otimes \dots \otimes x_k \in T^k(M)$ is called a $k$-tensor.
 
     $T^0(M) \defeq R$ and
     \[
