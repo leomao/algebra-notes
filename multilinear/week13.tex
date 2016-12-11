@@ -160,7 +160,13 @@ $\tilde{S}^k(V) = \sigma(T^k(V)) \quad \tilde{\Lambda}^k(V) = \sigma'(T^k(V))$
     $C^k(V) \subseteq \ker \sigma$ is obvious.
     Assume $\supsetneq$, i.e., $\exists t \in \ker \sigma$ s.t.
     $t \not\in C^k(V)$.
-    Recall $q: T^k(V) \onto S^k(V)$, OMIMI.
+    Recall $q: T^k(V) \onto S^k(V)$, since $q$ is the quotient map. Also 
+    $q |_{\tilde{S}^k(V)} \onto S^k(V)$, since if $q(x) = y$, then it could
+    be easily checked that $q(\sigma(x)) = y$, so exists $t' \in \tilde{S}^k(V)$ satisfies
+    $q(t') = q(t) \neq 0$. But then $q(t-t') = 0 \implies t-t' \in \ker q = C^k(V) \subseteq
+    \ker \sigma$ and because of $\sigma(t) = 0 \implies \sigma(t') = 0$. Hence $t' \in \ker \sigma$.
+    But then $t' \in S^k(V) \subseteq \Image \sigma \implies t' \in \Image \sigma \;\cap\;\ker \sigma$,
+    which leads to an contradiction since $\sigma$ is a projection.
 \end{itemize}
 
 \begin{exercise}
