@@ -1,0 +1,216 @@
+%1 TEX root=../main.tex
+\section{Introduction to the linear representation theory of finite groups}
+\subsection{Week 14}
+\subsubsection{Generatlities on linear representations}
+\paragraph{Notation}
+
+\begin{itemize}
+  \item $G$: finite group
+  \item $V$: vector space of finite dim over $\Cb$
+  \item $\text{GL}(V)$: the group of all linear isom. $V \to V$
+\end{itemize}
+
+\begin{definition}
+  A group homo. $\rho: G \to \text{GL}(V)$ is called a linear representation
+  of $G$.
+  $\dim V$ is called the dgree of $\rho$.
+  ($V$ is a representation space)
+
+  For a fixed basis $\beta = \{\, e_i \,\}$,
+  \[
+    \begin{tikzcd}
+      G \arrow{r}{\rho} \arrow[swap]{dr}{R} & \text{GL}(V) \arrow[d, "\beta"', "\rotatebox{90}{\(\sim\)}"] \\
+                                            & \text{GL}_n(\Cb)
+    \end{tikzcd}
+  \]
+  ($R$ is a matrix representation)
+\end{definition}
+
+\begin{example}
+  A representation of degree $1$ of $G$ is $\rho: G \to \text{GL}(\Cb)
+  \cong \Cb^*$.
+
+  $\ord(g)$ is finite $\leadsto$ $\rho(g)^m = 1$ for some $m \in \Nb$
+  $\leadsto$ $\rho(g)$ is a root of unity, i.e. $\abs{\rho(g)} = 1$.
+
+  Note: So, $\rho: G \to S^1$, $S^1$ is the unit circle.
+
+  \begin{enumerate}
+    \item $G = \quot{\Zb}{p\Zb}$,
+      $\rho: \ob{1} :: G \mapsto s_p :: S^1$ with $s_p^p = 1$.
+    \item $G = S_3, V = \Cb e_1 \oplus \Cb e_2 \oplus \Cb e_3$.
+
+      A permutation representation is
+      $\rho: \tau :: S_3 \mapsto (\rho(\tau): e_i \mapsto e_{\tau(i)})
+      :: \text{GL}(V)$.
+      
+    \item $G = S_3, V = \bigoplus_{\sigma \in S_3} \Cb e_{\sigma}$.
+      The regular representation is
+      \[ \rho^{\text{reg}}: \tau :: G \mapsto
+      (\rho^{\text{reg}}(\tau): e_{\sigma} \mapsto e_{\tau \sigma})
+      :: \text{GL}(V). \]
+  \end{enumerate}
+\end{example}
+
+For general $G$, with $V = \bigoplus_{g\in G} \Cb e_g$,
+\[ \rho^{\text{reg}}: h :: G \mapsto
+  (\rho^{\text{reg}}(h): e_{g} \mapsto e_{hg})
+:: \text{GL}(V). \]
+
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item $\rho: g :: G \mapsto \text{id} :: \text{GL}(V)$:
+      trivial representation.
+    \item $\rho: G \toone \text{GL}(V)$: faithful representation.
+    \item $\rho, \rho'$ are said to be equivalent if $\exists$ a linear isom.
+      $T: V \isoto V'$ s.t.
+        
+  \end{itemize}
+\end{definition}
+
+\begin{remark}
+  When we choose two bases $\beta, \beta'$ for $V$,
+  \[
+    \begin{tikzcd}
+      G \arrow{r}{\rho} \arrow[swap]{dr}{R} & \text{GL}(V) \arrow[d, "\beta"', "\rotatebox{90}{\(\sim\)}"] \\
+                                            & \text{GL}_n(\Cb)
+    \end{tikzcd} \quad
+    \begin{tikzcd}
+      G \arrow{r}{\rho'} \arrow[swap]{dr}{R} & \text{GL}(V) \arrow[d, "\beta'"', "\rotatebox{90}{\(\sim\)}"] \\
+                                            & \text{GL}_n(\Cb)
+    \end{tikzcd}
+  \]
+  then $\rho, \rho'$ are equivalent.
+\end{remark}
+
+Let $T: e_i :: V \mapsto e_i' :: V$. For $g \in G, R(g) = \big(a_{ij}\big)$.
+
+$T \circ \rho(g) = \rho'(g) \circ T$
+
+\begin{definition}
+  Let $\inpd{\cdot, \cdot}$ be a positive definite Hermitian form on $V$.
+
+  Then $T: V \to V$ is called a unitary operator if
+  $\inpd{T(x), T(y)} = \inpd{x, y} \quad \forall x, y \in V$.
+
+  or $\forall \beta:$ orthonormal basis,
+  $[T]_\beta^*[T]_\beta = [T]_\beta[T]_\beta^* = I_n$.
+\end{definition}
+
+\begin{theorem}
+  $\forall \rho: G \to \text{GL}(V)$, $\exists$ a matrix representation
+  $R: G \to U_n$.
+  \begin{proof}
+    We only need to $G$-invariant positive definite Hermitian form on $V$.
+    ($\forall g \in G, \inpd{\rho(g)x, \rho(g)y} = \inpd{x, y} \quad
+  \forall x, y \in V$)
+
+  We start with an arbitrary positive definite Hermitian form
+  $\inpd{\cdot, \cdot}'$ on $V$.
+
+  Define a new form $\inpd{\cdot, \cdot}$ by
+  \[
+    \inpd{x, y} \defeq \frac{1}{\abs{G}} \sum_{g\in G}
+    \inpd{\rho(g)(x), \rho(g)(y)}'
+  \]
+  which is a positive definite Hermitian form. (easy to check)
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  Let $\rho: G \to \text{GL}(V)$, For $W \subset V$ (we use $\subset$ to denote
+  subspace), if $\forall x \in W$, $\rho(g)(x) \in W, \forall g \in G$, then
+  $W$ is said to be $G$-invariant and
+  \[
+    \arraycolsep=1pt
+    \begin{array}{rcl}
+      \rho^W: & G & \to \text{GL}(W) \\
+              & g & \mapsto \rho(g) \big|_W
+    \end{array}
+  \]
+  is called a subrepresentation of $\rho$.
+\end{definition}
+
+$W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
+
+\begin{example}
+  Let $\rho$ be the regular rep. of $S_3$.
+
+  $W^\circ = \{\, \alpha_1e_1 + \dots + \alpha_6e_6 \mid \alpha_1 +\dots + \alpha_6 = 0 \,\}$
+  is $G$-invariant.
+
+  $W^1 = \gen{ e_1 + \dots + e_6}_\Cb$ is $G$-invariant.
+\end{example}
+
+\begin{theorem}
+  Let $\rho: G \to \text{GL}(V)$ and $W \subset V$ be $G$-invariant.
+  Then $\exists W^\circ \subset V$ is still $G$-invariant and
+  $V = W \oplus W^\circ$.
+  \begin{proof}
+    We can pick an arbitrary $W'$ with $V = W \oplus W'$ and
+    $\pi_1: V \to W$ is the projection to $W$. Then $W' = \ker \pi_1$.
+    
+    Now we need $\pi_1$ preserves the $G$ action ($G$-equivariant).
+    Define
+    \[
+      \pi^\circ = \frac{1}{\abs{G}} \sum_{g\in G}
+      \rho(g)^{-1} \circ \pi_1 \circ \rho(g) : V \to W
+    \]
+    \begin{itemize}
+      \item well-defined: $\rho(g)(V) \subset V \leadsto
+        \pi_1 \circ \rho(g)(V) \subset W \leadsto
+        \rho(g)^{-1} \circ \pi_1 \circ \rho(g)(V) \subseteq W$.
+      \item surjective: $\forall y \in W,
+        \rho(g)^{-1}\circ \pi_1 \circ\rho(g)(y) = y$ since
+        $\rho(g)(y) \in W$. Also, $(\pi^\circ)^2 = \pi^\circ$.
+        So $V = \Image \pi^\circ \oplus \ker \pi^\circ$.
+      \item $G$-equivariant: $\forall g' \in G$,
+        \begin{align*}
+          \pi^\circ \circ \rho(g')(x)
+          &= \frac{1}{\abs{G}} \sum_{g\in G}
+            \rho(g)^{-1}\circ\pi_1\circ\rho(g) (\rho(g')(x)) \\
+          &= \rho(g') \frac{1}{\abs{G}} \sum_{gg'\in G}
+            \rho(gg')^{-1}\circ\pi_1\circ\rho(gg')(x) \\
+          &= \rho(g') \circ \pi^\circ(x)
+        \end{align*}
+      \item $W^\circ \defeq = \ker \pi^\circ$ is $G$-invariant:
+        $\forall x \in W^\circ$, $\pi^\circ(\rho(g)(x))
+        = \rho(g)(\pi^\circ(x)) = \rho(g)(0) = 0$. So
+        $\rho(g)(x) \in W^\circ$.
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  If $W \subset V$ is $G$-invariant, then $W^\perp$ is also $G$-invariant.
+  (w.r.t. a $G$-invariant positive definite Hermitian form)
+\end{remark}
+
+\begin{definition}
+  $\rho: G \to \text{GL}(V)$ is irreducible if $\rho$ has no proper notrivial
+  subrepresentations.
+\end{definition}
+
+\begin{theorem}
+  Each $\rho: G\to \text{GL}(V)$ is a direct sum of irreducible
+  subrepresentations.
+  \begin{proof}
+    By induction on $\dim V$. For $\dim V = 1$, then $\rho$ is irr.
+
+    For $\dim V > 1$, if $\rho$ is irr., then done.
+    Otherwise, $\exists W, W^\circ$ are $G$-invariant s.t.
+    $V = W \oplus W^\circ$ with $\dim W \ge 1, \dim W^\circ \ge 1$.
+    By induction hypothesis, $\rho^W, \rho^{W^\circ}$ are direct sum
+    of irr. subrep., and $\rho = \rho^W \oplus \rho^{W^\circ}$, done.
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  Let $\rho: G \to \text{GL}(V)$ and $\rho': G \to \text{GL}(V')$.
+  \begin{itemize}
+    \item $\rho \oplus \rho': G \to \text{GL}(V\oplus V')$.
+      矩陣是左上右下
+    \item $\rho \otimes \rho': G \to \text{GL}(V\otimes V')$.
+      矩陣是密密麻麻 ($\sum_{i,j} r_ip, r_{jq}' (e_i \otimes e_j')$)
+  \end{itemize}
+\end{remark}
