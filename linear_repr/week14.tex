@@ -214,3 +214,171 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
       矩陣是密密麻麻 ($\sum_{i,j} r_ip, r_{jq}' (e_i \otimes e_j')$)
   \end{itemize}
 \end{remark}
+
+\subsubsection{Character Theory \Rnum{1}}
+
+\begin{enumerate}
+  \item $\chi_\rho(1) = n$.
+  \item $\chi_\rho$ is a class function, i.e., it is constant on each
+    conjugacy class.
+  \item $\chi_\rho(g^{-1}) = \ob{\chi_\rho(g)}$: Assume that the eigenvalues
+    of $R(g)$ are $\lambda_1, \dots, \lambda_n$. Then the eigenvalues of
+    $R(g^{-1})$ are $\lambda_1^{-1}, \dots, \lambda_n^{-1}$.
+    \[
+      0 = \det(\lambda I_n - A) =
+      \det(\lambda I_n (A^{-1} - \lambda^{-1}I_n) A) =
+      \det(\lambda I_n) \det(A^{-1} - \lambda^{-1} I_n) \det(A)
+    \]
+    So $\det(A^{-1} - \lambda^{-1} I_n) = 0$.
+    Then
+  \item $\chi_{\rho \oplus \rho'} = \chi_{\rho} + \chi_{\rho'}$.
+  \item $\chi_{\rho \otimes \rho'} = \chi_{\rho} \chi_{\rho'}$.
+\end{enumerate}
+
+
+\begin{definition}
+  $\Cc(G, \Cb)$ is the vector space of complex functions on $G$.
+
+  $\chi_\rho \in \Cc(G) \subset \Cc(G, \Cb)$
+  is the vector space of complex class functions of $G$.
+\end{definition}
+
+
+\begin{remark}
+  Assume that $\{ C_1, \dots, C_k \}$ is the set of distinct conjugacy classes
+  in $G$.
+  Then $\{\, f_i(C_j) = \delta_{ij} \mid \forall i = 1, \dots, k \,\}$ forms
+  a basis for $\Cc(G)$ over $\Cb$.
+  \begin{itemize}
+    \item $\forall f \in \Cc(G)$, let $f(C_i) = a_i$, then
+      $f = \sum a_i f_i$.
+    \item $\sum a_i f_i = 0$, pick $x_j \in C_j$, then
+      $(\sum a_if_i)(x_j) = a_j = 0 \quad \forall j = 1, \dots k$.
+  \end{itemize}
+  So $\dim \Cc(G) = k$.
+\end{remark}
+
+\begin{definition}
+  $\phi, \psi \in \Cc(G, \Cb)$, then
+  \[ \inpd{\phi, \psi} \defeq \sum_{g\in G} \phi(g) \ob{\psi(g)} \]
+  is a positive definite Hermitian form on $\Cc(G, \Cb)$.
+\end{definition}
+
+\begin{theorem}[Main theorem]
+  The set of all irr. characters of $G$ forms an orthonormal basis for $\Cc(G)$
+  over $\Cb$. So there are only $k$ irr. rep. up to equivalent.
+\end{theorem}
+
+\begin{lemma}[Schur's lemma]
+  Let $\rho: G \to \text{GL}(V)$ and $\rho': G\to \text{GL}(V')$ be two irr.
+  rep. of $G$.
+  
+  一個ㄛ圖
+
+  Then
+  \begin{enumerate}
+    \item $\rho, \rho'$ are not equivalent $\implies$ ${\sf T} = 0$.
+    \item $V = V', \rho = \rho' \implies {\sf T} = \lambda 1_V$ for some
+      $\lambda \in \Cb$.
+  \end{enumerate}
+
+  \begin{proof}
+    \begin{enumerate}
+      \item Assume ${\sf T} \ne 0$. Since ${\sf T}$ is $G$-equivariant,
+        $\ker {\sf T} \le V$ and $\Image {\sf T}\le V'$ are $G$-invariant.
+
+        $\rho$ is irr $\leadsto$ $\ker {\sf T} = 0$ or $V$.
+
+        $\rho'$ is irr $\leadsto$ $\Image {\sf T} = 0$ or $V$.
+
+        ${\sf T}$ is an isom.
+
+        $\rho, \rho'$ are equivalent.
+
+      \item  Let $\lambda$ be an eigenvalue of ${\sf T}$, say
+        ${\sf T}(v) = \lambda v$ with $v \ne 0$ in $V$.
+        Put ${\sf T}' - {\sf T} - \lambda 1_V$.
+
+        Also, ㄛ圖 since $\rho(g0$ is $\Cb$-linear.
+
+        So ${\sf T}'$ is also $G$-equivariant. But $v \in \ker {\sf T}'$,
+        i.e. ${\sf T}'$ is not 1-1. By 1., ${\sf T'} = 0$.
+    \end{enumerate}
+  \end{proof}
+\end{lemma}
+
+\begin{coro}
+  $\rho, \rho'$ as above. Let ${\sf L}: V \to V'$ be a linear transformation.
+  Define
+  \[
+    {\sf T} = \frac{1}{\abs{G}} \sum_{g\in G} \rho'(g)^{-1} {\sf L} \rho(g)
+  \]
+  is $G$-equivariant. Then
+  \begin{enumerate}
+    \item $\rho, \rho'$ are not equivalent $\implies {\sf T} = 0$.
+    \item $V = V', \rho = \rho' \implies {\sf T} = \lambda 1_V,
+      \lambda \frac{\trace({\sf L})}{\dim V}$.
+  \end{enumerate}
+\end{coro}
+
+\begin{remark}
+  Let $\rho \to_\beta R: G \to \text{GL}_n(\Cb)$ and $R(g) = (r_{ij}(g))$
+
+  $\rho' \to_{\beta'} R': G \to \text{GL}_{n'}(\Cb)$ and $R'(g) = (r'_{ij}(g))$
+
+  Let ${\sf L} .....> [{\sf L}]^{\beta'}_\beta =
+  (x_{\mu\nu} \in M_{n' \times n}(\Cb)$
+
+  Then ${\sf T} ...> [{\sf T}]^{\beta'}_\beta = (x^0_{tl})$ with
+  \[
+    x^0_{tl} = \frac{1}{\abs{G}}
+    \sum_{\substack{g\in G \\ i=1,\dots, n \\ j=1,\dots, n'}}
+    r'_{tj}(g^{-1})x_{ji}r_{il}(g)
+  \]
+
+  In case 1. of coro, $x^0_{tl} = 0 \quad \forall t, l$.
+
+
+  In case 2. of coro, ${\sf T} = \lambda 1_V$, i.e.
+  $x^0_{tl} = \lambda \delta_{tl}$.
+  $\lambda = \frac{\trace({\sf L})}{n} = \frac{1}{n} \sum_{i=1}^n x_{ii}
+  = \frac{1}{n} \sum_{i,j} \delta_{ji}x_{ji}$
+
+  Hence,
+  \[
+    \frac{1}{\abs{G}} \sum_{g\in G}
+    r_{tj}(g^{-1})r_{il}(g) = \frac{1}{n} \delta_{ji}\delta_{tl}
+  \]
+\end{remark}
+
+\begin{prop} \mbox{}
+  \begin{enumerate}
+    \item If $\chi_\rho$ is irr., then $\inpd{\chi_\rho, \chi_\rhp} = 1$.
+    \item If two irr. rep. $\rho, \rho'$ are not equivalent, then
+      $\inpd{\chi_\rho, \chi_{\rho'}} = 0$.
+  \end{enumerate}
+
+  \begin{proof}
+    \begin{enumerate}
+      \item
+      \item 
+    \end{enumerate}
+  \end{proof}
+\end{prop}
+
+OMIMI above
+
+
+\begin{remark}
+  $\inpd{\chi_\rho,\chi_\rho} = 1 \implies \rho$ is irr.
+  \begin{proof}
+    We write $\rho = \rho_1^{\oplus m_1}\oplus\dots\oplus\rho^{\oplus m_l}$
+    where $\rho_1, \dots, \rho_l$ are non-equivalent irr. rep.
+    \[ \chi_\rho = \sum_{i=1}^l m_i \chi_{\rho_i} \]
+    \[
+      1 = \inpd{\chi_\rho, \chi_\rho} = \sum_{i=1}^l m_i^2
+      \implies \exists m_i = 1 \text{~and~} m_j = 0 \text{~for~} j \ne i
+    \]
+    So $\rho \cong \rho_i$.
+  \end{proof}
+\end{remark}
