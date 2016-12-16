@@ -215,8 +215,39 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
   \end{itemize}
 \end{remark}
 
-\subsubsection{Character Theory \Rnum{1}}
+\subsubsection{Character Theory \RNum{1}}
 
+Main goal: To determine all equivalence classes of irreducible representations
+of a finite group $G$.
+
+\begin{definition}
+
+\end{definition}
+
+\begin{remark} \mbox{}
+  \begin{enumerate}
+    \item $\chi_\rho$ is independent of the choice of $\beta = \{ e_i \}$
+      For another basis $\beta' = \{ e_i' \}$.
+    \item $\rho \tikz[anchor=base, baseline]{ \node(rho-equiv) {$\cong$}; }
+      \rho' \leadsto \chi_\rho = \chi_{\rho'}$.
+      \begin{tikzpicture}[overlay]
+        \node[inner sep=0pt,outer sep=0pt] (t) at ($(rho-equiv) + (2, -0.5)$) {
+           \footnotesize equivalent};
+         \path[->,shorten <= 3pt] (t.west) edge[bend left=20] 
+           ($(rho-equiv.base) + (0, -0.05)$);
+      \end{tikzpicture}
+  \end{enumerate}
+\end{remark}
+
+\begin{definition}\mbox{}
+  \begin{itemize}
+    \item The degree of $\chi_\rho$ is defined to the degree of $\rho$
+      ($ =\dim V$).
+    \item $\chi_\rho$ is an irreducible character if $\rho$ is irr.
+  \end{itemize}
+\end{definition}
+
+Basic facts:
 \begin{enumerate}
   \item $\chi_\rho(1) = n$.
   \item $\chi_\rho$ is a class function, i.e., it is constant on each
@@ -230,7 +261,10 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
       \det(\lambda I_n) \det(A^{-1} - \lambda^{-1} I_n) \det(A)
     \]
     So $\det(A^{-1} - \lambda^{-1} I_n) = 0$.
-    Then
+    Then $g^m = 1 \implies R(g)^m = I_n \implies \abs{\lambda_i} = 1
+    \implies \lambda_i^{-1} = \ob{\lambda_i}$. Thus
+    $\chi_\rho(g^{-1}) = \trace(R(g)^{-1}) =
+    \ob{\lambda_1 + \dots + \lambda_n} = \ob{\chi_\rho(g)}$.
   \item $\chi_{\rho \oplus \rho'} = \chi_{\rho} + \chi_{\rho'}$.
   \item $\chi_{\rho \otimes \rho'} = \chi_{\rho} \chi_{\rho'}$.
 \end{enumerate}
@@ -299,7 +333,7 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
         ${\sf T}(v) = \lambda v$ with $v \ne 0$ in $V$.
         Put ${\sf T}' - {\sf T} - \lambda 1_V$.
 
-        Also, ㄛ圖 since $\rho(g0$ is $\Cb$-linear.
+        Also, ㄛ圖 since $\rho(g)$ is $\Cb$-linear.
 
         So ${\sf T}'$ is also $G$-equivariant. But $v \in \ker {\sf T}'$,
         i.e. ${\sf T}'$ is not 1-1. By 1., ${\sf T'} = 0$.
@@ -353,7 +387,7 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
 
 \begin{prop} \mbox{}
   \begin{enumerate}
-    \item If $\chi_\rho$ is irr., then $\inpd{\chi_\rho, \chi_\rhp} = 1$.
+    \item If $\chi_\rho$ is irr., then $\inpd{\chi_\rho, \chi_\rho} = 1$.
     \item If two irr. rep. $\rho, \rho'$ are not equivalent, then
       $\inpd{\chi_\rho, \chi_{\rho'}} = 0$.
   \end{enumerate}
