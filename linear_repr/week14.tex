@@ -64,6 +64,12 @@ For general $G$, with $V = \bigoplus_{g\in G} \Cb e_g$,
     \item $\rho: G \toone \text{GL}(V)$: faithful representation.
     \item $\rho, \rho'$ are said to be equivalent if $\exists$ a linear isom.
       ${\sf T}: V \isoto V'$ s.t.
+      \[
+        \begin{tikzcd}
+          V \arrow[d, "\rho(g)"'] \arrow[r, "{\sf T}"', "\sim"] & V' \arrow[d, "\rho'(g)"] \\
+          V \arrow[r, "{\sf T}"', "\sim"] & V'
+        \end{tikzcd}
+      \]
   \end{itemize}
 \end{definition}
 
