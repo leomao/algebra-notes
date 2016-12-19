@@ -1,0 +1,205 @@
+%1 TEX root=../main.tex
+\section{Introduction to the linear representation theory of finite groups}
+\subsection{Week 15}
+\subsubsection{Character Theory \RNum{2}}
+
+\begin{prop}
+  Let $\rho: G\to \text{GL}(V)$ and
+  $\rho = \rho^{W_1} \oplus \dots \oplus \rho^{W_k}$ where
+  $\rho_i = \rho^{W_i}$ is irr. $\forall i$.
+  ($V \cong W_1 \oplus\dots\oplus W_k$)
+  
+  If $\tilde{\rho}: G\to \text{GL}(\tilde{W})$ is an irr. rep. then the number
+  of $\rho_i$ isomorphic to $\tilde{rho}$ is equal to
+  $\inpd{\chi_\rho, \chi_{\tilde{\rho}}}$.
+  \begin{proof}
+    We know $\chi_\rho = \chi_{\rho_1} + \dots + \chi_{\rho_k}$, so
+    \[
+      \inpd{\chi_\rho, \chi_{\tilde{\rho}}}
+      = \sum_{i=1}^k = \inpd{\chi_{\rho_i}, \chi_{\tilde{\rho}}}
+    \]
+    Recall $\rho_i \cong \tilde{\rho} \implies
+    \inpd{\chi_{\rho_i}, \chi_{\tilde{\rho}}} = 1$, otherwise 
+    $\inpd{\chi_{\rho_i}, \chi_{\tilde{\rho}}} = 0$.
+  \end{proof}
+\end{prop}
+
+\begin{remark} \mbox{}
+  \begin{enumerate}
+    \item The number of $W_i$ isomorphic to $\tilde{W}$ does not depend
+      on the chosen decomposition. ($= \inpd{\chi_\rho, \chi_{\tilde{\rho}}}$)
+    \item If $\chi_\rho = \chi_{\rho'}$, then $\rho \cong \rho'$:
+      $\inpd{\chi_\rho, \chi_{\tilde{\rho}}} = \inpd{\chi_{\rho'}, \chi_{\tilde{\rho}}}$
+      The type of irr. subrep of $\rho$ is the same as $\rho'$.
+
+    \item If $\chi_1, \dots, \chi_l$ are distinct irr. characters of $G$, then
+      since $x_1, \dots, x_l$ are orthonormal w.r.t. $\inpd{\cdot,\cdot}$ in
+      $\Cc(G)$, $x_1, \dots, x_l$ are linearly indep. over $\Cb$ in $\Cc(G)$.
+
+      But $\dim \Cc(G) = k =$ \# of conjugacy classes in $G$. So
+      $l \le k$ i.e. we conclude that there are at most $k$ mutually
+      non-equivalent irr. rep. of $G$, say $\rho_1, \dots, \rho_l, l \le k$.
+
+      For any $\rho: G\to \text{GL}(V)$,
+      $\rho \cong \rho_1^{\oplus m_1} \oplus\dots\oplus\rho_l^{\oplus m_l}$
+      where $m_i = \inpd{\chi_\rho, \chi_{\rho_i}} \in \Zb^{\ge 0}$.
+  \end{enumerate}
+\end{remark}
+
+\begin{theorem}[Orthogonality relations for $\chi$'s]
+  The set of all irr. characters of $G$ forms an orthonormal {\bf basis}
+  $\Cc(G)$ over $\Cb$. In particular, the number of irr. rep. of $G$ is equal
+  to \# of conjugacy classes in $G$. (up to equivalence)
+
+  \begin{proof}
+    Let $\chi_i = \chi_{\rho_i}, i = 1, \dots, l$ be all irr.
+    characters of $G$ and $\Dc = \gen{\chi_1, \dots, \chi_l}_\Cb
+    \subseteq \Cc(G)$. Then $\Cc(G) = \Dc \oplus \Dc^\perp$.
+    Claim: $\Dc^\perp = \{0\}$.
+
+    Let $\varphi \in \Dc^\perp$, i.e. $\inpd{\varphi, \chi_i} = 0 \quad
+    \forall i = 1,\dots, l$.
+    \begin{itemize}
+      \item For $\rho: G\to \text{GL}(V),
+        \rho \cong \rho_1^{\oplus m_1} \oplus\dots\oplus\rho_l^{\oplus m_l}$
+        with $m_i = \inpd{\chi_\rho, \chi_i}$ and
+        $\chi_\rho = m_1\chi_1 + \dots + m_k\chi_l \leadsto
+        \inpd{\varphi, \chi_\rho} = 0$.
+      \item Define ${\sf T}_\rho \in \Hom_\Cb(V, V)$ by
+        \[
+          {\sf T}_\rho = \frac{1}{\abs{G}} \sum_{g\in G}
+          \ob{\varphi(g)} \rho(g)
+          \quad \leadsto \quad
+          \trace({\sf T}) = \frac{1}{\abs{G}} \sum_{g\in G}
+          \ob{\varphi(g)} \chi_\rho(g)
+          = \ob{\inpd{\varphi, \chi_\rho}} = 0
+        \]
+        $\forall h \in G$, we need 
+        ${\sf T} = \rho(h)^{-1}\circ{\sf T}\circ\rho(h)$, and
+        \begin{align*}
+          \rho(h)^{-1}\circ{\sf T}\circ\rho(h)
+          &= \frac{1}{\abs{G}} \sum_{g\in G}
+          \ob{\varphi(g)} \rho(h)^{-1}\circ\rho(g)\circ\rho(h) \\
+          &= \frac{1}{\abs{G}} \sum_{i=1}^k
+          \ob{\varphi(g_i)} \sum_{g\in C_i} \rho(h^{-1}gh) \\
+          &= \frac{1}{\abs{G}} \sum_{i=1}^k
+          \ob{\varphi(g_i)} \sum_{g'\in C_i} \rho(g') = {\sf T}_\rho
+        \end{align*}
+        where $\{C_1, \dots, C_k\}$ is the set of distinct conjugacy
+        classes in $G$.
+      \item For $\rho = \rho_i$, by Schur's lemma,
+        ${\sf T}_{\rho_i} = \lambda_i 1_{W_i}$ where
+        $\rho_i: G\to \text{GL}(W_i)$.
+        But $\trace{{\sf T}_{\rho_i}} = 0 \implies \lambda_i = 0
+        \implies {\sf T}_{\rho_i} = 0$.
+      \item In general,
+        $\rho \cong \rho_1^{\oplus m_1} \oplus\dots\oplus\rho_l^{\oplus m_l}$,
+        so ${\sf T}_{\rho_i} = 0 \implies {\sf T}_\rho = 0$.
+
+      \item In particular, $\rho = \rho^{\text{reg}}: G\to \text{GL}(V)$ with
+        $V = \bigoplus_{g\in G} \Cb e_g$. Then
+        ${\sf T}_\rho = 0 \implies {\sf T}_\rho(e_1) = 0$ and
+        \[
+          0 = {\sf T}_\rho(e_1) = \frac{1}{\abs{G}} \sum_{g\in G}
+          \ob{\varphi(g)} \rho(g)(e_1) = \frac{1}{\abs{G}} \sum_{g\in G}
+          \ob{\varphi(g)} e_g
+        \]
+        Since $\{ e_g \}$ is a basis, $\ob{\varphi(g)} = 0 \quad \forall g$.
+        That is, $\varphi = 0$. \qedhere
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{prop}
+  Each irr. rep. $\rho_i: G\to \text{GL}(W_i)$ is contained in
+  $\rho^\text{reg}$ with multiplicity equal to $\dim W_i = m_i$,
+  $i = 1,\dots, k$.
+
+  In particular, $\bigoplus_{g\in G} \Cb e_g \cong
+  \underbrace{W_1\oplus\dots\oplus W_1}_{m_1 \text{times}} \oplus \dots \oplus
+  \underbrace{W_1\oplus\dots\oplus W_k}_{m_k \text{times}}$.
+  So $\abs{G} = m_1^2 + \dots + m_k^2$.
+
+  \begin{proof}
+    Let $\chi^\text{reg} \defeq \chi_{\rho^\text{reg}}$ and
+    $\chi_i = \chi_{\rho_i}, i = 1, \dots, k$. Then
+    \[
+      \inpd{\chi^\text{reg}, \chi_i} = \frac{1}{\abs{G}} \sum_{g\in G}
+      \chi^\text{reg}(g)\chi_i(g^{-1})
+      = \frac{1}{\abs{G}} \abs{G} \chi_i(1) = m_i
+    \]
+  \end{proof}
+\end{prop}
+
+\begin{theorem}[Divisibility]
+  $\forall i = 1, \dots, k, \quad \chi_i(1) = m_i \Div \abs{G}$.
+
+  \begin{proof} \mbox{}
+    \begin{itemize}
+      \item For $\rho=\rho_i$, $\chi = \chi_i$,
+        \[
+          \sum_{g\in C_j} \rho(g) = \frac{\abs{C_j}\chi(f_0)}{m_i}
+          \sI_{m_i} \text{~for any~} g_0 \in C_j
+        \]
+        Observe that $\forall h \in G$,
+        \[
+          \rho(h)^{-1}\circ\sT\circ\rho(h) = \sum_{g\in C_j} \rho(h^{-1}gh)
+          \sum_{g'\in C_j} \rho(g') = \sT
+        \]
+        So $\sT$ is $G$-equivariant w.r.t. $\rho$.
+        By Schur's lemma, $\sT = \lambda \sI_{m_i}$ for some $\lambda \in \Cb$.
+        And $\trace(\sT) = \sum_{g\in C_j} \chi(g) = \abs{C_j}\chi(g_0)$
+        for any $g_0 \in C_j \leadsto \sT =
+        \frac{\abs{C_j}\chi(g_0)}{\chi_i(1)} \sI$ for $g_0 \in C_j$.
+      \item $\lambda_\mu(C_j) = \frac{\abs{C_j}\chi_\mu(g_0)}{m_\mu}$ for
+        $g_0 \in C_j$ is an algebraic integer $\forall \mu, j$:
+        For $g\in C_l$, $a_{i,j,l} \defeq$ \# of $\{\, (g_i, g_j) \in C_i \times C_j \mid
+        g_ig_j = g \,\}$ which is indep. of the choice of $g$.
+
+        Claim: $\lambda_\mu(C_i)\lambda_\mu(C_j) = \sum_{l=1}^k a_{i,j,l} \lambda_\mu(C_j)
+        \quad \forall i, j, \mu$. Then $\lambda_\mu(C_j)$ is aneigenvalue of
+        $A$, i.e., $\lambda_\mu(C_j)$ satisfies $\det(\lambda I - A) = 0$.
+
+        \begin{align*}
+          \lambda_\mu(C_i)\lambda_\mu(C_j) I_{m_\mu}
+          &= \left(\lambda_\mu(C_i) I_{m_\mu}\right)
+             \left(\lambda_\mu(C_j) I_{m_\mu}\right)
+          = \left(\sum_{g\in C_i} \rho(g)\right)
+             \left(\sum_{g'\in C_j} \rho(g')\right) \\
+          &= \sum_{\substack{g\in C_i\\ g'\in C_j}} \rho(gg')
+          = \sum_{l=1}^k \sum_{\bar{g}\in C_l} a_{i,j,l}\rho(\bar{g}) \\
+          &= \sum_{l=1}^k a_{i,j,l} \sum_{\bar{g}\in C_l}\rho(\bar{g}) \\
+          &= \sum_{l=1}^k a_{i,j,l} \lambda_\mu(C_l) I_{m_\mu}
+       \end{align*}
+     \item $m_i = \chi_i(1) \Div \abs{G} \quad \forall i = 1, \dots, k$:
+       \begin{align*}
+         \frac{\abs{G}}{\chi_i(1)}
+         &= \frac{\abs{G}}{\chi_i(1)} \inpd{\chi_i, \chi_i} \\
+         &= \frac{\abs{G}}{\chi_i(1)} \frac{1}{\abs{G}} \sum_{g\in G}
+         \chi_i(g) \chi_i(g^{-1}) \\
+         &= \sum_{g\in G} \frac{\chi_i(g)}{\chi_i(1)} \chi_i(g^{-1}) \\
+         &= \sum_{j=1}^k \sum_{g\in C_j} \frac{\chi_i(g)}{\chi_i(1)} \chi_i(g^{-1}) \\
+         &= \sum_{j=1}^k \frac{\abs{C_j}\chi_i(g_j)}{\chi_i(1)} \chi_i(g_j^{-1})
+       \end{align*}
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Show that if $g\in G$ and $g\ne 1$, then
+      $\sum_{i=1}^k m_i\chi_i(g) = 0$.
+    \item Show that each character $\chi$ of $G$ with $\chi(g) = 0 \quad
+      \forall g \ne 1$ is an integral multiple of $\chi^\text{reg}$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Let $\abs{G} < \infty$. then $G$ is abelian $\iff$ each irr. rep.
+      of $G$ is of degree $1$.
+    \item $\{ \text{the $\deg 1$ rep. of $G$} \} = \{
+      \text{the irr. rep. of~} \quot{G}{[G,G]} \}$.
+  \end{enumerate}
+\end{exercise}
+
