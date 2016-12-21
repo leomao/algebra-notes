@@ -37,7 +37,7 @@
 
   \begin{enumerate}
     \item $G = \quot{\Zb}{p\Zb}$,
-      $\rho: \ob{1} :: G \mapsto s_p :: S^1$ with $s_p^p = 1$.
+      $\rho: \ob{1} :: G \mapsto \zeta_p :: S^1$ with $\zeta_p^p = 1$.
     \item $G = S_3, V = \Cb e_1 \oplus \Cb e_2 \oplus \Cb e_3$.
 
       A permutation representation is
@@ -226,13 +226,22 @@ Main goal: To determine all equivalence classes of irreducible representations
 of a finite group $G$.
 
 \begin{definition}
-
+  \[
+    \begin{tikzcd}
+      G \arrow{r}{\rho} \arrow[swap]{dr}{R}
+      & \text{GL}(V) \arrow[d, "\beta=\{e_i\}", "\rotatebox{90}{\(\sim\)}"'] \\
+      & \text{GL}_n(\Cb)
+    \end{tikzcd}
+  \]
+  The character $\chi_\rho$ if $\rho$ is the map
+  $\chi_\rho: G\to \Cb$ defined by $\chi_\rho(g) = \trace(R(g))$.
 \end{definition}
 
 \begin{remark} \mbox{}
   \begin{enumerate}
     \item $\chi_\rho$ is independent of the choice of $\beta = \{ e_i \}$
       For another basis $\beta' = \{ e_i' \}$.
+      (Notice that $\trace(BA) = \trace(AB)$)
     \item $\rho \tikz[anchor=base, baseline]{ \node(rho-equiv) {$\cong$}; }
       \rho' \leadsto \chi_\rho = \chi_{\rho'}$.
       \begin{tikzpicture}[overlay]
@@ -312,7 +321,13 @@ Basic facts:
   Let $\rho: G \to \text{GL}(V)$ and $\rho': G\to \text{GL}(V')$ be two irr.
   rep. of $G$.
   
-  一個ㄛ圖
+  \[
+    \begin{tikzcd}
+      V \arrow[d, "\rho(g)"'] \arrow[r, "{\sf T}"', "\sim"] & V' \arrow[d, "\rho'(g)"] \\
+      V \arrow[r, "{\sf T}"', "\sim"] & V'
+    \end{tikzcd}
+    \quad ({\sf T}: G\text{-equivariant})
+  \]
 
   Then
   \begin{enumerate}
@@ -321,7 +336,7 @@ Basic facts:
       $\lambda \in \Cb$.
   \end{enumerate}
 
-  \begin{proof}
+  \begin{proof} \mbox{}
     \begin{enumerate}
       \item Assume ${\sf T} \ne 0$. Since ${\sf T}$ is $G$-equivariant,
         $\ker {\sf T} \le V$ and $\Image {\sf T}\le V'$ are $G$-invariant.
@@ -397,7 +412,7 @@ Basic facts:
       $\inpd{\chi_\rho, \chi_{\rho'}} = 0$.
   \end{enumerate}
 
-  \begin{proof}
+  \begin{proof} \mbox{}
     \begin{enumerate}
       \item
       \item 
