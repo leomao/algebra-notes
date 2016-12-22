@@ -1,5 +1,4 @@
 %1 TEX root=../main.tex
-\section{Introduction to the linear representation theory of finite groups}
 \subsection{Week 15}
 \subsubsection{Character Theory \RNum{2}}
 
@@ -203,3 +202,130 @@
   \end{enumerate}
 \end{exercise}
 
+\subsubsection{Aplications}
+
+\begin{enumerate}
+  \item $G = S_3 = D_3$, $6 = 1^2 + 1^2 + 2^2$.
+    \begin{center}
+      \begin{tabular}{cccc}
+        Classes & $1$ & $\cycle{1,2}$ & $\cycle{1,2,3}$ \\
+        size & $1$ & $3$ & $2$ \\
+        \hline
+        \tikz[anchor=base, baseline]{ \node(tb-chi-1) {$\chi_1$}; }
+         & $1$ & $1$ & $1$ \\
+        \tikz[anchor=base, baseline]{ \node(tb-chi-2) {$\chi_2$}; }
+         & $1$ & $-1$ & $1$ \\
+        \tikz[anchor=base, baseline]{ \node(tb-chi-3) {$\chi_3$}; }
+         & $1$ & $1$ & $1$
+      \end{tabular}
+      %\begin{tikzpicture}[overlay]
+        %\node[inner sep=0pt,outer sep=0pt] (t) at ($(rho-equiv) + (2, -0.5)$) {
+           %\footnotesize equivalent};
+         %\path[->,shorten <= 3pt] (t.west) edge[bend left=20] 
+           %($(rho-equiv.base) + (0, -0.05)$);
+      %\end{tikzpicture}
+    \end{center}
+    The permutation representation
+
+    $\deg 4$: $\tilde{\rho} = \rho^W \otimes \rho^W \leadsto
+    \chi_{\tilde{\rho}} = \chi_3 \cdot \chi_3 = (4, 0, 1)$.
+
+    By inner product with $\chi_1, \chi_2, \chi_3$, we can find
+    $\chi_{\tilde{\rho}} = \chi_1 + \chi_2 + \chi_3 \leadsto
+    \tilde{\rho} = \rho_1\oplus\rho_2\oplus\rho_3$.
+
+  \item $G = D_4 = \gen{x, y \mid x^4=1, y^2=1, yxy^{-1} = x^{-1}}$.
+    $\abs{G} = 8 = 1^2 + 1^2 + 1^2 + 1^2 + 2^2$.
+    \begin{center}
+      \begin{tabular}{cccccc}
+        Classes & $1$ & $y$ & $x$ & $x^2$ & $xy$ \\
+        size & $1$ & $2$ & $2$ & $1$ & $2$ \\
+        \hline
+        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+        $\chi_2$ & $1$ & $-1$ & $1$ & $1$ & $-1$ \\
+        $\chi_3$ & $1$ & $1$ & $-1$ & $1$ & $-1$ \\
+        $\chi_4$ & $1$ & $-1$ & $-1$ & $1$ & $1$ \\
+        $\chi_5$ & $2$ & $0$ & $0$ & $-2$ & $0$
+      \end{tabular}
+    \end{center}
+    $\chi^\text{reg} = (8, 0, 0, 0, 0) = \chi_1 + \chi_2 + \chi_3 + \chi_4
+    + 2\chi_5$.
+  \item $G = D_n$, ($n$ even)
+    $[G, G] = H = \gen{x^2}$
+  \item $G = D_n$, ($n$ odd)
+    $[G, G] = H = \gen{x}$
+  \item $G = S_4$.
+    \begin{center}
+      \begin{tabular}{cccccc}
+        Classes & $1$ & $\cycle{1,2}$ & $\cycle{1,2,3}$ & $\cycle{1,2,3,4}$
+                & $\cycle{1,2}\cycle{3,4}$ \\
+        size & $1$ & $6$ & $8$ & $6$ & $3$ \\
+        \hline
+        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+        $\chi_2$ & $1$ & $-1$ & $1$ & $-1$ & $1$ \\
+        $\chi_3$ & $2$ & $0$ & $-1$ & $0$ & $2$ \\
+        $\chi_4$ & $3$ & $1$ & $0$ & $-1$ & $-1$ \\
+        $\chi_5$ & $3$ & $-1$ & $0$ & $1$ & $-1$
+      \end{tabular}
+    \end{center}
+  \item $G = A_4$, $[A_4, A_4] = V_4$.
+    \begin{center}
+      \begin{tabular}{ccccc}
+        Classes & $1$ & $\cycle{1,2,3}$ & $\cycle{1,3,2}$
+                & $\cycle{1,2}\cycle{3,4}$ \\
+        size & $1$ & $4$ & $4$ & $3$ \\
+        \hline
+        $\chi_1$ & $1$ & $1$ & $1$ & $1$ \\
+        $\chi_2$ & $1$ & $\omega$ & $\omega^2$ & $1$ \\
+        $\chi_3$ & $1$ & $\omega^2$ & $\omega$ & $2\rho: G\to \text{GL}(V)$ \\
+        $\chi_4$ & $3$ & $0$ & $0$ & $-1$
+      \end{tabular}
+    \end{center}
+\end{enumerate}
+
+\paragraph{Product of groups}
+Let $\rho: G\to \text{GL}(V)$ and $\rho': G'\to \text{GL}(V')$.
+$\rho\otimes\rho' : G \times G' \to \text{GL}(V\otimes V')$.
+
+\begin{itemize}
+  \item group homo.:
+  \item $\chi_{\rho\otimes \rho'} = \chi_\rho \odot \chi_{\rhi'}:
+    (g, g') \mapsto \chi_\rho(g) \chi_{\rho'}(g')$
+  \item $\rho, \rho'$ irr. $\implies$ $\rho\otimes\rho'$ irr.:
+    歉字 (證明自己跟自己內積 $=1$)
+
+  \item Each irr. rep. of $G\times G'$ is isomorphic to some
+    $\rho \otimes \rho'$.
+    \begin{proof}
+      Let $\{\rho_1,\dots,\rho_k\}, \{\rho'_1,\dots,\rho'_{k'}\}$ be the sets
+      of irr. rep. of $G, G'$ respectively.
+      Write $\chi_i = \chi_{\rho_i}, \chi_i' = \chi_{\rho'_i}$.
+      
+      Claim $\Cc(G\times G') = \gen{\chi_i, \chi_j' \mid
+      i = 1,\dots,k, j = 1,\dots,k'}_\Cb = \Dc \leadsto \Dc^\perp = \{0\}$.
+
+      Let $f \in \Dc^\perp$. By def,.
+      \[
+        \frac{1}{\abs{G\times G'}} \sum_{(g,g')\in G\times G'}
+        f(g,g')\ob{\chi_i(g)\chi_j'(g')} = 0
+      \]
+    \end{proof}
+\end{itemize}
+
+\begin{exercise}
+  Determine all irr. rep. of $C_n$.
+\end{exercise}
+
+\begin{exercise}
+  Calculate the character table of $Q_8$.
+\end{exercise}
+
+\begin{exercise}
+  Calculate the character table of $\quot{\Zb}{2\Zb}\times S_4$ and
+  $S_3\times S_4$.
+\end{exercise}
+
+\begin{exercise}
+  Calculate the character table of $Q_8$.
+\end{exercise}
+To calculate $S_5$, $\abs{S_5} = 120 = 1^2 + 1^2 + 4^2 + 4^2 + 5^2 + 5^2 + 6^2$.
