@@ -118,7 +118,19 @@ $T \circ \rho(g) = \rho'(g) \circ T$
     \inpd{x, y} \defeq \frac{1}{\abs{G}} \sum_{g\in G}
     \inpd{\rho(g)(x), \rho(g)(y)}'
   \]
-  which is a positive definite Hermitian form. (easy to check)
+  which is a positive definite Hermitian form, since
+  \begin{align*}
+    \inpd{\rho(g)x, \rho(g)y} 
+    & \triangleq
+    \frac{1}{\abs{G}} \sum_{h \in G} \inpd{(\rho(h) \circ \rho(g))(x),
+      (\rho(h) \circ \rho(g))(y)}' \\
+    & = 
+    \frac{1}{\abs{G}} \sum_{gh \triangleq h' \in G} \inpd{(\rho(h'))(x),
+      (\rho(h'))(y)}' \triangleq \inpd{x, y}
+  \end{align*}
+
+  So with the basis of this hermitian form, every $\rho(g)$ has a matrix representation
+  $R(g)$ which is unitary.
   \end{proof}
 \end{theorem}
 
@@ -166,9 +178,11 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
         \pi_1 \circ \rho(g)(V) \subset W \leadsto
         \rho(g)^{-1} \circ \pi_1 \circ \rho(g)(V) \subseteq W$.
       \item surjective: $\forall y \in W,
-        \rho(g)^{-1}\circ \pi_1 \circ\rho(g)(y) = y$ since
-        $\rho(g)(y) \in W$. Also, $(\pi^\circ)^2 = \pi^\circ$.
-        So $V = \Image \pi^\circ \oplus \ker \pi^\circ$.
+        \big(\rho(g)^{-1}\circ \pi_1 \circ\rho(g)\big) (y) =
+        \big(\rho(g)^{-1} \circ\rho(g)\big) (y) = y$ since
+        $\rho(g)(y) \in W$. Also, $\pi^\circ(y) = y, \forall y \in W \implies 
+        (\pi^\circ)^2 = \pi^\circ$.
+        So $\pi^\circ$ is a projection and hence $V = \Image \pi^\circ \oplus \ker \pi^\circ$.
       \item $G$-equivariant: $\forall g' \in G$,
         \begin{align*}
           \pi^\circ \circ \rho(g')(x)
@@ -176,7 +190,7 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
             \rho(g)^{-1}\circ\pi_1\circ\rho(g) (\rho(g')(x)) \\
           &= \rho(g') \frac{1}{\abs{G}} \sum_{gg'\in G}
             \rho(gg')^{-1}\circ\pi_1\circ\rho(gg')(x) \\
-          &= \rho(g') \circ \pi^\circ(x)
+            &= \big(\rho(g') \circ \pi^\circ\big) (x)
         \end{align*}
       \item $W^\circ \defeq \ker \pi^\circ$ is $G$-invariant:
         $\forall x \in W^\circ$, $\pi^\circ(\rho(g)(x))
@@ -200,13 +214,13 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
   Each $\rho: G\to \text{GL}(V)$ is a direct sum of irreducible
   subrepresentations.
   \begin{proof}
-    By induction on $\dim V$. For $\dim V = 1$, then $\rho$ is irr.
+    By induction on $\dim V$. For $\dim V = 1$, then $\rho$ is irreducible.
 
-    For $\dim V > 1$, if $\rho$ is irr., then done.
+    For $\dim V > 1$, if $\rho$ is irreducible, then done.
     Otherwise, $\exists W, W^\circ$ are $G$-invariant s.t.
     $V = W \oplus W^\circ$ with $\dim W \ge 1, \dim W^\circ \ge 1$.
-    By induction hypothesis, $\rho^W, \rho^{W^\circ}$ are direct sum
-    of irr. subrep., and $\rho = \rho^W \oplus \rho^{W^\circ}$, done.
+    By induction hypothesis, $\rho^W, \rho^{W^\circ}$ are the direct sum
+    of irreducible subrepresentations, and $\rho = \rho^W \oplus \rho^{W^\circ}$, done.
   \end{proof}
 \end{theorem}
 
@@ -257,7 +271,7 @@ of a finite group $G$.
   \begin{itemize}
     \item The degree of $\chi_\rho$ is defined to the degree of $\rho$
       ($ =\dim V$).
-    \item $\chi_\rho$ is an irreducible character if $\rho$ is irr.
+    \item $\chi_\rho$ is an irreducible character if $\rho$ is irreducible.
   \end{itemize}
 \end{definition}
 
@@ -313,8 +327,8 @@ Basic facts:
 \end{definition}
 
 \begin{theorem}[Main theorem]
-  The set of all irr. characters of $G$ forms an orthonormal basis for $\Cc(G)$
-  over $\Cb$. So there are only $k$ irr. rep. up to equivalent.
+  The set of all irreducible characters of $G$ forms an orthonormal basis for $\Cc(G)$
+  over $\Cb$. So there are only $k$ irreducible representations up to equivalent.
 \end{theorem}
 
 \begin{lemma}[Schur's lemma]
@@ -338,67 +352,86 @@ Basic facts:
 
   \begin{proof} \mbox{}
     \begin{enumerate}
-      \item Assume ${\sf T} \ne 0$. Since ${\sf T}$ is $G$-equivariant,
+      \item Assume ${\sf T} \ne 0$. We only needs to prove that ${\sf T}$ is an isomorphism,
+        and then $\rho, \rho'$ would be isomorphic by definition.
+        Since ${\sf T}$ is $G$-equivariant,
         $\ker {\sf T} \le V$ and $\Image {\sf T}\le V'$ are $G$-invariant.
 
-        $\rho$ is irr $\leadsto$ $\ker {\sf T} = 0$ or $V$.
+        $\rho$ is irreducible $\implies \ker {\sf T} = 0$ or $V$, but 
+        if $\ker {\sf T} = V$ then ${\sf T} = 0$, so $\ker {\sf T} = 0$.
 
-        $\rho'$ is irr $\leadsto$ $\Image {\sf T} = 0$ or $V$.
+        Similarly, $\rho'$ is irreducible $\implies \Image {\sf T} = 0$ or $V$. 
+        And by the fact that ${\sf T} \neq 0$, $\Image {\sf T} = V$.
 
-        ${\sf T}$ is an isom.
+        Thus ${\sf T}$ is an isom, and consequently $\rho, \rho'$ are equivalent.
 
-        $\rho, \rho'$ are equivalent.
-
-      \item  Let $\lambda$ be an eigenvalue of ${\sf T}$, say
+      \item  Since the vector field is over $\mathbb{C}$, ${\sf T}$ has 
+        an eigenvalue. Let $\lambda$ be an eigenvalue of ${\sf T}$, say
         ${\sf T}(v) = \lambda v$ with $v \ne 0$ in $V$.
-        Put ${\sf T}' - {\sf T} - \lambda 1_V$.
+        Put ${\sf T}' = {\sf T} - \lambda 1_V$. Then
+        \[ \rho(g) \circ {\sf T}' = \rho(g) \circ ({\sf T} - \lambda 1_V) \stackrel{*}{=}
+          \rho(g) \circ {\sf T} - \rho(g) \circ \lambda 1_V =
+          {\sf T} \circ \rho(g) - \lambda 1_V \rho(g) = {\sf T}' \rho(g) \]
+        Which * is due to the linearity of $\rho(g)$. Hence ${\sf T}'$ is
+        also G-equivariant.
 
-        Also, ㄛ圖 since $\rho(g)$ is $\Cb$-linear.
-
-        So ${\sf T}'$ is also $G$-equivariant. But $v \in \ker {\sf T}'$,
-        i.e. ${\sf T}'$ is not 1-1. By 1., ${\sf T'} = 0$.
+        But $v \in \ker {\sf T}'$, i.e., ${\sf T}'$ is not 1-1. By 1., ${\sf T'} = 0 \implies
+        T = \lambda 1_V$.
     \end{enumerate}
   \end{proof}
 \end{lemma}
 
 \begin{coro}
-  $\rho, \rho'$ as above. Let ${\sf L}: V \to V'$ be a linear transformation.
+  Assume $\rho, \rho'$ is the same as above. Let ${\sf L}: V \to V'$ be a linear transformation.
   Define
   \[
-    {\sf T} = \frac{1}{\abs{G}} \sum_{g\in G} \rho'(g)^{-1} {\sf L} \rho(g)
+    {\sf T} = \frac{1}{\abs{G}} \sum_{g\in G} \rho'(g)^{-1} {\sf L} \rho(g).
   \]
-  is $G$-equivariant. Then
+  One could easily checks that ${\sf T}$ is $G$-equivariant (i.e., ${\sf T} \circ \rho(g)
+  = \rho'(g) \circ {\sf T}$). Then
   \begin{enumerate}
     \item $\rho, \rho'$ are not equivalent $\implies {\sf T} = 0$.
-    \item $V = V', \rho = \rho' \implies {\sf T} = \lambda 1_V,
-      \lambda \frac{\trace({\sf L})}{\dim V}$.
+    \item $V = V', \rho = \rho' \implies {\sf T} = \lambda 1_V, \ 
+      \lambda = \trace({\sf T}) / \dim V = \trace({\sf L}) / \dim V$.
   \end{enumerate}
 \end{coro}
 
 \begin{remark}
-  Let $\rho \to_\beta R: G \to \text{GL}_n(\Cb)$ and $R(g) = (r_{ij}(g))$
+  Let $\rho \to_\beta R: G \to \text{GL}_n(\Cb)$ and $R(g) = \big[r_{ij}(g)\big]$
 
-  $\rho' \to_{\beta'} R': G \to \text{GL}_{n'}(\Cb)$ and $R'(g) = (r'_{ij}(g))$
+  $\rho' \to_{\beta'} R': G \to \text{GL}_{n'}(\Cb)$ and $R'(g) = \big[ r'_{ij}(g) \big]$
 
-  Let ${\sf L} .....> [{\sf L}]^{\beta'}_\beta =
-  (x_{\mu\nu} \in M_{n' \times n}(\Cb)$
+  and let the matrix representation of ${\sf L}$ is
+  $[{\sf L}]^{\beta'}_\beta = \big[ x_{\mu\nu} \big] \in M_{n' \times n}(\Cb)$
 
-  Then ${\sf T} ...> [{\sf T}]^{\beta'}_\beta = (x^0_{tl})$ with
+  Then consider the matrix representation of ${\sf T}$, which is
+  $[{\sf T}]^{\beta'}_\beta = \big[ x^\circ_{tl} \big]$ with
   \[
-    x^0_{tl} = \frac{1}{\abs{G}}
+    x^\circ_{tl} = \frac{1}{\abs{G}}
     \sum_{\substack{g\in G \\ i=1,\dots, n \\ j=1,\dots, n'}}
     r'_{tj}(g^{-1})x_{ji}r_{il}(g)
   \]
 
-  In case 1. of coro, $x^0_{tl} = 0 \quad \forall t, l$.
+  In case 1., $x^\circ_{tl} = 0, \forall t, l$. Since it hold for every {\sf L},
+  whichi is independent of $\rho, \rho'$, fixing $i, j$ and setting $x_{i, j} = 1$
+  and $0$ otherwise, we gets
+  \[ \frac{1}{\abs{G}} \sum_{g \in G} r'_{tj}(g^{-1}) r_{il}(g) = 0,
+    \quad \forall i, j, t, l \]
 
 
-  In case 2. of coro, ${\sf T} = \lambda 1_V$, i.e.
-  $x^0_{tl} = \lambda \delta_{tl}$.
+  In case 2., ${\sf T} = \lambda 1_V$, i.e.
+  $x^\circ_{tl} = \lambda \delta_{tl}$.
   $\lambda = \frac{\trace({\sf L})}{n} = \frac{1}{n} \sum_{i=1}^n x_{ii}
   = \frac{1}{n} \sum_{i,j} \delta_{ji}x_{ji}$
 
   Hence,
+  \[
+    \frac{1}{\abs{G}} \sum_{g, i, j} r'_{tj}(g^{-1}) x_{ji} r_{il}(g)
+    = \frac{1}{n} \sum_{i, j} \delta_{ji} x_{ji} \delta_{tl}
+  \]
+  But notice that this equality hold for any ${\sf L}$, which is independent of
+  $\rho, \rho'$. So if we fix $i, j$ and set $x_{ji} = 1$, and $x_{j'i'} = 0$ otherwise,
+  we get
   \[
     \frac{1}{\abs{G}} \sum_{g\in G}
     r_{tj}(g^{-1})r_{il}(g) = \frac{1}{n} \delta_{ji}\delta_{tl}
@@ -407,21 +440,34 @@ Basic facts:
 
 \begin{prop} \mbox{}
   \begin{enumerate}
-    \item If $\chi_\rho$ is irr., then $\inpd{\chi_\rho, \chi_\rho} = 1$.
-    \item If two irr. rep. $\rho, \rho'$ are not equivalent, then
+    \item If $\chi_\rho$ is irreducible, then $\inpd{\chi_\rho, \chi_\rho} = 1$.
+    \item If two irreducible representations $\rho, \rho'$ are not equivalent, then
       $\inpd{\chi_\rho, \chi_{\rho'}} = 0$.
   \end{enumerate}
 
   \begin{proof} \mbox{}
     \begin{enumerate}
       \item
+        Let $R(g) = \big[ r_{ij}(g) \big]$ be the matrix representation of $\rho(g)$. Then
+        \begin{align*}
+          \inpd{\chi_\rho, \chi_{\rho}} &\triangleq \frac{1}{\abs{G}} \sum_g \chi_\rho(g) 
+          \ob{\chi_\rho(g)} = \frac{1}{\abs{G}} \sum_g \chi_\rho(g) \chi_\rho(g^{-1}) \\
+          &= \frac{1}{\abs{G}} \sum_g \sum_{i, j} r_{ii}(g) r_{jj}(g^{-1})
+          = \sum_{i, j} \frac{1}{n} \delta_{ij} \delta_{ij} = 1
+        \end{align*}
       \item 
+        Let $R(g) = \big[ r_{ij}(g) \big], R'(g) = \big[ r'_{ij}(g) \big]$
+        be the matrix representation of $\rho(g), \rho'(g)$. Then
+        \begin{align*}
+          \inpd{\chi_\rho, \chi_{\rho'}} 
+          &\triangleq \frac{1}{\abs{G}} \sum_g \chi_\rho(g) \ob{\chi_\rho'(g)}
+          = \frac{1}{\abs{G}} \sum_g \chi_\rho(g) \chi_\rho(g^{-1}) \\
+          &= \frac{1}{\abs{G}} \sum_g \sum_{i, j} r_{ii}(g) r'_{jj}(g^{-1})
+          = 0
+        \end{align*}
     \end{enumerate}
   \end{proof}
 \end{prop}
-
-OMIMI above
-
 
 \begin{remark}
   $\inpd{\chi_\rho,\chi_\rho} = 1 \implies \rho$ is irr.
