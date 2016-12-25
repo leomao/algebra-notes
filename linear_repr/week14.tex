@@ -196,6 +196,13 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
         $\forall x \in W^\circ$, $\pi^\circ(\rho(g)(x))
         = \rho(g)(\pi^\circ(x)) = \rho(g)(0) = 0$. So
         $\rho(g)(x) \in W^\circ$.
+        \[
+          \begin{tikzcd}
+            V \arrow[d, "\rho(g)"'] \arrow[r, "\pi^\circ"] & W \arrow[d, "\rho(g)"] \\
+            V \arrow[r, "\pi^\circ"'] & W
+          \end{tikzcd}
+          \qedhere
+        \]
     \end{itemize}
   \end{proof}
 \end{theorem}
@@ -230,7 +237,7 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
     \item $\rho \oplus \rho': G \to \text{GL}(V\oplus V')$.
       矩陣是左上右下
     \item $\rho \otimes \rho': G \to \text{GL}(V\otimes V')$.
-      矩陣是密密麻麻 ($\sum_{i,j} r_ip, r_{jq}' (e_i \otimes e_j')$)
+      矩陣是密密麻麻 ($\sum_{i,j} r_{ip}, r_{jq}' (e_i \otimes e_j')$)
   \end{itemize}
 \end{remark}
 
@@ -337,8 +344,8 @@ Basic facts:
   
   \[
     \begin{tikzcd}
-      V \arrow[d, "\rho(g)"'] \arrow[r, "{\sf T}"', "\sim"] & V' \arrow[d, "\rho'(g)"] \\
-      V \arrow[r, "{\sf T}"', "\sim"] & V'
+      V \arrow[d, "\rho(g)"'] \arrow[r, "{\sf T}"'] & V' \arrow[d, "\rho'(g)"] \\
+      V \arrow[r, "{\sf T}"'] & V'
     \end{tikzcd}
     \quad ({\sf T}: G\text{-equivariant})
   \]
@@ -413,7 +420,7 @@ Basic facts:
   \]
 
   In case 1., $x^\circ_{tl} = 0, \forall t, l$. Since it hold for every {\sf L},
-  whichi is independent of $\rho, \rho'$, fixing $i, j$ and setting $x_{i, j} = 1$
+  which is independent of $\rho, \rho'$, fixing $i, j$ and setting $x_{ij} = 1$
   and $0$ otherwise, we gets
   \[ \frac{1}{\abs{G}} \sum_{g \in G} r'_{tj}(g^{-1}) r_{il}(g) = 0,
     \quad \forall i, j, t, l \]
