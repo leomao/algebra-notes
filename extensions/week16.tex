@@ -1,0 +1,245 @@
+%1 TEX root=../main.tex
+\section{Extensions of Groups}
+\subsection{Week 16}
+\subsubsection{Extensions of abelian groups}
+
+\begin{definition}
+  If a group $E$ contains a normal subgroup $N$ and $\quot{E}{N} \cong G$,
+  then we call $E$ an extension of $N$ by $G$, denoted by
+  $1 \to N \to E \to G \to 1$.
+\end{definition}
+
+\underline{Ques}: When $N$ and $G$ are given, how to obtain all extensions of
+$N$ by $G$.
+
+{\bf Now assume that $N$ is abelian.}
+
+\begin{definition}
+  $1 \to N \to E \xrightarrow{p} G \to 1$.
+  $l: G \to E $ is a lifting if $p \circ l = \text{id}_G$ and $l(1) = 1$.
+\end{definition}
+
+\begin{remark}
+  $G \cong \quot{E}{N} = \{\, xN \mid x \in E \,\}$,
+  $p \circ l(\bar{x}) = \bar{x}$, $l(\bar{x})$ is a representative of $xN = \bar{x}$.
+\end{remark}
+
+\begin{prop} \mbox{}
+  \begin{enumerate}
+    \item $\forall \bar{x}\in G, \theta_{\bar{x}}: N \to N, a \mapsto l(\bar{x})al(\bar{x})^{-1}$.
+      is independent of the choice of $l$.
+    \item $\theta: G \to \Aut(N), \bar{x} \mapsto \theta_{\bar{x}}$ is a group homomorphism.
+  \end{enumerate}
+  \begin{proof} \mbox{}
+    \begin{enumerate}
+      \item Suppose $l': G \to E$ is another lifting. Then $l(\bar{x})N = l'(\bar{x})N$.
+        So $l'(\bar{x}) = l(\bar{x})b$ for some $b \in N$.
+        $\forall a \in N$, $l'(\bar{x})al'(\bar{x})^{-1} = l(\bar{x})bab^{-1}l(\bar{x})^{-1}
+        = l(\bar{x})al(\bar{x})^{-1}$ since $N$ is abelian.
+      \item $\theta_{\bar{x}\bar{y}}(a) = l(\bar{x}\bar{y})al(\bar{x}\bar{y})^{-1}$.
+        \[
+          \begin{cases}
+            p \circ l(\bar{x}\bar{y}) = \bar{x}\bar{y} \\
+            p \circ (l(\bar{x})l(\bar{y})) = \bar{x}\bar{y}
+          \end{cases}
+          \leadsto l(\bar{x}\bar{y}), l(\bar{x})l(\bar{y})
+          \text{~are liftings of~} \bar{x}\bar{y}
+        \]
+    \end{enumerate}
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  An extension $1\to N\to E\to G\to 1$ splits if $\exists$ a lifting
+  $l: G\to E$ is a group homo.
+\end{definition}
+
+\begin{prop} TFAE
+  \begin{enumerate}
+    \item $1\to N\to E\to G\to 1$ splits.
+    \item $\exists$ a subgroup $K \le E$ s.t. $K \cong G$ and
+      $\begin{cases} K \cap N = \{1\} \\ NK = E\end{cases}
+        \leadsto E \cong N \rtimes K (N \rimes G)$.
+  \end{enumerate}
+  \begin{proof}
+    (1) $\Rightarrow$ (2): Let $K = \Image l$ which is a subgroup since $l$
+    is a group homo.
+    \begin{itemize}
+      \item $l: G \isoto K$: If $l(\bar{x}) = l(\bar{y})$, then
+        $p \circ l(\bar{x}) = p\circ l(\bar{y}) \leadsto \bar{x} = \bar{y}$.
+        So $l$ is 1-1.
+      \item $E = NK$: $\forall x \in E, \bar{x} = p(x) \leadsto
+        y = l(\bar{x})$ and $p(x) = p(y) \leadsto \exists a \in N$ s.t.
+        $x = ay$.
+      \item $K \cap N = \{1\}$:
+        $a = l(\bar{x}) \in K \cap N \leadsto 1 = p(a) = p(l(\bar{x})) = \bar{x}
+        \leadsto a = l(1) = 1$.
+    \end{itemize}
+
+    (2) $\Rightarrow$ (1):
+    \begin{itemize}
+      \item $p \big|_K: K \to G$ is an isom.:
+        onto: $p(K) = p(NK) = p(E) = G$, 1-1: $\ker(p\big|_K) = N \cap K = \{1\}$.
+      \item $l = \left(p\big|_K\right)^{-1}$ is a group homo.
+
+        \underline{Observation}: Let $l: G\to E$ be a lifting.
+        Then $E = \bigcup_{\bar{x}\in G} Nl(\bar{x}), \forall x, y \in E$,
+        write $x = al(\bar{x}), y = bl(\bar{y}), a, b\in N, \bar{x},\bar{y}\in G$.
+        \[
+          xy = (al(\bar{x})bl(\bar{y})) = al(\bar{x})bl(\bar{x})^{-1}l(\bar{x})l(\bar{y})
+          = a \theta_{\bar{x}}(b)l(\bar{x})l(\bar{y})
+        \]
+        Notice that $l(\bar{x})l(\bar{y})$ and $l(\bar{x}\bar{y})$ are liftings,
+        so we can write $l(\bar{x})l(\bar{y}) = f(\bar{x}, \bar{y})l(\bar{x}\bar{y})$
+        for some $f(\bar{x}, \bar{y})\in N$.
+    \end{itemize}
+  \end{proof}
+\end{prop}
+
+\begin{exercise}
+  $B^2(G, N) \le Z^2(G, N)$.
+\end{exercise}
+\begin{exercise}
+  Show that there are inequivalent  extensions of $N$ by $G$ with isomorphic
+  middle groups.
+  (Hint: $N=\quot{\Zb}{p\Zb}$ with $p$ is odd, $E=\quot{\Zb}{p^2\Zb}$,
+  $a:: N \mapsto x^p::E$ and please give another morphism $N\to E$ by yourself.)
+\end{exercise}
+
+\begin{definition}
+  Given $1\to N\to E\xrightarrow{p} G\to 1$ and $l: G\to E$, a factor set is
+  a function $f: G\times G \to N$ s.t.
+  $\forall \bar{x}, \bar{y}\in G, l(\bar{x})l(\bar{y})
+  = f(\bar{x}, \bar{y})l(\bar{x}, \bar{y})$.
+\end{definition}
+
+\begin{prop}
+  Let $1\to N \to E\xrightarrow{p} G\to 1$ and $l: G\to E$.
+  If $f$ is a factor set, then
+  \begin{enumerate}[(1)]
+    \item $f(\bar{x}, 1) = 1 = f(1, \bar{y}) \quad \forall \bar{x}, \bar{y}\in G$.
+    \item (cocycle identity) $\forall \bar{x},\bar{y},\bar{z}\in G,
+      f(\bar{x},\bar{y})f(\bar{x}\bar{y}, \bar{z})
+      = \theta_{\bar{x}}(f(\bar{y}, \bar{z}))f(\bar{y}, \bar{y}\bar{z})$.
+
+      (i.e. $f(\bar{x}, \bar{y}) + f(\bar{x}\bar{y},\bar{z})
+      = \bar{x}f(\bar{y},\bar{z}) + f(\bar{x}, \bar{y}\bar{z})$)
+  \end{enumerate}
+  \begin{proof} \mbox{}
+    \begin{enumerate}[(1)]
+      \item OK.
+      \item By associativity. $(l(\bar{x})l(\bar{y}))l(\bar{z}) = l(\bar{x})(l(\bar{y})l(\bar{z}))$
+    \end{enumerate}
+  \end{proof}
+  \label{prop:factor-set}
+\end{prop}
+
+\begin{theorem}
+  Let $\sigma: G \to \Aut(N), x\mapsto \sigma_x$  be a group homo. and
+  $f: G\times G\to N$ satisfies (1),(2) in Prop. \ref{prop:factor-set}.
+  Then $\exists 1\to N\to E\to G\to 1$ and $l: G\to E$ s.t. $\theta = \sigma$
+  and $f$ is the corresponding factor set.
+
+  \begin{proof}
+    \begin{itemize}
+      \item Define $E = N \times G$ equipped with the operation
+        \[
+          (a, \bar{x})(b, \bar{y}) = (a \sigma_{\bar{x}}(b)f(\bar{x},\bar{y}),
+          \bar{x}\bar{y})
+        \]
+        \begin{itemize}
+          \item associativity: mimi
+          \item indentity: $(1, 1)$.
+          \item inverse: $(a, \bar{x})^{-1} =
+            (\sigma_{\bar{x}^{-1}}(a^{-1}f(\bar{x},\bar{x}^{-1})^{-1}), \bar{x}^{-1})$.
+        \end{itemize}
+      \item $p: E\to G, (a, \bar{x}) \mapsto \bar{x}$ is a group homo by def.
+      \item $i: N\to E, a \mapsto (a, 1)$ is a group homo.
+        $(a, 1)(b, 1) = (a\sigma_1(b)f(1, 1), 1) = (ab, 1)$.
+      \item $\ker p = \Image i$.
+      \item $\Fix l: G\to E, a\in N, \bar{x}\in G$, say $l(\bar{x}) = (b, \bar{x})$.
+        \[
+          l(\bar{x})(a, 1)l(\bar{x})^{-1} = \text{ㄛ密密}
+          = (\sigma_{\bar{x}}(a), 1)
+        \]
+        So $\theta_{\bar{x}} = \sigma_{\bar{x}}$.
+      \item Let $l: G\to E, \bar{x}\mapsto (1, \bar{x})$.
+        Check $l(\bar{x})l(\bar{y})l(\bar{x}\bar{y})^{-1} = (f(\bar{x},\bar{y}), 1)$.
+        Then $f$ is the corresponding factor set.
+        \qedhere
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{prop}
+  Let $1\to N\to E \xrightarrow{p}G \to 1$ with two liftings
+  $l_1: G \to E, l_2: G\to E$ with $f_1: G\times G\to N, f_2: G\times G\to N$
+  respectively.
+
+  Then $\exists h: G\to N$ with $h(1) = 1$ and $\forall \bar{x},\bar{y}\in G,
+  f_2(\bar{x}, \bar{y})f_1(\bar{x},\bar{y})^{-1}
+  = \theta_{\bar{x}}(h(\bar{y}))h(\bar{x}\bar{y})^{-1}h(\bar{x})$.
+  ($\tilde{h}: G\times G \to N, (\bar{x},\bar{y}) \mapsto
+  \bar{x}h(\bar{y}) - h(\bar{x}\bar{y}) + h(\bar{x})$: coboundary)
+
+  ($f_2(\bar{x},\bar{y}) - f_1(\bar{x},\bar{y}) = \bar{x}h(\bar{y}) - h(\bar{x}\bar{y}) + h(\bar{x})$)
+
+  \begin{proof}
+    For $\bar{x}\in G$, $\exists h(\bar{x}) \in N$ s.t.
+    $l_2(\bar{x}) = h(\bar{x})l_1(\bar{x})$.
+    Since $l_1(1) = l_2(1) = 1$, $h(1) = 1$.
+
+    Now, $l_2(\bar{x})l_2(\bar{y})$... mimi
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  $Z^2(G, N) =$ the abelian group of all factor sets.
+  
+  $B^2(G, N) =$ the abelian group of all coboundary maps.
+
+  $H^2(G, N) = \quot{Z^2(G, N)}{B^2(G, N)}$
+\end{definition}
+
+\begin{definition}
+  Two extensions $\begin{cases}
+    1\to N\to E\to G\to 1 \\
+    1\to N\to E'\to G\to 1
+  \end{cases}$
+  are equivalent if $\exists E \to E'$ s.t.
+  \[
+  \]
+  (密圖)
+\end{definition}
+
+\begin{theorem}
+  Two extensions $\begin{cases}
+    1\to N\to E\to G\to 1 \\
+    1\to N\to E'\to G\to 1
+  \end{cases}$ are equivalent $\iff$ 
+
+  \begin{proof}
+    ``$\Rightarrow$'': Choose $l: G\to E \leadsto f: G\times G \to N$.
+    Define $l': G\to E'$ by $l' = \varphi \circ l \circ 1_G \leadsto
+    f': G\times G \to N$.
+    \begin{exercise} \mbox{}
+      \begin{enumerate}[(1)]
+        \item Show that $f' - f \in B^2(G, N)$.
+        \item Show all details of the following steps:
+          \begin{itemize}
+            \item $\begin{cases}
+                1\to N\to E\to G\to 1 \\
+                1\to N\to E'\to G\to 1
+              \end{cases}$ are equivalent.
+            \item Similarly $\begin{cases}
+                1\to N\to E\to G\to 1 \\
+                1\to N\to E(N, G, f', \theta')\to G\to 1
+              \end{cases}$ are equivalent.
+            \item $f'-f \leadsto h:G\to N$,
+          \end{itemize}
+      \end{enumerate}
+    \end{exercise}
+  \end{proof}
+
+\end{theorem}
+
