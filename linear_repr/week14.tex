@@ -43,7 +43,7 @@
       A permutation representation is
       $\rho: \tau :: S_3 \mapsto (\rho(\tau): e_i \mapsto e_{\tau(i)})
       :: \text{GL}(V)$.
-      
+
     \item $G = S_3, V = \bigoplus_{\sigma \in S_3} \Cb e_{\sigma}$.
       The regular representation is
       \[ \rho^{\text{reg}}: \tau :: G \mapsto
@@ -120,11 +120,11 @@ $T \circ \rho(g) = \rho'(g) \circ T$
   \]
   which is a positive definite Hermitian form, since
   \begin{align*}
-    \inpd{\rho(g)x, \rho(g)y} 
+    \inpd{\rho(g)x, \rho(g)y}
     & \triangleq
     \frac{1}{\abs{G}} \sum_{h \in G} \inpd{(\rho(h) \circ \rho(g))(x),
       (\rho(h) \circ \rho(g))(y)}' \\
-    & = 
+    & =
     \frac{1}{\abs{G}} \sum_{gh \triangleq h' \in G} \inpd{(\rho(h'))(x),
       (\rho(h'))(y)}' \triangleq \inpd{x, y}
   \end{align*}
@@ -166,7 +166,7 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
   \begin{proof}
     We can pick an arbitrary $W'$ with $V = W \oplus W'$ and
     $\pi_1: V \to W$ is the projection to $W$. Then $W' = \ker \pi_1$.
-    
+
     Now we need $\pi_1$ preserves the $G$ action ($G$-equivariant).
     Define
     \[
@@ -180,7 +180,7 @@ $W$ is $G$-invariant $\leadsto$ $\rho(g) \big|_W: W \isoto W$.
       \item surjective: $\forall y \in W,
         \big(\rho(g)^{-1}\circ \pi_1 \circ\rho(g)\big) (y) =
         \big(\rho(g)^{-1} \circ\rho(g)\big) (y) = y$ since
-        $\rho(g)(y) \in W$. Also, $\pi^\circ(y) = y, \forall y \in W \implies 
+        $\rho(g)(y) \in W$. Also, $\pi^\circ(y) = y, \forall y \in W \implies
         (\pi^\circ)^2 = \pi^\circ$.
         So $\pi^\circ$ is a projection and hence $V = \Image \pi^\circ \oplus \ker \pi^\circ$.
       \item $G$-equivariant: $\forall g' \in G$,
@@ -268,7 +268,7 @@ of a finite group $G$.
       \begin{tikzpicture}[overlay]
         \node[inner sep=0pt,outer sep=0pt] (t) at ($(rho-equiv) + (2, -0.5)$) {
            \footnotesize equivalent};
-         \path[->,shorten <= 3pt] (t.west) edge[bend left=20] 
+         \path[->,shorten <= 3pt] (t.west) edge[bend left=20]
            ($(rho-equiv.base) + (0, -0.05)$);
       \end{tikzpicture}
   \end{enumerate}
@@ -341,7 +341,7 @@ Basic facts:
 \begin{lemma}[Schur's lemma]
   Let $\rho: G \to \text{GL}(V)$ and $\rho': G\to \text{GL}(V')$ be two irr.
   rep. of $G$.
-  
+
   \[
     \begin{tikzcd}
       V \arrow[d, "\rho(g)"'] \arrow[r, "{\sf T}"'] & V' \arrow[d, "\rho'(g)"] \\
@@ -364,15 +364,15 @@ Basic facts:
         Since ${\sf T}$ is $G$-equivariant,
         $\ker {\sf T} \le V$ and $\Image {\sf T}\le V'$ are $G$-invariant.
 
-        $\rho$ is irreducible $\implies \ker {\sf T} = 0$ or $V$, but 
+        $\rho$ is irreducible $\implies \ker {\sf T} = 0$ or $V$, but
         if $\ker {\sf T} = V$ then ${\sf T} = 0$, so $\ker {\sf T} = 0$.
 
-        Similarly, $\rho'$ is irreducible $\implies \Image {\sf T} = 0$ or $V$. 
+        Similarly, $\rho'$ is irreducible $\implies \Image {\sf T} = 0$ or $V$.
         And by the fact that ${\sf T} \neq 0$, $\Image {\sf T} = V$.
 
         Thus ${\sf T}$ is an isom, and consequently $\rho, \rho'$ are equivalent.
 
-      \item  Since the vector field is over $\mathbb{C}$, ${\sf T}$ has 
+      \item  Since the vector field is over $\mathbb{C}$, ${\sf T}$ has
         an eigenvalue. Let $\lambda$ be an eigenvalue of ${\sf T}$, say
         ${\sf T}(v) = \lambda v$ with $v \ne 0$ in $V$.
         Put ${\sf T}' = {\sf T} - \lambda 1_V$. Then
@@ -398,7 +398,7 @@ Basic facts:
   = \rho'(g) \circ {\sf T}$). Then
   \begin{enumerate}
     \item $\rho, \rho'$ are not equivalent $\implies {\sf T} = 0$.
-    \item $V = V', \rho = \rho' \implies {\sf T} = \lambda 1_V, \ 
+    \item $V = V', \rho = \rho' \implies {\sf T} = \lambda 1_V, \
       \lambda = \trace({\sf T}) / \dim V = \trace({\sf L}) / \dim V$.
   \end{enumerate}
 \end{coro}
@@ -457,16 +457,16 @@ Basic facts:
       \item
         Let $R(g) = \big[ r_{ij}(g) \big]$ be the matrix representation of $\rho(g)$. Then
         \begin{align*}
-          \inpd{\chi_\rho, \chi_{\rho}} &\triangleq \frac{1}{\abs{G}} \sum_g \chi_\rho(g) 
+          \inpd{\chi_\rho, \chi_{\rho}} &\triangleq \frac{1}{\abs{G}} \sum_g \chi_\rho(g)
           \ob{\chi_\rho(g)} = \frac{1}{\abs{G}} \sum_g \chi_\rho(g) \chi_\rho(g^{-1}) \\
           &= \frac{1}{\abs{G}} \sum_g \sum_{i, j} r_{ii}(g) r_{jj}(g^{-1})
           = \sum_{i, j} \frac{1}{n} \delta_{ij} \delta_{ij} = 1
         \end{align*}
-      \item 
+      \item
         Let $R(g) = \big[ r_{ij}(g) \big], R'(g) = \big[ r'_{ij}(g) \big]$
         be the matrix representation of $\rho(g), \rho'(g)$. Then
         \begin{align*}
-          \inpd{\chi_\rho, \chi_{\rho'}} 
+          \inpd{\chi_\rho, \chi_{\rho'}}
           &\triangleq \frac{1}{\abs{G}} \sum_g \chi_\rho(g) \ob{\chi_\rho'(g)}
           = \frac{1}{\abs{G}} \sum_g \chi_\rho(g) \chi_\rho(g^{-1}) \\
           &= \frac{1}{\abs{G}} \sum_g \sum_{i, j} r_{ii}(g) r'_{jj}(g^{-1})

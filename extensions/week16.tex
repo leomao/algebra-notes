@@ -44,6 +44,7 @@ $N$ by $G$.
           \end{cases}
           \leadsto l(\bar{x}\bar{y}), l(\bar{x})l(\bar{y})
           \text{~are liftings of~} \bar{x}\bar{y}
+          \qedhere
         \]
     \end{enumerate}
   \end{proof}
@@ -59,7 +60,7 @@ $N$ by $G$.
     \item $1\to N\to E\to G\to 1$ splits.
     \item $\exists$ a subgroup $K \le E$ s.t. $K \cong G$ and
       $\begin{cases} K \cap N = \{1\} \\ NK = E\end{cases}
-        \leadsto E \cong N \rtimes K (N \rimes G)$.
+        \leadsto E \cong N \rtimes K (N \rtimes G)$.
   \end{enumerate}
   \begin{proof}
     (1) $\Rightarrow$ (2): Let $K = \Image l$ which is a subgroup since $l$
@@ -92,6 +93,7 @@ $N$ by $G$.
         Notice that $l(\bar{x})l(\bar{y})$ and $l(\bar{x}\bar{y})$ are liftings,
         so we can write $l(\bar{x})l(\bar{y}) = f(\bar{x}, \bar{y})l(\bar{x}\bar{y})$
         for some $f(\bar{x}, \bar{y})\in N$.
+        \qedhere
     \end{itemize}
   \end{proof}
 \end{prop}
@@ -129,6 +131,7 @@ $N$ by $G$.
     \begin{enumerate}[(1)]
       \item OK.
       \item By associativity. $(l(\bar{x})l(\bar{y}))l(\bar{z}) = l(\bar{x})(l(\bar{y})l(\bar{z}))$
+        \qedhere
     \end{enumerate}
   \end{proof}
   \label{prop:factor-set}
@@ -195,7 +198,7 @@ $N$ by $G$.
 
 \begin{definition}
   $Z^2(G, N) =$ the abelian group of all factor sets.
-  
+
   $B^2(G, N) =$ the abelian group of all coboundary maps.
 
   $H^2(G, N) = \quot{Z^2(G, N)}{B^2(G, N)}$
@@ -206,17 +209,26 @@ $N$ by $G$.
     1\to N\to E\to G\to 1 \\
     1\to N\to E'\to G\to 1
   \end{cases}$
-  are equivalent if $\exists E \to E'$ s.t.
+  are equivalent if $\exists E \xrightarrow[\varphi]{\sim} E'$ s.t.
   \[
+    \begin{tikzcd}
+      1 \arrow[r]
+      & N \arrow[d, "1_N"] \arrow[r]
+      & E \arrow[d, "\rotatebox{90}{\(\sim\)}", "\varphi"'] \arrow[r]
+      & G \arrow[d, "1_G"] \arrow[r]
+      & 1 \\
+      1 \arrow[r] & N \arrow[r] & E \arrow[r] & G \arrow[r] & 1
+    \end{tikzcd}
   \]
-  (密圖)
 \end{definition}
 
 \begin{theorem}
   Two extensions $\begin{cases}
     1\to N\to E\to G\to 1 \\
     1\to N\to E'\to G\to 1
-  \end{cases}$ are equivalent $\iff$ 
+  \end{cases}$ are equivalent \\ $\iff$
+  $\exists l: G\to E, l': G\to E'$ with $f, f'$ respectively s.t.
+  $f - f' \in B^2(G, N)$.
 
   \begin{proof}
     ``$\Rightarrow$'': Choose $l: G\to E \leadsto f: G\times G \to N$.
@@ -225,7 +237,7 @@ $N$ by $G$.
     \begin{exercise} \mbox{}
       \begin{enumerate}[(1)]
         \item Show that $f' - f \in B^2(G, N)$.
-        \item Show all details of the following steps:
+        \item ``$\Leftarrow$'': Show all details of the following steps:
           \begin{itemize}
             \item $\begin{cases}
                 1\to N\to E\to G\to 1 \\
@@ -237,9 +249,9 @@ $N$ by $G$.
               \end{cases}$ are equivalent.
             \item $f'-f \leadsto h:G\to N$,
           \end{itemize}
+          \qedhere
       \end{enumerate}
     \end{exercise}
   \end{proof}
-
 \end{theorem}
 

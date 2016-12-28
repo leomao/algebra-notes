@@ -7,7 +7,7 @@
   $\rho = \rho^{W_1} \oplus \dots \oplus \rho^{W_k}$ where
   $\rho_i = \rho^{W_i}$ is irr. $\forall i$.
   ($V \cong W_1 \oplus\dots\oplus W_k$)
-  
+
   If $\tilde{\rho}: G\to \text{GL}(\tilde{W})$ is an irr. rep. then the number
   of $\rho_i$ isomorphic to $\tilde{\rho}$ is equal to
   $\inpd{\chi_\rho, \chi_{\tilde{\rho}}}$.
@@ -18,7 +18,7 @@
       = \sum_{i=1}^k \inpd{\chi_{\rho_i}, \chi_{\tilde{\rho}}}
     \]
     Recall $\rho_i \cong \tilde{\rho} \implies
-    \inpd{\chi_{\rho_i}, \chi_{\tilde{\rho}}} = 1$, otherwise 
+    \inpd{\chi_{\rho_i}, \chi_{\tilde{\rho}}} = 1$, otherwise
     $\inpd{\chi_{\rho_i}, \chi_{\tilde{\rho}}} = 0$.
   \end{proof}
 \end{prop}
@@ -67,7 +67,7 @@
       \[
         {\sf T}_{\rho_i} \triangleq
         \frac{1}{\abs{G}} \sum_{g\in G} \ob{\varphi(g)} \rho_i(g)
-      \] 
+      \]
     Then we have
       \[
         \trace({\sf T}_{\rho_i}) =
@@ -98,7 +98,7 @@
         \implies \mathsf{T}_{\rho^{\text{reg}}}
         = \mathsf{T}^{\oplus m_1}_{\rho_1} \oplus \cdots \oplus
         \mathsf{T}^{\oplus m_k}_{\rho_k} = 0
-      \] 
+      \]
 
       Finally, let $\rho = \rho^{\text{reg}}: G\to \text{GL}(V)$ with
       $V = \bigoplus_{g\in G} \Cb e_g$.
@@ -155,14 +155,14 @@
     And $\lambda = \trace(\sT) / m_i = \sum_{g\in C_j} \chi(g) / m_i = \abs{C_j}\chi(g_0) / m_i$
     for any $g_0 \in C_j$, thus $\sum_{g \in C_j} \rho(g) = \frac{\abs{C_j}\chi(g_0)}{m_j} \sI$
     for any $g_0 \in C_j$.
-    
+
     Define $\lambda_\mu(C_i) \triangleq \abs{C_i}\chi_\mu(g_i) / m_\mu$.
     Now, for a $g \in C_l$, define $a_{i,j,l} \triangleq \# \{\, (g_i, g_j) \in C_i \times C_j \mid
     g_ig_j = g \,\}$, which is indep. of the choice of $g$.
 
     We claim that $\lambda_\mu(C_i)\lambda_\mu(C_j) = \sum_{l=1}^k a_{i,j,l} \lambda_\mu(C_j)
-    ,\forall i, j, \mu$. Then 
-    \[ \lambda_\mu(C_i) 
+    ,\forall i, j, \mu$. Then
+    \[ \lambda_\mu(C_i)
       \begin{bmatrix}
         \lambda_\mu(C_1) \\
         \vdots \\
@@ -252,7 +252,7 @@
       %\begin{tikzpicture}[overlay]
         %\node[inner sep=0pt,outer sep=0pt] (t) at ($(rho-equiv) + (2, -0.5)$) {
            %\footnotesize equivalent};
-         %\path[->,shorten <= 3pt] (t.west) edge[bend left=20] 
+         %\path[->,shorten <= 3pt] (t.west) edge[bend left=20]
            %($(rho-equiv.base) + (0, -0.05)$);
       %\end{tikzpicture}
     \end{center}
@@ -329,10 +329,10 @@ representations of $G \times G'$.
   Notice that $\chi_{\rho \otimes \rho'} = \chi_\rho \odot \chi_{\rho'}$ where
   $\chi_\rho \odot \chi_{\rho'}(g, g') = \chi_\rho(g) \chi_{\rho'}(g')$
 
-  Now we calculate 
+  Now we calculate
   \begin{align*}
     \inpd{\chi_{\rho_1} \otimes \chi_{\rho'_1}, \chi_{\rho_2} \otimes \chi_{\rho'_2}}
-    &= \frac{1}{\abs{G}\abs{G'}} \sum_{g, g'} \chi_{\rho_1}(g) \chi_{\rho'_1}(g') 
+    &= \frac{1}{\abs{G}\abs{G'}} \sum_{g, g'} \chi_{\rho_1}(g) \chi_{\rho'_1}(g')
     \chi_{\rho_2}(g) \chi_{\rho'_2}(g')  \\
     &= \left( \frac{1}{\abs{G}} \sum_{g} \chi_{\rho_1}(g) \chi_{\rho_2}(g) \right)
     \left( \frac{1}{\abs{G'}} \sum_{g'} \chi_{\rho'_1}(g') \chi_{\rho'_2}(g') \right) \\
@@ -341,7 +341,7 @@ representations of $G \times G'$.
 
   So $\inpd{\chi_{\rho} \otimes \chi_{\rho'}, \chi_{\rho} \otimes \chi_{\rho'}} = 1$ hence
   each $\chi_{\rho} \otimes \chi_{\rho'}$ is irreducible.
-  And $\inpd{\chi_{\rho_1} \otimes \chi_{\rho'_1}, \chi_{\rho_2} \otimes \chi_{\rho'_2}} = 0$ 
+  And $\inpd{\chi_{\rho_1} \otimes \chi_{\rho'_1}, \chi_{\rho_2} \otimes \chi_{\rho'_2}} = 0$
   if $\rho_1 \otimes \rho'_1 \neq \rho_2 \otimes \rho'_2$, and thus these representations are
   not isomorphic.
 
@@ -364,7 +364,7 @@ representations of $G \times G'$.
   \end{align*}
   Since $\rho'_j$ are othonogal basis of $\Cc(G')$, we have $\frac{1}{\abs{G}} \sum_g f(g, g') \ob{\chi_i(g)}
   = 0$ for all $g'$.
-  Again, 
+  Again,
   \[ 0 = \frac{1}{\abs{G}} \sum_g f(g, g') \ob{\chi_i(g)} = \inpd{f(\cdot, g'), \chi_i(g)} \]
   Hence $f(g, g') = 0$ for all $g, g'$, which implies $f \equiv 0$.
 \end{proof}
