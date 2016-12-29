@@ -423,3 +423,62 @@ $\quot{\Stab_E(G, N)}{\Inn_E(G, N)} \cong \quot{\Der(G, N)}{\PDer(G, N)}
     r\left(\sum_{g\in G} r_g g\right) = \sum_{g\in G} (rr_g) g
   \end{gather*}
 \end{definition}
+
+\begin{remark} \mbox{}
+  \begin{enumerate}
+    \item
+      \begin{itemize}
+        \item $\{ \rho: G\to \text{GL}(V) \} \leftrightarrow
+          \{ V: \Cb[G]\text{-module} \}$.
+        \item $\rho$: irr $\leftrightarrow$
+          $V:$ simple $\Cb[G]$-module (i.e. no nontrivial proper submodule)
+        \item $W \subset V$: $G$-invariant $\leftrightarrow$
+          $W: \Cb[G]$-submodule.
+      \end{itemize}
+    \item $N$: abelian $\leadsto N: \Zb$-module and $G \acts N$. $\implies$
+      $N: \Zb[G]$-module.
+  \end{enumerate}
+\end{remark}
+
+\begin{definition}
+  $G \acts \Zb$ trivially. i.e. $g\cdot n = n \quad \forall g \in G,
+  n \in \Zb$, then $\Zb: \Zb[G]$-module.
+
+  \begin{itemize}
+    \item $B_0 = \Zb[G][~]$: the free $\Zb[G]$-module on the symbol $[~]$.
+    \item $B_1 = \bigoplus_{u\in G} \Zb[G][u]$: the free $\Zb[G]$-module on the
+      set $G$.
+    \item $B_2 = \bigoplus_{u, v\in G} \Zb[G][u|v]$: the free
+      $\Zb[G]$-module on the set $G \times G$.
+    \item $B_3 = \bigoplus_{u, v, w\in G} \Zb[G][u|v|w]$: the free
+      $\Zb[G]$-module on the set $G \times G \times G$.
+  \end{itemize}
+\end{definition}
+
+
+...
+
+Now apply $\Hom(\cdot, N)$ to it:
+
+...
+
+\begin{theorem}
+  $\Ext^1_{\Zb[G]}(\Zb, N) \defeq \quot{\ker d_2^*}{\ker d_1^*}
+  \cong \quot{\Der(G, N)}{\PDer(G, N)} = H^1(G, N)$.
+  \begin{proof} \mbox{}
+    \begin{itemize}
+      \item $g\in \ker d_2^* \subseteq \Hom(B_1, N) \implies g\circ d_2 = 0$.
+        ...
+      \item ...
+      \item Let $t\in \Hom(B_0, N)$, say $t([~]) = a_0 \in N$.
+        \[ d_1^*(t)([u]) = t\circ d_1([u]) = t(u[~]-[~]) = ut([~])-t([~])
+        = ua_0 - a_0 \]
+        Then $d(u) \defeq d_1^*(t)([u]) \implies d \in \PDer(G, N)$.
+      \item ...
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  $\Ext^2_{\Zb[G]}(\Zb, N) \cong H^2(G, N)$.
+\end{remark}
