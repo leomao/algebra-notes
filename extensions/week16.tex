@@ -60,13 +60,13 @@ $N$ by $G$.
     \item $1\to N\to E\to G\to 1$ splits.
     \item $\exists$ a subgroup $K \le E$ s.t. $K \cong G$ and
       $\begin{cases} K \cap N = \{1\} \\ NK = E\end{cases}
-        \leadsto E \cong N \rtimes K (N \rtimes G)$.
+      \leadsto E \cong N \rtimes K (\cong N \rtimes G)$.
   \end{enumerate}
   \begin{proof}
     (1) $\Rightarrow$ (2): Let $K = \Image l$ which is a subgroup since $l$
     is a group homo.
     \begin{itemize}
-      \item $l: G \isoto K$: If $l(\bar{x}) = l(\bar{y})$, then
+      \item $l$ is an isomorphism from $G$ to $K$: If $l(\bar{x}) = l(\bar{y})$, then
         $p \circ l(\bar{x}) = p\circ l(\bar{y}) \leadsto \bar{x} = \bar{y}$.
         So $l$ is 1-1.
       \item $E = NK$: $\forall x \in E, \bar{x} = p(x) \leadsto
@@ -112,25 +112,29 @@ $N$ by $G$.
   Given $1\to N\to E\xrightarrow{p} G\to 1$ and $l: G\to E$, a factor set is
   a function $f: G\times G \to N$ s.t.
   $\forall \bar{x}, \bar{y}\in G, l(\bar{x})l(\bar{y})
-  = f(\bar{x}, \bar{y})l(\bar{x}, \bar{y})$.
+  = f(\bar{x}, \bar{y})l(\bar{x}\bar{y})$.
 \end{definition}
 
 \begin{prop}
   Let $1\to N \to E\xrightarrow{p} G\to 1$ and $l: G\to E$.
   If $f$ is a factor set, then
   \begin{enumerate}[(1)]
-    \item $f(\bar{x}, 1) = 1 = f(1, \bar{y}) \quad \forall \bar{x}, \bar{y}\in G$.
-    \item (cocycle identity) $\forall \bar{x},\bar{y},\bar{z}\in G,
-      f(\bar{x},\bar{y})f(\bar{x}\bar{y}, \bar{z})
-      = \theta_{\bar{x}}(f(\bar{y}, \bar{z}))f(\bar{y}, \bar{y}\bar{z})$.
+    \item $f(x, 1) = 1 = f(1, y) \quad \forall x, y\in G$.
+    \item (cocycle identity) $\forall x,y,z\in G,
+      f(x,y)f(xy, z)
+      = \theta_{x}(f(y, z))f(x, yz)$.
 
-      (i.e. $f(\bar{x}, \bar{y}) + f(\bar{x}\bar{y},\bar{z})
-      = \bar{x}f(\bar{y},\bar{z}) + f(\bar{x}, \bar{y}\bar{z})$)
+      (i.e. $f(x, y) + f(xy,z)
+      = xf(y,z) + f(x, yz)$)
   \end{enumerate}
   \begin{proof} \mbox{}
     \begin{enumerate}[(1)]
-      \item OK.
-      \item By associativity. $(l(\bar{x})l(\bar{y}))l(\bar{z}) = l(\bar{x})(l(\bar{y})l(\bar{z}))$
+      \item Trivial since $l(x)l(1) = l(1 \cdot x)$.
+      \item By associativity. $(l(x)l(y))l(z) = l(x)(l(y)l(z))$. \\
+        $(l(x)l(y))l(z) = f(x, y) l(xy) l(z) = f(x, y) f(xy, z) l(xyz)$, and \\
+        $l(x)(l(y)l(z)) = l(x) f(y, z) l(yz) = l(x) f(y, z) l^{-1}(x) l(x) l(yz)
+        = \theta_x(f(y, z)) f(x, yz) l(xyz)$.
+        Thus $f(x, y) f(xy, z) = \theta_x(f(y, z)) f(x, yz)$.
         \qedhere
     \end{enumerate}
   \end{proof}
@@ -147,27 +151,43 @@ $N$ by $G$.
     \begin{itemize}
       \item Define $E = N \times G$ equipped with the operation
         \[
-          (a, \bar{x})(b, \bar{y}) = (a \sigma_{\bar{x}}(b)f(\bar{x},\bar{y}),
-          \bar{x}\bar{y})
+          (a, x)(b, y) = (a \sigma_{x}(b)f(x,y),
+          xy)
         \]
         \begin{itemize}
-          \item associativity: mimi
+          \item associativity:
+            \begin{align*}
+              \big( (a, x) (b, y) \big) (c, z) &= (a \sigma_x(b) f(x, y), xy) (c, z) \\
+              &= (a \sigma_x(b) f(x, y) \sigma_{xy}(c) f(xy, z), xyz) \\
+              &= (a \sigma_x(b) \sigma_{xy}(c) f(x, y) f(xy, z), xyz) \quad (\because N \text{ abelian})
+            \end{align*}
+            and
+            \begin{align*}
+              (a, x) \big( (b, y) (c, z) \big) &= (a, x) (b \sigma_y(c) f(y, z)) \\ 
+              &= \big( a \sigma_x \big( b \sigma_y(c) f(y, z) \big) f(x, yz), xyz \big) \\
+              &= \big( a \sigma_x ( b ) \sigma_{xy}(c) \sigma_x(f(y, z)) f(x, yz), xyz \big) \\
+              &= \big( a \sigma_x ( b ) \sigma_{xy}(c) f(x, y) f(xy, z), xyz \big) \\
+            \end{align*}
           \item indentity: $(1, 1)$.
-          \item inverse: $(a, \bar{x})^{-1} =
-            (\sigma_{\bar{x}^{-1}}(a^{-1}f(\bar{x},\bar{x}^{-1})^{-1}), \bar{x}^{-1})$.
+          \item inverse: $(a, x)^{-1} =
+            (\sigma_{x^{-1}}(a^{-1}f(x,x^{-1})^{-1}), x^{-1})$.
         \end{itemize}
-      \item $p: E\to G, (a, \bar{x}) \mapsto \bar{x}$ is a group homo by def.
+      \item $p: E\to G, (a, x) \mapsto x$ is a group homo by def.
       \item $i: N\to E, a \mapsto (a, 1)$ is a group homo.
         $(a, 1)(b, 1) = (a\sigma_1(b)f(1, 1), 1) = (ab, 1)$.
       \item $\ker p = \Image i$.
-      \item $\Fix l: G\to E, a\in N, \bar{x}\in G$, say $l(\bar{x}) = (b, \bar{x})$.
-        \[
-          l(\bar{x})(a, 1)l(\bar{x})^{-1} = \text{ㄛ密密}
-          = (\sigma_{\bar{x}}(a), 1)
-        \]
-        So $\theta_{\bar{x}} = \sigma_{\bar{x}}$.
-      \item Let $l: G\to E, \bar{x}\mapsto (1, \bar{x})$.
-        Check $l(\bar{x})l(\bar{y})l(\bar{x}\bar{y})^{-1} = (f(\bar{x},\bar{y}), 1)$.
+      \item $\Fix l: G\to E, a\in N, x\in G$, say $l(x) = (b, x)$.
+        \begin{align*}
+          l(x)(a, 1)l(x)^{-1}
+          &= (b, x) (a, 1) (b, x)^{-1} = (b \sigma_x(a) , x)
+          \big(\sigma_{x^{-1}}(a^{-1}f(x,x^{-1})^{-1}), x^{-1} \big) \\
+          &= (b \sigma_{x}(a) \cdot (\sigma_x \circ \sigma_{x^{-1}}) \big( b^{-1} f(x, x^{-1})^{-1} \big)
+          \cdot f(x, x^{-1}), 1) \\
+          &= (\sigma_x(a), 1)
+        \end{align*}
+        So $\theta_{x} = \sigma_{x}$.
+      \item Let $l: G\to E, x\mapsto (1, x)$.
+        Check $l(x)l(y)l(xy)^{-1} = (f(x,y), 1)$.
         Then $f$ is the corresponding factor set.
         \qedhere
     \end{itemize}
@@ -176,25 +196,31 @@ $N$ by $G$.
 
 \begin{prop}
   Let $1\to N\to E \xrightarrow{p}G \to 1$ with two liftings
-  $l_1: G \to E, l_2: G\to E$ with $f_1: G\times G\to N, f_2: G\times G\to N$
+  $l_1: G \to E,\ l_2: G\to E$ with $f_1: G\times G\to N,\ f_2: G\times G\to N$
   respectively.
 
-  Then $\exists h: G\to N$ with $h(1) = 1$ and $\forall \bar{x},\bar{y}\in G,
-  f_2(\bar{x}, \bar{y})f_1(\bar{x},\bar{y})^{-1}
-  = \theta_{\bar{x}}(h(\bar{y}))h(\bar{x}\bar{y})^{-1}h(\bar{x})$.
-  ($\tilde{h}: G\times G \to N, (\bar{x},\bar{y}) \mapsto
-  \bar{x}h(\bar{y}) - h(\bar{x}\bar{y}) + h(\bar{x})$: coboundary)
-
-  ($f_2(\bar{x},\bar{y}) - f_1(\bar{x},\bar{y}) = \bar{x}h(\bar{y}) - h(\bar{x}\bar{y}) + h(\bar{x})$)
+  Then $\exists h: G\to N$ with $h(1) = 1$ and $\forall x,y\in G,
+  f_2(x, y)f_1(x,y)^{-1} = \theta_{x}(h(y))h(xy)^{-1}h(x)$. 
+  ($f_2(x,y) - f_1(x,y) = xh(y) - h(xy) + h(x)$)
 
   \begin{proof}
-    For $\bar{x}\in G$, $\exists h(\bar{x}) \in N$ s.t.
-    $l_2(\bar{x}) = h(\bar{x})l_1(\bar{x})$.
+    For $x\in G$, $\exists h(x) \in N$ s.t.
+    $l_2(x) = h(x)l_1(x)$.
     Since $l_1(1) = l_2(1) = 1$, $h(1) = 1$.
 
-    Now, $l_2(\bar{x})l_2(\bar{y})$... mimi
+    Now, $l_2(x)l_2(y) = f_2(x, y) l_2(x, y) = f_2(x, y) h(xy) l_1(x, y)$. and
+    \begin{align*}
+      l_2(x) l_2(y) &= h(x) l_1(x) h(y) l_1(y) = h(x) l_1(x) h(y) l_1^{-1}(x) l_1(x) l_1(y) \\
+      &= h(x) \theta_x(h(y)) l_1(x) l_1(y) = f_1(x, y) h(x) \theta_x(h(y)) l_1(x, y)
+    \end{align*}
+    So $f_2(x, y) f_1(x, y)^{-1} = \theta_x(h(y)) h(xy)^{-1} h(x)$.
   \end{proof}
 \end{prop}
+
+\begin{remark}
+  A map which has the form $\tilde{h}: G\times G \to N, (x,y) \mapsto
+  xh(y) - h(xy) + h(x)$ is called a coboundary map.
+\end{remark}
 
 \begin{definition}
   $Z^2(G, N) =$ the abelian group of all factor sets.
@@ -209,7 +235,8 @@ $N$ by $G$.
     1\to N\to E\to G\to 1 \\
     1\to N\to E'\to G\to 1
   \end{cases}$
-  are equivalent if $\exists E \xrightarrow[\varphi]{\sim} E'$ s.t.
+  are equivalent if exists an isomorphism $\varphi: E \xrightarrow{\sim} E'$ which let the
+  following diagram comutes.
   \[
     \begin{tikzcd}
       1 \arrow[r]
@@ -226,25 +253,36 @@ $N$ by $G$.
   Two extensions $\begin{cases}
     1\to N\to E\to G\to 1 \\
     1\to N\to E'\to G\to 1
-  \end{cases}$ are equivalent \\ $\iff$
-  $\exists l: G\to E, l': G\to E'$ with $f, f'$ respectively s.t.
+  \end{cases}$ are equivalent $\iff$ \\
+  Exists mappings $l: G\to E, l': G\to E'$ with two factor sets $f, f'$ respectively satisfies
   $f - f' \in B^2(G, N)$.
 
   \begin{proof}
-    ``$\Rightarrow$'': Choose $l: G\to E \leadsto f: G\times G \to N$.
-    Define $l': G\to E'$ by $l' = \varphi \circ l \circ 1_G \leadsto
-    f': G\times G \to N$.
+    ``$\Rightarrow$'': Choose $l: G\to E$ which has a corresponding factor set $f: G\times G \to N$.
+    Now define $l': G\to E'$ by $l' = \varphi \circ l$. Since 
+    $p' \circ l' = p' \circ \varphi \circ l = p \circ l = 1$, $l'$ is a lifting.
+    Let   $f': G\times G \to N$ be its factor set.
+    
+    Since $1_N = 1_N \circ \varphi$, $\varphi \big|_N = 1_N$. And
+    \begin{align*}
+      & l(x) l(y) = f(x, y) l(x, y) \\
+      \Rightarrow \ & \varphi(l(x) l(y)) = \varphi(f(x, y) l(x, y)) \\
+      \Rightarrow \ & l'(x) l'(y) = \varphi(f(x, y)) l'(x, y) \\
+      \Rightarrow \ & f'(x, y) = \varphi(f(x, y))
+    \end{align*}
+    But $f(x, y) \in N$, $\varphi(f(x, y)) = \varphi\big|_N(f(x, y)) = f(x, y)$. So $f(x, y) = f'(x, y)$,
+    hence $f - f' = 0 \in B^2(G, N)$.
     \begin{exercise} \mbox{}
       \begin{enumerate}[(1)]
         \item Show that $f' - f \in B^2(G, N)$.
         \item ``$\Leftarrow$'': Show all details of the following steps:
           \begin{itemize}
             \item $\begin{cases}
-                1\to N\to E\to G\to 1 \\
-                1\to N\to E'\to G\to 1
+                1\to N\to E \to G \to 1 \\
+                1\to N\to E(N, G, f, \theta) \to G\to 1
               \end{cases}$ are equivalent.
             \item Similarly $\begin{cases}
-                1\to N\to E\to G\to 1 \\
+                1\to N\to E' \to G\to 1 \\
                 1\to N\to E(N, G, f', \theta')\to G\to 1
               \end{cases}$ are equivalent.
             \item $f'-f \leadsto h:G\to N$,
