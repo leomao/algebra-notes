@@ -244,7 +244,7 @@ $N$ by $G$.
       & E \arrow[d, "\rotatebox{90}{\(\sim\)}", "\varphi"'] \arrow[r]
       & G \arrow[d, "1_G"] \arrow[r]
       & 1 \\
-      1 \arrow[r] & N \arrow[r] & E \arrow[r] & G \arrow[r] & 1
+      1 \arrow[r] & N \arrow[r] & E' \arrow[r] & G \arrow[r] & 1
     \end{tikzcd}
   \]
 \end{definition}
@@ -293,3 +293,133 @@ $N$ by $G$.
   \end{proof}
 \end{theorem}
 
+\subsubsection{1st and 2nd group cohomology}
+Let $N$ be an abelian group and $G$ be a group with a group homo
+$\sigma: G \to \Aut(N)$ ($G \acts N$)
+\begin{align*}
+  & e(G, N) = \{ \text{equivalence classes of $N$ by $G$} \} \\
+  & Z^2(G, N) = \{
+    f: G\times G \to N \mid f(1, v) = f = f(u, 1),
+    f(u, v) + f(uv, w) = uf(v, w) + f(u, vw) \quad u, v, w \in G \} \\
+  & B^2(G, N) = \{
+    f: G\times G \to N \mid \exists h: G\to N \text{~with~} h(1) = 1
+    \text{s.t.}
+  f(u, v) = uh(v) - h(uv) + h(u) \quad u, v \in G \} \\
+  & H^2(G, N) = \quot{Z^2(G, N)}{B^2(G, N)}
+\end{align*}
+Then $e(G, N) \leftrightarrow H^2(G, N)$.
+
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item $\varphi \in \Aut(E)$ stabilizes $1\to N\to E\to G\to 1$ if
+      \[
+        \begin{tikzcd}
+          1 \arrow[r]
+          & N \arrow[d, "1_N"] \arrow[r]
+          & E \arrow[d, "\rotatebox{90}{\(\sim\)}", "\varphi"'] \arrow[r]
+          & G \arrow[d, "1_G"] \arrow[r]
+          & 1 \\
+          1 \arrow[r] & N \arrow[r] & E \arrow[r] & G \arrow[r] & 1
+        \end{tikzcd}
+      \]
+    \item $\Stab_E(G, N) = \{ \text{stabilizing automorphisms} \} \le \Aut(E)$
+  \end{itemize}
+\end{definition}
+
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item A derivation is a function $d: G\to N$ s.t. $d(uv) = ud(v) + d(u)
+      \quad \forall u, v \in G$.
+    \item $\Der(G, N) = \{ \text{derivations} : G\to N \}$ is an abelian group
+      with pointwise addition.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  Let $1\to N\to E\to G\to 1$ with $\theta = \sigma$. Then
+  $\Stab_E(G, N) \cong \Der(G, N)$. So $\Stab_E(G, N)$ is abelian.
+  \begin{proof} \mbox{}
+    \begin{itemize}
+      \item Let $\varphi \in \text{LHS}$ and fix $l:G\to E$.
+        \[
+          \begin{tikzcd}
+            1 \arrow[r]
+            & N \arrow[d, "1_N"] \arrow[r]
+            & E \arrow[d, "\rotatebox{90}{\(\sim\)}", "\varphi"'] \arrow[r]
+            & G \arrow[d, "1_G"] \arrow[r] \arrow[l, bend left, "l"]
+            & 1 \\
+            1 \arrow[r] & N \arrow[r] & E \arrow[r] & G \arrow[r] & 1
+          \end{tikzcd}
+          \quad \varphi(al(u)) = \varphi(a)\varphi(l(u)) = a d(u) l(u)
+        \]
+        \begin{itemize}
+          \item For another $l':G\to E$, say $l'(u) = g(u)l(u)$, where
+            $g(u) \in N$,
+            we have
+            \[ d'(u) = \varphi(l'(u))(l'(u))^{-1}
+            = \varphi(g(u)l(u))(g(u)l(u))^{-1})
+            = g(u)\varphi(l(u)) l(u)^{-1} g(u)^{-1} = d(u).
+            \]
+
+          \item $d \in \text{RHS}$, 
+            \begin{align*}
+              d(uv) &= \varphi(l(uv))l(uv)^{-1} \\
+                    &= \varphi(f(u, v)^{-1} l(u)l(v)) l(v)^{-1} l(u)^{-1} f(u, v) \\
+                    &= f(u, v)^{-1} d(u)l(u) d(v)l(v) l(v)^{-1} l(u)^{-1} f(u, v)^{-1} \\
+                    &= f(u, v)^{-1} d(u) \big(l(u) d(v) l(u)^{-1}\big) f(u, v)^{-1} \\
+                    &= \big(u d(v)\big) d(u)
+            \end{align*}
+        \end{itemize}
+
+      \item Conversely, \begin{exercise} proof it \end{exercise}
+      \item group homo:
+        $\varphi_2\circ\varphi_1(al(u)) = \varphi_2(ad_1(u)l(u))
+        = ad_1(u)\varphi_2(l(u) = a d_1(u) d_2(u) l(u)$.
+        That is, $\varphi_2 \circ \varphi_1 \mapsto d_1 d_2$.
+        \qedhere
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item $\Inn_E(G, N) = \{ \varphi \in \Stab_E(G, N) \mid
+      \varphi E \to E, x \mapsto a_0 x a_0^{-1} \text{~for some~} a_0 \in N \}$.
+    \item $\PDer(G, N) = \{ d \in \Der(G, N) \mid
+      d(u) = ua_1 - a_1 \text{~for some~} a_1 \in N \}$.
+  \end{itemize}
+\end{definition}
+
+\begin{exercise}
+  Show that $\Inn_E(G, N) \cong \PDer(G, N)$.
+\end{exercise}
+
+$\quot{\Stab_E(G, N)}{\Inn_E(G, N)} \cong \quot{\Der(G, N)}{\PDer(G, N)}
+= H^1(G, N)$.
+
+\begin{exercise}
+  Fix $1\to N\to E\to G\to 1$. Show that if
+  $H^2(G, N) = 0, H^1(G, N) = 0$, then for $\begin{aligned}
+    l&:G\to E\\
+    l'&:G\to E
+  \end{aligned}$ with $\begin{aligned}
+    K &= l(G) \\
+    K' &= l'(G)
+  \end{aligned}$, we get that $K$ and $K'$ are conjugate.
+\end{exericse}
+
+\begin{definition}
+  Let $R$ be a commutative ring with $1$ and $G$ be a group.
+  The group ring 
+  \[ R[G] = \left\{ \sum_{g\in G} r_g g \,\middle|\,
+    \text{only finitely many $r_g$'s $\ne 0$ in $R$}
+  \right\} \]
+  forms an $R$-algebra via
+  \begin{gather*}
+    \sum_{g\in G} r_g g + \sum_{g\in G} r_g' g
+    = \sum_{g\in G} (r_g + r_g') g \\
+    \left(\sum_{g\in G} r_g g\right)\left( \sum_{g'\in G} r_g' g' \right)
+    = \sum_{g, g'\in G} (r_g r_g') g g' \\
+    r\left(\sum_{g\in G} r_g g\right) = \sum_{g\in G} (rr_g) g
+  \end{gather*}
+\end{definition}
