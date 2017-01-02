@@ -265,9 +265,9 @@ $N$ by $G$.
     
     Since $1_N = 1_N \circ \varphi$, $\varphi \big|_N = 1_N$. And
     \begin{align*}
-      & l(x) l(y) = f(x, y) l(x, y) \\
-      \Rightarrow \ & \varphi(l(x) l(y)) = \varphi(f(x, y) l(x, y)) \\
-      \Rightarrow \ & l'(x) l'(y) = \varphi(f(x, y)) l'(x, y) \\
+      & l(x) l(y) = f(x, y) l(xy) \\
+      \Rightarrow \ & \varphi(l(x) l(y)) = \varphi(f(x, y) l(xy)) \\
+      \Rightarrow \ & l'(x) l'(y) = \varphi(f(x, y)) l'(xy) \\
       \Rightarrow \ & f'(x, y) = \varphi(f(x, y))
     \end{align*}
     But $f(x, y) \in N$, $\varphi(f(x, y)) = \varphi\big|_N(f(x, y)) = f(x, y)$. So $f(x, y) = f'(x, y)$,
@@ -365,8 +365,8 @@ Then $e(G, N) \leftrightarrow H^2(G, N)$.
             \begin{align*}
               d(uv) &= \varphi(l(uv))l(uv)^{-1} \\
                     &= \varphi(f(u, v)^{-1} l(u)l(v)) l(v)^{-1} l(u)^{-1} f(u, v) \\
-                    &= f(u, v)^{-1} d(u)l(u) d(v)l(v) l(v)^{-1} l(u)^{-1} f(u, v)^{-1} \\
-                    &= f(u, v)^{-1} d(u) \big(l(u) d(v) l(u)^{-1}\big) f(u, v)^{-1} \\
+                    &= f(u, v)^{-1} d(u)l(u) d(v)l(v) l(v)^{-1} l(u)^{-1} f(u, v) \\
+                    &= f(u, v)^{-1} d(u) \big(l(u) d(v) l(u)^{-1}\big) f(u, v) \\
                     &= \big(u d(v)\big) d(u)
             \end{align*}
         \end{itemize}
@@ -384,7 +384,7 @@ Then $e(G, N) \leftrightarrow H^2(G, N)$.
 \begin{definition} \mbox{}
   \begin{itemize}
     \item $\Inn_E(G, N) = \{ \varphi \in \Stab_E(G, N) \mid
-      \varphi E \to E, x \mapsto a_0 x a_0^{-1} \text{~for some~} a_0 \in N \}$.
+      \varphi: E \to E, x \mapsto a_0 x a_0^{-1} \text{~for some~} a_0 \in N \}$.
     \item $\PDer(G, N) = \{ d \in \Der(G, N) \mid
       d(u) = ua_1 - a_1 \text{~for some~} a_1 \in N \}$.
   \end{itemize}
