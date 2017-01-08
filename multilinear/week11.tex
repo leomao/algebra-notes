@@ -132,9 +132,14 @@ The right radical of $f:
 
     \underline{Claim 1}: $\exists v_1 \in V$ s.t. $f(v_1, v_1) \ne 0$.
     Assume that $f(v, v) = 0 \quad \forall v \in V$.
-    \[
-      f(v, w) = \frac{1}{4}f(v+w,v+w) - \frac{1}{4}f(v-w,v-w) = 0
-    \]
+    %\[
+      %f(v, w) = \frac{1}{4}f(v+w,v+w) - \frac{1}{4}f(v-w,v-w) = 0
+    %\]
+    {\color{red}
+      \[ f(v, w) = \frac{1}{2} \big( f(v+w,v+w) - f(v, v) - f(w, w) \big) = 0. \quad
+        \footnote{The argument in class requires $\Char F \geq 4$, omimi...}
+      \]
+    }
     So $f = 0$, which is a contradiction.
 
     Now let $v_1 \in V$ with $f(v_1, v_1) \ne 0$. Let $W = \gen{v_1}_F$ and
