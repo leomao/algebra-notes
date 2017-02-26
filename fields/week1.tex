@@ -1,4 +1,7 @@
 \section{Fields}
+
+\subsection{Week 1}
+
 \begin{example}
   $f(x) = x^2 + 1$ has roots $\alpha = \pm \sqrt{-1}$, so $\mathbb{R}(-1) \cong \mathbb{R}[x] / \langle x^2 + 1 \rangle$.
 \end{example}
@@ -18,7 +21,7 @@
   Let $f(x) \in K[x]$ be of degree $n > 0$. Then exists $L/K$ satisfied $f$ splits over $L$,
   that is,
   \[ f(x) = \lambda (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n) \text{ with }
-    \alpha_1, \alpha_2, \cdots, \alpha_n \in L,\, \lambda \in K$ \]
+    \alpha_1, \alpha_2, \cdots, \alpha_n \in L,\, \lambda \in K \]
   In fact, $L$ can be chosen to be the smallest field over which $f$ splits and in this case $[L : K] \leq n!$.\\
   $L$ is called a splitting field for $f$ over $K$.
 \end{theorem}
@@ -47,12 +50,12 @@
   \cong \mathbb{Q}(\sqrt[8]{2})$
 \end{remark}
 
-\begin{proposition}
+\begin{prop}
   Let $K, L$ be two fields and $\tau: K \to L$ be a nontrivial homomorphism.
   We define $\bar\tau : K[x] \to \tau(K)[x] \subseteq L[x]$ by
   \[ a_n x^n + \ldots + a_0 \mapsto \bar\tau(f) = \tau(a_n)x^n + \ldots + \tau(a_0) \]
   which is an isomorphism. Also, $f$ is irreducible implies $\bar\tau(f)$ is irreducible.
-\end{proposition}
+\end{prop}
 
 \begin{lemma}
   Let $K(\alpha) / K$ be algebraic and $\tau: K \to L$ be a nontrivial homo,
@@ -75,7 +78,7 @@
 \begin{proof}
   By induction on $n = \deg f$. When $n = 1$, $L = K, L' = K'$, so $L \cong L'$.
 
-  Now if $n > 1$, assume $f(\alpha) = 0$ for $\alpha \in L$, then $\barr\tau(m_{\alpha, K}) \mid \bar\tau(f)$.
+  Now if $n > 1$, assume $f(\alpha) = 0$ for $\alpha \in L$, then $\bar\tau(m_{\alpha, K}) \mid \bar\tau(f)$.
 \end{proof}
 
 \begin{example}
