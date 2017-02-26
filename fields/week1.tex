@@ -1,0 +1,83 @@
+\section{Fields}
+\begin{example}
+  $f(x) = x^2 + 1$ has roots $\alpha = \pm \sqrt{-1}$, so $\mathbb{R}(-1) \cong \mathbb{R}[x] / \langle x^2 + 1 \rangle$.
+\end{example}
+
+\begin{theorem} \label{thm:field-ext-1}
+  Let $f(x) \in K[x]$ be monic, irreducible and of degree $n$. Then $\exists L / K$ and $\alpha \in L$
+  satisfied $f(\alpha) = 0, L = K(\alpha)$ and $[L: K] = n$.
+\end{theorem}
+
+\begin{proof}
+  Since $f(x)$ is irreducible, $\langle f(x) \rangle$ is a maximze ideal.
+  Then $L = K[x] / \langle f(x) \rangle$ is a field, and $K$ is a subfield
+  of $L$ by the inclusion map $\alpha \mapsto \bar\alpha$.
+\end{proof}
+
+\begin{theorem}
+  Let $f(x) \in K[x]$ be of degree $n > 0$. Then exists $L/K$ satisfied $f$ splits over $L$,
+  that is,
+  \[ f(x) = \lambda (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n) \text{ with }
+    \alpha_1, \alpha_2, \cdots, \alpha_n \in L,\, \lambda \in K$ \]
+  In fact, $L$ can be chosen to be the smallest field over which $f$ splits and in this case $[L : K] \leq n!$.\\
+  $L$ is called a splitting field for $f$ over $K$.
+\end{theorem}
+
+\begin{proof}
+  By induction on $n$, $n = 1$ is trivial.
+
+  For $n > 1$, let $p(x)$ be an monic irreducible factor of $f(x)$.
+  By theorem \ref{thm:field-ext-1}, exists $\alpha_1$ satisfied $p(\alpha_1) = 0$.
+  By division algorithm, $f(x) = (x - \alpha_1) f_1(x)$ where $f_1(x) \in K(\alpha_1)[x]$
+  and $\deg f_1 = n - 1$. By the induction hypothesis, exists $L$ satisfied $f_1$
+  splits over $L$, say $\exists \alpha_2, \alpha_3, \cdots, \alpha_n \in L$ satisfied
+  $ f_1(x) = \lambda (x - \alpha_2) \cdots (x - \alpha_n) \text{ for } \lambda  \in K(\alpha_1) $,
+  thus $f(x) = \lambda (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)$.
+
+  Observe that $K(\alpha_1, \cdots, \alpha_n)$ is the smallest field containing $K$ and
+  $\{ \alpha_1, \cdots, \alpha_n\}$.
+\end{proof}
+
+\begin{example}
+  Find a splitting field $L$ for $x^8 - 2$ over $\mathbb{Q}$ and determine $[L : \mathbb{Q}]$.
+\end{example}
+
+\begin{remark}
+  $\mathbb{Q}[x] / \langle x^8 - 2 \rangle= \mathbb{Q}(\bar{x}) \cong \mathbb{Q}(\sqrt[8]{2})
+  \cong \mathbb{Q}(\sqrt[8]{2})$
+\end{remark}
+
+\begin{proposition}
+  Let $K, L$ be two fields and $\tau: K \to L$ be a nontrivial homomorphism.
+  We define $\bar\tau : K[x] \to \tau(K)[x] \subseteq L[x]$ by
+  \[ a_n x^n + \ldots + a_0 \mapsto \bar\tau(f) = \tau(a_n)x^n + \ldots + \tau(a_0) \]
+  which is an isomorphism. Also, $f$ is irreducible implies $\bar\tau(f)$ is irreducible.
+\end{proposition}
+
+\begin{lemma}
+  Let $K(\alpha) / K$ be algebraic and $\tau: K \to L$ be a nontrivial homo,
+  then exists an extension $\sigma$ of $\tau$ from $K(\alpha)$ to $L$ if and only if
+  exists $\beta \in L$ satisfied $\bar\tau(m_{\alpha, K})(\beta) = 0$.
+
+  In this case $m_{\beta, \tau(K)} = \bar\tau(m_{\alpha, K})$.
+\end{lemma}
+
+\begin{proof}
+  ``$\Rightarrow$'': Let $\beta = \sigma(\alpha)$ and $m_{\alpha, K} = x^n + a_{n-1} x^{n-1} + \ldots + a_0$.
+\end{proof}
+
+\begin{theorem}
+  Let $\tau: K \to K'$ be an isomorphism of fields.
+  If L is a splitting field for $f$ over $K$ and $L'$ is a splitting field for $\bar\tau(f)$
+  over $K'$, then $L \cong L'$
+\end{theorem}
+
+\begin{proof}
+  By induction on $n = \deg f$. When $n = 1$, $L = K, L' = K'$, so $L \cong L'$.
+
+  Now if $n > 1$, assume $f(\alpha) = 0$ for $\alpha \in L$, then $\barr\tau(m_{\alpha, K}) \mid \bar\tau(f)$.
+\end{proof}
+
+\begin{example}
+  $L = \mathbb{Q}(\sqrt{2}, \sqrt{3})$.
+\end{example}
