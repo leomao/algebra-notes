@@ -48,7 +48,7 @@
 \end{prop}
 
 \begin{example}
-  $f(x) = x^2 + 1$ has roots $\alpha = \pm \sqrt{-1}$, so $\mathbb{R}(\sqrt{-1}) \cong \mathbb{R}[x] / \langle x^2 + 1 \rangle$.
+  $f(x) = x^2 + 1$ has roots $\alpha = \pm \sqrt{-1}$, so $\Rb(\sqrt{-1}) \cong \Rb[x] / \langle x^2 + 1 \rangle$.
 \end{example}
 
 \begin{theorem} \label{thm:field-ext-1}
@@ -57,7 +57,7 @@
 \end{theorem}
 
 \begin{proof}
-  Since $f(x)$ is irreducible, by prop. \ref{prop:irr-to-max-ideal} $\langle f(x) \rangle$ is a maximze ideal.
+  Since $f(x)$ is irreducible, by prop. \ref{prop:irr-to-max-ideal} $\langle f(x) \rangle$ is a maximal ideal.
   Then by prop. \ref{prop:max-prime-to-field-int-domain} $L = K[x] / \langle f(x) \rangle$ is a field, and $K$ is a subfield
   of $L$ by the inclusion map $\alpha \mapsto \bar\alpha$. The map is 1-1 since $\bar{1} \neq 0$ and
   a field homomorphism is either a 1-1 map or a zero（全洪）map.
@@ -93,12 +93,12 @@
 \end{proof}
 
 \begin{example}
-  Find a splitting field $L$ for $x^8 - 2$ over $\mathbb{Q}$ and determine $[L : \mathbb{Q}]$.
+  Find a splitting field $L$ for $x^8 - 2$ over $\Qb$ and determine $[L : \Qb]$.
 \end{example}
 
 \begin{remark}
-  $\mathbb{Q}[x] / \langle x^8 - 2 \rangle= \mathbb{Q}(\bar{x}) \cong \mathbb{Q}(\sqrt[8]{2})
-  \cong \mathbb{Q}(\sqrt[8]{2})$
+  $\quot{\Qb[x]}{\gen{x^8 - 2}} = \Qb(\bar{x}) \cong \Qb(\sqrt[8]{2})
+  \cong \Qb(\sqrt[8]{2} \zeta)$
 \end{remark}
 
 \begin{prop}
@@ -133,5 +133,5 @@
 \end{proof}
 
 \begin{example}
-  $L = \mathbb{Q}(\sqrt{2}, \sqrt{3})$.
+  $L = \Qb(\sqrt{2}, \sqrt{3})$.
 \end{example}
