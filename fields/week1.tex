@@ -78,18 +78,28 @@
 \end{theorem}
 
 \begin{proof}
-  By induction on $n$, $n = 1$ is trivial.
+  By induction on $n$, $n = 1$ is trivial, simply pick $L = K$.
 
   For $n > 1$, let $p(x)$ be an monic irreducible factor of $f(x)$.
-  By theorem \ref{thm:field-ext-1}, exists $\alpha_1$ satisfied $p(\alpha_1) = 0$.
+  By theorem \ref{thm:field-ext-1}, exists an extension $K(\alpha_1)$ satisfied $p(\alpha_1) = 0$.
   By division algorithm, $f(x) = (x - \alpha_1) f_1(x)$ where $f_1(x) \in K(\alpha_1)[x]$
-  and $\deg f_1 = n - 1$. By the induction hypothesis, exists $L$ satisfied $f_1$
-  splits over $L$, say $\exists \alpha_2, \alpha_3, \cdots, \alpha_n \in L$ satisfied
-  $ f_1(x) = \lambda (x - \alpha_2) \cdots (x - \alpha_n) \text{ for } \lambda  \in K(\alpha_1) $,
-  thus $f(x) = \lambda (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)$.
+  and $\deg f_1 = n - 1$. Using the induction hypothesis, we know that there exists $L$,
+  which is an extension of $K(\alpha_1)$ and satisfied $f_1$
+  splits over $L$. Hence exists $\alpha_2, \alpha_3, \cdots, \alpha_n \in L$ satisfied
+  $ f_1(x) = \lambda (x - \alpha_2) \cdots (x - \alpha_n)$,
+  thus $f(x) = \lambda (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)$. Compare the
+  coefficient of $x^n$ we know that $\lambda \in K$.
 
-  Observe that $K(\alpha_1, \cdots, \alpha_n)$ is the smallest field containing $K$ and
-  $\{ \alpha_1, \cdots, \alpha_n\}$.
+  More over, observe that $K(\alpha_1, \cdots, \alpha_n)$ is the smallest field containing $K$ and
+  $\{ \alpha_1, \cdots, \alpha_n\}$. So if we choose $L = K(\alpha_1, \alpha_2, \cdots, \alpha_n)$,
+  then
+  \[ [L: K] = [K(\alpha_1, \alpha_2, \cdots, \alpha_n): K(\alpha_1, \alpha_2, \cdots, \alpha_{n-1})]
+    \cdots
+    [K(\alpha_1): K] \leq n! \]
+  Since $[K(\alpha_1, \alpha_2, \cdots, \alpha_k): K(\alpha_1, \alpha_2, \cdots, \alpha_{k-1})]
+  = [K(\alpha_1, \alpha_2, \cdots \alpha_{k-1})(\alpha_k): K(\alpha_1, \alpha_2, \cdots, \alpha_{k-1})]$
+  and $\alpha_k$ is a root of $p(x) \in K(\alpha_1, \alpha_2, \cdots, \alpha_{k-1})[x]$
+  where $f(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_{k-1}) p(x)$.
 \end{proof}
 
 \begin{example}
@@ -101,36 +111,67 @@
   \cong \Qb(\sqrt[8]{2} \zeta)$
 \end{remark}
 
-\begin{prop}
+\begin{prop} \label{prop:after-homo-still-irr}
   Let $K, L$ be two fields and $\tau: K \to L$ be a nontrivial homomorphism.
   We define $\bar\tau : K[x] \to \tau(K)[x] \subseteq L[x]$ by
-  \[ a_n x^n + \ldots + a_0 \mapsto \bar\tau(f) = \tau(a_n)x^n + \ldots + \tau(a_0) \]
-  which is an isomorphism. Also, $f$ is irreducible implies $\bar\tau(f)$ is irreducible.
+  \[ a_n x^n + \ldots + a_0 \mapsto \bar\tau(f) \triangleq \tau(a_n)x^n + \ldots + \tau(a_0) \]
+  which is an isomorphism. Also, $f$ is irreducible implies $\bar\tau(f)$ is irreducible in $\tau(K)[x]$.
 \end{prop}
 
-\begin{lemma}
+\begin{lemma} \label{lemma:extension-exists-condition}
   Let $K(\alpha) / K$ be algebraic and $\tau: K \to L$ be a nontrivial homo,
   then exists an extension $\sigma$ of $\tau$ from $K(\alpha)$ to $L$ if and only if
   exists $\beta \in L$ satisfied $\bar\tau(m_{\alpha, K})(\beta) = 0$.
 
   In this case $m_{\beta, \tau(K)} = \bar\tau(m_{\alpha, K})$.
-\end{lemma}
 
 \begin{proof}
   ``$\Rightarrow$'': Let $\beta = \sigma(\alpha)$ and $m_{\alpha, K} = x^n + a_{n-1} x^{n-1} + \ldots + a_0$.
+  Then $\bar\tau(m_{\alpha, K})(\beta) = \beta^n + \tau(a_{n-1})\beta^{n-1} + \cdots + \tau(a_0)
+  = \tau(\alpha^n + a_{n-1} \alpha^{n-1} + \cdots + a_0) = 0$
+
+  ``$\Leftarrow$'': Observe that $m_{\beta, \tau(K)} = \bar\tau(m_{\alpha, K})$ since
+  $\bar\tau(m_{\alpha, K})(\beta) = 0$ and $\bar\tau(m_{\alpha, K})$ is monic and irreducible
+  by prop \ref{prop:after-homo-still-irr}. $\sigma$ is then given by the following diagram.
+  \[
+    \begin{tikzcd}
+      & K[x] \arrow[r, "\sim", "\bar\tau"'] \arrow[d, two heads]
+      & \tau(K)[x] \arrow[d, two heads] \\
+      K(\alpha) \arrow[r, Leftrightarrow, "\cong"]
+      & \raisebox{.1em}{$K[x]$} \Big/ \raisebox{-.1em}{$\langle m_{\alpha, K} \rangle$}
+      \arrow[r, "\sim", "\sigma"']
+      & \raisebox{.1em}{$\tau(K)[x]$} \Big/ \raisebox{-.1em}{$\langle m_{\beta, \tau(K)} \rangle$}
+      \arrow[r, Leftrightarrow, "\cong"]
+      & \tau(K)(\beta) \subseteq L
+    \end{tikzcd}
+  \]
 \end{proof}
+\end{lemma}
+
+\begin{coro}
+  Let $K(\alpha)/K$ be an algebraic extension and $\tau: K \hookrightarrow L$.
+  If $\bar\tau(m_{\alpha, K})$ has $r$ distinc roots in $L$, then there are exactly $r$ extensions of $\tau$.
+\end{coro}
 
 \begin{theorem}
   Let $\tau: K \to K'$ be an isomorphism of fields.
   If L is a splitting field for $f$ over $K$ and $L'$ is a splitting field for $\bar\tau(f)$
   over $K'$, then $L \cong L'$
-\end{theorem}
 
 \begin{proof}
   By induction on $n = \deg f$. When $n = 1$, $L = K, L' = K'$, so $L \cong L'$.
 
-  Now if $n > 1$, assume $f(\alpha) = 0$ for $\alpha \in L$, then $\bar\tau(m_{\alpha, K}) \mid \bar\tau(f)$.
+  Now if $n > 1$, assume $f(\alpha) = 0$ for $\alpha \in L$. Then $\bar\tau(m_{\alpha, K}) \mid \bar\tau(f)$
+  and by the fact that $L'$ is a splitting field for $\bar\tau(f)$, exists $\beta \in L'$ satisfied
+  $\bar\tau(m_{\alpha, K})(\beta) = 0$. By lemma \ref{lemma:extension-exists-condition}, exists $\tau_{\circ}:
+  K(\alpha) \xrightarrow\sim K'(\beta)$ with $\tau_\circ \big|_K = \tau$.
+
+  Now, write $f = (x - \alpha) f_\circ$, then $\bar\tau(f) = \bar\tau_\circ(f) = (x - \tau_\circ(\alpha))
+  \bar\tau_\circ(f_\circ) = (x - \beta) \bar\tau_\circ(f_\circ)$. Then $L$ and $L'$ is a splitting
+  field for $f_{\circ}$ over $K(\alpha)$ and $\bar\tau_\circ(f_\circ)$ over $K(\beta)$ respectively.
+  By induction hypothesis, $L \cong L'$.
 \end{proof}
+\end{theorem}
 
 \begin{example}
   $L = \Qb(\sqrt{2}, \sqrt{3})$.
