@@ -16,10 +16,33 @@
 \usepackage{fancyhdr}
 \usepackage{tabularx}
 \usepackage[square, comma, numbers, super, sort&compress]{natbib}
-\usepackage[unicode, pdfborder={0 0 0}, bookmarksdepth=-1]{hyperref}
 \usepackage[usenames, dvipsnames]{color}
 \usepackage[shortlabels, inline]{enumitem}
 \usepackage{xpatch}
+\usepackage{imakeidx}
+\usepackage{hvindex}
+%%% fix bugs in hvindex .................
+\def\IndexXXii#1!#2@#3@#4\IndexNIL{%
+  \ifx\relax#3\relax            %               no @ in last arg
+    \def\hvTemp{#2}%
+    \ifx\hvTemp\hvEncap\index{#1!{#2}}#2\else
+      \ifx\hvIDXfont\hvIDXfontDefault\index{#1!{#2}}#2% <--- Here a % and #1 were missing
+      \else\index{#1!#2@\hvIDXfont{#2}}\hvIDXfont{#2}\fi\fi%
+  \else\index{#1!\protect#2@#3}#3\fi}
+
+\def\IndexXXiii#1!#2!#3@#4@#5\IndexNIL{%
+  \ifx\relax#4\relax 		% 		no @ in last arg
+    \def\hvTemp{#3}%
+    \ifx\hvTemp\hvEncap\index{#1!#2!{#3}}#3\else
+      \ifx\hvIDXfont\hvIDXfontDefault\index{#1!#2!{#3}}#3
+      \else\index{#1!#2!#3@\hvIDXfont{#3}}\hvIDXfont{#3}\fi\fi%
+  \else\index{#1!#2!\protect#3@#4}#4\fi}
+\usepackage[unicode, pdfborder={0 0 0}, bookmarksdepth=-1]{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor=red,
+  }
+\makeindex[columns=2, options= -s index_style.ist]
 
 %\usepackage{tabto}     
 %\usepackage{soul}      
@@ -287,6 +310,8 @@
 \include{linear_repr/week15}
 \include{extensions/week16}
 \include{fields/week1}
+
+\printindex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{plain}
 % \bibliography{journal.bib}
