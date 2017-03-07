@@ -1,0 +1,62 @@
+\subsection{Week 2}
+
+\begin{definition}
+  A polynomial $f(x) \in K[x]$ is said to be separable if its irreducible factors have no multiple roots in a splitting
+  field $L$.
+\end{definition}
+
+\begin{theorem}
+  There is a finite field $K$ with $\abs{K} = q \iff q = p^n$ for some prime $p$ and $n \in \mathbb{N}$.
+  In this situation, $K$ is unique up to isomorphism, denote by $\mathbb{F}_{p^n}$.
+
+  \begin{proof}
+    ``$\Rightarrow$": Let $p = \Char K$ and $[K : \mathbb{Z}/ p\mathbb{Z}] = n$, then $\abs{K} = p^n$.
+
+    ``$\Leftarrow$": Let $K$ be a splitting field for $f(x) = x^{p^n} - x$ over $\mathbb{F}_p$.
+    We claim that the set of all roots of $f(x)$ forms a field. Since if $\alpha, \beta$ are
+    two roots of $f$, obviously $\alpha \beta, \alpha \beta^{-1}$ are also roots,
+    and by $(\alpha \pm \beta)^{p^n} = \alpha^{p^n} \pm \beta^{p^n} = \alpha \pm \beta$ because
+    $\Char K = p$.
+    $\alpha \pm \beta$ are also roots, hence the roots form a field. By definition, $K$
+    is the smallest field containing $\mathbb{F}_p$ and roots of $f(x)$, so
+    $K$ is exactly the set of roots of $f(x)$.
+
+    Also, $f'(x) = -1$ has no root, so $f(x)$ has no multiple roots which implies $\abs{K} = p^n$.
+
+    Moreover, if $K'$ is another finite field with $\abs{K'} = p^n$, then for all $\alpha \in K'$,
+    $\alpha^{p^n} = \alpha$, so $\alpha$ is a root of $f(x)$, which implies that $K'$ is
+    a splitting field for $f(x)$ over $\mathbb{F}_p$. By theorem ..., $k \cong K'$.
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}
+  Let $n \in \mathbb{N}$ and $\mathbb{F}_q$ be a finite field. Then exists a unique extension
+  $\Fb_{q^n} / \Fb_q$ satisfied $[\Fb_{q^n} : \Fb_q] = n$, and $\Aut \Big( \Fb_{q^n} / \Fb_q \Big) =
+  \langle \sigma_q \rangle$ with $\sigma_q = \alpha :: \Fb_{q^n} \mapsto \alpha^q :: \Fb_{q^n}$.
+  $\sigma_q$ is called the Frobenius homomorphism.
+
+  \begin{proof}
+    By theorem ..., $q = p^r$ for some prime $p$ and $r \in \Nb$, so $q^n = p^{nr}$ which is a power of
+    a prime. Again by theorem ..., $\Fb_{q^n}$ is the splitting field for $x^{p^{nr}} - x$ over $\Fb_p$.
+
+    Since $x^q - x \mid x^{q^n} - x$, $\Fb_q \subseteq \Fb_{q^n}$ and thus $[\Fb_{q^n}: \Fb_{q}] = n$. 
+  \end{proof}
+\end{theorem}
+
+\begin{lemma}
+  Every irreducible polynomial in $\Fb_{p^n}[x]$ is separable.
+
+  \begin{proof}
+    Since $\sigma_p$ is an isomorphism, $\Fb_{p^n} = \Fb_{p^n}^p = \{ \alpha^p \mid \alpha in \Fb_{p^n}\}$.
+    Assume $f(x)$ has a multiple root $\alpha$.
+  \end{proof}
+\end{lemma}
+
+\begin{theorem}
+  $x^{p^n} - x$ equals the product of all monic irreducible polynomials in $\Fb_p[x]$ of degree $d$ where
+  $d$ runs through all divisors of $n$.
+\end{theorem}
+
+\begin{definition}
+  M\"{o}bius $\mu$-function
+\end{definition}

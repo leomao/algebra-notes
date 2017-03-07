@@ -1,0 +1,73 @@
+\subsection{Week 3}
+
+\begin{prop}
+  The following are equivalent.
+  \begin{enumerate}
+    \item $K$ has no nontrivial algebraic extension.
+    \item For all irreducible polynomial in $K[x]$ has degree $1$.
+    \item Every polynomial of  positive degree in $K[x]$ has at least one root in $K$.
+    \item Every polynomial of  positive degree in $K[x]$ splits over $K$.
+  \end{enumerate}
+\end{prop}
+
+\begin{lemma} \label{lemma:max-ideal-exists}
+  In a commutative ring $R$ with $1$, any proper ideal $I \subsetneq R$ is contained in a maximal ideal.
+
+  \begin{proof}
+    Consider $S = \{ J \subsetneq R \mid I \subseteq J \} \neq \varnothing$ since $I \in S$.
+    Define a partial order on $S$ by $J_1 \prec J_2 \iff J_1 \subseteq J_2$.
+
+    Given a chain $\{ J_i \mid i \in \Lambda \}$, let $J = \bigcup_{i \in \Lambda} J_i$ which is a proper
+    ideal, since if $x, y \in J$, then $x \in J_1, y \in J_2$. Let $\tilde{J} = \max(J_1, J_2)$, then $x, y \in \tilde{J}$
+    which implies $x + y \in \tilde{J}$. So $J$ is a least upper bound for this chain.
+
+    By Zorn's leemma, exists a max element in $S$ which is a max ideal in $R$ containing $I$.
+  \end{proof}
+\end{lemma}
+
+\begin{theorem}
+  If $K$ is a field, then exists an algebraic closure $L$ of $K$.
+
+  \begin{proof}
+    Let $S = \{ x_f \mid f(x) \in K[x] \text{ with } \deg f \geq 1 \}$ be the set of variables indexed by non-constant
+    polynomial in $K[x]$. Consider the polynomial ring $K[S]$ and $I = \langle f(x_f) : f \in K[x] \text{ with } \deg f \geq 1 \rangle$,
+    which is an ideal in $K[S]$. We claim that $I \neq K[S]$. If not then $1 \in I \implies 1 = \sum_{i = 1}^n g_i f_i(x_{f_i})$.
+    Write $x_i \triangleq x_{f_i}$ for $i = 1, 2, \cdots, n$. Also, by definition $g_i$ only involves a finite number of
+    variable in $S$, so we could set $g_i \in K[x_1, x_2, \cdots, x_m]$ with $m \geq n$. That is, $1 = \sum_{i = 1}^n g_i(x_1, x_2,
+    \cdots, x_m) f_i(x_i)$. Let $\Sigma$ be a splitting field for $f(x) = f_1(x) f_2(x) \cdots f_n(x)$ and define $\alpha_i \in \Sigma$
+    which satisfied $f_i(\alpha_i) = 0$ and $a_i = 0$ for $n+1 \leq i \leq m$. Then
+    $1 = \sum_{i = 1}^n g(\alpha_1, \alpha_2, \cdots, \alpha_m) f_i(\alpha_i) = 0$ which leads to an contradiction.
+
+    By lemma~\ref{lemma:max-ideal-exists}, exists a maximal ideal $M$ satisfied $I \subseteq M$.
+
+    Consider $K \hookrightarrow F_1 \triangleq K[S] / M$, and then for all $f \in K[x]$, $f(\bar{x}_f) = \bar{0}$ in $F_1$.
+    By induction, exists $F_1 \subseteq F_2 \subseteq F_3 \subseteq \cdots$ which satisfied $f(x) \in F_n[x]$ has a root in $F_{n+1}$
+    Let $F = \bigcup_{i = 1}^\infty F_i$ which is algebraically closed since if $f(x) \in F[x]$ then $f(x) \in F_m[x]$
+    for some $m$ and thus $f(x)$ has a root in $F_{m+1} \subseteq F$.
+
+    Finally $L \triangleq \{ \alpha \in F \mid \alpha \text{ is algebraic over } K \}$ is an algebraic closure of $K$.
+  \end{proof}
+
+  \begin{lemma}
+    If $L_1 / K$ is algebraic and $\tau: K \to L_2$ is a non-zero homomorphism with $L_2$ being algebraically closed,
+    then $\tau$ extends to $\sigma: L_1 \to L_2$.
+
+    \begin{proof}
+      Consider $S = \{ (M, \theta) \mid K \subset M \subset L_1, \theta: M \to L_2 \text{ with } \theta\big|_K = \tau\}$
+      which is not an empty set since $(K, \tau) \in S$.
+
+      Define a partial order on $S$, $(M_1, \theta_1) \prec (M_2, \theta_2) \iff M_1 \subseteq M_2, \theta_2 \big|_{M_1} = \theta_1$.
+      Given any chain $\{(M_i, \theta_i) : i \in \Lambda \}$, let $N = \bigcup_{i = 1}^\infty M_i$ and
+      $\theta = \alpha :: N \mapsto \theta_i(\alpha)$ if $\alpha \in M_i$. This map is well defined, and is
+      a  least upper bound for this chain. By Zorn's lemma, exists a max element $(M, \sigma)$ in $S$.
+    \end{proof}
+  \end{lemma}
+
+  \begin{example}
+    Let $p$ be a prime.
+    \begin{itemize}
+      \item Any finite field $L$ with $\Char L = p$
+    \end{itemize}
+  \end{example}
+\end{theorem}
+
