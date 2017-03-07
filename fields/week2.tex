@@ -1,11 +1,39 @@
 \subsection{Week 2}
 
 \begin{definition}
-  A polynomial $f(x) \in K[x]$ is said to be separable if its irreducible factors have no multiple roots in a splitting
-  field $L$.
+  A polynomial $f(x) \in K[x]$ is said to be \emph{separable}\index{seperable}
+  if its irreducible factors have no multiple roots in a splitting field $L$.
 \end{definition}
 
-\begin{theorem}
+\begin{definition}
+  If $f(x) = a_n x^n + \ldots + a_1 x + a_0$, then define $f'(x) \triangleq n a_n x^{n-1} + \ldots + 2a_2 x + a_1$.
+\end{definition}
+
+\begin{theorem} \label{thm:multiple-root-condition}
+  Let $f(x) \in K[x]$ be monic, irreducible of positive degree, then all the roots of $f(x)$
+  in a splitting field are simple if and only if $\gcd(f(x), f'(x)) = 1$.
+
+  \begin{proof}
+    ``$\Rightarrow$'': We can write $f(x) = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)$ where
+    $\alpha_i$ are distinct root of $f$. Then $f'(x) = \sum_{i = 1}^n f(x) / (x - \alpha_i)$
+    and we have $(x - \alpha_i) \nmid f(x)$ for all $i$.
+
+    ``$\Leftarrow$'': Assume $f(x) = (x - \alpha)^k g(x)$ with $k \geq 2$.
+    Then $f'(x) = k (x - \alpha)^{k-1} g(x) + (x - \alpha)^k g'(x)$ which implies $(x - \alpha) \mid f(x)$.
+    So $(x - \alpha) \mid \gcd(f(x), f'(x))$ and thus $\gcd(f(x), f'(x)) \neq 1$.
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  The following are equivalent:
+  \begin{enumerate}
+    \item $\alpha$ is a multiple root of $f(x)$.
+    \item $\alpha$ is a common root of $f(x)$ and $f'(x)$.
+    \item $m_{\alpha, K} \mid f(x)$ and $m_{\alpha, K} \mid f'(x)$.
+  \end{enumerate}
+\end{remark}
+
+\begin{theorem} \label{thm:size-of-finite-field}
   There is a finite field $K$ with $\abs{K} = q \iff q = p^n$ for some prime $p$ and $n \in \mathbb{N}$.
   In this situation, $K$ is unique up to isomorphism, denote by $\mathbb{F}_{p^n}$.
 
@@ -25,7 +53,8 @@
 
     Moreover, if $K'$ is another finite field with $\abs{K'} = p^n$, then for all $\alpha \in K'$,
     $\alpha^{p^n} = \alpha$, so $\alpha$ is a root of $f(x)$, which implies that $K'$ is
-    a splitting field for $f(x)$ over $\mathbb{F}_p$. By theorem ..., $k \cong K'$.
+    a splitting field for $f(x)$ over $\mathbb{F}_p$. By theorem~\ref{thm:two-splitting-field-are-isom},
+    $K \cong K'$.
   \end{proof}
 \end{theorem}
 
@@ -33,28 +62,64 @@
   Let $n \in \mathbb{N}$ and $\mathbb{F}_q$ be a finite field. Then exists a unique extension
   $\Fb_{q^n} / \Fb_q$ satisfied $[\Fb_{q^n} : \Fb_q] = n$, and $\Aut \Big( \Fb_{q^n} / \Fb_q \Big) =
   \langle \sigma_q \rangle$ with $\sigma_q = \alpha :: \Fb_{q^n} \mapsto \alpha^q :: \Fb_{q^n}$.
-  $\sigma_q$ is called the Frobenius homomorphism.
+  $\sigma_q$ is called the \emph{\Index{Frobenius homomorphism}}.
 
   \begin{proof}
-    By theorem ..., $q = p^r$ for some prime $p$ and $r \in \Nb$, so $q^n = p^{nr}$ which is a power of
-    a prime. Again by theorem ..., $\Fb_{q^n}$ is the splitting field for $x^{p^{nr}} - x$ over $\Fb_p$.
+    By theorem~\ref{thm:size-of-finite-field},
+    $q = p^r$ for some prime $p$ and $r \in \Nb$, so $q^n = p^{nr}$ which is a power of
+    a prime. Again by theorem~\ref{thm:size-of-finite-field},
+    $\Fb_{q^n}$ is the splitting field for $x^{p^{nr}} - x$ over $\Fb_p$.
+    Since $x^q - x \mid x^{q^n} - x$, $\Fb_q \subseteq \Fb_{q^n}$ and thus $[\Fb_{q^n}: \Fb_{q}] = n$.
 
-    Since $x^q - x \mid x^{q^n} - x$, $\Fb_q \subseteq \Fb_{q^n}$ and thus $[\Fb_{q^n}: \Fb_{q}] = n$. 
+    Then we proof that $\sigma_q$ is indeed in $\Aut \Big( \quot{\Fb_{q^n}}{\Fb_q} \Big)$.
+    We check that
+    \[
+      \begin{align*}
+        \sigma_q(\alpha+\beta) &= (\alpha+\beta)^q = \alpha^q + \beta^q = \sigma_q(\alpha) + \sigma_q(\beta) \\
+        \sigma_q(\alpha\beta) &= (\alpha\beta)^q = \alpha^q \beta^q = \sigma_q(\alpha) \sigma_q(\beta)
+      \end{align*}
+    \]
+    Now $\sigma_q$ is nontrivial since $\sigma_q$ send $1$ to $1$, so $\sigma_q$ is 1-1 and hence an
+    isomorphism since $\Fb_q$ is finite. Also, for all $\alpha \in \Fb_q$, $\sigma_q(\alpha)
+    = \alpha^{q} = \alpha$, hence $\sigma_q$ fixes $\Fb_q$.
+
+    Finally we prove that the order of $\sigma_q$ is $n$. Assume not, so $\ord(\sigma_q) = m < n$.
+    Then $\sigma_q^m = \mathrm{id} \implies x^{q^m} - x=0$ for each $x \in \Fb_{q^n}$.
+    But $x^{q^m} - x = 0$ has at most $q^m < q^n$ roots, which leads to a contradiction.
   \end{proof}
 \end{theorem}
 
+\begin{remark}
+  By theorem~\ref{thm:finite-subgroup-of-field-is-cyclic}, the multiplication group of $\Fb_q$ is cyclic,
+  so $\Fb_q^\times = \langle \alpha \rangle
+  \subseteq \Fb_q(\alpha) \setminus \{0\} \subseteq \Fb_{q^n} \setminus \{0\}$,
+  hence $\Fb_{q^n} = \Fb_q(\alpha)$.
+\end{remark}
+
 \begin{lemma}
-  Every irreducible polynomial in $\Fb_{p^n}[x]$ is separable.
+  Every irreducible polynomial $f(x)$ in $\Fb_{p^n}[x]$ is separable.
 
   \begin{proof}
-    Since $\sigma_p$ is an isomorphism, $\Fb_{p^n} = \Fb_{p^n}^p = \{ \alpha^p \mid \alpha in \Fb_{p^n}\}$.
-    Assume $f(x)$ has a multiple root $\alpha$.
+    Without lost of generality, assume $f(x)$ is monic.
+
+    Since $\sigma_p$ is an isomorphism, $\Fb_{p^n} = \Fb_{p^n}^p = \{ \alpha^p \mid \alpha \in \Fb_{p^n}\}$.
+    Now assume $f(x)$ has a multiple root $\alpha$, then $m_{\alpha, \Fb_p} = f(x)$ since $f$
+    is irreducible. By theorem~\ref{thm:multiple-root-condition} we also have
+    $f(x) = m_{\alpha, \Fb_p} \mid f'(x)$, but $\deg f'(x) < \deg f(x)$ so we must have $f'(x) \equiv 0$.
+
+    Write $f(x) = a_n x^n + \ldots + a_1 x + a_0$, then $f'(x) \equiv 0$ implies $k a_k = 0_{\Fb_p}$ for each $k$,
+    which means that if $a_k \neq 0 \implies p \mid k$. So
+    \[ f(x) = a_{mp} x^{mp} + a_{(m-1)p} x^{(m-1)p} + \ldots + a_p x^p + a_0 = (a_{mp} x^m + \ldots + a_p x + a_0)^p \]
   \end{proof}
 \end{lemma}
 
 \begin{theorem}
   $x^{p^n} - x$ equals the product of all monic irreducible polynomials in $\Fb_p[x]$ of degree $d$ where
   $d$ runs through all divisors of $n$.
+
+  \begin{proof}
+    By 
+  \end{proof}
 \end{theorem}
 
 \begin{definition}
