@@ -48,7 +48,7 @@
     Finally $L \triangleq \{ \alpha \in F \mid \alpha \text{ is algebraic over } K \}$ is an algebraic closure of $K$.
   \end{proof}
 
-  \begin{lemma}
+  \begin{lemma} \label{lemma:homo-extend-to-alg-closed-extension}
     If $L_1 / K$ is algebraic and $\tau: K \to L_2$ is a non-zero homomorphism with $L_2$ being algebraically closed,
     then $\tau$ extends to $\sigma: L_1 \to L_2$.
 
@@ -62,6 +62,19 @@
       a  least upper bound for this chain. By Zorn's lemma, exists a max element $(M, \sigma)$ in $S$.
     \end{proof}
   \end{lemma}
+
+  \begin{theorem}
+    Any two algebraic closures $L_1, L_2$ of $K$ are isomorphic.
+    \begin{proof}
+      Consider the inclusion map $\text{id}_K :: K \hookrightarrow L_1$.
+      By Lemma~\ref{lemma:homo-extend-to-alg-closed-extension},
+      $\tau$ could be extend to $\sigma :: L_2 \to L_1$ such that $\sigma\big|_K = \text{id}_K$.
+      Also, $L_2$ is algebraically closed which implies $\sigma(L_2)$ is algebraically closed.
+      So for any $\alpha \in L_1$, $\alpha$ is algebraic over $K$ and thus over $\sigma(L_2)$,
+      which implies $\alpha \in \sigma(L_2)$, so $\sigma$ is onto, hence $\sigma$ is an
+      isomorphism between $L_1$ and $L_2$.
+    \end{proof}
+  \end{theorem}
 
   \begin{example}
     Let $p$ be a prime.
