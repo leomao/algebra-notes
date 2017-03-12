@@ -84,3 +84,88 @@
   \end{example}
 \end{theorem}
 
+\subsection{Separable extension}
+
+\begin{definition} \hfill
+  \begin{itemize}
+    \item $\alpha$ is separable over $K$ if $m_{\alpha, K}$ is separable over $K$.
+    \item $L/K$ is called a separable extension if $\forall \alpha \in L$, $\alpha$ is separable over $K$.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  $K$ is said to be \emph{\Index{perfect}} if either $\Char K = 0$ or ``$\Char K = p$ and $K = K^p$''.
+\end{definition}
+
+\begin{example}
+  If $\Char K = p$ and $\quot{K}{\Fb_p}$ is algebraic, then $K$ is perfect.
+
+  \begin{proof}
+    Consider \deffunc{\sigma_p}{K}{K}{\alpha}{\alpha^p}, which is a monomorphism which fixes $\Fb_p$.
+    Since $\quot{K}{\Fb_p}$ is algebraic, $\sigma_p$ is an automorphism, so $K = K^p$.
+  \end{proof}
+\end{example}
+
+\begin{fact}
+  $K$ is perfect if an only if $\forall f(x) \in K[x]$, $K[x]$ is seperable.
+
+  Also, we can find that any irreducible polynomial $f(x) \in K[x]$ is not separable over $K$
+  if and only if $\Char K = p > 0$ and $f(x) = g(x^p)$ for some $g(x) \in K[x]$.
+\end{fact}
+
+\begin{prop}
+  Give $\quot{K(\alpha)}{K}$ with degree $m_{\alpha, K} = d$ and $\tau :: K \to L \neq 0$.
+  If $\alpha$ is separable over $K$ and $\bar\tau(m_{\alpha, K})$ splits over $L$, then
+  there are exactly $d$ monomorphisms $\sigma :: K(\alpha) \to L$ with $\sigma\big|_K = \tau$.
+  
+  Otherwise, if $\alpha$ is not separable or $\bar\tau(m_{\alpha, K})$ doesn't split over $L$,
+  then there are $r < d$ such monomorphisms.
+
+  \begin{proof}
+    Observe that $m_{\alpha, K}$ is separable over $K$ if an only if $\bar\tau(m_{\alpha, K})$ is separable over $\tau(K)$,
+    since if $m_{\alpha, K} = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_d)$, then
+    $\bar\tau(m_{\alpha, K}) = (x - \tau'(\alpha_1)) (x - \tau'(\alpha-2)) \cdots (x - \tau'(\alpha_n))$.
+    where $\tau' :: \Sigma \isoto \Sigma'$ and $\alpha_i \neq \alpha_j \iff \tau'(\alpha_i) \neq \tau'(\alpha_j)$.
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  Let $[K': K] = d$ and $\tau:: K \to L \neq 0$. If $\quot{K'}{K}$ is separable and $\forall \alpha \in K'$,
+  $\bar\tau(m_{\alpha, K})$ splits over $L$, then there are exactly $d$ monomorphisms $\sigma::K' \to L$ with
+  $\sigma\big|_k = \tau$. Otherwise exists $r < d$ of such monomorphisms.
+
+  \begin{proof}
+    By induction on $d$, if $d = 1$ we could simply let $\sigma = \tau$.
+
+    Now for $d > 1$, let $\alpha \in K' \setminus K$.
+    By prop $1$, exists exactly $[K(\alpha): K]$ monomorphisms $\tau_1: K(\alpha) \to L$.
+    Now, we need to check two condition:
+    \begin{enumerate}
+        \item $\quot{K'}{K(\alpha)}$ is separable:
+    \end{enumerate}
+  \end{proof}
+\end{prop}
+
+\begin{lemma}
+  If $\quot{K(\alpha_1, \alpha_2, \cdodts, \alpha_n)}{K}$ is algebraic and $L$ is a splitting field of $f(x) = m_{\alpha_1, K}
+  m_{\alpha_2, K} \cdots m_{\alpha_n, K}$ over $K$, then for all $\beta \in K(\alpha_1, \alpha_2, \cdots, \alpha_n)$,
+  $m_{\beta, K}$ also splits over $L$.
+
+  \begin{proof}
+    Let $L = K(R)$ with $R$ being the set of all roots of $f(x)$. Pick any root $\gamma$ of $m_{\beta, K}$.
+    Observe the following diagram:
+  \end{proof}
+\end{lemma}
+
+\begin{theorem}
+  Given $\quot{K(\alpha_1, \alpha_2, \cdots, \alpha_n)}{K}$, if $\alpha_i$ is separable over $K_{i-1} \triangleq K(\alpha_1,
+  \cdots, \alpha_{i-1}$, then $\quot{K(\alpha_1, \alpha_2, \cdots, \alpha_n)}{K}$ is separable.
+
+  \begin{proof}
+    Let $L$ be a splitting field of $f(x) = \prod m_{\alpha_i, K}$.
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}
+  \[ \quot{L}{K} \text{ is separable } \iff \quot{L}{M}, \quot{M}{K} \text{ are separable} \]
+\end{theorem}
