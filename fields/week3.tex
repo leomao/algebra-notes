@@ -1,3 +1,4 @@
+%! TEX root=../main.tex
 \subsection{Week 3}
 
 \begin{prop}
@@ -124,7 +125,7 @@
   \begin{proof}
     Observe that $m_{\alpha, K}$ is separable over $K$ if an only if $\bar\tau(m_{\alpha, K})$ is separable over $\tau(K)$,
     since if $m_{\alpha, K} = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_d)$, then
-    $\bar\tau(m_{\alpha, K}) = (x - \tau'(\alpha_1)) (x - \tau'(\alpha-2)) \cdots (x - \tau'(\alpha_n))$.
+    $\bar\tau(m_{\alpha, K}) = (x - \tau'(\alpha_1)) (x - \tau'(\alpha_2)) \cdots (x - \tau'(\alpha_n))$.
     where $\tau' :: \Sigma \isoto \Sigma'$ and $\alpha_i \neq \alpha_j \iff \tau'(\alpha_i) \neq \tau'(\alpha_j)$.
   \end{proof}
 \end{prop}
@@ -147,8 +148,8 @@
 \end{prop}
 
 \begin{lemma}
-  If $\quot{K(\alpha_1, \alpha_2, \cdodts, \alpha_n)}{K}$ is algebraic and $L$ is a splitting field of $f(x) = m_{\alpha_1, K}
-  m_{\alpha_2, K} \cdots m_{\alpha_n, K}$ over $K$, then for all $\beta \in K(\alpha_1, \alpha_2, \cdots, \alpha_n)$,
+  If $\quot{K(\alpha_1, \alpha_2, \dots, \alpha_n)}{K}$ is algebraic and $L$ is a splitting field of $f(x) = m_{\alpha_1, K}
+  m_{\alpha_2, K} \cdots m_{\alpha_n, K}$ over $K$, then for all $\beta \in K(\alpha_1, \alpha_2, \dots, \alpha_n)$,
   $m_{\beta, K}$ also splits over $L$.
 
   \begin{proof}
@@ -158,8 +159,9 @@
 \end{lemma}
 
 \begin{theorem}
-  Given $\quot{K(\alpha_1, \alpha_2, \cdots, \alpha_n)}{K}$, if $\alpha_i$ is separable over $K_{i-1} \triangleq K(\alpha_1,
-  \cdots, \alpha_{i-1}$, then $\quot{K(\alpha_1, \alpha_2, \cdots, \alpha_n)}{K}$ is separable.
+  Given $\quot{K(\alpha_1, \alpha_2, \dots, \alpha_n)}{K}$, if $\alpha_i$ is
+  separable over $K_{i-1} \triangleq K(\alpha_1, \dots, \alpha_{i-1})$, then
+  $\quot{K(\alpha_1, \alpha_2, \dots, \alpha_n)}{K}$ is separable.
 
   \begin{proof}
     Let $L$ be a splitting field of $f(x) = \prod m_{\alpha_i, K}$.
