@@ -1,0 +1,61 @@
+\subsection{Normal extension}
+
+\begin{prop}
+  Let $\quot{L}{K}$ be a finite, normal extension and $L \supset M \supset K$, than the following
+  are equivalent.
+
+  \begin{enumerate}[(\alph*)]
+    \item $\quot{M}{K}$ is normal.
+    \item $\forall \sigma \in \Aut(\quot{L}{K})$, $\sigma(M) \subset M$.
+    \item $\forall \sigma \in \Aut(\quot{L}{K})$, $\sigma(M) = M$.
+  \end{enumerate}
+
+  \begin{proof}
+    (a) $\Rightarrow$ (b): $\forall \alpha \in M$, $m_{\alpha, K}(\sigma(\alpha)) = \sigma(m_{\alpha, K}(\alpha)) = 0$.
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  Let $L/K$ is called a \emph{Galois}\index{Galois extension} extension if $L/K$ is finite, normal and separable.
+  That is, $L$ is a splitting field of some separable polynomial over $K$.
+\end{definition}
+
+\begin{theorem}
+  If $L/K$ is Galois, then $\abs{\Aut(L/K)} = [L:K]$. Otherwise, $\abs{\Aut(L/K)} < [L:K]$.
+
+  \begin{proof}
+    Since $L/K$ is normal, for any $\alpha$, $m_{\alpha, K}$ splits over $L$.
+    Since $L/K$ is separable, $m_{\alpha, K}$ has no multiple roots. So there are exactly $[L:K]$
+    extensions $\sigma:: L \to L$ of $\text{id}_K$.
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  Given a field $L$, define the {\bf fixed field}\index{fixed field} of $G$ by
+  $L^G \triangleq \{ \alpha \in L \mid \sigma(\alpha) = \alpha, \, \forall \sigma \in G \}$.
+\end{definition}
+
+\begin{theorem}
+  If $G$ is a subgroup of $\Aut(L)$ with $\abs{G} < \infty$, then $\abs{G} = [L: L^G]$, $G = \Aut(L / L^G)$
+  and $L / L^G$ is Galois.
+
+  \begin{proof}
+    First we prove that $[L: L^G] \leq \abs{G}$. Assume not, then $\abs{G} < [L: L^G]$.
+    Let $G = \{\sigma_1, \sigma_2, \dots, \sigma_n\}$ and $\alpha_1, \alpha_2, \dots, \alpha_{n+1} \in L$.
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  Let $f(x) \in K[x]$ and $L$ be a splitting field of $f(x)$ over $K$. We call $\text{Gal}(L/K)$
+  the {\bf Galois group}\index{Galois group} of $f(x)$.
+\end{definition}
+
+\begin{prop}
+  Let $f(x) \in \Qb[x]$ be irreducible polynomial of degree $p$ where $p$ is a prime.
+  If $f(x)$ has exactly $p-2$ roots and $2$ complex roots, then the Galois group of $f(x)$ is $S_p$.
+
+  \begin{proof}
+    Let $L$ be a splittinf field of $f$ over $\Qb$ and $R = \{ \alpha_1, \alpha_2, \dots, \alpha_p \}$ be
+    the set of all roots of $f(x)$. Since $f(x)$ is irreducible, $f(x) / a_p = m_{\alpha_i, \Qb}$.
+  \end{proof}
+\end{prop}
