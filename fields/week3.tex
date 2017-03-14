@@ -93,6 +93,17 @@
   \end{itemize}
 \end{definition}
 
+\begin{example}
+  Let $\Char K = p$ and $K^p \subsetneq K$. Pick $b \in K \setminus K^p$ and consider $L$ to be
+  the splitting field of $x^p - b$ over $K$, say $\alpha \in L$ with $\alpha^p = b$.
+  Notice that $x^p - b = x^p - a^p = (x - a)^p$, and $x^p - b$ is irreducible in $K$, or else
+  if $x^p - b = g(x) h(x)$ in $K[x]$, then write $g(x) = (x - \alpha)^k, h(x) = (x - \alpha)^{n-k}$,
+  but then expand $g(x)$ and we would get $\alpha^k \in K$, since $\alpha^p \in K$ and
+  $\gcd(k, p) = 1$ implies $\alpha \in K$ which leads to an contradiction.
+
+  By above we know that $x^p - b$ is inseparable.
+\end{example}
+
 \begin{definition}
   $K$ is said to be \emph{\Index{perfect}} if either $\Char K = 0$ or ``$\Char K = p$ and $K = K^p$''.
 \end{definition}
@@ -102,30 +113,42 @@
 
   \begin{proof}
     Consider \deffunc{\sigma_p}{K}{K}{\alpha}{\alpha^p}, which is a monomorphism which fixes $\Fb_p$.
-    Since $\quot{K}{\Fb_p}$ is algebraic, $\sigma_p$ is an automorphism, so $K = K^p$.
+    Since $\quot{K}{\Fb_p}$ is algebraic, by the exercise problem, $\sigma_p$ is an automorphism, so $K = K^p$.
   \end{proof}
 \end{example}
 
 \begin{fact}
-  $K$ is perfect if an only if $\forall f(x) \in K[x]$, $K[x]$ is seperable.
+  $K$ is perfect if an only if for any irreducible polynomial $f(x) \in K[x]$, $f$ is seperable.
 
   Also, we can find that any irreducible polynomial $f(x) \in K[x]$ is not separable over $K$
-  if and only if $\Char K = p > 0$ and $f(x) = g(x^p)$ for some $g(x) \in K[x]$.
+  if and only if $\Char K = p > 0$ and $f(x) = g(x^p)$ for some $g(x) \in K[x]$, where
+  $g(x)$ is irreducible and not all coefficient of $g$ is in $K^p$.
+
+  Finally, if $\Char K = 0$, then $K$ is seperable.
 \end{fact}
 
 \begin{prop}
   Give $\quot{K(\alpha)}{K}$ with degree $m_{\alpha, K} = d$ and $\tau :: K \to L \neq 0$.
   If $\alpha$ is separable over $K$ and $\bar\tau(m_{\alpha, K})$ splits over $L$, then
   there are exactly $d$ monomorphisms $\sigma :: K(\alpha) \to L$ with $\sigma\big|_K = \tau$.
-  
+
   Otherwise, if $\alpha$ is not separable or $\bar\tau(m_{\alpha, K})$ doesn't split over $L$,
   then there are $r < d$ such monomorphisms.
 
   \begin{proof}
-    Observe that $m_{\alpha, K}$ is separable over $K$ if an only if $\bar\tau(m_{\alpha, K})$ is separable over $\tau(K)$,
-    since if $m_{\alpha, K} = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_d)$, then
-    $\bar\tau(m_{\alpha, K}) = (x - \tau'(\alpha_1)) (x - \tau'(\alpha-2)) \cdots (x - \tau'(\alpha_n))$.
+    Observe that $m_{\alpha, K}$ is separable over $K$ if an only if $\bar\tau(m_{\alpha, K})$ is separable over $\tau(K)$.
+    Extend $K$ to $\Sigma$, $\tau(K)$ to $\Sigma'$, where $\Sigma, \Sigma'$ are the splitting
+    field of $m_{\alpha, K}$ and $\bar\tau(m_{\alpha, K})$, respectively.
+    Since $K \cong \tau(K)$, by theorem~\ref{thm:two-splitting-field-are-isom}, $\Sigma \cong \Sigma'$.
+    Let $\tau'$ be the isomorphism which is an extension of $\tau$.
+
+    If $m_{\alpha, K} = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_d)$, then
+    $\bar\tau(m_{\alpha, K}) = (x - \tau'(\alpha_1)) (x - \tau'(\alpha_2)) \cdots (x - \tau'(\alpha_n))$.
     where $\tau' :: \Sigma \isoto \Sigma'$ and $\alpha_i \neq \alpha_j \iff \tau'(\alpha_i) \neq \tau'(\alpha_j)$.
+    Thus if $\alpha$ is separable, $\bar\tau(m_{\alpha, K})$ has $d$ distinct roots in $L$.
+    By corollary~\ref{coro:num-of-extensions}, there are exactly $d$ monomorphisms $\sigma$ with $\sigma\big|_K = \tau$.
+
+    Otherwise, there are $r$ roots in $L$ where $r < d$, and thus there are $r < d$ such monomorphisms.
   \end{proof}
 \end{prop}
 
