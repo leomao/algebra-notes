@@ -171,13 +171,30 @@
 \end{prop}
 
 \begin{lemma}
-  If $\quot{K(\alpha_1, \alpha_2, \dots, \alpha_n)}{K}$ is algebraic and $L$ is a splitting field of $f(x) = m_{\alpha_1, K}
-  m_{\alpha_2, K} \cdots m_{\alpha_n, K}$ over $K$, then for all $\beta \in K(\alpha_1, \alpha_2, \dots, \alpha_n)$,
+  If $\quot{K(\alpha_1, \alpha_2, \dots, \alpha_n)}{K}$ is algebraic and $L$ is a splitting field of
+  $f(x) = \prod_{i=1}^n m_{\alpha_i, K}$
+  over $K$, then for all $\beta \in K(\alpha_1, \alpha_2, \dots, \alpha_n)$,
   $m_{\beta, K}$ also splits over $L$.
 
   \begin{proof}
     Let $L = K(R)$ with $R$ being the set of all roots of $f(x)$. Pick any root $\gamma$ of $m_{\beta, K}$.
     Observe the following diagram:
+  \[
+    \begin{tikzcd}
+      K(R) \arrow[rr, "\sim", "\text{(2) } \sigma"'] & & K(R, \gamma) \\
+      K(\beta) \arrow[u, 1, hookrightarrow] \arrow[rr, "\sim", "\text{(1) } \tau"'] & & K(\gamma) \arrow[u, hookrightarrow] \\
+      & K \arrow[ur, hookrightarrow] \arrow[ul, hookrightarrow] &
+    \end{tikzcd}
+  \]
+  Where (1) holds because these field are both isomorphic to $\quot{K[x]}{\langle m_{\beta, K} \rangle}$. \\
+  (2) holds because $\tau$ obviously fixes $K$, and hence $K(R)$ is a splitting field of $f$
+  and $K(R, \gamma)$ is a splitting field of $\bar\tau(f)$. By theorem~\ref{thm:two-splitting-field-are-isom},
+  $K(R)$ and $K(R, \gamma)$ is then isomorphic.
+
+  Thus we have $[K(R): K] = [K(R): K(\beta)][K(\beta): K] = [K(R, \gamma): K(\gamma)][K(\gamma): K]
+  = [K(R, \gamma): K]$, and $[K(R): K] = [K(R, \gamma): K] = [K(\gamma, R): K(R)][K(R): K]$
+  which implies $[K(\gamma, R): K(R)] = 1$, hence $\gamma \in R$.
+
   \end{proof}
 \end{lemma}
 
