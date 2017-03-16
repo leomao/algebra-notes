@@ -6,10 +6,33 @@
   if $\forall \alpha \in L$, $m_{\alpha, K}$ splits over $L$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \label{thm:splitting-field-iff-finite-normal}
   $L$ is a splitting field of some polynomial $f(x)$ over $K$ if
   and only if $L/K$ is finite and normal.
+
+  \begin{proof}
+    ``$\Rightarrow$'': Let $\alpha_1, \alpha_2, \dots, \alpha_n$ be the roots of $f$,
+    so $L = K(\alpha_1, \alpha_2, \dots, \alpha_n)$, and $L$ is also a splitting field
+    of $\prod m_{\alpha_i, K}$ since $m_{\alpha_i, K} \mid f$. By lemma~\ref{lemma:element-in-alg-ext-splits},
+    for any $\beta$ in $L$, $m_{\beta, K}$ splits, thus $L/K$ normal and obviously also finite.
+
+    ``$\Leftarrow$'': Since $L/K$ is a finite extension, we could write
+    $L = K(\alpha_1, \alpha_2, \dots, \alpha_n)$. Let $f = \prod m_{\alpha_i, K}$, then
+    since $L/K$ normal, each $m_{\alpha_i, K}$ splits. It is also easy to see that $L$
+    is the smallest field where $f$ splits, thus $L$ is a splitting field of $f$.
+  \end{proof}
 \end{theorem}
+
+\begin{remark}
+  If $L/K$ is normal, then for any $M$ with $K \subset M \subset L$, we have $L/M$ is normal,
+  this is because $\forall \alpha, \, m_{\alpha, M} \mid m_{\alpha, K}$, and thus
+  $m_{\alpha, M}$ splits since $m_{\alpha, K}$ splits.
+
+  But $M/K$ need not to be normal. For example, Let $K = \Qb$, $L$ be the splitting field of $x^3 - 2$,
+  by theorem~\ref{thm:splitting-field-iff-finite-normal} $L/K$ is normal.
+  Then $L = \Qb(\sqrt[3]{2}, \omega)$ where $\omega \triangleq \mathrm{e}^{2 \pi \mathrm{i} / 3}$.
+  Let $M = \Qb(\sqrt[3]{2})$ then $m_{\sqrt[3]{2}, K}$ doesn't split in $M$, so $M/K$ is not normal.
+\end{remark}
 
 \begin{prop}
   Let $\quot{L}{K}$ be a finite, normal extension and $L \supset M \supset K$, then the following
@@ -23,6 +46,24 @@
 
   \begin{proof}
     (a) $\Rightarrow$ (b): $\forall \alpha \in M$, $m_{\alpha, K}(\sigma(\alpha)) = \sigma(m_{\alpha, K}(\alpha)) = 0$.
+    So $\sigma(\alpha)$ is a root of $m_{\alpha, K}$. Since $\quot{M}{K}$ normal, $m_{\alpha, K}$ splits in $M$
+    and thus every root of $m_{\alpha, K}$ is in $M$, hence $\forall m, \, \sigma(m) \in M \implies \sigma(M) \subset M$.
+
+    (b) $\Rightarrow$ (c): Since $L/K$ algebraic and $\sigma$ 1-1, by a homework problem, $\sigma$ onto.
+
+    (c) $\Rightarrow$ (a): For any $\alpha \in M$, let $\beta \in L$ be a root of $m_{\alpha, K}$.
+    By theorem~\ref{thm:splitting-field-iff-finite-normal}, we could assume $L$ is a splitting field of $f$ over $K$.
+    Consider the following diagram,
+    \[
+      \begin{tikzcd}
+        L \arrow[rr, "\sim", "\sigma"'] & & L \\
+        K(\alpha) \arrow[u, 1, hookrightarrow] \arrow[rr, "\sim", "\tau"'] & & K(\beta) \arrow[u, hookrightarrow] \\
+        & K \arrow[ur, hookrightarrow] \arrow[ul, hookrightarrow] &
+      \end{tikzcd}
+    \]
+    Where isomorphism $\tau$ with $\tau(\alpha) = \beta$ exists since $\alpha, \beta$ share the same minimal polynomial,
+    and $\sigma$ with $\sigma\big|_K = \tau$ exists by theorem~\ref{thm:two-splitting-field-are-isom}.
+    Since $\sigma \in \Aut(\quot{L}{K})$, $\beta = \sigma(\alpha) \in M$, thus $M/K$ normal.
   \end{proof}
 \end{prop}
 
@@ -53,6 +94,25 @@
   \begin{proof}
     First we prove that $[L: L^G] \leq \abs{G}$. Assume not, then $\abs{G} < [L: L^G]$.
     Let $G = \{\sigma_1, \sigma_2, \dots, \sigma_n\}$ and $\alpha_1, \alpha_2, \dots, \alpha_{n+1} \in L$.
+    Which $\alpha_i$ is linear independent.
+
+    Consider the equations
+    \[
+      \left\{
+        \begin{array}{ccc}
+          \sigma_1(\alpha_1) x_1 + \dots + \sigma_1(\alpha_{n+1}) x_{n+1} &=& 0 \\
+          \sigma_2(\alpha_1) x_1 + \dots + \sigma_2(\alpha_{n+1}) x_{n+1} &=& 0 \\
+          \vdots &\vdots& \vdots \\
+          \sigma_n(\alpha_1) x_1 + \dots + \sigma_n(\alpha_{n+1}) x_{n+1} &=& 0 \\
+        \end{array}
+      \right.
+    \]
+    Since the number of variables is more than the number of equations, there is a
+    non-trivial solution. Choose one solution $(a_1, \dots, a_{n+1})$ having the
+    least amount of nonzero element. By reordering, we could assume
+    the solution is $(a_1, a_2, \dots, a_m, 0, 0, \dots, 0)$. If $m = 1$,
+    then $1_G = \sigma_i$ for some $i$, and $\sigma_i(\alpha_1) a_1 = \alpha_1 a_1 = 0 \implies a_1 = 0$,
+    which is a contradiction.
   \end{proof}
 \end{theorem}
 
