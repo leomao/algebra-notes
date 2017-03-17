@@ -119,7 +119,17 @@
   $d$ runs through all divisors of $n$.
 
   \begin{proof}
-    By 
+    By lemma, each irreducible polynomial is separable, and if $f(x), g(x) \in \text{RHS}$,
+    and $f(\alpha) = g(\alpha) = 0$, then $f = m_{\alpha, \Fb_p} = g$. Thus RHS is separable.
+    LHS is separable since $f' = 1$, so we could prove the equality by checking that
+    they have same roots.
+
+    $\text{LHS} \mid \text{RHS}$: $\forall \alpha \in \Fb_{p^n}$, $[\Fb_p(\alpha): \Fb_p] \mid [\Fb_{p^n}: \Fb_p] = n$,
+    thus $\deg m_{\alpha, \Fb_p} \mid n$ and hence $m_{\alpha, \Fb_p}$ appears in RHS.
+
+    $\text{RHS} \mid \text{LHS}$: Assume $\deg m_{\alpha, \Fb_p} = d \mid n$, then
+    $[\Fb_p(\alpha): \Fb_p] = d$, so $\alpha^{p^d} = \alpha$, and hence
+    $\alpha = \alpha^{p^d} = \alpha^{p^{2d}} = \dots = \alpha^{p^n}$.
   \end{proof}
 \end{theorem}
 

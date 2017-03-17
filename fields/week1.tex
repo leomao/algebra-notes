@@ -1,7 +1,180 @@
 %! TEX root=../main.tex
 \section{Fields}
 
-\subsection{Week 1}
+\subsection{Algebraic extensions}
+
+\begin{definition} \hfill
+  \begin{itemize}
+    \item $L / K$ is called an field extension if $L$ is a field and $K$ is a subfield of $L$.
+    \item $L / K$ is called an algebraic extension if $\forall \alpha \in L, \exists f(x) \in K[x]$
+      such that $f(\alpha) = 0$.
+    \item $K(\alpha_1, \alpha_2, \dots, \alpha_n) \triangleq \big\{ P(\alpha_1, \dots, \alpha_n)
+      / Q(\alpha_1, \dots, \alpha_n) : P, Q \in K[x_1, x_2, \dots, x_n] \text{ and } Q \neq 0 \big\}$
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  Let $f(x) = a_n x^n + \dots + a_1 x + a_0 \in \Zb[x]$ with $\gcd(a_1, a_2, \cdots, a_n) = 1$.
+  Assume that exists a prime $p$ satisfied $p \nmid a_n$ but $p \mid a_i$ for other $i \neq n$,
+  and $p^2 \nmid a_0$, then $f$ is irreducible.
+
+  \begin{proof}
+    Consider $\bar{f}(x)$, by assumption, $\bar{f}(x) = \bar{a}_n x^n$. So if $f(x) = g(x) h(x)$
+    with $\deg g, \deg h \geq 1$, let $g(x) = b_r x^r + \dots + b_0, h(x) = c_{n-r} x^{n-r} + \dots + c_0$,
+    then $\bar{g}(x) = \bar{b}_r x^r, \bar{h}(x) = \bar{c}_{n-r} x^{n-r}$ for some
+    $r$. But then we would find out that $\bar{b}_0 = \bar{c}_0 = 0$, and thus $p^2 \mid a_0$
+    which is a contradiction, hence $f$ irreducible.
+  \end{proof}
+\end{theorem}
+
+\begin{prop}
+  Given $L/K$ and $\alpha \in L$, if $\alpha$ is algebraic over $K$, then
+  exists a unique irreducible polynomial $m_{\alpha, K}(x) \in K[x]$ of minimal degree
+  that satisfied $m_{\alpha, K}(\alpha) = 0$ and for any other $f(x) \in K[x]$ such
+  that $f(\alpha) = 0$, we have $m_{\alpha, K} \mid f$.
+
+  \begin{proof}
+    %Consider the evaluation map on $\alpha$:
+    %\[ \deffunc{\text{ev}_\alpha}{K[x]}{K[\alpha]}{f(x)}{f(\alpha)} \]
+    %The map is 
+
+    Let $I$ be the set of all polynomials such that $f(\alpha) = 0$, since $\alpha$ algebraic,
+    $I \neq \varnothing$, so pick a monic polynomial $g(x)$ of minimal degree in $I$.
+    For any other $f(x) \in I$, write $f(x) = g(x) q(x) + r(x)$ with $\deg r < \deg g$.
+    If $r(x) \neq 0$, then $r(\alpha) = f(\alpha) - q(\alpha) g(\alpha)$.
+    But then $r(\alpha) = f(\alpha) - q(\alpha) g(\alpha) = 0$ with $\deg r < \deg g$,
+    which contradicts the minimality of $g$, thus $r = 0$, and hence $g \mid f$.
+
+    Finally, if $g(x) = h_1(x) h_2(x)$ with $\deg h_1, \deg h_2 < \deg g$,
+    then one of them, say $h_1(\alpha) = 0$ again contradicts the minimality of $g$,
+    hence $g$ irreducible.
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  Let $L/K$ be an extension and $\alpha \in L$, the following are equivalent:
+  \begin{enumerate}[(\arabic*)]
+    \item $\alpha$ is algebraic over $K$.
+    \item $K[\alpha] = K(\alpha)$.
+    \item $[K(\alpha): K] < \infty$.
+  \end{enumerate}
+
+  \begin{proof}
+    (1) $\Rightarrow$ (2): ``$\subset$'' trivial. \\
+    ``$\supset$'': For all $\beta \in K(\alpha), \beta = g(\alpha) / h(\alpha)$ with $h(\alpha) \neq 0$.
+    So $m_{\alpha, K} \nmid h$. Since $m_{\alpha, K}$ is irreducible, $\gcd(m_{\alpha, K}, h) = 1$,
+    hence there exists $a(x), b(x) \in K[x]$ such that $1 = a(x) h(x) + b(x) m_{\alpha, K}(x)$
+    Subsitute $\alpha$ and we get $1/h(\alpha) = a(\alpha)$, hence $\beta = g(\alpha) a(\alpha) \in K[\alpha]$.
+
+    (2) $\Rightarrow$ (1): Since $1 / \alpha \in K[\alpha]$, thus $1 / \alpha = f(\alpha)$ for some
+    polynomial $f$, hence if $g(x) = xf(x) - 1, g(\alpha) = 0$ which implies $\alpha$ is algebraic.
+
+    (1) $\Rightarrow$ (3): Assume that $\deg m_{\alpha, K} = n$, it is easy to see that
+    $K[\alpha] = \langle 1, \alpha, \dots, \alpha^{n-1} \rangle_K$. Since (1) $\implies$ (2),
+    we have $[K(\alpha): K] = [K[\alpha], K] = n$.
+
+    (3) $\Rightarrow$ (1): Since $[K(\alpha): K] = n$, consider $1, \alpha, \alpha^2, \dots, \alpha^n$.
+    Some of these $n+1$ elements may be coincident, but nevertheless these elements are linear dependent.
+    Hence exists $\alpha_0, \dots, \alpha_n$ not all zero in $K$ satisfied
+    $a_0 + a_1 \alpha + \dots + a_n \alpha_n = 0 \implies \alpha \text{ is algebraic.}$
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  Given $M/L$ and $L/K$, $[M: K] = [M: L] [L: K]$.
+
+  \begin{proof}
+    If $[M:L] = m < \infty$ and $[L:K] = n < \infty$, then $L \cong K^{\oplus n}, M \cong L^{\oplus m}$.
+    So $M \cong \left( K^{\oplus n} \right)^{\oplus m} \cong K^{\oplus mn}$, thus $[M: K] = mn$.
+
+    Now if $[M: K] = l < \infty$, then exists a basis $\{ z_1, z_2, \dots, z_l \}$ which is a basis for $M$
+    over $K$. Then $M = K z_1 + \dots + K z_l \subset L z_1 + \dots + L z_l \subset M \implies
+    M = L z_1 + \dots + L z_l$. Hence $[M: L] < \infty$. Also, since $L$ is a $K$-linear
+    subspace of $M$, $[L: K] \leq l \implies [L: K] < \infty$. Thus if $[M: L] = \infty$ or $[L: K] = \infty$,
+    then $[M: K] = \infty$.
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  Given $L/K$, define $L^{\text{alg}} \triangleq \{ \alpha \in L \mid \alpha \text{ is algebraic over } K \}$,
+  then $L^{\text{alg}}$ is a subfield of $L$.
+
+  \begin{proof}
+    Notice that if $\alpha, \beta \in L^{\text{alg}}$, then $\beta$ is algebraic over $K$
+    implies that $\beta$ is algebraic over $K(\alpha)$. Thus
+    \[ [K(\alpha, \beta): K] = [K(\alpha)(\beta): K(\alpha)] [K(\alpha): K]
+      < \infty \]
+
+    Also, since $K(\alpha + \beta), K(\alpha - \beta), K(\alpha \beta), K(\alpha / \beta)$ are
+    all contained in $K(\alpha, \beta)$, they are all algebraic over $K$, thus
+    these elements are all algebraic, and hence $L^{\text{alg}}$ is a subfield.
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  $[L: K] < \infty$ if and only if $L = K(\alpha_1, \alpha_2, \dots, \alpha_n)$ with each $\alpha_i$
+  algebraic over $K$. In this case, $L / K$ is algebraic (but the other side may not hold).
+
+  \begin{proof}
+    ``$\Rightarrow$'': Let $[L: K] = n$, so there is a basis $\{ \alpha_1, \alpha_2, \dots, \alpha_n \}$
+    for $L$ over $K$. It is easy to see that $L = K(\alpha_1, \dots, \alpha_n)$.
+    Also $[K(\alpha_i): K] \leq [L: K] < \infty$, thus $\alpha_i$ is algebraic.
+
+    ``$\Leftarrow$'': Since $\alpha_i$ is algebraic over $K$, $\alpha_i$ is algebraic over $K(\alpha_1, \dots, \alpha_{i-1})$.
+    Thus
+    \[ [L: K] = [K(\alpha_1, \dots, \alpha_n): K(\alpha_1, \dots, \alpha_{n-1})]
+      [K(\alpha_1, \dots, \alpha_{n-1}): K(\alpha_1, \dots, \alpha_{n-2})] \dots [K(\alpha_1): K] < \infty \]
+    Moreover, $\forall \alpha \in L, [K(\alpha): K] \leq [L: K] < \infty$, so $\alpha$ is algebraic over $K$.
+  \end{proof}
+\end{prop}
+
+\begin{coro}
+  Given $L/K$, and $S$ a subset of $L$, if $\forall \alpha \in S$, $\alpha$ is
+  algebraic over $K$, then $K(S) / K$ is algebraic.
+
+  \begin{proof}
+    If $\beta \in K(S)$, by definition we know that exists $\alpha_1, \dots, \alpha_n$
+    so that $\beta \in K(\alpha_1, \dots, \alpha_n)$. Thus $\beta$ is algebraic over $K$.
+  \end{proof}
+\end{coro}
+
+\begin{prop}
+  If $M/L$ and $L/K$ are algebraic, then $M/K$ is algebraic.
+
+  \begin{proof}
+    For all $\alpha \in M$, since $\alpha$ is algebraic over $L$,
+    there exists $a_{n-1}, \dots, a_0$ so that $\alpha^n + a_{n-1} \alpha^{n-1} + \dots + a_0 = 0$,
+    that is, $\alpha$ is algebraic over $K(a_0, \dots, a_{n-1})$.
+
+    So $[K(a_0, \dots, a_{n-1}, \alpha): K] = [K(a_0, \dots, a_{n-1})(\alpha): K(a_0, \dots, a_{n-1})]
+    [K(a_0, \dots, a_{n-1}): K] < \infty$, thus $\alpha$ is algebraic over $K$.
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  Given $L/L_1$ and $L/L_2$, $L_1 L_2$ is defined as the smallest subfield of $L$
+  containing both $L_1$ and $L_2$.
+\end{definition}
+
+\begin{prop}
+  Let $[L_1: K] = m$ and $[L_2: K] = n$.
+  \begin{enumerate}[(\arabic*)]
+    \item $[L_1 L_2: K] \leq mn$.
+    \item If $\gcd(m, n) = 1$, then $[L_1 L_2: K] = mn$.
+  \end{enumerate}
+
+  \begin{proof}
+    (1): Assume $L_1 = K(\alpha_1, \dots, \alpha_m), L_2 = K(\beta_1, \dots, \beta_n)$.
+    We could find that $L_1 L_2 = K(\alpha_1, \dots, \alpha_m, \beta_1, \dots, \beta_n)$.
+    Notice that $[K(\beta_1, \dots, \beta_m)(\alpha_i): K(\beta_1, \dots, \beta_m)] \leq [K(\alpha_i): K]$,
+    and thus $[L_1 L_2: K] = [K(\alpha_1, \dots, \alpha_m, \beta_1, \dots, \beta_n)
+    : K(\beta_1, \dots, \beta_n)] [K(\beta_1, \dots, \beta_m): K] \leq [K(\alpha_i, \dots, \alpha_n): K]
+    [K(\beta_1, \dots, \beta_n): K] = [L_1: K][L_2: K]$.
+
+    (2): Notice that $[L_i: K] \mid [L_1 L_2: K]$, so $mn \mid [L_1 L_2: K]$. By
+    (1), $[L_1 L_2: K] \leq nm$, hence $[L_1 L_2: K] = nm$.
+  \end{proof}
+\end{prop}
 
 \begin{definition}
   Let $R$ be a commutative ring with $1$, and $I$ be an ideal of $R$, then
@@ -20,7 +193,7 @@
     \item $I$ is a prime ideal $\iff$ $R / I$ is an integral domain.
   \end{enumerate}
 
-  \begin{proof} \hfill \vspace*{-1em}
+  \begin{proof} \hfill
     \begin{enumerate}
       \item ``$\Rightarrow$'': For any $\bar{r} \in R/I$ with $\bar{r} \neq 0$, then $r \not\in I$.
         Consider $\langle r \rangle + I$ which contains $I$ and is not equal to $I$ because $r \not\in I$.
