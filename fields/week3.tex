@@ -1,5 +1,49 @@
 %! TEX root=../main.tex
-\subsection{Week 3}
+\subsection{Algebra closure}
+
+\begin{definition} \hfill
+  \begin{itemize}
+    \item $L$ is called an {\bf algebraic closure}\index{algebraic closure} of $K$ if $L/K$ is algebraic and
+      each polynomial $f(x) \in K[x]$ splits over $L$.
+    \item $L$ is said to be {\bf algebraically closed}\index{algebraically closed} if for each $f(x) \in L[x]$,
+      $f(x)$ has a root in $L$.
+  \end{itemize}
+\end{definition}
+
+\begin{prop}
+  Given $L/K$, if $L$ is algebraically closed, then $L_a \triangleq \{ \alpha \in L \mid
+  \alpha \text{ is algebraic over } K \}$ is an algebraic closure of $K$.
+
+  \begin{proof}
+    By prop~\ref{prop:alg-elements-form-a-field}, $L_a$ is a field, and by definition,
+    $L/K$ is algebraic.
+
+    Now we proof that for any $K \subseteq L$ and $f(x) \in K[x]$, $f(x)$ splits over $K$.
+    Using induction, $\deg f = 1$ is trivial.
+    If $\deg f > 1$, then since $f(x) \in K[x] \subseteq L[x]$,
+    $f$ has a root, say $\alpha$. so we could write $f(x) = (x - \alpha) g(x)$.
+    Then $g(x) \in K(\alpha)[x] \subseteq L[x]$. by induction, $g(x)$ splits and hence
+    $f(x)$ splits.
+
+    So for any $f(x) \in K[x]$, $f$ splits. Write $f(x) = (x - \alpha_1) \dots (x - \alpha_n)$,
+    then each $\alpha_i$ is algebraic over $K$, $\alpha_i \in L_a$ and hence there product $f(x)$
+    splits in $L_a[x]$.
+  \end{proof}
+\end{prop}
+
+\begin{coro}
+  If $K$ is algebraically closed, then $K$ is an algebraic closure of $K$ itself.
+\end{coro}
+
+\begin{prop}
+  If $L$ is an algebraic closure of $K$, then $L$ is algebraically closed.
+
+  \begin{proof}
+    For $f(x) \in L[x]$, let $\alpha$ be a root of $f(x)$. Since $L(\alpha)/L$ and
+    $L/K$ is algebraic, by prop~\ref{prop:alg-tower-implies-alg}, $L(\alpha)/K$ is algebraic.
+    So $\alpha$ must be in $L$, hence $f(x)$ has a root in $L$.
+  \end{proof}
+\end{prop}
 
 \begin{prop}
   The following are equivalent.
@@ -11,18 +55,28 @@
   \end{enumerate}
 \end{prop}
 
+In below we would use the Zorn's lemma heavily.
+\begin{lemma}[Zorn's lemma]
+  Suppose a partially order set $P$ has the property that every chain (i.e., a total order subset)
+  has an upper bound in $P$, then the set $P$ contains at least one maximal element.
+\end{lemma}
+
 \begin{lemma} \label{lemma:max-ideal-exists}
   In a commutative ring $R$ with $1$, any proper ideal $I \subsetneq R$ is contained in a maximal ideal.
 
   \begin{proof}
     Consider $S = \{ J \subsetneq R \mid I \subseteq J \} \neq \varnothing$ since $I \in S$.
-    Define a partial order on $S$ by $J_1 \prec J_2 \iff J_1 \subseteq J_2$.
+    Define a partial order on $S$ by $J_1 \preceq J_2 \iff J_1 \subseteq J_2$.
 
-    Given a chain $\{ J_i \mid i \in \Lambda \}$, let $J = \bigcup_{i \in \Lambda} J_i$ which is a proper
-    ideal, since if $x, y \in J$, then $x \in J_1, y \in J_2$. Let $\tilde{J} = \max(J_1, J_2)$, then $x, y \in \tilde{J}$
-    which implies $x + y \in \tilde{J}$. So $J$ is a least upper bound for this chain.
+    Given a chain $\{ J_i \mid i \in \Lambda \}$, let $J = \bigcup_{i \in \Lambda} J_i$. $J$ is an
+    ideal, since if $x, y \in J$, then $x \in J_1, y \in J_2$.
+    Let $\tilde{J} = \max(J_1, J_2)$, then $x, y \in \tilde{J}$
+    which implies $x + y \in \tilde{J}$, and it is easy to check that for any $x \in R, y \in J$, $xy \in J$.
 
-    By Zorn's leemma, exists a max element in $S$ which is a max ideal in $R$ containing $I$.
+    Also, $J$ is proper since $1 \not\in J$, or else $1 \in J_i$ and thus $J_i = R$ which leads to
+    an contradiction.
+
+    By Zorn's lemma, exists a maximal element in $S$, and thus it is a maximal ideal which contains $I$.
   \end{proof}
 \end{lemma}
 
@@ -32,7 +86,9 @@
   \begin{proof}
     Let $S = \{ x_f \mid f(x) \in K[x] \text{ with } \deg f \geq 1 \}$ be the set of variables indexed by non-constant
     polynomial in $K[x]$. Consider the polynomial ring $K[S]$ and $I = \langle f(x_f) : f \in K[x] \text{ with } \deg f \geq 1 \rangle$,
-    which is an ideal in $K[S]$. We claim that $I \neq K[S]$. If not then $1 \in I \implies 1 = \sum_{i = 1}^n g_i f_i(x_{f_i})$.
+    which is an ideal in $K[S]$.
+
+    We claim that $I \neq K[S]$. If not then $1 \in I \implies 1 = \sum_{i = 1}^n g_i f_i(x_{f_i})$.
     Write $x_i \triangleq x_{f_i}$ for $i = 1, 2, \cdots, n$. Also, by definition $g_i$ only involves a finite number of
     variable in $S$, so we could set $g_i \in K[x_1, x_2, \cdots, x_m]$ with $m \geq n$. That is, $1 = \sum_{i = 1}^n g_i(x_1, x_2,
     \cdots, x_m) f_i(x_i)$. Let $\Sigma$ be a splitting field for $f(x) = f_1(x) f_2(x) \cdots f_n(x)$ and define $\alpha_i \in \Sigma$
@@ -51,16 +107,24 @@
 
   \begin{lemma} \label{lemma:homo-extend-to-alg-closed-extension}
     If $L_1 / K$ is algebraic and $\tau: K \to L_2$ is a non-zero homomorphism with $L_2$ being algebraically closed,
-    then $\tau$ extends to $\sigma: L_1 \to L_2$.
+    then $\tau$ could be extend to $\sigma: L_1 \to L_2$.
 
     \begin{proof}
-      Consider $S = \{ (M, \theta) \mid K \subset M \subset L_1, \theta: M \to L_2 \text{ with } \theta\big|_K = \tau\}$
+      Consider $S = \{ (M, \theta) \mid K \subset M \subset L_1,\ \theta: M \to L_2 \text{ with } \theta\big|_K = \tau\}$,
       which is not an empty set since $(K, \tau) \in S$.
 
-      Define a partial order on $S$, $(M_1, \theta_1) \prec (M_2, \theta_2) \iff M_1 \subseteq M_2, \theta_2 \big|_{M_1} = \theta_1$.
+      Define a partial order on $S$ by $(M_1, \theta_1) \preceq (M_2, \theta_2)
+      \iff M_1 \subseteq M_2 \,\land\, \theta_2 \big|_{M_1} = \theta_1$.
       Given any chain $\{(M_i, \theta_i) : i \in \Lambda \}$, let $N = \bigcup_{i = 1}^\infty M_i$ and
-      $\theta = \alpha :: N \mapsto \theta_i(\alpha)$ if $\alpha \in M_i$. This map is well defined, and is
-      a  least upper bound for this chain. By Zorn's lemma, exists a max element $(M, \sigma)$ in $S$.
+      $\theta = \alpha :: N \mapsto \theta_i(\alpha)$ if $\alpha \in M_i$. It could
+      be check easily that this map is well defined, and $(N, \theta)$ is
+      a least upper bound in $S$ for this chain.  By Zorn's lemma, exists a max element $(M, \sigma)$ in $S$.
+
+      Now, if $M \neq L_1$, then pick $\alpha \in L_1 \setminus M$. Since $L_1/K$ is algebraic,
+      the minimal polynomial $m_{\alpha, K}$ exists. Since $L_2$ algebraically closed, $\bar\sigma(m_{\alpha, K})$
+      has a root in $L_2$, and thus by lemma~\ref{lemma:extension-exists-condition},
+      $\sigma$ could be extend to $\sigma': M(\alpha) \to L_2$ which contradict the maximality of $(M, \sigma)$.
+      Thus $M = L_1$.
     \end{proof}
   \end{lemma}
 
@@ -69,8 +133,9 @@
     \begin{proof}
       Consider the inclusion map $\text{id}_K :: K \hookrightarrow L_1$.
       By Lemma~\ref{lemma:homo-extend-to-alg-closed-extension},
-      $\tau$ could be extend to $\sigma :: L_2 \to L_1$ such that $\sigma\big|_K = \text{id}_K$.
-      Also, $L_2$ is algebraically closed which implies $\sigma(L_2)$ is algebraically closed.
+      $\text{id}_K$ could be extend to $\sigma :: L_2 \to L_1$ such that $\sigma\big|_K = \text{id}_K$.
+      Since $\sigma \neq 0$, $\sigma(L_2) \cong L_2$.
+      Also, $L_2$ is algebraically closed implies $\sigma(L_2)$ is algebraically closed.
       So for any $\alpha \in L_1$, $\alpha$ is algebraic over $K$ and thus over $\sigma(L_2)$,
       which implies $\alpha \in \sigma(L_2)$, so $\sigma$ is onto, hence $\sigma$ is an
       isomorphism between $L_1$ and $L_2$.
@@ -119,16 +184,16 @@
 \end{example}
 
 \begin{fact}
-  $K$ is perfect if an only if for any irreducible polynomial $f(x) \in K[x]$, $f$ is seperable.
+  $K$ is perfect if an only if for any irreducible polynomial $f(x) \in K[x]$, $f$ is separable.
 
   Also, we can find that any irreducible polynomial $f(x) \in K[x]$ is not separable over $K$
   if and only if $\Char K = p > 0$ and $f(x) = g(x^p)$ for some $g(x) \in K[x]$, where
   $g(x)$ is irreducible and not all coefficient of $g$ is in $K^p$.
 
-  Finally, if $\Char K = 0$, then $K$ is seperable.
+  Finally, if $\Char K = 0$, then $K$ is separable.
 \end{fact}
 
-\begin{prop}
+\begin{prop} \label{prop:separable-and-split-have-most-embeddings}
   Give $\quot{K(\alpha)}{K}$ with degree $m_{\alpha, K} = d$ and $\tau :: K \to L \neq 0$.
   If $\alpha$ is separable over $K$ and $\bar\tau(m_{\alpha, K})$ splits over $L$, then
   there are exactly $d$ monomorphisms $\sigma :: K(\alpha) \to L$ with $\sigma\big|_K = \tau$.
@@ -153,20 +218,31 @@
   \end{proof}
 \end{prop}
 
-\begin{prop}
-  Let $[K': K] = d$ and $\tau:: K \to L \neq 0$. If $\quot{K'}{K}$ is separable and $\forall \alpha \in K'$,
-  $\bar\tau(m_{\alpha, K})$ splits over $L$, then there are exactly $d$ monomorphisms $\sigma::K' \to L$ with
-  $\sigma\big|_k = \tau$. Otherwise exists $r < d$ of such monomorphisms.
+\begin{prop}\label{prop:separable-field-and-split-have-most-embeddings}
+  Let $[K': K] = d$ and $\tau:: K \to L \neq 0$. Then $\quot{K'}{K}$ is separable and $\forall \alpha \in K'$,
+  $\bar\tau(m_{\alpha, K})$ splits over $L$, if and only if there are exactly
+  $d$ monomorphisms $\sigma::K' \to L$ with $\sigma\big|_k = \tau$.
+  Otherwise exists $r < d$ of such monomorphisms.
 
   \begin{proof}
     By induction on $d$, if $d = 1$ we could simply let $\sigma = \tau$.
 
     Now for $d > 1$, let $\alpha \in K' \setminus K$.
     By prop $1$, exists exactly $[K(\alpha): K]$ monomorphisms $\tau_1: K(\alpha) \to L$.
-    Now, we need to check two condition:
-    \begin{enumerate}
-        \item $\quot{K'}{K(\alpha)}$ is separable:
-    \end{enumerate}
+
+    Now, for any $\beta \in \quot{K'}{K(\alpha)}$,
+    $m_{\beta, K(\alpha)} \mid m_{\beta, K}$ and thus $m_{\beta, K(\alpha)}$ is separable
+    and $\bar\tau(m_{\beta, K(\alpha)})$ splits in $L$ since $\bar\tau(m_{\beta, K})$ splits.
+    These implies that $\quot{K'}{K(\alpha)}$ is separable and $\forall \beta \in K(\alpha),
+    m_{\beta, K(\alpha)}$ splits in $L$. Thus, $K(\alpha)$ satisfied the hypothesis,
+    and by induction, there are exactly $[K': K(\alpha)]$ monomorphisms $\sigma :: K' \to L$
+    such that $\sigma\big|_{K(\alpha)} = \tau_1$, thus there are $[K': K(\alpha)][K(\alpha): k]
+    = [K': K]$ such monomorphisms.
+
+    Otherwise, we could choose $\alpha \in K'$ such that $\bar\tau(m_{\alpha, K})$ has fewer
+    then $[K(\alpha): K]$ roots in L, then there are $r' < [K(\alpha): K]$ monomorphism $\tau_1 :: K(\alpha)
+    \to L$. By induction, each $\tau_1$ has $r''$ extensions $\sigma :: K' \to L$ and $r'' \leq [K': K(\alpha)]$
+    Hence the number of monomorphism equals $r' r'' < [K': K]$.
   \end{proof}
 \end{prop}
 
@@ -182,7 +258,7 @@
   \[
     \begin{tikzcd}
       K(R) \arrow[rr, "\sim", "\text{(2) } \sigma"'] & & K(R, \gamma) \\
-      K(\beta) \arrow[u, 1, hookrightarrow] \arrow[rr, "\sim", "\text{(1) } \tau"'] & & K(\gamma) \arrow[u, hookrightarrow] \\
+      K(\beta) \arrow[u, hookrightarrow] \arrow[rr, "\sim", "\text{(1) } \tau"'] & & K(\gamma) \arrow[u, hookrightarrow] \\
       & K \arrow[ur, hookrightarrow] \arrow[ul, hookrightarrow] &
     \end{tikzcd}
   \]
@@ -198,16 +274,44 @@
   \end{proof}
 \end{lemma}
 
-\begin{theorem}
+\begin{theorem} \label{thm:separable-elements-form-separable-field}
   Given $\quot{K(\alpha_1, \alpha_2, \dots, \alpha_n)}{K}$, if $\alpha_i$ is
   separable over $K_{i-1} \triangleq K(\alpha_1, \dots, \alpha_{i-1})$, then
   $\quot{K(\alpha_1, \alpha_2, \dots, \alpha_n)}{K}$ is separable.
 
   \begin{proof}
     Let $L$ be a splitting field of $f(x) = \prod m_{\alpha_i, K}$.
+
+    We claim that there are $[K_j: K]$ monomorphisms $\tau_j:: K_j \to L$ with $\tau_j \big|_K = \text{id}_K$.
+    Use induction on $j$, if $j = 0$, then there are only $1$ such monomorphism, namely itself $\text{id}_K$.
+
+    For $j > 0$, observe that $m_{\alpha_j, K_{i-1}} \mid m_{\alpha_j, K}$, and since $\bar\tau_{j-1}
+    (m_{\alpha_j, K}) = m_{\alpha_j, K}$ splits over $L$, $m_{\alpha_j, K_{i-1}}$ also splits over $L$.
+    By hypothesis, $\alpha_j$ is separable over $K_{j-1}$, so by prop~\ref{prop:separable-and-split-have-most-embeddings},
+    there are $[K_j: K_{j-1}]$ such monomorphisms $\tau_j:: K_j \to L$ with $\tau_j \big|_{K-1} = \tau_{j-1}$.
+    By induction, there are $[K_{j-1}: K]$ monomorphisms $\tau_{j-1}:: K_{j-1} \to L$
+    with $\tau_j \big|_K = \text{id}_K$. Compose these monomorphisms, we know that there
+    exists exactly $[K_j: K_{j-1}][K_{j-1}: K] = [K_j: K]$ monomorphisms $\tau_j:: K_j \to L$ such that
+    $\tau_j \big|_K = \text{id}_K$.
+
+    So there are exactly $[K_n: K]$ monomorphisms $\tau :: K(\alpha_1, \dots, \alpha_n) \to L$
+    with $\tau\big|_K = \text{id}_K$.
+    By prop~\ref{prop:separable-field-split-have-most-embeddings}, $K(\alpha_1, \dots, \alpha_n)$ is separable.
+
   \end{proof}
 \end{theorem}
 
 \begin{theorem}
-  \[ \quot{L}{K} \text{ is separable } \iff \quot{L}{M}, \quot{M}{K} \text{ are separable} \]
+  $\quot{L}{K}$ is separable if and only if $\quot{L}{M},\, \quot{M}{K}$ are separable.
+
+  \begin{proof}
+    ``$\Rightarrow$'': If $L/K$ is separable, then $M/K$ is obviously separable. For any $\beta \in L$,
+    $m_{\beta, M} \mid m_{\beta, K}$ so $m_{\beta, M}$ is separable which implies $L/M$ is separable.
+
+    ``$\Leftarrow$'': For any $\alpha \in L$, write $m_{\alpha, M} = x^n + a_{n-1}x^{n-1} + \dots + a_1 x + a_0$,
+    then $m_{\alpha, M}$ is separable implies that $\alpha$ is separable over $K(a_0, \dots, a_{n-1}$.
+    By theorem~\ref{thm:separable-elements-form-separable-field},
+    $K(a_0, a_1, \dots, a_{n-1}, \alpha) / K$ is separable, hence each $\alpha$ is separable over $K$,
+    thus $L/K$ is separable.
+  \end{proof}
 \end{theorem}
