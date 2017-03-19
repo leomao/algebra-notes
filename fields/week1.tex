@@ -13,7 +13,7 @@
   \end{itemize}
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Eisenstein criterion] \mbox{} \\
   Let $f(x) = a_n x^n + \dots + a_1 x + a_0 \in \Zb[x]$ with $\gcd(a_1, a_2, \cdots, a_n) = 1$.
   Assume that exists a prime $p$ satisfied $p \nmid a_n$ but $p \mid a_i$ for other $i \neq n$,
   and $p^2 \nmid a_0$, then $f$ is irreducible.
@@ -22,16 +22,17 @@
     Consider $\bar{f}(x)$, by assumption, $\bar{f}(x) = \bar{a}_n x^n$. So if $f(x) = g(x) h(x)$
     with $\deg g, \deg h \geq 1$, let $g(x) = b_r x^r + \dots + b_0, h(x) = c_{n-r} x^{n-r} + \dots + c_0$,
     then $\bar{g}(x) = \bar{b}_r x^r, \bar{h}(x) = \bar{c}_{n-r} x^{n-r}$ for some
-    $r$. But then we would find out that $\bar{b}_0 = \bar{c}_0 = 0$, and thus $p^2 \mid a_0$
-    which is a contradiction, hence $f$ irreducible.
+    $r$. But then we would find out that $\bar{b}_0 = \bar{c}_0 = 0$, and thus $p^2 \mid a_0$,
+    which is a contradiction, hence $f$ is irreducible.
   \end{proof}
 \end{theorem}
 
 \begin{prop}
   Given $L/K$ and $\alpha \in L$, if $\alpha$ is algebraic over $K$, then
-  exists a unique irreducible polynomial $m_{\alpha, K}(x) \in K[x]$ of minimal degree
-  that satisfied $m_{\alpha, K}(\alpha) = 0$ and for any other $f(x) \in K[x]$ such
-  that $f(\alpha) = 0$, we have $m_{\alpha, K} \mid f$.
+  exists a unique monic irreducible polynomial $m_{\alpha, K}(x) \in K[x]$ of
+  minimal degree that satisfied $m_{\alpha, K}(\alpha) = 0$ and for any other
+  $f(x) \in K[x]$ such that $f(\alpha) = 0$, we have $m_{\alpha, K} \mid f$.
+  We call $m_{\alpha, K}$ the \emph{minimal polynomial} of $\alpha$ over $K$.
 
   \begin{proof}
     %Consider the evaluation map on $\alpha$:
@@ -47,7 +48,7 @@
 
     Finally, if $g(x) = h_1(x) h_2(x)$ with $\deg h_1, \deg h_2 < \deg g$,
     then one of them, say $h_1(\alpha) = 0$ again contradicts the minimality of $g$,
-    hence $g$ irreducible.
+    hence $g$ is irreducible.
   \end{proof}
 \end{prop}
 
@@ -133,8 +134,9 @@
   algebraic over $K$, then $K(S) / K$ is algebraic.
 
   \begin{proof}
-    If $\beta \in K(S)$, by definition we know that exists $\alpha_1, \dots, \alpha_n$
-    so that $\beta \in K(\alpha_1, \dots, \alpha_n)$. Thus $\beta$ is algebraic over $K$.
+    If $\beta \in K(S)$, by definition we know that there exists
+    $\alpha_1, \dots, \alpha_n$ such that $\beta \in K(\alpha_1, \dots, \alpha_n)$.
+    Thus $\beta$ is algebraic over $K$.
   \end{proof}
 \end{coro}
 
