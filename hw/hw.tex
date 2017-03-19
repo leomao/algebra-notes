@@ -1,0 +1,320 @@
+\documentclass[a4paper,titlepage]{article}
+
+%%%%%%%%%%%%%%%%%%page size%%%%%%%%%%%%%%%%%%
+% \paperwidth=65cm
+% \paperheight=160cm
+
+%%%%%%%%%%%%%%%%%%%Package%%%%%%%%%%%%%%%%%%%
+\usepackage[margin=3cm]{geometry}
+\usepackage{mathtools,amsthm,amssymb}
+\usepackage{centernot}
+\usepackage{yhmath}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage[square, comma, numbers, super, sort&compress]{natbib}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[shortlabels, inline]{enumitem}
+\usepackage{xpatch}
+\usepackage{imakeidx}
+\usepackage{hvindex}
+%%% fix bugs in hvindex .................
+\def\IndexXXii#1!#2@#3@#4\IndexNIL{%
+  \ifx\relax#3\relax            %               no @ in last arg
+    \def\hvTemp{#2}%
+    \ifx\hvTemp\hvEncap\index{#1!{#2}}#2\else
+      \ifx\hvIDXfont\hvIDXfontDefault\index{#1!{#2}}#2% <--- Here a % and #1 were missing
+      \else\index{#1!#2@\hvIDXfont{#2}}\hvIDXfont{#2}\fi\fi%
+  \else\index{#1!\protect#2@#3}#3\fi}
+
+\def\IndexXXiii#1!#2!#3@#4@#5\IndexNIL{%
+  \ifx\relax#4\relax 		% 		no @ in last arg
+    \def\hvTemp{#3}%
+    \ifx\hvTemp\hvEncap\index{#1!#2!{#3}}#3\else
+      \ifx\hvIDXfont\hvIDXfontDefault\index{#1!#2!{#3}}#3
+      \else\index{#1!#2!#3@\hvIDXfont{#3}}\hvIDXfont{#3}\fi\fi%
+  \else\index{#1!#2!\protect#3@#4}#4\fi}
+\usepackage[unicode, pdfborder={0 0 0}, bookmarksdepth=-1]{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor=red,
+  }
+\makeindex[columns=2, options= -s index_style.ist]
+
+%\usepackage{tabto}     
+%\usepackage{soul}      
+%\usepackage{ulem}      
+%\usepackage{wrapfig}   
+%\usepackage{floatflt}  
+\usepackage{float}     
+\usepackage{caption}   
+\usepackage{subcaption}
+%\usepackage{setspace}  
+\usepackage{mdframed}  
+%\usepackage{multicol}  
+%\usepackage[abbreviations]{siunitx}
+%\usepackage{dsfont}   
+
+%%%%%%%%%%%%%%%%%%%TikZ%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usepackage{tikz-cd}
+%\usepackage{circuitikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+
+\tikzstyle{every picture}+=[remember picture]
+
+%%%%%%%%%%%%%%中文 Environment%%%%%%%%%%%%%%%
+\usepackage[CheckSingle, CJKmath]{xeCJK}  % xelatex 中文
+\usepackage{CJKulem}	% 中文字裝飾
+\setCJKmainfont[BoldFont=cwTeX Q Hei]{cwTeX Q Ming}
+\setCJKsansfont[BoldFont=cwTeX Q Hei]{cwTeX Q Ming}
+\setCJKmonofont[BoldFont=cwTeX Q Hei]{cwTeX Q Ming}
+
+%%%%%%%%%%%%%%%%%font size%%%%%%%%%%%%%%%%%%%
+\renewcommand{\baselinestretch}{1.1}
+%\def\normalsize{\fontsize{10}{15}\selectfont}
+%\def\large{\fontsize{12}{18}\selectfont}
+%\def\Large{\fontsize{14}{21}\selectfont}
+%\def\LARGE{\fontsize{16}{24}\selectfont}
+%\def\huge{\fontsize{18}{27}\selectfont}
+%\def\Huge{\fontsize{20}{30}\selectfont}
+
+%%%%%%%%%%%%%%%Theme Input%%%%%%%%%%%%%%%%%%%
+%\input{themes/chapter/neat}
+%\input{themes/env/problist}
+
+%%%%%%%%%%%titlesec settings%%%%%%%%%%%%%%%%%
+%\titleformat{\chapter}{\bf\Huge}
+            %{\arabic{section}}{0em}{}
+%\titleformat{\section}{\centering\Large}
+            %{\arabic{section}}{0em}{}
+%\titleformat{\subsection}{\large}
+            %{\arabic{subsection}}{0em}{}
+%\titleformat{\subsubsection}{\bf\normalsize}
+            %{\arabic{subsubsection}}{0em}{}
+%\titleformat{command}[shape]{format}{label}
+            %{gutter}{before}[after]
+
+%%%%%%%%%%%%variable settings%%%%%%%%%%%%%%%%
+%\numberwithin{equation}{section}
+%\setcounter{secnumdepth}{4}
+%\setcounter{tocdepth}{1}
+%\setcounter{section}{0}
+%\graphicspath{{images/}}
+
+%%%%%%%%%%%%%%%page settings%%%%%%%%%%%%%%%%%
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\setlength{\headheight}{15pt}  % with titling
+\setlength{\droptitle}{-2.5cm}
+%\posttitle{\par\end{center}}  % distance between title and content
+\parindent=0pt % indent size
+\parskip=1ex    % line space
+%\pagestyle{empty}  % empty: no page number
+%\pagestyle{fancy}  % fancy: fancyhdr
+
+% use with fancygdr
+%\lhead{\leftmark}
+%\chead{}
+%\rhead{}
+%\lfoot{}
+%\cfoot{}
+%\rfoot{\thepage}
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0.4pt}
+
+%\fancypagestyle{firststyle}
+%{
+  %\fancyhf{}
+  %\fancyfoot[C]{\footnotesize Page \thepage\ of \pageref{LastPage}}
+  %\renewcommand{\headrule}{\rule{\textwidth}{\headrulewidth}}
+%}
+
+\setlist{itemsep=0em, topsep=0.2em}
+
+%%%%%%%%%%%%%%%renew command%%%%%%%%%%%%%%%%%
+% \renewcommand{\contentsname}{Table of Content}
+% \renewcommand{\refname}{Reference}
+\renewcommand{\abstractname}{\LARGE Abstract}
+
+%%%%%%%%symbol and function settings%%%%%%%%%
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\inpd}{\langle}{\rangle} % inner product
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arccsch}
+\DeclareMathOperator{\arccoth}{arccoth}
+\newcommand{\np}[1]{\\[{#1}] \indent}
+\newcommand{\tr}[1]{{#1}^\mathrm{t}}
+%%%% Geometry Symbol %%%%
+\newcommand{\degree}{^\circ}
+\newcommand{\Arc}[1]{\wideparen{{#1}}}
+\newcommand{\Line}[1]{\overleftrightarrow{{#1}}}
+\newcommand{\Ray}[1]{\overrightarrow{{#1}}}
+\newcommand{\Segment}[1]{\overline{{#1}}}
+%%%% Math symbol %%%%
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\Nb}{\mathbb{N}}
+\newcommand{\Zb}{\mathbb{Z}}
+\newcommand{\Qb}{\mathbb{Q}}
+\newcommand{\Rb}{\mathbb{R}}
+\newcommand{\Cb}{\mathbb{C}}
+\newcommand{\Hb}{\mathbb{H}}
+\newcommand{\Fb}{\mathbb{F}}
+\newcommand{\Fbx}{\mathbb{F}^\times}
+\newcommand{\Qbx}{\mathbb{Q}^\times}
+\newcommand{\Rbx}{\mathbb{R}^\times}
+\newcommand{\Cbx}{\mathbb{C}^\times}
+\newcommand{\Hbx}{\mathbb{H}^\times}
+\newcommand{\Gc}{\mathcal{G}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\sT}{{\sf T}}
+\newcommand{\sI}{{\sf I}}
+
+\newcommand{\Mf}{\mathfrak{M}}
+\newcommand{\Grf}{\mathfrak{Gr}}
+
+\newcommand{\bigOp}{\raisebox{0.3ex}{$\bigoplus$}}
+\newcommand{\bigOt}{\raisebox{0.3ex}{$\bigotimes$}}
+\newcommand{\Op}{\oplus}
+\newcommand{\Ot}{\otimes}
+
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Syl}{Syl}
+
+% multilinear
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Lrad}{lrad}
+\DeclareMathOperator{\Rrad}{rrad}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\trace}{Tr}
+
+% extensions
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\PDer}{PDer}
+\DeclareMathOperator{\Ext}{Ext}
+%
+
+\newcommand{\ob}{\overline}
+\DeclareMathOperator{\ord}{ord}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle} % generator
+%\newcommand*\quot[2]{{^{\textstyle #1}\Big/_{\textstyle #2}}}
+\newcommand*\quot[2]{{#1}/{#2}}
+\newcommand\bij{\lhook\joinrel\twoheadrightarrow}
+\newcommand\toone{\hookrightarrow}
+\newcommand\onto{\twoheadrightarrow}
+\newcommand\acts{\curvearrowright}
+\newcommand\revacts{\curvearrowleft}
+\newcommand\isoto{\xrightarrow{\sim}}
+\newcommand\deffunc[5]{\ensuremath{
+  \arraycolsep=1pt
+  \begin{array}{rcl}
+    #1: & #2 & \to #3 \\
+       & #4 & \mapsto #5
+  \end{array}
+}}
+
+% cycle group \cycle{1,2,3} => (1 2 3)
+\ExplSyntaxOn
+\NewDocumentCommand{\cycle}{ O{\;} m }
+ {
+  (
+  \alec_cycle:nn { #1 } { #2 }
+  )
+ }
+
+\seq_new:N \l_alec_cycle_seq
+\cs_new_protected:Npn \alec_cycle:nn #1 #2
+ {
+  \seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
+  \seq_use:Nn \l_alec_cycle_seq { #1 }
+ }
+\ExplSyntaxOff
+
+\newcommand\Div{\mathrel{\big|}}
+\newcommand\nDiv{\mathrel{\not\big|}}
+\newcommand\relmiddle[1]{\mathrel{}\middle#1\mathrel{}}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\proofname}{\bf pf:}
+\newtheoremstyle{mystyle}% custom style
+  {6pt}{15pt}%      top and bottom margin
+  {}%               content style
+  {}%               indent
+  {\bf}%            head style
+  {.}%              after head
+  {1em}%            distance between head and content
+  {}%               Theorem head spec (can be left empty, meaning 'normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}
+\newtheorem{formula}{Formula}
+\newtheorem{conclusion}{Conclusion}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{observation}{Observation}
+\newtheorem*{observation*}{Observation}
+\newtheorem{definition}{Def}
+\newtheorem{exercise}{Ex}[section]
+\newtheorem{example}{Eg}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{prop}{Prop}[section]
+\newtheorem{coro}{Coro}[section]
+
+%%%%%%%%%%%%%%Title information%%%%%%%%%%%%%%
+\title{Algebra Homework}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+% \thispagestyle{empty}
+% \thispagestyle{fancy}
+% \tableofcontents
+%%%%%%%%%%%%%include file here%%%%%%%%%%%%%%%
+
+\include{week1}
+\include{week2}
+\include{week3}
+\include{week4}
+
+%\printindex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{plain}
+% \bibliography{journal.bib}
+% \begin{thebibliography}{99}
+% \bibitem[1]{ex}\url{http://www.example.com/}
+% \end{thebibliography}
+\end{document}
