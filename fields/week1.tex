@@ -330,10 +330,10 @@
 
 \begin{theorem} \label{thm:two-splitting-field-are-isom}
   Let $\tau: K \to K'$ be an isomorphism of fields.
-  If L is a splitting field for $f$ over $K$ and $L'$ is a splitting field for $\bar\tau(f)$
+  If $L$ is a splitting field for $f$ over $K$ and $L'$ is a splitting field for $\bar\tau(f)$
   over $K'$, then $L \cong L'$
 
-\begin{proof}
+\begin{proof} \label{coro:extension-exists-splitting-field}
   By induction on $n = \deg f$. When $n = 1$, $L = K, L' = K'$, so $L \cong L'$.
 
   Now if $n > 1$, assume $f(\alpha) = 0$ for $\alpha \in L$. Then $\bar\tau(m_{\alpha, K}) \mid \bar\tau(f)$
@@ -347,6 +347,12 @@
   By induction hypothesis, $L \cong L'$.
 \end{proof}
 \end{theorem}
+
+\begin{coro}
+  Let $\tau: K \to K'$ be an isomorphism of fields, and
+  $L$ is a splitting field of $f$ over $K$, $L'$ is a splitting field of $\bar\tau(f)$ over $K'$.
+  Then $\tau$ could be extend to $\sigma: L \to L'$ such that $\sigma\big|_K = \tau$.
+\end{coro}
 
 \begin{example}
   $L = \Qb(\sqrt{2}, \sqrt{3})$.

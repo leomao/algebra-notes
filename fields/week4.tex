@@ -34,7 +34,7 @@
   Let $M = \Qb(\sqrt[3]{2})$ then $m_{\sqrt[3]{2}, K}$ doesn't split in $M$, so $M/K$ is not normal.
 \end{remark}
 
-\begin{prop}
+\begin{prop} \label{prop:TFAE-of-normal-extension}
   Let $\quot{L}{K}$ be a finite, normal extension and $L \supset M \supset K$, then the following
   are equivalent.
 
@@ -87,14 +87,14 @@
   $L^G \triangleq \{ \alpha \in L \mid \sigma(\alpha) = \alpha, \, \forall \sigma \in G \}$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \label{thm:extension-of-fix-field-is-galois}
   If $G$ is a subgroup of $\Aut(L)$ with $\abs{G} < \infty$, then $\abs{G} = [L: L^G]$, $G = \Aut(L / L^G)$
   and $L / L^G$ is Galois.
 
   \begin{proof}
     First we prove that $[L: L^G] \leq \abs{G}$. Assume not, then $\abs{G} < [L: L^G]$.
     Let $G = \{\sigma_1, \sigma_2, \dots, \sigma_n\}$ and $\alpha_1, \alpha_2, \dots, \alpha_{n+1} \in L$.
-    Which $\alpha_i$ is linear independent.
+    Which $\alpha_i$ is linear independent over $L^G$.
 
     Consider the equations
     \[
@@ -110,9 +110,37 @@
     Since the number of variables is more than the number of equations, there is a
     non-trivial solution. Choose one solution $(a_1, \dots, a_{n+1})$ having the
     least amount of nonzero element. By reordering, we could assume
-    the solution is $(a_1, a_2, \dots, a_m, 0, 0, \dots, 0)$. If $m = 1$,
-    then $1_G = \sigma_i$ for some $i$, and $\sigma_i(\alpha_1) a_1 = \alpha_1 a_1 = 0 \implies a_1 = 0$,
+    the solution is $(a_1, a_2, \dots, a_m, 0, 0, \dots, 0)$ and it is no harm to assume $\sigma_1 = 1_G$.
+    If $m = 1$, then and $\sigma_1(\alpha_1) a_1 = \alpha_1 a_1 = 0 \implies a_1 = 0$,
     which is a contradiction.
+
+    So assume that $m > 1$, we have
+    \[
+      \left\{
+        \begin{array}{ccc}
+          \sigma_1(\alpha_1) a_1 + \dots + \sigma_1(\alpha_{m}) a_{m} &=& 0 \\
+          \sigma_2(\alpha_1) a_1 + \dots + \sigma_2(\alpha_{m}) a_{m} &=& 0 \\
+          \vdots &\vdots& \vdots \\
+          \sigma_n(\alpha_1) a_1 + \dots + \sigma_n(\alpha_{m}) a_{m} &=& 0 \\
+        \end{array}
+      \right.
+    \]
+    By multipling $a_m^{-1}$, we could assume $a_m = 1$. The equation about $\sigma_1$ gives
+    $\alpha_1 a_1 + \dots + \alpha_m a_m = 0$, since $\alpha_i$ is linear independent,
+    one of the $a_i$s, say $a_k$ is not in $L^G$, and thus there exists $t$ so that $\sigma_t(a_k) \neq a_k$.
+    Apply $\sigma_t$ to each equation, we have
+    \[ \sigma_t\sigma_i(\alpha_1) \sigma_t(a_1) + \dots + \sigma_t \sigma_i(\alpha_m) \sigma_t(a_m) = 0,\quad
+      \forall 1 \leq i \leq n \]
+
+    But since $\{\sigma_t \sigma_1, \dots, \sigma_t \sigma_n\} = \{\sigma_1, \dots, \sigma_n\}$,
+    $(\sigma_t(a_1), \sigma_t(a_2), \dots, \sigma_t(a_m), 0, \dots, 0)$ is a solution
+    and thus $(a_1 - \sigma_t(a_1), \dots, a_m - \sigma_t(a_m), 0, \dots)$ is also a solution to the equations.
+    Since $\sigma_t(a_k) \neq a_k$, the solution is not trivial, and because $a_m = 1$, $a_m - \sigma_t(a_m) = 0$.
+    Hence this solution has $m-1$ nonzero element, which contradict the minimality of the original solution.
+    Thus $[L: L^G] \leq \Aut(L/L^G)$.
+
+    Finally, $\abs{\Aut(L/L^g)} \leq [L: L^G]$ by theorem~\ref{thm:separable-elements-form-separable-field},
+    thus $\abs{G} \leq \abs{\Aut(L/L^G)} \leq [L: L^G] \leq \abs{G}$, hence they are all equal.
   \end{proof}
 \end{theorem}
 
@@ -126,7 +154,123 @@
   If $f(x)$ has exactly $p-2$ roots and $2$ complex roots, then the Galois group of $f(x)$ is $S_p$.
 
   \begin{proof}
-    Let $L$ be a splittinf field of $f$ over $\Qb$ and $R = \{ \alpha_1, \alpha_2, \dots, \alpha_p \}$ be
-    the set of all roots of $f(x)$. Since $f(x)$ is irreducible, $f(x) / a_p = m_{\alpha_i, \Qb}$.
+    Let $L$ be a splitting field of $f$ over $\Qb$ and $R = \{ \alpha_1, \alpha_2, \dots, \alpha_p \}$ be
+    the set of all roots of $f(x)$. Since $f(x)$ is irreducible, $f(x) / a_p = m_{\alpha_i, \Qb}, \, \forall i$.
+    By lemma~\ref{lemma:extension-exists-condition}, for any $\sigma \in \Gal(L/\Qb)$, $\sigma$ sends
+    $\alpha_i$ to another root $\alpha_j$. Also, $\{\alpha_i\}$ generates $L$ so
+    $G \triangleq \Gal(L/\Qb) \leq S_p$.
+
+    Now, we define an equivalence relation on $R$ such that $\alpha_i \sim \alpha_j \iff
+    \cycle{\alpha_i, \alpha_j} \in G$, that is, $\exists \sigma \in G$ such that $\sigma(\alpha_i) = \alpha_j,
+    \sigma(\alpha_j) = \alpha_i$ and $\sigma(\alpha_t) = \alpha_t, \, \forall t \neq i, j$.
+ 
+    We claim that each equivalence class has the same size. Let $[\alpha_i], [\alpha_j]$ be
+    two equivalence classes. Since $\alpha_i, \alpha_j$ share the same minimal polynomial,
+    by lemma~\ref{lemma:extension-exists-condition}, $\exists \sigma,\, \sigma(\alpha_i) = \alpha_j$,
+    and $\sigma$ sends $[\alpha_i]$ to $[\alpha_j]$, since if $\alpha_k \in [\alpha_i]$,
+    $\cycle{\alpha_i, \alpha_k} \in G$ and thus $\sigma \cycle{\alpha_i, \alpha_k} \sigma^{-1}
+    = \cycle{\alpha_j, \sigma(\alpha_k)} \in G$. Since $\sigma$ 1-1, $\big| [\alpha_i] \big| \leq \big| [\alpha_j] \big|$,
+    and by symmetry we have $\big| [\alpha_i] \big| = \big| [\alpha_j] \big|$.
+
+    But then if $[\alpha_i] = n$, $p = \abs{R} = \sum \big| [\alpha_j] \big| = kn$,
+    so either there are $p$ equivalence classes each with size $1$, which is impossible since
+    the two complex root are equivalent by conjugation, or there are only one equivalence classes,
+    which means that any 2 cycle are in $G$, and thus $G = S_p$.
   \end{proof}
 \end{prop}
+
+\subsection{Fundamental theorem of Galois theory}
+\begin{theorem}[Main theorem]
+  Let $L/K$ be a Galois extension, where $L$ be a splitting field of a separable polynomial $f$,
+  and let $G = \Gal(L/K)$. Then:
+
+  \begin{enumerate}[(\arabic*)]
+    \item There is a 1-1 correspond from the set of intermediate field to the set of subgroup given by
+      \[
+        \begin{array}{ccc}
+          \{ M : K \subseteq M \subseteq L \} & \xleftrightarrow{\quad\quad} & \{ H : H \leq G \} \\
+          M & \xmapsto{\quad\quad} & \Gal(L/M) \\
+          L^H & \reflectbox{\ensuremath{\xmapsto{\quad\quad}}} & H
+        \end{array}
+      \]
+
+      \begin{proof}
+        We check these two mapping are the inverse of each other.
+
+        By theorem~\ref{thm:extension-of-fix-field-is-galois}, $\Gal(L/L^H) = H$.
+
+        Now we have $M \subseteq L^{\Gal(L/M)}$. Since $L/M$ is galois, $[L: M] = \abs{\Gal(L/M)}$.
+        By theorem~\ref{thm:extension-of-fix-field-is-galois} again,
+        $\abs{\Gal(L/M)} = [L: L^{\Gal(L/M)}]$, thus $[L: M] = [L: L^{\Gal(L/M)}] \implies M = L^{\Gal(L/M)}$.
+      \end{proof}
+
+    \item If $M_1 = L^{H_1}, M_2 = L^{H_2}$, then $M_1 \subseteq M_2 \iff H_2 \leq H_1$.
+      \begin{proof}
+        Obvious.
+      \end{proof}
+    \item If $M = L^H$, then $M/K$ is normal if and only if $H \lhd G$.
+    \begin{proof}
+      If $\sigma \in G$, then
+      \begin{align*}
+        \tau \in \Gal(L/\sigma(M)) &\iff \tau(\sigma(x)) = \sigma(x), \, \forall x \in M \\
+        &\iff \sigma^{-1} \tau \sigma(x) = x, \, \forall x \in M \\
+        &\iff \sigma^{-1} \tau \sigma \in \Gal(L/M) \\
+        &\iff \tau \in \sigma \Gal(L/M) \sigma^{-1}
+      \end{align*}
+      So by prop~\ref{prop:TFAE-of-normal-extension}, $M/K$ is normal if and only if for all $\sigma \in G$,
+      $\sigma(M) = M$ and thus if and only if $\Gal(L/M) = \Gal(L/\sigma(M))$.
+      But $\Gal(L/\sigma(M)) = \sigma \Gal(L/M) \sigma^{-1} = \sigma H \sigma^{-1}$ by the discussion
+      above, hence it is equivalent to $H = \sigma H \sigma^{-1}$ which is same as $H \lhd G$.
+    \end{proof}
+
+    \item If $H \lhd G$, then $G / H \cong \Gal(M/K)$.
+      \begin{proof}
+        Since $H \lhd G$, by (3) we know that $M/K$ is Galois. Define $\varphi = \sigma :: \Gal(L/K)
+        \mapsto \sigma\big|_M :: \Gal(M/K)$. The mapping is well defined
+        since by prop~\ref{prop:TFAE-of-normal-extension}, $\sigma(M) = M$.
+        Also, this map is onto since by corollary~\ref{coro:extension-exists-splitting-field},
+        each $\tau \in \Gal(M/K)$ could be extend to $\sigma \in \Gal(L/K)$ because
+        $\bar\tau(f) = f$. Finally notice that $\ker \varphi = H$, thus by the
+        first isomorphism theorem, $G/H \cong \Gal(M/K)$.
+      \end{proof}
+
+    \item If $M_1 = L^{H_1}, M_2 = L^{H_2}$, then $M_1 \cup M_2 = L^{\langle H_1, H_2 \rangle}$ and
+      $M_1 M_2 = L^{H_1 \cup H_2}$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  Let $L/K$ be Galois, and $N/K$ be any extension, then $LN / N$ is galois and
+  $\Gal(\quot{LN}{N}) \cong \Gal(\quot{L}{L \cap N})$ by the isomorphism
+  $\varphi = \sigma \mapsto \sigma\big|_L$.
+
+  \begin{proof}
+    Let $L$ be a splitting field of the separable polynomial $f(x)$ over $K$,
+    say $L = K(\alpha_1, \dots, \alpha_n)$. Then $LN = N(\alpha_1, \dots, \alpha_n)$,
+    which can be regarded as a splitting field of $f(x)$ over $N$.
+    Thus by theorem~\ref{thm:splitting-field-iff-finite-normal}, $LN/N$ is Galois.
+
+    Now we check that $\varphi$ is well defined, notice that $f(\sigma(\alpha_i))
+    = \sigma(f(\alpha_i)) = 0$ since $\sigma$ fixes $K$, and thus $f$ sends $\alpha_i$
+    to some $\alpha_j$. Also, $\{ \alpha_i \}$ generate $L$ over $K$, thus $\sigma\big|_L(L) = L$.
+
+    If $\sigma\big|_L = \text{id}_L$, then $\sigma(\alpha_i) = \alpha_i, \, \forall i$.
+    Since $\{\alpha_i\}$ generate $LN$ over $N$, $\sigma = \text{id}_{LN}$. Thus $\varphi$ 1-1.
+
+    Finally, let $H = \Image \varphi$, we claim that $L^H = L \cap N$, since
+      \begin{align*}
+        \alpha \in L^H &\iff \alpha \in L \text{ and } \forall \sigma \in \Gal(LN/N),\, \sigma\big|_L(\alpha) = \alpha \\
+        &\iff \alpha \in L \text{ and } \forall \sigma \in \Gal(LN/N),\, \sigma(\alpha) = \alpha \\
+        &\iff \alpha \in L \text{ and } \alpha \in (LN)^{\Gal(LN/N)} \\
+        &\iff \alpha \in L \text{ and } \alpha \in N \iff \alpha \in L \cap N
+      \end{align*}
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  If $L/K$ is Galois and $N/K$ is finite, then $[NL: K] = [N: K][L: K] / [N \cap L: K]$.
+  \begin{proof}
+    \[ [NL: K]/[N:K] = [NL: L] = \Gal(NL/L) = \Gal(L / N \cap L) = [L: N \cup L] = [L: K]/[N \cap L: K] \]
+    and the proof is completed.
+  \end{proof}
+\end{remark}
