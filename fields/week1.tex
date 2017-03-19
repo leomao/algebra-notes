@@ -15,7 +15,7 @@
 
 \begin{theorem}[Eisenstein criterion] \mbox{} \\
   Let $f(x) = a_n x^n + \dots + a_1 x + a_0 \in \Zb[x]$ with $\gcd(a_1, a_2, \cdots, a_n) = 1$.
-  Assume that exists a prime $p$ satisfied $p \nmid a_n$ but $p \mid a_i$ for other $i \neq n$,
+  Assume that $\exists$ a prime $p$ s.t. $p \nmid a_n$ but $p \mid a_i$ for other $i \neq n$,
   and $p^2 \nmid a_0$, then $f$ is irreducible.
 
   \begin{proof}
@@ -29,9 +29,9 @@
 
 \begin{prop}
   Given $L/K$ and $\alpha \in L$, if $\alpha$ is algebraic over $K$, then
-  exists a unique monic irreducible polynomial $m_{\alpha, K}(x) \in K[x]$ of
-  minimal degree that satisfied $m_{\alpha, K}(\alpha) = 0$ and for any other
-  $f(x) \in K[x]$ such that $f(\alpha) = 0$, we have $m_{\alpha, K} \mid f$.
+  $\exists$ a unique monic irreducible polynomial $m_{\alpha, K}(x) \in K[x]$ of
+  minimal degree s.t. $m_{\alpha, K}(\alpha) = 0$ and for any other
+  $f(x) \in K[x]$ with $f(\alpha) = 0$, we have $m_{\alpha, K} \mid f$.
   We call $m_{\alpha, K}$ the {\bf minimal polynomial} of $\alpha$ over $K$.
 
   \begin{proof}
@@ -76,7 +76,7 @@
 
     (3) $\Rightarrow$ (1): Since $[K(\alpha): K] = n$, consider $1, \alpha, \alpha^2, \dots, \alpha^n$.
     Some of these $n+1$ elements may be coincident, but nevertheless these elements are linear dependent.
-    Hence exists $\alpha_0, \dots, \alpha_n$ not all zero in $K$ satisfied
+    Hence there exists $\alpha_0, \dots, \alpha_n$ not all zero in $K$ s.t.
     $a_0 + a_1 \alpha + \dots + a_n \alpha_n = 0 \implies \alpha \text{ is algebraic.}$
   \end{proof}
 \end{prop}
@@ -88,7 +88,7 @@
     If $[M:L] = m < \infty$ and $[L:K] = n < \infty$, then $L \cong K^{\oplus n}, M \cong L^{\oplus m}$.
     So $M \cong \left( K^{\oplus n} \right)^{\oplus m} \cong K^{\oplus mn}$, thus $[M: K] = mn$.
 
-    Now if $[M: K] = l < \infty$, then exists a basis $\{ z_1, z_2, \dots, z_l \}$ which is a basis for $M$
+    Now if $[M: K] = l < \infty$, then $\exists$ a basis $\{ z_1, z_2, \dots, z_l \}$ which is a basis for $M$
     over $K$. Then $M = K z_1 + \dots + K z_l \subset L z_1 + \dots + L z_l \subset M \implies
     M = L z_1 + \dots + L z_l$. Hence $[M: L] < \infty$. Also, since $L$ is a $K$-linear
     subspace of $M$, $[L: K] \leq l \implies [L: K] < \infty$. Thus if $[M: L] = \infty$ or $[L: K] = \infty$,
@@ -181,8 +181,8 @@
 \begin{definition}
   Let $R$ be a commutative ring with $1$, and $I$ be an ideal of $R$, then
   \begin{itemize}
-    \item $I$ is called a {\bf maximal ideal}\index{Ideal!maximal ideal} if for any ideal $J$ satisfied
-      $I \subseteq J$ then $J = I \text{ or } J = R$.
+    \item $I$ is called a {\bf maximal ideal}\index{Ideal!maximal ideal} if for any ideal $J$ satisfying
+      $I \subseteq J$ we have $J = I \text{ or } J = R$.
     \item $I$ is called a {\bf prime ideal}\index{Ideal!prime ideal}
       if $I \neq R$ and $ab \in I \implies a \in I \text{ or } b \in I$.
   \end{itemize}
@@ -199,12 +199,12 @@
     \begin{enumerate}
       \item ``$\Rightarrow$'': For any $\bar{r} \in R/I$ with $\bar{r} \neq 0$, then $r \not\in I$.
         Consider $\langle r \rangle + I$ which contains $I$ and is not equal to $I$ because $r \not\in I$.
-        Since $I$ is maximal, $\langle r \rangle + I = R$, and thus exists $x \in R, y \in I$ such that
+        Since $I$ is maximal, $\langle r \rangle + I = R$, and thus $\exists x \in R, y \in I$ such that
         $xr + y = 1$, so $\bar{x} \bar{r} = \bar{1}$. Hence every non-zero element has multiply inverse
         and $R / I$ is a field.
 
       ``$\Leftarrow$'': If $J$ is an ideal such that $I \subsetneq J$, pick $x \in J \setminus I$,
-      then $\bar{x} \neq 0$, so exists $r \in J$ such that $\bar{x} \bar{r} = 1$. Then
+      then $\bar{x} \neq 0$, so $\exists r \in J$ such that $\bar{x} \bar{r} = 1$. Then
       $xr + I = 1 + I \implies \exists y \in I \text{ s.t. } xr + y = 1$. So $1 \in J$, and
       because $J$ is an ideal, $J = R$.
 
@@ -229,8 +229,8 @@
 \end{example}
 
 \begin{theorem} \label{thm:field-ext-1}
-  Let $f(x) \in K[x]$ be monic, irreducible and of degree $n$. Then exists $L / K$ and $\alpha \in L$
-  satisfied $f(\alpha) = 0, L = K(\alpha)$ and $[L: K] = n$.
+  Let $f(x) \in K[x]$ be monic, irreducible and of degree $n$. Then there exists
+  $L / K$ and $\alpha \in L$ s.t. $f(\alpha) = 0, L = K(\alpha)$ and $[L: K] = n$.
 \end{theorem}
 
 \begin{proof}
@@ -246,8 +246,8 @@
 \end{proof}
 
 \begin{theorem}
-  Let $f(x) \in K[x]$ be of degree $n > 0$. Then exists $L/K$ satisfied $f$ splits over $L$,
-  that is,
+  Let $f(x) \in K[x]$ be of degree $n > 0$. Then there exists $L/K$ s.t. $f$
+  splits over $L$, that is,
   \[ f(x) = \lambda (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n) \text{ with }
     \alpha_1, \alpha_2, \cdots, \alpha_n \in L,\, \lambda \in K \]
   In fact, $L$ can be chosen to be the smallest field over which $f$ splits and in this case $[L : K] \leq n!$.\\
@@ -258,11 +258,11 @@
   By induction on $n$, $n = 1$ is trivial, simply pick $L = K$.
 
   For $n > 1$, let $p(x)$ be an monic irreducible factor of $f(x)$.
-  By theorem \ref{thm:field-ext-1}, exists an extension $K(\alpha_1)$ satisfied $p(\alpha_1) = 0$.
+  By theorem \ref{thm:field-ext-1}, $\exists$ an extension $K(\alpha_1)$ s.t. $p(\alpha_1) = 0$.
   By division algorithm, $f(x) = (x - \alpha_1) f_1(x)$ where $f_1(x) \in K(\alpha_1)[x]$
   and $\deg f_1 = n - 1$. Using the induction hypothesis, we know that there exists $L$,
-  which is an extension of $K(\alpha_1)$ and satisfied $f_1$
-  splits over $L$. Hence exists $\alpha_2, \alpha_3, \cdots, \alpha_n \in L$ satisfied
+  which is an extension of $K(\alpha_1)$, s.t. $f_1$
+  splits over $L$. Hence $\exists \alpha_2, \alpha_3, \cdots, \alpha_n \in L$ s.t.
   $ f_1(x) = \lambda (x - \alpha_2) \cdots (x - \alpha_n)$,
   thus $f(x) = \lambda (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)$. Compare the
   coefficient of $x^n$ we know that $\lambda \in K$.
@@ -297,8 +297,8 @@
 
 \begin{lemma} \label{lemma:extension-exists-condition}
   Let $K(\alpha) / K$ be algebraic and $\tau: K \to L$ be a nontrivial homo,
-  then exists an extension $\sigma$ of $\tau$ from $K(\alpha)$ to $L$ if and only if
-  exists $\beta \in L$ satisfied $\bar\tau(m_{\alpha, K})(\beta) = 0$.
+  then there exists an extension $\sigma$ of $\tau$ from $K(\alpha)$ to $L$ if
+  and only if $\exists \beta \in L$ s.t. $\bar\tau(m_{\alpha, K})(\beta) = 0$.
 
   In this case $m_{\beta, \tau(K)} = \bar\tau(m_{\alpha, K})$.
 
@@ -339,8 +339,8 @@
   By induction on $n = \deg f$. When $n = 1$, $L = K, L' = K'$, so $L \cong L'$.
 
   Now if $n > 1$, assume $f(\alpha) = 0$ for $\alpha \in L$. Then $\bar\tau(m_{\alpha, K}) \mid \bar\tau(f)$
-  and by the fact that $L'$ is a splitting field for $\bar\tau(f)$, exists $\beta \in L'$ satisfied
-  $\bar\tau(m_{\alpha, K})(\beta) = 0$. By lemma \ref{lemma:extension-exists-condition}, exists $\tau_{\circ}:
+  and by the fact that $L'$ is a splitting field for $\bar\tau(f)$, $\exists \beta \in L'$ s.t. $\bar\tau(m_{\alpha, K})(\beta) = 0$.
+  By lemma \ref{lemma:extension-exists-condition}, $\exists \tau_{\circ}:
   K(\alpha) \xrightarrow\sim K'(\beta)$ with $\tau_\circ \big|_K = \tau$.
 
   Now, write $f = (x - \alpha) f_\circ$, then $\bar\tau(f) = \bar\tau_\circ(f) = (x - \tau_\circ(\alpha))
