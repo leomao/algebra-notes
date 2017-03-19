@@ -11,23 +11,24 @@
 \end{definition}
 
 \begin{prop}
-  Given $L/K$, if $L$ is algebraically closed, then $L_a \triangleq \{ \alpha \in L \mid
-  \alpha \text{ is algebraic over } K \}$ is an algebraic closure of $K$.
+  Given $L/K$, if $L$ is algebraically closed, then $L_a \triangleq
+  \Set{\alpha \in L \given \alpha \text{ is algebraic over } K}$ is an
+  algebraic closure of $K$.
 
   \begin{proof}
-    By prop~\ref{prop:alg-elements-form-a-field}, $L_a$ is a field, and by definition,
-    $L/K$ is algebraic.
+    By prop~\ref{prop:alg-elements-form-a-field}, $L_a$ is a field, and
+    by definition, $L/K$ is algebraic.
 
-    Now we proof that for any $K \subseteq L$ and $f(x) \in K[x]$, $f(x)$ splits over $K$.
-    Using induction, $\deg f = 1$ is trivial.
+    Now we proof that for any $K \subseteq L$ and $f(x) \in K[x]$, $f(x)$
+    splits over $K$.  Using induction, $\deg f = 1$ is trivial.
     If $\deg f > 1$, then since $f(x) \in K[x] \subseteq L[x]$,
     $f$ has a root, say $\alpha$. so we could write $f(x) = (x - \alpha) g(x)$.
-    Then $g(x) \in K(\alpha)[x] \subseteq L[x]$. by induction, $g(x)$ splits and hence
-    $f(x)$ splits.
+    Then $g(x) \in K(\alpha)[x] \subseteq L[x]$. by induction, $g(x)$ splits
+    and hence $f(x)$ splits.
 
     So for any $f(x) \in K[x]$, $f$ splits. Write $f(x) = (x - \alpha_1) \dots (x - \alpha_n)$,
-    then each $\alpha_i$ is algebraic over $K$, $\alpha_i \in L_a$ and hence there product $f(x)$
-    splits in $L_a[x]$.
+    then each $\alpha_i$ is algebraic over $K$, $\alpha_i \in L_a$ and
+    hence there product $f(x)$ splits in $L_a[x]$.
   \end{proof}
 \end{prop}
 
@@ -65,10 +66,10 @@ In below we would use the Zorn's lemma heavily.
   In a commutative ring $R$ with $1$, any proper ideal $I \subsetneq R$ is contained in a maximal ideal.
 
   \begin{proof}
-    Consider $S = \{ J \subsetneq R \mid I \subseteq J \} \neq \varnothing$ since $I \in S$.
+    Consider $S = \Set{J \subsetneq R \given I \subseteq J} \neq \varnothing$ since $I \in S$.
     Define a partial order on $S$ by $J_1 \preceq J_2 \iff J_1 \subseteq J_2$.
 
-    Given a chain $\{ J_i \mid i \in \Lambda \}$, let $J = \bigcup_{i \in \Lambda} J_i$. $J$ is an
+    Given a chain $\Set{J_i \given i \in \Lambda}$, let $J = \bigcup_{i \in \Lambda} J_i$. $J$ is an
     ideal, since if $x, y \in J$, then $x \in J_1, y \in J_2$.
     Let $\tilde{J} = \max(J_1, J_2)$, then $x, y \in \tilde{J}$
     which implies $x + y \in \tilde{J}$, and it is easy to check that for any $x \in R, y \in J$, $xy \in J$.
@@ -84,7 +85,7 @@ In below we would use the Zorn's lemma heavily.
   If $K$ is a field, then exists an algebraic closure $L$ of $K$.
 
   \begin{proof}
-    Let $S = \{ x_f \mid f(x) \in K[x] \text{ with } \deg f \geq 1 \}$ be the set of variables indexed by non-constant
+    Let $S = \Set{x_f \given f(x) \in K[x] \text{ with } \deg f \geq 1}$ be the set of variables indexed by non-constant
     polynomial in $K[x]$. Consider the polynomial ring $K[S]$ and $I = \langle f(x_f) : f \in K[x] \text{ with } \deg f \geq 1 \rangle$,
     which is an ideal in $K[S]$.
 
@@ -145,7 +146,14 @@ In below we would use the Zorn's lemma heavily.
   \begin{example}
     Let $p$ be a prime.
     \begin{itemize}
-      \item Any finite field $L$ with $\Char L = p$
+      \item Any finite field $L$ with $\Char L = p$, $L \cong \Fb_{p^n}$ for
+        some $n \in \Nb$.
+      \item $\Gal\left(\Fb_{p^n} / \Fb_p\right) = \gen{\sigma_p}$ with
+        $p = \alpha :: \Fb_{p^n} \mapsto \alpha^p :: \Fb_{p^n}$.
+      \item A subfield $L$ of $\Fb_{p^n}$ is isomorphic to $\Fb_{p^m}$ with
+        $m \mid n$ since $[\Fb_{p^n} : \Fb_{p^m}] = d \leadsto p^{md} = p^n$.
+      \item $\bigcup_{n=1}^\infty \Fb_{p^n}$ is a field, and it is the
+        algebraic closure of $\Fb_p$.
     \end{itemize}
   \end{example}
 \end{theorem}
@@ -218,7 +226,7 @@ In below we would use the Zorn's lemma heavily.
   \end{proof}
 \end{prop}
 
-\begin{prop}\label{prop:separable-field-and-split-have-most-embeddings}
+\begin{prop}\label{prop:separable-field-split-have-most-embeddings}
   Let $[K': K] = d$ and $\tau:: K \to L \neq 0$. Then $\quot{K'}{K}$ is separable and $\forall \alpha \in K'$,
   $\bar\tau(m_{\alpha, K})$ splits over $L$, if and only if there are exactly
   $d$ monomorphisms $\sigma::K' \to L$ with $\sigma\big|_k = \tau$.

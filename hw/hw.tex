@@ -207,13 +207,10 @@
 \DeclareMathOperator{\Fix}{Fix}
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Gal}{Gal}
 \DeclareMathOperator{\Isom}{Isom}
 \DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Exp}{Exp}
 \DeclareMathOperator{\Syl}{Syl}
-
-\DeclareMathOperator{\Gal}{Gal}
 
 % multilinear
 \DeclareMathOperator{\Hom}{Hom}
@@ -247,24 +244,6 @@
        & #4 & \mapsto #5
   \end{array}
 }}
-
-% just to make sure it exists
-\providecommand\given{}
-% can be useful to refer to this outside \Set
-\newcommand*\SetSymbol[1][]{%
-  \nonscript\:#1\vert
-  \allowbreak
-  \nonscript\:
-\mathopen{}}
-\DeclarePairedDelimiterX\Set[1]\{\}{%
-  \renewcommand\given{\SetSymbol[\delimsize]}
-  \,#1\,
-}
-
-\DeclarePairedDelimiterX\Gen[1]{\langle}{\rangle}{%
-  \renewcommand\given{\SetSymbol[\delimsize]}
-  \,#1\,
-}
 
 % cycle group \cycle{1,2,3} => (1 2 3)
 \ExplSyntaxOn
@@ -308,14 +287,14 @@
 \newtheorem{observation}{Observation}
 \newtheorem*{observation*}{Observation}
 \newtheorem{definition}{Def}
-\newtheorem{exercise}{Ex}[subsection]
-\newtheorem{example}{Eg}[subsection]
-\newtheorem{fact}{Fact}[subsection]
-\newtheorem{prop}{Prop}[subsection]
-\newtheorem{coro}{Coro}[subsection]
+\newtheorem{exercise}{Ex}[section]
+\newtheorem{example}{Eg}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{prop}{Prop}[section]
+\newtheorem{coro}{Coro}[section]
 
 %%%%%%%%%%%%%%Title information%%%%%%%%%%%%%%
-\title{Algebra}
+\title{Algebra Homework}
 \author{}
 \date{\today}
 
@@ -325,27 +304,13 @@
 % \thispagestyle{fancy}
 % \tableofcontents
 %%%%%%%%%%%%%include file here%%%%%%%%%%%%%%%
-\include{group/week1}
-\include{group/week2}
-\include{group/week3}
-\include{group/week4}
-\include{group/week5}
-\include{group/week6}
-\include{group/week7}
-\include{group/week8}
-\include{group/week9}
-\include{multilinear/week11}
-\include{multilinear/week12}
-\include{multilinear/week13}
-\include{linear_repr/week14}
-\include{linear_repr/week15}
-\include{extensions/week16}
-\include{fields/week1}
-\include{fields/week2}
-\include{fields/week3}
-\include{fields/week4}
 
-\printindex
+\include{week1}
+\include{week2}
+\include{week3}
+\include{week4}
+
+%\printindex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{plain}
 % \bibliography{journal.bib}
