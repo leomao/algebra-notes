@@ -77,12 +77,12 @@ In below we would use the Zorn's lemma heavily.
     Also, $J$ is proper since $1 \not\in J$, or else $1 \in J_i$ and thus $J_i = R$ which leads to
     an contradiction.
 
-    By Zorn's lemma, $\exists$ a maximal element in $S$, and thus it is a maximal ideal which contains $I$.
+    By Zorn's lemma, there exists a maximal element in $S$, and thus it is a maximal ideal which contains $I$.
   \end{proof}
 \end{lemma}
 
 \begin{theorem}
-  If $K$ is a field, then $\exists$ an algebraic closure $L$ of $K$.
+  If $K$ is a field, then there exists an algebraic closure $L$ of $K$.
 
   \begin{proof}
     Let $S = \Set{x_f \given f(x) \in K[x] \text{ with } \deg f \geq 1}$ be the set of variables indexed by non-constant
@@ -96,7 +96,7 @@ In below we would use the Zorn's lemma heavily.
     which satisfies $f_i(\alpha_i) = 0$ and $a_i = 0$ for $n+1 \leq i \leq m$. Then
     $1 = \sum_{i = 1}^n g(\alpha_1, \alpha_2, \cdots, \alpha_m) f_i(\alpha_i) = 0$ which leads to an contradiction.
 
-    By lemma~\ref{lemma:max-ideal-exists}, $\exists$ a maximal ideal $M$ s.t. $I \subseteq M$.
+    By lemma~\ref{lemma:max-ideal-exists}, there exists a maximal ideal $M$ s.t. $I \subseteq M$.
 
     Consider $K \hookrightarrow F_1 \triangleq K[S] / M$, and then for all $f \in K[x]$, $f(\bar{x}_f) = \bar{0}$ in $F_1$.
     By induction, $\exists F_1 \subseteq F_2 \subseteq F_3 \subseteq \cdots$
@@ -120,7 +120,7 @@ In below we would use the Zorn's lemma heavily.
       Given any chain $\{(M_i, \theta_i) : i \in \Lambda \}$, let $N = \bigcup_{i = 1}^\infty M_i$ and
       $\theta = \alpha :: N \mapsto \theta_i(\alpha)$ if $\alpha \in M_i$. It could
       be check easily that this map is well defined, and $(N, \theta)$ is
-      a least upper bound in $S$ for this chain.  By Zorn's lemma, $\exists$ a max element $(M, \sigma)$ in $S$.
+      a least upper bound in $S$ for this chain.  By Zorn's lemma, there exists a max element $(M, \sigma)$ in $S$.
 
       Now, if $M \neq L_1$, then pick $\alpha \in L_1 \setminus M$. Since $L_1/K$ is algebraic,
       the minimal polynomial $m_{\alpha, K}$ exists. Since $L_2$ algebraically closed, $\bar\sigma(m_{\alpha, K})$

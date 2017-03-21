@@ -15,7 +15,7 @@
 
 \begin{theorem}[Eisenstein criterion] \mbox{} \\
   Let $f(x) = a_n x^n + \dots + a_1 x + a_0 \in \Zb[x]$ with $\gcd(a_1, a_2, \cdots, a_n) = 1$.
-  Assume that $\exists$ a prime $p$ s.t. $p \nmid a_n$ but $p \mid a_i$ for other $i \neq n$,
+  Assume that there exists a prime $p$ s.t. $p \nmid a_n$ but $p \mid a_i$ for other $i \neq n$,
   and $p^2 \nmid a_0$, then $f$ is irreducible.
 
   \begin{proof}
@@ -29,8 +29,8 @@
 
 \begin{prop}
   Given $L/K$ and $\alpha \in L$, if $\alpha$ is algebraic over $K$, then
-  $\exists$ a unique monic irreducible polynomial $m_{\alpha, K}(x) \in K[x]$ of
-  minimal degree s.t. $m_{\alpha, K}(\alpha) = 0$ and for any other
+  there exists a unique monic irreducible polynomial $m_{\alpha, K}(x) \in K[x]$
+  of minimal degree s.t. $m_{\alpha, K}(\alpha) = 0$ and for any other
   $f(x) \in K[x]$ with $f(\alpha) = 0$, we have $m_{\alpha, K} \mid f$.
   We call $m_{\alpha, K}$ the {\bf minimal polynomial} of $\alpha$ over $K$.
 
@@ -88,11 +88,11 @@
     If $[M:L] = m < \infty$ and $[L:K] = n < \infty$, then $L \cong K^{\oplus n}, M \cong L^{\oplus m}$.
     So $M \cong \left( K^{\oplus n} \right)^{\oplus m} \cong K^{\oplus mn}$, thus $[M: K] = mn$.
 
-    Now if $[M: K] = l < \infty$, then $\exists$ a basis $\{ z_1, z_2, \dots, z_l \}$ which is a basis for $M$
-    over $K$. Then $M = K z_1 + \dots + K z_l \subset L z_1 + \dots + L z_l \subset M \implies
-    M = L z_1 + \dots + L z_l$. Hence $[M: L] < \infty$. Also, since $L$ is a $K$-linear
-    subspace of $M$, $[L: K] \leq l \implies [L: K] < \infty$. Thus if $[M: L] = \infty$ or $[L: K] = \infty$,
-    then $[M: K] = \infty$.
+    Now if $[M: K] = l < \infty$, then there exists a basis $\{ z_1, z_2, \dots, z_l \}$
+    which is a basis for $M$ over $K$. Then $M = K z_1 + \dots + K z_l \subset L z_1 +
+    \dots + L z_l \subset M \implies M = L z_1 + \dots + L z_l$. Hence $[M: L] < \infty$.
+    Also, since $L$ is a $K$-linear subspace of $M$, $[L: K] \leq l \implies [L: K] < \infty$.
+    Thus if $[M: L] = \infty$ or $[L: K] = \infty$, then $[M: K] = \infty$.
   \end{proof}
 \end{prop}
 
@@ -258,7 +258,7 @@
   By induction on $n$, $n = 1$ is trivial, simply pick $L = K$.
 
   For $n > 1$, let $p(x)$ be an monic irreducible factor of $f(x)$.
-  By theorem \ref{thm:field-ext-1}, $\exists$ an extension $K(\alpha_1)$ s.t. $p(\alpha_1) = 0$.
+  By theorem \ref{thm:field-ext-1}, there exists an extension $K(\alpha_1)$ s.t. $p(\alpha_1) = 0$.
   By division algorithm, $f(x) = (x - \alpha_1) f_1(x)$ where $f_1(x) \in K(\alpha_1)[x]$
   and $\deg f_1 = n - 1$. Using the induction hypothesis, we know that there exists $L$,
   which is an extension of $K(\alpha_1)$, s.t. $f_1$
