@@ -1,0 +1,68 @@
+%! TEX root=../main.tex
+\subsection{Abelian extension}
+
+\begin{definition}
+  $L/K$ is called an abelian extension if $L/K$ is Galois and $\Gal(L/K)$ is abelian.
+\end{definition}
+
+
+\begin{definition} \hfill
+  \begin{itemize}
+    \item The cylotonic field $\Qb(\zeta_n)$ is the splitting field of $x^n - 1$ over $\Qb$.
+    \item $\zeta$ is called an nth root of unity if $\zeta^n = 1$. $\mathcal{U} = \langle \zeta \rangle$
+      is the multiplicative group of nth roots of unity.
+    \item $\zeta_n$ is called a primitive nth root of unity if $\zeta^n = 1$ but $\zeta^m = 1, \, \forall 0 < m < n$.
+    \item The nth cyclotomic polynomial is defined as
+      \[ \Phi_n \triangleq \prod (x - \zeta) = \prod_{\gcd(k, n) = 1} (x - \zeta_n^k) \implies \deg \Phi_n = \varphi(n) \]
+  \end{itemize}
+\end{definition}
+
+\begin{prop} \hfill
+  \begin{itemize}
+    \item $x^n - 1 = \prod_{d \mid n} \Phi_d$. Both sides have no multiple root.
+    \item $\Phi_n \in \Zb[x]$. By induction on $n$. $n = 1$ is trivial.
+    \item $\Phi_n$ is irreducible.
+      \begin{proof}
+        Suppose $\Phi_n = f(x) g(x)$ with $f$ irreducible, and both $f, g$ are monic.
+        Let $\zeta_n$ be a primimtive nth root of unity  which satisfied $f(\zeta_n) = 0$
+        and $p$ be a prime with $p \nmid n$.
+
+        Assume that $g(\zeta_n^p) = 0$, since $m_{\zeta_n, \Qb} = f$, $f \mid g(x^p)$,
+        say $g(x^p) = f(x) h(x)$.
+      \end{proof}
+    \item $\Qb(\zeta_n) / \Ab$ is Galois with $[\Qb(\zeta_n): \Qb] = \deg \Phi_n = \varphi(n)$.
+    \item $\Gal(\Qb(\zeta_n) / \Qb) \cong \Fb_n^\times$.
+  \end{itemize}
+\end{prop}
+
+\begin{example}
+  Let $n = p$ be a prime.
+  \begin{itemize}
+    \item $\Gal(\Qb(\zeta_p) / \Qb) = \Fb_p^\times = \Zb / (p-1)\Zb$.
+    \item For $H \leq \Gal(\Qb(\zeta_p) / \Qb)$, find $\Qb(\zeta_p)^H$. 
+      $\alpha = \sum_{\tau \in H} \tau(\zeta_p) \implies \alpha \in \Qb(\zeta_p)^H$
+
+  \end{itemize}
+\end{example}
+\begin{example}
+  Suppose $n = p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}$ with $p_1, \dots, p_k$ be distinct primes.
+  Define $L_i \triangleq \Qb(\zeta_{p_i^{n_i}})$.
+\end{example}
+
+\begin{lemma}
+  If $L_1 / K$, $L_2 / K$ are Galois, then $L_1 \cap L_2 / K$, $L_1 L_2 / K$ are Galois and
+  \[ \Gal( L_1 L_2 / K) \cong \big\{ (\sigma, \tau) \mid \sigma\big|_{L_1 \cap L_2} = \tau\big|_{L_1 \cap L_2} \big\}
+    \leq \Gal(L_1 / K) \times \Gal(L_2 / K) \]
+  In particular, if $L_1 \cap L_2 = K$, then $\Gal(L_1 L_2 / K) \cong \Gal(L_1 / K) \times \Gal(L_2 / K)$.
+
+  \begin{proof}
+    We know that $L_1 \cap L_2 / K$ is finite, separable.
+  \end{proof}
+\end{lemma}
+
+Back to our problem, $[L_1 L_2 \cdots L_k: \Qb] = [\Qb(\zeta_n): \Qb] = \varphi(n) = \varphi(p_1^{n_1})
+\cdots \varphi(p_k^{n_k}) = [L_1 : \Qb] [L_2 : \Qb] \cdots [L_k : \Qb]$.
+
+\begin{theorem}
+  Let $G$ be a finite abelian group. Then exists a subfield $L$ of a cyclotomic field satisfied $\Gal(L / \Qb) \cong G$.
+\end{theorem}
