@@ -5,6 +5,12 @@
   $L/K$ is called an abelian extension if $L/K$ is Galois and $\Gal(L/K)$ is abelian.
 \end{definition}
 
+\begin{example}
+  For an extension $\Fb_{q^n} / \Fb_q$ of a finite field, $\Fb_{q^n}$ is a splitting field of $x^{q^n}-x$
+  over $\Fb_p$, so $\Fb_{q^n} / \Fb_q$ is Galois by theorem~\ref{thm:splitting-field-iff-finite-normal}.
+  By theorem~\ref{thm:aut-of-finite-field}, we know that $\Gal(F_{q^n} / F_q) = \langle \sigma_q \rangle$
+  is a cyclic group.
+\end{example}
 
 \begin{definition} \hfill
   \begin{itemize}
@@ -19,16 +25,39 @@
 
 \begin{prop} \hfill
   \begin{itemize}
-    \item $x^n - 1 = \prod_{d \mid n} \Phi_d$. Both sides have no multiple root.
-    \item $\Phi_n \in \Zb[x]$. By induction on $n$. $n = 1$ is trivial.
+    \item $x^n - 1 = \prod_{d \mid n} \Phi_d$.
+      \begin{proof}
+        First, Both sides have no multiple root. Then since $\alpha^n = 1 \iff \ord_{\times}(\alpha) \mid n$,
+        we know that two sides has equal roots.
+      \end{proof}
+    \item $\Phi_n \in \Zb[x]$.
+      \begin{proof}
+        By induction on $n$. $n = 1$ is trivial.
+        Assume that the statement is true for all $k < n$, then since
+        \[ x^n - 1 = \Phi_n \prod_{\substack{d \mid n, d < n}} \Phi_d \triangleq \Phi_n \Phi_{< n} \]
+        But notice that $\Phi_{<n}$ is monic, so by the long division algorithm, it is easy to
+        see that $\Phi_n = (x^n - 1) / \Phi_{<n}$ has all coefficient in $\Zb$.
+      \end{proof}
     \item $\Phi_n$ is irreducible.
       \begin{proof}
         Suppose $\Phi_n = f(x) g(x)$ with $f$ irreducible, and both $f, g$ are monic.
+        By Gauss lemma, we could assume $f(x), g(x) \in \Zb[x]$.
         Let $\zeta_n$ be a primimtive nth root of unity  which satisfied $f(\zeta_n) = 0$
         and $p$ be a prime with $p \nmid n$.
 
-        Assume that $g(\zeta_n^p) = 0$, since $m_{\zeta_n, \Qb} = f$, $f \mid g(x^p)$,
+        Assume that $g(\zeta_n^p) = 0$, $m_{\zeta_n, \Qb} = f \implies f \mid g(x^p)$,
         say $g(x^p) = f(x) h(x)$.
+        By the long division algorithm, we know that $h(x) \in \Zb[x]$, since $f(x) \in \Zb[x]$
+        and monic.
+
+        In $\Zb / p\Zb[x]$, we have $\bar{g}(x)^p = \bar{g}(x^p) = \bar{f}(x) \bar{h}(x)$,
+        which implies $\bar{g}, \bar{f}$ has common root, thus $\bar\Phi_n = \bar{f}\bar{g}$ and
+        hence $x^n - \bar{1}$ has a multiple root.
+        But $(x^n - \bar{1})' = nx^{n-1} \neq 0$, and $0$ is not a root of $x^n - \bar{1}$,
+        which leads to an contradiction.
+
+        So we conclude that $f(\eta_n^p) = 0$ for any $p \mid n$, which could be extend
+        and show that $f(\eta_n^k) = 0$ for any $\gcd(k, n) = 1$, thus $f = \Phi_n$.
       \end{proof}
     \item $\Qb(\zeta_n) / \Ab$ is Galois with $[\Qb(\zeta_n): \Qb] = \deg \Phi_n = \varphi(n)$.
     \item $\Gal(\Qb(\zeta_n) / \Qb) \cong \Fb_n^\times$.
