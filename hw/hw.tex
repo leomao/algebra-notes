@@ -211,6 +211,7 @@
 \DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Exp}{Exp}
 \DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Gal}{Gal}
 
 % multilinear
 \DeclareMathOperator{\Hom}{Hom}
@@ -244,6 +245,24 @@
        & #4 & \mapsto #5
   \end{array}
 }}
+
+% just to make sure it exists
+\providecommand\given{}
+% can be useful to refer to this outside \Set
+\newcommand*\SetSymbol[1][]{%
+  \nonscript\:#1\vert
+  \allowbreak
+  \nonscript\:
+\mathopen{}}
+\DeclarePairedDelimiterX\Set[1]\{\}{%
+  \renewcommand\given{\SetSymbol[\delimsize]}
+  \,#1\,
+}
+
+\DeclarePairedDelimiterX\Gen[1]{\langle}{\rangle}{%
+  \renewcommand\given{\SetSymbol[\delimsize]}
+  \,#1\,
+}
 
 % cycle group \cycle{1,2,3} => (1 2 3)
 \ExplSyntaxOn
@@ -309,6 +328,7 @@
 \include{week2}
 \include{week3}
 \include{week4}
+\include{week5}
 
 %\printindex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

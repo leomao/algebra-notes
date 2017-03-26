@@ -1,0 +1,82 @@
+%! TEX root=./hw.tex
+
+\section{Week 5}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Let $p$ be an odd prime with $p \nmid m$.
+      Suppose $a \in \Zb$ s.t. $\Phi_m(a) \equiv 0 \pmod p$. then
+      $\ord(a) = m$ in $\left(\quot{\Zb}{p\Zb}\right)^\times$.
+      (hint: $x^m - 1 = \prod_{d\mid m} \Phi_d(x)$)
+    \item Let $a\in \Zb$. Show that if $p$ is an odd prime dividing $\Phi_m(a)$,
+      then either $p \mid m$ or $p \equiv 1 \pmod m$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Show that $\left[\Qb\left(\zeta_n + \frac{1}{\zeta_n}\right) : \Qb\right]
+      = \frac{\varphi(n)}{2}$.
+    \item Find $\Phi_8, \Phi_9$.
+    \item Show that $x^16 + 1$ is irreducible in $\Qb[x]$ and is reducible
+      in $\Fb_7[x]$ as a product of $4$ quartic polynomials.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  show that $p$: odd prime, $\left(\quot{\Zb}{p^e\Zb}\right)^\times$ is cyclic
+  of order $p^{e-1}(p-1)$ and $\left(\quot{\Zb}{2^e\Zb}\right)^\times \cong
+  \quot{\Zb}{2\Zb} \times \quot{\Zb}{2^{e-2}\Zb}, e\ge 2$.
+  
+  Hints:
+  \begin{enumerate}
+    \item Check $(1+p)^{p^{e-1}} \equiv 1 \pmod{p^e}$ but
+      $(1+p)^{p^{e-2}} \not\equiv 1 \pmod{p^e}$. And for $e \ge 3$,
+      $(1+2^2)^{2^{e-2}} \equiv 1 \pmod{2^e}$ but
+      $(1+2^2)^{2^{e-3}} \equiv 1 \pmod{2^e}$.
+    \item If each Sylow $p$-subgroup of $g$ is normal, then $G$ is isomorphic
+      to the product of all sylow $p$-subgroups.
+      $(1+p)^{p^{e-2}} \not\equiv 1 \pmod{p^e}$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Let $\Cb(t)$ be the field of rational functions over $\Cb$ and
+      $L$ be a splitting field of $x^n - t$ over $\Cb(t)$.
+      Find $\Gal(L / \Cb(t))$.
+    \item Let $\Fb_p(t)$ be the field of rational functions over $\Fb_p$ and
+      $L$ be a splitting field of $x^n - t$ over $\Fb_p(t)$.
+      Find $\Gal(L / \Fb_p(t))$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Let $\Char K \ne 2, 3$ and $f(x) = x^4 + px^2 + qx + r$ be irr. and separable
+  with roots $\alpha_1, \dots, \alpha_4$. Let $L = K(\alpha_1, \alpha_2, \alpha_3, \alpha_4)$
+  and $G_f = \Gal(L/K) \le S_4$. Set
+  $\beta_1 = \alpha_1 \alpha_2 + \alpha_3 \alpha_4,
+  \beta_2 = \alpha_1 \alpha_3 + \alpha_2 \alpha_4,
+  \beta_3 = \alpha_1 \alpha_4 + \alpha_2 \alpha_3$.
+  \begin{enumerate}
+    \item Show that $L^{G_f \cap V} = K(\beta_1, \beta_2, \beta_3)$ and
+      $\Gal\left(\quot{K(\beta_1, \beta_2, \beta_3)}{K}\right) \cong \quot{G_f}{G_f \cap V}$
+      where $V = \Set{1, \cycle{1,2}\cycle{3,4}, \cycle{1,3}\cycle{2,4},
+      \cycle{1,4}\cycle{2,3}} \le S_4$.
+    \item Show that there exists $i$ s.t. $\beta_i \in K \iff G_f \subseteq D_4$.
+    \item Let $h(x) = (x-\beta_1)(x-\beta_2)(x-\beta_3) \in K[x]$ with discriminant
+      $D(h)$, Show that
+      \begin{enumerate}
+        \item If $h(x)$ is irr. and $D(h) \not\in K^2$, then $G_f \cong S_4$.
+        \item If $h(x)$ is irr. and $D(h) \in K^2$, then $G_f \cong A_4$.
+        \item If $h(x)$ splits completely in $K[x]$, then $G_f \cong V$.
+        \item Let $h(x)$ has one root in $K$. Then
+          \begin{enumerate}
+            \item If $f(x)$ is irr. over $K(\beta_1, \beta_2, \beta_3)$, then
+              $G_f \cong D_4$.
+            \item If $f(x)$ is reducible over $K(\beta_1, \beta_2, \beta_3)$, then
+              $G_f \cong C_4$.
+          \end{enumerate}
+      \end{enumerate}
+  \end{enumerate}
+\end{exercise}
