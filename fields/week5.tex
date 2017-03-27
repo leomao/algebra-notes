@@ -95,3 +95,76 @@ Back to our problem, $[L_1 L_2 \cdots L_k: \Qb] = [\Qb(\zeta_n): \Qb] = \varphi(
 \begin{theorem}
   Let $G$ be a finite abelian group. Then exists a subfield $L$ of a cyclotomic field satisfied $\Gal(L / \Qb) \cong G$.
 \end{theorem}
+
+\subsection{Kammer extension}
+In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$th root of unity.
+
+\begin{definition} \hfill
+  \begin{itemize}
+    \item $L/K$ is called a Kammer extension of exponent $n$ if $\eta \in K$ and $L$ is a splitting field
+      of $(x^n - a_1) (x^n - a_2) \dots (x^n - a_k)$ over $K$.
+    \item Let $\abs{G} < \intfy$, the exponent $e(G)$ of $G$ is the least positive integer $m$
+      satisfied $g^m = 1$ for any $g \in G$.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  Let $L$ be a splitting field of $x^n - a$ over $K$, then $\Gal(L / K(\eta))$ is cyclic of
+  degree dividing $n$. More over $x^n - a$ is irreducible over $K(\eta)$ $\iff$ $[L: K(\eta)] = n$.
+\end{theorem}
+
+\begin{definition}
+  $L/K$ is called a cyclic extension if $L/K$ is Galois and $\Gal(L/K)$ is cyclic.
+\end{definition}
+
+\begin{theorem}
+  If $L/K$ is a cyclic extension of degree $n$ and $\eta \in K$, then $L$ is a splitting field of
+  some irreducible polynomial $x^n - a$ over $K$.
+
+  \begin{proof}
+    Recall a result proved in HW problem: Distinct automorphisms of $L$ are linearly independent over $L$.
+    
+    Let $\Gal(L/K) = \langle \sigma \rangle$ with $\ord(\sigma) = n$. Then
+    \[ \text{id}_L + \eta \sigma + \eta^2 \sigma^2 + \dots + \eta^{n-1} \sigma^{n-1} = 0
+      \implies \exists c \in L, \text{ s.t. } \alpha = c + \eta \sigma(c) + \eta^2 \sigma^2(c)
+      + \dots + \eta^{n-1} \sigma^{n-1}(c) \neq 0 \]
+
+    Observe that $\sigma(\alpha) = \eta^{-1} \alpha$, so $\alpha \not\in K$.
+
+    Also $\sigma(\alpha) = \eta^{-1}\alpha \in K(\alpha)$, $\sigma\big|_{K(\alpha)} \in \Gal(K(\alpha) / K)$
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}
+  If $L/K$ is Galois which satisfied $\Gal(L/K)$ is abelian of exponent $n$ and $\eta \in K$,
+  then $L/K$ is a Kummer extension.
+
+  \begin{proof}
+    By induction on $[L: K]$. If $[L: K] = 1$ then $L = K$ so $n = 1$.
+
+    Assume $[L: K] > 1$, then by FTFGAG, $\Gal(L/K) \cong \quot{\Zb}{d_1 \Zb}
+    \times \quot{\Zb}{d_2 \Zb} \times $
+  \end{proof}
+\end{theorem}
+
+\begin{theorem}
+  If $L/K$ is a kummer extension of exponent $n$, then $\Gal(L/K)$ is abelian of exponent dividing $n$.
+\end{theorem}
+
+\subsubsection{Cubic equations}
+
+\begin{lemma}
+  Let $\Char K \neq 2$ and $f(x) \in K[x]$ with $\deg f = n$. Let $L = K(\alpha_1, \dots, \alpha_n)$ be
+  a splittig field of $L$ over $K$.
+
+  Define $\delta = \prod_{1 \leq i < j \leq n} (\alpha_i - \alpha_j)$, then $L^{\Gal(L/K) \cap A_n} = K(\delta)$
+  and hence $\Gal(L/K) \hookrightarrow S_n$.
+\end{lemma}
+
+\begin{prop}
+  Let $f(x) = x^3 + px + q$ be irreducible in $K[x]$ and $L$ be a splitting field,
+  \begin{itemize}
+    \item If $\Gal(L/K) \cong S_3$ then $\sqrt{D} \not\in K$.
+    \item If $\Gal(L/K) \cong A_3$ then $\sqrt{D} \in K$.
+  \end{itemize}
+\end{prop}
