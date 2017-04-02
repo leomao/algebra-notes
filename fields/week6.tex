@@ -1,0 +1,94 @@
+%! TEX root=../main.tex
+\subsection{Solution by radicals}
+
+\begin{definition} \mbox{}
+  \begin{enumerate}
+    \item Given $L/K$ and $\alpha \in L$, $\alpha$ is called a radical over $K$
+      if $\alpha^n \in K$ for some $n\in \Nb$.
+    \item $L/K$ is called an extension by radicals if there exist
+      $L = L_n \supset L_{n-1} \supset \dots \supset L_1 \supset L_0 = K$
+      s.t. $\forall i = 1,\dots, n, \quad L_i = L_{i-1}(\alpha_i)$ with
+      $\alpha_i$ a radical over $L_{i-1}$.
+    \item $f(x) \in K[x]$ is solvable by radicals if there exists $L/K$,
+      an extension by radicals, s.t. $f$ splits over $L$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  (Recall) Let $G$ be a finite group. $G$ is solvable if
+  $\exists\: \{1\} = G_m \lhd G_{m-1} \lhd \dots \lhd G_0 = G$ s.t.
+  $\quot{G_{i-1}}{G_i}$ is cyclic $\forall i$.
+\end{definition}
+
+\begin{theorem}[Main Theorem]
+  Under some proper assumption on $\Char K$, a separable poly. $f(x) \in K[x]$
+  is solvable by radicals $\iff$ the Galois group of $f$ is solvable.
+\end{theorem}
+
+\begin{lemma} \label{lemma:galois-radical-ext}
+  Given a Galois extension $L/K$ and $M = L(\alpha)$ is an extension by
+  a radical, where $\alpha^n = a \in L$. Assume that $\Char K \nmid n$. Then
+  $\exists\: N$ s.t. $N/M$ is an extension by radicals and $N/K$ is Galois
+  and $N$ contains $\zeta_n$.
+  \begin{proof}
+    We know that $M(\zeta_n) = L(\zeta_n, \alpha)$ is a splitting field of
+    $x^n - a$ over $L$. If we set
+    \[ f(x) = \prod_{\sigma \in \Gal(L/K)} (x^n - \sigma(a)), \]
+    then the coefficients of $f(x)$ are elementary symmetric poly. in
+    $\Set{\sigma(a) \given \sigma \in \Gal(L/K) }$, which are fixed by
+    $\Gal(L/K)$, so $f(x) \in K[x]$.
+
+    Let $L$ be a splitting field of $g(x)$ over $K$. (since $L/K$ is Galois)
+    Choose $N$ as a splitting field of $f(x)g(x)$ over $K$.
+    By def., $N/K$ is Galois. Let $L = K(\beta_1,\dots,\beta_s)$ where
+    $\beta_1, \dots, \beta_s$ are the roots of $g(x)$, then
+    \[
+      N = K\big(\beta_1,\dots,\beta_s, \zeta_n,
+        \alpha_\sigma : \sigma \in \Gal(L/K)
+      \big),
+      \qquad \alpha_\sigma^n = \sigma(a) \in L
+    \]
+    $M = L(\alpha)$,
+    so $N = M(\alpha_\sigma : \sigma \in \Gal(L/K) \setminus \{ \Id \})$
+    $\implies$ $N/M$ is an extension by radicals.
+  \end{proof}
+\end{lemma}
+
+\begin{lemma} \label{lemma:radical-ext-chain-galois}
+  Let $L = L_m \supset L_{m-1} \supset \dots \supset L_0 = K$ s.t.
+  $L_i = L_{i-1}(\alpha_i)$ with $\alpha^{n_i} = a_i \in L_{i-1}$.
+  If $\Char K \nmid n_1n_2\cdots n_m$, then there exists $N/L$ s.t.
+  $N/K$ is a Galois extension by radicals and $\zeta_{n_i} \in N \quad
+  \forall i = 1, \dots, m$.
+
+  \begin{proof}
+    By induction on $m$. For $m = 1$, $L_1 \supset L_0 = K$ and
+    $L_1 = L_0(\alpha_1) = K(\alpha_1)$ where $\alpha_1^{n_1} \in K$ for some
+    $n_1\in \Nb$. Set $N = L(\zeta_n) = K(\zeta_n, \alpha_1)$, done.
+
+    For $m > 1$, by induction hypothesis, $\exists\: N'/L_{m-1}$ s.t.
+    $N'/K$ is Galois extension by radicals and $N'$ contains
+    $\zeta_{n_i} \quad \forall i = 1, \dots, m-1$.
+    By lemma \ref{lemma:galois-radical-ext}, $\exists\: N/N(\alpha_m)$ is
+    an extension by radicals s.t. $N/K$ is Galois and $N$ contains $\zeta_{n_m}$.
+  \end{proof}
+\end{lemma}
+
+\begin{theorem}[Part A]
+  Let $L = L_m \supset \dots \supset L_0 = K$ s.t. $L_i = L_{i-1}(\alpha_i)$
+  with $\alpha^{n_i} = a_i \in L_{i-1}$ and $\Char K \nmid n_1\cdots n_m$.
+  If a separable poly. $f(x) \in K[x]$ splits over $L$, then the Galois group
+  of $f$ over $K$ is solvable.
+  
+  \begin{proof}
+    By lemma \ref{lemma:radical-ext-chain-galois}, we assume that $L/K$ is
+    Galois and so is $L/L_i, \quad i=1,\dots,m$.
+    If we set $n = \lcm(n_1, \dots, n_m)$, then, by lemma \ref{lemma:radical-ext-chain-galois},
+    $L$ also contains $\zeta = \zeta_n = \zeta_{n_1}^{r_1} \cdots \zeta_{n_m}^{r_m}$.
+
+    Consider $L = L(\zeta) \supset L_{m-1}(\zeta) \supset \dots \supset
+    L_0(\zeta) = K(\zeta)$ (Note that $K(\zeta) \supset K$ and $L/K$ is Galois)
+    and let $G_i = \Gal(L/L_i(\zeta)) \quad i = 0, \dots, m$.
+  \end{proof}
+\end{theorem}
+

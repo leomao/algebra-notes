@@ -1,0 +1,46 @@
+%! TEX root=./hw.tex
+
+\section{Week 6}
+
+\begin{exercise}
+  Is $f(x) = 2x^5 - 10x + 5 \in \Qb[x]$ solvable by radicals? Justify your
+  answer!
+\end{exercise}
+
+\begin{exercise}
+  Show that if $\abs{G} = p^2 q$ where $p, q$ are distinct primes, then
+  $G$ is solvable.
+\end{exercise}
+
+\begin{exercise}
+  Solve $x^4 + ax + b = 0$ in terms of radicals.
+\end{exercise}
+
+\begin{exercise}
+  Power sum: $\displaystyle P_k = \sum_{i=1}^n x_i^k$.
+  Show that Newton identities: $S_0 = 1$,
+  \[
+    kS_k = \sum_{i=1}^k (-1)^{i-1} S_{k-i}P_i, \qquad
+    P_k = \sum_{i=1}^{k-1}(-1)^{i+k-1} S_{k-i}P_i + (-1)^{k-1}kS_k
+  \]
+  ($S_k$ are the elementary symmetric polynomials in $x_1, \dots, x_n$.)
+\end{exercise}
+
+\begin{exercise}
+  For any prime $p \ge 5$.
+  Let $k, m, n_1, \dots, n_{k-2} \in \Zb$ s.t.
+  \[
+    \begin{cases}
+      k \text{~is odd and~} > 3, \\
+      m \text{~is even and~} > 0, \\
+      n_1, \dots, n_{k-2} \text{~are even and~} n_1 < n_2 < \dots < n_{k-2}.
+    \end{cases}
+  \]
+  Consider $g(x) = (x^2+m)(x-n_1)\dots(x-n_{k-2})$ and
+  $f(x) = g(x)-2 \in \Zb[x]$.
+  \begin{enumerate}
+    \item Show that $f$ is irr. in $\Zb[x]$
+    \item Show that $f$ has exactly two non-real roots for $m \gg 0$.
+      If $k = p$, then $G_f \cong S_p$.
+  \end{enumerate}
+\end{exercise}
