@@ -89,6 +89,32 @@
     Consider $L = L(\zeta) \supset L_{m-1}(\zeta) \supset \dots \supset
     L_0(\zeta) = K(\zeta)$ (Note that $K(\zeta) \supset K$ and $L/K$ is Galois)
     and let $G_i = \Gal(L/L_i(\zeta)) \quad i = 0, \dots, m$.
+
+    Use $L'_i$ denotes $L_i(\zeta)$ for all $i$. We can find that
+    \begin{itemize}
+      \item $G_m = \{1\}, G_0 = \Gal(L/K(\zeta))$.
+      \item $\quot{G_{i-1}}{G_i} = \quot{\Gal(L/L'_{i-1})}{\Gal(L/L'_i)}
+        \cong \Gal(L'_{i-1} / L'_i) =  \Gal(L'_i(\alpha_i) / L'_i)$ is cyclic.
+    \end{itemize}
+    So $G_0$ is solvable.
+    Moreoevr, $K(\zeta)$ is a splitting field of $x^n - 1$ over $K$ and
+    $\Gal(K(\zeta)/K) \le \left(\quot{\Zb}{n\Zb}\right)^\times$, which is
+    abelian, so it is solvable. Also, $\Gal(K(\zeta)/K) \cong \quot{\Gal(L/K)}{G_0}$
+    is solvable. $\implies \Gal(L/K)$ is solvable.
+    Let $N$ be a splitting field of $f$ over $K$ $\leadsto L \supset N \leadsto
+    \Gal(N/K) \cong \quot{\Gal(L/K)}{\Gal(L/N)}$.
+
+    By prop \ref{prop:quot-solvable}, $\Gal(N/K)$ is solvable.
   \end{proof}
 \end{theorem}
+
+\begin{prop} \label{prop:quot-solvable}
+  Let $H \lhd G$. Then $G$ is solvable $\iff$ $H, \quot{G}{H}$ are solvable.
+
+  \begin{proof}
+    \underline{Claim:} Define $G^{(i)} = [G^{(i-1)}, G^{(i-1)}], \quad
+    i \in \Nb; G^{(0)} = G$.
+    Then $G$ is solvable $\iff$ $G^{(n)} = \{1 \}$ for some $n$.
+  \end{proof}
+\end{prop}
 
