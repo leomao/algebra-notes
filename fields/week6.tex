@@ -74,7 +74,7 @@
   \end{proof}
 \end{lemma}
 
-\begin{theorem}[Part A]
+\begin{theorem}[Part A] \label{thm:solvable-part-a}
   Let $L = L_m \supset \dots \supset L_0 = K$ s.t. $L_i = L_{i-1}(\alpha_i)$
   with $\alpha^{n_i} = a_i \in L_{i-1}$ and $\Char K \nmid n_1\cdots n_m$.
   If a separable poly. $f(x) \in K[x]$ splits over $L$, then the Galois group
@@ -112,9 +112,153 @@
   Let $H \lhd G$. Then $G$ is solvable $\iff$ $H, \quot{G}{H}$ are solvable.
 
   \begin{proof}
+    ``$\Leftarrow$'': Let $q: G \to \quot{G}{H}$ be the quotient map,
+    $Q = \quot{G}{H}$. The solvable series is given by
+    \[
+      G = q^{-1}(Q) = q^{-1}(Q_0) \rhd q^{-1}(Q_1) \rhd \dots \rhd q^{-1}(Q_n)
+      = H = H_0 \rhd H_1 \rhd \dots \rhd H_m = \{ 1 \}
+    \]
+    ``$\Rightarrow$'': \\
     \underline{Claim:} Define $G^{(i)} = [G^{(i-1)}, G^{(i-1)}], \quad
     i \in \Nb; G^{(0)} = G$.
     Then $G$ is solvable $\iff$ $G^{(n)} = \{1 \}$ for some $n$.
+    \begin{proof}
+      ``$\Leftarrow$'': O.K.
+
+      ``$\Rightarrow$'': Given $G = G_0 \rhd G_1 \rhd \dots \rhd G_m = \{1\}$
+      with $\quot{G_{i-1}}{G_i}$ abelian.
+      We have $G^{(1)} \le G_1 \leadsto G^{(2)} \le [G_1, G_1] \le G_2 \leadsto
+      \dots \leadsto G^{(n)} \le G_n = \{ 1 \} \leadsto G^{(n)} = \{1\}$.
+    \end{proof}
+    By the claim above:
+    \begin{itemize}
+      \item $H^{(n)} \le G^{(n)} = \{1\} \leadsto H^{(n)} = \{1\} \implies H$ 
+        is solvable.
+      \item $q\big([G, G]\big) = [q(G), q(G)] = [\quot{G}{H}, \quot{G}{H}] =
+        \left(\quot{G}{H}\right)^{(1)} \leadsto \dots \leadsto
+        q(G^{(n)}) = \left(\quot{G}{H}\right)^{(n)} \implies \quot{G}{H}$
+        is solvable.
+    \end{itemize}
   \end{proof}
 \end{prop}
 
+\begin{theorem}[Part B]
+  Let $f \in K[x]$ be separable and $L$ be a splitting field of $f$ over $K$.
+  Assume $\Char K \nmid \abs{\Gal(L/K)}$. If $\Gal(L/K)$ is solvable, then
+  $f$ is solvable by radicals.
+
+  \begin{proof}
+    Let $n = \abs{\Gal(L/K)}$ and $\zeta = \zeta_n$.
+    Let $N$ be a splitting field of $f$ over $K(\zeta)$, i.e. $N = LK(\zeta)$.
+    $\implies \Gal(N/K(\zeta)) \cong \Gal(L/L\cap K(\zeta)) \le \Gal(L/K)$.
+
+    So $\Gal(N/K(\zeta))$ is solvable, say $\Gal(N/K(\zeta)) = G_0 \rhd G_1
+    \rhd \dots \rhd G_m = 1$, $\quot{G_{i-1}}{G_i}$ is cyclic.
+    
+    If we set $N_j = N^{G_j}$, then
+    $N = N_m \supset N_{m-1} \supset \dots \supset N_0 = K(\zeta)$ and
+    $G_j = \Gal(N/N_j)$, $\quot{G_{i-1}}{G_i} \cong \Gal(N_i/N_{i-1})$ is
+    cyclic $\implies N_i = N_{i-1}(\alpha_i), \alpha_i^{n_i} \in N_{i-1}$.
+    (kummer extension)
+    \begin{mdframed}
+      Note that $n_i = [L_i : L_{i-1}] = \abs{G_{i-1}} / \abs{G_i}$ dividing
+      $\abs{G_0}$ and $\abs{G_0} \mid n$, so $\zeta_n$ genates $\zeta_{n_i}$
+      and $\Char K \nmid n_i$.
+    \end{mdframed}
+    $\implies N/K(\zeta)$ is an extension by radicals $\leadsto$
+    $N/K$ is an extension by radicals.
+  \end{proof}
+\end{theorem}
+
+\begin{remark}
+  In Theorem \ref{thm:solvable-part-a},
+  $\Gal(K(\zeta)/K) \le \left(\quot{\Zb}{n\Zb}\right)^\times$ may be proper
+  subgroup. We can check the if $[K(\zeta) : K] \overset{?}{=} 4 = \varphi(5)$.
+\end{remark}
+
+\subsection{Ruffini-Abel theorem}
+
+\begin{theorem}[Main theorem]
+  Assume $\Char F = 0$.
+  The general equation of the $n$-th degree is not solvable by radicals if
+  $n \ge 5$. In fact, let $f(x) = x^n - t_1x^{n-1} + t_2 x^{n-2} - \dots +
+  (-1)^nt_n \in \underbrace{F(t_1, \dots, t_n)}_{=K}[x]$ with
+  $t_1, \dots, t_n$ variables and $L$ be a splitting field of $f$ over $K$.
+  Then $\Gal(L/K) \cong S_n$. $S_n$ is not solvable for $n \ge 5$.
+\end{theorem}
+
+\begin{lemma} \label{lemma:symm-poly-symm-group}
+  Let $L = F(x_1, \dots, x_n)$ and $s_1, \dots, s_n$ be the elementary
+  symmetric polynomials in $x_1, \dots, x_n$.
+  \[
+    s_k = \sum_{1 \le j_1 < \dots < j_k \le n} \prod_{i=1}^k x_{j_i}
+  \]
+  If $K = F(s_1, \dots, s_n) \subset L$, then $L/K$ is Galois and
+  $\Gal(L/K) \cong S_n$.
+
+  write $f(x) = (x - x_1) \cdots (x - x_n) = x^n - s_1x^{n-1} + s_2x^{n-2} -
+  \dots + (-1)^ns_n \in K[x]$.
+  Clearly, $L$ is a splitting field of $f$ over $K \leadsto L/K$ is Galois
+  and $\Gal(L/K) \toone S_n$.
+
+  Now, for $\sigma \in S_n$, $\sigma$ can be regarded as an element in
+  $\Gal(L/K)$:
+  \[
+    \arraycolsep=1pt
+    \begin{array}{rcl}
+      \sigma: & L & \to L \\
+              & x_i & \mapsto x_{\sigma(i)}
+    \end{array}
+  \]
+  Since $\Set{ \sigma(x_1), \dots, \sigma(x_n) } = \Set{ x_1, \dots, x_n }
+  \leadsto \sigma(s_i) = s_i \quad \forall i \leadsto \sigma\big|_K = \Id_K
+  \leadsto \sigma \in \Gal(L/K)$.
+\end{lemma}
+
+\begin{coro}
+  $L^{S_n} = K = F(s_1, \dots, s_n)$. \\
+  $L^{S_n} = \Set{ f(x_1, \dots, x_n) \in L \given f(x_{\sigma(1)}, \dots,
+  x_{\sigma(n)}) = f(x_1, \dots, x_n) \quad \forall \sigma \in S_n }$ is
+  all symmetric poly.
+\end{coro}
+
+\begin{coro}
+  For any finite group $G$, by Cayley thm, $G \toone S_n$ for some $n$.
+  so $\Gal(L/L^G) \cong G$.
+\end{coro}
+
+Now we prove the Main theorem:
+\begin{proof}
+  Let $L = K(z_1, \dots, z_n)$. Since $t_1, \dots, t_n$ are the symmetric
+  poly. w.r.t. $z_1, \dots, z_n$, $L = F(z_1, \dots, z_n)$.
+
+  Let $F(s_1, \dots, s_n)$ and $F(x_1, \dots, x_n)$ be given as in lemma
+  \ref{lemma:symm-poly-symm-group}.
+
+  since $t_1, \dots, t_n$ are variables,
+  $\exists\: \tau: F[t_1, \dots, t_n] \onto F[s_1, \dots, s_n]$ with $\tau:
+  t_i \mapsto s_i$.
+  Also, Since $x_1, \dots, x_n$ are variables, $\exists\: \sigma:
+  F[x_1, \dots, x_n] \onto F[z_1, \dots, z_n]$ with $\sigma: x_i \mapsto z_i$.
+
+  now, $\sigma \circ \tau(t_i) = \sigma(s_i)
+  = \sigma\left(\sum x_{j_1}\cdots x_{j_i}\right)
+  = \left(\sum z_{j_1}\cdots z_{j_i}\right) = t_i \implies \sigma\circ\tau =
+  \Id \implies \tau$ is 1-1 and thus an isom.
+  So there exists an extension $\tau': F(t_1, \dots, t_n) \isoto F(s_1, \dots, s_n)$.
+  Note $\bar{\tau}': f(x) \mapsto g(x) = x^n - s_1x^{n-1} + \cdots + (-1)^ns_n$.
+
+  Let $F(z_1, \dots, z_n)$ be a splitting field of $f$ over $F(t_1, \dots, t_n)$
+  and $F(x_1, \dots, x_n)$ be a splitting field of $g$ over $F(s_1, \dots, s_n)$
+  where $g = \bar{\tau}'(f)$.
+  There exists $\sigma': F(z_1, \dots, z_n) \isoto F(x_1, \dots, x_n)$ with
+  $\sigma'\big|_{F(t_1, \dots, t_n)} = \tau'$.
+  So $\Gal(L/K) \cong S_n$ by lemma \ref{lemma:symm-poly-symm-group}.
+\end{proof}
+
+\begin{remark} \mbox{}
+  \begin{itemize}
+    \item Since $S_n$ is transitive, $f$ is irr.
+    \item $\Char F = 0 \leadsto f$ is separable.
+  \end{itemize}
+\end{remark}
