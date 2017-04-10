@@ -1,0 +1,17 @@
+%! TEX root=../main.tex
+\subsection{Calculation of Galois groups}
+Let $f(x)$ be separable in $K[x]$ and $L = K(\alpha_1, \dots, \alpha_n)$ be a splitting field of
+$f$ over $K$. The goal is to find $\Gal(L/K)$ which is in $S_n$.
+
+Define $\theta \defeq y_1 \alpha_1 + \dots + y_n \alpha_n$. For each $\sigma \in S_n$,
+define $\sigma_y(\theta) \triangleq y_{\sigma(1)} \alpha_1 + \dots + y_{\sigma(n)} \alpha_n$ and
+$\sigma_{\alpha}(\theta) = y_1 \alpha_{\sigma(1)} + \dots + y_n \alpha_{\sigma(n)}$.
+It is easy to see that $\sigma_y^{-1} = \sigma_\alpha$. 
+
+In $L(x, y_1, \dots, y_n)$, we consider $F(x, \bm{y}) = \prod_{\sigma \in S_n} (x - \sigma_y(\theta))
+= \prod_{\sigma^{-1} \in S_n} (x - \sigma_{\alpha}(\theta)) = \prod_{\sigma \in S_n} (x - \sigma_\alpha(\theta))$
+
+Decompose $F$ into irreducible factors in $K[x, y_1, \dots, y_n]$, say $F = F_1 F_2 \dotsm F_r$.
+Notice that for any $\sigma \in S_n$, $F = \sigma_y F = \sigma_y F_1 \cdot \sigma_y F_2 \dotsm \sigma_y F_r$.
+For convenience, assume $(x - \theta) \mid F_1$, 
+

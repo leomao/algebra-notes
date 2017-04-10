@@ -1,0 +1,56 @@
+%! TEX root=../main.tex
+\subsection{Transcendental extensions}
+
+\begin{definition}
+  Let $L/K$ be an extension and $S \subset L$.
+  \begin{itemize}
+    \item $S$ is algebrarically dependent over $K$ if for some $n \in \mathbb{N}$,
+      exists $f(x_1, \dots, x_n) \in K[x_1, \dots, x_n]$ satisfied
+      $f(a_1, \dots, a_n) = 0$ for some distinct $a_1, \dots, a_n \in S$.
+    \item $S$ is algebrarically independent over $K$ if $S$ is not algebrarically dependent.
+    \item $S$ is called a transcendence base for $L/K$ if $S$ is algebrarically independent
+      and $L/K(S)$ is algebraic.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  Any two transcendence bases for $L/K$ have the same cardinality.
+
+  \begin{proof}
+    Pick any transcendence base $S = \{s_1, \dots, s_n\}$ for $L/K$.
+    Let $T$ be another transcendence base for $L/K$.
+
+    First we deal with the case which $S$ is finite.
+
+    We claim that $\exists t_1 \in T$ such that
+    $t_1$ is algebrarically independent over $K(s_2, \dots, s_n)$.
+    If not, then 
+
+    Now assume $S$ is infinite.
+    For another transcendence base $T$, we have $\abs{T} = \infty$.
+    For $s \in S$, $s$ is algebraic over $K(T)$, and
+    in fact is over $K(T_s)$ such that $T_s$ is finite,
+    since algebraic relation involves.
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  $L/K$ is called purelyl transcendental if exists a transcendental base $S$
+  such that $L = K(S)$.
+\end{definition}
+
+\begin{theorem}[L\"{u}roth's theorem]
+  If $L$ is purely transcendental of degree $1$ over $K$, then any proper
+  intermediate field $E$ is also purely transcendental of degree $1$.
+\end{theorem}
+
+\begin{lemma}
+  Let $L = K(t)$ with $t$ being transcendental over $K$ and $u = f(t) / g(t) \in L \setminus K$
+  with $\gcd(f(t), g(t)) = 1$.
+  Assume $n = \max(\deg f, \deg g)$, then $L/K(u)$ is algebraic and $[L: K(u)] = n$.
+  \begin{proof}
+    Write
+    \[ f(t) = a_n t^n + \dots + a_1 t + a_0, \quad g(t) = b_n t^n + \dots + b_1 t + b_0 \]
+  \end{proof}
+\end{lemma}
+
