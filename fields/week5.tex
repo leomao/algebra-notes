@@ -19,7 +19,7 @@
       is the multiplicative group of nth roots of unity.
     \item $\zeta_n$ is called a primitive nth root of unity if $\zeta^n = 1$ but $\zeta^m \ne 1, \, \forall 0 < m < n$.
     \item The nth cyclotomic polynomial is defined as
-      \[ \Phi_n \triangleq \prod (x - \zeta) = \prod_{\gcd(k, n) = 1} (x - \zeta_n^k) \implies \deg \Phi_n = \varphi(n) \]
+      \[ \Phi_n \triangleq \prod_{\gcd(k, n) = 1} (x - \zeta_n^k) \implies \deg \Phi_n = \varphi(n) \]
   \end{itemize}
 \end{definition}
 
@@ -61,6 +61,19 @@
       \end{proof}
     \item $\Qb(\zeta_n) / \Qb$ is Galois with $[\Qb(\zeta_n): \Qb] = \deg \Phi_n = \varphi(n)$.
     \item $\Gal(\Qb(\zeta_n) / \Qb) \cong \Fb_n^\times$.
+
+      \begin{proof}
+        Let $\sigma_k = (\eta_n \mapsto \eta_n^k) \in \Gal(\Qb(\zeta_n) / \Qb)$.
+        The isomorphism is given by $\sigma_k \mapsto \bar{k}$.
+        Clearly, it is a homomorphism since $\sigma_k \sigma_h = (\eta_n \mapsto \eta_n^{kh}) = \sigma_{kh}$.
+        Also $\sigma_k = 1 \iff \bar{k} = 1$. Finally, $\abs{\Gal(\Qb(\zeta_n) / \Qb)} = \abs{\Fb_n^\times} = \varphi(n)$,
+        so the map is onto.
+      \end{proof}
+    \item Suppose $n = p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}$ with $p_1, \dots, p_k$ be distinct primes.
+      Define $L_i \triangleq \Qb(\zeta_{p_i^{n_i}})$. Obviously, $L_i \subseteq \Qb(\zeta_n)$ hence
+      $L_1 L_2 \dotsm L_k \subseteq \Qb(\zeta_n)$, but $\zeta_n = \zeta_{p_1^{n_1}} \zeta_{p_2^{n_2}}
+      \dotsm \zeta_{p_k^{n_k}}$, so $L_1 L_2 \dotsm L_k \supseteq \Qb(\zeta_n)$. Thus we have
+      $L_1 L_2 \dotsm L_k = \Qb(\zeta_n)$.
   \end{itemize}
 \end{prop}
 
@@ -68,32 +81,68 @@
   Let $n = p$ be a prime.
   \begin{itemize}
     \item $\Gal(\Qb(\zeta_p) / \Qb) = \Fb_p^\times = \Zb / (p-1)\Zb$.
-    \item For $H \leq \Gal(\Qb(\zeta_p) / \Qb)$, find $\Qb(\zeta_p)^H$. 
-      $\alpha = \sum_{\tau \in H} \tau(\zeta_p) \implies \alpha \in \Qb(\zeta_p)^H$
+    \item For $H \leq \Gal(\Qb(\zeta_p) / \Qb)$, we shall find $\Qb(\zeta_p)^H$.
+      Let $\alpha = \sum_{\tau \in H} \tau(\zeta_p)$, then it is easy to
+      see that $\alpha \in \Qb(\zeta_p)^H$. Also, since $[\Qb(\zeta_p): \Qb] = p-1$,
+      $\zeta_p, \zeta_p^2, \dots, \zeta_p^{p-1}$ is linear independent,
+      so if some $\sigma \in G$ satisfy $\sigma(\alpha) = \alpha$, then since
+      both $\sigma(\alpha), \alpha$ are a sum of linear independent elements,
+      $\sigma$ must send $\zeta_p$ to an element $\tau(\zeta_p)$ for some $\tau \in H$,
+      then $\sigma = \tau \implies \sigma \in H$. Thus $\Qb(\zeta_p)^H = \Qb(\alpha)$.
 
   \end{itemize}
 \end{example}
 \begin{example}
-  Suppose $n = p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}$ with $p_1, \dots, p_k$ be distinct primes.
-  Define $L_i \triangleq \Qb(\zeta_{p_i^{n_i}})$.
 \end{example}
 
 \begin{lemma}
   If $L_1 / K$, $L_2 / K$ are Galois, then $L_1 \cap L_2 / K$, $L_1 L_2 / K$ are Galois and
-  \[ \Gal( L_1 L_2 / K) \cong \big\{ (\sigma, \tau) \mid \sigma\big|_{L_1 \cap L_2} = \tau\big|_{L_1 \cap L_2} \big\}
+  \[ \Gal( L_1 L_2 / K) \cong \big\{ (\sigma, \tau) \bigm| \sigma\big|_{L_1 \cap L_2} = \tau\big|_{L_1 \cap L_2} \big\}
     \leq \Gal(L_1 / K) \times \Gal(L_2 / K) \]
   In particular, if $L_1 \cap L_2 = K$, then $\Gal(L_1 L_2 / K) \cong \Gal(L_1 / K) \times \Gal(L_2 / K)$.
 
   \begin{proof}
-    We know that $L_1 \cap L_2 / K$ is finite, separable.
+    We know that $L_1 \cap L_2 / K$ is finite and separable. Also, for each $\alpha \in L_1 \cap L_2$,
+    $m_{\alpha, K}$ splits in both $L_1, L_2$ since they are normal, thus $m_{\alpha, K}$ splits
+    in $L_1 \cap L_2$, hence $L_1 \cap L_2 / K$ is galois.
+
+    Similary, $L_1 L_2$ is finite and separable. Let $L_1$ be the splitting field of $f_1$,
+    and $L_2$ be the splitting field of $f_2$, then $L_1 L_2$ is the splitting field
+    of the square-free part of $f_1 f_2$, hence $L_1 L_2 / K$ normal.
+
+    Define $\varphi = \sigma :: \Gal(L_1 L_2 / K) \mapsto \big( \sigma \big|_{L_1}, \sigma \big|_{L_2} \big)
+    :: \Gal(L_1 / K) \times \Gal(L_2 / K)$. Since $L_1, L_2$ are normal,
+    by proposition~\ref{prop:TFAE-of-normal-extension}, $\sigma \big|_{L_i}(L_i) = L_i$ so they are well-defined.
+    Also, it is clear that the map is 1-1.
+
+    Now we count the number of the pair $(\sigma \big|_{L_1}, \sigma \big|_{L_2})$,
+    There are $[L_1: K]$ of $\tau = \sigma \big|_{L_1}$, and fixing one, each $\sigma \big|_{L_2}$
+    is an extension of $\tau \big|_{L_1 \cap L_2}$, so there are $[L_1 L_2 : L_1]$ of such.
+    On the other hand we have $\abs{\Gal(L_1 L_2 / K)} = [L_1 L_2 : K] = [L_1 L_2 : L_1]
+    [L_1 : K] = [L_1 : L_1 \cap L_2] [L_1 : K]$, thus $\Gal(L_1 L_2 / K)$ and
+    $\Set{(\sigma \big|_{L_1}, \sigma \big|_{L_2})}$ has the same size, and hence the
+    map is onto.
   \end{proof}
 \end{lemma}
 
 Back to our problem, $[L_1 L_2 \cdots L_k: \Qb] = [\Qb(\zeta_n): \Qb] = \varphi(n) = \varphi(p_1^{n_1})
-\cdots \varphi(p_k^{n_k}) = [L_1 : \Qb] [L_2 : \Qb] \cdots [L_k : \Qb]$.
+\cdots \varphi(p_k^{n_k}) = [L_1 : \Qb] [L_2 : \Qb] \cdots [L_k : \Qb]$, thus
+\[ \Gal\big( \Qb(\eta_n) / \Qb \big) \cong
+  \Gal\big( \Qb(\eta_{p_1^{n_1}}) / \Qb \big) \times
+  \Gal\big( \Qb(\eta_{p_1^{n_2}}) / \Qb \big) \times \cdots \times
+  \Gal\big( \Qb(\eta_{p_1^{n_k}}) / \Qb \big) \]
 
 \begin{theorem}
   Let $G$ be a finite abelian group. Then exists a subfield $L$ of a cyclotomic field satisfied $\Gal(L / \Qb) \cong G$.
+
+  \begin{proof}
+    By the FTFGAG,
+    \[ G \cong \Zb / n_1 \Zb \times \Zb / n_2 \Zb \times \dots \times \Zb / n_k \Zb \]
+    By dirichlet theorem, there are infinitely many prime $p$ such that $n \mid p - 1$.
+    Let $p_i$ be a prime such that $n_i \mid p_i - 1$ and $p_i$ are all distinct.
+    Then $G$ is a subgroup of $\Zb / (p_1 - 1) \Zb \times \dots \times \Zb / (p_k - 1) \Zb \cong \Gal(\Qb(\eta_n) / \Qb)$
+    where $n = p_1 p_2 \dotsm p_k$.
+  \end{proof}
 \end{theorem}
 
 \subsection{Kammer extension}
