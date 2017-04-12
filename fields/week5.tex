@@ -56,16 +56,16 @@
         But $(x^n - \bar{1})' = nx^{n-1} \neq 0$, and $0$ is not a root of $x^n - \bar{1}$,
         which leads to an contradiction.
 
-        So we conclude that $f(\eta_n^p) = 0$ for any $p \mid n$, which could be extend
-        and show that $f(\eta_n^k) = 0$ for any $\gcd(k, n) = 1$, thus $f = \Phi_n$.
+        So we conclude that $f(\zeta_n^p) = 0$ for any $p \mid n$, which could be extend
+        and show that $f(\zeta_n^k) = 0$ for any $\gcd(k, n) = 1$, thus $f = \Phi_n$.
       \end{proof}
     \item $\Qb(\zeta_n) / \Qb$ is Galois with $[\Qb(\zeta_n): \Qb] = \deg \Phi_n = \varphi(n)$.
     \item $\Gal(\Qb(\zeta_n) / \Qb) \cong \Fb_n^\times$.
 
       \begin{proof}
-        Let $\sigma_k = (\eta_n \mapsto \eta_n^k) \in \Gal(\Qb(\zeta_n) / \Qb)$.
+        Let $\sigma_k = (\zeta_n \mapsto \zeta_n^k) \in \Gal(\Qb(\zeta_n) / \Qb)$.
         The isomorphism is given by $\sigma_k \mapsto \bar{k}$.
-        Clearly, it is a homomorphism since $\sigma_k \sigma_h = (\eta_n \mapsto \eta_n^{kh}) = \sigma_{kh}$.
+        Clearly, it is a homomorphism since $\sigma_k \sigma_h = (\zeta_n \mapsto \zeta_n^{kh}) = \sigma_{kh}$.
         Also $\sigma_k = 1 \iff \bar{k} = 1$. Finally, $\abs{\Gal(\Qb(\zeta_n) / \Qb)} = \abs{\Fb_n^\times} = \varphi(n)$,
         so the map is onto.
       \end{proof}
@@ -127,10 +127,10 @@
 
 Back to our problem, $[L_1 L_2 \cdots L_k: \Qb] = [\Qb(\zeta_n): \Qb] = \varphi(n) = \varphi(p_1^{n_1})
 \cdots \varphi(p_k^{n_k}) = [L_1 : \Qb] [L_2 : \Qb] \cdots [L_k : \Qb]$, thus
-\[ \Gal\big( \Qb(\eta_n) / \Qb \big) \cong
-  \Gal\big( \Qb(\eta_{p_1^{n_1}}) / \Qb \big) \times
-  \Gal\big( \Qb(\eta_{p_1^{n_2}}) / \Qb \big) \times \cdots \times
-  \Gal\big( \Qb(\eta_{p_1^{n_k}}) / \Qb \big) \]
+\[ \Gal\big( \Qb(\zeta_n) / \Qb \big) \cong
+  \Gal\big( \Qb(\zeta_{p_1^{n_1}}) / \Qb \big) \times
+  \Gal\big( \Qb(\zeta_{p_1^{n_2}}) / \Qb \big) \times \cdots \times
+  \Gal\big( \Qb(\zeta_{p_1^{n_k}}) / \Qb \big) \]
 
 \begin{theorem}
   Let $G$ be a finite abelian group. Then exists a subfield $L$ of a cyclotomic field satisfied $\Gal(L / \Qb) \cong G$.
@@ -140,64 +140,114 @@ Back to our problem, $[L_1 L_2 \cdots L_k: \Qb] = [\Qb(\zeta_n): \Qb] = \varphi(
     \[ G \cong \Zb / n_1 \Zb \times \Zb / n_2 \Zb \times \dots \times \Zb / n_k \Zb \]
     By dirichlet theorem, there are infinitely many prime $p$ such that $n \mid p - 1$.
     Let $p_i$ be a prime such that $n_i \mid p_i - 1$ and $p_i$ are all distinct.
-    Then $G$ is a subgroup of $\Zb / (p_1 - 1) \Zb \times \dots \times \Zb / (p_k - 1) \Zb \cong \Gal(\Qb(\eta_n) / \Qb)$
+    Then $G$ is a subgroup of $\Zb / (p_1 - 1) \Zb \times \dots \times \Zb / (p_k - 1) \Zb \cong \Gal(\Qb(\zeta_n) / \Qb)$
     where $n = p_1 p_2 \dotsm p_k$.
   \end{proof}
 \end{theorem}
 
-\subsection{Kammer extension}
-In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$th root of unity.
+\subsection{Kummer extension}
+In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$th root of unity.
 
 \begin{definition} \hfill
   \begin{itemize}
-    \item $L/K$ is called a Kammer extension of exponent $n$ if $\eta \in K$ and $L$ is a splitting field
+    \item $L/K$ is called a Kammer extension of exponent $n$ if $\zeta \in K$ and $L$ is a splitting field
       of $(x^n - a_1) (x^n - a_2) \dots (x^n - a_k)$ over $K$.
-    \item Let $\abs{G} < \intfy$, the exponent $e(G)$ of $G$ is the least positive integer $m$
+    \item Let $\abs{G} < \infty$, the exponent $e(G)$ of $G$ is the least positive integer $m$
       satisfied $g^m = 1$ for any $g \in G$.
   \end{itemize}
 \end{definition}
 
 \begin{theorem}
-  Let $L$ be a splitting field of $x^n - a$ over $K$, then $\Gal(L / K(\eta))$ is cyclic of
-  degree dividing $n$. More over $x^n - a$ is irreducible over $K(\eta)$ $\iff$ $[L: K(\eta)] = n$.
+  Let $L$ be a splitting field of $x^n - a$ over $K$, then $\Gal(L / K(\zeta))$ is cyclic of
+  degree dividing $n$. More over $x^n - a$ is irreducible over $K(\zeta)$ $\iff$ $[L: K(\zeta)] = n$.
+
+  \begin{proof}
+    If $\alpha$ is a root of $x^n - a = 0$, then $\alpha, \alpha \zeta, \dots, \alpha \zeta^{n-1}$
+    are roots of $x^n - a$, so $L = K(\alpha, \zeta) = K(\zeta)(\alpha)$.
+
+    Consider $\varphi = (\alpha \mapsto \alpha \zeta^k) :: \Gal(L / K(\zeta)) \mapsto \bar{k} :: \Zb / n\Zb$.
+    Then it is easy to see that $\varphi$ is a homomorphism. Also, if $\varphi(\sigma) = 0$,
+    $\sigma = (\alpha \mapsto \alpha) = \mathrm{id}$. Thus $\varphi$ 1-1 and
+    $\Gal(L / K(\zeta)) \hookrightarrow \Zb/n\Zb$.
+  \end{proof}
 \end{theorem}
 
 \begin{definition}
   $L/K$ is called a cyclic extension if $L/K$ is Galois and $\Gal(L/K)$ is cyclic.
 \end{definition}
 
-\begin{theorem}
-  If $L/K$ is a cyclic extension of degree $n$ and $\eta \in K$, then $L$ is a splitting field of
+\begin{theorem} \label{thm:kummer-base-theorem}
+  If $L/K$ is a cyclic extension of degree $n$ and $\zeta \in K$, then $L$ is a splitting field of
   some irreducible polynomial $x^n - a$ over $K$.
 
   \begin{proof}
     Recall a result proved in HW problem: Distinct automorphisms of $L$ are linearly independent over $L$.
     
     Let $\Gal(L/K) = \langle \sigma \rangle$ with $\ord(\sigma) = n$. Then
-    \[ \text{id}_L + \eta \sigma + \eta^2 \sigma^2 + \dots + \eta^{n-1} \sigma^{n-1} = 0
-      \implies \exists c \in L, \text{ s.t. } \alpha = c + \eta \sigma(c) + \eta^2 \sigma^2(c)
-      + \dots + \eta^{n-1} \sigma^{n-1}(c) \neq 0 \]
+    \[ \text{id}_L + \zeta \sigma + \zeta^2 \sigma^2 + \dots + \zeta^{n-1} \sigma^{n-1} \neq 0
+      \implies \exists c \in L, \text{ s.t. } \alpha = c + \zeta \sigma(c) + \zeta^2 \sigma^2(c)
+      + \dots + \zeta^{n-1} \sigma^{n-1}(c) \neq 0 \]
 
-    Observe that $\sigma(\alpha) = \eta^{-1} \alpha$, so $\alpha \not\in K$.
+    Observe that $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in K$. Also $\sigma(\alpha^n)
+    = \sigma(\alpha)^n = \zeta^{-n}\alpha^n = \alpha^n$, so $\alpha^n$ is fixed by all automorphisms
+    in $\Gal(L/K)$, thus $\alpha_n \in K$, and hence $K(\alpha)$ is a splitting field of $x^n - a$ over $K$.
 
-    Also $\sigma(\alpha) = \eta^{-1}\alpha \in K(\alpha)$, $\sigma\big|_{K(\alpha)} \in \Gal(K(\alpha) / K)$
+    Now $\sigma(\alpha) = \zeta^{-1}\alpha \in K(\alpha)$, so $\sigma\big|_{K(\alpha)} \in \Gal(K(\alpha) / K)$.
+    Also $\sigma^k(\alpha) = \eta^{-k} \alpha \implies \ord(\sigma) = n$.
+    Thus
+    \[ n = [L: K] \geq [K(\alpha): K] = \Gal(K(\alpha) / K) \geq n \implies L = K(\alpha) \]
   \end{proof}
 \end{theorem}
 
 \begin{theorem}
-  If $L/K$ is Galois which satisfied $\Gal(L/K)$ is abelian of exponent $n$ and $\eta \in K$,
+  If $L/K$ is Galois which satisfied $\Gal(L/K)$ is abelian of exponent $n$ and $\zeta_n \in K$,
   then $L/K$ is a Kummer extension.
 
   \begin{proof}
-    By induction on $[L: K]$. If $[L: K] = 1$ then $L = K$ so $n = 1$.
+    By induction on $[L: K]$. If $[L: K] = 1$ then $L = K$ and is trivial.
 
-    Assume $[L: K] > 1$, then by FTFGAG, $\Gal(L/K) \cong \quot{\Zb}{d_1 \Zb}
-    \times \quot{\Zb}{d_2 \Zb} \times $
+    Assume $[L: K] > 1$, then by FTFGAG, $G \triangleq \Gal(L/K) \cong \quot{\Zb}{d_1 \Zb}
+    \times \quot{\Zb}{d_2 \Zb} \times \dots \times \quot{\Zb}{d_s \Zb}$ with $d_i \mid d_{i+1}$.
+    If $s = 1$ then the theorem degenerates to theorem~\ref{thm:kummer-base-theorem}.
+
+    So assume $s > 1$. Let $H = \Zb / d_1 \Zb \times \dots \times \Zb / d_{s-1} \Zb,
+    N = \Zb / d_s \Zb$ be the corresponding subgroup in $\Gal(L/K)$.
+    Set $M = L^N$, we have $[M: K] \lneq [L: K]$. Since any subgroup
+    of abelian group is normal, we have $\Gal(M/K) \cong \Gal(L/K) / \Gal(L/M) = G / N = H$.
+
+    Denote $m = d_{s-1}, n = d_{s}$, we have $m \mid n$. Then $\zeta_n \in K \implies \zeta_m = \zeta_n^{n/m} \in K$,
+    thus we could pass down the induction, and assume $M$ is a kummer extension which is a splitting
+    field of $g = (x^m - b_1) (x^m - b_2) \dotsm (x^m - b_{k-1})$ over $K$ with each $b_i \in K$.
+    Let $\alpha_1, \dots, \alpha_{k-1}$ be all the roots of $g$, then $\alpha_i$
+    is also a root of $(x^n - b_1^{n/m})$. Thus if we define $a_i \triangleq b_i^{n/m}$, then
+    $M$ is also the splitting field of $(x^n - a_1) (x^n - a_2) \dotsm (x^n - a_{k-1})$ over $K$
+    since $\zeta_n \in K$.
+
+    Now, if $N = \langle \sigma \rangle$, then $G \cong H \times N = \{\sigma^k \tau : 0 \leq k < n, \tau \in H\}$.
+    Since automorphisms are linear independent, exists $c \in L$ satisfied
+    \[ 0 \neq \alpha = \sum_{\tau \in H} \tau(c) + \zeta \sum_{\tau \in H} \sigma \tau(c)
+    + \dots + \zeta^{n-1} \sum_{\tau \in H} \sigma^{n-1} \tau(c) \]
+  Then $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in M$. Also $\sigma(\alpha^n) = \alpha^n$
+  and $\tau(\alpha^n) = \tau(\alpha)^n = \alpha^n$, so $a_k \alpha^n \in K$.
+  Thus $M(\alpha)$ is a splitting field of $(x^n - a_k)$ over $M$.
+
+  Finally, $n = [L: M] \geq [M(\alpha): M] = \abs{\Gal(M(\alpha) / M)} \geq n$,
+  thus $L = M(\alpha)$, and hence $L$ is a splitting field of
+  $(x^n - a_1) (x^n - a_2) \dotsm (x^n - a_k)$.
   \end{proof}
 \end{theorem}
 
 \begin{theorem}
   If $L/K$ is a kummer extension of exponent $n$, then $\Gal(L/K)$ is abelian of exponent dividing $n$.
+
+  \begin{proof}
+    Let $L$ be the splitting field of $(x^n - a_1)(x^n - a_2) \dotsm (x^n - a_k)$ with $\alpha_i = \sqrt[n]{a_i}$.
+    If $\sigma \in \Gal(L/k)$, then $\sigma$ sends each $\alpha_i$ to some $\zeta^{k_{\sigma, i}} \alpha_i$.
+    So $\sigma^n = \alpha_i \mapsto \zeta^{k_{\sigma, i} n} \alpha_i = \alpha_i \mapsto \alpha_i = \mathrm{id}$
+    and $\sigma \circ \tau = \alpha_i \mapsto \zeta^{k_{\sigma, i} k_{\tau, i}} \alpha_i = \tau \circ \sigma$.
+    by the fact that  $\Set{\alpha_i}$ is the generating set of $L$. Hence $\Gal(L/K)$ is abelian and of
+    exponent dividing $n$.
+  \end{proof}
 \end{theorem}
 
 \subsubsection{Cubic equations}
@@ -207,7 +257,18 @@ In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$t
   a splittig field of $L$ over $K$.
 
   Define $\delta = \prod_{1 \leq i < j \leq n} (\alpha_i - \alpha_j)$, then $L^{\Gal(L/K) \cap A_n} = K(\delta)$
-  and hence $\Gal(L/K) \hookrightarrow S_n$.
+  Here $\Gal(L/K) \hookrightarrow S_n$.
+
+  \begin{proof}
+    Notice that any transposition maps $\delta$ to $-\delta$, so $\forall \sigma \in \Gal(L/K) \cap A_n$,
+    $\sigma(\delta) = \delta$, thus $K(\delta) \subseteq L^{\Gal(L/K) \cap A_n}$.
+
+    Now, $\big| \quot{\Gal(L/K)}{\Gal(L/K) \cap A_n} \big|$ is either $1$ or $2$.
+    If it is $1$, then $\Gal(L/K) \leq A_n$ ,thus $\delta \not\in K$ and is trivial.
+    So assume it is $2$, then $\delta$ is not fixed by all permutation, thus $\delta \in K$.
+    We have $2 = \big| \Gal \big( L^{\Gal(L/K) \cap A_n}/K \big) \big| = [L^{\Gal(L/K) \cap A_n}: K] = 2
+    = [K(\delta): K]$, thus $K(\delta) = L^{\Gal(L/K) \cap A_n}$.
+  \end{proof}
 \end{lemma}
 
 \begin{prop}
@@ -217,3 +278,12 @@ In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$t
     \item If $\Gal(L/K) \cong A_3$ then $\sqrt{D} \in K$.
   \end{itemize}
 \end{prop}
+
+\begin{definition}
+  $H \leq S_n$ is said to be transitive if for any $i, j$, exists $\sigma \in H$ such that $\sigma(i) = j$.
+\end{definition}
+
+\begin{fact}
+  Let $f(x)$ be a separable polynomial with degree $n$, then
+  \[ f(x) \text{ is irreducible} \iff \text{ The Galois group of } f \text{ is transitive in } S_n \]
+\end{fact}
