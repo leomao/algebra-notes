@@ -24,18 +24,71 @@
 
     We claim that $\exists t_1 \in T$ such that
     $t_1$ is algebrarically independent over $K(s_2, \dots, s_n)$.
-    If not, then 
+    \begin{proof}
+      If not, then all elements of $T$ is algebraic dependent over $K(s_2, \dots, s_n)$.
+      This implies $K(s_2, \dots, s_n)(T) / K(s_2, \dots, s_n)$ is algebraic.
+      And $L/K(T)$ is algebraic implies $L/K(T)(s_2,\dots,s_n)$ is algebraic.
+      Then $L/K(s_2, \dots, s_n)$ is algebraic, which is a contradiction ($s_1$ is not).
+    \end{proof}
+    By the claim, $\Set{t_1, s_2, \dots, s_n}$ is algebraic depedent.
+    Also, there exists $f \ne 0$ in $K[x_1, \dots, x_{n+1}]$ s.t.
+    $f(t_1, s_1, \dots, s_n) = 0$ since $t_1$ is algebraic over $K(s_1, \dots, s_n)$.
+    Since $\Set{s_1, \dots, s_n}$ and $\Set{t_1, s_2, \dots, s_n}$ are both
+    algebraic depedent, $t_1, s_1$ must occur in $f$ $\implies$
+    $s_1$ is algebraic over $K(t, s_2, \dots, s_n)$.
+    Then $K(t_1, s_1, \dots, s_n) / K(t_1, s_2, \dots, s_n)$ is algebraic.
+    Since $L/K(t_1, s_1, \dots, s_n)$ is algebraic, $L/K(t_1, s_2, \dots, s_n)$
+    is algebraic.
+
+    Repeating this process, we get find $t_1, \dots, t_n \in T$ s.t.
+    $L/K(t_1, \dots, t_n)$ is algebraic. But $T$ is a transcendence base,
+    so we must have $T = \Set{t_1, \dots, t_n}$.
 
     Now assume $S$ is infinite.
     For another transcendence base $T$, we have $\abs{T} = \infty$.
     For $s \in S$, $s$ is algebraic over $K(T)$, and
     in fact is over $K(T_s)$ such that $T_s$ is finite,
     since algebraic relation involves.
+    Let $m_{s, K(T)} \in K(T_s)[x]$ for some finite set $T_s \subset T$.
+    We claim that $\bigcup\limits_{s\in S} T_s = T$.
+    \begin{proof}
+      Let $U = \bigcup\limits_{s\in S} T_s$.
+      Clearly $U \subseteq T$. And by def, $K(U)(S)/K(U)$ is algebraic.
+      Also, $L/K(U)(S)$ is algebraic. So $L/K(U)$ is algebraic
+      $\implies T = U$ since $T$ is a transcendence base.
+    \end{proof}
+    By well ordering principle, we can well-order $S$ and denote its
+    $1$st element by $s_1$.
+    Let
+    \[
+      \begin{cases}
+        T_{s_1}' = T_{s_1} \\
+        T_{s}' = T_s \setminus \bigcup_{l < s} T_l
+      \end{cases}
+      \quad \leadsto \quad
+      \Set{ T_s' }_{s\in S} \text{~are mutually disjoint}
+    \]
+    For all $T_s'$, choose a fixed ordering of the elements in $T_s'$, says
+    $t_{s,1}, \dots, t_{s, {k_s}}$. Define an injection
+    $\varphi: \bigcup\limits_{s\in S} T_s' \to S\times \Nb$ with
+    $\varphi: t_{s,i} \mapsto (s, i)$.
+    So $\abs{T} = \abs*{\bigcup\limits_{s\in S} T_s} = \le \abs{S\times \Nb}
+    = \abs{S}\abs{N} = \abs{S}$ since $\abs{S} = \infty$.
   \end{proof}
 \end{theorem}
 
 \begin{definition}
-  $L/K$ is called purelyl transcendental if exists a transcendental base $S$
+  Let $S$ be a transcendence base of $L/K$, then we use
+  $\trdeg_K L$ to denote $\abs{S}$.
+\end{definition}
+
+\begin{remark}
+  If $S_1, S_2$ are two transcendence base for $L/K$, then it is {\bf not
+  necessarily true} that $K(S_1) = K(S_2)$.
+\end{remark}
+
+\begin{definition}
+  $L/K$ is called purely transcendental if exists a transcendental base $S$
   such that $L = K(S)$.
 \end{definition}
 
@@ -44,13 +97,55 @@
   intermediate field $E$ is also purely transcendental of degree $1$.
 \end{theorem}
 
-\begin{lemma}
+\begin{lemma} \label{lemma:rational-trans-alg}
   Let $L = K(t)$ with $t$ being transcendental over $K$ and $u = f(t) / g(t) \in L \setminus K$
   with $\gcd(f(t), g(t)) = 1$.
   Assume $n = \max(\deg f, \deg g)$, then $L/K(u)$ is algebraic and $[L: K(u)] = n$.
   \begin{proof}
     Write
     \[ f(t) = a_n t^n + \dots + a_1 t + a_0, \quad g(t) = b_n t^n + \dots + b_1 t + b_0 \]
+    (note that either $a_n \ne 0$ or $b_n \ne 0$)
+    Let $F(x) = f(x) - ug(x) =-(a_n - ub_n) x^n + \dots + (a_1 - ub_1)x + (a_0 - ub_0)$.
+    Since $a_n - ub_n \ne 0$, $F(x) \ne 0$ and $\deg F(x) > 0$.
+    By def. of $u$, we have $F(t) = 0 \implies t$ is algebraic over $K(u)$ and
+    $[K(t):K(u)] \le n$.
+    Now we prove that $F(x)$ is irreducible over $K(u)$.
+    By Gauss lemma, it suffices to show that $F(x)$ is irreducible in
+    $K[u][x] = K[u, x]$.
+    Assume that $F(x) = p(u, x) q(u, x)$ with $\deg_u p = 1$ and $q \in K[x]$.
+    Since $F(x) = f(x) - ug(x)$, we have
+    $q \mid f, q\mid g \implies q \mid \gcd(f, g) = 1 \implies q \in K$.
+    So $[K(t):K(u)] = n$.
   \end{proof}
 \end{lemma}
 
+Now we prove the L\"{u}roth's theorem:
+\begin{proof}
+  For $v \in E \setminus K$, by lemma \ref{lemma:rational-trans-alg},
+  $t$ is algebraic over $K(v) \leadsto t$ is algebraic over $E$.
+
+  Let $m(x) = m_{t,E}$, then there exists $\beta(t) \in K(t)$ s.t.
+  $\beta(t)m(x) = a_n(t)x^n + \dots + a_1(t)x + a_0(t)$ is primitive
+  in $K[t][x] = K[t, x]$. Let $F(t, x) = \beta(t)m(x)$.
+
+  Since $t$ is not algebraic over $K$, there exists some $u = \frac{a_i(t)}{a_n(t)} \not\in K$.
+  Write $u = \frac{f(t)}{g(t)}$ with $\gcd(f, g) = 1$.
+  (Note that $u \in E$)
+
+  By lemma \ref{lemma:rational-trans-alg}, $[K(t): K(u)] = r \ge n$.
+  Now we show that $r \le n$, then $r = n \implies E = K(u)$.
+
+  Let $l = f(t)g(x) - g(t)f(x)$, which is skew-symmetric in $t$ and $x$.
+  Notice that $g(t)^{-1} l \in E[x]$ and has $t$ as a zero.
+  So $m(x) \mid g(t)^{-1} l$ in $E[x]$ $\implies \beta(t)m(x) \mid \beta(t)g(t)^{-1} l$.
+  Since $\beta(t)g(t)^{-1} \in K[t]$, $F(t, x) \mid l$ in $K(t)[x]$.
+  Since $F(t, x)$ is primitive in $K[t][x]$, $F(t, x) \mid l$ in $K[t][x]$.
+
+  Say $l = Fq$ for some $q(t,x) \in K[t][x]$.
+  Note that $\deg_t l \le r, \deg_t F \ge r \leadsto \deg_t l =\deg_t F = r,
+  \deg_t q = 0$. So $q \in K[x] \leadsto q$ is primitive in $K[t][x]$.
+  By Gauss lemma, $F, q$ are primitive, then $l$ is also primitive in $K[t][x]$.
+  Since $l$ is skew-symmetric in $t$ and $x$, $l$ is also primitive in $K[x][t]$.
+  But $q\in K[x]$ and $q \mid l$, we have $q \in K$.
+  Hence $n = \deg_x F = \deg_x l = \deg_t l  = \deg_t F \ge r$.
+\end{proof}
