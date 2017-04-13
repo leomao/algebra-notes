@@ -149,3 +149,99 @@ Now we prove the L\"{u}roth's theorem:
   But $q\in K[x]$ and $q \mid l$, we have $q \in K$.
   Hence $n = \deg_x F = \deg_x l = \deg_t l  = \deg_t F \ge r$.
 \end{proof}
+
+\subsection{Hilbert theorem 90 and Normal basis}
+
+Let $L = K(\alpha)$ with $f = m_{\alpha, K} = x^n + a_{n-1} x^{n-1} + \dots + a_0$ being separable.
+We have known that exists exactly $n$ monomorphisms $\sigma_i :: L \to \overline{K}$ fixing $K$,
+and $\Set{\sigma_1(\alpha), \dots, \sigma_n(\alpha)}$ consists of all roots of $f$.
+So
+\begin{multline*} x^n + a_{n-1} x^{n-1} + \dots + \a_0 = (x - \sigma_1(\alpha)) \dotsm (x - \sigma_n(\alpha)) \\
+  \implies -a_{n-1} = \sigma_1(\alpha) + \dots + \sigma_n(\alpha) \text{ and }
+  (-1)^n a_0 = \sigma_1(\alpha) \dotsm \sigma_n(\alpha)
+\end{multline*}
+
+\begin{definition}
+  Let $L/K$ be a Galois extension with $G = \Gal(L/K)$.
+  for all $\alpha \in L$, define 
+  \begin{align*}
+    N_{L/K}(\alpha) &= \prod_{\sigma \in G} \sigma(\alpha) & N_{L/K} :: L^\times \to K^\times \text{multiplicative} \\
+    \trace_{L/K}(\alpha) &= \sum{\sigma \in G} \sigma(\alpha) & \trace{L/K} :: L \to K \text{additive}
+  \end{align*}
+\end{definition}
+
+\begin{theorem}
+  Let $L/K$ is cyclic and $G = \langle \sigma \rangle$ with $\ord(\sigma) = n$, then
+  \begin{enumerate}
+    \item $\alpha \in L^\times$ and $N_{L/K}(\alpha) = 1$ $\iff$ $\exists \beta \in L^\times, \alpha = \beta / \sigma(\beta)$.
+    \item $\alpha \in L$ and $\trace_{L/K}(\alpha) = 0$ $\iff$ $\exists \beta \in L, \alpha = \sigma(\beta) - \beta$.
+  \end{enumerate}
+
+  \begin{proof}
+    \begin{enumerate}
+      \item ``\Leftarrow'': 
+      ``\Rightarrow'':  Since automorphisms are 
+      \item ``\Leftarrow'': 
+        ``\Rightarrow'':  Choose $c$ such that $\beta_1 = c + \sigma(c) + \dots + \sigma^{n-1}(c) \neq 0$, so $\sigma(\beta_1) = \beta_1$.
+        Let $\beta_2$.
+    \end{enumerate}
+  \end{proof}
+\end{theorem}
+
+\begin{coro}
+  Let $\Char K = p$ and $[L: K] = p$, then $L/K$ is cyclic $\iff$ $L = K(\alpha)$ where
+  $\alpha$ is a root of $x^p - x - a$.
+
+  \begin{proof}
+    ``$\Rightarrow$'': Let $\Gal(L/K) = \langle \sigma \rangle$ with $\ord(\sigma) = p$. Then
+    $\trace_{L/K}(1) = p = 0$. By Hilbert theorem 90, exists $\alpha$ satisfied $1 = \sigma(\alpha) - \alpha$.
+    So $\alpha \not\in K$. Then we have $1 < [K(\alpha): K] $
+  \end{proof}
+\end{coro}
+
+\begin{coro}
+  If $x^2 + d y+2 = 1$ where $-d$ is not a square,
+\end{coro}
+
+\begin{definition}
+  Let $L/K$ be Galois and $\Gal(L/K) = \Set{ \text{Id} = \sigma_1, \dots, \sigma_n }$.
+  A basis for $L/K$ of the form $\Set{ \sigma_1(\alpha), \sigma_2(\alpha), \dots, \sigma_n(\alpha)}$
+  with $\alpha \in L$ is called  a normal basis for $L/K$.
+\end{definition}
+
+\begin{lemma}
+  $\alpha_1, \dots, \alpha_n \in L$ form a basis for $L/K$ if and only if
+  \[
+    \begin{vmatrix}
+      \alpha_1 & \alpha_2 & \cdots & \alpha_n \\
+      \sigma_1(\alpha_1) & \sigma_1(\alpha_2) & \cdots & \sigma_1(\alpha_n) \\
+      \vdots & \vdots & \ddots & \vdots \\
+      \sigma_n(\alpha_1) & \sigma_n(\alpha_2) & \cdots & \sigma_n(\alpha_n)
+    \end{vmatrix} \neq 0
+  \]
+\end{lemma}
+
+\begin{lemma}
+  Let $\abs{K} = \infty$. Then $\sigma_1, \dots, \sigma_n$ are algebrarically independent over $L$.
+
+  \begin{proof}
+    Let $f(x_1, \dots, x_n) \in L[x_1, \dots, x_n]$ such that $f(\sigma_1, \dots, \sigma_n) = 0$.
+    Let $\Set{\alpha_1, \dots, \alpha_n}$ be a basis for $L/K$. Then
+    \[ 0 = f(\sigma_1, \dots, \sigma_n)\left( \sum_{i = 1}^n r_i \alpha_i \right)
+      = f(\sigma_1, \dots, \sigma_n)\left( \sum_{i = 1}^n r_i \alpha_i \right)
+      = \]
+  \end{proof}
+\end{lemma}
+
+\begin{theorem}
+  Any Galois extension $L/K$ has a normal basis.
+
+  \begin{proof}
+    Case 1: $L/K$ is cyclic (so all finite field is included). \\
+    Let $\Gal(L/K) = \langle \sigma \rangle$ with $\ord(\sigma) = n$. $\sigma$ could be view as
+    a linear transformation of $L$ over $K$. Thus $\sigma$ gives $L$ a
+    $K[x]$-module structure by $(f(x), \alpha) \mapsto f(\sigma)(\alpha)$.
+
+    Case 2: $\abs{K} = \infty$. Let $\Gal(L/K) = \Set{\sigma_1, \dots, \sigma_n}$.
+  \end{proof}
+\end{theorem}
