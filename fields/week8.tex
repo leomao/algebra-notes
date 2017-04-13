@@ -4,11 +4,11 @@
 \begin{definition}
   Let $L/K$ be an extension and $S \subset L$.
   \begin{itemize}
-    \item $S$ is algebrarically dependent over $K$ if for some $n \in \mathbb{N}$,
+    \item $S$ is algebraically dependent over $K$ if for some $n \in \mathbb{N}$,
       exists $f(x_1, \dots, x_n) \in K[x_1, \dots, x_n]$ satisfied
       $f(a_1, \dots, a_n) = 0$ for some distinct $a_1, \dots, a_n \in S$.
-    \item $S$ is algebrarically independent over $K$ if $S$ is not algebrarically dependent.
-    \item $S$ is called a transcendence base for $L/K$ if $S$ is algebrarically independent
+    \item $S$ is algebraically independent over $K$ if $S$ is not algebraically dependent.
+    \item $S$ is called a transcendence base for $L/K$ if $S$ is algebraically independent
       and $L/K(S)$ is algebraic.
   \end{itemize}
 \end{definition}
@@ -23,19 +23,19 @@
     First we deal with the case which $S$ is finite.
 
     We claim that $\exists t_1 \in T$ such that
-    $t_1$ is algebrarically independent over $K(s_2, \dots, s_n)$.
+    $t_1$ is algebraically independent over $K(s_2, \dots, s_n)$.
     \begin{proof}
-      If not, then all elements of $T$ is algebraic dependent over $K(s_2, \dots, s_n)$.
+      If not, then all elements of $T$ is algebraically dependent over $K(s_2, \dots, s_n)$.
       This implies $K(s_2, \dots, s_n)(T) / K(s_2, \dots, s_n)$ is algebraic.
       And $L/K(T)$ is algebraic implies $L/K(T)(s_2,\dots,s_n)$ is algebraic.
       Then $L/K(s_2, \dots, s_n)$ is algebraic, which is a contradiction ($s_1$ is not).
     \end{proof}
-    By the claim, $\Set{t_1, s_2, \dots, s_n}$ is algebraic depedent.
+    By the claim, $\Set{t_1, s_2, \dots, s_n}$ is algebraic indepedent.
     Also, there exists $f \ne 0$ in $K[x_1, \dots, x_{n+1}]$ s.t.
     $f(t_1, s_1, \dots, s_n) = 0$ since $t_1$ is algebraic over $K(s_1, \dots, s_n)$.
     Since $\Set{s_1, \dots, s_n}$ and $\Set{t_1, s_2, \dots, s_n}$ are both
-    algebraic depedent, $t_1, s_1$ must occur in $f$ $\implies$
-    $s_1$ is algebraic over $K(t, s_2, \dots, s_n)$.
+    algebraically indepedent, $t_1, s_1$ must occur in $f$ $\implies$
+    $s_1$ is algebraic over $K(t_1, s_2, \dots, s_n)$.
     Then $K(t_1, s_1, \dots, s_n) / K(t_1, s_2, \dots, s_n)$ is algebraic.
     Since $L/K(t_1, s_1, \dots, s_n)$ is algebraic, $L/K(t_1, s_2, \dots, s_n)$
     is algebraic.
@@ -73,7 +73,7 @@
     $\varphi: \bigcup\limits_{s\in S} T_s' \to S\times \Nb$ with
     $\varphi: t_{s,i} \mapsto (s, i)$.
     So $\abs{T} = \abs*{\bigcup\limits_{s\in S} T_s} \le \abs{S\times \Nb}
-    = \abs{S}\abs{N} = \abs{S}$ since $\abs{S} = \infty$.
+    = \abs{S}\abs{\Nb} = \abs{S}$ since $\abs{S} = \infty$.
   \end{proof}
 \end{theorem}
 
@@ -223,7 +223,7 @@ So
 \end{lemma}
 
 \begin{lemma}
-  Let $\abs{K} = \infty$. Then $\sigma_1, \dots, \sigma_n$ are algebrarically independent over $L$.
+  Let $\abs{K} = \infty$. Then $\sigma_1, \dots, \sigma_n$ are algebraically independent over $L$.
 
   \begin{proof}
     Let $f(x_1, \dots, x_n) \in L[x_1, \dots, x_n]$ such that $f(\sigma_1, \dots, \sigma_n) = 0$.
