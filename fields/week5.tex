@@ -15,10 +15,10 @@
 \begin{definition} \hfill
   \begin{itemize}
     \item The cyclotomic field $\Qb(\zeta_n)$ is the splitting field of $x^n - 1$ over $\Qb$.
-    \item $\zeta$ is called an nth root of unity if $\zeta^n = 1$. $\mathcal{U} = \langle \zeta \rangle$
-      is the multiplicative group of nth roots of unity.
-    \item $\zeta_n$ is called a primitive nth root of unity if $\zeta^n = 1$ but $\zeta^m \ne 1, \, \forall 0 < m < n$.
-    \item The nth cyclotomic polynomial is defined as
+    \item $\zeta$ is called an $n$th root of unity if $\zeta^n = 1$. $\mathcal{U} = \langle \zeta \rangle$
+      is the multiplicative group of $n$th roots of unity.
+    \item $\zeta_n$ is called a primitive $n$th root of unity if $\zeta^n = 1$ but $\zeta^m \ne 1, \, \forall 0 < m < n$.
+    \item The $n$th cyclotomic polynomial is defined as
       \[ \Phi_n \triangleq \prod_{\gcd(k, n) = 1} (x - \zeta_n^k) \implies \deg \Phi_n = \varphi(n) \]
   \end{itemize}
 \end{definition}
@@ -42,7 +42,7 @@
       \begin{proof}
         Suppose $\Phi_n = f(x) g(x)$ with $f$ irreducible, and both $f, g$ are monic.
         By Gauss lemma, we could assume $f(x), g(x) \in \Zb[x]$.
-        Let $\zeta_n$ be a primimtive nth root of unity  which satisfied $f(\zeta_n) = 0$
+        Let $\zeta_n$ be a primitive $n$th root of unity which satisfied $f(\zeta_n) = 0$
         and $p$ be a prime with $p \nmid n$.
 
         Assume that $g(\zeta_n^p) = 0$, $m_{\zeta_n, \Qb} = f \implies f \mid g(x^p)$,
@@ -56,7 +56,7 @@
         But $(x^n - \bar{1})' = nx^{n-1} \neq 0$, and $0$ is not a root of $x^n - \bar{1}$,
         which leads to an contradiction.
 
-        So we conclude that $f(\zeta_n^p) = 0$ for any $p \mid n$, which could be extend
+        So we conclude that $f(\zeta_n^p) = 0$ for any $p \nmid n$, which could be extend
         and show that $f(\zeta_n^k) = 0$ for any $\gcd(k, n) = 1$, thus $f = \Phi_n$.
       \end{proof}
     \item $\Qb(\zeta_n) / \Qb$ is Galois with $[\Qb(\zeta_n): \Qb] = \deg \Phi_n = \varphi(n)$.
@@ -89,10 +89,7 @@
       both $\sigma(\alpha), \alpha$ are a sum of linear independent elements,
       $\sigma$ must send $\zeta_p$ to an element $\tau(\zeta_p)$ for some $\tau \in H$,
       then $\sigma = \tau \implies \sigma \in H$. Thus $\Qb(\zeta_p)^H = \Qb(\alpha)$.
-
   \end{itemize}
-\end{example}
-\begin{example}
 \end{example}
 
 \begin{lemma}
@@ -117,9 +114,9 @@
 
     Now we count the number of the pair $(\sigma \big|_{L_1}, \sigma \big|_{L_2})$,
     There are $[L_1: K]$ of $\tau = \sigma \big|_{L_1}$, and fixing one, each $\sigma \big|_{L_2}$
-    is an extension of $\tau \big|_{L_1 \cap L_2}$, so there are $[L_1 L_2 : L_1]$ of such.
+    is an extension of $\tau \big|_{L_1 \cap L_2}$, so there are $[L_2 : L_1 \cap L_2]$ of such.
     On the other hand we have $\abs{\Gal(L_1 L_2 / K)} = [L_1 L_2 : K] = [L_1 L_2 : L_1]
-    [L_1 : K] = [L_1 : L_1 \cap L_2] [L_1 : K]$, thus $\Gal(L_1 L_2 / K)$ and
+    [L_1 : K] = [L_2 : L_1 \cap L_2] [L_1 : K]$, thus $\Gal(L_1 L_2 / K)$ and
     $\Set{(\sigma \big|_{L_1}, \sigma \big|_{L_2})}$ has the same size, and hence the
     map is onto.
   \end{proof}
@@ -145,7 +142,8 @@ Back to our problem, $[L_1 L_2 \cdots L_k: \Qb] = [\Qb(\zeta_n): \Qb] = \varphi(
   \end{proof}
 \end{theorem}
 
-In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$th root of unity.
+\subsubsection{Kummer extension}
+In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$th root of unity.
 
 \begin{definition} \hfill
   \begin{itemize}
@@ -166,8 +164,8 @@ In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$t
 
     Consider $\varphi = (\alpha \mapsto \alpha \zeta^k) :: \Gal(L / K(\zeta)) \mapsto \bar{k} :: \Zb / n\Zb$.
     Then it is easy to see that $\varphi$ is a homomorphism. Also, if $\varphi(\sigma) = 0$,
-    $\sigma = (\alpha \mapsto \alpha) = \mathrm{id}$. Thus $\varphi$ 1-1 and
-    $\Gal(L / K(\zeta)) \hookrightarrow \Zb/n\Zb$.
+    $\sigma = (\alpha \mapsto \alpha) = \Id$. Thus $\varphi$ 1-1 and
+    $\Gal(L / K(\zeta)) \toone \quot{\Zb}{n\Zb}$.
   \end{proof}
 \end{theorem}
 
@@ -192,7 +190,7 @@ In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$t
     in $\Gal(L/K)$, thus $\alpha_n \in K$, and hence $K(\alpha)$ is a splitting field of $x^n - a$ over $K$.
 
     Now $\sigma(\alpha) = \zeta^{-1}\alpha \in K(\alpha)$, so $\sigma\big|_{K(\alpha)} \in \Gal(K(\alpha) / K)$.
-    Also $\sigma^k(\alpha) = \eta^{-k} \alpha \implies \ord(\sigma) = n$.
+    Also $\sigma^k(\alpha) = \zeta^{-k} \alpha \implies \ord(\sigma) = n$.
     Thus
     \[ n = [L: K] \geq [K(\alpha): K] = \Gal(K(\alpha) / K) \geq n \implies L = K(\alpha) \]
   \end{proof}
@@ -214,7 +212,8 @@ In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$t
     Set $M = L^N$, we have $[M: K] \lneq [L: K]$. Since any subgroup
     of abelian group is normal, we have $\Gal(M/K) \cong \Gal(L/K) / \Gal(L/M) = G / N = H$.
 
-    Denote $m = d_{s-1}, n = d_{s}$, we have $m \mid n$. Then $\zeta_n \in K \implies \zeta_m = \zeta_n^{n/m} \in K$,
+    Denote $m = d_{s-1}, n = d_{s}$, we have $m \mid n$.
+    Then $\zeta_n \in K \implies \zeta_m = \zeta_n^{n/m} \in K$,
     thus we could pass down the induction, and assume $M$ is a kummer extension which is a splitting
     field of $g = (x^m - b_1) (x^m - b_2) \dotsm (x^m - b_{k-1})$ over $K$ with each $b_i \in K$.
     Let $\alpha_1, \dots, \alpha_{k-1}$ be all the roots of $g$, then $\alpha_i$
@@ -226,13 +225,13 @@ In this section, we assume that $\Char K \nmid n$ and $\eta$ is a primitive $n$t
     Since automorphisms are linear independent, exists $c \in L$ satisfied
     \[ 0 \neq \alpha = \sum_{\tau \in H} \tau(c) + \zeta \sum_{\tau \in H} \sigma \tau(c)
     + \dots + \zeta^{n-1} \sum_{\tau \in H} \sigma^{n-1} \tau(c) \]
-  Then $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in M$. Also $\sigma(\alpha^n) = \alpha^n$
-  and $\tau(\alpha^n) = \tau(\alpha)^n = \alpha^n$, so $a_k \alpha^n \in K$.
-  Thus $M(\alpha)$ is a splitting field of $(x^n - a_k)$ over $M$.
+    Then $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in M$. Also $\sigma(\alpha^n) = \alpha^n$
+    and $\tau(\alpha^n) = \tau(\alpha)^n = \alpha^n$, so $a_k \alpha^n \in K$.
+    Thus $M(\alpha)$ is a splitting field of $(x^n - a_k)$ over $M$.
 
-  Finally, $n = [L: M] \geq [M(\alpha): M] = \abs{\Gal(M(\alpha) / M)} \geq n$,
-  thus $L = M(\alpha)$, and hence $L$ is a splitting field of
-  $(x^n - a_1) (x^n - a_2) \dotsm (x^n - a_k)$.
+    Finally, $n = [L: M] \geq [M(\alpha): M] = \abs{\Gal(M(\alpha) / M)} \geq n$,
+    thus $L = M(\alpha)$, and hence $L$ is a splitting field of
+    $(x^n - a_1) (x^n - a_2) \dotsm (x^n - a_k)$.
   \end{proof}
 \end{theorem}
 
