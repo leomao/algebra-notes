@@ -162,46 +162,98 @@ So
   (-1)^n a_0 = \sigma_1(\alpha) \dotsm \sigma_n(\alpha)
 \end{multline*}
 
+Consider the $K$-linear transformation:
+\[ \deffunc{\tau_\alpha}{K(\alpha)}{K(\alpha)}{v}{\alpha v} \]
+Then
+\[ [T_\alpha]_\gamma = \begin{pmatrix}
+    0 & 0 & \cdots & 0 & -a_0 \\
+    1 & 0 & \cdots & 0 & -a_1 \\
+    0 & 1 & \cdots & 0 & -a_2 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & \cdots & 1 & 0
+  \end{pmatrix}, \quad \text{ where } \gamma = \Set{1, \alpha, \alpha^2, \dots, \alpha^{n-1}} \]
+And $\trace(T) = -a_{n-1}, \det(T) = (-1)^n a_0$.
+
 \begin{definition}
   Let $L/K$ be a Galois extension with $G = \Gal(L/K)$.
-  for all $\alpha \in L$, define 
-  \begin{alignat*}
-    N_{L/K}(\alpha) &= \prod_{\sigma \in G} \sigma(\alpha) \quad\quad && N_{L/K} :: L^\times \to K^\times \text{multiplicative} \\
-    \trace_{L/K}(\alpha) &= \sum_{\sigma \in G} \sigma(\alpha) \quad\quad && \trace_{L/K} :: L \to K \text{additive}
+  for all $\alpha \in L$, define
+  \begin{alignat*}{4}
+    N_{L/K}(\alpha) &= \prod_{\sigma \in G} \sigma(\alpha) \quad\quad && N_{L/K} :: L^\times \to K^\times
+    \text{ is multiplicative} \\
+    \trace_{L/K}(\alpha) &= \sum_{\sigma \in G} \sigma(\alpha) \quad\quad && \trace_{L/K} :: L \to K
+    \text{ is additive}
   \end{alignat*}
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Hilbert theorem 90] \label{thm:Hilbert-theorem-90}
   Let $L/K$ is cyclic and $G = \langle \sigma \rangle$ with $\ord(\sigma) = n$, then
   \begin{enumerate}
     \item $\alpha \in L^\times$ and $N_{L/K}(\alpha) = 1$ $\iff$ $\exists \beta \in L^\times, \alpha = \beta / \sigma(\beta)$.
-    \item $\alpha \in L$ and $\trace_{L/K}(\alpha) = 0$ $\iff$ $\exists \beta \in L, \alpha = \sigma(\beta) - \beta$.
+    \item $\alpha \in L^{\ }$ and $\trace_{L/K}(\alpha) = 0$ $\iff$ $\exists \beta \in L, \alpha = \beta - \sigma(\beta)$.
   \end{enumerate}
 
-  \begin{proof}
+  \begin{proof} \hfill
     \begin{enumerate}
-      \item ``$\Leftarrow$'': 
-      ``$\Rightarrow$'':  Since automorphisms are 
-      \item ``$\Leftarrow$'': 
-        ``$\Rightarrow$'':  Choose $c$ such that $\beta_1 = c + \sigma(c) + \dots + \sigma^{n-1}(c) \neq 0$, so $\sigma(\beta_1) = \beta_1$.
-        Let $\beta_2$.
+      \item ``$\Leftarrow$'': $N_{L/K}(\alpha) = \prod_{k=0}^{n-1} \sigma^k(\beta / \sigma(\beta)) = 1$.
+
+        ``$\Rightarrow$'':  Since automorphisms are linearly independent, exists $c \in L$
+        such that
+        \[ 0 \neq \beta = \Id(c) + \alpha \sigma(c) + \alpha \sigma(\alpha) \sigma^2(c)
+          + \dots + \alpha \sigma(\alpha) \sigma^2(\alpha) \dotsm \sigma^{n-2}(\alpha) \sigma^{n-1}(c) \]
+        Since $\sigma(\alpha \sigma(\alpha) \sigma^2(\alpha) \dotsm \sigma^{n-2}(\alpha)) = N_{L/K}(\alpha) = 1$,
+        it is easy to check that $\alpha \sigma(\beta) = \beta$.
+
+      \item ``$\Leftarrow$'': $\trace_{L/K}(\alpha) = \trace_{L/K}(\beta - \sigma(\beta)) = \sum \sigma^k(\beta)
+        \sigma^{k+1}(\beta) = 0$.
+
+        ``$\Rightarrow$'':
+        Choose $c$ such that $\beta_1 = c + \sigma(c) + \dots + \sigma^{n-1}(c) \neq 0$, so $\sigma(\beta_1) = \beta_1$.
+        Let
+        \[ \beta_2 = \alpha \sigma(c) + (\alpha + \sigma(\alpha)) \sigma^2(c) + \dots +
+          \big( \alpha + \sigma(\alpha) + \dots + \sigma^{n-2}(\alpha) \big) \sigma^{n-1}(c) \]
+        Then
+        \[ \beta_2 - \sigma(\beta_2) = \alpha \sigma(c) + \alpha \sigma^2(c) + \dots + \alpha \sigma^{n-1}(c)
+          + \alpha c = \alpha \beta_1. \]
+        So let $\beta \triangleq \beta_2 / \beta_1$, we obtain $\beta_2/\beta_1 - \sigma(\beta_2/\beta_1) =
+        (\beta_2 - \sigma(\beta_2)) / \beta_1 = \alpha$.
     \end{enumerate}
   \end{proof}
 \end{theorem}
 
 \begin{coro}
-  Let $\Char K = p$ and $[L: K] = p$, then $L/K$ is cyclic $\iff$ $L = K(\alpha)$ where
+  Let $\Char K = p$ and $[L: K] = p$, then $L/K$ is Galois and cyclic $\iff$ $L = K(\alpha)$ where
   $\alpha$ is a root of $x^p - x - a$.
 
   \begin{proof}
     ``$\Rightarrow$'': Let $\Gal(L/K) = \langle \sigma \rangle$ with $\ord(\sigma) = p$. Then
-    $\trace_{L/K}(1) = p = 0$. By Hilbert theorem 90, exists $\alpha$ satisfied $1 = \sigma(\alpha) - \alpha$.
-    So $\alpha \not\in K$. Then we have $1 < [K(\alpha): K] $
+    $\trace_{L/K}(1) = p = 0$. By theorem~\ref{thm-Hilbert-theorem-90},
+    exists $\alpha$ satisfied $1 = \sigma(\alpha) - \alpha$.
+    So $\alpha \not\in K$. Then we have $1 < [K(\alpha): K] \bigm| [L: K] = p$,
+    so $[K(\alpha): K] = p \implies K(\alpha) = L$.
+
+    Notice that $\sigma^k(\alpha) = \alpha + k$.
+    Since $\sigma^k(\alpha)$ iterates through all roots of $m_{\alpha, K}$ and $\sigma^k(\alpha) = \alpha + k$,
+    $\alpha, \alpha+1, \dots, \alpha +p-1$ are all the roots of $m_{\alpha, K}$.
+    We claim that $m_{\alpha, K} = x^p - x - a$ where $a \triangleq \alpha^p - \alpha$.
+    Since $\sigma(a) = \sigma(\alpha)^p - \alpha = \alpha^p + p - \alpha = a$,
+    $a$ is fixed by all automorphisms, so $a \in K$. Moreover, $m_{\alpha, K}(\alpha+k)
+    = \alpha^p + k^p - \alpha - k - a = 0$, thus the proof is completed.
+
+    ``$\Leftarrow$'': Similarly, we know that all roots of $x^p - x - a$
+    are $\alpha, \alpha+1, \dots, \alpha+{p-1}$. Define $\sigma(\alpha) = \alpha+1$,
+    then $\sigma^i(\alpha) = \alpha+i$, and thus $\ord(\sigma) = p$. Hence $\Gal(L/K) = \langle \sigma \rangle$.
   \end{proof}
 \end{coro}
 
 \begin{coro}
-  If $x^2 + d y+2 = 1$ where $-d$ is not a square,
+  If $x^2 + d y+2 = 1$ where $-d$ is not a square, then $L \triangleq \Qb(\sqrt{-d})$
+  is a splitting field of $x^2 + d$ over $\Qb$,
+  so $N_{L/\Qb}(a + b \sqrt{-d}) = a^2 + d b^2$. Since $[L: \Qb] = 2$,
+  the galois group is obviously cyclic and in fact is $\langle \sigma \rangle$,
+  where $\sigma = (a + b \sqrt{-d}) \mapsto (a - b \sqrt{-d})$.
+  By theorem~\ref{thm:Hilbert-theorem-90},
+  \[ x^2 + d y^2 = 1 \iff \exists a + b \sqrt{-d} \quad\text{s.t.}\quad x + y \sqrt{-d} = \frac{a+b\sqrt{-d}}{a-b\sqrt{-d}}
+    = \frac{(a^2 - db^2) + 2ab\sqrt{-d}}{a^2 + db^2} \]
 \end{coro}
 
 \begin{definition}
@@ -210,27 +262,59 @@ So
   with $\alpha \in L$ is called  a normal basis for $L/K$.
 \end{definition}
 
-\begin{lemma}
+\begin{lemma} \label{lemma:basis-iff-det-neq-0}
   $\alpha_1, \dots, \alpha_n \in L$ form a basis for $L/K$ if and only if
   \[
     \begin{vmatrix}
-      \alpha_1 & \alpha_2 & \cdots & \alpha_n \\
       \sigma_1(\alpha_1) & \sigma_1(\alpha_2) & \cdots & \sigma_1(\alpha_n) \\
+      \sigma_2(\alpha_1) & \sigma_2(\alpha_2) & \cdots & \sigma_2(\alpha_n) \\
       \vdots & \vdots & \ddots & \vdots \\
       \sigma_n(\alpha_1) & \sigma_n(\alpha_2) & \cdots & \sigma_n(\alpha_n)
     \end{vmatrix} \neq 0
   \]
+
+  \begin{proof}
+    ``$\Rightarrow$'': If not, then the determinant is $0$. Then
+    \[ \left\{
+          \begin{array}{cr}
+          \sigma_1(\alpha_1) x_1 + \dots + \sigma_n(\alpha_1) x_1 &= 0 \\
+          \sigma_1(\alpha_2) x_1 + \dots + \sigma_n(\alpha_2) x_2 &= 0 \\
+          \vdots & \vdots \\
+          \sigma_1(\alpha_n) x_1 + \dots + \sigma_n(\alpha_n) x_n &= 0
+        \end{array}
+      \right.
+    \]
+    has a non-zero solution $\bm{c} = (c_1, \dots, c_n) \in L^n$. (i.e., $\sum c_j \sigma_j(\alpha_i) = 0$
+    for each $i$.) So $\big( \sum_{j} c_j \sigma_j \big)(\alpha_i) = 0$ for each $\alpha_i$,
+    but $\alpha_i$ is a basis, so $\sum_{j} c_j \sigma_j = 0$, then these automorphisms
+    are linear dependent, which leads to an contradiction.
+
+    ``$\Rightarrow$'': If not, then exists $\bm{0} \neq \bm{c} = (c_1, \dots, c_n)$
+    satisfied $\sum c_i \alpha_i = 0$. Then $\sum_i c_i \sigma_j(\alpha_i) = 0$
+    for each $j$. Thus the determinant is $0$ which leads to an contradiction.
+  \end{proof}
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma} \label{lemma:automorphisms-are-alg-indep}
   Let $\abs{K} = \infty$. Then $\sigma_1, \dots, \sigma_n$ are algebraically independent over $L$.
 
   \begin{proof}
     Let $f(x_1, \dots, x_n) \in L[x_1, \dots, x_n]$ such that $f(\sigma_1, \dots, \sigma_n) = 0$.
     Let $\Set{\alpha_1, \dots, \alpha_n}$ be a basis for $L/K$. Then
     \[ 0 = f(\sigma_1, \dots, \sigma_n)\left( \sum_{i = 1}^n r_i \alpha_i \right)
-      = f(\sigma_1, \dots, \sigma_n)\left( \sum_{i = 1}^n r_i \alpha_i \right)
-      = \]
+      = f \left(r_1 \sigma_1 \left( \sum_{i = 1}^n \alpha_i \right), \dots,
+        r_n \sigma_n \left( \sum_{i = 1}^n \alpha_i \right) \right) \]
+    So let
+    \[ g(x_1, \dots, x_n) \triangleq f \left(\sum_i \sigma_1(\alpha_i) x_i,
+      \dots, \sum_i \sigma_n(\alpha_i) x_i \right) \]
+  and write $g(x_1, \dots, x_n) = \sum_j g_j(x_1, \dots, x_n) \alpha_j$.
+  Then $g_j(r_1, \dots, r_n) = 0, \, \forall \bm{r} \in K^n$. The only
+  polynomial which has infinite zeros is the zero polynomial, thus $g_j = 0$ for each $j$.
+
+  Now, by lemma~\ref{lemma:basis-iff-det-neq-0}, $\det([\sigma_i(\alpha_j)]) \neq 0$.
+  So it is possible to solve $\bm{x} = (x_i)$ satisfied
+  $\bm{y} = (y_j) = \big( \sum_i \sigma_j(\alpha_i) x_i \big)_j$.
+  Thus $g = 0 \implies f = 0$.
   \end{proof}
 \end{lemma}
 
@@ -243,6 +327,33 @@ So
     a linear transformation of $L$ over $K$. Thus $\sigma$ gives $L$ a
     $K[x]$-module structure by $(f(x), \alpha) \mapsto f(\sigma)(\alpha)$.
 
+    Since $K[x]$ is a PID. By the structure theorem, we could write
+    \[ L \cong \quot{K[x]}{\gen{d_1(x)}} \oplus \dots \oplus \quot{K[x]}{\gen{d_s(x)}} \quad
+      \text{with } d_i \mid d_{i+1} \]
+    Since $\Id, \sigma, \dots, \sigma^{n-1}$ are linearly independent over $K$,
+    $m_{\sigma, K}$ should have degree at least $n$, thus it is clear that $x^n - 1$
+    is the minimal polynomial of $\sigma$, thus $d_s(x) = x^n - 1$. But
+    the characteristic polynomial of $\sigma$ has degree at most $n$, thus
+    $d_1(x) \dotsm d_s(x) = x^n - 1$. So $L \cong K[x] / \gen{x^n - 1}$.
+    Let $\alpha \in L$ such that $ann(\alpha) = \gen{x^n - 1}$, then $L = K[x]\alpha$.
+    Hence $L = \gen{\alpha, \sigma(\alpha), \dots, \sigma^{n-1}(\alpha)}$.
+
     Case 2: $\abs{K} = \infty$. Let $\Gal(L/K) = \Set{\sigma_1, \dots, \sigma_n}$.
+    Define $y_{i, j} = x_k$ so that $\sigma_i \sigma_j = \sigma_{k}$.
+    Consider
+  \[
+    f(x_1, \dots, x_n) = \begin{vmatrix}
+      y_{1, 1} & y_{1, 2} & \cdots & y_{1, n} \\
+      \vdots & \ddots & \vdots & \vdots \\
+      y_{n, 1} & y_{n, 2} & \cdots & y_{n, n} \\
+    \end{vmatrix}
+  \]
+  This determinant is a non-zero polynomial in $x_1, x_2, \dots, x_n$.
+  Since if we fix $\sigma_1$, for each $\sigma_i$, exists unique $j$ so that $\sigma_i \sigma_j = \sigma_1$.
+  So the determinant has a $x_1^n$ term and is not zero.
+  Then $f(\sigma_1, \dots, \sigma_n) \neq 0$ by lemma~\ref{lemma:automorphisms-are-alg-indep}.
+  Thus $\det\big([\sigma_{i}\sigma_{j}(\alpha)] \big) = f(\sigma_1, \dots, \sigma_n)(\alpha) \neq 0$.
+  So by lemma~\ref{lemma:basis-iff-det-neq-0}, $\Set{ \sigma_i(\alpha) }$ is a basis.
+
   \end{proof}
 \end{theorem}
