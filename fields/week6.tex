@@ -20,10 +20,6 @@
   $\quot{G_{i-1}}{G_i}$ is cyclic $\forall i$.
 \end{definition}
 
-\begin{theorem}[Main Theorem]
-  Under some proper assumption on $\Char K$, a separable poly. $f(x) \in K[x]$
-  is solvable by radicals $\iff$ the Galois group of $f$ is solvable.
-\end{theorem}
 
 \begin{lemma} \label{lemma:galois-radical-ext}
   Given a Galois extension $L/K$ and $M = L(\alpha)$ is an extension by
@@ -34,7 +30,7 @@
     We know that $M(\zeta_n) = L(\zeta_n, \alpha)$ is a splitting field of
     $x^n - a$ over $L$. If we set
     \[ f(x) = \prod_{\sigma \in \Gal(L/K)} (x^n - \sigma(a)), \]
-    then the coefficients of $f(x)$ are elementary symmetric poly. in
+    then the coefficients of $f(x)$ are elementary symmetric polynomial in
     $\Set{\sigma(a) \given \sigma \in \Gal(L/K) }$, which are fixed by
     $\Gal(L/K)$, so $f(x) \in K[x]$.
 
@@ -48,8 +44,7 @@
       \big),
       \qquad \alpha_\sigma^n = \sigma(a) \in L
     \]
-    $M = L(\alpha)$,
-    so $N = M(\alpha_\sigma : \sigma \in \Gal(L/K) \setminus \{ \Id \})$
+    So $N = M(\zeta_n, \alpha_\sigma : \sigma \in \Gal(L/K) \setminus \{ \Id \})$
     $\implies$ $N/M$ is an extension by radicals.
   \end{proof}
 \end{lemma}
@@ -58,7 +53,7 @@
   Let $L = L_m \supset L_{m-1} \supset \dots \supset L_0 = K$ s.t.
   $L_i = L_{i-1}(\alpha_i)$ with $\alpha^{n_i} = a_i \in L_{i-1}$.
   If $\Char K \nmid n_1n_2\cdots n_m$, then there exists $N/L$ s.t.
-  $N/K$ is a Galois extension by radicals and $\zeta_{n_i} \in N \quad
+  $N/K$ is a Galois extension by radicals and $\zeta_{n_i} \in N, \,
   \forall i = 1, \dots, m$.
 
   \begin{proof}
@@ -68,45 +63,11 @@
 
     For $m > 1$, by induction hypothesis, $\exists\: N'/L_{m-1}$ s.t.
     $N'/K$ is Galois extension by radicals and $N'$ contains
-    $\zeta_{n_i} \quad \forall i = 1, \dots, m-1$.
-    By lemma \ref{lemma:galois-radical-ext}, $\exists\: N/N(\alpha_m)$ is
+    $\zeta_{n_i},\, \forall i = 1, \dots, m-1$.
+    By lemma \ref{lemma:galois-radical-ext}, $\exists\: N/N'(\alpha_m)$ is
     an extension by radicals s.t. $N/K$ is Galois and $N$ contains $\zeta_{n_m}$.
   \end{proof}
 \end{lemma}
-
-\begin{theorem}[Part A] \label{thm:solvable-part-a}
-  Let $L = L_m \supset \dots \supset L_0 = K$ s.t. $L_i = L_{i-1}(\alpha_i)$
-  with $\alpha^{n_i} = a_i \in L_{i-1}$ and $\Char K \nmid n_1\cdots n_m$.
-  If a separable poly. $f(x) \in K[x]$ splits over $L$, then the Galois group
-  of $f$ over $K$ is solvable.
-  
-  \begin{proof}
-    By lemma \ref{lemma:radical-ext-chain-galois}, we assume that $L/K$ is
-    Galois and so is $L/L_i, \quad i=1,\dots,m$.
-    If we set $n = \lcm(n_1, \dots, n_m)$, then, by lemma \ref{lemma:radical-ext-chain-galois},
-    $L$ also contains $\zeta = \zeta_n = \zeta_{n_1}^{r_1} \cdots \zeta_{n_m}^{r_m}$.
-
-    Consider $L = L(\zeta) \supset L_{m-1}(\zeta) \supset \dots \supset
-    L_0(\zeta) = K(\zeta)$ (Note that $K(\zeta) \supset K$ and $L/K$ is Galois)
-    and let $G_i = \Gal(L/L_i(\zeta)) \quad i = 0, \dots, m$.
-
-    Use $L'_i$ denotes $L_i(\zeta)$ for all $i$. We can find that
-    \begin{itemize}
-      \item $G_m = \{1\}, G_0 = \Gal(L/K(\zeta))$.
-      \item $\quot{G_{i-1}}{G_i} = \quot{\Gal(L/L'_{i-1})}{\Gal(L/L'_i)}
-        \cong \Gal(L'_{i-1} / L'_i) =  \Gal(L'_i(\alpha_i) / L'_i)$ is cyclic.
-    \end{itemize}
-    So $G_0$ is solvable.
-    Moreoevr, $K(\zeta)$ is a splitting field of $x^n - 1$ over $K$ and
-    $\Gal(K(\zeta)/K) \le \left(\quot{\Zb}{n\Zb}\right)^\times$, which is
-    abelian, so it is solvable. Also, $\Gal(K(\zeta)/K) \cong \quot{\Gal(L/K)}{G_0}$
-    is solvable. $\implies \Gal(L/K)$ is solvable.
-    Let $N$ be a splitting field of $f$ over $K$ $\leadsto L \supset N \leadsto
-    \Gal(N/K) \cong \quot{\Gal(L/K)}{\Gal(L/N)}$.
-
-    By prop \ref{prop:quot-solvable}, $\Gal(N/K)$ is solvable.
-  \end{proof}
-\end{theorem}
 
 \begin{prop} \label{prop:quot-solvable}
   Let $H \lhd G$. Then $G$ is solvable $\iff$ $H, \quot{G}{H}$ are solvable.
@@ -142,8 +103,48 @@
   \end{proof}
 \end{prop}
 
-\begin{theorem}[Part B]
-  Let $f \in K[x]$ be separable and $L$ be a splitting field of $f$ over $K$.
+
+\begin{theorem}[Main Theorem] \label{thm:solvable-iff-solvable}
+  Under some proper assumption on $\Char K$, a separable polynomial $f(x) \in K[x]$
+  is solvable by radicals $\iff$ the Galois group of $f$ is solvable.
+
+  \begin{enumerate}[label={\bf Part \Alph*:}]
+    \item Let $L = L_m \supset \dots \supset L_0 = K$ s.t. $L_i = L_{i-1}(\alpha_i)$
+      with $\alpha^{n_i} = a_i \in L_{i-1}$ and $\Char K \nmid n_1\cdots n_m$.
+      If a separable poly. $f(x) \in K[x]$ splits over $L$, then the Galois group
+      of $f$ over $K$ is solvable.
+
+  \begin{proof}
+    By lemma \ref{lemma:radical-ext-chain-galois}, we can first extend
+    the extension tower and thus assume that $L/K$ is
+    Galois with each $\zeta_{n_i}$ in $L$. Then each $L/L_i$ is Galois.
+    If we set $n = \lcm(n_1, \dots, n_m)$,
+    $L$ also contains $\zeta = \zeta_n = \zeta_{n_1}^{r_1} \cdots \zeta_{n_m}^{r_m}$.
+
+    Consider $L = L(\zeta) \supset L_{m-1}(\zeta) \supset \dots \supset
+    L_0(\zeta) = K(\zeta)$ (Note that $K(\zeta) \supset K$ and $L/K$ is Galois)
+    and let $G_i = \Gal(L/L_i(\zeta))$ for each $i = 0, \dots, m$.
+
+    Define $L'_i \triangleq L_i(\zeta)$ for all $i$. We can find that
+    \begin{itemize}
+      \item $G_m = \{1\}, G_0 = \Gal(L/K(\zeta))$.
+      \item Since $\zeta_n \in L_{i-1}$, $L_i / L_{i-1}$ is normal,
+        so
+        \[ \quot{G_{i-1}}{G_i} = \quot{\Gal(L/L'_{i-1})}{\Gal(L/L'_i)}
+        \cong \Gal(L'_{i-1} / L'_i) =  \Gal(L'_i(\alpha_i) / L'_i) \] is cyclic.
+    \end{itemize}
+    So $G_0$ is solvable.
+    Moreoevr, $K(\zeta)$ is a splitting field of $x^n - 1$ over $K$ and
+    $\Gal(K(\zeta)/K) \le \left(\quot{\Zb}{n\Zb}\right)^\times$, which is
+    abelian, so it is solvable. Also, $\Gal(K(\zeta)/K) \cong \quot{\Gal(L/K)}{G_0}$
+    is solvable. $\implies \Gal(L/K)$ is solvable.
+    Let $N$ be a splitting field of $f$ over $K$ $\leadsto L \supset N \leadsto
+    \Gal(N/K) \cong \quot{\Gal(L/K)}{\Gal(L/N)}$.
+
+    By prop \ref{prop:quot-solvable}, $\Gal(N/K)$ is solvable.
+  \end{proof}
+
+  \item Let $f \in K[x]$ be separable and $L$ be a splitting field of $f$ over $K$.
   Assume $\Char K \nmid \abs{\Gal(L/K)}$. If $\Gal(L/K)$ is solvable, then
   $f$ is solvable by radicals.
 
@@ -168,10 +169,11 @@
     $\implies N/K(\zeta)$ is an extension by radicals $\leadsto$
     $N/K$ is an extension by radicals.
   \end{proof}
+\end{enumerate}
 \end{theorem}
 
 \begin{remark}
-  In Theorem \ref{thm:solvable-part-a},
+  In Part A of theorem \ref{thm:solvable-iff-solvable},
   $\Gal(K(\zeta)/K) \le \left(\quot{\Zb}{n\Zb}\right)^\times$ may be proper
   subgroup. We can check the if $[K(\zeta) : K] \overset{?}{=} 4 = \varphi(5)$.
 \end{remark}
