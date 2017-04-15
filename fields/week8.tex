@@ -314,7 +314,7 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
 
     Now, by lemma~\ref{lemma:basis-iff-det-neq-0}, $\det([\sigma_i(\alpha_j)]) \neq 0$.
     So it is possible to solve $\bm{x} = (x_i)$ satisfied
-    $\bm{y} = (y_j) = \big( \sum_i \sigma_j(\alpha_i) x_i \big)_j$.
+    $\bm{y} = (y_j) = \big( \sum_i \sigma_j(\alpha_i) x_i \big)$.
     Thus $g = 0 \implies f = 0$.
   \end{proof}
 \end{lemma}
@@ -345,7 +345,7 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
     \[
       f(x_1, \dots, x_n) = \begin{vmatrix}
         y_{1, 1} & y_{1, 2} & \cdots & y_{1, n} \\
-        \vdots & \ddots & \vdots & \vdots \\
+        \vdots & \vdots & \ddots & \vdots \\
         y_{n, 1} & y_{n, 2} & \cdots & y_{n, n} \\
       \end{vmatrix}
     \]
@@ -355,5 +355,6 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
     Then $f(\sigma_1, \dots, \sigma_n) \neq 0$ by lemma~\ref{lemma:automorphisms-are-alg-indep}.
     Thus $\det\big([\sigma_{i}\sigma_{j}(\alpha)] \big) = f(\sigma_1, \dots, \sigma_n)(\alpha) \neq 0$.
     So by lemma~\ref{lemma:basis-iff-det-neq-0}, $\Set{ \sigma_i(\alpha) }$ is a basis.
+
   \end{proof}
 \end{theorem}
