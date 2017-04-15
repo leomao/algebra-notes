@@ -163,16 +163,16 @@ So
 \end{multline*}
 
 Consider the $K$-linear transformation:
-\[ \deffunc{\tau_\alpha}{K(\alpha)}{K(\alpha)}{v}{\alpha v} \]
+\[ \deffunc{T_\alpha}{K(\alpha)}{K(\alpha)}{v}{\alpha v} \]
 Then
 \[ [T_\alpha]_\gamma = \begin{pmatrix}
     0 & 0 & \cdots & 0 & -a_0 \\
     1 & 0 & \cdots & 0 & -a_1 \\
     0 & 1 & \cdots & 0 & -a_2 \\
     \vdots & \vdots & \ddots & \vdots & \vdots \\
-    0 & 0 & \cdots & 1 & 0
+    0 & 0 & \cdots & 1 & -a_{n-1}
   \end{pmatrix}, \quad \text{ where } \gamma = \Set{1, \alpha, \alpha^2, \dots, \alpha^{n-1}} \]
-And $\trace(T) = -a_{n-1}, \det(T) = (-1)^n a_0$.
+And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
 
 \begin{definition}
   Let $L/K$ be a Galois extension with $G = \Gal(L/K)$.
@@ -200,15 +200,15 @@ And $\trace(T) = -a_{n-1}, \det(T) = (-1)^n a_0$.
         such that
         \[ 0 \neq \beta = \Id(c) + \alpha \sigma(c) + \alpha \sigma(\alpha) \sigma^2(c)
           + \dots + \alpha \sigma(\alpha) \sigma^2(\alpha) \dotsm \sigma^{n-2}(\alpha) \sigma^{n-1}(c) \]
-        Since $\sigma(\alpha \sigma(\alpha) \sigma^2(\alpha) \dotsm \sigma^{n-2}(\alpha)) = N_{L/K}(\alpha) = 1$,
+        Since $\alpha\sigma(\alpha \sigma(\alpha) \sigma^2(\alpha) \dotsm \sigma^{n-2}(\alpha)) = N_{L/K}(\alpha) = 1$,
         it is easy to check that $\alpha \sigma(\beta) = \beta$.
 
-      \item ``$\Leftarrow$'': $\trace_{L/K}(\alpha) = \trace_{L/K}(\beta - \sigma(\beta)) = \sum \sigma^k(\beta)
-        \sigma^{k+1}(\beta) = 0$.
+      \item ``$\Leftarrow$'': $\trace_{L/K}(\alpha) = \trace_{L/K}(\beta - \sigma(\beta))
+        = \sum \left(\sigma^k(\beta) -\sigma^{k+1}(\beta)\right) = 0$.
 
         ``$\Rightarrow$'':
-        Choose $c$ such that $\beta_1 = c + \sigma(c) + \dots + \sigma^{n-1}(c) \neq 0$, so $\sigma(\beta_1) = \beta_1$.
-        Let
+        Choose $c$ such that $\beta_1 = c + \sigma(c) + \dots + \sigma^{n-1}(c) \neq 0$,
+        so $\sigma(\beta_1) = \beta_1$.  Let
         \[ \beta_2 = \alpha \sigma(c) + (\alpha + \sigma(\alpha)) \sigma^2(c) + \dots +
           \big( \alpha + \sigma(\alpha) + \dots + \sigma^{n-2}(\alpha) \big) \sigma^{n-1}(c) \]
         Then
@@ -216,6 +216,7 @@ And $\trace(T) = -a_{n-1}, \det(T) = (-1)^n a_0$.
           + \alpha c = \alpha \beta_1. \]
         So let $\beta \triangleq \beta_2 / \beta_1$, we obtain $\beta_2/\beta_1 - \sigma(\beta_2/\beta_1) =
         (\beta_2 - \sigma(\beta_2)) / \beta_1 = \alpha$.
+        \qedhere
     \end{enumerate}
   \end{proof}
 \end{theorem}

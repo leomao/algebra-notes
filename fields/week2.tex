@@ -135,5 +135,18 @@
 \end{theorem}
 
 \begin{definition}
-  M\"{o}bius $\mu$-function
+  M\"{o}bius $\mu$-function:
+  Let $d = p_1^{k_1} p_2^{k_2} \dotsm p_n^{k_n}$, then
+  \[
+    \mu(d) = \begin{cases}
+      1 & \text{if $n$ is even and all $k_i = 1$} \\
+      -1 & \text{if $n$ is odd and all $k_i = 1$} \\
+      0 & \text{otherwise}
+    \end{cases}
+  \]
 \end{definition}
+
+\begin{theorem}[M\"{o}bius inversion formula]
+  If $f(n) = \sum\limits_{d \mid n} g(d)$, then
+  $g(n) = \sum\limits_{d \mid n} \mu(d) f\left(\frac{n}{d}\right)$.
+\end{theorem}
