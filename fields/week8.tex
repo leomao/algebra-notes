@@ -278,8 +278,8 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
     ``$\Rightarrow$'': If not, then the determinant is $0$. Then
     \[ \left\{
           \begin{array}{cr}
-          \sigma_1(\alpha_1) x_1 + \dots + \sigma_n(\alpha_1) x_1 &= 0 \\
-          \sigma_1(\alpha_2) x_1 + \dots + \sigma_n(\alpha_2) x_2 &= 0 \\
+          \sigma_1(\alpha_1) x_1 + \dots + \sigma_n(\alpha_1) x_n &= 0 \\
+          \sigma_1(\alpha_2) x_1 + \dots + \sigma_n(\alpha_2) x_n &= 0 \\
           \vdots & \vdots \\
           \sigma_1(\alpha_n) x_1 + \dots + \sigma_n(\alpha_n) x_n &= 0
         \end{array}
@@ -288,11 +288,11 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
     has a non-zero solution $\bm{c} = (c_1, \dots, c_n) \in L^n$. (i.e., $\sum c_j \sigma_j(\alpha_i) = 0$
     for each $i$.) So $\big( \sum_{j} c_j \sigma_j \big)(\alpha_i) = 0$ for each $\alpha_i$,
     but $\alpha_i$ is a basis, so $\sum_{j} c_j \sigma_j = 0$, then these automorphisms
-    are linear dependent, which leads to an contradiction.
+    are linear dependent, which leads to a contradiction.
 
     ``$\Rightarrow$'': If not, then exists $\bm{0} \neq \bm{c} = (c_1, \dots, c_n)$
     satisfied $\sum c_i \alpha_i = 0$. Then $\sum_i c_i \sigma_j(\alpha_i) = 0$
-    for each $j$. Thus the determinant is $0$ which leads to an contradiction.
+    for each $j$. Thus the determinant is $0$ which leads to a contradiction.
   \end{proof}
 \end{lemma}
 
