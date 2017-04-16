@@ -88,25 +88,27 @@
 
 \begin{definition}
   Given a field $L$, define the {\bf fixed field}\index{fixed field} of $G$ by
-  $L^G \triangleq \{ \alpha \in L \mid \sigma(\alpha) = \alpha, \, \forall \sigma \in G \}$.
+  $L^G \triangleq \Set{ \alpha \in L \given \sigma(\alpha) = \alpha, \, \forall \sigma \in G }$.
 \end{definition}
 
 \begin{theorem} \label{thm:extension-of-fix-field-is-galois}
-  If $G$ is a subgroup of $\Aut(L)$ with $\abs{G} < \infty$, then $\abs{G} = [L: L^G]$, $G = \Aut(L / L^G)$
-  and $L / L^G$ is Galois.
+  If $G$ is a subgroup of $\Aut(L)$ with $\abs{G} < \infty$, then $\abs{G} = [L: L^G]$,
+  $G = \Aut(L / L^G)$ and $L / L^G$ is Galois.
 
   \begin{proof}
-    First we prove that $[L: L^G] \leq \abs{G}$. Assume not, then $\abs{G} < [L: L^G]$.
-    Let $G = \{\sigma_1, \sigma_2, \dots, \sigma_n\}$ and $\alpha_1, \alpha_2, \dots, \alpha_{n+1} \in L$.
-    Which $\alpha_i$ is linear independent over $L^G$.
+    First we prove that $[L: L^G] \leq \abs{G}$ by contradiction.
+    Assume $\abs{G} < [L: ^G]$. \\
+    Let $G = \{\sigma_1, \sigma_2, \dots, \sigma_n\}$ and $\alpha_1, \alpha_2, \dots, \alpha_{n+1} \in L$
+    with $\Set{\alpha_i}$ are linear independent over $L^G$.
 
     Consider the equations
     \[
       \left\{
+        \arraycolsep=2pt
         \begin{array}{ccc}
           \sigma_1(\alpha_1) x_1 + \dots + \sigma_1(\alpha_{n+1}) x_{n+1} &=& 0 \\
           \sigma_2(\alpha_1) x_1 + \dots + \sigma_2(\alpha_{n+1}) x_{n+1} &=& 0 \\
-          \vdots &\vdots& \vdots \\
+          \vdots & & \vdots \\
           \sigma_n(\alpha_1) x_1 + \dots + \sigma_n(\alpha_{n+1}) x_{n+1} &=& 0 \\
         \end{array}
       \right.
@@ -121,36 +123,38 @@
     So assume that $m > 1$, we have
     \[
       \left\{
+        \arraycolsep=2pt
         \begin{array}{ccc}
           \sigma_1(\alpha_1) a_1 + \dots + \sigma_1(\alpha_{m}) a_{m} &=& 0 \\
           \sigma_2(\alpha_1) a_1 + \dots + \sigma_2(\alpha_{m}) a_{m} &=& 0 \\
-          \vdots &\vdots& \vdots \\
+          \vdots & & \vdots \\
           \sigma_n(\alpha_1) a_1 + \dots + \sigma_n(\alpha_{m}) a_{m} &=& 0 \\
         \end{array}
       \right.
     \]
     By multipling $a_m^{-1}$, we could assume $a_m = 1$. The equation about $\sigma_1$ gives
     $\alpha_1 a_1 + \dots + \alpha_m a_m = 0$, since $\alpha_i$ is linear independent,
-    one of the $a_i$s, say $a_k$ is not in $L^G$, and thus there exists $t$ so that $\sigma_t(a_k) \neq a_k$.
-    Apply $\sigma_t$ to each equation, we have
+    one of $\Set{a_i}$, say $a_k$ is not in $L^G$, and thus there exists $t$
+    such that $\sigma_t(a_k) \neq a_k$. Apply $\sigma_t$ to each equation, we have
     \[ \sigma_t\sigma_i(\alpha_1) \sigma_t(a_1) + \dots + \sigma_t \sigma_i(\alpha_m) \sigma_t(a_m) = 0,\quad
       \forall 1 \leq i \leq n \]
 
     But since $\{\sigma_t \sigma_1, \dots, \sigma_t \sigma_n\} = \{\sigma_1, \dots, \sigma_n\}$,
     $(\sigma_t(a_1), \sigma_t(a_2), \dots, \sigma_t(a_m), 0, \dots, 0)$ is a solution
-    and thus $(a_1 - \sigma_t(a_1), \dots, a_m - \sigma_t(a_m), 0, \dots)$ is also a solution to the equations.
+    and thus $(a_1 - \sigma_t(a_1), \dots, a_m - \sigma_t(a_m), 0, \dots)$ is also a solution of the equations.
     Since $\sigma_t(a_k) \neq a_k$, the solution is not trivial, and because $a_m = 1$, $a_m - \sigma_t(a_m) = 0$.
-    Hence this solution has $m-1$ nonzero element, which contradict the minimality of the original solution.
+    Hence this solution has $m-1$ nonzero element, which contradicts the minimality of the original solution.
     Thus $[L: L^G] \leq \Aut(L/L^G)$.
 
-    Finally, $\abs{\Aut(L/L^g)} \leq [L: L^G]$ by theorem~\ref{thm:separable-elements-form-separable-field},
+    Finally, $\abs{\Aut(L/L^G)} \leq [L: L^G]$ by theorem~\ref{thm:separable-elements-form-separable-field},
     thus $\abs{G} \leq \abs{\Aut(L/L^G)} \leq [L: L^G] \leq \abs{G}$, hence they are all equal.
   \end{proof}
 \end{theorem}
 
 \begin{definition}
-  Let $f(x) \in K[x]$ and $L$ be a splitting field of $f(x)$ over $K$. We call $\text{Gal}(L/K)$
-  the {\bf Galois group}\index{Galois group} of $f(x)$.
+  Let $f(x) \in K[x]$ and $L$ be a splitting field of $f(x)$ over $K$. We use
+  $\Gal(L/K)$ to denote $\Aut(L/K)$ and call it the
+  {\bf Galois group}\index{Galois group} of $f(x)$.
 \end{definition}
 
 \begin{prop}
@@ -173,13 +177,14 @@
     by lemma~\ref{lemma:extension-exists-condition}, $\exists \sigma,\, \sigma(\alpha_i) = \alpha_j$,
     and $\sigma$ sends $[\alpha_i]$ to $[\alpha_j]$, since if $\alpha_k \in [\alpha_i]$,
     $\cycle{\alpha_i, \alpha_k} \in G$ and thus $\sigma \cycle{\alpha_i, \alpha_k} \sigma^{-1}
-    = \cycle{\alpha_j, \sigma(\alpha_k)} \in G$. Since $\sigma$ 1-1, $\big| [\alpha_i] \big| \leq \big| [\alpha_j] \big|$,
-    and by symmetry we have $\big| [\alpha_i] \big| = \big| [\alpha_j] \big|$.
+    = \cycle{\alpha_j, \sigma(\alpha_k)} \in G$. Since $\sigma$ is 1-1,
+    $\abs[\big ]{[\alpha_i]} \leq \abs[\big ]{[\alpha_j]}$,
+    and by symmetry we have $\abs[\big ]{[\alpha_i]} = \abs[\big ]{[\alpha_j]}$.
 
-    But then if $[\alpha_i] = n$, $p = \abs{R} = \sum \big| [\alpha_j] \big| = kn$,
-    so either there are $p$ equivalence classes each with size $1$, which is impossible since
-    the two complex root are equivalent by conjugation, or there are only one equivalence classes,
-    which means that any 2 cycle are in $G$, and thus $G = S_p$.
+    But then if $[\alpha_i] = n$, $p = \abs{R} = \sum \abs[\big ]{[\alpha_j]} = kn$,
+    so either there are $p$ equivalence classes with size of $1$, which is impossible since
+    the two complex root are equivalent by conjugation, or there are is one equivalence class,
+    which means that every 2 cycle is in $G$, and thus $G = S_p$.
   \end{proof}
 \end{prop}
 
@@ -189,7 +194,7 @@
   and let $G = \Gal(L/K)$. Then:
 
   \begin{enumerate}[(\arabic*)]
-    \item There is a 1-1 correspond from the set of intermediate field to the set of subgroup given by
+    \item There is a 1-1 correspondence from the set of intermediate field to the set of subgroup:
       \[
         \begin{array}{ccc}
           \{ M : K \subseteq M \subseteq L \} & \xleftrightarrow{\quad\quad} & \{ H : H \leq G \} \\
@@ -199,7 +204,7 @@
       \]
 
       \begin{proof}
-        We check these two mapping are the inverse of each other.
+        We check these two mappings are the inverse of each other.
 
         By theorem~\ref{thm:extension-of-fix-field-is-galois}, $\Gal(L/L^H) = H$.
 
@@ -214,39 +219,39 @@
       \end{proof}
     \item If $M = L^H$, then $M/K$ is normal if and only if $H \lhd G$.
     \begin{proof}
-      If $\sigma \in G$, then
+      For any $\sigma \in G$,
       \begin{align*}
         \tau \in \Gal(L/\sigma(M)) &\iff \tau(\sigma(x)) = \sigma(x), \, \forall x \in M \\
         &\iff \sigma^{-1} \tau \sigma(x) = x, \, \forall x \in M \\
         &\iff \sigma^{-1} \tau \sigma \in \Gal(L/M) \\
         &\iff \tau \in \sigma \Gal(L/M) \sigma^{-1}
       \end{align*}
-      So by prop~\ref{prop:TFAE-of-normal-extension}, $M/K$ is normal if and only if for all $\sigma \in G$,
-      $\sigma(M) = M$ and thus if and only if $\Gal(L/M) = \Gal(L/\sigma(M))$.
-      But $\Gal(L/\sigma(M)) = \sigma \Gal(L/M) \sigma^{-1} = \sigma H \sigma^{-1}$ by the discussion
-      above, hence it is equivalent to $H = \sigma H \sigma^{-1}$ which is same as $H \lhd G$.
+      By prop~\ref{prop:TFAE-of-normal-extension}, $M/K$ is normal if and only if for all $\sigma \in G$,
+      $\sigma(M) = M \iff \Gal(L/M) = \Gal(L/\sigma(M))$.
+      By the discussion above, $\Gal(L/\sigma(M)) = \sigma \Gal(L/M) \sigma^{-1} = \sigma H \sigma^{-1}$.
+      Hence $M/K$ is normal $\iff H = \sigma H \sigma^{-1},\, \forall \sigma \in G \iff H \lhd G$.
     \end{proof}
 
     \item If $H \lhd G$, then $G / H \cong \Gal(M/K)$.
       \begin{proof}
         Since $H \lhd G$, by (3) we know that $M/K$ is Galois. Define $\varphi = \sigma :: \Gal(L/K)
         \mapsto \sigma\big|_M :: \Gal(M/K)$. The mapping is well defined
-        since by prop~\ref{prop:TFAE-of-normal-extension}, $\sigma(M) = M$.
+        since $\sigma(M) = M$ (by prop~\ref{prop:TFAE-of-normal-extension}).
         Also, this map is onto since by corollary~\ref{coro:extension-exists-splitting-field},
-        each $\tau \in \Gal(M/K)$ could be extend to $\sigma \in \Gal(L/K)$ because
-        $\bar\tau(f) = f$. Finally notice that $\ker \varphi = H$, thus by the
+        each $\tau \in \Gal(M/K)$ could be extended to $\sigma \in \Gal(L/K)$ because
+        $\bar\tau(f) = f$. Finally, notice that $\ker \varphi = H$, thus by the
         first isomorphism theorem, $G/H \cong \Gal(M/K)$.
       \end{proof}
 
-    \item If $M_1 = L^{H_1}, M_2 = L^{H_2}$, then $M_1 \cup M_2 = L^{\gen{H_1, H_2}}$ and
-      $M_1 M_2 = L^{H_1 \cup H_2}$.
+    \item If $M_1 = L^{H_1}, M_2 = L^{H_2}$, then $M_1 \cap M_2 = L^{\gen{H_1, H_2}}$ and
+      $M_1 M_2 = L^{H_1 \cap H_2}$.
   \end{enumerate}
 \end{theorem}
 
 \begin{theorem}
   Let $L/K$ be Galois, and $N/K$ be any extension, then $LN / N$ is galois and
   $\Gal(\quot{LN}{N}) \cong \Gal(\quot{L}{L \cap N})$ by the isomorphism
-  $\varphi = \sigma \mapsto \sigma\big|_L$.
+  $\varphi : \sigma \mapsto \sigma\big|_L$.
 
   \begin{proof}
     Let $L$ be a splitting field of the separable polynomial $f(x)$ over $K$,
@@ -258,8 +263,8 @@
     = \sigma(f(\alpha_i)) = 0$ since $\sigma$ fixes $K$, and thus $f$ sends $\alpha_i$
     to some $\alpha_j$. Also, $\{ \alpha_i \}$ generate $L$ over $K$, thus $\sigma\big|_L(L) = L$.
 
-    If $\sigma\big|_L = \text{id}_L$, then $\sigma(\alpha_i) = \alpha_i, \, \forall i$.
-    Since $\{\alpha_i\}$ generate $LN$ over $N$, $\sigma = \text{id}_{LN}$. Thus $\varphi$ 1-1.
+    If $\sigma\big|_L = \Id_L$, then $\sigma(\alpha_i) = \alpha_i, \, \forall i$.
+    Since $\{\alpha_i\}$ generate $LN$ over $N$, $\sigma = \Id_{LN}$. Thus $\varphi$ is 1-1.
 
     Finally, let $H = \Image \varphi$, we claim that $L^H = L \cap N$, since
       \begin{align*}
