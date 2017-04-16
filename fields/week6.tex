@@ -59,7 +59,7 @@
   \begin{proof}
     By induction on $m$. For $m = 1$, $L_1 \supset L_0 = K$ and
     $L_1 = L_0(\alpha_1) = K(\alpha_1)$ where $\alpha_1^{n_1} \in K$ for some
-    $n_1\in \Nb$. Set $N = L(\zeta_n) = K(\zeta_n, \alpha_1)$, done.
+    $n_1\in \Nb$. Set $N = L(\zeta_{n_1}) = K(\zeta_{n_1}, \alpha_1)$, done.
 
     For $m > 1$, by induction hypothesis, $\exists\: N'/L_{m-1}$ s.t.
     $N'/K$ is Galois extension by radicals and $N'$ contains
@@ -102,7 +102,6 @@
     \end{itemize}
   \end{proof}
 \end{prop}
-
 
 \begin{theorem}[Main Theorem] \label{thm:solvable-iff-solvable}
   Under some proper assumption on $\Char K$, a separable polynomial $f(x) \in K[x]$
@@ -163,7 +162,7 @@
     (kummer extension)
     \begin{mdframed}
       Note that $n_i = [L_i : L_{i-1}] = \abs{G_{i-1}} / \abs{G_i}$ dividing
-      $\abs{G_0}$ and $\abs{G_0} \mid n$, so $\zeta_n$ genates $\zeta_{n_i}$
+      $\abs{G_0}$ and $\abs{G_0} \mid n$, so $\zeta_n$ generates $\zeta_{n_i}$
       and $\Char K \nmid n_i$.
     \end{mdframed}
     $\implies N/K(\zeta)$ is an extension by radicals $\leadsto$

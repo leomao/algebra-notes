@@ -104,12 +104,12 @@
     Write
     \[ f(t) = a_n t^n + \dots + a_1 t + a_0, \quad g(t) = b_n t^n + \dots + b_1 t + b_0 \]
     (note that either $a_n \ne 0$ or $b_n \ne 0$)
-    Let $F(x) = f(x) - ug(x) =-(a_n - ub_n) x^n + \dots + (a_1 - ub_1)x + (a_0 - ub_0)$.
+    Let $F(x) = f(x) - ug(x) = (a_n - ub_n) x^n + \dots + (a_1 - ub_1)x + (a_0 - ub_0)$.
     Since $a_n - ub_n \ne 0$, $F(x) \ne 0$ and $\deg F(x) > 0$.
     By def. of $u$, we have $F(t) = 0 \implies t$ is algebraic over $K(u)$ and
     $[K(t):K(u)] \le n$.
     Now we prove that $F(x)$ is irreducible over $K(u)$.
-    By Gauss lemma, it suffices to show that $F(x)$ is irreducible in
+    By Gauss's lemma, it suffices to show that $F(x)$ is irreducible in
     $K[u][x] = K[u, x]$.
     Assume that $F(x) = p(u, x) q(u, x)$ with $\deg_u p = 1$ and $q \in K[x]$.
     Since $F(x) = f(x) - ug(x)$, we have
@@ -143,7 +143,7 @@ Now we prove the L\"{u}roth's theorem:
   Say $l = Fq$ for some $q(t,x) \in K[t][x]$.
   Note that $\deg_t l \le r, \deg_t F \ge r \leadsto \deg_t l =\deg_t F = r,
   \deg_t q = 0$. So $q \in K[x] \leadsto q$ is primitive in $K[t][x]$.
-  By Gauss lemma, $F, q$ are primitive, then $l$ is also primitive in $K[t][x]$.
+  By Gauss's lemma, $F, q$ are primitive, then $l$ is also primitive in $K[t][x]$.
   Since $l$ is skew-symmetric in $t$ and $x$, $l$ is also primitive in $K[x][t]$.
   But $q\in K[x]$ and $q \mid l$, we have $q \in K$.
   Hence $n = \deg_x F = \deg_x l = \deg_t l  = \deg_t F \ge r$.
@@ -310,7 +310,8 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
       \dots, \sum_i \sigma_n(\alpha_i) x_n \right) \]
     and write $g(x_1, \dots, x_n) = \sum_j g_j(x_1, \dots, x_n) \alpha_j$.
     Then $g_j(r_1, \dots, r_n) = 0, \, \forall \bm{r} \in K^n$. The only
-    polynomial which has infinite zeros is the zero polynomial, thus $g_j = 0$ for each $j$.
+    polynomial which has infinite zeros (without any relation) is the zero polynomial,
+    thus $g_j = 0$ for each $j$.
 
     Now, by lemma~\ref{lemma:basis-iff-det-neq-0}, $\det([\sigma_i(\alpha_j)]) \neq 0$.
     So it is possible to solve $\bm{x} = (x_i)$ satisfied

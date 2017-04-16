@@ -21,7 +21,7 @@ And each $F_i$ is map to some $F_j$, thus $\sigma$ induces a permutation of $F_1
 For convenience, assume $(x - \theta) \mid F_1$. We have the following lemma:
 
 \begin{lemma}
-  \[ Q \triangleq \Set{ \sigma \mid \sigma_y F_1 = F_1 } = \Set{ \sigma \mid \sigma_y(x - \theta) \mid F_1} \]
+  \[ Q \triangleq \Set{ \sigma : \sigma_y F_1 = F_1 } = \Set{ \sigma : \sigma_y(x - \theta) \mid F_1} \]
   \begin{proof}
     ``$\subseteq$'': Since $x - \theta \mid F_1$, so $\sigma_y (x - \theta) \mid \sigma_y F_1 = F_1$.
 
@@ -45,9 +45,10 @@ For convenience, assume $(x - \theta) \mid F_1$. We have the following lemma:
     \]
     The automorphism fixes $K(y_1, \dots, y_n)$, so
     $\tilde\sigma(\theta) = \sigma_\alpha(\theta)$ and $\theta$ share the
-    same minimum polynomial over $K(y_1, \dots, y_n)$.
-    By Gauss lemma, $F_1$ is irreducible in $K[y_1, \dots, y_n][x]$ so is irreducible
-    in $K(y_1, \dots, y_n)[x]$, thus $F_1 = m_{\theta, K(y_1, \dots, y_n)}
+    same minimal polynomial over $K(y_1, \dots, y_n)$.
+    By Gauss's lemma, $F_1$ is irreducible in $K[y_1, \dots, y_n][x] \implies F_1$
+    is irreducible in $K(y_1, \dots, y_n)[x]$, thus
+    $F_1 = m_{\theta, K(y_1, \dots, y_n)}
     = m_{\sigma_\alpha(\theta), K(y_1, \dots, y_n)}$, which implies $(x - \sigma_\alpha(\theta)) \mid F_1$.
     So $\sigma_y^{-1} \in Q \implies \sigma_y \in Q$.
 
