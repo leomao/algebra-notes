@@ -8,8 +8,10 @@ define $\sigma_y(\theta) \triangleq y_{\sigma(1)} \alpha_1 + \dots + y_{\sigma(n
 $\sigma_{\alpha}(\theta) = y_1 \alpha_{\sigma(1)} + \dots + y_n \alpha_{\sigma(n)}$.
 It is easy to see that $\sigma_y^{-1} = \sigma_\alpha$. 
 
-In $L(x, y_1, \dots, y_n)$, we consider $F(x, \bm{y}) = \prod_{\sigma \in S_n} (x - \sigma_y(\theta))
-= \prod_{\sigma^{-1} \in S_n} (x - \sigma_{\alpha}(\theta)) = \prod_{\sigma \in S_n} (x - \sigma_\alpha(\theta))$
+In $L(x, y_1, \dots, y_n)$, we consider $F(x, \bm{y})
+= \prod\limits_{\sigma \in S_n} (x - \sigma_y(\theta))
+= \prod\limits_{\sigma^{-1} \in S_n} (x - \sigma_{\alpha}(\theta))
+= \prod\limits_{\sigma \in S_n} (x - \sigma_\alpha(\theta))$.
 Since each coefficient of $F$ is a symmetric polynomial of $\alpha_1, \dots, \alpha_n$,
 by the fundamental theorem of symmetric polynomials, these symmetric polynomials are
 polynomials of the elementary symmetric polynomials. Thus $F(x, y) \in K[x, y_1, \dots, y_n]$.
@@ -49,12 +51,13 @@ For convenience, assume $(x - \theta) \mid F_1$. We have the following lemma:
     By Gauss's lemma, $F_1$ is irreducible in $K[y_1, \dots, y_n][x] \implies F_1$
     is irreducible in $K(y_1, \dots, y_n)[x]$, thus
     $F_1 = m_{\theta, K(y_1, \dots, y_n)}
-    = m_{\sigma_\alpha(\theta), K(y_1, \dots, y_n)}$, which implies $(x - \sigma_\alpha(\theta)) \mid F_1$.
-    So $\sigma_y^{-1} \in Q \implies \sigma_y \in Q$.
+    = m_{\sigma_\alpha(\theta), K(y_1, \dots, y_n)}$, which implies
+    $(x - \sigma_\alpha(\theta)) \mid F_1$.
+    So $\sigma_y^{-1} F_1 = F_1 \implies \sigma^{-1} \in Q \implies \sigma \in Q$.
 
     ``$\supseteq$'': For any $\sigma \in Q$, $F_1 = m_{\theta, K(y_1, \dots, y_n)}
-    = m_{\sigma^{-1}_\alpha(\theta), K(y_1, \dots, y_n)}$, so exists
-    $\tau \in \Aut(L(\bm{y}) / K(\bm{y}))$ which satisfied
+    = m_{\sigma^{-1}_\alpha(\theta), K(y_1, \dots, y_n)}$, so there exists
+    $\tau \in \Aut(L(\bm{y}) / K(\bm{y}))$ satisfying
     $\tau(\theta) = \sigma_\alpha^{-1}(\theta) = \sigma_y(\theta)$.
     Since $L/K$ normal, $\tau(L) = L$ and thus $\tau\big|_L \in \Gal(L/K)$ with
     $\tau\big|_L(\alpha_i) = \alpha_{\sigma^{-1}(i)}$, which implies that
@@ -68,40 +71,48 @@ For convenience, assume $(x - \theta) \mid F_1$. We have the following lemma:
 
   \begin{proof}
     Since $f$ is separable, $D \neq 0$. The discriminant could be calculate
-    by $D = (-1)^{n(n+1)/2} R(f, f')$ which only depends on the coefficient,
+    by $D = (-1)^{n(n+1)/2} R(f, f')$ which only depends on the coefficients,
     so $\bar{D} \neq 0$ in $\Fb_p$ since $p \nmid D$. Thus $f$ separable.
 
     As above, let $F = F_1 F_2 \dotsm F_r$ in $\Zb[x, \bm{y}]$.
-    Assume $f(x) = x^n + a_{n-1} x^{n-1} + \dots + a_0$, then $bar{f}(x) = x^n + \bar{a}_{n-1}x^{n-1} + \dots + \bar{a}_0$.
-    Let $\alpha_1, \dots, \alpha_n$ and $\beta_1, \dots, \beta_n$ be their roots, respectively.
+    Assume $f(x) = x^n + a_{n-1} x^{n-1} + \dots + a_0$, then $\bar{f}(x) =
+    x^n + \bar{a}_{n-1}x^{n-1} + \dots + \bar{a}_0$.  Let $\alpha_1, \dots, \alpha_n$
+    and $\beta_1, \dots, \beta_n$ be their roots, respectively.
     Define $\theta_p \triangleq y_1 \beta_1 + \dots + y_n \beta_n$.
-    Since the coefficients of $F$ are symmetric polynomial of $\alpha_1, \dots, \alpha_n$, which
-    only depends on the coefficients of $f$, and so is $F_p(x, y) = \prod_{\sigma \in S_n}(x - \sigma_y(\theta_p))$,
+    Since the coefficients of $F$ are symmetric polynomials of
+    $\alpha_1, \dots, \alpha_n$, which only depends on the coefficients of $f$,
+    and so is $F_p(x, y) = \prod_{\sigma \in S_n}(x - \sigma_y(\theta_p))$,
     we know that $F_p(x, y) = \bar{F}(x, y)$.
 
     Now $\bar{F} = \bar{F}_1 \bar{F}_2 \dotsm \bar{F}_r
-    = (G_{1, 1} \dotsm G_{1, q_1})(G_{2, 1} \dotsm G_{2, q_2}) \dotsm (G_{r, 1} \dotsm G_{r, q_r})$
+    = (G_{1, 1} \dotsm G_{1, q_1})(G_{2, 1} \dotsm G_{2, q_2}) \dotsm (G_{r, 1}
+    \dotsm G_{r, q_r})$
 
     The Galois group of $\bar{f}$ is
     \[ \Set{ \sigma \in S_n : \sigma_y G_{1, j} = G_{1, j}, \, \forall j }
-      \subseteq \Set{ \sigma \in S_n : \sigma_y F_1 = F_1 } = \Set{\sigma \in S_n : \sigma_y F_1 = F_1} \]
-    Where the equality holds because $\sigma_y \bar{F}_1 = \bar{F}_1 \iff (x - \sigma_y(\theta_p)) \mid \bar{F}_1
-    \iff (x - \sigma_y(\theta)) \mid F_1 \iff \sigma_y F_1 = F_1$. Thus the galois group
+      \subseteq \Set{ \sigma \in S_n : \sigma_y \bar{F}_1 = \bar{F}_1 } =
+    \Set{\sigma \in S_n : \sigma_y F_1 = F_1} \]
+    Where the equality holds because $\sigma_y \bar{F}_1 = \bar{F}_1 \iff
+    (x - \sigma_y(\theta_p)) \mid \bar{F}_1 \iff
+    (x - \sigma_y(\theta)) \mid F_1 \iff \sigma_y F_1 = F_1$. Thus the galois group
     of $\bar{f}$ is a subgroup of $f$.
   \end{proof}
 \end{theorem}
 
 \begin{fact} \hfill
   \begin{itemize}
-    \item Every finite extension of $\Fb_p$ is cyclic, so the Galois group of $\bar{f}(x)$
-      in $\Fb_p[x]$ is cyclic.
-    \item If $\bar{f}$ is irreducible, then the Galois group of $\bar{f}$ is transitive on its roots,
-      thus the only possibililty is a cycle of length $n = \deg \bar{f}$ in $S_n$.
+    \item Every finite extension of $\Fb_p$ is cyclic, so the Galois group of
+      $\bar{f}(x)$ in $\Fb_p[x]$ is cyclic.
+    \item If $\bar{f}$ is irreducible, then the Galois group of $\bar{f}$ is
+      transitive on its roots, thus the only possibililty is a cycle of length
+      $n = \deg \bar{f}$ in $S_n$.
     \item If $\bar{f} = \bar{f}_1 \dotsm \bar{f}_r$, with each $\bar{f}_i$ irreducible.
       Let the Galois group be $\gen{\sigma}$, then $\sigma$ should be
       transitive on the roots of each $\bar{f}_i$. The only possibility of $\sigma$
-      is a permutation composited by cycles of length $\deg \bar{f}_1, \dots, \deg \bar{f}_r$.
+      is a permutation composited by cycles of length
+      $\deg \bar{f}_1, \dots, \deg \bar{f}_r$.
       That is, $\sigma = \cycle{\alpha_{1,1}, \dots, \alpha_{1, m_1}} \dotsm
-      \cycle{\alpha_{r,1}, \dots, \alpha_{r, m_r}}$ where $m_i \triangleq \deg \bar{f}_i$.
+      \cycle{\alpha_{r,1}, \dots, \alpha_{r, m_r}}$ where $m_i \triangleq
+      \deg \bar{f}_i$.
   \end{itemize}
 \end{fact}
