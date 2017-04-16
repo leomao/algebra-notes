@@ -37,7 +37,7 @@
         Assume that the statement is true for all $k < n$, then since
         \[ x^n - 1 = \Phi_n \prod_{\substack{d \mid n, d < n}} \Phi_d \triangleq \Phi_n \Phi_{< n} \]
         But notice that $\Phi_{<n}$ is monic, so by the long division algorithm, it is easy to
-        see that $\Phi_n = (x^n - 1) / \Phi_{<n}$ has all coefficient in $\Zb$.
+        see that $\Phi_n = (x^n - 1) / \Phi_{<n}$ has all coefficients in $\Zb$.
       \end{proof}
     \item $\Phi_n$ is irreducible.
       \begin{proof}
@@ -55,9 +55,9 @@
         which implies $\bar{g}, \bar{f}$ has common root, thus $\bar\Phi_n = \bar{f}\bar{g}$ and
         hence $x^n - \bar{1}$ has a multiple root.
         But $(x^n - \bar{1})' = nx^{n-1} \neq 0$, and $0$ is not a root of $x^n - \bar{1}$,
-        which leads to an contradiction.
+        which leads to a contradiction.
 
-        So we conclude that $f(\zeta_n^p) = 0$ for any $p \nmid n$, which could be extend
+        So we conclude that $f(\zeta_n^p) = 0$ for any $p \nmid n$, which could be extended
         and show that $f(\zeta_n^k) = 0$ for any $\gcd(k, n) = 1$, thus $f = \Phi_n$.
       \end{proof}
     \item $\Qb(\zeta_n) / \Qb$ is Galois with $[\Qb(\zeta_n): \Qb] = \deg \Phi_n = \varphi(n)$.
@@ -70,10 +70,11 @@
         Also $\sigma_k = 1 \iff \bar{k} = 1$. Finally, $\abs{\Gal(\Qb(\zeta_n) / \Qb)} = \abs{\Fb_n^\times} = \varphi(n)$,
         so the map is onto.
       \end{proof}
-    \item Suppose $n = p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}$ with $p_1, \dots, p_k$ be distinct primes.
-      Define $L_i \triangleq \Qb(\zeta_{p_i^{n_i}})$. Obviously, $L_i \subseteq \Qb(\zeta_n)$ hence
-      $L_1 L_2 \dotsm L_k \subseteq \Qb(\zeta_n)$, but $\zeta_n = \zeta_{p_1^{n_1}} \zeta_{p_2^{n_2}}
-      \dotsm \zeta_{p_k^{n_k}}$, so $L_1 L_2 \dotsm L_k \supseteq \Qb(\zeta_n)$. Thus we have
+    \item Suppose $n = p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}$ with $p_1, \dots, p_k$ are distinct primes.
+      Define $L_i \triangleq \Qb\big(\zeta_{p_i^{n_i}}\big)$. Obviously,
+      $L_i \subseteq \Qb(\zeta_n)$ hence $L_1 L_2 \dotsm L_k \subseteq \Qb(\zeta_n)$,
+      but $\zeta_n = \zeta_{p_1^{n_1}} \zeta_{p_2^{n_2}} \dotsm \zeta_{p_k^{n_k}}$,
+      so $L_1 L_2 \dotsm L_k \supseteq \Qb(\zeta_n)$. Thus we have
       $L_1 L_2 \dotsm L_k = \Qb(\zeta_n)$.
   \end{itemize}
 \end{prop}
@@ -116,7 +117,7 @@
     Now we count the number of the pair $(\sigma \big|_{L_1}, \sigma \big|_{L_2})$,
     There are $[L_1: K]$ of $\tau = \sigma \big|_{L_1}$, and fixing one, each $\sigma \big|_{L_2}$
     is an extension of $\tau \big|_{L_1 \cap L_2}$, so there are $[L_2 : L_1 \cap L_2]$ of such.
-    On the other hand we have $\abs{\Gal(L_1 L_2 / K)} = [L_1 L_2 : K] = [L_1 L_2 : L_1]
+    On the other hand, we have $\abs{\Gal(L_1 L_2 / K)} = [L_1 L_2 : K] = [L_1 L_2 : L_1]
     [L_1 : K] = [L_2 : L_1 \cap L_2] [L_1 : K]$, thus $\Gal(L_1 L_2 / K)$ and
     $\Set{(\sigma \big|_{L_1}, \sigma \big|_{L_2})}$ has the same size, and hence the
     map is onto.
@@ -131,13 +132,14 @@ Back to our problem, $[L_1 L_2 \cdots L_k: \Qb] = [\Qb(\zeta_n): \Qb] = \varphi(
   \Gal\big( \Qb(\zeta_{p_1^{n_k}}) / \Qb \big) \]
 
 \begin{theorem}
-  Let $G$ be a finite abelian group. Then exists a subfield $L$ of a cyclotomic field satisfied $\Gal(L / \Qb) \cong G$.
+  Let $G$ be a finite abelian group. Then there exists a subfield $L$ of
+  a cyclotomic field satisfying $\Gal(L / \Qb) \cong G$.
 
   \begin{proof}
     By the FTFGAG,
     \[ G \cong \Zb / n_1 \Zb \times \Zb / n_2 \Zb \times \dots \times \Zb / n_k \Zb \]
     By dirichlet theorem, there are infinitely many prime $p$ such that $n \mid p - 1$.
-    Let $p_i$ be a prime such that $n_i \mid p_i - 1$ and $p_i$ are all distinct.
+    Let $p_i$ be a prime such that $n_i \mid p_i - 1$ and all $p_i$ are distinct.
     Then $G$ is a subgroup of $\Zb / (p_1 - 1) \Zb \times \dots \times \Zb / (p_k - 1) \Zb \cong \Gal(\Qb(\zeta_n) / \Qb)$
     where $n = p_1 p_2 \dotsm p_k$.
   \end{proof}
@@ -149,9 +151,9 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
 \begin{definition} \hfill
   \begin{itemize}
     \item $L/K$ is called a kummer extension of exponent $n$ if $\zeta \in K$ and $L$ is a splitting field
-      of $(x^n - a_1) (x^n - a_2) \dots (x^n - a_k)$ over $K$.
+      of $(x^n - a_1) (x^n - a_2) \dotsm (x^n - a_k)$ over $K$.
     \item Let $\abs{G} < \infty$, the exponent $e(G)$ of $G$ is the least positive integer $m$
-      satisfied $g^m = 1$ for any $g \in G$.
+      satisfying $g^m = 1$ for any $g \in G$.
   \end{itemize}
 \end{definition}
 
@@ -160,12 +162,12 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
   degree dividing $n$. More over $x^n - a$ is irreducible over $K(\zeta)$ $\iff$ $[L: K(\zeta)] = n$.
 
   \begin{proof}
-    If $\alpha$ is a root of $x^n - a = 0$, then $\alpha, \alpha \zeta, \dots, \alpha \zeta^{n-1}$
+    If $\alpha$ is a root of $x^n - a$, then $\alpha, \alpha \zeta, \dots, \alpha \zeta^{n-1}$
     are roots of $x^n - a$, so $L = K(\alpha, \zeta) = K(\zeta)(\alpha)$.
 
-    Consider $\varphi = (\alpha \mapsto \alpha \zeta^k) :: \Gal(L / K(\zeta)) \mapsto \bar{k} :: \Zb / n\Zb$.
-    Then it is easy to see that $\varphi$ is a homomorphism. Also, if $\varphi(\sigma) = 0$,
-    $\sigma = (\alpha \mapsto \alpha) = \Id$. Thus $\varphi$ 1-1 and
+    Consider $\deffunc{\varphi}{\Gal(L / K(\zeta))}{\Zb / n\Zb}{(\alpha \mapsto \alpha \zeta^k)}{\bar{k}}$.
+    It is easy to see that $\varphi$ is a homomorphism. Also, if $\varphi(\sigma) = 0$,
+    $\sigma = (\alpha \mapsto \alpha) = \Id$. Thus $\varphi$ is 1-1 and
     $\Gal(L / K(\zeta)) \toone \quot{\Zb}{n\Zb}$.
   \end{proof}
 \end{theorem}
@@ -182,13 +184,14 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
     Recall a result proved in HW problem: Distinct automorphisms of $L$ are linearly independent over $L$.
     
     Let $\Gal(L/K) = \gen{\sigma}$ with $\ord(\sigma) = n$. Then
-    \[ \text{id}_L + \zeta \sigma + \zeta^2 \sigma^2 + \dots + \zeta^{n-1} \sigma^{n-1} \neq 0
-      \implies \exists c \in L, \text{ s.t. } \alpha = c + \zeta \sigma(c) + \zeta^2 \sigma^2(c)
-      + \dots + \zeta^{n-1} \sigma^{n-1}(c) \neq 0 \]
+    $\Id_L + \zeta \sigma + \zeta^2 \sigma^2 + \dots + \zeta^{n-1} \sigma^{n-1} \neq 0$
+    \[ \implies \exists c \in L, \text{ s.t. } \alpha = c + \zeta \sigma(c) + \zeta^2 \sigma^2(c)
+    + \dots + \zeta^{n-1} \sigma^{n-1}(c) \neq 0 \]
 
     Observe that $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in K$. Also $\sigma(\alpha^n)
-    = \sigma(\alpha)^n = \zeta^{-n}\alpha^n = \alpha^n$, so $\alpha^n$ is fixed by all automorphisms
-    in $\Gal(L/K)$, thus $\alpha_n \in K$, and hence $K(\alpha)$ is a splitting field of $x^n - a$ over $K$.
+    = \sigma(\alpha)^n = \zeta^{-n}\alpha^n = \alpha^n$, so $\alpha^n$ is fixed by
+    $\Gal(L/K)$, thus $a \triangleq \alpha^n \in K$, and hence $K(\alpha)$
+    is a splitting field of $x^n - a$ over $K$.
 
     Now $\sigma(\alpha) = \zeta^{-1}\alpha \in K(\alpha)$, so $\sigma\big|_{K(\alpha)} \in \Gal(K(\alpha) / K)$.
     Also $\sigma^k(\alpha) = \zeta^{-k} \alpha \implies \ord(\sigma) = n$.
@@ -201,8 +204,8 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
 \end{theorem}
 
 \begin{theorem}
-  If $L/K$ is Galois which satisfied $\Gal(L/K)$ is abelian of exponent $n$ and $\zeta_n \in K$,
-  then $L/K$ is a Kummer extension.
+  Let $L/K$ be a Galois extension such that $\Gal(L/K)$ is abelian of exponent $n$
+  and $\zeta_n \in K$, then $L/K$ is a Kummer extension.
 
   \begin{proof}
     By induction on $[L: K]$. If $[L: K] = 1$ then $L = K$ and is trivial.
