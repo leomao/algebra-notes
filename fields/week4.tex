@@ -14,7 +14,7 @@
     ``$\Rightarrow$'': Let $\alpha_1, \alpha_2, \dots, \alpha_n$ be the roots of $f$,
     so $L = K(\alpha_1, \alpha_2, \dots, \alpha_n)$, and $L$ is also a splitting field
     of $\prod m_{\alpha_i, K}$ since $m_{\alpha_i, K} \mid f$. By lemma~\ref{lemma:element-in-alg-ext-splits},
-    for any $\beta$ in $L$, $m_{\beta, K}$ splits, thus $L/K$ normal and obviously also finite.
+    for any $\beta$ in $L$, $m_{\beta, K}$ splits, thus $L/K$ is normal and also finite obviously.
 
     ``$\Leftarrow$'': Since $L/K$ is a finite extension, we could write
     $L = K(\alpha_1, \alpha_2, \dots, \alpha_n)$. Let $f = \prod m_{\alpha_i, K}$, then
@@ -45,15 +45,17 @@
   \end{enumerate}
 
   \begin{proof}
-    (a) $\Rightarrow$ (b): $\forall \alpha \in M$, $m_{\alpha, K}(\sigma(\alpha)) = \sigma(m_{\alpha, K}(\alpha)) = 0$.
-    So $\sigma(\alpha)$ is a root of $m_{\alpha, K}$. Since $\quot{M}{K}$ normal, $m_{\alpha, K}$ splits in $M$
-    and thus every root of $m_{\alpha, K}$ is in $M$, hence $\forall m, \, \sigma(m) \in M \implies \sigma(M) \subset M$.
+    (a) $\Rightarrow$ (b): $\forall \alpha \in M$, $m_{\alpha, K}(\sigma(\alpha))
+    = \sigma(m_{\alpha, K}(\alpha)) = 0$. So $\sigma(\alpha)$ is a root of $m_{\alpha, K}$.
+    Since $\quot{M}{K}$ normal, $m_{\alpha, K}$ splits in $M$ and thus each root
+    of $m_{\alpha, K}$ is in $M$, hence $\forall m, \, \sigma(m) \in M \implies \sigma(M) \subset M$.
 
-    (b) $\Rightarrow$ (c): Since $L/K$ algebraic and $\sigma$ 1-1, by a homework problem, $\sigma$ onto.
+    (b) $\Rightarrow$ (c): Since $L/K$ is algebraic and $\sigma$ is 1-1,
+    by a homework problem, $\sigma$ onto.
 
     (c) $\Rightarrow$ (a): For any $\alpha \in M$, let $\beta \in L$ be a root of $m_{\alpha, K}$.
-    By theorem~\ref{thm:splitting-field-iff-finite-normal}, we could assume $L$ is a splitting field of $f$ over $K$.
-    Consider the following diagram,
+    By theorem~\ref{thm:splitting-field-iff-finite-normal}, we could assume $L$
+    is a splitting field of $f$ over $K$. Consider the following diagram,
     \[
       \begin{tikzcd}
         L \arrow[rr, "\sim", "\sigma"'] & & L \\
@@ -61,14 +63,16 @@
         & K \arrow[ur, hookrightarrow] \arrow[ul, hookrightarrow] &
       \end{tikzcd}
     \]
-    Where isomorphism $\tau$ with $\tau(\alpha) = \beta$ exists since $\alpha, \beta$ share the same minimal polynomial,
+    Where isomorphism $\tau$ with $\tau(\alpha) = \beta$ exists
+    since $\alpha, \beta$ share the same minimal polynomial,
     and $\sigma$ with $\sigma\big|_K = \tau$ exists by theorem~\ref{thm:two-splitting-field-are-isom}.
     Since $\sigma \in \Aut(\quot{L}{K})$, $\beta = \sigma(\alpha) \in M$, thus $M/K$ normal.
   \end{proof}
 \end{prop}
 
 \begin{definition}
-  Let $L/K$ is called a \emph{Galois}\index{Extension!Galois extension} extension if $L/K$ is finite, normal and separable.
+  Let $L/K$ is called a \emph{Galois}\index{Extension!Galois extension} extension
+  if $L/K$ is finite, normal and separable.
   That is, $L$ is a splitting field of some separable polynomial over $K$.
 \end{definition}
 
@@ -78,7 +82,7 @@
   \begin{proof}
     Since $L/K$ is normal, for any $\alpha$, $m_{\alpha, K}$ splits over $L$.
     Since $L/K$ is separable, $m_{\alpha, K}$ has no multiple roots. So there are exactly $[L:K]$
-    extensions $\sigma:: L \to L$ of $\text{id}_K$.
+    extensions $\sigma:: L \to L$ of $\Id_K$.
   \end{proof}
 \end{theorem}
 
@@ -234,7 +238,7 @@
         first isomorphism theorem, $G/H \cong \Gal(M/K)$.
       \end{proof}
 
-    \item If $M_1 = L^{H_1}, M_2 = L^{H_2}$, then $M_1 \cup M_2 = L^{\langle H_1, H_2 \rangle}$ and
+    \item If $M_1 = L^{H_1}, M_2 = L^{H_2}$, then $M_1 \cup M_2 = L^{\gen{H_1, H_2}}$ and
       $M_1 M_2 = L^{H_1 \cup H_2}$.
   \end{enumerate}
 \end{theorem}

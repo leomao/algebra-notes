@@ -7,7 +7,7 @@
 \end{definition}
 
 \begin{definition}
-  If $f(x) = a_n x^n + \ldots + a_1 x + a_0$, then define $f'(x) \triangleq n a_n x^{n-1} + \ldots + 2a_2 x + a_1$.
+  If $f(x) = a_n x^n + \dots + a_1 x + a_0$, then define $f'(x) \triangleq n a_n x^{n-1} + \dots + 2a_2 x + a_1$.
 \end{definition}
 
 \begin{theorem} \label{thm:multiple-root-condition}
@@ -15,8 +15,8 @@
   in a splitting field are simple if and only if $\gcd(f(x), f'(x)) = 1$.
 
   \begin{proof}
-    ``$\Rightarrow$'': We can write $f(x) = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)$ where
-    $\alpha_i$ are distinct root of $f$. Then $f'(x) = \sum_{i = 1}^n f(x) / (x - \alpha_i)$
+    ``$\Rightarrow$'': We can write $f(x) = (x - \alpha_1) (x - \alpha_2) \dotsm (x - \alpha_n)$ where
+    $\alpha_i$ are distinct roots of $f$. Then $f'(x) = \sum_{i = 1}^n f(x) / (x - \alpha_i)$
     and we have $(x - \alpha_i) \nmid f(x)$ for all $i$.
 
     ``$\Leftarrow$'': Assume $f(x) = (x - \alpha)^k g(x)$ with $k \geq 2$.
@@ -35,34 +35,34 @@
 \end{remark}
 
 \begin{theorem} \label{thm:size-of-finite-field}
-  There is a finite field $K$ with $\abs{K} = q \iff q = p^n$ for some prime $p$ and $n \in \mathbb{N}$.
-  In this situation, $K$ is unique up to isomorphism, denote by $\mathbb{F}_{p^n}$.
+  There is a finite field $K$ with $\abs{K} = q \iff q = p^n$ for some prime $p$ and $n \in \Nb$.
+  In this situation, $K$ is unique up to isomorphism, denote by $\Fb_{p^n}$.
 
   \begin{proof}
-    ``$\Rightarrow$": Let $p = \Char K$ and $[K : \mathbb{Z}/ p\mathbb{Z}] = n$, then $\abs{K} = p^n$.
+    ``$\Rightarrow$": Let $p = \Char K$ and $[K : \Zb/ p\Zb] = n$, then $\abs{K} = p^n$.
 
-    ``$\Leftarrow$": Let $K$ be a splitting field for $f(x) = x^{p^n} - x$ over $\mathbb{F}_p$.
+    ``$\Leftarrow$": Let $K$ be a splitting field for $f(x) = x^{p^n} - x$ over $\Fb_p$.
     We claim that the set of all roots of $f(x)$ forms a field. Since if $\alpha, \beta$ are
     two roots of $f$, obviously $\alpha \beta, \alpha \beta^{-1}$ are also roots,
     and by $(\alpha \pm \beta)^{p^n} = \alpha^{p^n} \pm \beta^{p^n} = \alpha \pm \beta$ because
     $\Char K = p$.
     $\alpha \pm \beta$ are also roots, hence the roots form a field. By definition, $K$
-    is the smallest field containing $\mathbb{F}_p$ and roots of $f(x)$, so
+    is the smallest field containing $\Fb_p$ and roots of $f(x)$, so
     $K$ is exactly the set of roots of $f(x)$.
 
-    Also, $f'(x) = -1$ has no root, so $f(x)$ has no multiple roots which implies $\abs{K} = p^n$.
+    Also, $f'(x) = -1$ has no root, so $f(x)$ has no multiple root which implies $\abs{K} = p^n$.
 
     Moreover, if $K'$ is another finite field with $\abs{K'} = p^n$, then for all $\alpha \in K'$,
     $\alpha^{p^n} = \alpha$, so $\alpha$ is a root of $f(x)$, which implies that $K'$ is
-    a splitting field for $f(x)$ over $\mathbb{F}_p$. By theorem~\ref{thm:two-splitting-field-are-isom},
+    a splitting field for $f(x)$ over $\Fb_p$. By theorem~\ref{thm:two-splitting-field-are-isom},
     $K \cong K'$.
   \end{proof}
 \end{theorem}
 
 \begin{theorem} \label{thm:aut-of-finite-field}
-  Let $n \in \mathbb{N}$ and $\mathbb{F}_q$ be a finite field. Then there exists
+  Let $n \in \Nb$ and $\Fb_q$ be a finite field. Then there exists
   a unique extension $\Fb_{q^n} / \Fb_q$ s.t. $[\Fb_{q^n} : \Fb_q] = n$, and
-  $\Aut \Big( \Fb_{q^n} / \Fb_q \Big) = \langle \sigma_q \rangle$ with
+  $\Aut \Big( \Fb_{q^n} / \Fb_q \Big) = \gen{\sigma_q}$ with
   $\sigma_q = \alpha :: \Fb_{q^n} \mapsto \alpha^q :: \Fb_{q^n}$.
   $\sigma_q$ is called the \emph{\Index{Frobenius homomorphism}}.
 
@@ -86,14 +86,14 @@
     = \alpha^{q} = \alpha$, hence $\sigma_q$ fixes $\Fb_q$.
 
     Finally we prove that the order of $\sigma_q$ is $n$. Assume not, so $\ord(\sigma_q) = m < n$.
-    Then $\sigma_q^m = \mathrm{id} \implies x^{q^m} - x=0$ for each $x \in \Fb_{q^n}$.
+    Then $\sigma_q^m = \Id \implies x^{q^m} - x=0$ for each $x \in \Fb_{q^n}$.
     But $x^{q^m} - x = 0$ has at most $q^m < q^n$ roots, which leads to a contradiction.
   \end{proof}
 \end{theorem}
 
 \begin{remark}
-  By theorem~\ref{thm:finite-subgroup-of-field-is-cyclic}, the multiplication group of $\Fb_q$ is cyclic,
-  so $\Fb_q^\times = \langle \alpha \rangle
+  By theorem~\ref{thm:finite-subgroup-of-field-is-cyclic}, the multiplication group
+  of $\Fb_{q^n}$ is cyclic, so $\Fb_{q^n}^\times = \gen{ \alpha }
   \subseteq \Fb_q(\alpha) \setminus \{0\} \subseteq \Fb_{q^n} \setminus \{0\}$,
   hence $\Fb_{q^n} = \Fb_q(\alpha)$.
 \end{remark}
@@ -111,13 +111,15 @@
 
     Write $f(x) = a_n x^n + \ldots + a_1 x + a_0$, then $f'(x) \equiv 0$ implies $k a_k = 0_{\Fb_p}$ for each $k$,
     which means that if $a_k \neq 0 \implies p \mid k$. So
-    \[ f(x) = a_{mp} x^{mp} + a_{(m-1)p} x^{(m-1)p} + \ldots + a_p x^p + a_0 = (a_{mp} x^m + \ldots + a_p x + a_0)^p \]
+    \[ f(x) = a_{mp} x^{mp} + a_{(m-1)p} x^{(m-1)p} + \dots + a_p x^p + a_0 =
+    (a_{mp} x^m + \ldots + a_p x + a_0)^p. \]
+    But this implies $f(x)$ is reducible, which is a contradiction.
   \end{proof}
 \end{lemma}
 
 \begin{theorem}
-  $x^{p^n} - x$ equals the product of all monic irreducible polynomials in $\Fb_p[x]$ of degree $d$ where
-  $d$ runs through all divisors of $n$.
+  $x^{p^n} - x$ equals the product of all monic irreducible polynomials in
+  $\Fb_p[x]$ of degree $d$ where $d$ runs through all divisors of $n$. i.e.
 
   \begin{proof}
     By lemma, each irreducible polynomial is separable, and if $f(x), g(x) \in \text{RHS}$,
@@ -125,8 +127,9 @@
     LHS is separable since $f' = 1$, so we could prove the equality by checking that
     they have same roots.
 
-    $\text{LHS} \mid \text{RHS}$: $\forall \alpha \in \Fb_{p^n}$, $[\Fb_p(\alpha): \Fb_p] \mid [\Fb_{p^n}: \Fb_p] = n$,
-    thus $\deg m_{\alpha, \Fb_p} \mid n$ and hence $m_{\alpha, \Fb_p}$ appears in RHS.
+    $\text{LHS} \mid \text{RHS}$: $\forall \alpha \in \Fb_{p^n}$,
+    $[\Fb_p(\alpha): \Fb_p] \mid [\Fb_{p^n}: \Fb_p] = n$, thus $\deg m_{\alpha, \Fb_p} \mid n$
+    and hence $m_{\alpha, \Fb_p}$ appears in RHS.
 
     $\text{RHS} \mid \text{LHS}$: Assume $\deg m_{\alpha, \Fb_p} = d \mid n$, then
     $[\Fb_p(\alpha): \Fb_p] = d$, so $\alpha^{p^d} = \alpha$, and hence

@@ -149,7 +149,7 @@ there are no relations satisfied by any of elements in $X$.
   \end{itemize}
   Also $\sigma_y$ is onto since omimi. And notice that $\sigma_{y^{-1}} \circ \sigma_y = id_{F(X)}$
 
-  Define $A = \langle \sigma_x : x \in X \rangle \leq S_{F(X)}$. and define $\phi: F(X) \to A$ by
+  Define $A = \Gen{ \sigma_x : x \in X } \leq S_{F(X)}$. and define $\phi: F(X) \to A$ by
   $\phi(1) = id_{F(X)}$ and \\ $x_1^{\delta_1} \cdots x_m^{\delta_m} \mapsto \sigma_{x_1}^{\delta_1}
   \cdots \sigma_{x_m}^{\delta_m}$. The it is omimi that $\phi$ is a bijection. So we define
   $x::X \cdot y::X = \phi^{-1}( \phi(x) \circ \phi(y) )$.
@@ -159,7 +159,7 @@ there are no relations satisfied by any of elements in $X$.
 \end{proof}
 
 \begin{prop}
-  Let $G = \langle a_1, \cdots , a_n \rangle$ and $X = \{ x_1, \cdots, x_m \}$. Then
+  Let $G = \gen{ a_1, \dots, a_n }$ and $X = \{ x_1, \dots, x_m \}$. Then
   $G \cong \quot{F(X)}{K}$ for some normal subgroup $K$. $K$ is called the subgroup of relations
   connecting the generators.
 
@@ -171,7 +171,7 @@ there are no relations satisfied by any of elements in $X$.
 \begin{definition}
   Let $X = \{x_1, x_2, \cdots, x_n\}$ and $R \subset F(X)$.
   Let $N(R)$ be the smallest normal subgroup of $F(X)$ containing $R$,
-  Then $G = \quot{F(X)}{N(R)}$ is written as $\langle x_1, \cdots, x_n \mid \text{elements of } R \rangle$,
+  Then $G = \quot{F(X)}{N(R)}$ is written as $\Gen{ x_1, \dots, x_n \given \text{elements of } R }$,
   which is called a presentation of $G$. If $\abs{R} < \infty$, then $G$ is said to be finitely
   presented.
 \end{definition}

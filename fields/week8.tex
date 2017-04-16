@@ -185,7 +185,7 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
 \end{definition}
 
 \begin{theorem}[Hilbert theorem 90] \label{thm:Hilbert-theorem-90}
-  Let $L/K$ is cyclic and $G = \langle \sigma \rangle$ with $\ord(\sigma) = n$, then
+  Let $L/K$ is cyclic and $G = \gen{\sigma}$ with $\ord(\sigma) = n$, then
   \begin{enumerate}
     \item $\alpha \in L^\times$ and $N_{L/K}(\alpha) = 1$ $\iff$ $\exists \beta \in L^\times, \alpha = \beta / \sigma(\beta)$.
     \item $\alpha \in L^{\ }$ and $\trace_{L/K}(\alpha) = 0$ $\iff$ $\exists \beta \in L, \alpha = \beta - \sigma(\beta)$.
@@ -225,7 +225,7 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
   $\alpha$ is a root of $x^p - x - a$.
 
   \begin{proof}
-    ``$\Rightarrow$'': Let $\Gal(L/K) = \langle \sigma \rangle$ with $\ord(\sigma) = p$. Then
+    ``$\Rightarrow$'': Let $\Gal(L/K) = \gen{\sigma}$ with $\ord(\sigma) = p$. Then
     $\trace_{L/K}(1) = p = 0$. By theorem~\ref{thm:Hilbert-theorem-90},
     exists $\alpha$ satisfied $1 = \sigma(\alpha) - \alpha$.
     So $\alpha \not\in K$. Then we have $1 < [K(\alpha): K] \bigm| [L: K] = p$,
@@ -241,7 +241,7 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
 
     ``$\Leftarrow$'': Similarly, we know that all roots of $x^p - x - a$
     are $\alpha, \alpha+1, \dots, \alpha+{p-1}$. Define $\sigma(\alpha) = \alpha+1$,
-    then $\sigma^i(\alpha) = \alpha+i$, and thus $\ord(\sigma) = p$. Hence $\Gal(L/K) = \langle \sigma \rangle$.
+    then $\sigma^i(\alpha) = \alpha+i$, and thus $\ord(\sigma) = p$. Hence $\Gal(L/K) = \gen{\sigma}$.
   \end{proof}
 \end{coro}
 
@@ -249,7 +249,7 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
   If $x^2 + d y^2 = 1$ where $-d$ is not a square, then $L \triangleq \Qb(\sqrt{-d})$
   is a splitting field of $x^2 + d$ over $\Qb$,
   so $N_{L/\Qb}(a + b \sqrt{-d}) = a^2 + d b^2$. Since $[L: \Qb] = 2$,
-  the galois group is obviously cyclic and in fact is $\langle \sigma \rangle$,
+  the galois group is obviously cyclic and in fact is $\gen{\sigma}$,
   where $\sigma = (a + b \sqrt{-d}) \mapsto (a - b \sqrt{-d})$.
   By theorem~\ref{thm:Hilbert-theorem-90},
   \[ x^2 + d y^2 = 1 \iff \exists a + b \sqrt{-d} \quad\text{s.t.}\quad x + y \sqrt{-d} = \frac{a+b\sqrt{-d}}{a-b\sqrt{-d}}
@@ -323,7 +323,7 @@ And $\trace(T_\alpha) = -a_{n-1}, \det(T_\alpha) = (-1)^n a_0$.
 
   \begin{proof}
     Case 1: $L/K$ is cyclic (so all finite field is included). \\
-    Let $\Gal(L/K) = \langle \sigma \rangle$ with $\ord(\sigma) = n$. $\sigma$ could be view as
+    Let $\Gal(L/K) = \gen{\sigma}$ with $\ord(\sigma) = n$. $\sigma$ could be view as
     a linear transformation of $L$ over $K$. Thus $\sigma$ gives $L$ a
     $K[x]$-module structure by $(f(x), \alpha) \mapsto f(\sigma)(\alpha)$.
 

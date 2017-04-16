@@ -8,14 +8,14 @@
 \begin{example}
   For an extension $\Fb_{q^n} / \Fb_q$ of a finite field, $\Fb_{q^n}$ is a splitting field of $x^{q^n}-x$
   over $\Fb_p$, so $\Fb_{q^n} / \Fb_q$ is Galois by theorem~\ref{thm:splitting-field-iff-finite-normal}.
-  By theorem~\ref{thm:aut-of-finite-field}, we know that $\Gal(F_{q^n} / F_q) = \langle \sigma_q \rangle$
+  By theorem~\ref{thm:aut-of-finite-field}, we know that $\Gal(F_{q^n} / F_q) = \gen{\sigma_q}$
   is a cyclic group.
 \end{example}
 
 \begin{definition} \hfill
   \begin{itemize}
     \item The cyclotomic field $\Qb(\zeta_n)$ is the splitting field of $x^n - 1$ over $\Qb$.
-    \item $\zeta$ is called an $n$th root of unity if $\zeta^n = 1$. $\mathcal{U} = \langle \zeta \rangle$
+    \item $\zeta$ is called an $n$th root of unity if $\zeta^n = 1$. $\mathcal{U} = \gen{\zeta}$
       is the multiplicative group of $n$th roots of unity.
     \item $\zeta_n$ is called a primitive $n$th root of unity if $\zeta^n = 1$ but $\zeta^m \ne 1, \, \forall 0 < m < n$.
     \item The $n$th cyclotomic polynomial is defined as
@@ -180,7 +180,7 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
   \begin{proof}
     Recall a result proved in HW problem: Distinct automorphisms of $L$ are linearly independent over $L$.
     
-    Let $\Gal(L/K) = \langle \sigma \rangle$ with $\ord(\sigma) = n$. Then
+    Let $\Gal(L/K) = \gen{\sigma}$ with $\ord(\sigma) = n$. Then
     \[ \text{id}_L + \zeta \sigma + \zeta^2 \sigma^2 + \dots + \zeta^{n-1} \sigma^{n-1} \neq 0
       \implies \exists c \in L, \text{ s.t. } \alpha = c + \zeta \sigma(c) + \zeta^2 \sigma^2(c)
       + \dots + \zeta^{n-1} \sigma^{n-1}(c) \neq 0 \]
@@ -224,7 +224,7 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
     $M$ is also the splitting field of $(x^n - a_1) (x^n - a_2) \dotsm (x^n - a_{k-1})$ over $K$
     since $\zeta_n \in K$.
 
-    Now, if $N = \langle \sigma \rangle$, then $G \cong H \times N = \{\sigma^k \tau : 0 \leq k < n, \tau \in H\}$.
+    Now, if $N = \gen{\sigma}$, then $G \cong H \times N = \{\sigma^k \tau : 0 \leq k < n, \tau \in H\}$.
     Since automorphisms are linear independent, exists $c \in L$ satisfied
     \[ 0 \neq \alpha = \sum_{\tau \in H} \tau(c) + \zeta \sum_{\tau \in H} \sigma \tau(c)
     + \dots + \zeta^{n-1} \sum_{\tau \in H} \sigma^{n-1} \tau(c) \]
