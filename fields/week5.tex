@@ -233,7 +233,7 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
     \[ 0 \neq \alpha = \sum_{\tau \in H} \tau(c) + \zeta \sum_{\tau \in H} \sigma \tau(c)
     + \dots + \zeta^{n-1} \sum_{\tau \in H} \sigma^{n-1} \tau(c) \]
     Then $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in M$. Also $\sigma(\alpha^n) = \alpha^n$
-    and $\tau(\alpha^n) = \tau(\alpha)^n = \alpha^n$, so $a_k \alpha^n \in K$.
+    and $\tau(\alpha^n) = \tau(\alpha)^n = \alpha^n$, so $a_k \triangleq \alpha^n \in K$.
     Thus $M(\alpha)$ is a splitting field of $(x^n - a_k)$ over $M$.
 
     Finally, $n = [L: M] \geq [M(\alpha): M] = \abs{\Gal(M(\alpha) / M)} \geq n$,
@@ -247,9 +247,9 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
 
   \begin{proof}
     Let $L$ be the splitting field of $(x^n - a_1)(x^n - a_2) \dotsm (x^n - a_k)$ with $\alpha_i = \sqrt[n]{a_i}$.
-    If $\sigma \in \Gal(L/k)$, then $\sigma$ sends each $\alpha_i$ to some $\zeta^{k_{\sigma, i}} \alpha_i$.
-    So $\sigma^n = \alpha_i \mapsto \zeta^{k_{\sigma, i} n} \alpha_i = \alpha_i \mapsto \alpha_i = \mathrm{id}$
-    and $\sigma \circ \tau = \alpha_i \mapsto \zeta^{k_{\sigma, i} k_{\tau, i}} \alpha_i = \tau \circ \sigma$.
+    If $\sigma \in \Gal(L/K)$, then $\sigma$ sends each $\alpha_i$ to some $\zeta^{k_{\sigma, i}} \alpha_i$.
+    So $\sigma^n = \alpha_i \mapsto \zeta^{k_{\sigma, i} n} \alpha_i = \alpha_i \mapsto \alpha_i = \Id$
+    and $\sigma \circ \tau = \alpha_i \mapsto \zeta^{k_{\sigma, i} + k_{\tau, i}} \alpha_i = \tau \circ \sigma$.
     by the fact that  $\Set{\alpha_i}$ is the generating set of $L$. Hence $\Gal(L/K)$ is abelian and of
     exponent dividing $n$.
   \end{proof}
@@ -258,21 +258,24 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
 \subsubsection{Cubic equations}
 
 \begin{lemma}
-  Let $\Char K \neq 2$ and $f(x) \in K[x]$ with $\deg f = n$. Let $L = K(\alpha_1, \dots, \alpha_n)$ be
-  a splittig field of $L$ over $K$.
+  Let $\Char K \neq 2$ and $f(x) \in K[x]$ with $\deg f = n$. Let
+  $L = K(\alpha_1, \dots, \alpha_n)$ be a splitting field of $L$ over $K$.
 
-  Define $\delta = \prod_{1 \leq i < j \leq n} (\alpha_i - \alpha_j)$, then $L^{\Gal(L/K) \cap A_n} = K(\delta)$
-  Here $\Gal(L/K) \hookrightarrow S_n$.
+  Define $\delta = \prod\limits_{1 \leq i < j \leq n} (\alpha_i - \alpha_j)$, then
+  $L^{\Gal(L/K) \cap A_n} = K(\delta)$.  (Here $\Gal(L/K) \toone S_n$)
 
   \begin{proof}
-    Notice that any transposition maps $\delta$ to $-\delta$, so $\forall \sigma \in \Gal(L/K) \cap A_n$,
-    $\sigma(\delta) = \delta$, thus $K(\delta) \subseteq L^{\Gal(L/K) \cap A_n}$.
+    Notice that any transposition maps $\delta$ to $-\delta$, so
+    $\forall \sigma \in \Gal(L/K) \cap A_n$, $\sigma(\delta) = \delta$, thus
+    $K(\delta) \subseteq L^{\Gal(L/K) \cap A_n}$.
 
     Now, $\big| \quot{\Gal(L/K)}{\Gal(L/K) \cap A_n} \big|$ is either $1$ or $2$.
-    If it is $1$, then $\Gal(L/K) \leq A_n$ ,thus $\delta \not\in K$ and is trivial.
-    So assume it is $2$, then $\delta$ is not fixed by all permutation, thus $\delta \in K$.
-    We have $2 = \big| \Gal \big( L^{\Gal(L/K) \cap A_n}/K \big) \big| = [L^{\Gal(L/K) \cap A_n}: K] = 2
-    = [K(\delta): K]$, thus $K(\delta) = L^{\Gal(L/K) \cap A_n}$.
+    If it is $1$, then $\Gal(L/K) \leq A_n$ ,thus $\delta \in K$ and is trivial.
+    Assume it is $2$, then $\delta$ is not fixed by all permutation, thus
+    $\delta \not\in K$. But $D = \delta^2 \in K$ is the discriminant. So we have
+    $2 = [K(\delta): K] \le [L^{\Gal(L/K) \cap A_n}: K] =
+    \abs*{\Gal \big( L^{\Gal(L/K) \cap A_n}/K \big)} = 2$, thus
+    $K(\delta) = L^{\Gal(L/K) \cap A_n}$.
   \end{proof}
 \end{lemma}
 
@@ -285,10 +288,12 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
 \end{prop}
 
 \begin{definition}
-  $H \leq S_n$ is said to be transitive if for any $i, j$, exists $\sigma \in H$ such that $\sigma(i) = j$.
+  $H \leq S_n$ is said to be transitive if for any $i, j$, there exists
+  $\sigma \in H$ such that $\sigma(i) = j$.
 \end{definition}
 
 \begin{fact}
   Let $f(x)$ be a separable polynomial with degree $n$, then
-  \[ f(x) \text{ is irreducible} \iff \text{ The Galois group of } f \text{ is transitive in } S_n \]
+  \[ f(x) \text{ is irreducible} \iff
+  \text{ The Galois group of } f \text{ is transitive in } S_n \]
 \end{fact}
