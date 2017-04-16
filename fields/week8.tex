@@ -19,7 +19,6 @@
   \begin{proof}
     Pick any transcendence base $S = \{s_1, \dots, s_n\}$ for $L/K$.
     Let $T$ be another transcendence base for $L/K$.
-
     First we deal with the case which $S$ is finite.
 
     We claim that $\exists t_1 \in T$ such that
@@ -31,7 +30,7 @@
       Then $L/K(s_2, \dots, s_n)$ is algebraic, which is a contradiction ($s_1$ is not).
     \end{proof}
     By the claim, $\Set{t_1, s_2, \dots, s_n}$ is algebraic indepedent.
-    Also, there exists $f \ne 0$ in $K[x_1, \dots, x_{n+1}]$ s.t.
+    Also, there exists $f \ne 0$ in $K[x_1, \dots, x_{n+1}]$ such that
     $f(t_1, s_1, \dots, s_n) = 0$ since $t_1$ is algebraic over $K(s_1, \dots, s_n)$.
     Since $\Set{s_1, \dots, s_n}$ and $\Set{t_1, s_2, \dots, s_n}$ are both
     algebraically indepedent, $t_1, s_1$ must occur in $f$ $\implies$
@@ -65,7 +64,7 @@
         T_{s_1}' = T_{s_1} \\
         T_{s}' = T_s \setminus \bigcup_{l < s} T_l
       \end{cases}
-      \quad \leadsto \quad
+      \quad \implies \quad
       \Set{ T_s' }_{s\in S} \text{~are mutually disjoint}
     \]
     For all $T_s'$, choose a fixed ordering of the elements in $T_s'$, says

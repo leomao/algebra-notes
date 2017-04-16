@@ -210,6 +210,7 @@
 
       \item By the fact that $(ab \in I \implies a \in I \text{ or } b \in I) \iff
         (\bar{a}\bar{b} = 0 \implies \bar{a} = 0 \text{ or } \bar{b} = 0)$ the proof is complete.
+        \qedhere
     \end{enumerate}
   \end{proof}
 \end{prop}
@@ -231,19 +232,20 @@
 \begin{theorem} \label{thm:field-ext-1}
   Let $f(x) \in K[x]$ be monic, irreducible and of degree $n$. Then there exists
   $L / K$ and $\alpha \in L$ s.t. $f(\alpha) = 0, L = K(\alpha)$ and $[L: K] = n$.
+  \begin{proof}
+    Since $f(x)$ is irreducible, by prop. \ref{prop:irr-to-max-ideal}
+    $\langle f(x) \rangle$ is a maximal ideal. Then by prop.
+    \ref{prop:max-prime-to-field-int-domain} $L = K[x] / \langle f(x) \rangle$ is a field,
+    and $K$ is a subfield of $L$ by the inclusion map $\alpha \mapsto \bar\alpha$.
+    The map is 1-1 since $\bar{1} \neq 0$ and a field homomorphism is either a
+    1-1 map or a zero（全洪）map.
+
+    Notice that $L \cong K[\bar{x}]$, where $\bar{x}$ is the coset $x + \langle f(x) \rangle$.
+    Now let $\alpha = \bar{x}$, and it is easy to see that $f(\alpha) = f(x) + \langle f(x) \rangle = 0$.
+    Also $L \cong K[\bar{x}] \cong K(\alpha)$. Finally, $m_{\alpha, K} \mid f$ and by the fact that
+    $f$ is monic and irreducible, $m_{\alpha, K} = f$ and thus $[L: K] = \deg m_{\alpha, K} = \deg f = n$.
+  \end{proof}
 \end{theorem}
-
-\begin{proof}
-  Since $f(x)$ is irreducible, by prop. \ref{prop:irr-to-max-ideal} $\langle f(x) \rangle$ is a maximal ideal.
-  Then by prop. \ref{prop:max-prime-to-field-int-domain} $L = K[x] / \langle f(x) \rangle$ is a field, and $K$ is a subfield
-  of $L$ by the inclusion map $\alpha \mapsto \bar\alpha$. The map is 1-1 since $\bar{1} \neq 0$ and
-  a field homomorphism is either a 1-1 map or a zero（全洪）map.
-
-  Notice that $L \cong K[\bar{x}]$, where $\bar{x}$ is the coset $x + \langle f(x) \rangle$.
-  Now let $\alpha = \bar{x}$, and it is easy to see that $f(\alpha) = f(x) + \langle f(x) \rangle = 0$.
-  Also $L \cong K[\bar{x}] \cong K(\alpha)$. Finally, $m_{\alpha, K} \mid f$ and by the fact that
-  $f$ is monic and irreducible, $m_{\alpha, K} = f$ and thus $[L: K] = \deg m_{\alpha, K} = \deg f = n$.
-\end{proof}
 
 \begin{theorem}
   Let $f(x) \in K[x]$ be of degree $n > 0$. Then there exists $L/K$ s.t. $f$
