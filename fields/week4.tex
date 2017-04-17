@@ -99,7 +99,7 @@
     First we prove that $[L: L^G] \leq \abs{G}$ by contradiction.
     Assume $\abs{G} < [L: ^G]$. \\
     Let $G = \{\sigma_1, \sigma_2, \dots, \sigma_n\}$ and $\alpha_1, \alpha_2, \dots, \alpha_{n+1} \in L$
-    with $\Set{\alpha_i}$ are linear independent over $L^G$.
+    with $\Set{\alpha_i}$ are linearly independent over $L^G$.
 
     Consider the equations
     \[
@@ -133,7 +133,7 @@
       \right.
     \]
     By multipling $a_m^{-1}$, we could assume $a_m = 1$. The equation about $\sigma_1$ gives
-    $\alpha_1 a_1 + \dots + \alpha_m a_m = 0$, since $\alpha_i$ is linear independent,
+    $\alpha_1 a_1 + \dots + \alpha_m a_m = 0$, since $\alpha_i$ is linearly independent,
     one of $\Set{a_i}$, say $a_k$ is not in $L^G$, and thus there exists $t$
     such that $\sigma_t(a_k) \neq a_k$. Apply $\sigma_t$ to each equation, we have
     \[ \sigma_t\sigma_i(\alpha_1) \sigma_t(a_1) + \dots + \sigma_t \sigma_i(\alpha_m) \sigma_t(a_m) = 0,\quad
@@ -277,9 +277,9 @@
 \end{theorem}
 
 \begin{remark}
-  If $L/K$ is Galois and $N/K$ is finite, then $[NL: K] = [N: K][L: K] / [N \cap L: K]$.
+  If $L/K$ is Galois and $N/K$ is finite, then $[LN: K] = [L: K][N: K] / [L \cap N: K]$.
   \begin{proof}
-    \[ [NL: K]/[N:K] = [NL: L] = \Gal(NL/L) = \Gal(L / N \cap L) = [L: N \cup L] = [L: K]/[N \cap L: K] \]
+    \[ [LN: K]/[N:K] = [LN: N] = \Gal(LN/N) = \Gal(L / L \cap N) = [L: L \cap N] = [L: K]/[L \cap N: K] \]
     and the proof is completed.
   \end{proof}
 \end{remark}

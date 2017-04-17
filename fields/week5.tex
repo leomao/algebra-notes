@@ -61,7 +61,7 @@
         and show that $f(\zeta_n^k) = 0$ for any $\gcd(k, n) = 1$, thus $f = \Phi_n$.
       \end{proof}
     \item $\Qb(\zeta_n) / \Qb$ is Galois with $[\Qb(\zeta_n): \Qb] = \deg \Phi_n = \varphi(n)$.
-    \item $\Gal(\Qb(\zeta_n) / \Qb) \cong \Fb_n^\times$.
+    \item $\Gal(\Qb(\zeta_n) / \Qb) \cong (\quot{\Zb}{n\Zb})^\times$.
 
       \begin{proof}
         Let $\sigma_k = (\zeta_n \mapsto \zeta_n^k) \in \Gal(\Qb(\zeta_n) / \Qb)$.
@@ -86,9 +86,9 @@
     \item For $H \leq \Gal(\Qb(\zeta_p) / \Qb)$, we shall find $\Qb(\zeta_p)^H$.
       Let $\alpha = \sum_{\tau \in H} \tau(\zeta_p)$, then it is easy to
       see that $\alpha \in \Qb(\zeta_p)^H$. Also, since $[\Qb(\zeta_p): \Qb] = p-1$,
-      $\zeta_p, \zeta_p^2, \dots, \zeta_p^{p-1}$ is linear independent,
+      $\zeta_p, \zeta_p^2, \dots, \zeta_p^{p-1}$ is linearly independent,
       so if some $\sigma \in G$ satisfy $\sigma(\alpha) = \alpha$, then since
-      both $\sigma(\alpha), \alpha$ are a sum of linear independent elements,
+      both $\sigma(\alpha), \alpha$ are a sum of linearly independent elements,
       $\sigma$ must send $\zeta_p$ to an element $\tau(\zeta_p)$ for some $\tau \in H$,
       then $\sigma = \tau \implies \sigma \in H$. Thus $\Qb(\zeta_p)^H = \Qb(\alpha)$.
   \end{itemize}
@@ -229,7 +229,7 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
     since $\zeta_n \in K$.
 
     Now, if $N = \gen{\sigma}$, then $G \cong H \times N = \{\sigma^k \tau : 0 \leq k < n, \tau \in H\}$.
-    Since automorphisms are linear independent, exists $c \in L$ satisfied
+    Since automorphisms are linearly independent, exists $c \in L$ satisfied
     \[ 0 \neq \alpha = \sum_{\tau \in H} \tau(c) + \zeta \sum_{\tau \in H} \sigma \tau(c)
     + \dots + \zeta^{n-1} \sum_{\tau \in H} \sigma^{n-1} \tau(c) \]
     Then $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in M$. Also $\sigma(\alpha^n) = \alpha^n$
