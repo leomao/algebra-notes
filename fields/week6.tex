@@ -197,23 +197,25 @@
   If $K = F(s_1, \dots, s_n) \subset L$, then $L/K$ is Galois and
   $\Gal(L/K) \cong S_n$.
 
-  write $f(x) = (x - x_1) \cdots (x - x_n) = x^n - s_1x^{n-1} + s_2x^{n-2} -
-  \dots + (-1)^ns_n \in K[x]$.
-  Clearly, $L$ is a splitting field of $f$ over $K \leadsto L/K$ is Galois
-  and $\Gal(L/K) \toone S_n$.
+  \begin{proof}
+    write $f(x) = (x - x_1) \cdots (x - x_n) = x^n - s_1x^{n-1} + s_2x^{n-2} -
+    \dots + (-1)^ns_n \in K[x]$.
+    Clearly, $L$ is a splitting field of $f$ over $K \leadsto L/K$ is Galois
+    and $\Gal(L/K) \toone S_n$.
 
-  Now, for $\sigma \in S_n$, $\sigma$ can be regarded as an element in
-  $\Gal(L/K)$:
-  \[
-    \arraycolsep=1pt
-    \begin{array}{rcl}
-      \sigma: & L & \to L \\
-              & x_i & \mapsto x_{\sigma(i)}
-    \end{array}
-  \]
-  Since $\Set{ \sigma(x_1), \dots, \sigma(x_n) } = \Set{ x_1, \dots, x_n }
-  \leadsto \sigma(s_i) = s_i \quad \forall i \leadsto \sigma\big|_K = \Id_K
-  \leadsto \sigma \in \Gal(L/K)$.
+    Now, for $\sigma \in S_n$, $\sigma$ can be regarded as an element in
+    $\Gal(L/K)$:
+    \[
+      \arraycolsep=1pt
+      \begin{array}{rcl}
+        \sigma: & L & \to L \\
+                & x_i & \mapsto x_{\sigma(i)}
+      \end{array}
+    \]
+    Since $\Set{ \sigma(x_1), \dots, \sigma(x_n) } = \Set{ x_1, \dots, x_n }
+    \leadsto \sigma(s_i) = s_i \quad \forall i \leadsto \sigma\big|_K = \Id_K
+    \leadsto \sigma \in \Gal(L/K)$.
+  \end{proof}
 \end{lemma}
 
 \begin{coro}
