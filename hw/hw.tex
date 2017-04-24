@@ -143,6 +143,12 @@
 \renewcommand{\abstractname}{\LARGE Abstract}
 
 %%%%%%%%symbol and function settings%%%%%%%%%
+% adjust \exists and \forall spacing
+\let\existstemp\exists
+\let\foralltemp\forall
+\renewcommand*{\exists}{\existstemp\mkern4mu}
+\renewcommand*{\forall}{\foralltemp\mkern4mu}
+
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\inpd}{\langle}{\rangle} % inner product
@@ -226,6 +232,7 @@
 \DeclareMathOperator{\PDer}{PDer}
 \DeclareMathOperator{\Ext}{Ext}
 %
+\DeclareMathOperator{\Jac}{Jac}
 
 \newcommand{\ob}{\overline}
 \DeclareMathOperator{\ord}{ord}
@@ -332,6 +339,8 @@
 \include{week6}
 \include{week7}
 \include{week8}
+\include{week9}
+\include{week10}
 
 %\printindex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
