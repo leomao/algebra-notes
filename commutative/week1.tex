@@ -1,0 +1,80 @@
+%! TEX root=../main.tex
+\section{Commutative Algebra}
+
+\subsection{ED, PID and UFD}
+
+We shall consider $R$ to be a integral domain below.
+\begin{definition}
+  A function $N: R \to \Nb$ with $N(0) = 0$ is called a norm on $R$.
+\end{definition}
+
+\begin{definition}
+  $R$ is called a Euclidean domain if exists a norm $N$ on $R$
+  satisfy
+  \[ \forall a, b \in R, \ \exists q, r \in R \text{ s.t. } a = qb + r \text{ with } r = 0 \text{ or } N(r) < N(b) \]
+\end{definition}
+
+\begin{example} \hfill
+  \begin{itemize}
+    \item $\Zb$ is a ED with $N(n) = \abs{n}$.
+    \item $K[x]$ is a ED with $N(f) = \deg f, \, \forall f \in K[x]$.
+  \end{itemize}
+\end{example}
+
+\begin{definition}
+  $A_d$ is defined to be the ring of integers in the quadratic field $\Qb(\sqrt{d})$
+  with $d \neq 1$ and $d$ is square-free. That is,
+  \[ A_d \triangleq \Set{ \alpha \in \Qb(\sqrt{d}) \mid \alpha \text{ is integral over } \Zb} \]
+\end{definition}
+
+\begin{theorem} \hfill
+  \begin{itemize}
+    \item If $d \equiv 1 \pmod{4}$, then
+      \[ A_d = \big\{ a + b \frac{1 + \sqrt{d}}{2} : a, b \in \Zb \big\} \]
+    \item Else, $d \equiv 2, 3 \pmod{4}$, then
+      \[ A_d = \big\{ a + b \sqrt{d} : a, b \in \Zb \big\} \]
+  \end{itemize}
+\end{theorem}
+
+\begin{theorem}
+  $A_d$ is a ED if $d = 2, 3, 5, -1, -2, -3, -7, -11$. Hence $A_d$ is also PID and UFD.
+\end{theorem}
+
+\begin{example}
+  $A_{-5}$ is not a ED.
+
+  \begin{proof}
+    Consider $6 = 2 \cdot 3 = (1 + \sqrt{-5})(1 - \sqrt{-5})$.
+    Notice that $1 + \sqrt{-5}$ is irreducible, since if $1 + \sqrt{-5} = \alpha \beta$,
+    then $6 = N(1 + \sqrt{-5}) = N(\alpha) N(\beta)$. But there is
+    $a^2 + 5b^2 = 2 \text{ or } 3$ has no integer solution.
+    Also $1 + \sqrt{-5} \nmid 2, 3$. Since if $(1 + \sqrt{-5}) \alpha = 2$,
+    then $N(1 + \sqrt{-5}) N(\alpha) = N(2)$, but $N(1 + \sqrt{-5}) = 6$.
+  \end{proof}
+\end{example}
+
+\subsubsection{$A_{-1}$ and $A_{-3}$}
+First, $\alpha$ is a unit $\iff$ $N(\alpha) = 1$.
+so we have:
+\begin{itemize}
+  \item $A_{-1}$: $\pm 1, \pm \mathrm{i}$.
+  \item $A_{-3}$: $\pm 1, \pm \omega, \pm \omega^2$.
+\end{itemize}
+
+If $\alpha$ is a prime in $A_{-1}$ or $A_{-3}$, then $N(\alpha) = p \text{ or } p^2$ for some prime integer $p$.
+
+Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
+
+\begin{definition}
+  If $p$ is add and $a \not\equiv 0 \pmod{p}$, then
+  \begin{itemize}
+    \item If $x^2 \equiv a \pmod{p}$ is solvable, then define $\left( \frac{a}{p} \right) = 1$.
+    \item Else $x^2 \equiv a \pmod{p}$ is not solvable and define $\left( \frac{a}{p} \right) = -1$.
+  \end{itemize}
+\end{definition}
+
+\begin{prop} \hfill
+  \begin{itemize}
+    \item $a \equiv b \pmod{p} \implies \left( \frac{a}{p} \right) = \left( \frac{b}{p} \right)$.
+  \end{itemize}
+\end{prop}
