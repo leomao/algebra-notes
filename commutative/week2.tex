@@ -1,0 +1,58 @@
+%! TEX root=../main.tex
+\subsection{The equivalence of algebra and geometry}
+
+\begin{definition}
+  Let $k$ be an algebraically closed field.
+  The category of affine algebraic sets $\mathbb{g}$, which its objects and morphisms are defined as following.
+
+  An affine algebraic set is the common zero set in $k^n$ of $\{ F_i \}_{i \in \Lambda} \subset k[x_1, \dots, x_n]$.
+  We denote it by $V = v(\Set{F_i}_{i \in \Lambda}) \subset k^n$. (In fact, $V = v(\langle F_i : i \in \Lambda \rangle)
+  = I = \langle F_1, \dots, F_n \rangle$.)
+
+  These objects define closed sets in a topology, called the Zariski topology. We denote the
+  topological space $k^n$ by $\mathbb{A}^n_k$.
+
+  The morphisms is defined by
+  \[ \deffunc{}{k^n}{k^m}{\alpha}{(F_1(\alpha), \dots, F_m(\alpha))} \text{ where } F_i \in k[x_1, \dots, x_n] \]
+  
+  Given two affine algebraic sets $V \subset k^n$ and $W \subset k^m$, a map $F: V \to W$ is a morphism
+  if it is the restriction of a polynomial map from $k^n$ to $k^m$.
+  ($V \cong W$ if $F: V \to W$ and $G : W \to V$ satisfy $F \circ G = \Id$ and $G \circ F = \Id$.)
+\end{definition}
+
+
+
+\begin{definition}
+  The category of finitely generated reduced $k$-algebra $\mathcal{A}$.
+  A finitely generated $k$-algebra $R$ is reduced if $R$ has no nilpotent elements.
+
+  \[
+    \begin{array}{ccc}
+      \Set{ \text{affine algebraic sets in } \mathbb{A}^n_k } & \leftrightarrow & \Set{ \text{ radical ideals in } k[x_1, \dots, x_n]}
+    \end{array}
+  \]
+\end{definition}
+
+\begin{lemma}
+  Given $T/S/R$. If $T/S$ is a module finite and $T/R$ is a ring finite, then $S/R$ is a ring finite.
+\end{lemma}
+
+\begin{lemma}
+  If $S = k(z_1, \dots, z_p), \, p > 0$ with each $z_i$ variable, then $S/k$ is not ring finite.
+\end{lemma}
+
+\begin{lemma}
+  If $A/k$ is an extension of fields and ring finite, then $A/k$ is algebraic.
+\end{lemma}
+
+\begin{theorem}[Hilbert Nullstellensatz]
+  \[ I \subsetneq k[x_1, \dots, x_n] \implies v(I) \neq \varnothing \]
+\end{theorem}
+
+\begin{theorem}
+  $\mathcal{I}(v(I)) = \sqrt{I}$
+\end{theorem}
+
+\begin{definition}
+  Let $V \in \mathcal{G}$, the coordinate ring of $V$ is $k[V] \triangleq k[x_1, \dots, x_n] / \mathcal{I}(V)$
+\end{definition}
