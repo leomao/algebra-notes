@@ -5,8 +5,11 @@
 
 \begin{definition} \hfill
   \begin{itemize}
-    \item $L / K$ is called an field extension if $L$ is a field and $K$ is a subfield of $L$.
-    \item $L / K$ is called an algebraic extension if $\forall \alpha \in L, \exists f(x) \in K[x]$
+    \item $L / K$ is called an {\bf field extension}\index{Field extension} if $L$ is a field and $K$ is a subfield of $L$.
+    \item $\alpha \in L$ is {\bf algebraic}\index{algebraic element}
+      over $K$ if exists $f(x) \in K[x]$ satisfied $f(\alpha) = 0$.
+    \item $L / K$ is called an {\bf algebraic extension} \index{Field extension!algebraic extension}
+      if $\forall \alpha \in L, \exists f(x) \in K[x]$
       such that $f(\alpha) = 0$.
     \item $K(\alpha_1, \alpha_2, \dots, \alpha_n) \triangleq \big\{ P(\alpha_1, \dots, \alpha_n)
       / Q(\alpha_1, \dots, \alpha_n) : P, Q \in K[x_1, x_2, \dots, x_n] \text{ and } Q \neq 0 \big\}$
@@ -19,6 +22,7 @@
   and $p^2 \nmid a_0$, then $f$ is irreducible.
 
   \begin{proof}
+    Since $f$ is primitive, by Gauss lemma, we only need to prove that it is irreducible in $\Qb[x]$.
     Consider $\bar{f}(x)$, by assumption, $\bar{f}(x) = \bar{a}_n x^n$. So if $f(x) = g(x) h(x)$
     with $\deg g, \deg h \geq 1$, let $g(x) = b_r x^r + \dots + b_0, h(x) = c_{n-r} x^{n-r} + \dots + c_0$,
     then $\bar{g}(x) = \bar{b}_r x^r, \bar{h}(x) = \bar{c}_{n-r} x^{n-r}$ for some
@@ -68,7 +72,7 @@
     Subsitute $\alpha$ and we get $1/h(\alpha) = a(\alpha)$, hence $\beta = g(\alpha) a(\alpha) \in K[\alpha]$.
 
     (2) $\Rightarrow$ (1): Since $1 / \alpha \in K[\alpha]$, thus $1 / \alpha = f(\alpha)$ for some
-    polynomial $f$, hence if $g(x) = xf(x) - 1, g(\alpha) = 0$ which implies $\alpha$ is algebraic.
+    polynomial $f$, hence if we set $g(x) = xf(x) - 1$, $g(\alpha) = 0$ which implies $\alpha$ is algebraic.
 
     (1) $\Rightarrow$ (3): Assume that $\deg m_{\alpha, K} = n$, it is easy to see that
     $K[\alpha] = \gen{ 1, \alpha, \dots, \alpha^{n-1} }_K$. Since (1) $\implies$ (2),
@@ -114,7 +118,7 @@
 
 \begin{prop}
   $[L: K] < \infty$ if and only if $L = K(\alpha_1, \alpha_2, \dots, \alpha_n)$ with each $\alpha_i$
-  algebraic over $K$. In this case, $L / K$ is algebraic (but the other side may not hold).
+  algebraic over $K$. In this case, $L / K$ is algebraic.
 
   \begin{proof}
     ``$\Rightarrow$'': Let $[L: K] = n$, so there is a basis $\{ \alpha_1, \alpha_2, \dots, \alpha_n \}$
@@ -283,6 +287,11 @@
 
 \begin{example}
   Find a splitting field $L$ for $x^8 - 2$ over $\Qb$ and determine $[L : \Qb]$.
+
+  The roots are $\alpha \zeta^k$ where $\alpha = \sqrt[8]{2}$ and $\zeta = e^{2 \pi \mathrm{i} / 8}$.
+  But $\zeta = \sqrt{2}(1 + \mathrm{i}) / 2$ where $\sqrt{2} = \alpha^4$,
+  so we know that $L = \Qb(\alpha, \zeta) = \Qb(\alpha, \mathrm{i})$.
+  Thus $[L: \Qb] = [\Qb(\alpha, \mathrm{i}): \Qb(\alpha)][\Qb(\alpha): \Qb] = 2 \cdot 8 = 16$.
 \end{example}
 
 \begin{remark}
@@ -354,11 +363,7 @@
 \end{theorem}
 
 \begin{coro}
-  Let $\tau: K \to K'$ be an isomorphism of fields, and
+  Let $\tau: K \xrightarrow\sim K'$ be an isomorphism of fields, and
   $L$ is a splitting field of $f$ over $K$, $L'$ is a splitting field of $\bar\tau(f)$ over $K'$.
-  Then $\tau$ could be extend to $\sigma: L \to L'$ such that $\sigma\big|_K = \tau$.
+  Then $\tau$ could be extend to $\sigma: L \xrightarrow\sim L'$ such that $\sigma\big|_K = \tau$.
 \end{coro}
-
-\begin{example}
-  $L = \Qb(\sqrt{2}, \sqrt{3})$.
-\end{example}
