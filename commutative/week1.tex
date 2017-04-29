@@ -86,3 +86,224 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
     \item $I$ is radical if $\sqrt{I} = I$.
   \end{itemize}
 \end{definition}
+
+\begin{definition}
+  The {\bf nilradical}\index{nilradical} is defined as $\sqrt{\langle 0 \rangle} \triangleq
+  \Set{ a \in R \mid a^n = 0 \text{ for some } n \in \Nb}$.
+  Elements in it are called nilpotent.
+\end{definition}
+
+\begin{prop}
+  $\sqrt{ \langle 0 \rangle } = \bigcap_{P \in \Spec R} P$, where $\Spec R$ is the set of prime
+  ideals in $R$.
+
+  \begin{proof}
+    ``$\subset$'': Notice that $a^n = 0 \in P$ for any prime ideal $P$. By the definition of
+    prime ideal, either $a \in P$ or $a^{n-1} \in P$. No matter which, eventually we would get
+    $a \in P$.
+
+    ``$\supset$'':
+    Let $\mathcal{S} \triangleq \Set{ I : \text{ ideal in } R \mid a^n \not\in I, \, \forall n \in \Nb}$.
+    By the routine argument of Zorn's lemma, exists maximal element $Q$ in $\mathcal{S}$.
+    We claim that $\mathcal{S}$ is a prime ideal.
+
+    For each $x, y \not\in Q$, we have $Q + Rx \supsetneq Q$ and $Q + Ry \supsetneq Q$.
+    By the maximality of $Q$, these two ideals are not in $\mathcal{S}$.
+    So exists $n, m$ such that $a^n \in Q + Rx,\, a^m \in Q + Ry$ which implies
+    $a^{n+m} \in Q + Rxy$, so $Q + Rxy \not\in \mathcal{S}$, thus $xy \not\in Q$,
+    hence $Q$ is prime.
+  \end{proof}
+\end{prop}
+
+\begin{coro} \label{coro:equation-of-sqrt-ideal}
+  \[ \sqrt{I} = \bigcap_{\substack{P \supset I \\ P \in \Spec R}} P \]
+
+  \begin{proof}
+    Notice that $\Spec \quot{R}{I} = \Set{P \in \Spec R \mid R \subset I}$.
+    By the proposition above,
+    \[ \sqrt{\langle \bar0 \rangle} = \bigcap_{\bar{P} \in \Spec \quot{R}{I}} \bar{P}
+      \quad \implies \quad \sqrt{I} = \bigcap_{\substack{P \supset I \\ P \in \Spec R}} P \]
+    \end{proof}
+\end{coro}
+
+\begin{definition}
+  An ideal $q$ of $R$ is called primary if $q \neq R$ and ``$xy \in q$ and $x \not\in q$''
+  implies $y^n \in q$ for some $n \in \Nb$.
+\end{definition}
+
+\begin{prop} \hfill
+  \begin{itemize}
+    \item $\text{prime} \implies \text{primary}$.
+    \item $\sqrt\text{primary} \implies \text{prime}$. Also, if $q$ is primary, then $p = \sqrt{q}$
+      is the smallest prime ideal containing $q$, we say $q$ is $p$-primary.
+  \end{itemize}
+
+  \begin{proof}
+    The first one is obvious.
+
+    If $q$ is primary and $\sqrt{q} = p$. For any $xy \in p$ and $x \not\in p$,
+    there exists $n$ so that $x^n y^n \in q$, and for this $n$, $x^n \not\in q$.
+    Thus $(y^n)^m \in q$ for some $m$, hence $y \in p$. We conclude that $p$ is a prime ideal.
+
+    Finally, by corollary~\ref{coro:equation-of-sqrt-ideal},
+    \[ p = \sqrt{q} = \bigcap_{\substack{P \supset q \\ P \in \Spec R}} P \subset P, \quad \forall P \text{ prime }, \]
+    thus $p$ is indeed the smallest.
+  \end{proof}
+\end{prop}
+
+\begin{example}
+  The primary ideals in $\Zb$ are $\langle 0 \rangle$ and $\langle p^m \rangle$
+  where $p$ is a prime.
+
+  \begin{proof}
+    If $q = \langle a \rangle$ is primary, then $\sqrt{q} = \langle p \rangle$ is
+    prime, and $p^n \in \langle a \rangle$. So $ab = p^n$ which implies $a = p^m$
+    for some $m$.
+  \end{proof}
+\end{example}
+
+\begin{definition}
+  An ideal $I$ is said to be {\bf irreducible} \index{Ideal!irreducible}
+  if $I = q_1 \cap q_2 \implies I = q_1 \lor I = q_2$.
+\end{definition}
+
+\begin{definition}
+  Define $(I: x) = \Set{ a \in R \mid ax \in I}$.
+\end{definition}
+
+\begin{theorem} \label{thm:noeth-irr-ideal-is-primary}
+  In a Noetherian ring $R$, every irreducible ideal $I$ is primary.
+
+  \begin{proof}
+    Let $xy \in I$ and $x \not\in I$. Consider $(I : y) \subseteq (I: y^2) \subseteq \dotsm$.
+    Since $R$ is Noetherian, exists $n$ such that $(I: y^n) = (I: y^m)$ for any $m \geq n$.
+
+    We claim that $I = (I + Ry^n) \cap (I + Rx)$.
+    \begin{itemize}
+      \item ``$\subset$'': Obvious.
+      \item ``$\supset$'': For any $b \in (I + ry^n) \cap (I + Rx)$,
+        write $b = a_1 + r_1 y^{n} = a_2 + r_2 x$. Then
+        $r_1 y^{n+1} = a_2 y - a_1 y + r_2 x y \in I$ since $a_1, a_2, xy \in I$.
+        So $r_1 \in (I: y^{n+1}) = (I: y_n) \implies r_1 y^n \in I$.
+        Thus $b = a_1 + r_1 y^n \in I$.
+    \end{itemize}
+
+    Now by the fact that $I$ is irreducible and $I \neq I + Rx$ since $x \not\in I$,
+    thus $I = I + Ry^n \implies y^n \in I$.
+  \end{proof}
+\end{theorem}
+
+\begin{theorem} \label{thm:noeth-ideal-is-finite-intersection}
+  In a Noetherian ring $R$, every ideal is a finite intersection of irreducible ideals.
+
+  \begin{proof}
+    If not, let $\mathcal{I} \triangleq \Set{I: \text{ ideal in } R \mid I \text{ is not a finite intersection
+        of irreducible ideals }}$ and $\mathcal{I}$ is not an empty set.
+    Since $R$ is Noetherian, the set has a maximal element $I_0$. Then $I_0$ is not
+    irreducible (or else it is an intersection of itself, which is irreducible).
+    Write $I_0 = I_1 \cap I_2$, with $I_1, I_2 \neq I_0$. Then $I_1, I_2 \not\in \mathcal{I}$,
+    so these two ideals could be written as a finite intersection of irreducible ideals,
+    implying that $I_0$ could also be written as a finite intersection of irreducible ideals,
+    which is an contradiction.
+  \end{proof}
+\end{theorem}
+
+\begin{prop} \label{prop:primary-divide-by-element}
+  Let $q$ be a $p$-primary ideal and $x \in R$.
+  \begin{enumerate}
+    \item If $x \in q$, then $(q: x) = R$.
+      \begin{proof}
+        In this case $1 \in (q: x)$, thus $(q: x) = R$.
+      \end{proof}
+    \item If $x \not\in q$, then $(q: x)$ is $p$-primary.
+      \begin{proof}
+        For any $y \in (q: x)$, $xy \in q$ but $x \not\in q$, thus $y^n \in q \implies y \in p$.
+        Hence
+        \[ q \subset (q: x) \subset p \implies p = \sqrt{q} \subset \sqrt{(q: x)} \subset \sqrt{p} = p \]
+        and thus $(q: x)$ is $p$-primary.
+
+        For any $y, z$ with $yz \in (q: x)$ but $y \not\in (q: x)$, which is equivalent
+        to $xyz \in q$ but $xy \not\in q$. Since $q$ primary, $z^n \in q \subset (q: x)$.
+      \end{proof}
+    \item If $x \not\in p$, then $(q: x) = q$.
+      \begin{proof}
+        \[
+          \left\{ \begin{array}{l}
+            y \in (q: x) \\
+            x \not\in p \\
+          \end{array} \right. \implies
+          \left\{ \begin{array}{l}
+            xy \in (q: x) \\
+            x^n \not\in q, \ \forall n \in \Nb \\
+          \end{array} \right. \implies y \in q
+        \]
+      \end{proof}
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}  \label{prop:intersection-of-primary-is-primary}
+  If each $q_i$ are $p$-primary, then $q \triangleq \cap_{i = 1}^n q_i$ is $p$-primary.
+
+  \begin{proof}
+    We check that $\sqrt{q} = \bigcap_{i = 1}^n \sqrt{q_i} = \bigcap_{i = 1}^n p = p$.
+
+    Also, if $xy \in q$ with $x \not\in q$, then $x \not\in q_k$ for some $k$.
+    But $xy \in q_k$, thus $y^n \in q_k$. Since $\sqrt{q} = q_k$, $(y^n)^{m'} = y^m \in p \subset q$,
+    thus $q$ is $p$-primary.
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  A {\bf primary decomposition} of $I = q_1 \cap \dots \cap q_n$ is {\bf minimal} if $\sqrt{q_1}, \dots, \sqrt{q_n}$
+  are distinct and $q_i \not\supseteq \bigcap_{j \neq i} q_j$.
+\end{definition}
+
+A minimal primary decomposition of an ideal always exists in Noetherian ring since by
+theorem~\ref{thm:noeth-ideal-is-finite-intersection}, the ideal could be written
+as a finite intersection of irreducible ideals, and then by theorem~\ref{thm:noeth-irr-ideal-is-primary},
+these ideals are primary. Now If $\sqrt{q_i} = \sqrt{q_j}$ happen in these ideal,
+we could remove these two ideals and add $q' = \sqrt{q_i} \cap \sqrt{q_j}$.
+By proposition~\ref{prop:intersection-of-primary-is-primary}, $q'$ is also primary.
+And if $q_i \subseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
+
+\medskip
+
+\begin{theorem}[Uniqueness of primary decomposition]
+  Let $I = \cap_{i = 1}^n q_i$ be a minimal decomposition of $I$.
+  If $p_i = \sqrt{q_i}, \, \forall i$, then we have
+  \[ \Set{p_i} = \Big\{ \sqrt{(I: x)} \Bigm| x \in R \land \sqrt{(I: x)} \in \Spec R \Big\} \]
+  which is independent of the decomposition.
+
+  \begin{proof}
+    ``$\supset$'': Let $x \in R \setminus I$, then $(I: x) = \big( \bigcap_{i=1}^n q_i : x \big)
+    = \bigcap_{i = 1}^n (q_i: x)$. By proposition~\ref{prop:primary-divide-by-element},
+    we have $\sqrt{(I: x)} = \bigcap \sqrt{(q_i: x)} = \bigcap_{x \not\in q_i} p_i$.
+
+    Now, we have the following observation. ``If $p \in \Spec R$ with $p = \bigcap_{i=1}^n J_i$,
+    then $p = J_j$ for some $j$.'' If not, then $J_i \not\subset p$ for all $i$,
+    so we could pick $x_i \in J_i \setminus p$.
+    But then $x_1 x_2 \dotsm x_n \in \cap J_i \in p$ since $J_i$ are ideals,
+    which leads to a contradiction since $p$ is prime.
+
+    So if $\sqrt{(I: x)}$ is a prime, then it is equal to some $p_i$.
+
+    ``$\subset$'': By assumption, $q_i \not\subseteq \bigcap_{j \neq i} q_j$ for each $i$,
+    thus we could pick $x \in \bigcap_{j \neq i} q_j \setminus q_i$,
+    then $\sqrt{(I: x)} = \bigcap_j \sqrt{(q_j: x)} = \sqrt{(q_i: x)} = p_i$.
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  If $\Set{p_i}$ is the unique prime ideals from the minimal primary decomposition of $I$.
+  \begin{itemize}
+    \item $\Set{p_i}$ is said to be associated with $I$ or to belong to $I$.
+    \item The minimal elements in $\Set{p_i}$ are called isolated primes.
+    \item The other are called embedded primes.
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  Let $R = k[x, y]$ and $I = \langle x^2, xy \rangle$. If $P_1 = \langle x \rangle,
+  P_2 = \langle x, y \rangle$, then $I = P_1 \cap P_2^2$.
+  $P_1$ is isolated, while $P_2$ is embedded.
+\end{example}
