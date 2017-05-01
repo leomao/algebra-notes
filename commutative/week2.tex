@@ -1,58 +1,210 @@
 %! TEX root=../main.tex
 \subsection{The equivalence of algebra and geometry}
 
+In the following, $k$ will be an algebraically closed field.
 \begin{definition}
-  Let $k$ be an algebraically closed field.
-  The category of affine algebraic sets $\mathbb{g}$, which its objects and morphisms are defined as following.
+  The category of affine algebraic sets $\mathcal{G}$, which its objects and morphisms are defined as following.
 
-  An affine algebraic set is the common zero set in $k^n$ of $\{ F_i \}_{i \in \Lambda} \subset k[x_1, \dots, x_n]$.
-  We denote it by $V = v(\Set{F_i}_{i \in \Lambda}) \subset k^n$. (In fact, $V = v(\langle F_i : i \in \Lambda \rangle)
-  = I = \langle F_1, \dots, F_n \rangle$.)
+  \begin{description}[leftmargin=0cm]
+    \item[objects:] The objects are affine algebraic sets in $k^n$.
 
-  These objects define closed sets in a topology, called the Zariski topology. We denote the
-  topological space $k^n$ by $\mathbb{A}^n_k$.
+    An {\bf affine algebraic set} is the common zero set of $\{ F_i \}_{i \in \Lambda} \subset k[x_1, \dots, x_n]$
+    in $k^n$.
+    We denote it by $V = \Vc(\Set{F_i}_{i \in \Lambda}) \subset k^n$.
+    (In fact, $I = \langle F_i : i \in \Lambda \rangle$ is Noetherian, so
+    $I = \langle F_1, \dots, F_n \rangle$ and $V = \Vc(I)$.)
 
-  The morphisms is defined by
-  \[ \deffunc{}{k^n}{k^m}{\alpha}{(F_1(\alpha), \dots, F_m(\alpha))} \text{ where } F_i \in k[x_1, \dots, x_n] \]
-  
-  Given two affine algebraic sets $V \subset k^n$ and $W \subset k^m$, a map $F: V \to W$ is a morphism
-  if it is the restriction of a polynomial map from $k^n$ to $k^m$.
-  ($V \cong W$ if $F: V \to W$ and $G : W \to V$ satisfy $F \circ G = \Id$ and $G \circ F = \Id$.)
+    \item[morphisms:] The morphisms are the polynomial map from $k^n$ to $k^m$.
+
+      A {\bf polynomial map} is a mapping as following:
+      \[
+        \begin{tikzcd}[column sep=1cm,row sep=0ex]
+            k^n \arrow[r]& k^m \\
+           \alpha \arrow[r, mapsto] & (F_1(\alpha), \dots, F_m(\alpha))
+        \end{tikzcd}
+      \]
+      where each $F_i$ is a polynomial in $K[x_1, \dots, x_n]$.
+
+      Given two affine algebraic sets $V \subset k^n$ and $W \subset k^m$, if a map $F: V \to W$ is
+      the restriction of a polynomial map from $k^n$ to $k^m$, then $F$ is a morphism from $V$ to $W$.
+
+      Moreover, if $F: V \to W$ and $G : W \to V$ satisfy $F \circ G = \Id$ and $G \circ F = \Id$,
+      then we say $V \cong W$.
+  \end{description}
 \end{definition}
 
+\begin{definition}
+  The category of finitely generated reduced $k$-algebra $\mathcal{A}$,
+  which its objects and morphisms are defined as following.
 
+  \begin{description}
+    \item[objects:] The objects are the reduced finitely generated $k$-algebra $R$.
+
+    A finitely generated $k$-algebra $R$ is reduced if $R$ has no non-zero nilpotent elements.
+
+    \item[morphisms:] The morphisms are the $k$-algebra homomorphisms.
+  \end{description}
+\end{definition}
+
+\begin{example}
+  It is easy to see that $\Vc(0) = k^n$ and $\Vc(1) = \varnothing$.
+\end{example}
+
+\subsubsection{One-one correspondence between affine algebraic sets and radical ideals}
 
 \begin{definition}
-  The category of finitely generated reduced $k$-algebra $\mathcal{A}$.
-  A finitely generated $k$-algebra $R$ is reduced if $R$ has no nilpotent elements.
+  Define $\Ic(V) = \Set{ f \in k[x_1, \dots, x_n] \mid f(\alpha) = 0, \, \forall \alpha \in V}$.
+\end{definition}
 
+The one-one correspondence is given by
   \[
-    \begin{array}{ccc}
-      \Set{ \text{affine algebraic sets in } \mathbb{A}^n_k } & \leftrightarrow & \Set{ \text{ radical ideals in } k[x_1, \dots, x_n]}
-    \end{array}
+    \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+      \Set{ \text{affine algebraic sets in } \mathbb{A}^n_k }
+      \arrow[r, leftrightarrow] & \Set{ \text{ radical ideals in } k[x_1, \dots, x_n]} \\
+      V \arrow[r, mapsto] & \Ic(V) \\
+      \Vc(I) \arrow[r, mapsfrom] & I
+    \end{tikzcd}
   \]
-\end{definition}
 
-\begin{lemma}
-  Given $T/S/R$. If $T/S$ is a module finite and $T/R$ is a ring finite, then $S/R$ is a ring finite.
+\begin{prop} \hfill
+\begin{itemize}
+  \item $\sqrt{\Ic(V)} = \Ic(V)$.
+    \begin{proof}
+      For all $f^n \in \Ic(V)$,
+      $f^n(\alpha) = 0, \forall \alpha \in V \implies f(\alpha) = 0, \forall \alpha \in V$.
+      Thus $f \in \Ic(V)$.
+    \end{proof}
+  \item If $V$ is an affine set, then $\Vc(\Ic(V)) = V$.
+    \begin{proof}
+      ``$\supset$'': $\forall \alpha \in V,\, f \in \Ic(V)$, $f(\alpha) = 0 \implies \alpha \in \Vc(\Ic(V))$.
+
+      ``$\subset$'': Since $V$ is an affine set, $V = \Vc(I)$, then $I \subset \Ic(V)$,
+      so $\Vc(\Ic(V)) \subset \Vc(I) = V$.
+    \end{proof}
+\end{itemize}
+\end{prop}
+
+\begin{lemma} \label{lemma:module-finite-ring-finite}
+  Given $T/S/R$, a tower of rings.
+  If $R$ is Noetherian, $T/S$ is a module finite and $T/R$ is a ring finite, then $S/R$ is a ring finite.
+
+  \begin{proof}
+    Let $T = R[a_1, \dots, a_n] = S \omega_1 + \dots + S \omega_m$.
+    Then $a_i = \sum_j r_{i, k} \omega_k$ for some $r_{i, k}$
+    and $\omega_{i, j} = \sum t_{i, j, k} w_k$ for some $t_{i, j, k}$.
+
+    Let $S' = R\big[ \Set{r_{i, k}}, \Set{t_{i, j, k}} \big] \subseteq S$, which
+    is Noetherian by the Hilbert basis theorem ($R$ Notherian $\implies$ $R[x]$ Notherian).
+    Thus $T = S' \omega_1 + \dots + S' \omega_m$ is a Noetherian $S'$-module
+    by the fact that finitely generated module over a Noetherian ring is a Noetherian module.
+
+    Since $S \subset T$, $S$ is a finitely generated $S'$ submodule,
+    so $S = S' v_1 + \dots + S' v_r = R\big[ \Set{r_{i, k}}, \Set{t_{i, j, k}}, \Set{v_i} \big]$.
+  \end{proof}
 \end{lemma}
 
-\begin{lemma}
-  If $S = k(z_1, \dots, z_p), \, p > 0$ with each $z_i$ variable, then $S/k$ is not ring finite.
+\begin{lemma} \label{lemma:transcendental-is-not-ring-finite}
+    If $S = k(z_1, \dots, z_p), \, p > 0$ with each $z_i$ transcendental, then $S/k$ is not ring finite.
+
+  \begin{proof}
+    If not, say $S = k[f_1, \dots, f_n]$ with $f_i = g_i / h_i$, $g_i, h_i \in k[z_1, \dots, z_p]$.
+    Then for any irreducible polynomial $p$ such that $p \nmid h_i$ for each $h_i$
+    (This polynomial exists since for each $h_i$ there are only finite degree $1$ factors).
+    Then $1/p \not\in k[f_1, \dots, f_n]$ by checking the divisibility of the denominator
+    under addition and multiplication, which leads to a contradiction.
+  \end{proof}
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma} \label{lemma:ring-finite-is-alg}
   If $A/k$ is an extension of fields and ring finite, then $A/k$ is algebraic.
+
+  \begin{proof}
+    If $A/k$ is transcendental and let $\Set{z_1, \dots, z_t}$ be a transcendental base.
+    Then $A/k(z_1, \dots, z_t)$ is algebraic, thus a module finite.
+    By lemma~\ref{lemma:module-finite-ring-finite}, $k(z_1, \dots, z_t)$ is ring finite,
+    which contradict with lemma~\ref{lemma:transcendental-is-not-ring-finite}.
+  \end{proof}
 \end{lemma}
 
-\begin{theorem}[Hilbert Nullstellensatz]
+\begin{theorem}[Weak form of Hilbert Nullstellensatz] \label{thm:weak-hilbert-null}
   \[ I \subsetneq k[x_1, \dots, x_n] \implies v(I) \neq \varnothing \]
+
+  \begin{proof}
+    Since $I$ proper, by lemma~\ref{lemma:max-ideal-exists},
+    exists a maximal ideal $M$ such that $I \subseteq M$.
+    Consider $K \triangleq k[x_1, \dots, x_n] / M = k[\bar{x}_1, \dots, \bar{x}_n]$.
+    By proposition~\ref{prop:max-prime-to-field-int-domain}, $K$ is a field,
+    and by lemma~\ref{lemma:ring-finite-is-alg}, $K/k$ is algebraic. Since $k$
+    is already algebraically closed, $K = k$ and hence each $\bar{x}_i \in k$.
+    Let $\alpha \triangleq (\bar{x}_1, \dots, \bar{x}_n) \in A_k^n$, then
+    for any $f \in M$, $f(\alpha) = f(\bar{x}_1, \dots, \bar{x}_n) = \bar{f} = 0$,
+    thus $\alpha \in \Vc(M) \subseteq \Vc(I)$.
+  \end{proof}
 \end{theorem}
 
-\begin{theorem}
-  $\mathcal{I}(v(I)) = \sqrt{I}$
+\begin{theorem}[Strong form of Hilbert Nullstellensatz]
+  $\Ic(\Vc(I)) = \sqrt{I}$
+
+  \begin{proof}
+    ``$\supset$'': If $f^n \in I$, then $f(\alpha) = 0, \forall \alpha \in \Vc(I)
+    \implies f^n(\alpha) = 0, \forall \alpha \in \Vc(I)$, thus $f^n \in \Ic(\Vc(I))$.
+
+    ``$\subset$'': If $\Ic(\Vc(I)) = 0$, then $I \subseteq \sqrt{I} \subseteq \Ic(\Vc(I)) = 0$,
+    thus $I = 0$.
+
+    Otherwise, exists $0 \neq f \in \Ic(\Vc(I))$, Let $J = \langle I, ft-1 \rangle \subset k[x_1, \dots, x_n, t]$.
+    If $(a_1, \dots, a_n, t_0)$ is a zero of $J$, then $ft-1 \in J \implies -1 = f(a_1, \dots, a_n) t_0 - 1 =
+    0$, which is a contradiction, so by theorem~\ref{thm:weak-hilbert-null}, $J = k[x_1, \dots, x_n, t]$.
+
+    Write $1 = \sum h_i f_i + s (ft-1)$, where each $f_i \in I$ and
+    $h_i, s \in k[x_1, \dots, x_n, t]$.
+    This is a equation of variables, so if we set $t = 1/f$, the equation still holds.
+    Now each $h_i$ would be the form $\sum p_i / f^{k_i}$, so we could multiply each
+    side by a suitable $f^\rho$ and get $f^\rho = \sum c_i f_i$ with each $c_i \in k[x_1, \dots, x_n]$.
+    This implies $f^\rho \in I$, thus $f \in \sqrt{I}$.
+  \end{proof}
 \end{theorem}
 
 \begin{definition}
   Let $V \in \mathcal{G}$, the coordinate ring of $V$ is $k[V] \triangleq k[x_1, \dots, x_n] / \mathcal{I}(V)$
 \end{definition}
+
+\subsubsection{Equivalence of $\mathcal{G}$ and $\mathcal{A}$}
+We define a functor $F$ from $\mathcal{G}$ to $\mathcal{A}$ by
+  \[
+    \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+      F: &[-0.7cm] \mathcal{G} \arrow[r] & \mathcal{A} \\
+      & V \arrow[r, mapsto] & k[V]
+    \end{tikzcd}
+  \]
+  And For a polynomial map $f : V \to W$, define
+  \[
+    \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+      F(f) = f^*: &[-0.7cm] k[W] \arrow[r] & k[V] \\
+      & g \arrow[r, mapsto] & g \circ f
+    \end{tikzcd}
+  \]
+
+  Conversely, define a functor $G$ by
+
+  \[
+    \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+      G: &[-0.7cm] \mathcal{A} \arrow[r] & \mathcal{G} \\
+      & k[x_1, \dots, x_n]/I \arrow[r, mapsto] & \Vc(I)
+    \end{tikzcd}
+  \]
+
+  Then if
+  \[
+    \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+      \varphi: &[-0.7cm] k[\dots]/I \arrow[r] & k[\dots]/J \\
+      & \bar{x}_i \arrow[r, mapsto] & \bar{f}_i
+    \end{tikzcd}
+  \]
+  Define
+  \[
+    \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+      G(\varphi) = \psi: &[-0.7cm] \Vc(J) \arrow[r] & \Vc(I) \\
+      & \alpha = (a_1, \dots, a_m) \arrow[r, mapsto] & (f_1(\alpha), \dots, f_n(\alpha))
+    \end{tikzcd}
+  \]
