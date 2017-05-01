@@ -1,0 +1,23 @@
+%! TEX root=../main.tex
+\subsection{Gr\"{o}bner basis}
+
+\subsubsection{Buchberger's algorithm}
+
+Let $I = \langle g_1, \dots, g_m \rangle$ and $G = \Set{ g_1, \dots, g_m }$.
+A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
+\begin{enumerate}
+  \item Initially let $G_0 \gets G$.
+  \item Repeatly construct $G_{i+1} \gets G_i \cup \big( \Set{S(f, g) \mod G_i \mid f, g \in G_i} \setminus \Set{0} \big)$,
+    until once $G_{i+1} = G_i$, then $G_i$ is a Gr\"{o}ner basis.
+\end{enumerate}
+
+\begin{lemma}
+  Let $f_1, \dots, f_m \in K[x_1, \dots, x_n]$ with $a_1, \dots, a_m \in K$ satisfy
+  $\partial(f_1) = \partial(f_2) = \dots = \partial(f_m) = \alpha$ and $\partial\big( \sum_{i = 1}^m a_i f_i \big) < \alpha$.
+  Then $h = \sum_{i = 2}^m b_i S(f_{i-1}, f_i)$ for some $b_i \in K$.
+\end{lemma}
+
+\begin{theorem}[Buchberger's criterion]
+  Assume $I = \langle g_1, \dots, g_m \rangle$, then
+  $G = \Set{g_1, \dots, g_m}$ is a Gr\"{o}bner basis of $I$ $\iff$ $S(g_i, g_j) \equiv 0 \pmod{G}$ for each $i, j$.
+\end{theorem}
