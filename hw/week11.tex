@@ -15,3 +15,39 @@
     \item Check $x^6 - x^5y \overset{?}{\in} I$.
   \end{enumerate}
 \end{exercise}
+
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item A Gr\"obner basis $G = \Set{g_1, \dots, g_m}$ of $I$ is said to be
+      minimal if $\LT(g_i)$ is monic for all $i$ and $\forall j, \quad
+      \LT(g_i) \not\in \gen{\LT(G \setminus\Set{g_j})}$.
+    \item A minimal Gr\"obner basis $G = \Set{g_1, \dots, g_m}$ is said to be
+      reduced if for all $j$, no term in $g_j$ is divisible by any of
+      $\LT(g_1), \dots, \LT(g_{j-1}), \LT(g_{j+1}), \dots, \LT(g_m)$.
+  \end{itemize}
+\end{definition}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item Show that for a given monomial ordering, every non-zero ideal $I$ in
+      $k[x_1, \dots, x_n]$ has a unique reduced Gr\"obner basis.
+    \item Show that $I = \gen{x^2y+xy^2-2y, x^2+xy-x+y^2-2y, xy^2-x-y+y^3}$
+      and $J = \gen{x-y^2, xy-y, x^2-y}$ are equal.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Let $I = \gen{x^2+xy^5+y^4, xy^6-xy^3+y^5-y^2, xy^5-xy^2}, x > y$.
+  Find the reduced Gr\"obner basis of $I$.
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}
+    \item $\left( I : \big( \sum\limits_{i=1}^r J_i \big) \right)
+      = \bigcap\limits_{i=1}^r (I: J_i)$.
+      Here, $(I:J) \triangleq \Set{ x\in R \given xJ \subseteq I }$.
+    \item $\left( \bigcap\limits_{i=1}^r I_i : J_i \right) =
+      \bigcap\limits_{i=1}^r \left( I_i : J \right)$.
+    \item $\big((I_1 : I_2) : I_3 \big) = (I_1 : I_2 I_3)$.
+  \end{enumerate}
+\end{exercise}
