@@ -23,6 +23,7 @@
 \usepackage{bm}
 \usepackage{bbm}
 \usepackage{hvindex}
+\usepackage[normalem]{ulem}
 %%% fix bugs in hvindex .................
 \def\IndexXXii#1!#2@#3@#4\IndexNIL{%
   \ifx\relax#3\relax            %               no @ in last arg
@@ -59,7 +60,7 @@
 %\usepackage{multicol}  
 %\usepackage[abbreviations]{siunitx}
 %\usepackage{dsfont}   
-
+\usepackage[makeroom]{cancel}
 %%%%%%%%%%%%%%%%%%%TikZ%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tikz}
 \usepackage{tikz-cd}
@@ -341,6 +342,7 @@
 % \thispagestyle{fancy}
 % \tableofcontents
 %%%%%%%%%%%%%include file here%%%%%%%%%%%%%%%
+\iffalse
 \include{group/week1}
 \include{group/week2}
 \include{group/week3}
@@ -365,6 +367,7 @@
 \include{fields/week7}
 \include{fields/week8}
 \include{commutative/week1}
+\fi
 \include{commutative/week2}
 \include{commutative/week3}
 
