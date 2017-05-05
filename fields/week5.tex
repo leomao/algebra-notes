@@ -188,7 +188,7 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
     \[ \implies \exists c \in L, \text{ s.t. } \alpha = c + \zeta \sigma(c) + \zeta^2 \sigma^2(c)
     + \dots + \zeta^{n-1} \sigma^{n-1}(c) \neq 0 \]
 
-    Observe that $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in K$. Also $\sigma(\alpha^n)
+    Observe that $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \notin K$. Also $\sigma(\alpha^n)
     = \sigma(\alpha)^n = \zeta^{-n}\alpha^n = \alpha^n$, so $\alpha^n$ is fixed by
     $\Gal(L/K)$, thus $a \triangleq \alpha^n \in K$, and hence $K(\alpha)$
     is a splitting field of $x^n - a$ over $K$.
@@ -232,7 +232,7 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
     Since automorphisms are linearly independent, exists $c \in L$ satisfied
     \[ 0 \neq \alpha = \sum_{\tau \in H} \tau(c) + \zeta \sum_{\tau \in H} \sigma \tau(c)
     + \dots + \zeta^{n-1} \sum_{\tau \in H} \sigma^{n-1} \tau(c) \]
-    Then $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \not\in M$. Also $\sigma(\alpha^n) = \alpha^n$
+    Then $\sigma(\alpha) = \zeta^{-1} \alpha$, so $\alpha \notin M$. Also $\sigma(\alpha^n) = \alpha^n$
     and $\tau(\alpha^n) = \tau(\alpha)^n = \alpha^n$, so $a_k \triangleq \alpha^n \in K$.
     Thus $M(\alpha)$ is a splitting field of $(x^n - a_k)$ over $M$.
 
@@ -272,7 +272,7 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
     Now, $\big| \quot{\Gal(L/K)}{\Gal(L/K) \cap A_n} \big|$ is either $1$ or $2$.
     If it is $1$, then $\Gal(L/K) \leq A_n$ ,thus $\delta \in K$ and is trivial.
     Assume it is $2$, then $\delta$ is not fixed by all permutation, thus
-    $\delta \not\in K$. But $D = \delta^2 \in K$ is the discriminant. So we have
+    $\delta \notin K$. But $D = \delta^2 \in K$ is the discriminant. So we have
     $2 = [K(\delta): K] \le [L^{\Gal(L/K) \cap A_n}: K] =
     \abs*{\Gal \big( L^{\Gal(L/K) \cap A_n}/K \big)} = 2$, thus
     $K(\delta) = L^{\Gal(L/K) \cap A_n}$.
@@ -282,7 +282,7 @@ In this section, we assume that $\Char K \nmid n$ and $\zeta$ is a primitive $n$
 \begin{prop}
   Let $f(x) = x^3 + px + q$ be irreducible in $K[x]$ and $L$ be a splitting field,
   \begin{itemize}
-    \item If $\Gal(L/K) \cong S_3$ then $\sqrt{D} \not\in K$.
+    \item If $\Gal(L/K) \cong S_3$ then $\sqrt{D} \notin K$.
     \item If $\Gal(L/K) \cong A_3$ then $\sqrt{D} \in K$.
   \end{itemize}
 \end{prop}

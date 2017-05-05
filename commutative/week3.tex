@@ -4,56 +4,79 @@
 \subsubsection{Division algorithm in $K[X_1,\dots,X_n]$}
 
 \begin{example}
-  $I = \langle xy-1,y^2-1\rangle \subseteq K[x,y]$, $f_1 = xy-1$ and $f_2 = y^2-1$ $G=\{f_1,f_2\}$. Does $f = x^2y+xy^2+y^2 \in I?$
+  $I = \gen{ xy-1,y^2-1 } \subseteq K[x,y]$, $f_1 = xy-1$ an
+  d $f_2 = y^2-1$ $G=\Set{f_1,f_2}$. Does $f = x^2y+xy^2+y^2 \in I$?
   \begin{itemize}
       \item Choose a lexicographic monomial ordering: $x > y$
-      \item The multidegree $\partial(f) = (2,1)$, $\partial(f_1 = (1,1))$, $\partial(f_2) = (0,2)$
-      \item The leading term $LT(f) = x^2y$, $LT(f_1) = xy$, $LT(f_2) = y^2$
-      \item $LT(f) = xLT(f_1) \Rightarrow f = xf_1+xy^2+y^2+x \Rightarrow f = \underset{h_1}{(x+y)}f_1+\underset{h_2}{(1)}f_2+\underset{\bar{f}^G}{(x+y+1)}$ or $f = \underset{h_1}{x}f_1+\underset{h_2}{(x+1)}f_2+\underset{\bar{f}^G}{(2x+1)}$.
+      \item The multidegree $\partial(f) = (2,1)$, $\partial(f_1 = (1,1))$,
+        $\partial(f_2) = (0,2)$
+      \item The leading term $\LT(f) = x^2y$, $\LT(f_1) = xy$, $\LT(f_2) = y^2$
+      \item $\LT(f) = x\LT(f_1) \Rightarrow f = xf_1+xy^2+y^2+x \Rightarrow f = \underset{h_1}{(x+y)}f_1+\underset{h_2}{(1)}f_2+\underset{\bar{f}^G}{(x+y+1)}$ or $f = \underset{h_1}{x}f_1+\underset{h_2}{(x+1)}f_2+\underset{\bar{f}^G}{(2x+1)}$.
   \end{itemize}
   Note:  Divisor $h_1$, $h_2$ and remainder $\bar{f}^G$ are not unique!! 
 \end{example}
 
 \begin{definition}
-  Fix a monomial ordering and let I be an ideal of $K[X_1,\dots,X_n]$. The ideal of leading terms in I is defined to be $LT(I) = \langle LT(f)|f\in I \rangle$.
+  Fix a monomial ordering and let $I$ be an ideal of $K[X_1,\dots,X_n]$.
+  The ideal of leading terms in $I$ is defined to be
+  $\LT(I) = \Gen{ \LT(f) \given f\in I }$.
 \end{definition}
 
 \begin{remark}
-  Let $I = \langle f_1,\dots,f_n \rangle$. In general, $\langle LT(f_1),\dots,LT(f_n) \subsetneq LT(I)$.
+  Let $I = \gen{ f_1,\dots,f_n }$. In general, $\gen{\LT(f_1),\dots,\LT(f_n)}
+  \subsetneq \LT(I)$.
 \end{remark}
 
 \begin{example}
-  Let $f_1=xy^2+y$, $f_2=xy^2$. And, $xf_1+yf_2=xy \in \langle f_1,f_2 \rangle$ but $xy \notin \langle xy^2, x^2y \rangle$.
+  Let $f_1=xy^2+y$, $f_2=x^2y$. And, $xf_1-yf_2=xy \in \gen{ f_1,f_2 }$ but
+  $xy \notin \gen{ xy^2, x^2y }$.
 \end{example}
 
 \begin{definition}
-  $G = \Set{g_1,\dots,g_m}$ is called a Gr\"{o}bner basis of I if $I = \langle g_1,\dots,g_m \rangle$ and $LT(I) = \langle LT(g_1),\dots,LT(g_m) \rangle$
+  $G = \Set{g_1,\dots,g_m}$ is called a Gr\"{o}bner basis of $I$ if
+  $I = \gen{ g_1,\dots,g_m }$ and $\LT(I) = \gen{ \LT(g_1),\dots,\LT(g_m) }$.
 \end{definition}
 
 \begin{prop}
-  $LT(I) = \langle LT(g_1),\dots,LT(g_m) \rangle \Rightarrow I = \langle g_1,\dots,g_m \rangle$
+  $\LT(I) = \gen{\LT(g_1),\dots,\LT(g_m)} \Rightarrow I = \gen{g_1,\dots,g_m}$.
   \begin{proof}
-    $\forall f \in I$, do division process. Then $f = \overset{m}{\underset{i = 1}{\sum}} h_ig_i+r$, either $r=0$ or \uline{$\bigstar = \text{no term of r is divisible}$ by any of $LT(g_1),\dots,LT(g_m)$}. Assume $r \neq 0$, then $r = f - \overset{m}{\underset{i = 1}{\sum}} h_i g_i \in I \Rightarrow LT(r) \in LT(I) = \langle LT(g_1),\dots, LT(g_m) \rangle$, a contradiction. Hence, r = 0 (i.e. $f\in \langle g_1,\dots,g_m \rangle$).
+    $\forall f \in I$, do the division process. Then
+    $f = \sum\limits_{i=1}^m h_ig_i+r$, either $r=0$ or
+    \uline{$\bigstar =$ no term of $r$ is divisible by any of
+    $\LT(g_1),\dots,\LT(g_m)$}. Assume $r \neq 0$, then
+    $r = f - \sum\limits_{i=1}^m h_i g_i \in I \Rightarrow \LT(r) \in \LT(I) =
+    \gen{ \LT(g_1),\dots, \LT(g_m) }$, which is a contradiction.
+    Hence, $r = 0$ (i.e. $f\in \gen{ g_1,\dots,g_m }$).
   \end{proof}
 \end{prop}
 
-\begin{theorem} \label{thm:Grobner_existense}
-  Eaach ideal I has a Gr\"{o}bner basis.
+\begin{theorem} \label{thm:Grobner-existense}
+  Each ideal $I$ has a Gr\"{o}bner basis.
   \begin{proof}
-    By Hilbert basis thm, $LT(I) = \langle f_1,\dots,f_m \rangle$ for some $f_i$'s. Write $f_i = \overset{m_i}{\underset{j = 1}{\sum}}h_{ij}LT(g_{ij})$ $h_{ij} \in K[X_1,\dots,X_mj]$, $g_{ij} \in I$. Then $LT(I) = \langle LT(g_{ij}) \rangle$ $i=1,\dots,m$ $j=1,\dots,m_i$.
+    By Hilbert basis thm, $\LT(I) = \gen{ f_1,\dots,f_m }$ for some $f_i$'s.
+    Write $f_i = \sum\limits_{j=1}^{m_i} h_{ij}\LT(g_{ij})$ with
+    $h_{ij} \in K[X_1,\dots,X_n]$, $g_{ij} \in I$. Then
+    $\LT(I) = \Gen{ \LT(g_{ij}) \given i=1,\dots,m,\, j=1,\dots,m_i}$.
   \end{proof}
 \end{theorem}
 
-\begin{theorem} \label{thm:Grobner_property}
-  Let $G = \Set{g_1,\dots,g_m}$ be a Gr\"{o}ner basis of I, then
+\begin{theorem} \label{thm:Grobner-property}
+  Let $G = \Set{g_1,\dots,g_m}$ be a Gr\"{o}bner basis of $I$, then
   \begin{itemize}
-    \item $\forall \in K[X_1,\dots,X_n]$, $f = f_I + r$ where $f_I,r$ are unique.
+    \item $\forall f \in K[X_1,\dots,X_n]$, $f = f_I + r$ where
+      $f_I \in I, r = \bigstar$ are unique.
       \begin{proof}
-        By division algorithm, $f = f_I +\underset{\bigstar}{r} = f'_I+\underset{\bigstar}{r'}$, then $\underset{\bigstar}{r-r'} = f_I-f'_I$. But if $r-r' \neq 0$, then $LT(r-r') \in LT(I) = \langle LT(g_1,\dots,g_2) \rangle$, a contradiction. Hence, $r-r' = 0\Rightarrow f_I = f'_I$.
+        By division algorithm, $f = f_I +\underset{\bigstar}{r} =
+        f_I'+\underset{\bigstar}{r'}$, then $\underset{\bigstar}{r-r'} = f_I-f_I'$.
+        But if $r-r' \neq 0$, then $\LT(r-r') \in \LT(I) =
+        \gen{ \LT(g_1),\dots,\LT(g_m) }$, which is a contradiction.
+        Hence, $r-r' = 0\Rightarrow f_I = f_I'$.
       \end{proof}
     \item $f \in I \iff r=0$.
       \begin{proof}
-        Suppose $f \in I$, then $f = f_I + \underset{\bigstar}{r}$, and if $r\neq 0$ $\underset{\bigstar}{r} = f - f_I\in I$, a contradiction. Hence, r = 0. Conversly, if $r = 0$, $f = f_I \in I$. 
+        Suppose $f \in I$, then $f = f_I + \underset{\bigstar}{r}$, and if $r\neq 0$,
+        $\underset{\bigstar}{r} = f - f_I\in I$, which is a contradiction.
+        Hence, $r = 0$. Conversly, if $r = 0$, $f = f_I \in I$. 
       \end{proof}
   \end{itemize}
 \end{theorem}
@@ -62,62 +85,86 @@
 \subsubsection{Buchberger's algorithm}
 
 \begin{definition}
-  Let $f,g \in K[X_1,\dots,X_n]$ and $M$ be the monic least common multiple of LT(f) and LT(g). $S(f,g) = \frac{M}{LT(f)}f- \frac{M}{LT(g)}g$ is called an S-polynomial of f, g.
+  Let $f,g \in K[x_1,\dots,x_n]$ and $M$ be the monic least common multiple of
+  $\LT(f)$ and $\LT(g)$. $S(f,g) = \frac{M}{\LT(f)}f - \frac{M}{\LT(g)}g$ is
+  called an S-polynomial of $f, g$.
 \end{definition}
 
-Let $I = \langle g_1, \dots, g_m \rangle$ and $G = \Set{ g_1, \dots, g_m }$.
+Let $I = \gen{ g_1, \dots, g_m }$ and $G = \Set{ g_1, \dots, g_m }$.
 A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
 \begin{enumerate}
   \item Initially let $G_0 \gets G$.
-  \item Repeatly construct $G_{i+1} \gets G_i \cup \big( \Set{S(f, g) \mod G_i \mid f, g \in G_i} \setminus \Set{0} \big)$,
-    until once $G_{i+1} = G_i$, then $G_i$ is a Gr\"{o}ner basis.
+  \item Repeatly construct $G_{i+1} \gets G_i \cup \big(
+    \Set{S(f, g) \mod G_i \given f, g \in G_i} \setminus \Set{0} \big)$,
+    until once $G_{i+1} = G_i$, then $G_i$ is a Gr\"{o}bner basis of $I$.
 \end{enumerate}
 
 \begin{lemma} \label{lemma:sum-of-equal-degree-f-is-less}
-  Let $f_1, \dots, f_m \in K[x_1, \dots, x_n]$ with $a_1, \dots, a_m \in K$ satisfy
-  $\partial(f_1) = \partial(f_2) = \dots = \partial(f_m) = \alpha$ and $h =\sum_{i = 1}^m a_i f_i $ with $\partial(h) < \alpha$.
+  Let $f_1, \dots, f_m \in K[x_1, \dots, x_n]$ with $a_1, \dots, a_m \in K$
+  satisfying $\partial(f_1) = \partial(f_2) = \dots = \partial(f_m) = \alpha$
+  and $h =\sum_{i = 1}^m a_i f_i $ with $\partial(h) < \alpha$.
   Then $h = \sum_{i = 2}^m b_i S(f_{i-1}, f_i)$ for some $b_i \in K$.
   \begin{proof}
-    Write $f_i = c_if'_i$ with $c_i \in K$ and $f'_i$ being monic of multidegree = $\alpha$. Note: $S(f_i, f_j) = f'_1 - f'_2$. Then, 
-    \begin{equation}
+    Write $f_i = c_if'_i$ with $c_i \in K$ and $f'_i$ being monic of multidegree
+    $= \alpha$. Note: $S(f_i, f_j) = f'_1 - f'_2$. Then, 
+    \[
       \begin{split}
-        h &= \overset{m}{\underset{i = 1}{\sum}} \big( a_ic_if'_i \big) \\
+        h &= \sum_{i=1}^m \big( a_ic_if'_i \big) \\
         &= a_1c_1(f'_1-f'_2) + (a_1c_1+a_2c_2)(f'_2-f'_3) + \dots+ (a_1c_1 + \dots + a_{m-1}c_{m-1})(f'_{m-1}-f'_m) \\
         &+ (a_1c_1+\dots+a_mc_m)f'_m \\
-        &= \overset{m}{\underset{i = 2}{\sum}}b_iS(f_{i-1},f_i) + b_{m+1}f'_m\text{ with }b_i = \sum_{1}^{i-1}a_1c_1.
+        &= \sum\limits_{i=2}^m b_iS(f_{i-1},f_i) + b_{m+1}f'_m\text{ with }
+        b_i = \sum_{j=1}^{i-1}a_jc_j.
       \end{split}
-    \end{equation}
-      Also, $b_{m+1} = 0$ , since $\partial(h) < \alpha$, $\partial(\overset{m}{\underset{i = 2}{\sum}}b_iS(f_{i-1},f_i) ) < \alpha$ and $\partial(f'_m) = \alpha$. Then, we have $h = \sum_{i = 2}^m b_i S(f_{i-1}, f_i)$.
+    \]
+    Also, $b_{m+1} = 0$ , since $\partial(h) < \alpha$,
+    $\partial\left(\sum\limits_{i=2}^m b_iS(f_{i-1},f_i) \right) < \alpha$ and
+    $\partial(f'_m) = \alpha$. Then, we have $h = \sum_{i = 2}^m b_i S(f_{i-1}, f_i)$.
   \end{proof}
 \end{lemma}
 
 \begin{theorem}[Buchberger's criterion]
-  Assume $I = \langle g_1, \dots, g_m \rangle$, then
-  $G = \Set{g_1, \dots, g_m}$ is a Gr\"{o}bner basis of $I$ $\iff$ $S(g_i, g_j) \equiv 0 \pmod{G}$ for each $i, j$.
-  \begin{proof}
-    \begin{description} [leftmargin=0cm,labelindent=0cm]
-      \item
-      \item[$\cdot$] Suppose G is a Gr\"{o}bner basis of I. $S(g_i, g_j) \in I \Rightarrow S(g_i, g_j) = 0$ by thm~\ref{thm:Grobner_property}.
-      \item[$\cdot$] Converely, suppose $S(g_i, g_j) \equiv 0$ (mod G) $\forall i, j$. For $f \in I$, $f \underset{not\ division}{=} \overset{m}{\underset{i = 1}{\sum}}h_ig_i$ for some $h_i \in K[X_1,\dots,X_2]$. Define $\alpha = max\{\partial(h_1g_1),\dots,\partial(h_mg_m)\}$. We have $\partial(f) \leq \alpha$ and we can select an expression $f = \overset{m}{\underset{i = 1}{\sum}}h_ig_i$ for f s.t $\alpha$ is minimal.
-      \item[] \uline{Claim}:   $\partial(f) = \alpha$
+  Assume $I = \gen{ g_1, \dots, g_m }$, then
+  $G = \Set{g_1, \dots, g_m}$ is a Gr\"{o}bner basis of $I$ $\iff$
+  $S(g_i, g_j) \equiv 0 \pmod{G}$ for each $i, j$.
+  \begin{proof} \mbox{}
+    \begin{itemize}
+      \item Suppose $G$ is a Gr\"{o}bner basis of $I$.
+        $S(g_i, g_j) \in I \Rightarrow S(g_i, g_j) = 0$
+        by thm~\ref{thm:Grobner-property}.
+      \item Converely, suppose $S(g_i, g_j) \equiv 0 \pmod G \forall i, j$.
+        For $f \in I$, $f \underset{not\ division}{=}
+        \sum\limits_{i=1}^m h_ig_i$ for some $h_i \in K[x_1,\dots,x_n]$.
+        Define $\alpha = \max\{\partial(h_1g_1),\dots,\partial(h_mg_m)\}$.
+        We have $\partial(f) \leq \alpha$ and we can select an expression
+        $f = \sum\limits_{i=1}^m h_ig_i$ for f s.t $\alpha$ is minimal.
+      \item \uline{Claim}: $\partial(f) = \alpha$
       \item (pf) Rewrite,
-          \begin{equation}
-            \begin{split}f &= \overset{m}{\underset{i = 1}{\sum}}h_ig_i \\
-              &= \underset{\partial(h_ig_i) = \alpha}{\sum}h_ig_i +  \underset{\partial(h_ig_i) < \alpha}{\sum}h_ig_i \\
-              &= \underset{\partial(h_ig_i) = \alpha}{\sum}LT(h_i)g_i + \underset{\partial(h_ig_i) = \alpha}{\sum}(h_i-LT(h_i)g_i) + \underset{\partial(h_ig_i) < \alpha}{\sum}{h_ig_i}
-            \end{split}
-          \end{equation}
-          Let $LT(h_i) = a_ih_i^0$ with $h_i^0$ being a monic monomial. Comparing the multidegree on both side, $\partial\left(\underset{\partial(h_ig_i) = \alpha}{\sum}a_ih_i^0g_i\right) < \alpha$ By lemma~\ref{lemma:sum-of-equal-degree-f-is-less}, $\underset{\partial(h_ig_i) = \alpha}{\sum}\left(a_ih_i^0g_i\right) = c_{12}S(h_{i_1}^0g_{i_1},h_{i_2}^0g_{i_2}) + \dots$(finite) where $\partial(h_{i_1}g_{i_1}) = \partial(h_{i_2}g_{i_2}) = \dots = \alpha $. By def, if we set $\beta_{st} = M_{st} =$ the monic lcm of $LT(g_{i_s}), LT(g_{i_t})$, then
-          \begin{equation}
+        \[
+          \begin{split}f &= \sum_{i = 1}^m h_ig_i \\
+            &= \sum_{\partial(h_ig_i) = \alpha} h_ig_i
+              + \sum_{\partial(h_ig_i) < \alpha} h_ig_i \\
+            &= \sum_{\partial(h_ig_i) = \alpha} \LT(h_i)g_i
+              + \sum_{\partial(h_ig_i) = \alpha} (h_i-\LT(h_i)g_i)
+              + \sum_{\partial(h_ig_i) < \alpha} h_ig_i
+          \end{split}
+        \]
+          Let $\LT(h_i) = a_ih_i^0$ with $h_i^0$ being a monic monomial.
+          Comparing the multidegree on both side,
+          $\partial\left(\sum\limits_{\partial(h_ig_i) = \alpha} a_ih_i^0g_i\right)
+          < \alpha$ By lemma~\ref{lemma:sum-of-equal-degree-f-is-less},
+          $\underset{\partial(h_ig_i) = \alpha}{\sum}\left(a_ih_i^0g_i\right) = c_{12}S(h_{i_1}^0g_{i_1},h_{i_2}^0g_{i_2}) + \dots$(finite) where $\partial(h_{i_1}g_{i_1}) = \partial(h_{i_2}g_{i_2}) = \dots = \alpha $. By def, if we set $\beta_{st} = M_{st} =$ the monic lcm of $\LT(g_{i_s}), \LT(g_{i_t})$, then
+          \[
             \begin{split}
-              S(h_{i_s}^0g_{i_s}, h_{i_t}^0g_{i_t}) &= \frac{X^\alpha}{LT(h_{i_s}^0g_{i_s})}h_{i_s}^0g_{i_s} - \frac{X^\alpha}{LT(h_{i_t}g_{i_t})}h_{i_t}^0g_{i_t} \\
-              &= X^{\alpha-\beta_{st}} \left( \frac{X^{\beta_{st}}}{\bcancel{h_{i_s}^0}LT(g_{i_s})}\bcancel{h_{i_s}^0}g_{is} - \frac{X^{\beta_{st}}}{\bcancel{h_{i_t}^0}LT(g_{i_t})}\bcancel{h_{i_t}^0}g_{i_t}  \right) \\
+              S(h_{i_s}^0g_{i_s}, h_{i_t}^0g_{i_t}) &= \frac{X^\alpha}{\LT(h_{i_s}^0g_{i_s})}h_{i_s}^0g_{i_s} - \frac{X^\alpha}{\LT(h_{i_t}g_{i_t})}h_{i_t}^0g_{i_t} \\
+              &= X^{\alpha-\beta_{st}} \left( \frac{X^{\beta_{st}}}{\bcancel{h_{i_s}^0}\LT(g_{i_s})}\bcancel{h_{i_s}^0}g_{is} - \frac{X^{\beta_{st}}}{\bcancel{h_{i_t}^0}\LT(g_{i_t})}\bcancel{h_{i_t}^0}g_{i_t}  \right) \\
               &= X^{\alpha-\beta_{st}} S\left(g_{i_s},g_{i_t}\right) \\
               &= X^{\alpha-\beta_{st}}\overset{m}{\underset{j = 1}{\sum}}{l_jg_j} \text{ (by division)}
             \end{split}
-          \end{equation}
-      \item Then, $\partial(l_jg_j) < \beta_{st} \Rightarrow \partial(f) \geq \alpha$. Therefore, $\partial(f) = \alpha \Rightarrow LT(f) = \underset{\partial(h_ig_i) = \alpha}{\sum}LT(h_i)LT(g_i) \Rightarrow LT(f) \in \langle LT(g_1,\dots, LT(g_m \rangle$.
- 
+          \]
+      \item Then, $\partial(l_jg_j) < \beta_{st} \implies \partial(f) \geq \alpha$.
+        Therefore, $\partial(f) = \alpha \implies \LT(f) =
+        \sum\limits_{\partial(h_ig_i) = \alpha} \LT(h_i)\LT(g_i)$
+        $\implies \LT(f) \in \gen{ \LT(g_1),\dots, \LT(g_m) }$.
     \end{description}
   \end{proof}
 \end{theorem}
@@ -127,80 +174,87 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
   \begin{proof}
     $.$
     \begin{itemize}
-      \item $\langle LT(G_i) \rangle \subsetneq \langle LT(G_{i+1}) \rangle$ if $G_i \neq G_{i+1}$
+      \item $\gen{ \LT(G_i) } \subsetneq \gen{ \LT(G_{i+1}) }$ if $G_i \neq G_{i+1}$
         \[
-          G_i \neq G_{i+1} \Rightarrow \exists f, g \in G_i \text{ s.t. } S(f,g) \cancel{\equiv} 0 \text{(mod G) } \Rightarrow LT(S(s,g)) \notin \langle LT(G_i) \rangle
+          G_i \neq G_{i+1} \implies \exists f, g \in G_i \text{ s.t. } S(f,g)
+          \not\equiv 0 \pmod G \implies \LT(S(s,g)) \notin \gen{\LT(G_i)}
         \]
-      \item $\langle LT(G_0) \rangle \subsetneq \langle LT(G_1) \rangle \subsetneq \dots$ (Noetherian ACC condition).
+      \item $\gen{ \LT(G_0) } \subsetneq \gen{ \LT(G_1) } \subsetneq \dotsm$
+        is not possible since $K[x_1, \dots, x_n]$ is a Noetherian ring.
+        (Noetherian ACC condition).
     \end{itemize}
   \end{proof}
 \end{theorem}
 
 \subsection{Applications of Gr\"{o}bner basis}
 \begin{definition}
-  Let $I \subseteq k[x_1, \dots, x_n]$ and $x_1 > x_2 > \dotsm > x_n$.
-  $I_i \triangleq I \cap K[x_{i+1}, \dots, x_n]$ is called the $i$-th elimination ideal of $I$.
+  Let $I \subseteq K[x_1, \dots, x_n]$ and $x_1 > x_2 > \dotsm > x_n$.
+  $I_i \triangleq I \cap K[x_{i+1}, \dots, x_n]$ is called the $i$-th elimination
+  ideal of $I$.
 \end{definition}
 
 \begin{theorem}[Elimination theorem]
   Let $G = \Set{g_1, \dots, g_m}$ be a Gr\"obner basis of $I \neq 0$ with ordering
   $x_1 > \dotsm > x_n$. Then $G_i \triangleq G \cap K[x_{i+1}, \dots, x_n]$
-  is a Gr\"obner basis of $I_i$ (i.e., $\langle \LT(G_i) \rangle = \LT(I_i)$).
+  is a Gr\"obner basis of $I_i$ (i.e., $\gen{ \LT(G_i) } = \LT(I_i)$).
 \end{theorem}
 
 \begin{example}
   Find $V = \Vc(x+y-z, x^2+y^2-z^3, x^3+y^3-z^5)$. \\
-  We compute a Gr\"obner basis of $I = \langle f_1, \dots, f_3 \rangle$ with respect to the ordering $x > y > z$.
+  We compute a Gr\"obner basis of $I = \gen{ f_1, \dots, f_3 }$ with respect
+  to the ordering $x > y > z$.
   The Gr\"obner basis is $\Set{x+y-z, 2y^2-2yz-z^3+z^2, 2z^5-3z^4+z^3}$.
 \end{example}
 
 \begin{example}
   \[
     \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
-      f: &[-0.7cm] \mathbb{A}^1 \arrow[r] & \mathbb{A}^3 \\
+      f: &[-0.7cm] \Ab^1 \arrow[r] & \Ab^3 \\
       & t \arrow[r, mapsto] & (t^4, t^3, t^2)
     \end{tikzcd}
   \]
 
-  We compute a Gr\"obner basis of $I = \langle t^4 - x, t^3 - y, t^2 - z \rangle$ with respect to
-  $t > x > y > z$. The Gr\"obner basis is $\Set{-t^2+z, ty-z^2, tz-y, x-z^2, y^2-z^3}$.
+  We compute a Gr\"obner basis of $I = \gen{ t^4 - x, t^3 - y, t^2 - z }$ with
+  respect to $t > x > y > z$. The Gr\"obner basis is
+  $\Set{-t^2+z, ty-z^2, tz-y, x-z^2, y^2-z^3}$.
 \end{example}
 
 \begin{example}
   \[
     \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
-      f: &[-0.7cm] V = \Vc(x^3 - x^2z - y^z) \arrow[r] & \mathbb{A}^3 \\
+      f: &[-0.7cm] V = \Vc(x^3 - x^2z - y^z) \arrow[r] & \Ab^3 \\
       & (x, y, z) \arrow[r, mapsto] & (x^2 z - y^2 z, 2xyz, -z^3)
     \end{tikzcd}
   \]
 
-  The ideal is $\langle x^3 - x^2 z - y^2 z, u - x^2 z + y^2 z, v - 2 x y z, w + z^3 \rangle$
-  has a Gr\"obner basis $\langle \dots, u^2 + v^2 - w^2 \rangle$.
+  The ideal is $\gen{ x^3 - x^2 z - y^2 z, u - x^2 z + y^2 z, v - 2 x y z, w + z^3 }$
+    has a Gr\"obner basis $\gen{ \dots, u^2 + v^2 - w^2 }$.
 \end{example}
 
 \begin{theorem}
-  Let $I, J$ be two ideals of $k[x_1, \dots, x_n]$, then $I \cap J = (t \tilde{I} + (1 - t) \tilde{J}) \cap K[x_1, \dots, x_n]$.
+  Let $I, J$ be two ideals of $K[x_1, \dots, x_n]$, then $I \cap J = (t \tilde{I} + (1 - t) \tilde{J}) \cap K[x_1, \dots, x_n]$.
 \end{theorem}
 
 \begin{example}
-  $I = \langle y^2 , x - yz \rangle, \, J = \langle x, z \rangle$. We shall find $I \cap J$. \\
-  $tI + (1-t)J = \langle tx - tyz, ty^2, (1-t)x, (1-t)z \rangle$ has a Gr\"obner basis
-  $\Set{f_1, f_2, f_3, f_4, xy, x - yz}$, so $I \cap J = \langle xy, x-yz \rangle$.
+  $I = \gen{ y^2 , x - yz }, \, J = \gen{ x, z }$. We shall find $I \cap J$. \\
+  $tI + (1-t)J = \gen{ tx - tyz, ty^2, (1-t)x, (1-t)z }$ has a Gr\"obner basis
+  $\Set{f_1, f_2, f_3, f_4, xy, x - yz}$, so $I \cap J = \gen{ xy, x-yz }$.
 \end{example}
 
 \begin{theorem}
-  Let $L = \langle f_1, \dots, f_s \rangle \subsetneq k[x_1, \dots, x_n]$, then
-  $f \in \sqrt{I} \iff \langle f_1, \dots, f_s, 1 - tf \rangle = k[x_1, \dots, x_n, t]$.
+  Let $L = \gen{ f_1, \dots, f_s } \subsetneq K[x_1, \dots, x_n]$, then
+  $f \in \sqrt{I} \iff \gen{ f_1, \dots, f_s, 1 - tf } = K[x_1, \dots, x_n, t]$.
 \end{theorem}
 
 \begin{example}
-  Let $I = \langle xy^2 + 2y^2, x^4 - 2x^2 + 1 \rangle$, and we are to determine $f = y - x^2 + 1$
-  is in $\sqrt{I}$ or not.
+  Let $I = \gen{ xy^2 + 2y^2, x^4 - 2x^2 + 1 }$, and we are to determine
+  $f = y - x^2 + 1$ is in $\sqrt{I}$ or not.
 \end{example}
 
 \begin{prop}
-  An affine algebraic set $V$ in $\mathbb{A}^n_k$ has a unique minimal decomposition.
-  $V = V_1 \cap V_2 \cap \dotsm \cap V_m$ with $V_i$ irreducible and $V_i \not\subset V_j$.
+  An affine algebraic set $V$ in $\Ab^n_k$ has a unique minimal decomposition.
+  $V = V_1 \cap V_2 \cap \dotsm \cap V_m$ with $V_i$ irreducible and
+  $V_i \not\subset V_j$.
 \end{prop}
 
 \begin{theorem}[Decomposition]
@@ -209,10 +263,10 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
 \end{theorem}
 
 \begin{example}
-  Let $I = \langle xz - y^2, x^3 - yz \rangle$ and $V = \Vc(I)$. \\
+  Let $I = \gen{ xz - y^2, x^3 - yz }$ and $V = \Vc(I)$. \\
 
-  Notice that $\langle xz - y^2 , x^3 - yz \rangle \subseteq \langle x, y \rangle = J$,
-  so $(I: J) = (I: \langle x \rangle) \cap (I: \gen{y})$.
+  Notice that $\gen{ xz - y^2 , x^3 - yz } \subseteq \gen{ x, y } = J$,
+  so $(I: J) = (I: \gen{ x }) \cap (I: \gen{y})$.
 
   First we calculate $(I: x)$. Notice that we know how to calculate $I \cap \gen{x}$ now.
   After a calculation, $I \cap \gen{x} = \Set{x^2z - xy^2, x^4 - xyz, x^3y - xz^2}$,
@@ -223,8 +277,8 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
 \end{example}
 
 \begin{prop}
-  In general, if $W \subseteq \mathbb{A}_k^n$ is an affine algebraic set defined by $x_i = f_i(t_1, \dots, t_m)$,
-  then $W$ is irreducible.
+  In general, if $W \subseteq \Ab_k^n$ is an affine algebraic set defined by
+  $x_i = f_i(t_1, \dots, t_m)$, then $W$ is irreducible.
 \end{prop}
 
 \begin{prop}

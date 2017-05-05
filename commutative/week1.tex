@@ -103,14 +103,14 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
     $a \in P$.
 
     ``$\supset$'':
-    Let $\mathcal{S} \triangleq \Set{ I : \text{ ideal in } R \mid a^n \not\in I, \, \forall n \in \Nb}$.
+    Let $\mathcal{S} \triangleq \Set{ I : \text{ ideal in } R \mid a^n \notin I, \, \forall n \in \Nb}$.
     By the routine argument of Zorn's lemma, exists maximal element $Q$ in $\mathcal{S}$.
     We claim that $\mathcal{S}$ is a prime ideal.
 
-    For each $x, y \not\in Q$, we have $Q + Rx \supsetneq Q$ and $Q + Ry \supsetneq Q$.
+    For each $x, y \notin Q$, we have $Q + Rx \supsetneq Q$ and $Q + Ry \supsetneq Q$.
     By the maximality of $Q$, these two ideals are not in $\mathcal{S}$.
     So exists $n, m$ such that $a^n \in Q + Rx,\, a^m \in Q + Ry$ which implies
-    $a^{n+m} \in Q + Rxy$, so $Q + Rxy \not\in \mathcal{S}$, thus $xy \not\in Q$,
+    $a^{n+m} \in Q + Rxy$, so $Q + Rxy \notin \mathcal{S}$, thus $xy \notin Q$,
     hence $Q$ is prime.
   \end{proof}
 \end{prop}
@@ -127,7 +127,7 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
 \end{coro}
 
 \begin{definition}
-  An ideal $q$ of $R$ is called primary if $q \neq R$ and ``$xy \in q$ and $x \not\in q$''
+  An ideal $q$ of $R$ is called primary if $q \neq R$ and ``$xy \in q$ and $x \notin q$''
   implies $y^n \in q$ for some $n \in \Nb$.
 \end{definition}
 
@@ -141,8 +141,8 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
   \begin{proof}
     The first one is obvious.
 
-    If $q$ is primary and $\sqrt{q} = p$. For any $xy \in p$ and $x \not\in p$,
-    there exists $n$ so that $x^n y^n \in q$, and for this $n$, $x^n \not\in q$.
+    If $q$ is primary and $\sqrt{q} = p$. For any $xy \in p$ and $x \notin p$,
+    there exists $n$ so that $x^n y^n \in q$, and for this $n$, $x^n \notin q$.
     Thus $(y^n)^m \in q$ for some $m$, hence $y \in p$. We conclude that $p$ is a prime ideal.
 
     Finally, by corollary~\ref{coro:equation-of-sqrt-ideal},
@@ -175,7 +175,7 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
   In a Noetherian ring $R$, every irreducible ideal $I$ is primary.
 
   \begin{proof}
-    Let $xy \in I$ and $x \not\in I$. Consider $(I : y) \subseteq (I: y^2) \subseteq \dotsm$.
+    Let $xy \in I$ and $x \notin I$. Consider $(I : y) \subseteq (I: y^2) \subseteq \dotsm$.
     Since $R$ is Noetherian, exists $n$ such that $(I: y^n) = (I: y^m)$ for any $m \geq n$.
 
     We claim that $I = (I + Ry^n) \cap (I + Rx)$.
@@ -188,7 +188,7 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
         Thus $b = a_1 + r_1 y^n \in I$.
     \end{itemize}
 
-    Now by the fact that $I$ is irreducible and $I \neq I + Rx$ since $x \not\in I$,
+    Now by the fact that $I$ is irreducible and $I \neq I + Rx$ since $x \notin I$,
     thus $I = I + Ry^n \implies y^n \in I$.
   \end{proof}
 \end{theorem}
@@ -201,7 +201,7 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
         of irreducible ideals }}$ and $\mathcal{I}$ is not an empty set.
     Since $R$ is Noetherian, the set has a maximal element $I_0$. Then $I_0$ is not
     irreducible (or else it is an intersection of itself, which is irreducible).
-    Write $I_0 = I_1 \cap I_2$, with $I_1, I_2 \neq I_0$. Then $I_1, I_2 \not\in \mathcal{I}$,
+    Write $I_0 = I_1 \cap I_2$, with $I_1, I_2 \neq I_0$. Then $I_1, I_2 \notin \mathcal{I}$,
     so these two ideals could be written as a finite intersection of irreducible ideals,
     implying that $I_0$ could also be written as a finite intersection of irreducible ideals,
     which is an contradiction.
@@ -215,26 +215,26 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
       \begin{proof}
         In this case $1 \in (q: x)$, thus $(q: x) = R$.
       \end{proof}
-    \item If $x \not\in q$, then $(q: x)$ is $p$-primary.
+    \item If $x \notin q$, then $(q: x)$ is $p$-primary.
       \begin{proof}
-        For any $y \in (q: x)$, $xy \in q$ but $x \not\in q$, thus $y^n \in q \implies y \in p$.
+        For any $y \in (q: x)$, $xy \in q$ but $x \notin q$, thus $y^n \in q \implies y \in p$.
         Hence
         \[ q \subset (q: x) \subset p \implies p = \sqrt{q} \subset \sqrt{(q: x)} \subset \sqrt{p} = p \]
         and thus $(q: x)$ is $p$-primary.
 
-        For any $y, z$ with $yz \in (q: x)$ but $y \not\in (q: x)$, which is equivalent
-        to $xyz \in q$ but $xy \not\in q$. Since $q$ primary, $z^n \in q \subset (q: x)$.
+        For any $y, z$ with $yz \in (q: x)$ but $y \notin (q: x)$, which is equivalent
+        to $xyz \in q$ but $xy \notin q$. Since $q$ primary, $z^n \in q \subset (q: x)$.
       \end{proof}
-    \item If $x \not\in p$, then $(q: x) = q$.
+    \item If $x \notin p$, then $(q: x) = q$.
       \begin{proof}
         \[
           \left\{ \begin{array}{l}
             y \in (q: x) \\
-            x \not\in p \\
+            x \notin p \\
           \end{array} \right. \implies
           \left\{ \begin{array}{l}
             xy \in (q: x) \\
-            x^n \not\in q, \ \forall n \in \Nb \\
+            x^n \notin q, \ \forall n \in \Nb \\
           \end{array} \right. \implies y \in q
         \]
       \end{proof}
@@ -247,7 +247,7 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
   \begin{proof}
     We check that $\sqrt{q} = \bigcap_{i = 1}^n \sqrt{q_i} = \bigcap_{i = 1}^n p = p$.
 
-    Also, if $xy \in q$ with $x \not\in q$, then $x \not\in q_k$ for some $k$.
+    Also, if $xy \in q$ with $x \notin q$, then $x \notin q_k$ for some $k$.
     But $xy \in q_k$, thus $y^n \in q_k$. Since $\sqrt{q} = q_k$, $(y^n)^{m'} = y^m \in p \subset q$,
     thus $q$ is $p$-primary.
   \end{proof}
@@ -277,7 +277,7 @@ And if $q_i \subseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
   \begin{proof}
     ``$\supset$'': Let $x \in R \setminus I$, then $(I: x) = \big( \bigcap_{i=1}^n q_i : x \big)
     = \bigcap_{i = 1}^n (q_i: x)$. By proposition~\ref{prop:primary-divide-by-element},
-    we have $\sqrt{(I: x)} = \bigcap \sqrt{(q_i: x)} = \bigcap_{x \not\in q_i} p_i$.
+    we have $\sqrt{(I: x)} = \bigcap \sqrt{(q_i: x)} = \bigcap_{x \notin q_i} p_i$.
 
     Now, we have the following observation. ``If $p \in \Spec R$ with $p = \bigcap_{i=1}^n J_i$,
     then $p = J_j$ for some $j$.'' If not, then $J_i \not\subset p$ for all $i$,

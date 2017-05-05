@@ -9,12 +9,12 @@
 
 \begin{itemize}
   \item $x \in \Fix G$, $Gx = \{ x \}$.
-  \item $x \not\in \Fix G$, $\abs{Gx} = [G : G_x]$.
+  \item $x \notin \Fix G$, $\abs{Gx} = [G : G_x]$.
 \end{itemize}
 
 Let $\{ G_{x_1}, \dots, G_{x_n} \}$ be the set of distinct orbits.
 After rearrangement, assume $x_1, \dots, x_r \in \Fix G,
-x_{r+1}, \dots, x_n \not\in \Fix G$. Then
+x_{r+1}, \dots, x_n \notin \Fix G$. Then
 \[
   \abs{X} = \abs{\Fix G} + \sum_{i=r+1}^{n} [G : G_{x_i}]
 \]
@@ -45,9 +45,9 @@ x_{r+1}, \dots, x_n \not\in \Fix G$. Then
   \begin{proof}
     Let $\abs{G} = p^n$. If $G = Z_G$, then done.
     Otherwise, by the class equation (use action by conjugation),
-    $\abs{G} = \abs{Z_G} + \sum_{i=1}^{n} [G : G_{a_i}], \quad a_i \not\in Z_G$.
+    $\abs{G} = \abs{Z_G} + \sum_{i=1}^{n} [G : G_{a_i}], \quad a_i \notin Z_G$.
 
-    $G_{a_i} = Z_G(a_i)$, so $a_i \not\in Z_G \implies Z_G(a_i) \lneq G
+    $G_{a_i} = Z_G(a_i)$, so $a_i \notin Z_G \implies Z_G(a_i) \lneq G
     \implies p \mid [G:Z_G(a_i)] = \frac{\abs{G}}{\abs{Z_G(a_i)}}$.
 
     So $\abs{Z_G} = \abs{G} - \sum_{i=1}^{n} [G : Z_G(a_i)]
