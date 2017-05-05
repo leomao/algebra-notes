@@ -8,7 +8,7 @@
   d $f_2 = y^2-1$ $G=\Set{f_1,f_2}$. Does $f = x^2y+xy^2+y^2 \in I$?
   \begin{itemize}
       \item Choose a lexicographic monomial ordering: $x > y$
-      \item The multidegree $\partial(f) = (2,1)$, $\partial(f_1 = (1,1))$,
+      \item The multidegree $\partial(f) = (2,1)$, $\partial(f_1) = (1,1)$,
         $\partial(f_2) = (0,2)$
       \item The leading term $\LT(f) = x^2y$, $\LT(f_1) = xy$, $\LT(f_2) = y^2$
       \item $\LT(f) = x\LT(f_1) \Rightarrow f = xf_1+xy^2+y^2+x \Rightarrow f = \underset{h_1}{(x+y)}f_1+\underset{h_2}{(1)}f_2+\underset{\bar{f}^G}{(x+y+1)}$ or $f = \underset{h_1}{x}f_1+\underset{h_2}{(x+1)}f_2+\underset{\bar{f}^G}{(2x+1)}$.
@@ -37,8 +37,9 @@
   $I = \gen{ g_1,\dots,g_m }$ and $\LT(I) = \gen{ \LT(g_1),\dots,\LT(g_m) }$.
 \end{definition}
 
-\begin{prop}
-  $\LT(I) = \gen{\LT(g_1),\dots,\LT(g_m)} \Rightarrow I = \gen{g_1,\dots,g_m}$.
+\begin{prop} \label{prop:leading-term-ideal-equal-so-does-ideal}
+  Let $g_1, \dots, g_m \in I$, then
+  $\LT(I) = \gen{\LT(g_1),\dots,\LT(g_m)} \implies I = \gen{g_1,\dots,g_m}$.
   \begin{proof}
     $\forall f \in I$, do the division process. Then
     $f = \sum\limits_{i=1}^m h_ig_i+r$, either $r=0$ or
@@ -57,6 +58,8 @@
     Write $f_i = \sum\limits_{j=1}^{m_i} h_{ij}\LT(g_{ij})$ with
     $h_{ij} \in K[X_1,\dots,X_n]$, $g_{ij} \in I$. Then
     $\LT(I) = \Gen{ \LT(g_{ij}) \given i=1,\dots,m,\, j=1,\dots,m_i}$.
+    By prop~\ref{prop:leading-term-ideal-equal-so-does-ideal}, 
+    This is Gr\"{o}bner basis.
   \end{proof}
 \end{theorem}
 
@@ -106,7 +109,8 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
   Then $h = \sum_{i = 2}^m b_i S(f_{i-1}, f_i)$ for some $b_i \in K$.
   \begin{proof}
     Write $f_i = c_if'_i$ with $c_i \in K$ and $f'_i$ being monic of multidegree
-    $= \alpha$. Note: $S(f_i, f_j) = f'_1 - f'_2$. Then, 
+    $\alpha$. Note: $S(f_i, f_j) = f'_i - f'_j$ since all multidegree are
+    equal. Then, 
     \[
       \begin{split}
         h &= \sum_{i=1}^m \big( a_ic_if'_i \big) \\
@@ -116,9 +120,9 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
         b_i = \sum_{j=1}^{i-1}a_jc_j.
       \end{split}
     \]
-    Also, $b_{m+1} = 0$ , since $\partial(h) < \alpha$,
-    $\partial\left(\sum\limits_{i=2}^m b_iS(f_{i-1},f_i) \right) < \alpha$ and
-    $\partial(f'_m) = \alpha$. Then, we have $h = \sum_{i = 2}^m b_i S(f_{i-1}, f_i)$.
+    Also, in this equality, $f'_m$ is the only term that has multidegree $\alpha$
+    (other terms have multidegree less than $\alpha$). So $b_{m+1} = 0$ must hold.
+    Then, we have $h = \sum_{i = 2}^m b_i S(f_{i-1}, f_i)$.
   \end{proof}
 \end{lemma}
 
@@ -140,32 +144,34 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
       \item \uline{Claim}: $\partial(f) = \alpha$
       \item (pf) Rewrite,
         \[
-          \begin{split}f &= \sum_{i = 1}^m h_ig_i \\
+          \begin{split}
+            f &= \sum_{i = 1}^m h_ig_i \\
             &= \sum_{\partial(h_ig_i) = \alpha} h_ig_i
-              + \sum_{\partial(h_ig_i) < \alpha} h_ig_i \\
+              + \sum_{\partial(h_ig_i) < \alpha} h_ig_i
+              \qquad (\text{the first term $\neq 0$ since $\alpha$ is minimal.}) \\
             &= \sum_{\partial(h_ig_i) = \alpha} \LT(h_i)g_i
               + \sum_{\partial(h_ig_i) = \alpha} (h_i-\LT(h_i)g_i)
               + \sum_{\partial(h_ig_i) < \alpha} h_ig_i
           \end{split}
         \]
-          Let $\LT(h_i) = a_ih_i^0$ with $h_i^0$ being a monic monomial.
-          Comparing the multidegree on both side,
-          $\partial\left(\sum\limits_{\partial(h_ig_i) = \alpha} a_ih_i^0g_i\right)
-          < \alpha$ By lemma~\ref{lemma:sum-of-equal-degree-f-is-less},
-          $\underset{\partial(h_ig_i) = \alpha}{\sum}\left(a_ih_i^0g_i\right) = c_{12}S(h_{i_1}^0g_{i_1},h_{i_2}^0g_{i_2}) + \dots$(finite) where $\partial(h_{i_1}g_{i_1}) = \partial(h_{i_2}g_{i_2}) = \dots = \alpha $. By def, if we set $\beta_{st} = M_{st} =$ the monic lcm of $\LT(g_{i_s}), \LT(g_{i_t})$, then
-          \[
-            \begin{split}
-              S(h_{i_s}^0g_{i_s}, h_{i_t}^0g_{i_t}) &= \frac{X^\alpha}{\LT(h_{i_s}^0g_{i_s})}h_{i_s}^0g_{i_s} - \frac{X^\alpha}{\LT(h_{i_t}g_{i_t})}h_{i_t}^0g_{i_t} \\
-              &= X^{\alpha-\beta_{st}} \left( \frac{X^{\beta_{st}}}{\bcancel{h_{i_s}^0}\LT(g_{i_s})}\bcancel{h_{i_s}^0}g_{is} - \frac{X^{\beta_{st}}}{\bcancel{h_{i_t}^0}\LT(g_{i_t})}\bcancel{h_{i_t}^0}g_{i_t}  \right) \\
-              &= X^{\alpha-\beta_{st}} S\left(g_{i_s},g_{i_t}\right) \\
-              &= X^{\alpha-\beta_{st}}\overset{m}{\underset{j = 1}{\sum}}{l_jg_j} \text{ (by division)}
-            \end{split}
-          \]
+        Let $\LT(h_i) = a_ih_i^0$ with $h_i^0$ being a monic monomial.
+        Comparing the multidegree on both side,
+        $\partial\left(\sum\limits_{\partial(h_ig_i) = \alpha} a_ih_i^0g_i\right)
+        < \alpha$ By lemma~\ref{lemma:sum-of-equal-degree-f-is-less},
+        $\underset{\partial(h_ig_i) = \alpha}{\sum}\left(a_ih_i^0g_i\right) = c_{12}S(h_{i_1}^0g_{i_1},h_{i_2}^0g_{i_2}) + \dots$(finite) where $\partial(h_{i_1}g_{i_1}) = \partial(h_{i_2}g_{i_2}) = \dots = \alpha $. By def, if we set $\beta_{st} = M_{st} =$ the monic lcm of $\LT(g_{i_s}), \LT(g_{i_t})$, then
+        \[
+          \begin{split}
+            S(h_{i_s}^0g_{i_s}, h_{i_t}^0g_{i_t}) &= \frac{X^\alpha}{\LT(h_{i_s}^0g_{i_s})}h_{i_s}^0g_{i_s} - \frac{X^\alpha}{\LT(h_{i_t}g_{i_t})}h_{i_t}^0g_{i_t} \\
+            &= X^{\alpha-\beta_{st}} \left( \frac{X^{\beta_{st}}}{\bcancel{h_{i_s}^0}\LT(g_{i_s})}\bcancel{h_{i_s}^0}g_{is} - \frac{X^{\beta_{st}}}{\bcancel{h_{i_t}^0}\LT(g_{i_t})}\bcancel{h_{i_t}^0}g_{i_t}  \right) \\
+            &= X^{\alpha-\beta_{st}} S\left(g_{i_s},g_{i_t}\right) \\
+            &= X^{\alpha-\beta_{st}}\overset{m}{\underset{j = 1}{\sum}}{l_jg_j} \text{ (by division)}
+          \end{split}
+        \]
       \item Then, $\partial(l_jg_j) < \beta_{st} \implies \partial(f) \geq \alpha$.
         Therefore, $\partial(f) = \alpha \implies \LT(f) =
         \sum\limits_{\partial(h_ig_i) = \alpha} \LT(h_i)\LT(g_i)$
         $\implies \LT(f) \in \gen{ \LT(g_1),\dots, \LT(g_m) }$.
-    \end{description}
+    \end{itemize}
   \end{proof}
 \end{theorem}
 
