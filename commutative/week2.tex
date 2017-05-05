@@ -59,7 +59,7 @@ In the following, $k$ will be an algebraically closed field.
 The one-one correspondence is given by
   \[
     \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
-      \Set{ \text{affine algebraic sets in } \mathbb{A}^n_k }
+      \Set{ \text{affine algebraic sets in } \Ab^n_k }
       \arrow[r, leftrightarrow] & \Set{ \text{ radical ideals in } k[x_1, \dots, x_n]} \\
       V \arrow[r, mapsto] & \Ic(V) \\
       \Vc(I) \arrow[r, mapsfrom] & I
@@ -110,7 +110,7 @@ The one-one correspondence is given by
     If not, say $S = k[f_1, \dots, f_n]$ with $f_i = g_i / h_i$, $g_i, h_i \in k[z_1, \dots, z_p]$.
     Then for any irreducible polynomial $p$ such that $p \nmid h_i$ for each $h_i$
     (This polynomial exists since for each $h_i$ there are only finite degree $1$ factors).
-    Then $1/p \not\in k[f_1, \dots, f_n]$ by checking the divisibility of the denominator
+    Then $1/p \notin k[f_1, \dots, f_n]$ by checking the divisibility of the denominator
     under addition and multiplication, which leads to a contradiction.
   \end{proof}
 \end{lemma}
