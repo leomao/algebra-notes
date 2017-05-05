@@ -59,7 +59,6 @@
 \end{theorem}
 
 
-
 \subsubsection{Buchberger's algorithm}
 
 \begin{definition}
@@ -136,3 +135,98 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
     \end{itemize}
   \end{proof}
 \end{theorem}
+
+\subsection{Applications of Gr\"{o}bner basis}
+\begin{definition}
+  Let $I \subseteq k[x_1, \dots, x_n]$ and $x_1 > x_2 > \dotsm > x_n$.
+  $I_i \triangleq I \cap K[x_{i+1}, \dots, x_n]$ is called the $i$-th elimination ideal of $I$.
+\end{definition}
+
+\begin{theorem}[Elimination theorem]
+  Let $G = \Set{g_1, \dots, g_m}$ be a Gr\"obner basis of $I \neq 0$ with ordering
+  $x_1 > \dotsm > x_n$. Then $G_i \triangleq G \cap K[x_{i+1}, \dots, x_n]$
+  is a Gr\"obner basis of $I_i$ (i.e., $\langle \LT(G_i) \rangle = \LT(I_i)$).
+\end{theorem}
+
+\begin{example}
+  Find $V = \Vc(x+y-z, x^2+y^2-z^3, x^3+y^3-z^5)$. \\
+  We compute a Gr\"obner basis of $I = \langle f_1, \dots, f_3 \rangle$ with respect to the ordering $x > y > z$.
+  The Gr\"obner basis is $\Set{x+y-z, 2y^2-2yz-z^3+z^2, 2z^5-3z^4+z^3}$.
+\end{example}
+
+\begin{example}
+  \[
+    \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+      f: &[-0.7cm] \mathbb{A}^1 \arrow[r] & \mathbb{A}^3 \\
+      & t \arrow[r, mapsto] & (t^4, t^3, t^2)
+    \end{tikzcd}
+  \]
+
+  We compute a Gr\"obner basis of $I = \langle t^4 - x, t^3 - y, t^2 - z \rangle$ with respect to
+  $t > x > y > z$. The Gr\"obner basis is $\Set{-t^2+z, ty-z^2, tz-y, x-z^2, y^2-z^3}$.
+\end{example}
+
+\begin{example}
+  \[
+    \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+      f: &[-0.7cm] V = \Vc(x^3 - x^2z - y^z) \arrow[r] & \mathbb{A}^3 \\
+      & (x, y, z) \arrow[r, mapsto] & (x^2 z - y^2 z, 2xyz, -z^3)
+    \end{tikzcd}
+  \]
+
+  The ideal is $\langle x^3 - x^2 z - y^2 z, u - x^2 z + y^2 z, v - 2 x y z, w + z^3 \rangle$
+  has a Gr\"obner basis $\langle \dots, u^2 + v^2 - w^2 \rangle$.
+\end{example}
+
+\begin{theorem}
+  Let $I, J$ be two ideals of $k[x_1, \dots, x_n]$, then $I \cap J = (t \tilde{I} + (1 - t) \tilde{J}) \cap K[x_1, \dots, x_n]$.
+\end{theorem}
+
+\begin{example}
+  $I = \langle y^2 , x - yz \rangle, \, J = \langle x, z \rangle$. We shall find $I \cap J$. \\
+  $tI + (1-t)J = \langle tx - tyz, ty^2, (1-t)x, (1-t)z \rangle$ has a Gr\"obner basis
+  $\Set{f_1, f_2, f_3, f_4, xy, x - yz}$, so $I \cap J = \langle xy, x-yz \rangle$.
+\end{example}
+
+\begin{theorem}
+  Let $L = \langle f_1, \dots, f_s \rangle \subsetneq k[x_1, \dots, x_n]$, then
+  $f \in \sqrt{I} \iff \langle f_1, \dots, f_s, 1 - tf \rangle = k[x_1, \dots, x_n, t]$.
+\end{theorem}
+
+\begin{example}
+  Let $I = \langle xy^2 + 2y^2, x^4 - 2x^2 + 1 \rangle$, and we are to determine $f = y - x^2 + 1$
+  is in $\sqrt{I}$ or not.
+\end{example}
+
+\begin{prop}
+  An affine algebraic set $V$ in $\mathbb{A}^n_k$ has a unique minimal decomposition.
+  $V = V_1 \cap V_2 \cap \dotsm \cap V_m$ with $V_i$ irreducible and $V_i \not\subset V_j$.
+\end{prop}
+
+\begin{theorem}[Decomposition]
+  Assume $\sqrt{I} = I$ and $I \subset J$, then $\Vc(I : J) = \overline{\Vc(I) \setminus  \Vc(J)}$.
+  and $\Vc(I) = \Vc(J) \cup \Vc(I: J)$.
+\end{theorem}
+
+\begin{example}
+  Let $I = \langle xz - y^2, x^3 - yz \rangle$ and $V = \Vc(I)$. \\
+
+  Notice that $\langle xz - y^2 , x^3 - yz \rangle \subseteq \langle x, y \rangle = J$,
+  so $(I: J) = (I: \langle x \rangle) \cap (I: \gen{y})$.
+
+  First we calculate $(I: x)$. Notice that we know how to calculate $I \cap \gen{x}$ now.
+  After a calculation, $I \cap \gen{x} = \Set{x^2z - xy^2, x^4 - xyz, x^3y - xz^2}$,
+  so $(I: x) = \gen{f_1/x, f_2/x, f_3/x} = I + \gen{x^2y - z^3}$.
+  Simarly one could find that $(I: y) = (I: x)$, thus $(I: J) = (I: x)$.
+
+  Hence $V = \Vc(x, y) \cap \Vc(xz-y^2, x^3-yz, x^2y - z^2)$.
+\end{example}
+
+\begin{prop}
+  In general, if $W \subseteq \mathbb{A}_k^n$ is an affine algebraic set defined by $x_i = f_i(t_1, \dots, t_m)$,
+  then $W$ is irreducible.
+\end{prop}
+
+\begin{prop}
+  If $f : V \to W$ with $\overline{f(V)} = \Vc(\ker f^*)$, where $f^* : k[W] \to k[V]$.
+\end{prop}
