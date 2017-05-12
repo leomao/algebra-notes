@@ -1,0 +1,970 @@
+\documentclass[a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%page size%%%%%%%%%%%%%%%%%%
+% \paperwidth=65cm
+% \paperheight=160cm
+
+%%%%%%%%%%%%%%%%%%%Package%%%%%%%%%%%%%%%%%%%
+\usepackage[margin=3cm]{geometry}
+\usepackage{mathtools,amsthm,amssymb}
+\usepackage{centernot}
+\usepackage{yhmath}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{stmaryrd}
+\usepackage[square, comma, numbers, super, sort&compress]{natbib}
+\usepackage[unicode, pdfborder={0 0 0}, bookmarksdepth=-1]{hyperref}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[shortlabels, inline]{enumitem}
+\usepackage{xpatch}
+\usepackage{rotate}
+
+%\usepackage{tabto}     
+%\usepackage{soul}      
+%\usepackage{ulem}      
+%\usepackage{wrapfig}   
+%\usepackage{floatflt}  
+\usepackage{float}     
+\usepackage{caption}   
+\usepackage{subcaption}
+%\usepackage{setspace}  
+\usepackage{mdframed}  
+%\usepackage{multicol}  
+%\usepackage[abbreviations]{siunitx}
+%\usepackage{dsfont}   
+
+%%%%%%%%%%%%%%%%%%%TikZ%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+
+\tikzstyle{every picture}+=[remember picture]
+
+%%%%%%%%%%%%%%%%%font size%%%%%%%%%%%%%%%%%%%
+%\def\normalsize{\fontsize{10}{15}\selectfont}
+%\def\large{\fontsize{12}{18}\selectfont}
+%\def\Large{\fontsize{14}{21}\selectfont}
+%\def\LARGE{\fontsize{16}{24}\selectfont}
+%\def\huge{\fontsize{18}{27}\selectfont}
+%\def\Huge{\fontsize{20}{30}\selectfont}
+
+%%%%%%%%%%%%%%%Theme Input%%%%%%%%%%%%%%%%%%%
+%\input{themes/chapter/neat}
+%\input{themes/env/problist}
+
+%%%%%%%%%%%titlesec settings%%%%%%%%%%%%%%%%%
+%\titleformat{\chapter}{\bf\Huge}
+            %{\arabic{section}}{0em}{}
+%\titleformat{\section}{\centering\Large}
+            %{\arabic{section}}{0em}{}
+%\titleformat{\subsection}{\large}
+            %{\arabic{subsection}}{0em}{}
+%\titleformat{\subsubsection}{\bf\normalsize}
+            %{\arabic{subsubsection}}{0em}{}
+%\titleformat{command}[shape]{format}{label}
+            %{gutter}{before}[after]
+
+%%%%%%%%%%%%variable settings%%%%%%%%%%%%%%%%
+%\numberwithin{equation}{section}
+%\setcounter{secnumdepth}{4}
+%\setcounter{tocdepth}{1}
+%\setcounter{section}{0}
+%\graphicspath{{images/}}
+
+%%%%%%%%%%%%%%%page settings%%%%%%%%%%%%%%%%%
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\setlength{\headheight}{15pt}  % with titling
+\setlength{\droptitle}{-2.5cm}
+%\posttitle{\par\end{center}}  % distance between title and content
+\parindent=0pt % indent size
+\parskip=1ex    % line space
+%\pagestyle{empty}  % empty: no page number
+%\pagestyle{fancy}  % fancy: fancyhdr
+
+% use with fancygdr
+%\lhead{\leftmark}
+%\chead{}
+%\rhead{}
+%\lfoot{}
+%\cfoot{}
+%\rfoot{\thepage}
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0.4pt}
+
+%\fancypagestyle{firststyle}
+%{
+  %\fancyhf{}
+  %\fancyfoot[C]{\footnotesize Page \thepage\ of \pageref{LastPage}}
+  %\renewcommand{\headrule}{\rule{\textwidth}{\headrulewidth}}
+%}
+
+%%%%%%%%%%%%%%%renew command%%%%%%%%%%%%%%%%%
+% \renewcommand{\contentsname}{Table of Content}
+% \renewcommand{\refname}{Reference}
+\renewcommand{\abstractname}{\LARGE Abstract}
+
+%%%%%%%%symbol and function settings%%%%%%%%%
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\inpd}{\langle}{\rangle} % inner product
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arccsch}
+\DeclareMathOperator{\arccoth}{arccoth}
+%%%% Math symbol %%%%
+\newcommand*{\defeq}{\vcentcolon=}
+\newcommand*{\Nb}{\mathbb{N}}
+\newcommand*{\Zb}{\mathbb{Z}}
+\newcommand*{\Qb}{\mathbb{Q}}
+\newcommand*{\Rb}{\mathbb{R}}
+\newcommand*{\Cb}{\mathbb{C}}
+\newcommand*{\Hb}{\mathbb{H}}
+\newcommand*{\Fb}{\mathbb{F}}
+\newcommand*{\Fbx}{\mathbb{F}^\times}
+\newcommand*{\Qbx}{\mathbb{Q}^\times}
+\newcommand*{\Rbx}{\mathbb{R}^\times}
+\newcommand*{\Cbx}{\mathbb{C}^\times}
+\newcommand*{\Hbx}{\mathbb{H}^\times}
+\newcommand*{\Gc}{\mathcal{G}}
+\newcommand*{\Fc}{\mathcal{F}}
+\newcommand*{\Cc}{\mathcal{C}}
+\newcommand*{\Dc}{\mathcal{D}}
+\newcommand*{\sT}{{\sf T}}
+\newcommand*{\sI}{{\sf I}}
+
+\newcommand*{\Mf}{\mathfrak{M}}
+\newcommand*{\Grf}{\mathfrak{Gr}}
+
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\dy}{\partial}
+\DeclareMathOperator{\id}{\mathbf{1}}
+
+\newcommand*\GL[1]{\operatorname{GL}\mathopen{}\left({#1}\right)\mathclose{}}
+
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Syl}{Syl}
+
+% multilinear
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Lrad}{lrad}
+\DeclareMathOperator{\Rrad}{rrad}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\trace}{Tr}
+
+% extensions
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\PDer}{PDer}
+\DeclareMathOperator{\Ext}{Ext}
+%
+
+\newcommand*{\ob}{\overline}
+\DeclareMathOperator{\ord}{ord}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle} % generator
+%\newcommand*\quot[2]{{^{\textstyle #1}\Big/_{\textstyle #2}}}
+\newcommand*\quot[2]{{#1}/{#2}}
+\newcommand*\bij{\lhook\joinrel\twoheadrightarrow}
+\newcommand*\oneto{\hookrightarrow}
+\newcommand*\onto{\twoheadrightarrow}
+\newcommand*\isoto{\xrightarrow{\sim}}
+\newcommand*\acts{\curvearrowright}
+\newcommand*\revacts{\curvearrowleft}
+\newcommand*\xto[1]{\xrightarrow{#1}}
+\newcommand*\xgets[1]{\xleftarrow{#1}}
+
+\newcommand*\bsl{\backslash}
+
+% just to make sure it exists
+\providecommand\given{}
+% can be useful to refer to this outside \Set
+\newcommand*\SetSymbol[1][]{%
+  \nonscript\:#1\vert
+  \allowbreak
+  \nonscript\:
+\mathopen{}}
+\DeclarePairedDelimiterX\Set[1]\{\}{%
+  \renewcommand\given{\SetSymbol[\delimsize]}
+  \,#1\,
+}
+
+\DeclarePairedDelimiterX\Gen[1]{\langle}{\rangle}{%
+  \renewcommand\given{\SetSymbol[\delimsize]}
+  \,#1\,
+}
+
+% cycle group \cycle{1,2,3} => (1 2 3)
+\ExplSyntaxOn
+\NewDocumentCommand{\cycle}{ O{\;} m }
+ {
+  (
+  \alec_cycle:nn { #1 } { #2 }
+  )
+ }
+
+\seq_new:N \l_alec_cycle_seq
+\cs_new_protected:Npn \alec_cycle:nn #1 #2
+ {
+  \seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
+  \seq_use:Nn \l_alec_cycle_seq { #1 }
+ }
+\ExplSyntaxOff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\proofname}{\bf pf:}
+\newtheoremstyle{mystyle}% custom style
+  {6pt}{15pt}%      top and bottom margin
+  {}%               content style
+  {}%               indent
+  {\bf}%            head style
+  {.}%              after head
+  {1em}%            distance between head and content
+  {}%               Theorem head spec (can be left empty, meaning 'normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{observation}{Obs}
+\newtheorem{definition}{Def}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Ex}
+\newtheorem{fact}{Fact}
+\newtheorem{prop}{Proposition}
+\newtheorem{coro}{Corollary}
+
+\tikzset{cong/.style={draw=none,edge node={node [sloped, allow upside down, auto=false]{$\cong$}}},
+         Isom/.style={above, every to/.append style={edge node={node [sloped, allow upside down, auto=false]{$\sim$}}}}}
+%%%%%%%%%%%%%%Title information%%%%%%%%%%%%%%
+\title{\bf Localization}
+\author{Kai-Chi Huang}
+\date{2017/05/08}
+
+\begin{document}
+\maketitle
+% \thispagestyle{empty}
+% \thispagestyle{fancy}
+% \tableofcontents
+%%%%%%%%%%%%%include file here%%%%%%%%%%%%%%%
+\section{Localization of rings}
+
+\begin{remark}
+  In this lecture, all rings are assumed to be commutative rings with $1$.
+\end{remark}
+
+Recall that $\Qb$ can be constructed as a "fraction field" of $\Zb$.
+For general rings, fraction field may not exist, but nevertheless we can
+construct its "ring of fractions".
+
+Roughly speaking, we want to make the smallest ring such that a subset $S$ of $R$ become units.
+
+\begin{definition}
+  Let $R$ be a ring, $S \subseteq R$ be a multiplicatively
+  closed subset containing $1$. 
+  We define a ring $R_S$ to be the {\bf localization of $R$ at $S$}, 
+  with a ring homomorphism $\pi : R \to R_S$, if they  
+  satisfy the following universal property:
+  \begin{quote}
+    For any ring $T$ and any ring homomorphism $\psi : R \to T$ with
+    $\psi(1) = 1$ such that $\psi(s)$ is a unit in $T$ for all $s \in S$,
+    there exist a unique ring homomorphism $\Psi : R_S \to T$
+    such that $\psi = \Psi \circ \pi$.
+
+    \[
+      \begin{tikzcd}[cramped]
+        R \arrow{r}{\pi} \arrow[swap]{dr}{\psi} & R_S \arrow{d}{\exists! \Psi} \\
+         & T
+      \end{tikzcd}
+    \]
+
+  \end{quote}
+\end{definition}
+
+\begin{theorem}
+  The localization $R_S$ exists and is unique up to isomorphism.
+  \begin{proof}
+    We define an equivalence relation $\sim$ on $R \times S$ with
+    \begin{quote}
+      $(r_1, s_1) \sim (r_2, s_2) \Longleftrightarrow x(s_2r_1- s_1r_2) = 0$ for some $x \in S$.
+    \end{quote}
+
+    \begin{itemize}
+      \itemsep=-1.5pt
+      \item Reflexive : $(r, s) \sim (r, s)$, OK.
+      \item Symmetric : $(r_1, s_1) \sim (r_2, s_2) \Longrightarrow (r_2, s_2) \sim (r_1, s_1)$, OK.
+      \item Transitive :
+        If $(r_1, s_1) \sim (r_2, s_2)$ and $(r_2, s_2) \sim (r_3, s_3)$, then exist $x, y \in S$ such that
+        $x(s_2r_1 - s_1r_2) = 0, y(s_3r_2 - s_2r_3) = 0$, hence $xs_2r_1 = xs_1r_2, ys_3r_2 = ys_2r_3$.
+        Multiply them by $ys_3$ and $xs_1$ respectively, we get
+        $xys_3s_2r_1 = xys_3s_1r_2 = xys_2s_1r_3$, that is $(xys_2)(s_3r_1-s_1r_3) = 0$, so 
+        $(r_1, s_3) \sim (r_3, s_1)$.\\
+
+        Note that the scalar $x$ in $x(s_2r_1 - s_1r_2)=0$ is required for the transitivity to hold.
+    \end{itemize}
+
+    Now let $R_S = (R \times S)/\sim$ be the set of equivalence classes. Also, we denote 
+    $(r, s)$ by $\frac{r}{s}$.
+
+    We can further turn $R_S$ into a ring by allowing addition and multiplication:
+    $$\frac{r_1}{s_1} + \frac{r_2}{s_2} = \frac{s_2r_1 + s_1r_2}{s_1s_2},\quad
+    \frac{r_1}{s_1} \cdot \frac{r_2}{s_2} = \frac{r_1r_2}{s_1s_2}$$
+
+    After some routine checking, we can confirm that these operations are well-defined.
+    \begin{itemize}
+      \item
+        If $\frac{r_1}{s_1} = \frac{r_1'}{s_1'}$, then we want to show that
+        $\frac{s_2r_1 + s_1r_2}{s_1s_2} = \frac{s_2r_1' + s_1'r_2}{s_1's_2}$.
+        
+        Because we have a $x \in S$ such that $x(s_1'r_1 - s_1r_1') = 0$, so 
+        $x(s_1's_2(s_2r_1+s_1r_2)-s_1s_2(s_2r_1'+s_1'r_2)) = s_2^2 x(s_1'r_1 - s_1r_1') = 0$.
+
+      \item 
+        If $\frac{r_1}{s_1} = \frac{r_1'}{s_1'}$, then we want to show that
+        $\frac{r_1r_2}{s_1s_2} = \frac{r_1'r_2}{s_1's_2}$.
+
+        Because we have a $x \in S$ such that $x(s_1'r_1 - s_1r_1') = 0$, so 
+        $x(s_1's_2r_1r_2 - s_1s_2r_1'r_2) = s_2x(s_1'r_1 - xs_1r_1')r_2 = 0$.
+    \end{itemize}
+
+    In fact, many elementary operations of fractions remains valid in this generalized
+    version, for example, we can do reduction since $\frac{xr}{xs} = \frac{r}{s}$ for all $x \in S$.
+
+    In this ring, we have $1 = \frac{1}{1}$ and $0 = \frac{0}{1}$. 
+    Define the ring homomorphism $\pi : R \to R_S$
+    by $\pi(r) = \frac{r}{1}$. It is easy to check that $\pi$ is a well defined 
+    ring homomorphism. More, $\pi(s) = \frac{s}{1}$ is a unit for all $s \in S$ since
+    $\frac{s}{1} \cdot \frac{1}{s} = \frac{s}{s} = \frac{1}{1}$.
+
+    Now let us consider the universal property.\\
+    Let $\psi : R \to T$ be a ring homomorphism, and $\psi(s)$ is a unit for all $s \in S$.
+    If the $\Psi$ in the universal property exists,
+    it must have $\Psi(\frac{r}{1}) = \psi(r)$, so
+    $\Psi(\frac{r}{s}) = \Psi(\frac{r}{1} \cdot (\frac{s}{1})^{-1})
+    = \Psi(\frac{r}{1}) \cdot \Psi(\frac{s}{1})^{-1} = \psi(r) \psi(s)^{-1}$.
+    (so if it exists, it must be unique.)
+
+    To check this $\Psi$ is well-defined, consider a pair $\frac{r}{s} = \frac{r'}{s'}$, we have
+    $x(s'r-r's) = 0$ for some $x \in S$. Hence $\psi(x)(\psi(s')\psi(r) - \psi(r')\psi(s)) = 0$, 
+    and $\psi(x)\psi(r)\psi(s)^{-1} = \psi(x)\psi(r')\psi(s')^{-1}$. Because
+    $\psi(x)$ is a unit in $T$, we have $\psi(r)\psi(s)^{-1} = \psi(r')\psi(s')^{-1}$, 
+    i.e. $\Psi(\frac{r}{s}) = \Psi(\frac{r'}{s'})$.
+
+    It's easy to check that $\Psi$ is a ring homomorphism, so $R_S$
+    satisfies the universal property.
+    By the routine argument of universal property, $R_S$ is unique up to isomorphism.
+  \end{proof}
+\end{theorem}
+
+Notice that in general, $\pi$ may not be injective. So let us consider its kernel:
+
+\begin{prop}
+  $\ker \pi = \{r \in R \mid \exists s \in S \textrm{ such that } sr = 0\}$
+  \begin{proof}
+    $r \in \ker \pi \iff \pi(r) = 0 \iff \frac{r}{1} = \frac{0}{1} \iff 
+    \exists s \in S \textrm{ such that } s(1 \cdot r - 1 \cdot 0) = 0$
+    $\iff \exists s \in S \textrm{ such that } sr = 0$.
+  \end{proof}
+\end{prop}
+
+\begin{coro}
+  $\pi : R \to R_S$ is an injection if and only if $S$ contains no zero divisors
+  of $R$.
+\end{coro}
+
+\begin{coro}
+  If $R$ is an integral domain, let $S = R \setminus \{0\}$, then 
+  $R_S$ is a field, and $\pi$ is an injection (so $R$ is a subring of $R_S$).
+  This $R_S$ is called the {\bf fraction field} of $R$.
+\end{coro}
+
+\begin{example}
+  $\Zb_S = \Qb$. This is the classical construction of rational number from 
+  integers.
+\end{example}
+
+\begin{example}
+  Let $K$ be a field, then $K[x]_S = K(x)$, the field of rational functions in $x$.
+\end{example}
+
+\begin{example}
+  Let $a \in R$, then $S = \{a^n \mid n \geq 0\}$ is multiplicatively closed and
+  contains 1. $R_S$ is then a ring with denominators of powers of $a$.
+  Such $R_S$ is often denoted by $R_a$.
+
+  For example, $\Zb_{2} = \Zb[\frac{1}{2}] \subseteq \Qb$
+\end{example}
+
+\begin{example}
+  Let $P \subsetneq$ be a prime ideal in $R$, then $S = R \setminus P$ is multiplicatively closed
+  (as $x, y \notin P \Rightarrow xy \notin P$) and contains 1.
+  Such $R_S$ is called {\it localiztion at prime $P$}, and often denoted by $R_P$.
+
+  For example, $\Zb_{\langle p \rangle} = 
+  \{ \frac{a}{b} \mid a, b \in \Zb, p \nmid b\} \subseteq \Qb$.
+\end{example}
+
+After constructing the localization ring $R_S$, we can now consider the relation 
+between ideals in $R$ and ideals in $R_S$.
+
+\begin{definition}
+  $\ $
+  \begin{enumerate}
+    \item Let $I$ be an ideal of $R$, then its {\it extension} to $R_S$ is defined as
+      $I^e \defeq R_S\pi(I)$.
+    \item Let $J$ be an ideal of $R_S$, then its {\it contraction} to $R$ is defined as
+      $J^c \defeq \pi^{-1}(J)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{prop}
+  $\ $
+  \begin{enumerate}
+    \item For any ideal $J$ of $R_S$, $(J^c)^e = J$.
+    \item For any ideal $I$ of $R$, $(I^e)^c = \{r \in R \mid sr \in I \textrm{ for some } s \in S\}$. \\
+      In particular, $I^e = R_S \iff I \cap S \neq \emptyset$.
+    \item If $R$ is Noetherian, then $R_S$ is also Noetherian.
+    \item There is a 1-1 correspondence:
+      \[
+        \begin{array}{ccc}
+          \left\{ \begin{array}{c} \textrm{prime ideals $P$ of $R$} \\ 
+          \textrm{with }P \cap S = \emptyset \end{array} \right\} 
+          &\longleftrightarrow& \left\{\textrm{prime ideals of $R_S$} \right\} \\
+          I &\longmapsto& I^e \\
+          J^c &\longmapsfrom& J \\
+      \end{array}
+      \]
+  \end{enumerate}
+
+  \begin{proof}
+    $\ $
+    \begin{enumerate}
+      \item 
+        "$\subseteq$":
+        Since $\pi(\pi^{-1}(J)) \subseteq J$, so 
+        $(J^c)^e = R_S(\pi(\pi^{-1}(J))) \subseteq R_S J = J$.
+
+        "$\supseteq$":
+        For $x = \frac{r}{s} \in J$, $\frac{r}{1} = \frac{s}{1}\frac{r}{s} \in J$, so $r \in \pi^{-1}(J) = J^c$.
+        Then, $x = \frac{r}{s} = \frac{1}{s}\frac{r}{1} = \frac{1}{s} \pi(r) \in R_S \pi(J^c) = (J^c)^e$.
+
+      \item 
+        "$\supseteq$":
+        If $r \in R$ and exists some $s \in S$ such that $sr \in I$, then 
+        $\pi(r) = \frac{r}{1} = \frac{1}{s}\frac{sr}{1} \in I^e$, hence $r \in (I^e)^c$.
+
+        "$\subseteq$":
+        For $r \in (I^e)^c$, $\pi(r) = \frac{r}{1} \in I^e = R_S \pi(I)$. So we have
+        $\frac{r}{1} = \sum_{i=1}^n \frac{a_i}{s_i}r_i$ for some $a_i \in R, s_i \in S, r_i \in I$.
+        But $\sum_{i=1}^n \frac{a_i}{s_i}r_i = 
+        \frac{\sum\limits_{i=1}^n \left(\prod_{j\neq i} s_j \right) a_ir_i}{\prod_{i=1}^n s_i}
+        = \frac{a}{s}$ with $a \in I, s \in S$.
+        So $\frac{r}{1} = frac{a}{s}$, that means there exists $x \in S$ that $x(sr-a) = 0$, 
+        then $xsr = xa \in I$. But $xs \in S$, so $r \in \textrm{RHS}$.
+
+        Also, $I^e = R_S \iff \frac{1}{1} \in I^e \iff 1 \in (I^e)^c \iff s \cdot 1 = s \in I \textrm{ for some } s \in S
+        \iff I \cap S \neq \emptyset$.
+
+      \item
+        If $R$ is Noetherian, consider an ascending chain of ideals of $R_S$ :
+        $J_1 \subseteq J_2 \subseteq \cdots$.
+        Contracting this chain will give an ascending chain of ideals of $R$ : 
+        $J_1^c \subseteq J_2^c \subseteq \cdots$.
+        Because $R$ is Noetherian, this chain must stop at some $J_n^c$ (i.e.
+        $J_n^c = J_{n+1}^c = \cdots$). 
+        If we extend this chain back to $R_S$, we'll get
+        $(J_1^c)^e \subseteq (J_2^c)^e \subseteq \cdots$, and this chain
+        stop at $(J_n^c)^e$.
+        By 1., we have $(J_i^c)^e = J_i$, so this chain is identical to the original
+        chain, so the original chain stops at $J_n$. Now
+        we can conclude that $R_S$ is Noetherian.
+
+      \item 
+        "$\supseteq$":
+        Let $Q \subsetneq R_S$ be a prime ideal of $R_S$, then $Q^c \cap S = \emptyset$.
+        (otherwise, by 2., $Q = R_S$.)
+        For $x, y \in R$ such that $xy \in Q^c$, we have $\pi(xy) = \frac{xy}{1} \in Q$.
+        But $\frac{xy}{1} = \frac{x}{1}\frac{y}{1}$ and $Q$ is prime, so $\frac{x}{1} \in Q$ or $\frac{y}{1} \in Q$.
+        This implies $x = \pi^{-1}(\frac{x}{1}) \in Q^c$ or $y \in Q^c$, hence
+        $Q^c$ is a prime ideal.
+
+        "$\subseteq$":
+        Let $P$ be a prime ideal of $R$ with $P \cap D = \emptyset$.
+        By 2., $P^e \subsetneq R_S$.
+        For $\frac{x}{s}, \frac{y}{t} \in R_S$, if $\frac{xy}{st} \in P^e$, then
+        $\frac{xy}{1} = \frac{st}{1}\frac{xy}{st} \in P^e$, so $xy \in (P^e)^c$.
+        Again by 2., there exists $z \in S$ such that $zxy \in P$.
+        But $P$ is prime, and $z \notin P$, so $x \in P$ or $y \in P$.
+        From this we can get $\frac{x}{1} \in P^e$ or $\frac{y}{1} \in P^e$, so $\frac{x}{s} \in P^e$ or 
+        $\frac{y}{t} \in P^e$.
+        This shows $P^e$ is a prime ideal of $R_S$.
+
+        More, if $r \in (P^e)^c$, there is a $s \in S$ such that $sr \in P$, 
+        but $s \notin P$, so $r \in P$. This is just saying $(P^e)^c = P$.
+
+        Combine with the fact that $(Q^c)^e = Q$, it's now clear that $\cdot^e$
+        and $\cdot^c$ are inverses of each other, hence form a bijection between
+        these two sets of prime ideals.
+    \end{enumerate}
+  \end{proof}
+\end{prop}
+
+\begin{coro}
+  Localization at prime ideal $P$ results in a local ring $R_P$ with the unique 
+  maximal ideal $P^e$.
+
+  \begin{proof}
+    For maximal ideal $Q \subsetneq R_P$, then its contraction
+    must have $Q^c \cap S = \{0\}$. Since $S = R \setminus P$, so $Q^c \subseteq P$,
+    $Q = (Q^c)^e \subseteq P^e$. But $Q$ is maximal, so $Q = P^e$.
+  \end{proof}
+\end{coro}
+
+\section{Localization of modules}
+
+The concept of localization can also be applied on $R$-modules.
+Its construction is almost the same as the ring version:
+
+\begin{definition}
+  Let $M$ be an $R$-module, and $S$ be a multiplicatively closed subset of $R$ 
+  containing $1$.
+
+  We define a $R_S$-module $M_S$ to be the {\bf localization of $M$ at $S$}, 
+  with an $R$-module homomorphism $\pi : M \to M_S$, if they  
+  satisfy the following universal property:
+  \begin{quote}
+    For any $R$-module $N$ such that the multiplication map by $s$ : 
+    $
+    \begin{array}{ccc}
+    N &\to& N \\
+    x &\mapsto& sx
+    \end{array}
+    $
+    is bijective for every $s \in S$,
+    and any $R$-module homomorphism $\psi : M \to N$, 
+    there exist a unique $R$-module homomorphism $\Psi : M_S \to N$
+    such that $\psi = \Psi \circ \pi$.
+
+    \[
+      \begin{tikzcd}[cramped]
+        M \arrow{r}{\pi} \arrow[swap]{dr}{\psi} & M_S \arrow{d}{\exists! \Psi} \\
+         & N
+      \end{tikzcd}
+    \]
+
+  \end{quote}
+\end{definition}
+
+\begin{theorem}
+  The localization $M_S$ exists and is unique up to isomorphism.
+  \begin{proof}
+    The proof is essentially the same as the ring version,
+    by defing an equivalence relation $\sim$ on $M \times S$ with
+    \begin{quote}
+      $(a_1, s_1) \sim (a_2, s_2) \Longleftrightarrow x(s_2a_1- s_1a_2) = 0$ for some $x \in S$.
+    \end{quote}
+
+    and let $M_S = (M \times S) / \sim$.
+
+    The only difference is that we turn $M_S$ into an $R_S$-module this time:
+    $$\frac{a_1}{s_1} + \frac{a_2}{s_2} = \frac{s_2a_1 + s_1a_2}{s_1s_2},\quad
+    \frac{r}{s} \cdot \frac{a}{b} = \frac{ra}{sb}$$
+
+    Also, we define $\pi : M \to M_S$ by $\pi(a) = \frac{a}{1}$. 
+
+    Notice that we've already upgraded $M_S$ into an $R_S$-module, since
+    the $R_S$-scalar multiplication is well-defined.
+  \end{proof}
+\end{theorem}
+
+\begin{coro}
+  $\ker \pi = \{a \in M \mid \exists s \in S \textrm{ such that } sa = 0\}$
+\end{coro}
+
+\begin{remark}
+  The ring $R$ can be regarded as a self-module.
+  Let $I$ be an ideal of $R$, then $I$ can also be regarded 
+  as a submodule of $R$.
+
+  In this perspective, the extension of ideal is just the localization of module:
+  \[
+    I^e = R_S \pi(I) = I_S
+  \]
+\end{remark}
+
+In fact, $M_S$ is just the {\it extension of $R_S$ scalars}
+from the $R$-module $M$.
+\begin{prop}
+  $M_S \cong R_S \otimes_R M$ as $R_S$-modules.
+  \begin{proof}
+    First, $R_S$ can be regarded as a $R$-module by restricting scalar products to $R$.
+    Since the map
+    \[
+      \phi : \begin{array}{ccc}
+        R_S \times M &\longrightarrow& M_S \\
+        (\frac{r}{s}, a) &\longmapsto& \frac{ra}{s}
+      \end{array}
+    \]
+    is $R$-bilinear, it induces an $R$-module homomorphism
+    \[
+      \psi : \begin{array}{ccc}
+        R_S \otimes_R M &\longrightarrow& M_S \\
+        \frac{r}{s} \otimes a &\longmapsto& \frac{ra}{s}
+      \end{array}
+    \]
+
+    Because all elements in $M_S$ can be written as the form $\frac{a}{s}$, and 
+    $\psi(\frac{1}{s} \otimes a) = \frac{a}{s}$, so $\psi$ is onto.
+
+    If $\psi(\frac{r}{s} \otimes a) = \frac{ra}{s} = \frac{0}{1}$, 
+    by definition exists $u \in S$ such that
+    $u(1 \cdot ra - s \cdot 0) = ura = 0$, 
+    so $\frac{r}{s} \otimes a = \frac{1}{us} \otimes ura = 0$, this means
+    $\psi$ is 1-1.
+
+    Hence $\psi$ is an isomorphism between $R_S \otimes_R M$ and $M_S$.
+
+    If we upgrade $R_S \otimes_R M$ to $R_S$-module by multiplying $R_S$ scalars
+    to the left side ($\frac{b}{c}(\frac{r}{s} \otimes a) = \frac{br}{cs} \otimes a$),
+    then $\psi$ can also be upgraded to an $R_S$-module isomorphism. 
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  Let $M, N$ be $R$-modules, and $\varphi : M \to N$ be an $R$-module homomorphism.
+  Then there is an induced $R_S$-module homomorphism $\varphi_S$ such that
+
+  \[
+    \begin{tikzcd}[cramped]
+      M \arrow{d}{\pi_M} \arrow{r}{\varphi} & N \arrow{d}{\pi_N} \\
+      M_S \arrow[swap]{r}{\varphi_S} & N_S
+    \end{tikzcd}
+  \]
+
+  commutes.
+
+  \begin{proof}
+    First we use the tensor product form $M_S \cong R_S \otimes_R M$, then
+    the localization map becomes $\pi_M' : a \mapsto \frac{1}{1} \otimes a$.
+
+    Now, just let 
+    \[
+      \varphi_S = \id_{R_S} \otimes \varphi : 
+      \begin{array}{ccc}
+        R_S \otimes_R M &\longrightarrow& R_S \otimes_R N \\
+        \frac{r}{s} \otimes a &\longmapsto& \frac{r}{s} \otimes \varphi(a)
+      \end{array}
+    \]
+    , then
+    it's automatically well-defined (tensor product of functions), and
+    $\varphi_S'(\pi_M'(a)) = \varphi_M(\frac{1}{1} \otimes a) = 
+    \frac{1}{1} \otimes \varphi(a) = \pi_N'(\varphi(a))$.
+
+    Again by multiplying $R_S$ scalar to the left side, $\varphi_S$ can be 
+    upgraded to an $R_S$-module homomorphism.
+
+    Now we can recover the desired homomorphism:
+    \[
+      \varphi_S : 
+      \begin{array}{ccc}
+        M_S &\longrightarrow& N_S \\
+        \frac{a}{b} &\longmapsto& \frac{\varphi(a)}{b}
+      \end{array}
+    \]
+
+    \[
+      \begin{tikzcd}[cramped]
+        M \arrow{d}{\pi_M} \arrow{r}{\varphi} & N \arrow{d}{\pi_N} \\
+        M_S \arrow[Isom]{d} \arrow[swap]{r}{\varphi_S} & N_S \arrow[Isom]{d} \\
+        R_S \otimes_R M 
+        \arrow[swap]{r}{\substack{\varphi_S' \\ = \id_{R_S} \otimes \varphi}} 
+        & R_S \otimes_R N \\
+      \end{tikzcd}
+    \]
+  \end{proof}
+\end{prop}
+
+Now we show that localization at $S$ behaves like a functor.
+\begin{prop}
+  Localization at $S$ is a covariant functor from the category of $R$-modules
+  to the category of $R_S$-modules.
+  \begin{proof}
+    $ $
+    \begin{itemize}
+      \item
+        $(\id_M)_S (\frac{a}{b}) = \frac{\id_M(a)}{b} = \frac{a}{b}
+        = \id_{M_S}(\frac{a}{b})$.
+        
+      \item
+        $(g \circ f)_S(\frac{a}{b}) = \frac{(g \circ f)(a)}{b} 
+        = \frac{g(f(a))}{b} = (g_S \circ f_S)(\frac{a}{b})$
+    \end{itemize}
+  \end{proof}
+\end{prop}
+
+As a functor, $\cdot_S$ commutes with many algebraic operations, one of the most
+important properties is the exactness:
+\begin{prop}
+  Localization at $S$ is exact. That is, for any short exact sequence of $R$-modules
+  \[
+    \mathbf{C} : 0 \to L \xto{\psi} M \xto{\varphi} N \to 0
+  \], the induced sequence of $R_S$-modules
+  \[
+    \mathbf{C_S} : 0 \to L_S \xto{\psi_S} M_S \xto{\varphi_S} N_S \to 0
+  \] is also exact.
+
+  \begin{proof}
+    $ $
+    \begin{itemize}
+      \item Exactness at $L_S$:
+
+        For $\frac{a}{b} \in L_S$, if $\psi_S(\frac{a}{b}) = 0$, then
+        $\frac{\psi(a)}{b} = 0$ since $\psi$ is 1-1. 
+        By definition $\exists x \in S$ such that
+        $x \psi(a) = \psi(xa) = 0$.
+        Now $\frac{a}{b} = \frac{xa}{xb} = 0$, so $\psi_S$ is 1-1.
+
+      \item Exactness at $N_S$:
+
+        For every $\frac{a}{b} \in N_S$, we have some $x \in M$ such that 
+        $\varphi(x) = a$ since $\varphi$ is onto. So 
+        $\varphi_S(\frac{x}{b}) = \frac{\varphi(x)}{b} = \frac{a}{b}$, 
+        $\varphi_S$ is onto.
+
+      \item Exactness at $M_S$ ($\im \psi_S = \ker \varphi_S$):
+
+        "$\supseteq$": 
+        For $\frac{a}{b} \in \ker \varphi_S \subseteq M_S$, 
+        $\varphi_S(\frac{a}{b}) = \frac{\varphi(a)}{b} = 0$, so 
+        $\exists x \in S$ such that $x \varphi(a) = \varphi(xa) = 0$.
+        This imply $xa \in \ker \varphi = \im \psi$, so $\exists c \in L$ such 
+        that $\psi(c) = xa$. 
+        Now $\psi_S(\frac{c}{xb}) = \frac{\psi(c)}{xb} = \frac{xa}{xb} = \frac{a}{b}$
+        , then $\frac{a}{b} \in \im \psi_S$. 
+
+        "$\subseteq$":
+        For $\frac{a}{b} \in \im \psi_S \subseteq M_S$, 
+        $\exists \frac{c}{d} \in L_S$ such that $\psi_S(\frac{c}{d}) = 
+        \frac{\psi(c)}{d} = \frac{a}{b}$. 
+        So $\varphi_S(\frac{a}{b}) = \varphi_S(\frac{\psi(c)}{d}) 
+        = \frac{\varphi(\psi(c))}{d} = \frac{0}{d} = 0$, thus
+        $\frac{a}{b} \in \ker \varphi_S$.
+    \end{itemize}
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  Let $I, J$ be ideals of $R$, and $M, N, L$ be $R$-modules. 
+  For $1. \sim 3.$, assume $N, L$ are submodules of $M$.
+  \begin{enumerate}
+    \itemsep=-1.5pt
+    \item $(N+L)_S = N_S + L_S$
+    \item $(N \cap L)_S = N_S \cap L_S$
+    \item $N_S$ is a submodule of $M_S$, and $M_S / N_S \cong (M/N)_S$
+    \item $(I+J)_S = I_S + J_S$
+    \item $(I \cap J)_S = I_S \cap J_S$
+    \item $R_S / I_S \cong (R/I)_{\bar{S}}$
+    \item $(\sqrt{I})_S = \sqrt{I_S}$
+    \item $(L\oplus N)_S \cong L_S \oplus N_S$
+    \item $(L \otimes_R N)_S \cong L_S \otimes_{R_S} N_S$
+  \end{enumerate}
+
+  \begin{proof}
+    $ $
+    \begin{enumerate}
+      \item 
+        "$\subseteq$":
+        For $x = \frac{a+b}{c} \in (N+L)_S$ with $a \in N, b \in L, c \in S$,
+        we have $x = \frac{a}{c} + \frac{b}{c} \in N_S + L_S$.
+
+        "$\supseteq$":
+        For $x = \frac{a}{b} + \frac{c}{d} \in N_S + L_S$, 
+        $x = \frac{ad+cb}{bd} \in (N+L)_S$, since $ad \in N, cb \in L, bd \in S$.
+
+      \item 
+        "$\subseteq$":
+        For $x = \frac{a}{b} \in (N \cap L)_S$ with $a \in N \cap L$, 
+        then $\frac{a}{b} \in N_S$ and $\frac{a}{b} \in L_S$.
+
+        "$\supseteq$":
+        For $x = \frac{a}{b} \in N_S \cap L_S$, we can write 
+        $\frac{a}{b} = \frac{c}{d}$ for some $c \in N$. 
+        So $\exists u \in S$ such that $uda = ubc \in N$.
+        Similarly, $\exists u', d' \in S$ such that $u'd'a \in L$.
+        Now $udu'd'a \in N \cap L$, so $x = \frac{udu'd'a}{udu'd'b} \in 
+        (N \cap L)_S$.
+
+      \item 
+        By 1st isomorphism theorem, we have the following exact sequence:
+        \[
+          0 \to N \to M \to M/N \to 0
+        \]
+
+        Since the localization is still exact:
+        \[
+          0 \to N_S \to M_S \to (M/N)_S \to 0
+        \]
+
+        The map $N_S \to M_S$ is injective means $N_S$ can be regarded as a 
+        submodule of $M_S$. Again by 1st isomorphism theorem, 
+        we have $M_S / N_S \cong (M/N)_S$.
+
+      \item
+        If wee see $I, J$ as submodules of self-module $R$, this directly 
+        follows 1.
+
+      \item Also directly by 2.
+
+      \item 
+        Directly by 3., we have the isomorphism of $R$-modules:
+        \[
+          \begin{array}{ccc}
+            R_S / I_S &\cong& (R/I)_S \\
+            \overline{\frac{a}{b}} &\longmapsto& \frac{\bar{a}}{b} \\
+            \frac{a}{b} + I_S &\longmapsto& \frac{a + I}{b} \\
+          \end{array}
+        \]
+
+        But in RHS, the fractions is equivalent if the denominator differs by 
+        an element $x \in I$:
+        \[
+          \frac{a+I}{b} = \frac{a+I}{b+x}
+        \]
+        then we can replace the denominator with $\bar{b}$ without violating the
+        well-definedness, so this is also an isomorphism:
+
+        \[
+          \begin{array}{ccc}
+            R_S / I_S &\cong& (R/I)_{\bar{S}} \\
+            \overline{\frac{a}{b}} &\longmapsto& \frac{\bar{a}}{\bar{b}} \\
+            \frac{a}{b} + I_S &\longmapsto& \frac{a + I}{b + I} \\
+          \end{array}
+        \]
+
+        By checking the multiplication,
+        \[
+          \begin{array}{ccc}
+            (\frac{a}{b} + I_S) \cdot (\frac{c}{d} + I_S)
+            &\longmapsto& \frac{a + I}{b + I} \cdot \frac{c+I}{d+I}\\
+            \frac{ac}{bd} + I_S &\longmapsto& \frac{ac + I}{bd + I} \\
+          \end{array}
+        \]
+
+        we can upgrade the isomorphism to a ring one.
+
+      \item
+        "$\subseteq$":
+        For $x \in (\sqrt{I})_S$, we can write $x = \frac{a}{b}$ with 
+        $a \in \sqrt{I}, b \in S$. Assume $a^n \in I$, then
+        $x^n = \frac{a^n}{b^n} \in I_S$, so $x \in \sqrt{I_S}$.
+
+        "$\supseteq$":
+        For $x = \frac{a}{b} \in \sqrt{I_S}$, if $(\frac{a}{b})^n = 
+        \frac{a^n}{b^n} = \frac{c}{d} \in I_S$, then $\exists y \in S$
+        such that $yda^n = yb^nc \in I$, so $(yda)^n = y^n d^n a^n \in I$,
+        i.e. $yda \in \sqrt{I}$.
+        Now $x = \frac{yda}{ydb} \in (\sqrt{I})_S$.
+
+      \item 
+        We say an exact sequence
+        \[
+          \begin{tikzcd}[cramped]
+            0 \arrow{r} & L \arrow{r}{\psi} & M \arrow{r}{\varphi} &
+            N \arrow{r} \arrow[bend left=33]{l}{l} & 0
+          \end{tikzcd}
+        \]
+        {\it splits}, if there exists an $R$-module homomorphism 
+        $l: N \to M$ such that $\varphi \circ l = \id_N$.
+        we call this $l$ a {\it lifting}.
+        
+        Recall that in group extension, $0 \to N \to E \to G \to 0$ splits 
+        if and only if $E \cong N \rtimes G$ is a semi-direct product.
+
+        Similarly, because the additive groups of $R$-modules are abelian,
+        this exact sequence splits if and only if $M \cong L \oplus N$
+        and $\psi, \varphi$ are natural inclusion and projection, respectively.
+
+        So let $M = L \oplus N$, then
+        \[
+          0 \to L \xto{\psi} L \oplus N \xto{\varphi} N \to 0
+        \]
+        is a splitting exact sequence.
+
+        Hence,
+        \[
+          0 \to L_S \xto{\psi_S} (L \oplus N)_S \xto{\varphi_S} N_S \to 0
+        \]
+        is also exact and splits, which means 
+        $(L \oplus N)_S \cong L_S \oplus N_S$.
+
+        \vspace{8pt}
+        {\it Alternative proof}:
+
+        Without loss of generality, assume $N, L \subseteq N \oplus L$, i.e. 
+        $N \oplus L$ is the internal direct sum of $N$ and $L$.
+        (If not, take their embedding $N \cong N' \subseteq N \oplus L$ and 
+        $L \cong L' \subseteq N \oplus L$.)
+        Then $N \oplus L = N + L$ with $N \cap L = \{0\}$.
+
+        By 1., $(N \oplus L)_S = (N + L)_S = N_S + L_S$.
+        Also, by 2, if $\frac{a}{b} \in N_S \cap L_S = (N \cap L)_S$,
+        then $\frac{a}{b} = 0$.
+        So $N_S \cap L_S = \{0\}$, which means $N_S + L_S = N_S \oplus L_S$.
+
+      \item 
+        \[
+          \begin{array}{cclc}
+            L_S \otimes_{R_S} N_S
+            &\cong& L_S \otimes_{R_S} (R_S \otimes_R N) &\\
+            &\cong& (L_S \otimes_{R_S} R_S) \otimes_R N &(\star) \\
+            &\cong& L_S \otimes_R N &\\
+            &\cong& (R_S \otimes_R L) \otimes_R N &\\
+            &\cong& R_S \otimes_R (L \otimes_R N) &\\
+            &\cong& (L \otimes_R N)_S &
+          \end{array}
+        \]
+
+        where $(\star)$ is because the associativity of tensor products
+        holds even when the two tensor products are over different rings, 
+        as long as the middle module is both $R$- and $R_S$-module.
+
+    \end{enumerate}
+  \end{proof}
+\end{prop}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{plain}
+% \bibliography{journal.bib}
+% \begin{thebibliography}{99}
+% \bibitem[1]{ex}\url{http://www.example.com/}
+% \end{thebibliography}
+\end{document}
