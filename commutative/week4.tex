@@ -17,9 +17,11 @@ From now on, $R$ is a commutative ring with $1$.
   \begin{proof} \mbox{}
     \begin{description}
       \item[$(1)\Rightarrow(2)$:]
-        Let $M$ be the unique maximal ideal of $R$.
-        Then $R \setminus M = \Set{ \text{units in } R}$ since $M$ is unique
-        $\leadsto M = \Set{ \text{non-units} }$.
+        Let $M$ be the unique maximal ideal of $R$. Then $M$ couldn't contain
+        any unit. For each non-unit $x$,
+        $\gen{x} \neq R$ and is contained in a maximal ideal by
+        lemma~\ref{lemma:max-ideal-exists}, thus $x \in M$.
+        Hence $M = \Set{ \text{non-units} }$.
       \item[$(2) \Rightarrow (3)$:]
         This ideal must be a maximal ideal $M$ since it can't be extended.
         Now, $1 \notin M \leadsto 1 + m \notin M$. So $1 + m$ is a unit.
@@ -33,7 +35,24 @@ From now on, $R$ is a commutative ring with $1$.
 
 \begin{example}
   $k[[x]]$ is a local ring with the unique maximal ideal $\gen{x}$.
+  \begin{proof}
+    For each $f = \sum a_n x^n \in k[[x]]$, one could see that $f$ is
+    an unit if and only if $a_n \neq 0$, and the leftovers form an
+    ideal $\gen{x}$.
+  \end{proof}
 \end{example}
+
+\begin{example}
+  Let $P \in \Spec R$. If $S = R \setminus P$, then $S$ is a multiplicatively
+  closed set with $1 \in S$ and $R_P \triangleq R_S$ is a local ring.
+
+  \begin{proof}
+    $S$ is a multiplicatively closed set simply follow from the definition of prime ideal.
+    One could then easily see that $P_P \triangleq \Set*{\frac{x}{s} \mid x \in P, s \in S}$
+    contains all non-unit, thus $R_P$ is local.
+  \end{proof}
+\end{example}
+
 
 \begin{prop}
   The following sets are correspondent ($k$ is algebraically closed):
@@ -43,17 +62,35 @@ From now on, $R$ is a commutative ring with $1$.
     \item $\Hom_k(k[x_1, \dots, x_n], k)$
   \end{enumerate}
   \begin{proof}
+    (1) $\Rightarrow$ (2): For any $(a_1, \dots, a_n) \in \Ab_k^n$,
+    $k[x_1, \dots, x_n] / \gen{x_1 - a_1, \dots, x_n - a_n} \cong k$ is a field,
+    hence $\gen{x_1 - a_1, \dots, x_n - a_n}$ is a maximal ideal.
+
+    (2) $\Rightarrow$ (1): Let $M \in \Max k[x_1, \dots, x_n]$,
+    by theorem~\ref{thm:weak-hilbert-null}, $\Vc(M) \neq \varnothing$,
+    so exists $(a_1, \dots, a_n) \in \Vc(M)$.
+    Now $M = \sqrt{M} = \Ic(\Vc(M)) \subseteq \Ic((a_1, \dots, a_n)) = \gen{\dots, x_i - a_i, \dots}$
+    which is maximal,
+    We conclude that $(a_1, \dots, a_n)$ is the only element in $\Vc(M)$
+    and $M = \gen{\dots, x_i - a_i, \dots}$.
+
+    (1) $\Rightarrow$ (3): For each $(a_1, \dots, a_n)$, define $\varphi \in \Hom_k(\dotsm)$ by
+    evaluation:
+    \[
+      \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+        \varphi: &[-0.7cm] k[x_1, \dots, x_n] \arrow[r] & k \\
+        & x_i \arrow[r, mapsto] & a_i
+      \end{tikzcd}
+    \]
+
+    (3) $\Rightarrow$ (1): Similarly, for each $\varphi \in \Hom_k(\dotsm)$,
+    recover $(a_1, \dots, a_n)$ by $(\varphi(x_1), \dots, \varphi(x_n))$.
   \end{proof}
 \end{prop}
 
 \begin{remark}
   Inspired by the correspondence,
 \end{remark}
-
-\begin{example}
-  Let $P \in \Spec R$. If $S = R \setminus P$, then $S$ is multiplicatively
-  closed set with $1 \in S$ and $R_P \triangleq R_S$ is a local ring.
-\end{example}
 
 \begin{definition}
   A property of an $R$-module $M$ is said to be a local property if
@@ -63,13 +100,24 @@ From now on, $R$ is a commutative ring with $1$.
   \]
 \end{definition}
 
-\begin{prop}
+\begin{prop} \label{prop:module-is-zero-iff-zero-in-localization}
   TFAE
   \begin{enumerate}[(1)]
     \item $M = 0$
     \item $M_P = 0 \quad \forall P \in \Spec R$
     \item $M_Q = 0 \quad \forall Q \in \Max R$
   \end{enumerate}
+  \begin{proof}
+    (1) $\Rightarrow$ (2) and (2) $\Rightarrow$ (3) are clear.
+
+    (3) $\Rightarrow$ (1):
+    If $M \neq 0$, let $x \in M$ such that $x \neq 0$,
+    then $\Ann(x) \subsetneq R$ since $1 \not\in \Ann(x)$.
+    Let $\Ann(x) \subset Q \in \Max R$.
+    By assumption, $M_Q = 0$ implies $\frac{x}{1} = \frac{0}{1}$.
+    By the definition of equal in localization, $\exists r \not\in Q$
+    such that $rx = 0$, thus $r \in \Ann(x)$ which leads to an contradiction.
+  \end{proof}
 \end{prop}
 
 \begin{coro}
@@ -81,13 +129,28 @@ From now on, $R$ is a commutative ring with $1$.
   \end{enumerate}
 \end{coro}
 
-\begin{prop}
+\begin{prop} \label{prop:localization-preserves-exactness}
   TFAE
   \begin{enumerate}[(1)]
-    \item $0 \to M \xrightarrow{\phi} N$ exact
-    \item $0 \to M_P \xrightarrow{\phi_P} N_P$ exact $\forall P \in \Spec R$
-    \item $0 \to M_Q \xrightarrow{\phi_Q} N_Q$ esact $\forall Q \in \Max R$
+    \item $0 \to M \xrightarrow{\phi} N \xrightarrow{\psi} L \to 0$ exact
+    \item $0 \to M_P \xrightarrow{\phi_P} N_P \xrightarrow{\psi_P} L \to 0$
+      exact $\forall P \in \Spec R$
+    \item $0 \to M_Q \xrightarrow{\phi_Q} N_Q \xrightarrow{\psi_Q} L \to 0$
+      exact $\forall Q \in \Max R$
   \end{enumerate}
+  \begin{proof}
+    (1) $\Rightarrow$ (2): By the fact that localization preserves exact sequence.
+
+    (2) $\Rightarrow$ (3): Obvious.
+
+    (3) $\Rightarrow$ (1): Let $K = \ker \phi$, then $0 \to K \to M \to N$
+    exact. Since we just proved (1) $\Rightarrow$ (3),
+    $0 \to K_Q \to M_Q \to N_Q$ exact, but $K_Q = 0$,
+    by proposition~\ref{prop:module-is-zero-iff-zero-in-localization},
+    $K = 0$.
+
+    We could prove the other half similarly by letting $K$ to be the cokernel.
+  \end{proof}
 \end{prop}
 
 \begin{definition} \mbox{}
@@ -118,11 +181,34 @@ From now on, $R$ is a commutative ring with $1$.
     \item Let $S/R$ is an integral extension and $T \subset R$ be a m.c. set
       with $1 \in T$.
       Then $S_T$ is also integral over $R_T$.
+
+    \begin{proof}
+      Let $a/t \in S_T$ with $a^n + r_1 a^{n-1} + \dotsb + r_n = 0$,
+      then we have
+      \[ \left(\frac{a}{t}\right)^n +
+          \frac{r_1}{t}\left(\frac{a}{t}\right)^{n-1} +
+          \dotsb +
+          \frac{r_n}{t^n}\left(\frac{a}{t}\right)^n = 0 \]
+        Thus $a/t$ is integral over $R_T$.
+    \end{proof}
     \item Let $S/R$ be an arbitrary extension and $T \subset R$ be m.c.
       with $1 \in T$. Then $(\bar{R})_T = \ob{(R_T)}$ in $S_T$.
+
+    \begin{proof}
+      By 1., $(\overline{R})_T$ is integral over $R_T$.
+      If $a/t \in S_T$ is integral over $R_T$, say
+      \[ \left(\frac{a}{t}\right)^n +
+          \frac{r_1}{t_1}\left(\frac{a}{t}\right)^n +
+          \dotsb +
+          \frac{r_n}{t_n}\left(\frac{a}{t}\right)^n = 0 \]
+      If we let $v = t_1 t_2 \dotsm t_n$,
+      multiply the equation by $(tv)^n$, we get
+      \[ (va)^n +
+          (r_1 t t_2 \dotsm t_n) (v a)^{n-1} +
+          \dotsb = 0 \implies va \in \overline{R} \]
+      So $a/t = va / (vt) \in \overline{R}_T$.
+    \end{proof}
   \end{itemize}
-  \begin{proof}
-  \end{proof}
 \end{prop}
 
 \begin{prop}
@@ -132,6 +218,36 @@ From now on, $R$ is a commutative ring with $1$.
     \item $R_P$ is normal $\forall P \in \Spec R$
     \item $R_Q$ is normal $\forall Q \in \Max R$
   \end{enumerate}
+
+  \begin{proof}
+    The key is to realize that if $K$ is the field of fraction of $R$,
+    then $K$ is also the field of fraction of any $R_P$. Then by
+    lemma~\ref{prop:localization-preserves-exactness},
+    \[ 0 \to R \to \overline{R} \to 0 \iff 0 \to R_P \to (\overline{R})_P \to 0, \, \forall P \]
+    By the previous proposition, $(\overline{R})_P = \overline{R_P}$ in $S_P$, this proves all.
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  An $R$-module $F$ is \index{Module!flat module} flat if the functor
+  ${-} \otimes_R M$ is exact (i.e., it preserves exact sequence).
+\end{definition}
+
+\begin{prop}
+  Given an homomorphism $R_1 \to R_2$.
+  If $M$ is a flat $R_1$-module, then $R_2 \otimes_{R_1} M$ is a flat $R_2$ module.
+
+  \begin{proof}
+    Notice that $N \otimes_{R_1} M \cong N \otimes_{R_2} (R_2 \otimes_{R_1} M)$,
+    so
+    \begin{align*}
+      0 \to N \to N' \text{ exact }
+      &\implies 0 \to N \otimes_{R_1} M \to N' \otimes_{R_1} M \text{ exact } \\
+      &\implies 0 \to N \otimes_{R_2} (R_2 \otimes_{R_1} M)
+      \to N' \otimes_{R_2} (R_2 \otimes_{R_1} M) \text{ exact } \\
+    \end{align*}
+    Which is to say that $R_2 \otimes_{R_1} M$ flat.
+  \end{proof}
 \end{prop}
 
 \begin{prop}
@@ -141,4 +257,18 @@ From now on, $R$ is a commutative ring with $1$.
     \item $M_P$ is a flat $R$-module $\forall P \in \Spec R$
     \item $M_Q$ is a flat $R$-module $\forall Q \in \Max R$
   \end{enumerate}
+
+  \begin{proof}
+    (1) $\Rightarrow$ (2): By the previous proposition combined with the property
+    of localization, $M_P \cong R_P \otimes_R M$ is a flat module.
+
+    (2) $\Rightarrow$ (3): Obvious.
+
+    (3) $\Rightarrow$ (1):
+    If $0 \to N \to N'$ exact, then by prop~\ref{prop:localization-preserves-exactness},
+    $0 \to N_Q \to N'_Q$ exact, so
+    \[ 0 \to N_Q \otimes_{R_Q} M_Q \to N'_Q \otimes_{R_Q} M_Q \]
+    is also exact. By the property of localization, $N_Q \otimes_{R_Q} M_Q \cong (N \otimes_R M)_Q$.
+    Using prop~\ref{prop:localization-preserves-exactness}, $0 \to N \otimes_R M \to N' \otimes_R M$ exact.
+  \end{proof}
 \end{prop}
