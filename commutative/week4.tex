@@ -272,3 +272,63 @@ From now on, $R$ is a commutative ring with $1$.
     Using prop~\ref{prop:localization-preserves-exactness}, $0 \to N \otimes_R M \to N' \otimes_R M$ exact.
   \end{proof}
 \end{prop}
+
+\subsection{Krull dimension}
+\begin{definition} \hfill
+  \begin{itemize}
+    \item 
+      The Krull dimension of a topological space $X$ is the supremum of the lengths $n$ of
+      all chains $X_0 \subsetneq X_1 \subsetneq \dots \subsetneq X_n$, where $X_i$ are closed irreducible subset of $X$.
+    \item
+      The Krull dimension of a commutative ring $R$ with $!$ is the
+      supremum of the lengths $n$ of all chains $P_0 \subsetneq \dots \subsetneq P_n$ where $P_i \in \Spec R$.
+  \end{itemize}
+\end{definition}
+
+\begin{prop}
+  Let $R \subseteq S$ be two integral domains and $S/R$ be integral. Then $S$ is a field if and only if $R$ is a field.
+\end{prop}
+
+\begin{prop}
+  Let $S/R$ be integral.
+  \begin{enumerate}
+    \item If $q \in \Spec S$ and $p = q \cap R \in Spec R$, then
+      $q \in \Max S \iff p \in \Max R$.
+    \item If $q, q' \in \Spec S$ with $q \subseteq q'$ and $q \cap R = p = q' \cap R$.
+      Then $q = q'$.
+  \end{enumerate}
+
+  \begin{proof}
+    It is easy to see that $S/q$ is integral over $R/p$ by the identification
+    \[ R/p \hookrightarrow S/q : r+p \to r+q\]
+  \end{proof}
+\end{prop}
+
+\begin{theorem}[Going-up theorem]
+  Let $S/R$ be integral, then
+  \begin{itemize}
+    \item If $p \in \Spec R$, then $\exists q \in \Spec S$ such that $q \cap R = p$.
+    \item If $p_1 \subset p_2$ in $\Spec R$ and $q_1 \in \Spec S$ with $q_1 \cap R = p_1$,
+      then $\exists q_2 \in \Spec S$ with $q_1 \subset q_2$ and $q_2 \cap R = p_2$.
+  \end{itemize}
+\end{theorem}
+
+\begin{theorem}
+  If $S/R$ is integral, then $\dim S = \dim R$.
+\end{theorem}
+
+\begin{prop}
+  Let $S, R$ be integral domains and $S/R$ be integral, assume $R$ is normal
+  with the field of fractions $K$. If $a \in S$ is integral over $I \subseteq R$, then
+  $f = m_{\alpha, K} = x^n + r_1 x^{n-1} + \dotsm + r_n$ with $r_i \in \sqrt{I}$.
+\end{prop}
+
+\begin{theorem}[Going-down theorem]
+  Let $S, R$ be integral domains and $S/R$ be integral, assume $R$ is normal
+  with the field of fractions $K$. If $p_1 \supset p_2$ in $\Spec R$ and $q_1 \in \Spec S$ with $q_1 \cap R = p_1$,
+  then $\exists q_2 \in \Spec S$ such that $q_1 \supset q_2$ and $q_2 \cap R = p_2$.
+\end{theorem}
+
+\begin{theorem}
+  All maximal chain in $\Spec K[x_1, \dots, x_n]$ have the same length $n$, and thus $\dim k[x_1, \dots, x_n] = n$.
+\end{theorem}
