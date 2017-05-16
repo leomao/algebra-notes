@@ -120,7 +120,7 @@ From now on, $R$ is a commutative ring with $1$.
   \end{proof}
 \end{prop}
 
-\begin{coro}
+\begin{coro} \label{coro:modules-are-equal-iff-equal-in-localization}
   Let $N \subseteq M$, TFAE (consider $\quot{M}{N}$)
   \begin{enumerate}[(1)]
     \item $N = M$
@@ -280,13 +280,27 @@ From now on, $R$ is a commutative ring with $1$.
       The Krull dimension of a topological space $X$ is the supremum of the lengths $n$ of
       all chains $X_0 \subsetneq X_1 \subsetneq \dots \subsetneq X_n$, where $X_i$ are closed irreducible subset of $X$.
     \item
-      The Krull dimension of a commutative ring $R$ with $!$ is the
+      The Krull dimension of a commutative ring $R$ with $1$ is the
       supremum of the lengths $n$ of all chains $P_0 \subsetneq \dots \subsetneq P_n$ where $P_i \in \Spec R$.
   \end{itemize}
 \end{definition}
 
 \begin{prop}
   Let $R \subseteq S$ be two integral domains and $S/R$ be integral. Then $S$ is a field if and only if $R$ is a field.
+
+  \begin{proof}
+    ``$\Rightarrow$'': For each $a \neq 0$ in $R$, $a^{-1} \in S$, so we could write
+    \[ (a^{-1})^n + r_1 (a^{-1})^{n-1} + \dotsb + r_n = 0, \ r_i \in R \]
+    Which implies
+    \[ a^{-1}  = - (r_1 + \dotsb + r_n a^{n-1}) \in R \]
+
+    ``$\Leftarrow$'': For each $a \neq 0$ is $S$, write
+    \[ a^n + r_1 a^{n-1} + \dotsb + r_n = 0, \ r_i \in R \]
+    Notice that we could assume $r_n \neq 0$, or else $a (a^{n-1} + r_1 a^{n-2} + \dotsb + r_{n-1}) = 0$
+    and hence $a^{n-1} + r_1 a^{n-2} + \dotsb + r_{n-1} = 0$ because $R$ is an integral domain.
+    Then
+    \[ a^{-1} = - r_n^{-1} (a^{n-1} + r_1 a^{n-2} + \dotsb + r_{n-2}) \]
+  \end{proof}
 \end{prop}
 
 \begin{prop}
@@ -294,14 +308,29 @@ From now on, $R$ is a commutative ring with $1$.
   \begin{enumerate}
     \item If $q \in \Spec S$ and $p = q \cap R \in Spec R$, then
       $q \in \Max S \iff p \in \Max R$.
+
+    \begin{proof}
+      It is easy to see that $S/q$ is integral over $R/p$ by the identification
+      \[
+        \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
+          R/p \arrow[r, hookrightarrow] & S/p \\
+          r+p \arrow[r, mapsto] & r+q
+        \end{tikzcd}
+      \]
+      So \[ q \in \Max S \iff S/q \text{ is a field } \iff R/p \text{ is a field } \iff p \in \Max R \]
+    \end{proof}
     \item If $q, q' \in \Spec S$ with $q \subseteq q'$ and $q \cap R = p = q' \cap R$.
       Then $q = q'$.
+    \begin{proof}
+      We know that $S_P \triangleq S_{R \setminus P}$ is integral over $R_P$.
+      Since $q_P \subseteq q'_P$ and both $q_p \cap R_P$ and $q'_p \cap R_P$
+      equal $P_P$ is maximal in $R_P$. Using 1., $q_P, q'_P$ are maximal
+      in $S_P$, but $q_P \subseteq q'_P \implies q_P = q'_P$.
+      By corollary~\ref{coro:modules-are-equal-iff-equal-in-localization},
+      $q = q'$.
+    \end{proof}
   \end{enumerate}
 
-  \begin{proof}
-    It is easy to see that $S/q$ is integral over $R/p$ by the identification
-    \[ R/p \hookrightarrow S/q : r+p \to r+q\]
-  \end{proof}
 \end{prop}
 
 \begin{theorem}[Going-up theorem]
