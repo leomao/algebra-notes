@@ -177,3 +177,73 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
     % TODO
   \end{proof}
 \end{prop}
+
+\subsubsection{Dedekind domains}
+\begin{definition}
+  A Dedekind domain is a Noetherian normal domain of $\dim 1$.
+\end{definition}
+
+\begin{definition}
+  Let $R$ be an integral domain and $K = \Frac(R)$.
+  A nonzero $R$-submodule $I$ of $K$ is called a fractional ideal of $R$ if
+  $\exists 0 \ne a \in R$ s.t. $aI \subset R$.
+\end{definition}
+
+\begin{example}
+  If $I = \gen{f_1, \dots, f_n}_R$ with $f_i = \frac{a_i}{b_i} \in K$, then
+  $a = b_1b_2 \dotsm b_n$ and $aI \subset R \implies I$ is fractional.
+
+  In general, if $R$ is a Noetherian, then every fractional ideal $I$ of $R$
+  is finitely generated.
+\end{example}
+
+\begin{definition}
+  A fractional ideal $I$ of $R$ is invertible if $\exists J:$ a fractional ideal
+  of $R$ s.t. $IJ = R$.
+\end{definition}
+
+\begin{prop}\mbox{}
+  \begin{enumerate}
+    \item If $I$ is invertible, then $J = I^{-1}$ is unique and equals
+      $J = (R:I) \triangleq = \Set{a \in K \given aI \subset R}$.
+      \begin{proof}
+        %TODO
+      \end{proof}
+    \item If $I$ is invertible, then$I$ is a finitely generated $R$-module.
+      \begin{proof}
+        %TODO
+      \end{proof}
+    \item Let $R$ be a local domain but not a field, $K = \Frac(R)$.
+      Then $R$ is a DVR $\iff$ every nonzero fractional ideal $I$ of $R$ is
+      invertible.
+      \begin{proof}
+        %TODO
+      \end{proof}
+  \end{enumerate}
+\end{prop}
+
+\begin{theorem}
+  Let $R$ be an integral domain and $K= \Frac(R)$. TFAE
+  \begin{enumerate}[(a)]
+    \item $R$ is a Dedekind domain.
+    \item $R$ is Noetherian and $R_P$ is a DVR for all $P \in \Spec R$.
+    \item Every nonzero fractional ideal of $R$ is invertible.
+    \item Every nonzero proper ideal of $R$ can be written (uniquely) as a
+      product of powers of prime ideals.
+  \end{enumerate}
+
+  \begin{proof} \mbox{}
+    \begin{description}
+      \item[\rm (a)$\Leftrightarrow$(b):] \mbox{}
+        \begin{itemize}
+          \item $R$ is normal $\iff$ $R_P$ is normal for all $P \in \Spec R$.
+          \item $\dim R_P = 1 \quad \forall P \in \Spec R \iff h(P) = 1 \quad
+            \forall 0 \ne P \in \Spec R \iff \dim R = 1$.
+        \end{itemize}
+      \item[\rm (b)$\Leftrightarrow$(c):]
+      \item[\rm (a)$\Leftrightarrow$(b):]
+      \item[\rm (a)(b)(c)$\Rightarrow$(d):]
+      \item[\rm (d)$\Rightarrow$(c):]
+  \end{description}
+  \end{proof}
+\end{theorem}
