@@ -1,0 +1,249 @@
+%! TEX root=../main.tex
+\subsection{Artinian rings and DVR}
+\subsubsection{Artinian rings}
+
+\begin{definition}
+  $R$ is called an Artinian ring if one of the followings holds:
+  \begin{itemize}
+    \item any non-empty set of ideals has a minimal element.
+    \item any descending chain of ideals is stationary (DCC).
+  \end{itemize}
+\end{definition}
+
+\underline{Goal:}
+\begin{enumerate}
+  \item $R = \cong R_1 \times \dots \times R_l$ where $R_i$ is an Artinain
+    local rings.
+  \item Artinian $\iff$ Noetherian $+ \dim = 0$.
+\end{enumerate}
+
+\begin{prop}
+  Let $R$ be an Artinian ring
+  \begin{enumerate}[(1)]
+    \item $I \subseteq R \leadsto \quot{R}{I}$ is also Artinian.
+    \item If $R$ is an integral domain, then $R$ is a field.
+      \begin{proof}
+        $\forall \underset{\ne 0}{a} \in R, \gen{a} \supseteq \gen{a^2} \supseteq \dotsm$
+        is a descending chain of ideals $\implies \gen{a^l} = \gen{a^{l+1}} = \dotsm$
+        for some $l \in \Nb \implies a^l = ba^{l+1} \implies a^l(1 - ab) = 0
+        \implies ab = 1$ since $a^l \ne 0$.
+      \end{proof}
+    \item $\Spec R = \Max R$. ($\implies \dim R = 0$)
+      \begin{proof}
+        $\forall p \in \Spec R, \quot{R}{p}$ is an integral domain
+        $\leasdto \quot{R}{p}$ is a field $\leadsto p \in \Max R$.
+      \end{proof}
+    \item $\abs{\Max R} < \infty$.
+      \begin{proof}
+        Consider the set $\Set*{ \bigcap\limits_{\text{finite}} \mf \given \mf \in \Max R}
+        \ne \emptyset$. So there exists a minimal element in this set ($R$ is Artinian),
+        say $\mf_1 \cap \dots \cap \mf_k$.  Now, for $\mf \in \Max R$, we have
+        $\mf\cap \mf_1\cap \dots \cap\mf_k = \mf_1\cap \dots \cap\mf_k$ since the
+        latter is minimal $\implies \mf \supseteq \mf_1\cap \dots\cap\mf_k
+        \leadsto \mf \supseteq \mf_i$ for some $i$ $\leadsto \mf = \mf_i$.
+        So $\Max R = \set{\mf_1, \dots, \mf_k}$.
+      \end{proof}
+    \item $\exists n_1, \dots, n_k \in \Nb$ s.t.
+      $\gen{0} = \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k}
+      \overset{\star}{=} \mf_1^{n_1}\cap \mf_2^{n_2} \cap \dots \cap \mf_k^{n_k}$.
+      \begin{proof}
+        $\star$: Recall $I_i, I_j$ are coprime for $i \ne j \leadsto
+        \prod\limits_{i=1}^n I_i = \bigcap\limits_{i=1}^n I_i$.
+        And
+        \[
+          \sqrt{\mf_i^{n_i} + \mf_j^{n_j}}
+          = \sqrt{\sqrt{\mf_i^{n_i}} + \sqrt{\mf_j^{n_j}}}
+          = \sqrt{\mf_i + \mf_j} = \sqrt{R} = R
+          \leadsto \mf_i^{n_i} + \mf_j^{n_j} = R.
+        \]
+        Now, since $R$ is Artinian, $\forall i, \exists n_i \in \Nb$ s.t.
+        $\mf_i^{n_i} = \mf_i^{n_i + 1} = \dotsm$
+        Assume $\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0$, consider
+        the set $\Sc = \Set{ J \subseteq R \given J \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0}$
+        \footnote{this set is non-empty since $\mf_i$ in it.}
+        and let $J_0$ be the minimal element of $\Sc$.
+
+        So there exists $x \in J_0$ s.t. $x \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0$.
+        We know that $\gen{x} \subseteq J_0 \leadsto J_0 = \gen{x}$.
+        We also find that $x \mf_1^{n_1+1}\mf_2^{n_2+1} \dotsm \mf_k^{n_k+1} =
+        x \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0$.
+        This implies $x\mf_1\mf_2 \dotsm \mf_k \in \Sc$. But
+        $x\mf_1\mf_2 \dotsm \mf_k \subseteq \gen{x} = J_0 \implies$
+        $x\mf_1\mf_2 \dotsm \mf_k = \gen{x} = xR$.
+        Write
+        \[
+          (\mf_1\mf_2 \dotsm \mf_k) x R = xR \leadsto
+          (\mf_1 \cap \mf_2 \cap \dotsm \cap \mf_k) x R = xR \leadsto
+          (\Jac R) xR = xR
+        \]
+        By Nakayama's lemma, $xR = 0 \implies x = 0$, which is a contradiction.
+      \end{proof}
+    \item The nilradical $\nf_R$ of $R$ is nilpotent.
+      \begin{proof}
+        By (3), $\nf_R = \Jac R$. Let $n = \max \set{n_1, \dots, n_k}$ in (5),
+        then $\nf_R^n = (\mf_1\mf_2 \dotsm\mf_k)^n = 0$.
+      \end{proof}
+  \end{enumerate}
+\end{prop}
+
+\underline{Goal 1:} $R \cong R_1 \times R_k$ where $R_i$ is Artinian local ring.
+\begin{proof}
+  By Chinese Remainder theorem,
+  \[
+    R \cong \quot{R}{\gen{0}} = \quot{R}{\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k}}
+    \cong 
+    \quot{R}{\mf_1^{n_1}} \times \quot{R}{\mf_2^{n_2}} \times \dots \times \quot{R}{\mf_k^{n_k}}
+  \]
+  Let $R_i = \quot{R}{\mf_i^{n_i}}$, then $\bar{\mf} \in \Max R_i$ if
+  $\mf \in \Max R$ and $\mf \supset \mf_i^{n_i} \leadsto \mf = \mf_i$.
+  So $\Max R_i = \Set{\bar{\mf_i}} \implies R_i$ is a local ring.
+\end{proof}
+
+\begin{lemma}
+  Let $V$ be a $K$-vector space, TFAE
+  \begin{enumerate}[(1)]
+    \item $\dim_k V < \infty$
+    \item $V$ has DCC on subspaces.
+    \item $V$ has ACC on subspaces.
+  \end{enumerate}
+
+  \begin{proof}
+    % TODO
+  \end{proof}
+\end{lemma}
+
+\underline{Observation:} If $R$ is Northerian and $\dim R = 0$, then
+$\gen{0} = \bigcap_{i=1}^k q_i$ (primary decomposition) and
+$\sqrt{q_i} = \mf_i \in \Max R$.
+
+Since $\mf_i$ is finitely generated, $\exists n_i$ s.t.
+$\mf_i^{n_i} \subseteq q_i$. Hence 
+\begin{gather*}
+  \gen{0} \subseteq \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = 
+\mf_1^{n_1} \cap \mf_2^{n_2} \cap \dotsm \cap \mf_k^{n_k} \subseteq
+q_1 \cap q_2 \cap \dotsm \cap q_k = \gen{0} \\
+\implies \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}
+\end{gather*}
+
+\underline{Goal 2:} In a ring $R$, let $\mf_1, \dots, \mf_n$ be,
+not necessarily different, maximal ideals in $R$ s.t.
+$\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
+
+\begin{proof}
+  We have a chain of ideals in $R$:
+  $\mf_0 = R \supset \mf_1 \supset \mf_1\mf_2 \supset \dots \supset
+  \mf_1\mf_2\dotsm\mf_n = 0$.
+
+  Let $M_i = \quot{\mf_1\mf_2\dotsm\mf_{i-1}}{\mf_1\mf_2\dotsm\mf_i}$
+  as $R$-module.
+  Notice that $\mf_i M_i = 0$, we can treat $M_i$ as $\quot{R}{\mf_i}$-module.
+  But $\quot{R}{\mf_i}$ is a field, so $M_i$ can be regarded as a vector
+  space. Hence,
+  \[ \text{ $M_i$ is Artinian $\iff$ $M_i$ is Noetherian. } \]
+  By definition, $0 \to \mf_1\mf_2\dotsm\mf_i \to \mf_1\mf_2\dotsm\mf_{i-1}
+  \to M_i \to 0$ is exact in $\mathbf{Mod}_R$.
+  By Ex1,
+  %TODO
+\end{proof}
+
+\subsubsection{DVR (Discrete Valuation Ring)}
+
+\begin{definition} \mbox{}
+  \begin{enumerate}[(1)]
+    \item Let $K$ be a field. A discrete valuation of $K$ is
+      $\nu: K^\times \onto \Zb$ ($\nu(0) = \infty$) s.t.
+      \begin{itemize}
+        \item $\nu(xy) = \nu(x) + \nu(y)$.
+        \item $\nu(x \pm y) = \min\set{\nu(x), \nu(y)}$.
+      \end{itemize}
+    \item The valuation ring of $\nu$ is $R = \Set{x \in K \given \nu(x) \ge 0}$,
+      called a DVR.
+      \begin{itemize}
+        \item $\mf = \Set{x \in R \given \nu(x) > 0}$ is the unique maximal ideal
+          in $R$ since $\nu(x) = 0 \iff x$ is a unit.
+          % TODO
+        \item Let $t \in R$ with $\nu(t) = 1$, then $\mf = \gen{t}$.
+          % TODO
+        \item Let $I \subseteq \mf$ and define
+          $m = \min\Set{l \in \Nb \given x = t^l u \quad \forall x \in I}$.
+          Then $I = \gen{t^m}$.
+      \end{itemize}
+  \end{enumerate}
+\end{definition}
+
+\begin{prop}
+  $R$ is a DVR $\iff$ $R$ is 1-dimensional normal, Noetherian local domain.
+  \begin{proof}
+    % TODO
+  \end{proof}
+\end{prop}
+
+\subsubsection{Dedekind domains}
+\begin{definition}
+  A Dedekind domain is a Noetherian normal domain of $\dim 1$.
+\end{definition}
+
+\begin{definition}
+  Let $R$ be an integral domain and $K = \Frac(R)$.
+  A nonzero $R$-submodule $I$ of $K$ is called a fractional ideal of $R$ if
+  $\exists 0 \ne a \in R$ s.t. $aI \subset R$.
+\end{definition}
+
+\begin{example}
+  If $I = \gen{f_1, \dots, f_n}_R$ with $f_i = \frac{a_i}{b_i} \in K$, then
+  $a = b_1b_2 \dotsm b_n$ and $aI \subset R \implies I$ is fractional.
+
+  In general, if $R$ is a Noetherian, then every fractional ideal $I$ of $R$
+  is finitely generated.
+\end{example}
+
+\begin{definition}
+  A fractional ideal $I$ of $R$ is invertible if $\exists J:$ a fractional ideal
+  of $R$ s.t. $IJ = R$.
+\end{definition}
+
+\begin{prop}\mbox{}
+  \begin{enumerate}
+    \item If $I$ is invertible, then $J = I^{-1}$ is unique and equals
+      $J = (R:I) \triangleq = \Set{a \in K \given aI \subset R}$.
+      \begin{proof}
+        %TODO
+      \end{proof}
+    \item If $I$ is invertible, then$I$ is a finitely generated $R$-module.
+      \begin{proof}
+        %TODO
+      \end{proof}
+    \item Let $R$ be a local domain but not a field, $K = \Frac(R)$.
+      Then $R$ is a DVR $\iff$ every nonzero fractional ideal $I$ of $R$ is
+      invertible.
+      \begin{proof}
+        %TODO
+      \end{proof}
+  \end{enumerate}
+\end{prop}
+
+\begin{theorem}
+  Let $R$ be an integral domain and $K= \Frac(R)$. TFAE
+  \begin{enumerate}[(a)]
+    \item $R$ is a Dedekind domain.
+    \item $R$ is Noetherian and $R_P$ is a DVR for all $P \in \Spec R$.
+    \item Every nonzero fractional ideal of $R$ is invertible.
+    \item Every nonzero proper ideal of $R$ can be written (uniquely) as a
+      product of powers of prime ideals.
+  \end{enumerate}
+
+  \begin{proof} \mbox{}
+    \begin{description}
+      \item[\rm (a)$\Leftrightarrow$(b):] \mbox{}
+        \begin{itemize}
+          \item $R$ is normal $\iff$ $R_P$ is normal for all $P \in \Spec R$.
+          \item $\dim R_P = 1 \quad \forall P \in \Spec R \iff h(P) = 1 \quad
+            \forall 0 \ne P \in \Spec R \iff \dim R = 1$.
+        \end{itemize}
+      \item[\rm (b)$\Leftrightarrow$(c):]
+      \item[\rm (a)$\Leftrightarrow$(b):]
+      \item[\rm (a)(b)(c)$\Rightarrow$(d):]
+      \item[\rm (d)$\Rightarrow$(c):]
+  \end{description}
+  \end{proof}
+\end{theorem}
