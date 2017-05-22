@@ -1,0 +1,116 @@
+%! TEX root=../main.tex
+\section{Introduction to Homological Algebra}
+
+\subsection{Projective, Injective and Flat modules}
+
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item $M \in \Mod_R$ is {\bf projective} if $\Hom(M, \cdot)$ preserves the
+      {\it right} exactness.
+    \item $N \in \Mod_R$ is {\bf injective} if $\Hom(\cdot, N)$ preserves the
+      {\it right} exactness.
+    \item $M \in \Mod_R$ is {\bf flat} if $M\otimes \cdot$ preserves the
+      {\it left} exactness.
+  \end{itemize}
+\end{definition}
+
+\begin{fact} \mbox{}
+  \begin{itemize}
+    \item $M$ is projective $\iff$
+      $\begin{tikzcd}[cramped, sep=15pt]
+         & M \ar[dl, "\exists \tilde f"'] \ar[d, "f"] \\
+        M_2 \ar[r] & M_3 \ar[r] & 0
+      \end{tikzcd}$
+    \item $N$ is injective $\iff$
+      $\begin{tikzcd}[cramped, sep=15pt]
+        0 \ar[r] & M_1 \ar[d, "g"'] \ar[r] & M_2 \ar[dl, "\exists \tilde g"] \\
+         & N
+      \end{tikzcd}$
+    \item free $\implies$ projective:
+      If $X = \Set{ x_i \given i \in \Lambda}$ and $f: x_i \mapsto a_i$. Then
+      we can set $\tilde f: x_i \mapsto b_i$ for any $b_i$ s.t.
+      $\beta: b_i \mapsto a_i$.
+      \[\begin{tikzcd}[cramped, sep=15pt]
+        & F(X) \ar[dl, "\exists \tilde f"'] \ar[d, "f"] \\
+        M_2 \ar[r, "\beta"] & M_3 \ar[r] & 0
+      \end{tikzcd}\]
+    \item free $\implies$ flat:
+    \item If $S$ is a m.c. set in $R$ with $1 \in S$, then
+      \[ 0 \to M \to N \to L \to 0 \implies 0 \to M_S \to N_S \to L_S \to 0. \]
+      We know that $M_S \cong R_S \otimes_R M$. So $R_S$ is a flat $R$-module.
+      $\Qb$ is a flat $\Zb$-module.
+    \item $\forall M \in \Mod_R, \exists F$: free on $X$ s.t. $F \to M \to 0$.
+      This is obvious since we can choose $X$ to be the generating set of $M$.
+  \end{itemize}
+\end{fact}
+
+\underline{Ques:} $\forall M \in \Mod_R$, does there exist $N \in \Mod_R$ is
+injective s.t. $0 \to M \to N$?
+
+\begin{theorem}[Boer's criterion]
+  $N$ is injective $\iff \forall I \subset R,$
+  $\begin{tikzcd}[cramped, sep=15pt]
+    0 \ar[r] & I \ar[d, "f"'] \ar[r] & R \ar[dashed, dl, "\exists h"] \\
+     & N
+  \end{tikzcd}$
+  \begin{proof}
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  $M$ is {\bf divisible} if $\forall x\in M, r \in R \setminus \set{0}$, there exists
+  $y \in M$ such that $x = ry$, i.e. $rM = M \quad \forall r \in R \setminus \set{0}$.
+\end{definition}
+
+\begin{prop} \mbox{}
+  \begin{enumerate}
+    \item Every injective module $N$ over an integral domain is divisible.
+      \begin{proof}
+      \end{proof}
+    \item Every divisible module $N$ over an PID is injective.
+      \begin{proof}
+      \end{proof}
+  \end{enumerate}
+\end{prop}
+
+\begin{theorem}
+ $\forall M \in \Mod_R$, $\exists N$ is injective s.t. $M \toone N$.
+
+ \begin{proof}
+   \begin{enumerate}
+     \item If $R = \Zb$,
+   \end{enumerate}
+ \end{proof}
+\end{theorem}
+
+\begin{prop}
+  TFAE
+  \begin{enumerate}
+    \item $M$ is projective.
+    \item $\forall \quad 0 \to M_1 \to M_2 \to M \to 0$ is split exact.
+    \item $\exists M'$ s.t. $M \oplus M' \cong F$: free.
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  TFAE
+  \begin{enumerate}
+    \item $M$ is projective.
+    \item $\forall \quad 0 \to M_1 \to M_2 \to M \to 0$ is split exact.
+    \item $\exists M'$ s.t. $M \oplus M' \cong F$: free.
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  TFAE
+  \begin{enumerate}
+    \item $M$ is injective.
+    \item $\forall \quad 0 \to M \to M_2 \to M_3 \to 0$ is split exact.
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  projective $\implies$ flat.
+\end{prop}
+
+
