@@ -18,7 +18,32 @@
 \end{exercise}
 
 \begin{exercise}{(Krull's Intersection Theorem)}
+  Let $R$ be a Noetherian local ring with maximal ideal $\mf$, show that
+  \[ \bigcap\limits_{n=0}^{\infty} \mf^n = \gen{0}. \]
+\end{exercise}
 
-  Let $R$ be a Noetherian local ring with maximal ideal $\mf$, 
-  show that $$\bigcap\limits_{n=0}^{\infty} \mf^n = \gen{0}$$.
+\begin{exercise}
+  Let $R$ be a Dedekind domain, $I, J \subseteq R$ and
+  $\begin{cases}
+    I = P_1^{e_1}P_2^{e_2} \dotsm P_n^{e_n} \\
+    J = P_1^{f_1}P_2^{f_2} \dotsm P_n^{f_n}
+  \end{cases}, e_i, f_j \ge 0$.
+  Show that
+  \begin{enumerate}
+    \item $I \subseteq J \iff J \mid I \iff f_i \le e_i$.
+    \item $I + J = \gen{I, J} = P_1^{d_1}P_2^{d_2} \dotsm P_n^{d_n}$ where
+      $d_i = \min\set{f_i, e_i}$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Let $R$ be a Dedekind domain, $I \subseteq R$ and $I = P_1^{e_1}P_2^{e_2} \dotsm P_n^{e_n}$.
+  Show that
+  \begin{enumerate}
+    \item $\exists J \subseteq R$ with $I+J = R$ s.t. $IJ=\gen{a}$ for some
+      $a \in R$.
+    \item $I \subseteq R \implies \quot{R}{I}$ is a principal ring.
+    \item $I \subseteq R$, let $a \in I$ with $a \ne 0$. $\implies I = \gen{a, b}$
+      for some $b\in I$.
+  \end{enumerate}
 \end{exercise}
