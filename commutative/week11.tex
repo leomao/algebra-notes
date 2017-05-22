@@ -1,5 +1,5 @@
 %! TEX root=../main.tex
-\subsection{Gr\"{o}bner basis}
+\subsection{Gr\"{o}bner basis (week 11)}
 
 \subsubsection{Division algorithm in $K[X_1,\dots,X_n]$}
 
@@ -94,7 +94,7 @@
 \end{definition}
 
 Let $I = \gen{ g_1, \dots, g_m }$ and $G = \Set{ g_1, \dots, g_m }$.
-A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
+A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
 \begin{enumerate}
   \item Initially let $G_0 \gets G$.
   \item Repeatly construct $G_{i+1} \gets G_i \cup \big(
@@ -114,7 +114,8 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
     \[
       \begin{split}
         h &= \sum_{i=1}^m \big( a_ic_if'_i \big) \\
-        &= a_1c_1(f'_1-f'_2) + (a_1c_1+a_2c_2)(f'_2-f'_3) + \dots+ (a_1c_1 + \dots + a_{m-1}c_{m-1})(f'_{m-1}-f'_m) \\
+        &= a_1c_1(f'_1-f'_2) + (a_1c_1+a_2c_2)(f'_2-f'_3) + \dots +
+        (a_1c_1 + \dots + a_{m-1}c_{m-1})(f'_{m-1}-f'_m) \\
         &+ (a_1c_1+\dots+a_mc_m)f'_m \\
         &= \sum\limits_{i=2}^m b_iS(f_{i-1},f_i) + b_{m+1}f'_m\text{ with }
         b_i = \sum_{j=1}^{i-1}a_jc_j.
@@ -141,8 +142,8 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
         Define $\alpha = \max\{\partial(h_1g_1),\dots,\partial(h_mg_m)\}$.
         We have $\partial(f) \leq \alpha$ and we can select an expression
         $f = \sum\limits_{i=1}^m h_ig_i$ for f s.t $\alpha$ is minimal.
-      \item \uline{Claim}: $\partial(f) = \alpha$
-      \item (pf) Rewrite,
+      \item \uline{Claim}: $\partial(f) = \alpha$.
+      \item (pf) If not, we rewrite $f$
         \[
           \begin{split}
             f &= \sum_{i = 1}^m h_ig_i \\
@@ -158,7 +159,11 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
         Comparing the multidegree on both side,
         $\partial\left(\sum\limits_{\partial(h_ig_i) = \alpha} a_ih_i^0g_i\right)
         < \alpha$ By lemma~\ref{lemma:sum-of-equal-degree-f-is-less},
-        $\underset{\partial(h_ig_i) = \alpha}{\sum}\left(a_ih_i^0g_i\right) = c_{12}S(h_{i_1}^0g_{i_1},h_{i_2}^0g_{i_2}) + \dots$(finite) where $\partial(h_{i_1}g_{i_1}) = \partial(h_{i_2}g_{i_2}) = \dots = \alpha $. By def, if we set $\beta_{st} = M_{st} =$ the monic lcm of $\LT(g_{i_s}), \LT(g_{i_t})$, then
+        $\underset{\partial(h_ig_i) = \alpha}{\sum}\left(a_ih_i^0g_i\right) =
+        c_{12}S(h_{i_1}^0g_{i_1},h_{i_2}^0g_{i_2}) + \dots$(finite) where
+        $\partial(h_{i_1}g_{i_1}) = \partial(h_{i_2}g_{i_2}) = \dots = \alpha$.
+        By def, if we set $M_{st} = X^\beta_{st} =$ the monic LCM of
+        $\LT(g_{i_s}), \LT(g_{i_t})$, then
         \[
           \begin{split}
             S(h_{i_s}^0g_{i_s}, h_{i_t}^0g_{i_t}) &= \frac{X^\alpha}{\LT(h_{i_s}^0g_{i_s})}h_{i_s}^0g_{i_s} - \frac{X^\alpha}{\LT(h_{i_t}g_{i_t})}h_{i_t}^0g_{i_t} \\
@@ -167,7 +172,8 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
             &= X^{\alpha-\beta_{st}}\overset{m}{\underset{j = 1}{\sum}}{l_jg_j} \text{ (by division)}
           \end{split}
         \]
-      \item Then, $\partial(l_jg_j) < \beta_{st} \implies \partial(f) \geq \alpha$.
+      \item Then, $\partial(l_jg_j) < \beta_{st} \implies$ we found a expression
+        with multidegree less than $\alpha$, which is a contradiction.
         Therefore, $\partial(f) = \alpha \implies \LT(f) =
         \sum\limits_{\partial(h_ig_i) = \alpha} \LT(h_i)\LT(g_i)$
         $\implies \LT(f) \in \gen{ \LT(g_1),\dots, \LT(g_m) }$.
@@ -203,6 +209,9 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
   Let $G = \Set{g_1, \dots, g_m}$ be a Gr\"obner basis of $I \neq 0$ with ordering
   $x_1 > \dotsm > x_n$. Then $G_i \triangleq G \cap K[x_{i+1}, \dots, x_n]$
   is a Gr\"obner basis of $I_i$ (i.e., $\gen{ \LT(G_i) } = \LT(I_i)$).
+  \begin{proof}
+    % TODO
+  \end{proof}
 \end{theorem}
 
 \begin{example}
@@ -238,7 +247,11 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
 \end{example}
 
 \begin{theorem}
-  Let $I, J$ be two ideals of $K[x_1, \dots, x_n]$, then $I \cap J = (t \tilde{I} + (1 - t) \tilde{J}) \cap K[x_1, \dots, x_n]$.
+  Let $I, J$ be two ideals of $K[x_1, \dots, x_n]$, then $I \cap J =
+  (t \tilde{I} + (1 - t) \tilde{J}) \cap K[x_1, \dots, x_n]$.
+  \begin{proof}
+    % TODO
+  \end{proof}
 \end{theorem}
 
 \begin{example}
@@ -250,6 +263,9 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
 \begin{theorem}
   Let $L = \gen{ f_1, \dots, f_s } \subsetneq K[x_1, \dots, x_n]$, then
   $f \in \sqrt{I} \iff \gen{ f_1, \dots, f_s, 1 - tf } = K[x_1, \dots, x_n, t]$.
+  \begin{proof}
+    % TODO
+  \end{proof}
 \end{theorem}
 
 \begin{example}
@@ -261,11 +277,17 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
   An affine algebraic set $V$ in $\Ab^n_k$ has a unique minimal decomposition.
   $V = V_1 \cap V_2 \cap \dotsm \cap V_m$ with $V_i$ irreducible and
   $V_i \not\subset V_j$.
+  \begin{proof}
+    % TODO
+  \end{proof}
 \end{prop}
 
 \begin{theorem}[Decomposition]
-  Assume $\sqrt{I} = I$ and $I \subset J$, then $\Vc(I : J) = \overline{\Vc(I) \setminus  \Vc(J)}$.
+  Assume $\sqrt{I} = I$ and $I \subset J$, then $\Vc(I : J) = \overline{\Vc(I) \setminus \Vc(J)}$.
   and $\Vc(I) = \Vc(J) \cup \Vc(I: J)$.
+  \begin{proof}
+    % TODO
+  \end{proof}
 \end{theorem}
 
 \begin{example}
@@ -282,11 +304,17 @@ A Gr\"{o}ner basis of $I$ can be constructed by the following algorithm:
   Hence $V = \Vc(x, y) \cap \Vc(xz-y^2, x^3-yz, x^2y - z^2)$.
 \end{example}
 
-\begin{prop}
+\begin{remark}
   In general, if $W \subseteq \Ab_k^n$ is an affine algebraic set defined by
   $x_i = f_i(t_1, \dots, t_m)$, then $W$ is irreducible.
-\end{prop}
+  \begin{proof}
+    % TODO
+  \end{proof}
+\end{remark}
 
 \begin{prop}
-  If $f : V \to W$ with $\overline{f(V)} = \Vc(\ker f^*)$, where $f^* : k[W] \to k[V]$.
+  Let $f : V \to W$, then $\overline{f(V)} = \Vc(\ker f^*)$ where $f^* : k[W] \to k[V]$.
+  \begin{proof}
+    % TODO 這邊好像出了問題
+  \end{proof}
 \end{prop}

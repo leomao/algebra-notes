@@ -1,5 +1,5 @@
 %! TEX root=../main.tex
-\subsection{Local Rings}
+\subsection{Local Rings (week 12)}
 
 From now on, $R$ is a commutative ring with $1$.
 
@@ -29,6 +29,7 @@ From now on, $R$ is a commutative ring with $1$.
         If there exists another maximal ideal $N$, then $M + N = R$.
         Say $m \in  M, n \in N$ s.t. $m + n = 1$, then $n = 1 - m$ is a unit
         $\implies N = R$, which is a contradiction.
+        \qedhere
     \end{description}
   \end{proof}
 \end{prop}
@@ -244,7 +245,7 @@ From now on, $R$ is a commutative ring with $1$.
       0 \to N \to N' \text{ exact }
       &\implies 0 \to N \otimes_{R_1} M \to N' \otimes_{R_1} M \text{ exact } \\
       &\implies 0 \to N \otimes_{R_2} (R_2 \otimes_{R_1} M)
-      \to N' \otimes_{R_2} (R_2 \otimes_{R_1} M) \text{ exact } \\
+      \to N' \otimes_{R_2} (R_2 \otimes_{R_1} M) \text{ exact }
     \end{align*}
     Which is to say that $R_2 \otimes_{R_1} M$ flat.
   \end{proof}
@@ -306,7 +307,7 @@ From now on, $R$ is a commutative ring with $1$.
 \begin{prop}
   Let $S/R$ be integral.
   \begin{enumerate}
-    \item If $q \in \Spec S$ and $p = q \cap R \in Spec R$, then
+    \item If $q \in \Spec S$ and $p = q \cap R \in \Spec R$, then
       $q \in \Max S \iff p \in \Max R$.
 
     \begin{proof}
@@ -354,7 +355,8 @@ From now on, $R$ is a commutative ring with $1$.
 
 \begin{theorem}[Going-down theorem]
   Let $S, R$ be integral domains and $S/R$ be integral, assume $R$ is normal
-  with the field of fractions $K$. If $p_1 \supset p_2$ in $\Spec R$ and $q_1 \in \Spec S$ with $q_1 \cap R = p_1$,
+  with the field of fractions $K$. If $p_1 \supset p_2$ in $\Spec R$ and $q_1 \in \Spec S$
+  with $q_1 \cap R = p_1$,
   then $\exists q_2 \in \Spec S$ such that $q_1 \supset q_2$ and $q_2 \cap R = p_2$.
 \end{theorem}
 
