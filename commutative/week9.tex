@@ -1,7 +1,7 @@
 %! TEX root=../main.tex
 \section{Commutative Algebra}
 
-\subsection{ED, PID and UFD}
+\subsection{ED, PID and UFD (week 9)}
 
 We shall consider $R$ to be a integral domain below.
 \begin{definition}
@@ -10,8 +10,9 @@ We shall consider $R$ to be a integral domain below.
 
 \begin{definition}
   $R$ is called a Euclidean domain if exists a norm $N$ on $R$
-  satisfy
-  \[ \forall a, b \in R, \ \exists q, r \in R \text{ s.t. } a = qb + r \text{ with } r = 0 \text{ or } N(r) < N(b) \]
+  satisfying
+  \[ \forall a, b \in R, \ \exists q, r \in R \text{ s.t. }
+  a = qb + r \text{ with } r = 0 \text{ or } N(r) < N(b) \]
 \end{definition}
 
 \begin{example} \hfill
@@ -34,10 +35,16 @@ We shall consider $R$ to be a integral domain below.
     \item Else, $d \equiv 2, 3 \pmod{4}$, then
       \[ A_d = \big\{ a + b \sqrt{d} : a, b \in \Zb \big\} \]
   \end{itemize}
+  \begin{proof}
+    %TODO
+  \end{proof}
 \end{theorem}
 
 \begin{theorem}
   $A_d$ is a ED if $d = 2, 3, 5, -1, -2, -3, -7, -11$. Hence $A_d$ is also PID and UFD.
+  \begin{proof}
+    %TODO
+  \end{proof}
 \end{theorem}
 
 \begin{example}
@@ -77,25 +84,28 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
   \begin{itemize}
     \item $a \equiv b \pmod{p} \implies \left( \frac{a}{p} \right) = \left( \frac{b}{p} \right)$.
   \end{itemize}
+  % TODO missing something...
 \end{prop}
+% TODO missing something...
 
 \subsection{Primary decomposition}
 \begin{definition} \hfill
   \begin{itemize}
-    \item The radical of an ideal $I$ is defined by $\sqrt{I} = \Set{ a \in R \mid a^n \in I \text{ for some } n \in \Nb}$.
+    \item The radical of an ideal $I$ is defined by $\sqrt{I} =
+      \Set{ a \in R \mid a^n \in I \text{ for some } n \in \Nb}$.
     \item $I$ is radical if $\sqrt{I} = I$.
   \end{itemize}
 \end{definition}
 
 \begin{definition}
-  The {\bf nilradical}\index{nilradical} is defined as $\sqrt{\langle 0 \rangle} \triangleq
+  The {\bf nilradical}\index{nilradical} is defined as $\sqrt{\gen{0}} \triangleq
   \Set{ a \in R \mid a^n = 0 \text{ for some } n \in \Nb}$.
   Elements in it are called nilpotent.
 \end{definition}
 
 \begin{prop}
-  $\sqrt{ \langle 0 \rangle } = \bigcap_{P \in \Spec R} P$, where $\Spec R$ is the set of prime
-  ideals in $R$.
+  $\sqrt{ \gen{0} } = \bigcap\limits_{P \in \Spec R} P$, where $\Spec R$ is the
+  set of prime ideals in $R$.
 
   \begin{proof}
     ``$\subset$'': Notice that $a^n = 0 \in P$ for any prime ideal $P$. By the definition of
@@ -103,14 +113,14 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
     $a \in P$.
 
     ``$\supset$'':
-    Let $\mathcal{S} \triangleq \Set{ I : \text{ ideal in } R \mid a^n \notin I, \, \forall n \in \Nb}$.
-    By the routine argument of Zorn's lemma, exists maximal element $Q$ in $\mathcal{S}$.
-    We claim that $\mathcal{S}$ is a prime ideal.
+    Let $\Sc \triangleq \Set{ I : \text{ ideal in } R \given a^n \notin I, \, \forall n \in \Nb}$.
+    By the routine argument of Zorn's lemma, exists maximal element $Q$ in $\Sc$.
+    We claim that $\Sc$ is a prime ideal.
 
     For each $x, y \notin Q$, we have $Q + Rx \supsetneq Q$ and $Q + Ry \supsetneq Q$.
-    By the maximality of $Q$, these two ideals are not in $\mathcal{S}$.
+    By the maximality of $Q$, these two ideals are not in $\Sc$.
     So exists $n, m$ such that $a^n \in Q + Rx,\, a^m \in Q + Ry$ which implies
-    $a^{n+m} \in Q + Rxy$, so $Q + Rxy \notin \mathcal{S}$, thus $xy \notin Q$,
+    $a^{n+m} \in Q + Rxy$, so $Q + Rxy \notin \Sc$, thus $xy \notin Q$,
     hence $Q$ is prime.
   \end{proof}
 \end{prop}
@@ -121,8 +131,11 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
   \begin{proof}
     Notice that $\Spec \quot{R}{I} = \Set{P \in \Spec R \mid R \subset I}$.
     By the proposition above,
-    \[ \sqrt{\langle \bar0 \rangle} = \bigcap_{\bar{P} \in \Spec \quot{R}{I}} \bar{P}
-      \quad \implies \quad \sqrt{I} = \bigcap_{\substack{P \supset I \\ P \in \Spec R}} P \]
+    \[
+      \sqrt{\langle \bar0 \rangle} = \bigcap_{\bar{P} \in \Spec \quot{R}{I}} \bar{P}
+      \quad \implies \quad \sqrt{I} = \bigcap_{\substack{P \supset I \\ P \in \Spec R}} P
+      \qedhere
+    \]
     \end{proof}
 \end{coro}
 
@@ -146,7 +159,8 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
     Thus $(y^n)^m \in q$ for some $m$, hence $y \in p$. We conclude that $p$ is a prime ideal.
 
     Finally, by corollary~\ref{coro:equation-of-sqrt-ideal},
-    \[ p = \sqrt{q} = \bigcap_{\substack{P \supset q \\ P \in \Spec R}} P \subset P, \quad \forall P \text{ prime }, \]
+    \[ p = \sqrt{q} = \bigcap_{\substack{P \supset q \\ P \in \Spec R}} P \subset P,
+    \quad \forall P \text{ prime }, \]
     thus $p$ is indeed the smallest.
   \end{proof}
 \end{prop}
@@ -197,11 +211,11 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
   In a Noetherian ring $R$, every ideal is a finite intersection of irreducible ideals.
 
   \begin{proof}
-    If not, let $\mathcal{I} \triangleq \Set{I: \text{ ideal in } R \mid I \text{ is not a finite intersection
-        of irreducible ideals }}$ and $\mathcal{I}$ is not an empty set.
+    If not, let $\Ic \triangleq \Set{I: \text{ ideal in } R \mid I \text{ is not a finite intersection
+        of irreducible ideals }}$ and $\Ic$ is not an empty set.
     Since $R$ is Noetherian, the set has a maximal element $I_0$. Then $I_0$ is not
     irreducible (or else it is an intersection of itself, which is irreducible).
-    Write $I_0 = I_1 \cap I_2$, with $I_1, I_2 \neq I_0$. Then $I_1, I_2 \notin \mathcal{I}$,
+    Write $I_0 = I_1 \cap I_2$, with $I_1, I_2 \neq I_0$. Then $I_1, I_2 \notin \Ic$,
     so these two ideals could be written as a finite intersection of irreducible ideals,
     implying that $I_0$ could also be written as a finite intersection of irreducible ideals,
     which is an contradiction.
@@ -236,6 +250,7 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
             xy \in (q: x) \\
             x^n \notin q, \ \forall n \in \Nb \\
           \end{array} \right. \implies y \in q
+          \qedhere
         \]
       \end{proof}
   \end{enumerate}
@@ -271,7 +286,7 @@ And if $q_i \subseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
 \begin{theorem}[Uniqueness of primary decomposition]
   Let $I = \cap_{i = 1}^n q_i$ be a minimal decomposition of $I$.
   If $p_i = \sqrt{q_i}, \, \forall i$, then we have
-  \[ \Set{p_i} = \Big\{ \sqrt{(I: x)} \Bigm| x \in R \land \sqrt{(I: x)} \in \Spec R \Big\} \]
+  \[ \Set{p_i} = \Set[\Big ]{ \sqrt{(I: x)} \given x \in R \land \sqrt{(I: x)} \in \Spec R } \]
   which is independent of the decomposition.
 
   \begin{proof}
@@ -303,7 +318,7 @@ And if $q_i \subseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
 \end{definition}
 
 \begin{example}
-  Let $R = k[x, y]$ and $I = \langle x^2, xy \rangle$. If $P_1 = \langle x \rangle,
-  P_2 = \langle x, y \rangle$, then $I = P_1 \cap P_2^2$.
+  Let $R = k[x, y]$ and $I = \gen{ x^2, xy }$. If $P_1 = \gen{x},
+  P_2 = \gen{ x, y }$, then $I = P_1 \cap P_2^2$.
   $P_1$ is isolated, while $P_2$ is embedded.
 \end{example}
