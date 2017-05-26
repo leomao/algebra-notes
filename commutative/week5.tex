@@ -10,6 +10,7 @@
   \end{itemize}
 \end{definition}
 
+
 \underline{Goal:}
 \begin{enumerate}
   \item $R = \cong R_1 \times \dots \times R_l$ where $R_i$ is an Artinain
@@ -17,7 +18,39 @@
   \item Artinian $\iff$ Noetherian $+ \dim = 0$.
 \end{enumerate}
 
-\begin{prop}
+\begin{prop} \leavevmode \label{prop:radical-power-relation} 
+  \begin{itemize}
+    \item  $\sqrt{\mf_i^{n_i} + \mf_j^{n_j}} = \sqrt{\sqrt{\mf_i^{n_i}} + 
+      \sqrt{\mf_j^{n_j}}}$
+      \begin{proof} $ $\\ 
+        "$\subseteq$" $\forall a \in LHS$, that is, $a^n  = b + c$ with 
+        $b \in m_i^{n_i} \subseteq \sqrt{m_i^{n_i}}$ and 
+        $c \in m_j^{n_j} \subseteq{m_j^{n_j}}$ then $a \in RHS$. \\
+        "$\supseteq$" $\forall a \in RHS$, that is, $a^n = b + c$ with 
+        $b^k \in m_i^{n_i}$ and $c^t \in m_j^{n_j}$. Then 
+        $(a^n)^{k+t} = (b + c)^{k + t} = b^{k+t} + \dots + C_{t}^{k}b^kc^t
+        + \dots + c^{k+t}$. Every term either in $m_i^{n_i}$ or $m_j^{m_j}$,
+         then $(a^n)^{k+t} = c + d$ with $c \in m_i^{n_i}\ d \in m_j^{n_j}$
+         $\Rightarrow a \in LHS$
+      \end{proof}
+    \item If $m$ is prime, $\sqrt{m^{n}} = m$
+      \begin{proof} $ $\\
+        $"\subseteq"$ $a \in LHS \Rightarrow a^k \in m^{n}$ and $m$ is prime.
+        $\Rightarrow a \in m$. \\
+        $"\subseteq"$ $a \in RHS a \in m \Rightarrow a^n \in LHS$.
+      \end{proof}
+     \item If $m$, $m_i, i = 1, \cdots, n$ are prime and $m \supseteq m_1 \cap
+       \cdots \cap m_n$, then $m \supseteq m_i$ for some i.
+       \begin{proof} $ $\\
+         Suppose not, then we pick $a_i \in m_i \ m$. $b = a_1\cdots a_n \in m_i 
+         \forall i$. $\leadsto b \in m_1 \cap \cdots \cap m_n \subseteq m$. But,
+         m is prime, exist $a_i \in m$, a contradiction. 
+       \end{proof}
+  \end{itemize}
+\end{prop}
+
+
+\begin{prop} \label{artin-ring-basic-property}
   Let $R$ be an Artinian ring
   \begin{enumerate}[(1)]
     \item $I \subseteq R \leadsto \quot{R}{I}$ is also Artinian.
@@ -31,7 +64,7 @@
     \item $\Spec R = \Max R$. ($\implies \dim R = 0$)
       \begin{proof}
         $\forall p \in \Spec R, \quot{R}{p}$ is an integral domain
-        $\leasdto \quot{R}{p}$ is a field $\leadsto p \in \Max R$.
+        $\leadsto \quot{R}{p}$ is a field $\leadsto p \in \Max R$.
       \end{proof}
     \item $\abs{\Max R} < \infty$.
       \begin{proof}
@@ -40,43 +73,42 @@
         say $\mf_1 \cap \dots \cap \mf_k$.  Now, for $\mf \in \Max R$, we have
         $\mf\cap \mf_1\cap \dots \cap\mf_k = \mf_1\cap \dots \cap\mf_k$ since the
         latter is minimal $\implies \mf \supseteq \mf_1\cap \dots\cap\mf_k
-        \leadsto \mf \supseteq \mf_i$ for some $i$ $\leadsto \mf = \mf_i$.
-        So $\Max R = \set{\mf_1, \dots, \mf_k}$.
+        \leadsto \mf \supseteq \mf_i$ for some $i$, by Prop~\ref{prop:radical-power-relation}.
+        $\leadsto m = m_i$, since $m_i$ is max. So $\Max R = \set{\mf_1, \dots, \mf_k}$.
       \end{proof}
     \item $\exists n_1, \dots, n_k \in \Nb$ s.t.
       $\gen{0} = \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k}
-      \overset{\star}{=} \mf_1^{n_1}\cap \mf_2^{n_2} \cap \dots \cap \mf_k^{n_k}$.
-      \begin{proof}
-        $\star$: Recall $I_i, I_j$ are coprime for $i \ne j \leadsto
-        \prod\limits_{i=1}^n I_i = \bigcap\limits_{i=1}^n I_i$.
-        And
-        \[
-          \sqrt{\mf_i^{n_i} + \mf_j^{n_j}}
-          = \sqrt{\sqrt{\mf_i^{n_i}} + \sqrt{\mf_j^{n_j}}}
-          = \sqrt{\mf_i + \mf_j} = \sqrt{R} = R
-          \leadsto \mf_i^{n_i} + \mf_j^{n_j} = R.
-        \]
-        Now, since $R$ is Artinian, $\forall i, \exists n_i \in \Nb$ s.t.
-        $\mf_i^{n_i} = \mf_i^{n_i + 1} = \dotsm$
-        Assume $\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0$, consider
-        the set $\Sc = \Set{ J \subseteq R \given J \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0}$
-        \footnote{this set is non-empty since $\mf_i$ in it.}
-        and let $J_0$ be the minimal element of $\Sc$.
-
-        So there exists $x \in J_0$ s.t. $x \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0$.
-        We know that $\gen{x} \subseteq J_0 \leadsto J_0 = \gen{x}$.
-        We also find that $x \mf_1^{n_1+1}\mf_2^{n_2+1} \dotsm \mf_k^{n_k+1} =
-        x \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0$.
-        This implies $x\mf_1\mf_2 \dotsm \mf_k \in \Sc$. But
-        $x\mf_1\mf_2 \dotsm \mf_k \subseteq \gen{x} = J_0 \implies$
-        $x\mf_1\mf_2 \dotsm \mf_k = \gen{x} = xR$.
-        Write
-        \[
-          (\mf_1\mf_2 \dotsm \mf_k) x R = xR \leadsto
-          (\mf_1 \cap \mf_2 \cap \dotsm \cap \mf_k) x R = xR \leadsto
-          (\Jac R) xR = xR
-        \]
-        By Nakayama's lemma, $xR = 0 \implies x = 0$, which is a contradiction.
+      = \mf_1^{n_1}\cap \mf_2^{n_2} \cap \dots \cap \mf_k^{n_k}$.
+      \begin{proof} $ $\\
+        \begin{itemize}
+          \item $ \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} 
+            = \mf_1^{n_1}\cap \mf_2^{n_2} \cap \dots \cap \mf_k^{n_k}$. \\
+            Recall $I_i, I_j$ are coprime for $i \ne j \leadsto
+            \prod\limits_{i=1}^n I_i = \bigcap\limits_{i=1}^n I_i$.
+            And, by Prop~\ref{prop:radical-power-relation}
+             \[
+              \sqrt{\mf_i^{n_i} + \mf_j^{n_j}}
+              = \sqrt{\sqrt{\mf_i^{n_i}} + \sqrt{\mf_j^{n_j}}}
+              = \sqrt{\mf_i + \mf_j} = \sqrt{R} = R
+              \leadsto \mf_i^{n_i} + \mf_j^{n_j} = R.
+            \]
+          \item $\gen{0} = \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} $ for suitable $\{n_i\}$
+            that $\mf_i^{n_i} = \mf_i^{n_i+1}$\\
+             Let $S = {J \subseteq R\ |\ J} \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \neq 0 $.
+             If $\gen{0} \neq \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} $, then $\mf_i \in S$.
+             $\leadsto S \neq \varnothing$. Since R is artinian, exist minimal element $J_0 \in S$.
+             By definition of S, $\exists x \in J_0$, $x\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} 
+             \neq 0 \leadsto \gen{x} \in S$ and $\gen{x} \subseteq J_0 \Rightarrow \gen{x} = J_0$.\\
+             Also, $x \mf_1^{n_1+1}\mf_2^{n_2+1} \dotsm \mf_k^{n_k+1} =
+             x \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0 \leadsto 
+             I = x \mf_1\dots \mf_k\in S$ and $I \subseteq J_0 = xR \leadsto I = xR$.
+            \[
+              (\mf_1\mf_2 \dotsm \mf_k) x R = xR \leadsto
+              (\mf_1 \cap \mf_2 \cap \dotsm \cap \mf_k) x R = xR \leadsto
+              (\Jac R) xR = xR
+            \]
+            By Nakayama's lemma, $xR = 0 \implies x = 0$, which is a contradiction.
+        \end{itemize}
       \end{proof}
     \item The nilradical $\nf_R$ of $R$ is nilpotent.
       \begin{proof}
@@ -99,7 +131,7 @@
   So $\Max R_i = \Set{\bar{\mf_i}} \implies R_i$ is a local ring.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma} \label{vector-space-dim-acc-dcc-relation}
   Let $V$ be a $K$-vector space, TFAE
   \begin{enumerate}[(1)]
     \item $\dim_k V < \infty$
@@ -107,23 +139,40 @@
     \item $V$ has ACC on subspaces.
   \end{enumerate}
 
-  \begin{proof}
-    % TODO
+  \begin{proof} $ $ \\
+    \underline{Fact} : If $V_1 \subseteq V_2$ is finite dim vector space over K, then $V_1 = V_2$
+    iff $\dim_k V_1 = \dim_k V_2$. Otherwise, $\dim_k V_1 \lneq \dim_k V_2$\\
+    (1) $\Leftrightarrow$ (3) \\
+    $"\Rightarrow"$ Suppose exists a chain in vector space $V$ with strictly increasing and infinite
+    length,
+    $$
+      V_1 \subset V_2 \subset \cdots \subseteq V \Rightarrow \dim_k V_1 \lneq \dim_k V_2 \lneq \cdots 
+      \leq \dim_k V
+    $$
+    Then, $\dim_k V$ must be infinite. \\
+    $"\Leftarrow"$ If $\dim_k V$ is ininite, let S = $\{b_1, b_2, \dots \}$ be basis of V.
+    $$
+      \gen{b_1}_K \subset \gen{b_1 , b_2}_K \subset \cdots
+    $$
+    is a infinite accending chain.\\
+    Similarily, (1) $\Leftrightarrow$ (2).
   \end{proof}
 \end{lemma}
 
 \underline{Observation:} If $R$ is Northerian and $\dim R = 0$, then
 $\gen{0} = \bigcap_{i=1}^k q_i$ (primary decomposition) and
-$\sqrt{q_i} = \mf_i \in \Max R$.
+$\sqrt{q_i} = \mf_i \in \Spec R = \Max R$. Also,  $\exists n_i $ 
+$\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$
+
 
 Since $\mf_i$ is finitely generated, $\exists n_i$ s.t.
 $\mf_i^{n_i} \subseteq q_i$. Hence 
-\begin{gather*}
-  \gen{0} \subseteq \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = 
+$$
+\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = 
 \mf_1^{n_1} \cap \mf_2^{n_2} \cap \dotsm \cap \mf_k^{n_k} \subseteq
 q_1 \cap q_2 \cap \dotsm \cap q_k = \gen{0} \\
-\implies \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}
-\end{gather*}
+$$
+$\implies \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$ \\
 
 \underline{Goal 2:} In a ring $R$, let $\mf_1, \dots, \mf_n$ be,
 not necessarily different, maximal ideals in $R$ s.t.
@@ -138,13 +187,38 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
   as $R$-module.
   Notice that $\mf_i M_i = 0$, we can treat $M_i$ as $\quot{R}{\mf_i}$-module.
   But $\quot{R}{\mf_i}$ is a field, so $M_i$ can be regarded as a vector
-  space. Hence,
-  \[ \text{ $M_i$ is Artinian $\iff$ $M_i$ is Noetherian. } \]
-  By definition, $0 \to \mf_1\mf_2\dotsm\mf_i \to \mf_1\mf_2\dotsm\mf_{i-1}
-  \to M_i \to 0$ is exact in $\mathbf{Mod}_R$.
+  space. Hence, by lemma~\ref{vector-space-dim-acc-dcc-relation}
+  \[ 
+  \text{ $M_i$ is Artinian $\iff$ $M_i$ is Noetherian. } 
+  \]
+  By definition, 
+  $$
+  0 \to \mf_1\mf_2\dotsm\mf_i \to \mf_1\mf_2\dotsm\mf_{i-1}
+  \to M_i \to 0
+  $$
+  is exact in $\mathbf{Mod}_R$.
   By Ex1,
-  %TODO
+  $$
+    \begin{aligned}
+      \mf_0 = R \text{ Artinian} & \iff \mf_1 , M_1 \text{ Artinian} \\
+                & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Artinian} \\
+                & \vdots \\
+                & \iff \underset{is\ 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
+                \cdots, M_n \text{ Artinian} \\
+                & \iff \underset{is\ 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
+                \cdots, M_n \text{ Neotherian} \\
+                & \vdots \\
+                & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Neotherian} \\
+                & \iff \mf_1 , M_1 \text{ Neotherian} \iff \mf_0 = R \text{ Neotherian}\\
+    \end{aligned}
+  $$
+  Note: \underline{Goal 2} is accomplish by recongnizing that,
+  \begin{itemize}
+    \item R is Artinian $\implies \mf_1^{n_1}\cdots \mf_k^{n_k} = \gen{0}$ by prop~\ref{artin-ring-basic-property} (4).
+    \item R is Neother + dim 0 $\implies \mf_1^{n_1\cdots \mf_k^{n_k} = \gen{0}}$ by \underline{Observation}.
+  \end{itemize}
 \end{proof}
+
 
 \subsubsection{DVR (Discrete Valuation Ring)}
 
