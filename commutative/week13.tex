@@ -273,7 +273,7 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
 \end{prop}
 \fi
 
-\begin{prop}
+\begin{prop} \label{dvr-equiv-condition}
   $R$ is a DVR $\iff$ $R$ is 1-dimensional normal, Noetherian local domain.
   \begin{proof} $ $ \\
     $"\Rightarrow"$ \\
@@ -354,19 +354,47 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
 \begin{prop}\mbox{}
   \begin{enumerate}
     \item If $I$ is invertible, then $J = I^{-1}$ is unique and equals
-      $J = (R:I) \triangleq = \Set{a \in K \given aI \subset R}$.
+      $J = (R:I) \triangleq \Set{a \in K \given aI \subset R}$.
       \begin{proof}
-        %TODO
+        $$
+          J \subseteq (R:I) \subseteq (R:I)R \subseteq (R:I)IJ \subseteq 
+          RJ = J \leadsto J = (R:I)
+        $$
       \end{proof}
     \item If $I$ is invertible, then$I$ is a finitely generated $R$-module.
-      \begin{proof}
-        %TODO
+      \begin{proof} $ $\\
+        $I(R:I) = R \leadsto 1 = \sum\limits_{i = 0}^{k} x_iy_i$, $x_i \in I$ and
+        $y_i \in (R:I)$. Then, $\forall x \in I$, $x = \sum\limits_{i = 0}^{k} 
+        \underbrace{(xy_i)}_{\in R}x_i \leadsto I = \gen{x_0, \cdots, x_k}_R$
       \end{proof}
     \item Let $R$ be a local domain but not a field, $K = \Frac(R)$.
       Then $R$ is a DVR $\iff$ every nonzero fractional ideal $I$ of $R$ is
       invertible.
-      \begin{proof}
-        %TODO
+      \begin{proof} $ $\\
+        $"\Rightarrow"$ \\
+        Let I be fractional ideal of R, then $\exists a \in R \leadsto aI 
+        \subseteq R$. And, $\mf = \gen{t}$, since R is not a field $t \ne 0$.
+        $\leadsto a = t^k u$, $u$ is unit $\in R$. \\
+        If $aI = R$, then $J = \gen{a}_R$. $\leadsto IJ = R$. If not,
+        $aI \subsetneq R$ $\leadsto aI \subseteq \mf \leadsto aI = \gen{t^l}
+        \leadsto I = \gen{t^{l - k}}_R$. Let $J = \gen{t^{k - l}}_R$, then $IJ
+         = R$. \\
+        $"\Leftarrow"$ \\
+        \begin{itemize}
+          \item R is Neother:\\
+            $\forall I \subsetneq R$ and $I is invertible \leadsto I$ is f.g.
+            R module.
+          \item $\mf \neq \mf^2$ $\mf$ is unique max in $R$: \\
+            $\mf = \mf^2$ and $\mf = Jac R \leadsto \mf = 0 \leadsto R$ is a field,
+             a contradiction.
+          \item $\mf = \gen{t}_R$: \\
+            Pick $t \in \mf - \mf^2$ and let $\mf\mf^{-1} = R \leadsto t\mf^{-1}
+            \subseteq R$. If $t\mf \subseteq \m$, then $t\mf\mf^{-1} = tR \subseteq
+            \mf^{2}$, a contradiction. Therefore, $\mf \subset t\mf \leadsto t\mf 
+            = R \leadsto t\mf\mf^{-1} = tR = \mf \leadsto \mf = \gen{t}_R$. 
+          \item Using the same construction $\nu$ in prop~\ref{dvr-equiv-condition}
+            we have the R is DVR.
+        \end{itemize}
       \end{proof}
   \end{enumerate}
 \end{prop}
@@ -383,16 +411,77 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
 
   \begin{proof} \mbox{}
     \begin{description}
-      \item[\rm (a)$\Leftrightarrow$(b):] \mbox{}
+      \item[\rm (a)$\Leftrightarrow$(b):] $ $
         \begin{itemize}
           \item $R$ is normal $\iff$ $R_P$ is normal for all $P \in \Spec R$.
           \item $\dim R_P = 1 \quad \forall P \in \Spec R \iff h(P) = 1 \quad
             \forall 0 \ne P \in \Spec R \iff \dim R = 1$.
         \end{itemize}
-      \item[\rm (b)$\Leftrightarrow$(c):]
-      \item[\rm (a)$\Leftrightarrow$(b):]
-      \item[\rm (a)(b)(c)$\Rightarrow$(d):]
+      \item[\rm (b)$\Leftrightarrow$(c):] $ $
+        \begin{itemize}
+          \item (b) and (c) $\implies R is neotherian$
+          \item $I_P(R:I)_P = I_P(R_P:I_P)$ (Hint I is f.g.)
+          \item $R_P$ is DVR $\forall P \in \Spec R \iff$ Every nonzero fractional
+            ideal of R is invertable
+            $$
+            \forall P \in \Spec R\ R_P = I_P(R_P:I_P) = I_P(R:I)_P
+             = I(R:I)_P \iff R = I(R:I)
+            $$
+        \end{itemize}
+      \item[\rm (a)(b)(c)$\Rightarrow$(d):] $ $ \\
+        Existense :
+        \begin{itemize} 
+          \item $I = q_1 \cap \cdots \cap q_n$ and $\sqrt{q_i} = P_i \in R $ by
+             primary decompositioni thm.
+          \item $q_1 \cap \cdots \cap q_n = q_1 \cdots q_n$ \\
+            Since dim $R = 1$, $P_i \in Max R$. And, R is Neoth, $\exists n_i \in \Nb
+            m_i^{n_1} \subseteq q_i$. Then, $m_i^{n_i} + m_j^{n_j} = R \forall i \neq
+            j \leadsto q_i + q_j  = R \leadsto q_1 \cap \cdots \cap q_n = q_1 \cdots
+             q_n$
+           \item $I = m_i^{r_i} \cdots m_n^{r_n}$ \\
+             Since $R_{m_i}$ is DVR $\leadsto (q_i)_{m_i} = (m_i^{r_i})_{m_i} \leadsto
+              q_i = m_i^{r_i}$ by prime is 1-1 correspondence in localization. 
+              Therefore,  $I = m_i^{r_i} \cdots m_n^{r_n}$. 
+        \end{itemize}
+        Uniqueness : 
+        \begin{itemize}
+          \item $P_1\cdots P_k = Q_1\cdots Q_r$ $P_i, Q_i$ is prime. Then, $P_1\cdots
+             P_k \subseteq Q_1 \leadsto P_i \subseteq Q_1$, say $i = 1$ by 
+             prop~\ref{prop:radical-power-relation}. \\
+             Since $Q_1$ is invertible, then $P_2\cdots P_k = Q_2\cdots Q_r$. By 
+             induction by hypothersis, we have the uniqueness result.
+        \end{itemize}
       \item[\rm (d)$\Rightarrow$(c):]
+        \begin{itemize}
+          \item Every invertible prime is maximal: \\
+            If not, let $p + aR = P_1 \cdots P_k$ and $p + a^2R = Q_1 \cdots Q_r$. 
+            $\leadsto p \subseteq P_i$ and $Q_j$\\
+            \underline{Claim} $(p + aR)^2 = (p + a^2R)$: \\
+            In $R/p$, $\gen{\bar{a}} = \big(P_1/p\big) \cdots \big(P_k/p\big)$ and 
+            $\gen{\bar{a^2}}= \big(Q_1/p\big)\big(Q_r/p\big)$. And, $\gen{\bar{a}}
+             = \big(P_1/p\big)^2 \cdots \big(P_k/p\big)^2 = \big(Q_1/p\big) \cdots
+             \big(Q_r/p\big)$
+          \item $P = P^2 + aP$
+             $$
+             P \subseteq P + a^2R = (P + aR)^2 \subseteq P^2 + aR
+             $$
+             Then,
+             $$
+             \forall x \in P, \underbrace{x}_{\in P} = \underbrace{y}_{\in P^2}
+             + a\underbrace{z}_{\in R} \leadsto z \in P
+             $$
+             Therefore, $P\subseteq P^2 + aP \leadsto P = P^2 + aP$. 
+        By invertibility of P, we have $R = P + aR$, a contradiction.
+        \item Every nonzero prime is invertible \\
+          Let $a \neq 0 \ in P$, and $P \supseteq \gen{a} is invertible$. $\gen{a}
+            = P_1 \cdots P_n$ and $P_i$ is invertible. And, $P \subseteq P_i 
+            \leadsto P = P_i$ since $P_i$ is max.
+        \item $\forall$ ideal $I \neq 0 \subseteq R$, $I = P_1 \cdots P_m \leadsto 
+          I$ is invertible.
+        \item If $I$ is fractional ideal of $R$, say $aI \subseteq R \leadsto 
+          \exists J$ ideal in $R$ $\leadsto aIJ = R \leadsto I(aJ) = R$. I is
+            invertible.
+        \end{itemize}
   \end{description}
   \end{proof}
 \end{theorem}
