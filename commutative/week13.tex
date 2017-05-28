@@ -23,21 +23,21 @@
     \item  $\sqrt{\mf_i^{n_i} + \mf_j^{n_j}} = \sqrt{\sqrt{\mf_i^{n_i}} + 
       \sqrt{\mf_j^{n_j}}}$
       \begin{proof} $ $\\ 
-        "$\subseteq$" $\forall a \in LHS$, that is, $a^n  = b + c$ with 
+        "$\subseteq$" $\forall a \in \text{LHS}$, that is, $a^n  = b + c$ with 
         $b \in m_i^{n_i} \subseteq \sqrt{m_i^{n_i}}$ and 
-        $c \in m_j^{n_j} \subseteq{m_j^{n_j}}$ then $a \in RHS$. \\
-        "$\supseteq$" $\forall a \in RHS$, that is, $a^n = b + c$ with 
+        $c \in m_j^{n_j} \subseteq{m_j^{n_j}}$ then $a \in \text{RHS}$. \\
+        "$\supseteq$" $\forall a \in \text{RHS}$, that is, $a^n = b + c$ with 
         $b^k \in m_i^{n_i}$ and $c^t \in m_j^{n_j}$. Then 
         $(a^n)^{k+t} = (b + c)^{k + t} = b^{k+t} + \dots + C_{t}^{k}b^kc^t
         + \dots + c^{k+t}$. Every term either in $m_i^{n_i}$ or $m_j^{m_j}$,
          then $(a^n)^{k+t} = c + d$ with $c \in m_i^{n_i}\ d \in m_j^{n_j}$
-         $\Rightarrow a \in LHS$
+         $\Rightarrow a \in \text{LHS}$
       \end{proof}
     \item If $m$ is prime, $\sqrt{m^{n}} = m$
       \begin{proof} $ $\\
-        $"\subseteq"$ $a \in LHS \Rightarrow a^k \in m^{n}$ and $m$ is prime.
+        $"\subseteq"$ $a \in \text{LHS} \Rightarrow a^k \in m^{n}$ and $m$ is prime.
         $\Rightarrow a \in m$. \\
-        $"\subseteq"$ $a \in RHS a \in m \Rightarrow a^n \in LHS$.
+        $"\subseteq"$ $a \in \text{RHS} a \in m \Rightarrow a^n \in \text{LHS}$.
       \end{proof}
      \item If $m$, $m_i, i = 1, \cdots, n$ are prime and $m \supseteq m_1 \cap
        \cdots \cap m_n$, then $m \supseteq m_i$ for some i.
@@ -94,9 +94,10 @@
             \]
           \item $\gen{0} = \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} $ for suitable $\{n_i\}$
             that $\mf_i^{n_i} = \mf_i^{n_i+1}$\\
-             Let $S = {J \subseteq R\ |\ J} \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \neq 0 $.
+             Let $\Sc = \Set{J \subseteq R \given J \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \neq 0}$.
              If $\gen{0} \neq \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} $, then $\mf_i \in S$.
-             $\leadsto S \neq \varnothing$. Since R is artinian, exist minimal element $J_0 \in S$.
+             $\leadsto \Sc \neq \varnothing$. Since $R$ is Artinian, there exists
+             a minimal element $J_0 \in \Sc$.
              By definition of S, $\exists x \in J_0$, $x\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} 
              \neq 0 \leadsto \gen{x} \in S$ and $\gen{x} \subseteq J_0 \Rightarrow \gen{x} = J_0$.\\
              Also, $x \mf_1^{n_1+1}\mf_2^{n_2+1} \dotsm \mf_k^{n_k+1} =
@@ -154,7 +155,7 @@
     $$
       \gen{b_1}_K \subset \gen{b_1 , b_2}_K \subset \cdots
     $$
-    is a infinite accending chain.\\
+    is a infinite ascending chain.\\
     Similarily, (1) $\Leftrightarrow$ (2).
   \end{proof}
 \end{lemma}
@@ -200,21 +201,22 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
   $$
     \begin{aligned}
       \mf_0 = R \text{ Artinian} & \iff \mf_1 , M_1 \text{ Artinian} \\
-                & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Artinian} \\
-                & \vdots \\
-                & \iff \underset{is\ 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
-                \cdots, M_n \text{ Artinian} \\
-                & \iff \underset{is\ 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
-                \cdots, M_n \text{ Neotherian} \\
-                & \vdots \\
-                & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Neotherian} \\
-                & \iff \mf_1 , M_1 \text{ Neotherian} \iff \mf_0 = R \text{ Neotherian}\\
+      & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Artinian} \\
+      & \hspace{13pt} \vdots \\
+      & \iff \underset{\text{is } 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
+      \dots, M_n \text{ Artinian} \\
+      & \iff \underset{\text{is } 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
+      \dots, M_n \text{ Neotherian} \\
+      & \hspace{13pt} \vdots \\
+      & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Neotherian} \\
+      & \iff \mf_1 , M_1 \text{ Neotherian} \iff \mf_0 = R \text{ Neotherian}
     \end{aligned}
   $$
-  Note: \underline{Goal 2} is accomplish by recongnizing that,
+  Note: \underline{Goal 2} is accomplished by recongnizing that,
   \begin{itemize}
-    \item R is Artinian $\implies \mf_1^{n_1}\cdots \mf_k^{n_k} = \gen{0}$ by prop~\ref{artin-ring-basic-property} (4).
-    \item R is Neother + dim 0 $\implies \mf_1^{n_1\cdots \mf_k^{n_k} = \gen{0}}$ by \underline{Observation}.
+    \item $R$ is Artinian $\implies \mf_1^{n_1}\cdots \mf_k^{n_k} = \gen{0}$
+      by prop~\ref{artin-ring-basic-property} (4).
+  \item $R$ is Neotherian $+ \dim 0 \implies \mf_1^{n_1} \cdots \mf_k^{n_k} = \gen{0}$ by \underline{Observation}.
   \end{itemize}
 \end{proof}
 
@@ -258,7 +260,7 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
   Let R be a local Noetherian ring with maximal ideal $\mf$. Then $t_1, \cdots t_n
   \in \mf$ generate $\mf$ if and only if thier images generate $\mf / \mf^2$ as an
   $R/\mf$ vector space.
-  \begin{proof} $ $ \\
+  \begin{proof} \hfill
     The $"\Rightarrow"$ is simple. \\
     $"\Leftarrow"$ \\
     Let $N = \gen{t_1, \cdots , t_n} \subseteq \mf$ and images of $t_1, \cdots, t_n
@@ -275,43 +277,50 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
 
 \begin{prop} \label{dvr-equiv-condition}
   $R$ is a DVR $\iff$ $R$ is 1-dimensional normal, Noetherian local domain.
-  \begin{proof} $ $ \\
-    $"\Rightarrow"$ \\
-    $$
-      \begin{aligned}
-        DVR \implies PID &\implies UFD \implies normal \\
-        &\implies Neotherian
-      \end{aligned}
-    $$
-    $\forall P \neq 0 \in \Spec R$, $P = <t^k> = m^k$ for some $k \in \Nb$
+  \begin{proof} \hfill \\
+    ``$\Rightarrow$'':
+    \begin{tikzpicture}[baseline,
+      implies/.style={double,double equal sign distance,-implies} 
+      ]
+      \node(DVR) at (0, 0) {DVR};
+      \node(PID) at (1.5, 0) {PID};
+      \node(UFD) at (3, 0.3) {UFD};
+      \node(normal) at (5, 0.3) {normal};
+      \node(Noeth) at (3.5, -0.3) {Noetherian};
+      \draw (DVR.east) edge[implies] (PID.west);
+      \draw (PID.east) edge[implies] (UFD.west);
+      \draw (UFD.east) edge[implies] (normal.west);
+      \draw (PID.east) edge[implies] (Noeth.west);
+    \end{tikzpicture} \\
+    $\forall P \neq 0 \in \Spec R$, $P = \gen{t^k} = m^k$ for some $k \in \Nb$
     $\leadsto P = \sqrt{P} = \sqrt{m^k} = m \leadsto P = m \leadsto
-    \gen{0} \subset m \leadsto \dim R = 1$ \\
-    $"\Leftarrow"$
+    \gen{0} \subset m \leadsto \dim R = 1$. \\
+    $"\Leftarrow"$:
     \begin{itemize}
       \item $\mf \ne \mf^2$ : \\
-        If $\mf = \mf^2$ and $\mf = Jac R$, then $m = \gen{0}$ by Nakayama lemma,
-        a contradiction to $\dim R = 1$.
+        If $\mf = \mf^2$ and $\mf = \Jac R$, then $m = \gen{0}$ by Nakayama's lemma,
+        which is a contradiction to $\dim R = 1$.
       \item Let $t \in \mf - \mf^2$ and $\mf = \gen{t}$ \\
-        Consider $M = \mf / <t>$ and assume $M \neq 0$ \\
-        \underline{Fact} $I = ann(\bar{x})\ \bar{x} \in M \implies I \in \Spec R$
-        Since $ab \in I,\ a,b \notin I$, then $\bar{a}\bar{b}\bar{x} = 0$, 
-        and $\bar{b}\bar{x} \neq 0$. \\
-        Suppose I is max, $ann(\bar{b}\bar{x}) \supseteq ann(\bar{x})
-        \leadsto ann(\bar{b}\bar{x}) = ann(\bar{x})$ Then, $a \in ann(\bar{b}\bar{x})
-        = ann(\bar{x})$, a contradiction. \\
-        By Fact, $\exists \bar{x} \neq 0 \in M$ s.t. $ann(\bar{x}) = \mf \leadsto
+        Consider $M = \mf / \gen{t}$ and assume $M \neq 0$ \\
+        \underline{Fact}: $I = \Ann(\bar{x})\ \bar{x} \in M \implies I \in \Spec R$
+        Since $ab \in I,\ a,b \notin I$, then $ab\bar{x} = 0$, 
+        and $b\bar{x} \neq 0$. \\
+        Suppose I is maximal, $\Ann(b\bar{x}) \supseteq \Ann(\bar{x})
+        \leadsto \Ann(b\bar{x}) = \Ann(\bar{x})$ Then, $a \in \Ann(b\bar{x})
+        = \Ann(\bar{x})$, which is a contradiction. \\
+        By the Fact, $\exists \bar{x} \neq 0 \in M$ s.t. $\Ann(\bar{x}) = \mf \leadsto
         x\mf = \gen{t} = tR \leadsto \frac{x}{t}\mf \subseteq R$. \\
         (1) If $\frac{x}{t} = R \leadsto \frac{xy}{t} = 1$ for some $y \in \mf
-        \leadsto t = xy \in \mf$, a contratiction. \\
+        \leadsto t = xy \in \mf$, which is a contratiction. \\
         (2) If $\frac{x}{t} \subset \mf$, let $\mf = \gen{y_1,\cdots, y_n}_R$ Write
         $\frac{x}{t} y_i = \sum\limits_{j = 1}^{l} a_{ij}y_j \forall i = 1, \cdots,
-        l$ By using determinat trick, we have $\frac{x}{t}$ is integral over R, but 
-        R is normal $\leadsto \frac{x}{t} \in R \leadsto x \in \gen{t} \leadsto 
-        \bar{x} = \bar{0}$, a contradiction. \\
+        l$ By using determinant trick, we have $\frac{x}{t}$ is integral over $R$,
+        but $R$ is normal $\leadsto \frac{x}{t} \in R \leadsto x \in \gen{t} \leadsto 
+        \bar{x} = \bar{0}$, which is a contradiction. \\
         Therefore, $\mf = \gen{t}$.
       \item By Ex3, $\bigcap\limits_{n = 0}^{\infty} m^n = 0$. Thus, $\forall x \in R$,
-        $\exists! k$ s.t. $x \in m^k$ and $x \notin m^k+1$. $\leadsto x = t^ku$,
-        u is units.
+        $\existsuniq k$ s.t. $x \in m^k$ and $x \notin m^k+1$. $\leadsto x = t^ku$,
+        $u$ is units.
       \item Define $\nu(x) = k$ and $\forall \frac{x}{y} \in \Frac{R} 
         \nu(\frac{x}{y}) = \nu(x) - \nu{y}$. \\
         (1) $\frac{x}{y} = \frac{x'}{y'} \leadsto xy' = x'y \leadsto \nu(xy') = 
@@ -320,8 +329,8 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
         \nu(b)\big] - \big[\nu(c) - \nu(d)\big] = \nu(\frac{a}{b}) - \nu(\frac{c}{d})$ \\
         (3) $\nu(\frac{a}{b} + \frac{c}{d})$, $\nu(a) = v_a$, $\nu(b) = v_b$,
         $\nu(c) = v_c$,$\nu(d) = v_d$. $\nu{\frac{a}{b} + \frac{c}{d}} = 
-        min\big\{\nu(\frac{a}{b}), \nu(\frac{c}{d})\big\} = min\big\{\nu(\frac{ad}{bd}), 
-        \nu(\frac{bc}{bd})\big\} = \nu(\frac{ad + bd}{bd})$. \\
+        \min\big\{\nu(\frac{a}{b}), \nu(\frac{c}{d})\big\} = \min\big\{\nu(\frac{ad}{bd}), 
+        \nu(\frac{bc}{bd})\big\} = \nu(\frac{ad + bd}{bd})$.
     \end{itemize}
     Therefore, R is DVR.
   \end{proof}
@@ -356,44 +365,44 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
     \item If $I$ is invertible, then $J = I^{-1}$ is unique and equals
       $J = (R:I) \triangleq \Set{a \in K \given aI \subset R}$.
       \begin{proof}
-        $$
-          J \subseteq (R:I) \subseteq (R:I)R \subseteq (R:I)IJ \subseteq 
-          RJ = J \leadsto J = (R:I)
-        $$
+        $ J \subseteq (R:I) \subseteq (R:I)R \subseteq (R:I)IJ \subseteq RJ = J
+        \leadsto J = (R:I) $
       \end{proof}
-    \item If $I$ is invertible, then$I$ is a finitely generated $R$-module.
-      \begin{proof} $ $\\
+    \item If $I$ is invertible, then $I$ is a finitely generated $R$-module.
+      \begin{proof}
         $I(R:I) = R \leadsto 1 = \sum\limits_{i = 0}^{k} x_iy_i$, $x_i \in I$ and
         $y_i \in (R:I)$. Then, $\forall x \in I$, $x = \sum\limits_{i = 0}^{k} 
-        \underbrace{(xy_i)}_{\in R}x_i \leadsto I = \gen{x_0, \cdots, x_k}_R$
+        \underbrace{(xy_i)}_{\in R}x_i \leadsto I = \gen{x_0, \dots, x_k}_R$.
       \end{proof}
     \item Let $R$ be a local domain but not a field, $K = \Frac(R)$.
       Then $R$ is a DVR $\iff$ every nonzero fractional ideal $I$ of $R$ is
       invertible.
       \begin{proof} $ $\\
-        $"\Rightarrow"$ \\
+        $"\Rightarrow"$:
         Let I be fractional ideal of R, then $\exists a \in R \leadsto aI 
         \subseteq R$. And, $\mf = \gen{t}$, since R is not a field $t \ne 0$.
-        $\leadsto a = t^k u$, $u$ is unit $\in R$. \\
+        $\leadsto a = t^k u$ where $u$ is a unit in $R$.
         If $aI = R$, then $J = \gen{a}_R$. $\leadsto IJ = R$. If not,
         $aI \subsetneq R$ $\leadsto aI \subseteq \mf \leadsto aI = \gen{t^l}
         \leadsto I = \gen{t^{l - k}}_R$. Let $J = \gen{t^{k - l}}_R$, then $IJ
-         = R$. \\
-        $"\Leftarrow"$ \\
+         = R$.
+
+        $"\Leftarrow"$: \mbox{}
         \begin{itemize}
-          \item R is Neother:\\
-            $\forall I \subsetneq R$ and $I is invertible \leadsto I$ is f.g.
-            R module.
-          \item $\mf \neq \mf^2$ $\mf$ is unique max in $R$: \\
-            $\mf = \mf^2$ and $\mf = Jac R \leadsto \mf = 0 \leadsto R$ is a field,
-             a contradiction.
-          \item $\mf = \gen{t}_R$: \\
+          \item R is Neotherian:
+            $\forall I \subsetneq R$ and $I$ is invertible $\leadsto I$ is f.g.
+            $R$-module.
+          \item $\mf \neq \mf^2$, $\mf$ is the unique maximal in $R$:
+            $\mf = \mf^2$ and $\mf = \Jac R \leadsto \mf = 0 \leadsto R$ is a field,
+             which is a contradiction.
+          \item $\mf = \gen{t}_R$:
             Pick $t \in \mf - \mf^2$ and let $\mf\mf^{-1} = R \leadsto t\mf^{-1}
             \subseteq R$. If $t\mf \subseteq \m$, then $t\mf\mf^{-1} = tR \subseteq
             \mf^{2}$, a contradiction. Therefore, $\mf \subset t\mf \leadsto t\mf 
             = R \leadsto t\mf\mf^{-1} = tR = \mf \leadsto \mf = \gen{t}_R$. 
           \item Using the same construction $\nu$ in prop~\ref{dvr-equiv-condition}
-            we have the R is DVR.
+            we have the $R$ is DVR.
+            \qedhere
         \end{itemize}
       \end{proof}
   \end{enumerate}
@@ -419,23 +428,24 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
         \end{itemize}
       \item[\rm (b)$\Leftrightarrow$(c):] $ $
         \begin{itemize}
-          \item (b) and (c) $\implies R is neotherian$
-          \item $I_P(R:I)_P = I_P(R_P:I_P)$ (Hint I is f.g.)
+          \item (b) and (c) $\implies R$ is Noetherian
+          \item $I_P(R:I)_P = I_P(R_P:I_P)$ (Hint: $I$ is f.g.)
           \item $R_P$ is DVR $\forall P \in \Spec R \iff$ Every nonzero fractional
-            ideal of R is invertable
+            ideal of $R$ is invertable.
             $$
             \forall P \in \Spec R\ R_P = I_P(R_P:I_P) = I_P(R:I)_P
              = I(R:I)_P \iff R = I(R:I)
             $$
         \end{itemize}
       \item[\rm (a)(b)(c)$\Rightarrow$(d):] $ $ \\
-        Existense :
+        Existence:
         \begin{itemize} 
           \item $I = q_1 \cap \cdots \cap q_n$ and $\sqrt{q_i} = P_i \in R $ by
-             primary decompositioni thm.
+             primary decomposition thm.
           \item $q_1 \cap \cdots \cap q_n = q_1 \cdots q_n$ \\
-            Since dim $R = 1$, $P_i \in Max R$. And, R is Neoth, $\exists n_i \in \Nb
-            m_i^{n_1} \subseteq q_i$. Then, $m_i^{n_i} + m_j^{n_j} = R \forall i \neq
+            Since $\dim R = 1$, $P_i \in Max R$. And, $R$ is Noetherian,
+            $\exists n_i \in \Nb$ s.t. $m_i^{n_i} \subseteq q_i$. Then,
+            $m_i^{n_i} + m_j^{n_j} = R \forall i \neq
             j \leadsto q_i + q_j  = R \leadsto q_1 \cap \cdots \cap q_n = q_1 \cdots
              q_n$
            \item $I = m_i^{r_i} \cdots m_n^{r_n}$ \\
@@ -443,22 +453,22 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
               q_i = m_i^{r_i}$ by prime is 1-1 correspondence in localization. 
               Therefore,  $I = m_i^{r_i} \cdots m_n^{r_n}$. 
         \end{itemize}
-        Uniqueness : 
+        Uniqueness: 
         \begin{itemize}
           \item $P_1\cdots P_k = Q_1\cdots Q_r$ $P_i, Q_i$ is prime. Then, $P_1\cdots
              P_k \subseteq Q_1 \leadsto P_i \subseteq Q_1$, say $i = 1$ by 
              prop~\ref{prop:radical-power-relation}. \\
              Since $Q_1$ is invertible, then $P_2\cdots P_k = Q_2\cdots Q_r$. By 
-             induction by hypothersis, we have the uniqueness result.
+             induction by hypothesis, we have the uniqueness result.
         \end{itemize}
-      \item[\rm (d)$\Rightarrow$(c):]
+      \item[\rm (d)$\Rightarrow$(c):] \mbox{}
         \begin{itemize}
           \item Every invertible prime is maximal: \\
             If not, let $p + aR = P_1 \cdots P_k$ and $p + a^2R = Q_1 \cdots Q_r$. 
             $\leadsto p \subseteq P_i$ and $Q_j$\\
             \underline{Claim} $(p + aR)^2 = (p + a^2R)$: \\
             In $R/p$, $\gen{\bar{a}} = \big(P_1/p\big) \cdots \big(P_k/p\big)$ and 
-            $\gen{\bar{a^2}}= \big(Q_1/p\big)\big(Q_r/p\big)$. And, $\gen{\bar{a}}
+            $\gen{\bar{a}^2}= \big(Q_1/p\big)\big(Q_r/p\big)$. And, $\gen{\bar{a}}
              = \big(P_1/p\big)^2 \cdots \big(P_k/p\big)^2 = \big(Q_1/p\big) \cdots
              \big(Q_r/p\big)$
           \item $P = P^2 + aP$
@@ -467,19 +477,19 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
              $$
              Then,
              $$
-             \forall x \in P, \underbrace{x}_{\in P} = \underbrace{y}_{\in P^2}
-             + a\underbrace{z}_{\in R} \leadsto z \in P
+             \forall x \in P, \quad \underset{\in P}{x} = \underset{\in P^2}{y}
+             + a\underset{\in R}{z} \leadsto z \in P
              $$
              Therefore, $P\subseteq P^2 + aP \leadsto P = P^2 + aP$. 
-        By invertibility of P, we have $R = P + aR$, a contradiction.
-        \item Every nonzero prime is invertible \\
-          Let $a \neq 0 \ in P$, and $P \supseteq \gen{a} is invertible$. $\gen{a}
+        By invertibility of $P$, we have $R = P + aR$, which is a contradiction.
+        \item Every nonzero prime is invertible: \\
+          Let $a \neq 0 \ in P$, and $P \supseteq \gen{a}$ is invertible. $\gen{a}
             = P_1 \cdots P_n$ and $P_i$ is invertible. And, $P \subseteq P_i 
-            \leadsto P = P_i$ since $P_i$ is max.
+            \leadsto P = P_i$ since $P_i$ is maximal.
         \item $\forall$ ideal $I \neq 0 \subseteq R$, $I = P_1 \cdots P_m \leadsto 
           I$ is invertible.
         \item If $I$ is fractional ideal of $R$, say $aI \subseteq R \leadsto 
-          \exists J$ ideal in $R$ $\leadsto aIJ = R \leadsto I(aJ) = R$. I is
+          \exists J$ ideal in $R$ $\leadsto aIJ = R \leadsto I(aJ) = R$. $I$ is
             invertible.
         \end{itemize}
   \end{description}
