@@ -144,6 +144,17 @@
 \renewcommand{\abstractname}{\LARGE Abstract}
 
 %%%%%%%%symbol and function settings%%%%%%%%%
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+\makeatother
+
 % adjust \exists and \forall spacing
 \let\existstemp\exists
 \let\foralltemp\forall
@@ -208,6 +219,8 @@
 \newcommand{\bigOt}{\raisebox{0.3ex}{$\bigotimes$}}
 \newcommand{\Op}{\oplus}
 \newcommand{\Ot}{\otimes}
+
+\DeclareMathOperator{\coker}{coker}
 
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Alt}{Alt}

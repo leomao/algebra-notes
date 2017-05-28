@@ -23,3 +23,38 @@
 \begin{exercise}
   Show that $h(y) \in \Hom_\Zb(R, N_0), h \in \Hom_R(M_2, N)$ and $h \circ \alpha = f$.
 \end{exercise}
+o
+\begin{exercise}[Snake lemma]
+  Suppose the following diagram commutes in $\Mod_R$.
+  (two exact sequences)
+  \[
+    \begin{tikzcd}
+      {\color{red} 0} \ar[r, red] & M_1 \ar[r] \ar[d, "f_1"]
+      & M_2 \ar[r] \ar[d, "f_2"] & M_3 \ar[r] \ar[d, "f_3"] & 0 \\
+      0 \ar[r] & N_1 \ar[r] & N_2 \ar[r] & N_3 \ar[r, red] & {\color{red} 0}
+    \end{tikzcd}
+  \]
+  Show that there exists the following exact sequence:
+  (Prove that the red part in the diagram above implies the red part in
+  the following sequence)
+  \[
+    \mathcolor{red}{0 \to} \ker f_1 \to \ker f_2 \to \ker f_3
+    \to \coker f_1 \to \coker f_2 \to \coker f_3 \mathcolor{red}{\to 0}
+  \]
+\end{exercise}
+
+\begin{exercise} \mbox{}
+  \begin{enumerate}[(1)]
+    \item State the property of being homotopic in the case of cochain complexes.
+    \item Let $M \in \Mod_R$. Construct an injective resolution of $M$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  State and show the dual version of comparison theorem.
+\end{exercise}
+
+\begin{exercise}
+  $0 \to C_\cdot \to \bar{C_\cdot} \to \tilde{C_\cdot} \to 0$ exact
+  will induce a long exact sequence.
+\end{exercise}
