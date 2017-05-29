@@ -13,7 +13,7 @@
 
 \underline{Goal:}
 \begin{enumerate}
-  \item $R = \cong R_1 \times \dots \times R_l$ where $R_i$ is an Artinain
+  \item $R = \cong R_1 \times \dots \times R_l$ where $R_i$ is an Artinian
     local rings.
   \item Artinian $\iff$ Noetherian $+ \dim = 0$.
 \end{enumerate}
@@ -141,17 +141,17 @@
   \end{enumerate}
 
   \begin{proof} $ $ \\
-    \underline{Fact} : If $V_1 \subseteq V_2$ is finite dim vector space over K, then $V_1 = V_2$
-    iff $\dim_k V_1 = \dim_k V_2$. Otherwise, $\dim_k V_1 \lneq \dim_k V_2$\\
+    \underline{Fact} : If $V_1 \subseteq V_2$ is finite dimensional vector space
+    over $K$, then $V_1 = V_2 \iff \dim_k V_1 = \dim_k V_2$. Otherwise, $\dim_k V_1 < \dim_k V_2$. \\
     (1) $\Leftrightarrow$ (3) \\
-    $"\Rightarrow"$ Suppose exists a chain in vector space $V$ with strictly increasing and infinite
-    length,
+    $"\Rightarrow"$ Suppose there exists a chain in vector space $V$ with strictly
+    increasing and infinite length,
     $$
-      V_1 \subset V_2 \subset \cdots \subseteq V \Rightarrow \dim_k V_1 \lneq \dim_k V_2 \lneq \cdots 
+      V_1 \subset V_2 \subset \cdots \subseteq V \Rightarrow \dim_k V_1 < \dim_k V_2 < \cdots 
       \leq \dim_k V
     $$
     Then, $\dim_k V$ must be infinite. \\
-    $"\Leftarrow"$ If $\dim_k V$ is ininite, let S = $\{b_1, b_2, \dots \}$ be basis of V.
+    $"\Leftarrow"$ If $\dim_k V$ is infinite, let S = $\{b_1, b_2, \dots \}$ be basis of V.
     $$
       \gen{b_1}_K \subset \gen{b_1 , b_2}_K \subset \cdots
     $$
@@ -206,17 +206,17 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
       & \iff \underset{\text{is } 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
       \dots, M_n \text{ Artinian} \\
       & \iff \underset{\text{is } 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
-      \dots, M_n \text{ Neotherian} \\
+      \dots, M_n \text{ Noetherian} \\
       & \hspace{13pt} \vdots \\
-      & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Neotherian} \\
-      & \iff \mf_1 , M_1 \text{ Neotherian} \iff \mf_0 = R \text{ Neotherian}
+      & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Noetherian} \\
+      & \iff \mf_1 , M_1 \text{ Noetherian} \iff \mf_0 = R \text{ Noetherian}
     \end{aligned}
   $$
   Note: \underline{Goal 2} is accomplished by recongnizing that,
   \begin{itemize}
     \item $R$ is Artinian $\implies \mf_1^{n_1}\cdots \mf_k^{n_k} = \gen{0}$
       by prop~\ref{artin-ring-basic-property} (4).
-  \item $R$ is Neotherian $+ \dim 0 \implies \mf_1^{n_1} \cdots \mf_k^{n_k} = \gen{0}$ by \underline{Observation}.
+  \item $R$ is Noetherian $+ \dim 0 \implies \mf_1^{n_1} \cdots \mf_k^{n_k} = \gen{0}$ by \underline{Observation}.
   \end{itemize}
 \end{proof}
 
@@ -332,7 +332,7 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
         \min\big\{\nu(\frac{a}{b}), \nu(\frac{c}{d})\big\} = \min\big\{\nu(\frac{ad}{bd}), 
         \nu(\frac{bc}{bd})\big\} = \nu(\frac{ad + bd}{bd})$.
     \end{itemize}
-    Therefore, R is DVR.
+    Therefore, $R$ is DVR.
   \end{proof}
 \end{prop}
 
@@ -379,7 +379,7 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
       invertible.
       \begin{proof} $ $\\
         $"\Rightarrow"$:
-        Let I be fractional ideal of R, then $\exists a \in R \leadsto aI 
+        Let $I$ be fractional ideal of $R$, then $\exists a \in R \leadsto aI 
         \subseteq R$. And, $\mf = \gen{t}$, since R is not a field $t \ne 0$.
         $\leadsto a = t^k u$ where $u$ is a unit in $R$.
         If $aI = R$, then $J = \gen{a}_R$. $\leadsto IJ = R$. If not,
@@ -443,14 +443,14 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
           \item $I = q_1 \cap \cdots \cap q_n$ and $\sqrt{q_i} = P_i \in R $ by
              primary decomposition thm.
           \item $q_1 \cap \cdots \cap q_n = q_1 \cdots q_n$ \\
-            Since $\dim R = 1$, $P_i \in Max R$. And, $R$ is Noetherian,
+            Since $\dim R = 1$, $P_i \in \Max R$. And, $R$ is Noetherian,
             $\exists n_i \in \Nb$ s.t. $m_i^{n_i} \subseteq q_i$. Then,
             $m_i^{n_i} + m_j^{n_j} = R \forall i \neq
             j \leadsto q_i + q_j  = R \leadsto q_1 \cap \cdots \cap q_n = q_1 \cdots
              q_n$
            \item $I = m_i^{r_i} \cdots m_n^{r_n}$ \\
              Since $R_{m_i}$ is DVR $\leadsto (q_i)_{m_i} = (m_i^{r_i})_{m_i} \leadsto
-              q_i = m_i^{r_i}$ by prime is 1-1 correspondence in localization. 
+              q_i = m_i^{r_i}$ by prime ideals have 1-1 correspondence in localization. 
               Therefore,  $I = m_i^{r_i} \cdots m_n^{r_n}$. 
         \end{itemize}
         Uniqueness: 
@@ -483,10 +483,10 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
              Therefore, $P\subseteq P^2 + aP \leadsto P = P^2 + aP$. 
         By invertibility of $P$, we have $R = P + aR$, which is a contradiction.
         \item Every nonzero prime is invertible: \\
-          Let $a \neq 0 \ in P$, and $P \supseteq \gen{a}$ is invertible. $\gen{a}
+          Let $0 \neq a \in P$, and $P \supseteq \gen{a}$ is invertible. $\gen{a}
             = P_1 \cdots P_n$ and $P_i$ is invertible. And, $P \subseteq P_i 
             \leadsto P = P_i$ since $P_i$ is maximal.
-        \item $\forall$ ideal $I \neq 0 \subseteq R$, $I = P_1 \cdots P_m \leadsto 
+        \item $\forall$ ideal $0 \neq I \subseteq R$, $I = P_1 \cdots P_m \leadsto 
           I$ is invertible.
         \item If $I$ is fractional ideal of $R$, say $aI \subseteq R \leadsto 
           \exists J$ ideal in $R$ $\leadsto aIJ = R \leadsto I(aJ) = R$. $I$ is
