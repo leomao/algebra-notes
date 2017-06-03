@@ -165,17 +165,25 @@ injective s.t. $0 \to M \to N$?
  \begin{proof} $ $
    \begin{itemize}
       \item \underline{Case 1} $R = \Zb$ \\
+        Let $X = \{x_i\}_{i \in \Lambda}$ be a generating set for $M$ 
+        and $F$ is free on $X$. Consider $0 \to kerf \to F 
+        \underset{f}{\to} \to M \to 0 \leadsto M \cong F / kerf$. \\
+        Let $F' = \underset{i \in \Lambda}{\oplus} \Qb e_i \leadsto
+        F \subseteq F'$ and $F'$ is a divisible $\Zb$-module. Then
+        $M \cong F/kerf \subseteq F'/kerf$ and $F'/kerf$ is a 
+        divisable $\Zb$-module and $\Zb$ is PID $\leadsto F'/kerf$
+        is injective.
       \item \underline{Case 2} R is arbitrary \\
         We can regard $M_1$ as $\Zb$ module, therefore $\exists N_0$ a 
-        $\Zb$ module with inclusion map. $M_1 \hookrightarrow N_0$. 
+        $\Zb$ module with inclusion map. $M_1 \toone N_0$. 
         Now, we have $R$ module $N := Hom_\Zb(R, N_0)$ \\
         \underline{Claim}: $N$ is injective
         $$
           \begin{tikzcd}[contains/.style = {draw=none, 
           "\in" description ,sloped}]
                       & x \ar[d, contains] \ar[ddd, mapsto, bend right] \\
-            0 \ar[r]  & M_1 \ar[r] \ar[d, "f"] & M_2 \ar[ld, 
-            "\exists h ?",dashed] \\
+            0 \ar[r]  & M_1 \ar[r,"\alpha"] \ar[d, "f"] & M_2 \ar[ld, 
+            "\exists h (?)",dashed] \\
                       & N \ar[r, draw=none, "\cong" description]&  
                       Hom_\Zb(R, N_0) \\
                       & f(x) \ar[u, contains] \\
@@ -184,7 +192,7 @@ injective s.t. $0 \to M \to N$?
           \begin{tikzcd}[contains/.style = {draw=none, 
           "\in" description ,sloped}]
                       & x \ar[d, contains] \ar[ddd, mapsto, bend right] \\
-            0 \ar[r]  & M_1 \ar[r] \ar[d, "f'"] & M_2 \ar[ld, 
+            0 \ar[r]  & M_1 \ar[r,"\alpha"] \ar[d, "f'"] & M_2 \ar[ld, 
             "\exists h'"] & \text{ in } Mod_R\\
                       & N_0 \\
                       & f(x)(1) \ar[u, contains] \\
@@ -218,10 +226,21 @@ injective s.t. $0 \to M \to N$?
                 &= h(y)(r) + (r_2h(y_2))(r) \ \forall r \in R
               \end{aligned}
             $$
-          \item Show diagram commute
+          \item Show diagram commute $f = h \circ \alpha$
             $$
+              \begin{aligned}
+                \text{Fix} y \in M_1,\ \forall r \in R \\
+                h \circ \alpha (y)(r) &= h(\alpha(y))(r)  = h'(r\alpha(y))\\
+                                      &= h'(\alpha(ry)) = f'(ry) \\
+                                      &= f(ry)(1) = rf(y)(1) \\
+                                      &= f(y)(r)
+              \end{aligned}
             $$
         \end{enumerate}
+        Hence, $M_1 \cong Hom_R(R,M_1) \toone Hom_\Zb(R, M_1) \toone 
+        Hom_\Zb(R,N_0) \cong N$. Note that, $Hom_\Zb(R,\cdot)$ is left
+        exact, so $M_1 \toone N_0 \leadsto Hom_\Zb(R, M) \toone 
+        Hom_\Zb(R, N_0)$.
   \end{itemize}
  \end{proof}
 \end{theorem}
@@ -233,15 +252,33 @@ injective s.t. $0 \to M \to N$?
     \item $\forall \quad 0 \to M_1 \to M_2 \to M \to 0$ is split exact.
     \item $\exists M'$ s.t. $M \oplus M' \cong F$: free.
   \end{enumerate}
-\end{prop}
-
-\begin{prop}
-  TFAE
-  \begin{enumerate}
-    \item $M$ is projective.
-    \item $\forall \quad 0 \to M_1 \to M_2 \to M \to 0$ is split exact.
-    \item $\exists M'$ s.t. $M \oplus M' \cong F$: free.
-  \end{enumerate}
+  \begin{proof} $ $\\
+    (1) $\Rightarrow$ (2) \\
+    $$
+      \begin{tikzcd}
+                            & M \ar[d, "id"] \ar[dl,"\exists \lambda"swap] \\
+        M_2 \ar[r, "\beta"] & M \ar[r]        & 0
+      \end{tikzcd}
+      s.t. \beta \circ \lambda = 1_M
+    $$
+    Therefore, since $\lambda$ is a lifting, $M_2 \cong M_1 \oplus M_2$. \\
+    (2) $\Rightarrow$ (3) \\
+    $\exists  F$ is free on generating set of $M$, then we have $F 
+    \underset{\beta}{\to} \to 0 $. And, consider $0 \to ker\beta
+    \to F \to M \to 0$ is split exact. We have $F \cong ker\beta
+    \oplus M$ and $M' = ker\beta$ \\
+    (3) $\Rightarrow$ (1) \\
+    $$
+    \begin{tikzcd}
+      0 \ar[r] & M' \ar[r] & M' \oplus M \ar[r, "\pi" swap, 
+      yshift=-0.7ex] \ar[d, "\exists \lambda'"]
+      & M \ar[r] \ar[d, "f"] \ar[l, "\mu" swap, yshift=0.7ex] & 0 \\
+       & & M_2 \ar[r, "\beta"] & M_3 \ar[r] & 0
+    \end{tikzcd}
+    $$
+    Define $\lambda = \lambda' \circ \mu$. Then $\beta \circ \lambda= 
+    \beta \circ \lambda' \circ \mu = f \circ \pi \circ \mu = f$
+  \end{proof}
 \end{prop}
 
 \begin{prop}
@@ -250,10 +287,65 @@ injective s.t. $0 \to M \to N$?
     \item $M$ is injective.
     \item $\forall \quad 0 \to M \to M_2 \to M_3 \to 0$ is split exact.
   \end{enumerate}
+  \begin{proof}
+    (1) $\Rightarrow$ (2) \\
+    $$
+    \begin{tikzcd}
+      0 \ar[r] & M \ar[r, "\alpha"] \ar[d, "id"] & M_2 \ar[dl, "\exists
+      \mu", dashed] \\
+               & M
+    \end{tikzcd}
+    \quad \text{ s.t }\mu \circ \alpha = 1_M
+    $$
+    (2) $\Rightarrow$ (1) \\
+    Consider
+    $
+    \begin{tikzcd}
+    0 \ar[r] & M \ar[r, "i", yshift=0.7ex] &  N \ar[r] \ar[l, "\exists \mu", 
+      yshift=-0.7ex] & coker i \ar[r]& 0
+    \end{tikzcd}
+    $
+    split exact and $\mu \circ i = 1_M$.
+    $$
+    \begin{tikzcd}
+      0 \ar[r] & M_1 \ar[r, "\alpha"] \ar[d , "f"] \ar[dd, "i 
+      \circ f" swap, bend right = 60] & M_2 \ar[ddl, "\exists h'"]\\
+               & M \ar[d, xshift=-0.7ex, "i" swap , hook] \\
+               & N \ar[u, xshift=0.7ex, "\mu" swap]
+    \end{tikzcd}
+    $$
+    Let $h = \mu \circ h'$, then $h \circ \alpha = \mu \circ h' 
+    \circ \alpha = \mu \circ i \circ f = f$
+  \end{proof}
 \end{prop}
 
 \begin{prop}
   projective $\implies$ flat.
+  \begin{proof} $ $
+    \begin{itemize}
+      \item $\underset{i \in \Lambda}{\oplus}$ is flat $\iff M_i$ is 
+        flat $\forall i$ \\
+        Now, consider $0 \to N_1 \overset{\alpha}{\to} N_2$ exact.
+        $$
+          \begin{tikzcd} [cong/.style = {draw=none, 
+        "\cong" description, sloped}]
+            0 \ar[r] & (\underset{i \in \Lambda}{\oplus} M_i) \otimes 
+            N_1 \ar[r, "1_M \otimes \alpha"] \ar[d,cong] & 
+            (\underset{i \in \Lambda}{\oplus} M_i) \otimes 
+            N_2 \ar[d, cong] \\ 
+            0 \ar[r] & \underset{i \in \Lambda}{\oplus}(M_i \otimes N_1)
+            \ar[r, "\underset{i \in \Lambda}{\oplus}(1_i \otimes 
+            \alpha)"] \ar[d, Leftrightarrow]& \underset{i \in \Lambda}
+            {\oplus}(M_i \otimes N_2)\\
+            0 \ar[r] & M_i \otimes N_1 \ar[r, "1_i \otimes \alpha"] 
+            & M_i \otimes N_2 & \forall i \in \Lambda 
+          \end{tikzcd}
+        $$
+      \item $M$ is projective $\exists M'$ and $M \oplus M' \cong
+        F$ is Free. $\leadsto M \oplus M'$ is Free, and Free implies
+         flat. $\leadsto M,\ M'$ is flat.
+    \end{itemize}
+  \end{proof}
 \end{prop}
 
 
