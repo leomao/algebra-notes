@@ -254,6 +254,14 @@
 \DeclareMathOperator{\Max}{Max}
 \DeclareMathOperator{\Jac}{Jac}
 \DeclareMathOperator{\Frac}{Frac}
+
+% homology
+\newcommand\proj{\mathrm{proj}}
+\newcommand\inj{\mathrm{inj}}
+\newcommand\im{\mathrm{im}\,}
+\newcommand\id{\mathbf{1}}
+\newcommand\coker{\mathrm{coker}\,}
+
 %
 \newcommand{\Resf}[1]{\big|_{#1}}
 
@@ -269,6 +277,7 @@
 \newcommand\acts{\curvearrowright}
 \newcommand\revacts{\curvearrowleft}
 \newcommand\isoto{\xrightarrow{\sim}}
+\newcommand\xto{\xrightarrow}
 \newcommand\deffunc[5]{\ensuremath{
   \arraycolsep=1pt
   \begin{array}{rccc}
@@ -354,7 +363,7 @@
 % \thispagestyle{fancy}
 % \tableofcontents
 %%%%%%%%%%%%%include file here%%%%%%%%%%%%%%%
-%\iffalse
+\iffalse
 \include{group/week1}
 \include{group/week2}
 \include{group/week3}
@@ -383,8 +392,9 @@
 \include{commutative/week11}
 \include{commutative/week12}
 \include{commutative/week13}
-%\fi
+\fi
 \include{homology/week14}
+\include{homology/week15}
 \printindex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{plain}

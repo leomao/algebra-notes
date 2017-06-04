@@ -1,0 +1,167 @@
+%! TEX root=../main.tex
+\subsection{Ext and Tor (week 15)}
+
+Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
+
+\begin{definition}[Ext functor] \mbox{}
+  \begin{itemize}
+    \item Find any projective resolution $P_\bullet \xto{\alpha} M \to 0$,
+      and let $P_M : P_\bullet \to 0$ (called a {\it deleted resolution}).
+      We can define $\Ext_{\proj}^{n}(M, N) = H^n(\Hom(P_M, N))$.
+    \item Find any injective resolution $0 \xto{\alpha} N \to E^\bullet$,
+      and let $E_N : 0 \to E^\bullet$.
+      We can define $\Ext_{\inj}^{n}(M, N) = H^n(\Hom(M, E_N))$.
+  \end{itemize}
+\end{definition}
+
+\begin{prop}
+  $\Ext_\proj^0(M, N) \cong \Ext_\inj^0(M, N) \cong \Hom(M, N)$.
+  \begin{proof}
+    $$\Hom(P_M, N) : 0 \xto{\ob{d_0}} \Hom(P_0, N) \xto{\ob{d_1}} \Hom(P_1, N) \to \cdots$$
+    so $\Ext_\proj^0(M, N) = \ker \ob{d_1} / \im \ob{d_0} = \ker \ob{d_1} = \im \alpha = \Hom(M, N)$.
+  \end{proof}
+  Similarly, $\Ext_\inj^0(M, N) = \Hom(M, N)$.
+\end{prop}
+
+\begin{lemma} \mbox{}
+  \begin{itemize}
+    \item If $M$ is projective, then $\Ext_\proj^n(M, N) = 0$ for all $n > 0, N \in \Mod_R$.
+    \item If $N$ is injective, then $\Ext_\inj^n(M, N) = 0$ for all $n > 0, M \in \Mod_R$.
+  \end{itemize}
+  
+  \begin{proof}
+    If $M$ is projective, then $0 \to M \xto{\id_M} M \to 0$ is a projective resolution
+    of $M$.
+    Its deleted resolution is then $P_M : 0 \to M \to 0$.
+    Hence for $n > 0$, $\Ext_\proj^n(M, N) = H^n(\Hom(P_M, N)) = 0$.
+
+    The argument applies similarly to injective case.
+  \end{proof}
+\end{lemma}
+
+\begin{theorem}[Equivalence of $\Ext_\proj$ and $\Ext_\inj$]
+  $$\Ext_\proj^n(M, N) \cong \Ext_\inj^n(M, N)$$.
+
+  \begin{proof}
+    Let $P_\bullet \to M \to 0$ and $0 \to N \to E^\bullet$ be projective and 
+    injective resolutions, then we have 
+    $0 \to K_0 \to P_0 \to M \to 0$ and $0 \to N \to E^0 \to L^1 \to 0$ exact.
+
+    \begin{minipage}{0.5\textwidth}
+    $$
+      \begin{tikzcd}[cramped, sep=10pt]
+        \cdots \ar[r] & P_2 \ar[rr] \ar[rd] && P_1 \ar[rr] \ar[rd] && P_0 \ar[r] & M \ar[r] & 0 \\
+                      & & K_1 \ar[ru] \ar[rd] && K_0 \ar[ru] \ar[rd] \\
+                      & 0 \ar[ru] && 0 \ar[ru] && 0
+      \end{tikzcd}
+    $$
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+    $$
+      \begin{tikzcd}[cramped, sep=10pt]
+        0 \ar[r] & N \ar[r] & E^0 \ar[rr] \ar[rd] && E^1 \ar[rr] \ar[rd] && E^2 \ar[r] & \cdots \\
+                 &&& L^1 \ar[ru] \ar[rd] && L^2 \ar[ru] \ar[rd] \\
+                 && 0 \ar[ru] && 0 \ar[ru] && 0
+      \end{tikzcd}
+    $$
+    \end{minipage}
+
+    \vspace{10pt}
+
+    We can construct long exact sequences of homology of $\Hom(\cdot, E_N)$:
+    $$0 \to \Hom(M, N) \to \Hom(M, E^0) \to \Hom(M, L^1) \to \Ext_\inj^1(M, N) \to \Ext_\inj^1(M, E^0) = 0$$
+    $$0 \to \Hom(P_0, N) \to \Hom(P_0, E^0) \to \Hom(P_0, L^1) \to 0$$
+    $$0 \to \Hom(K_0, N) \to \Hom(K_0, E^0) \to \Hom(K_0, L^1) \to \Ext_\inj^1(K_0, N) \to \Ext_\inj^1(K_0, E^0) = 0$$
+
+    The second sequence is short because $P_0$ is projective (so $\Hom(P_0, \cdot)$ preserves exactness). 
+
+    Similarly, for $\Hom(P_M, \cdot)$ we have:
+    $$0 \to \Hom(M, N) \to \Hom(P_0, N) \to \Hom(K_0, N) \to \Ext_\proj^1(M, N) \to \Ext_\proj^1(P_0, N) = 0$$
+    $$0 \to \Hom(M, E^0) \to \Hom(P_0, E^0) \to \Hom(K_0, E^0) \to 0$$
+    $$0 \to \Hom(M, L^1) \to \Hom(P_0, L^1) \to \Hom(K_0, L^1) \to \Ext_\proj^1(M, L^1) \to \Ext_\proj^1(P_0, L^1) = 0$$
+
+    Combining these sequences together, we got the following 2D diagram:
+
+    $$
+      \begin{tikzcd}[cramped, sep=15pt]
+        & 0 \ar[d] & 0 \ar[d] & 0 \ar[d] \\
+        0 \ar[r] & \Hom(M, N) \ar[r] \ar[d] & \Hom(M, E^0) \ar[r, "\phi"] \ar[d] &
+        \Hom(M, L^1) \ar[r] \ar[d] & \Ext_\inj^1(M, N) \ar[r] & 0 \\
+        0 \ar[r] & \Hom(P_0, N) \ar[r] \ar[d, "\alpha"] & \Hom(P_0, E^0) \ar[r, "\sigma"] \ar[d, "\beta"] &
+        \Hom(P_0, L^1) \ar[r] \ar[d, "\gamma"] & 0 \\
+        0 \ar[r] & \Hom(K_0, N) \ar[r] \ar[d] & \Hom(K_0, E^0) \ar[r, "\tau"] \ar[d] &
+        \Hom(K_0, L^1) \ar[r] \ar[d] & \Ext_\inj^1(K_0, N) \ar[r] & 0 \\
+        & \Ext_\proj^1(M, N) \ar[d] & 0 & \Ext_\proj^1(M, L^1) \ar[d] \\
+        & 0 & & 0
+      \end{tikzcd}
+    $$
+
+    By Snake lemma, there is an exact sequence
+    $$(\ker \alpha \to )\ker \beta \to \ker \gamma \to \coker \alpha \to \coker \beta( \to \coker \gamma)$$
+    and this reads
+    $$\Hom (M, E^0) \xto{\phi} \Hom(M, L^1) \to \Ext_\proj^1(M, N) \to 0$$
+
+    Thus $\Ext_\proj^1(M, N) \cong \coker \phi \cong \Ext_\inj^1(M, N)$.
+
+    Also, since $\sigma$ is onto, $\im \gamma = \im (\gamma \circ \sigma)$.
+    Similarly, $\im \tau = \im (\tau \circ \beta)$.
+
+    By the commutativity of the diagram, $\im \gamma = \im \tau$, so
+    $$\Ext^1(K_0, N) \cong \coker \gamma = \Hom(K_0, L^1)/\im \gamma
+    \cong \coker \tau \cong \Ext^1(M, L^1)$$.
+    (Now there's no need to distinguish $\proj / \inj$ for $\Ext^1$!)
+
+    Write $K_{-1} \defeq M, L^0 \defeq N$, then $\Ext^1(K_0, L^0) = \Ext^1(K_{-1}, L^1)$ ($\star$).
+
+    Similarly, from the exact sequences
+    $$ 0 \to K_j \to P_j \to K_{j-1} \to 0 $$
+    $$ 0 \to L^i \to E^i \to L^{i+1} \to 0 $$,
+    we can obtain $\Ext^1(K_j, L^i) \cong \Ext^1(K_{j-1}, L^{i+1})$ for $i, j \geq 0$.
+
+    Now, observe that
+    $$0 \to L^{n-1} \to E^{n-1} \xto{d_{n-1}} E^n \xto{d_n} \cdots$$
+    is an injective resolution of $L^{n-1}$, and
+    $\Ext^1(M, L^{n-1}) \cong \ker \ob{d_n} / \im \ob{d_{n-1}} \cong \Ext_\inj^n(M, N)$.
+
+    Similarly, for projective resolution we have $\Ext^1(K_{n-2}, N) \cong \Ext_\proj^n(M, N)$.
+
+    Finally, by ($\star$),  
+    $$\Ext_\inj^n(M, N) \cong \Ext^1(K_{-1}, L^{n-1}) \cong \Ext^1(K_0, L^{n-2}) \cong \cdots
+    \cong \Ext^1(K_{n-2}, L^0) \cong \Ext_\proj^n(M, N)$$.
+
+  \end{proof}
+\end{theorem}
+
+\begin{definition}[Tor functor]
+  Let $M, N \in \Mod_R$, and $P_\bullet \to M \to 0$ be a projective resolution of $M$, 
+  similar to the Ext case, for $n \ge 0$ we can define
+  $$\Tor_n(M, N) = H_n(P_M \Ot N)$$.
+\end{definition}
+
+\begin{fact}
+  By Horseshoe lemma, short exact sequence $0 \to M_1 \to M_2 \to M_3 \to 0$
+  induces a long exact sequence:
+  $$\cdots \to \Tor_1(M_1, N) \to \Tor_1(M_2, N) \to \Tor_1(M_3, N) \to 
+  M_1 \Ot N \to M_2 \Ot N \to M_3 \Ot N \to 0$$
+\end{fact}
+
+\begin{prop}
+  If $M$ is flat, then $\Tor_n(M, N) = 0$ for $n > 0, N \in \Mod_R$.
+  \begin{proof}
+    Since $0 \to M \xto{\id_M} M \to 0$ is a flat resolution of $M$. 
+  \end{proof}
+\end{prop}
+
+\begin{theorem}[Tor for flat resolutions]
+  Let $U_\bullet \to M \to 0$ be a flat resolution of $M$, then for $n \ge 0$,
+  $$\Tor_n(M, N) \cong H_n(U_M \Ot N)$$.
+  \begin{proof}
+    $$
+      \begin{tikzcd}[cramped, sep=10pt]
+        \cdots \ar[r] & U_2 \ar[rr] \ar[rd] && U_1 \ar[rr] \ar[rd] && U_0 \ar[r] & M \ar[r] & 0 \\
+                      && W_1 \ar[ru] \ar[rd] && W_0 \ar[ru] \ar[rd] \\
+                      & 0 \ar[ru] && 0 \ar[ru] && 0
+      \end{tikzcd}
+    $$
+  \end{proof}
+\end{theorem}
