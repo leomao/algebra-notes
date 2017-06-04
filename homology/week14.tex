@@ -27,94 +27,86 @@
          & N
       \end{tikzcd}$
     \item free $\implies$ projective:
-      If $X = \Set{ x_i \given i \in \Lambda}$ and $f: x_i \mapsto a_i$. Then
-      we can set $\tilde f: x_i \mapsto b_i$ for any $b_i$ s.t.
-      $\beta: b_i \mapsto a_i$.
+      If $X = \Set{ x_i \given i \in \Lambda}$ and $f: x_i \mapsto a_i$.
+      Since $\beta$ onto, exists $b_i$ so that $\beta(b_i) = a_i$.
+      we can then set $\tilde f: x_i \mapsto b_i$ by the universal
+      property of free module.
       \[\begin{tikzcd}[cramped, sep=15pt]
         & F(X) \ar[dl, "\exists \tilde f"'] \ar[d, "f"] \\
         M_2 \ar[r, "\beta"] & M_3 \ar[r] & 0
       \end{tikzcd}\]
     \item free $\implies$ flat:
-      $$
-        0 \to M_1 \to M_2 \text{ exact } \Rightarrow  0 \to R 
-        \underset{R}{\otimes} M_1 \to R \underset{R}{\otimes} M_2 
-        \text{ exact } 
-      $$
-      since $M_1 \cong R \underset{R}{\otimes} M_1$. Let F is Free 
-      on $ X =\{x_i\}, i \in \Lambda$, that is $ F \cong 
-      \underset{x_i \in X}{\oplus} Rx_i \cong R^{\oplus \Lambda}$.
-      And, $(A \oplus B) \otimes C \cong (A\otimes C) \oplus 
-      (B \otimes C)$ (see tensor product section!)
-      $$
-        \begin{aligned}
-        & 0 \to  \underset{i \in \Lambda}{\oplus} (R \underset{R}{\otimes}
-        M_1) \to \underset{i \in \Lambda}{\oplus} (R \underset{R}{\otimes}
-        M_2) \text{ exact } \\
-        \Rightarrow \ \ 
-        & 0 \to \big( \underset{i \in \Lambda}{\oplus} R \big) 
-        \underset{R}{\otimes} M_1 \to \big( 
-        \underset{i \in \Lambda}{\oplus} R \big) 
-        \underset{R}{\otimes} M_2
-        \text{ exact }
-        \end{aligned}
-      $$
-      Therefore, 
-      $$
-      0 \to F \otimes M_1 \to F \otimes M_2 \text{ exact } 
-      $$
-    \item If $S$ is a m.c. set in $R$ with $1 \in S$, then
+      Let $F \cong R^{\otimes \Lambda}$ be a free module,
+      and $M_1, M_2$ be two modules such that $0 \to M_1 \to M_2$.
+      Since $R \otimes_R M \cong M$, we have
+      \begin{alignat*}{3}
+        & 0 \to M_1 \to M_2 & \text{ exact } \\
+        \implies & 0 \to R \otimes M_1 \to R \otimes M_2 & \text{ exact } \\
+        \implies & 0 \to \bigoplus_{i \in \Lambda} R \otimes M_1 \to
+        \bigoplus_{i \in \Lambda} R \otimes M_2 \ & \text{ exact } \\
+        \stackrel{(a)}{\implies} & 0 \to R^{\otimes \Lambda} \otimes M_1 \to
+        R^{\otimes \Lambda} \otimes M_2 & \text{ exact } \\
+        \implies & 0 \to F \otimes M_1 \to F \otimes M_2 & \text{ exact }
+      \end{alignat*}
+      Where (a) is by the fact that $(A \oplus B) \otimes C \cong
+      (A\otimes C) \oplus (B \otimes C)$. Thus $F$ flat.
+
+    \item If $S$ is a multiplication closed set in $R$ with $1 \in S$, then
       \[ 0 \to M \to N \to L \to 0 \implies 0 \to M_S \to N_S \to L_S \to 0. \]
       We know that $M_S \cong R_S \otimes_R M$. So $R_S$ is a flat $R$-module.
       e.g. $\Qb$ is a flat $\Zb$-module.
-    \item $\forall M \in \Mod_R, \exists F$: free on $X$ s.t. $F \to M \to 0$.
-      This is obvious since we can choose $X$ to be the generating set of $M$.
   \end{itemize}
 \end{fact}
 
-\underline{Ques:} $\forall M \in \Mod_R$, does there exist $N \in \Mod_R$ is
-injective s.t. $0 \to M \to N$?
+For any $M \in \Mod_R$, a projective module $N$ such that $N \to M \to 0$
+could be easily find: Simply let $N = F$, a free module on the set $M$.
 
-\begin{theorem}[Boer's criterion]
-  $N$ is injective $\iff \forall I \subset R,$
-  $\begin{tikzcd}[cramped, sep=15pt]
+Now we shall ask for any module $M$, does there exist $N \in \Mod_R$ such that
+N is injective and $0 \to M \to N$?
+
+\begin{theorem}[Boer's criterion] \label{thm:boers-criterion}
+  $N$ is injective $\iff \forall I \subset R$, and a homomorphism
+  $f$, there exists a homomorphism $h$
+  such that the following diagram commutes:
+
+  \[ \begin{tikzcd}[cramped, sep=15pt]
     0 \ar[r] & I \ar[d, "f"'] \ar[r] & R \ar[dashed, dl, "\exists h"] \\
      & N
-  \end{tikzcd}$
-  \begin{proof} $ $ \\
-    \begin{itemize}
-      \item $"\Rightarrow"$ by the "Fact" of injective.
-      \item $"\Leftarrow"$ \\
-        Consider diagram, 
-        $$
-        \begin{tikzcd}[cramped, sep=15pt]
-        0 \ar[r] & M_1 \ar[d, "g"] \ar[r] & M_2  \\
-          & N
-        \end{tikzcd}
-        $$
-        Let $S = \{ (M, \rho) | M_1 \subseteq M \subseteq M_2 
-        and  \rho : M \to N \text{ extend }g\} \neq \emptyset$
-        By Zorn's lemman, exists a maximal elemant $(M^*, \mu) \in S$. \\
-        \underline{Claim} : $M^* = M_2$ \\
-        If not, pick $a \in M_2 \ M^*$. Let $M' = M^* + Ra \gneq M^*$ 
-        and $I = \{r \in R | ra \in M^* \}$
-        Define $f : I \to N$ with $r \mapsto \mu(ra)$. 
-        Then we have extension h,
-        $$
-          \begin{tikzcd}[cramped, sep=15pt]
-          0 \ar[r] & I \ar[d, "f"] \ar[r,hook] & R \ar[dashed, dl, "h"] \\
-          & N
-          \end{tikzcd}
-        $$
-        Now, define $\mu' :  M' \to N$ with $x + ra \mapsto \mu(x) + 
-        h(r)$ \\
-        \underline{Well-define} : \\
-        $x_1 + r_1a = x_2 + r_2a \leadsto a(r_1 - r_2) = x_2 - x_1 
-        \in M \leadsto h(r_1) - h(r_2) = h(r_1 - r_2) = f(r_1 - r_2) 
-        = \mu(a(r_1 - r_2)) = \mu(x_2 - x_1) = \mu(x_2) - \mu(x_1)
-        \leadsto \mu(x_1) + h(r_1) = \mu(x_2) + h(r_2)$ \\
-        But, $\mu'$ is extension of $\mu$. Therefore, $(M', \mu') \gneq 
-        (M^*, \mu)$, which is a contradiction to $M^*$ is maximal.
-    \end{itemize}
+    \end{tikzcd}
+  \]
+  \begin{proof}
+    ``$\Rightarrow$'': See $I$ as an $R$ module, then it is immediate by the
+    definition of injective module.
+
+    ``$\Leftarrow$: Consider the following diagram:
+    \[
+      \begin{tikzcd}[cramped, sep=15pt]
+      0 \ar[r] & M_1 \ar[d, "g"] \ar[r] & M_2  \\
+        & N
+      \end{tikzcd}
+    \]
+    Let $S \triangleq \Set{ (M, \rho) \mid M_1 \subseteq M \subseteq M_2
+      \text{ and } \rho : M \to N \text{ extends } g} \neq \varnothing$
+    since $(M_1, g) \in S$.
+
+    By the routinely proof using Zorn's lemma, exists a maximal element $(M^*, \mu) \in S$.
+
+    We claim that $M^* = M_2$.
+    If not, pick $a \in M_2 \setminus M^*$
+    and let $M' \triangleq M^* + Ra \supsetneq M^*$,
+    $I \triangleq \Set{ r \in R \mid ra \in M^* }$.
+    Define $f : I \to N$ with $r \mapsto \mu(ra)$.
+    Then we have an extension $h :: R \to N$ of $f$.
+
+    Now, let $\mu' ::  M' \to N = x + ra \mapsto \mu(x) +
+    h(r)$.
+    We shall prove that this map is well-defined:
+    If $x_1 + r_1a = x_2 + r_2a$, then $(r_1 - r_2) a = x_2 - x_1 \in M \implies
+    r_1 - r_2 \in I$.
+    So $h(r_1) - h(r_2) = f(r_1 - r_2) = \mu((r_1 - r_2)a) = \mu(x_2) - \mu(x_1)$,
+    which prove $\mu'$ is well defined, and the existence of $\mu'$
+    contradict the fact that $(M^*, \mu)$ is maximal.
+
   \end{proof}
 \end{theorem}
 
@@ -123,161 +115,168 @@ injective s.t. $0 \to M \to N$?
   $y \in M$ such that $x = ry$, i.e. $rM = M \quad \forall r \in R \setminus \set{0}$.
 \end{definition}
 
-\begin{prop} \mbox{}
+\begin{prop} \mbox{} \label{prop:injective-and-divisible}
   \begin{enumerate}
     \item Every injective module $N$ over an integral domain is divisible.
       \begin{proof}
-        For $x_0$, $r_0 \in R \ \{0\}$,
-        $$
-        \begin{tikzcd}[contains/.style = {draw=none, 
-        "\in" description ,sloped}]
-                    & r_0 \ar[d, contains] \ar[ddd, mapsto, bend right] \\
-          0 \ar[r]  & \gen{r_0} \ar[r, hook] \ar[d, "f"] & R \ar[ld, "h"] \\
-                  & N \\
-                  & x_0 \ar[u, contains]
-        \end{tikzcd}
-        $$
-        Let $y_0 := h(1)$. Then, $r_0y_0 = r_0h(1) = h(r_0) = x_0$.
-        (why the ID is required ? )
+        For any $x_0$ and $r_0 \in R \setminus \{0\}$. Let
+        $I = \gen{r_0} \subset R$. As long as $R$ is an integral domain,
+        $I \cong R$ as an $R$-module, so the $R$-module homomorphism
+        $f :: I \to N = r x_0 \mapsto r r_0$ is well-defined.
+        Since $N$ injective, this map extends to $h :: R \to N$.
+        Let $y_0 \triangleq h(1)$, then $r_0 y_0 = r_0 h(1) = h(r_0) = x_0$.
+        Thus $N$ injective.
       \end{proof}
     \item Every divisible module $N$ over an PID is injective.
       \begin{proof}
-        If $I = 0$, let h(1) = arbitrary is always let diagram commute.
-        Now, let $\forall I \neq 0\ I = \gen{r_0}$ for some $r_0 \neq 0
-        \in R$
-        $$
-        \begin{tikzcd}[contains/.style = {draw=none, 
-        "\in" description ,sloped}]
-                    & r_0 \ar[d, contains] \ar[ddd, mapsto, bend right] \\
-          0 \ar[r]  & \gen{r_0} \ar[r, hook] \ar[d, "f"] & R \ar[ld, "h",dashed] \\
-                  & N \\
-                  & x_0 := f(r_0) \ar[u, contains]
-        \end{tikzcd}
-        $$
-        Then, $\exists y_0 \leadsto r_0y_0 = x_0$. Define $h(1) = y_0$.
-        The diagram commute.
+        For any $I \subseteq R$ and a homomorphism $f :: I \to N$, if $I = 0$ then
+        $h = x \mapsto 0$ is always an extension of $f$.
+        So assume $\forall I \neq 0$. Since $R$ is a PID,
+        $I = \gen{r_0}$ for some $r_0 \neq 0 \in R$.'
+        By the fact that $N$ divisible, exists $y_0 \in N$
+        such that $r_0 y_0 = x_0 \triangleq f(r_0)$.
+
+        Now we could define
+        $h :: R \to N$ by $1 \mapsto y_0$.
+        Then $h(r_0) = r_0 h(1) = r_0 y_0 = x_0$, thus
+        $h$ is an extension of $f$ and $N$ injective.
      \end{proof}
+     \item If $R$ is a PID, then any quotient $N$ of a injective $R$-module $M$
+       is injective.
+       \begin{proof}
+        By 2., $rM = M$ for any $r \neq 0$, thus $rN = N$ for any $r \neq 0$,
+        and hence $N$ injective.
+       \end{proof}
   \end{enumerate}
 \end{prop}
 
-\begin{theorem}
- $\forall M \in \Mod_R$, $\exists N$ is injective s.t. $M \toone N$.
+\begin{theorem} \label{thm:every-module-is-in-injective-module}
+ For any $M \in \Mod_R$, exists $N$ injective and contains $M$.
  \begin{proof} $ $
-   \begin{itemize}
-      \item \underline{Case 1} $R = \Zb$ \\
-        Let $X = \{x_i\}_{i \in \Lambda}$ be a generating set for $M$ 
-        and $F$ is free on $X$. Consider $0 \to kerf \to F 
-        \underset{f}{\to} \to M \to 0 \leadsto M \cong F / kerf$. \\
-        Let $F' = \underset{i \in \Lambda}{\oplus} \Qb e_i \leadsto
-        F \subseteq F'$ and $F'$ is a divisible $\Zb$-module. Then
-        $M \cong F/kerf \subseteq F'/kerf$ and $F'/kerf$ is a 
-        divisable $\Zb$-module and $\Zb$ is PID $\leadsto F'/kerf$
-        is injective.
-      \item \underline{Case 2} R is arbitrary \\
-        We can regard $M_1$ as $\Zb$ module, therefore $\exists N_0$ a 
-        $\Zb$ module with inclusion map. $M_1 \toone N_0$. 
-        Now, we have $R$ module $N := Hom_\Zb(R, N_0)$ \\
-        \underline{Claim}: $N$ is injective
-        $$
+   \begin{enumerate}[label={\bf Case \arabic*:}]
+      \item $R = \Zb$. \\
+        Let $X = \Set{x_i}_{i \in \Lambda}$ be a generating set for $M$
+        and $F$ is free on $X$. Let $f$ be the natural map from $f$
+        to $M$. then $M \cong \quot{F}{\ker f}$.
+
+        Define $F' = \bigoplus_{i \in \lambda} \Qb e_i \subset F$,
+        which is obviously a divisible $\Zb$-module.
+        Then $M \subseteq F' / \ker f \triangleq M'$,
+        where $M'$ is injective by proposition~\ref{prop:injective-and-divisible}.
+
+      \item $R$ arbitrary. \\
+        We can regard any $M$ as a $\Zb$-module, then there exists an injective
+        module $N_0 \supset M$.
+        Now, we have an $R$-module $N \triangleq \Hom_\Zb(R, N_0)$
+        with multiplication $r f(x) \triangleq x \mapsto f(x r)$.
+
+        We claim that $N$ is injective. For any $f :: M_1 \to N$,
+        and a homomorphism $\alpha :: M_1 \to M_2$,
+        then $\alpha$ could be take as a $\Zb$-module homomorphism.
+        Define $f' :: M_1 \to N_0$ by $x \mapsto f(x)(1)$. Since
+        $N_0$ injective, exists $h'$, a $\Zb$ module
+        homomorphism from $M_2$ to $N_0$.
+        \[
           \begin{tikzcd}[contains/.style = {draw=none, 
-          "\in" description ,sloped}]
-                      & x \ar[d, contains] \ar[ddd, mapsto, bend right] \\
-            0 \ar[r]  & M_1 \ar[r,"\alpha"] \ar[d, "f"] & M_2 \ar[ld, 
-            "\exists h (?)",dashed] \\
-                      & N \ar[r, draw=none, "\cong" description]&  
-                      Hom_\Zb(R, N_0) \\
-                      & f(x) \ar[u, contains] \\
-                      & \boldsymbol{Mod}_R
-          \end{tikzcd} 
-          \begin{tikzcd}[contains/.style = {draw=none, 
-          "\in" description ,sloped}]
-                      & x \ar[d, contains] \ar[ddd, mapsto, bend right] \\
-            0 \ar[r]  & M_1 \ar[r,"\alpha"] \ar[d, "f'"] & M_2 \ar[ld, 
-            "\exists h'"] & \text{ in } Mod_R\\
-                      & N_0 \\
-                      & f(x)(1) \ar[u, contains] \\
-                      & \boldsymbol{Mod}_\Zb
-        \end{tikzcd}
-        $$
+            "\in" description ,sloped}]
+                        & x \ar[d, contains] \ar[ddd, mapsto, bend right] \\
+              0 \ar[r]  & M_1 \ar[r,"\alpha"] \ar[d, "f"] & M_2 \ar[ld, 
+              "\exists h (?)",dashed] \\
+                        & N \ar[r, draw=none, "\cong" description]&  
+                        Hom_\Zb(R, N_0) \\
+                        & f(x) \ar[u, contains] \\
+            \end{tikzcd}
+            \begin{tikzcd}[contains/.style = {draw=none, 
+            "\in" description ,sloped}]
+                        & x \ar[d, contains] \ar[ddd, mapsto, bend right] \\
+              0 \ar[r]  & M_1 \ar[r,"\alpha"] \ar[d, "f'"] & M_2 \ar[ld, 
+              "\exists h'"] \\
+                        & N_0 \\
+                        & f(x)(1) \ar[u, contains] \\
+          \end{tikzcd}
+        \]
         Now, define
-        $$
+        \[
         \begin{tikzcd}[row sep=0.1]
           h: M_2 \ar[r] & N \\
-          y \ar[r, mapsto] & h(y) : R \ar[r] & N_0 \\ 
+          y \ar[r, mapsto] & h(y) : R \ar[r] & N_0 \\
                            & 1 \ar[r, mapsto] & h'(y) \\
-                           & r \ar[r, mapsto] & h'(ry) \\
+                           & r \ar[r, mapsto] & h'(yr) \\
         \end{tikzcd}
-        $$
-        \underline{well-define}
-        \begin{enumerate}
-          \item Show $h(y) \in Hom_\Zb(R, N_0)$
-            $$
-              h(y)(r_1 + k r_2) = h'((r_1 + k r_2) y) = h'(r_1 + k r_2y) 
-              = h'(r_1) + k h'(r_2) = h(y)(r_1) + k h(y)(r_1)
-            $$
-          \item Show $h \in Hom_R(M_2, N)$
-            $$
+        \]
+        We check that $h$ is well-defined.
+        \begin{itemize}
+          \item $h(y) \in \Hom_\Zb(R, N_0)$
+            \[
+              h(y)(r_1 + r_2) = h'(y (r_1 + r_2)) = h'(y r_1 + y r_2)
+              = h'(y r_1) + h'(y r_2) = h(y)(r_1) + h(y)(r_1)
+            \]
+          \item $h \in \Hom_R(M_2, N)$
+            \[
               \begin{aligned}
-                h(y_1 + r_2y_2)(r) \ \forall r \in R &= h'(r (y_1 + 
-                r_2y_2)) \ \forall r \in R 
-                = h'(ry_1 + rr_2y_2) \ \forall r \in R \\
-                &= h'(ry_1) + h'(rr_2y_2) \ \forall r \in R 
-                = h(y)(r) + h(r_2y_2)(r) \ \ \forall r \in R \\
-                &= h(y)(r) + (r_2h(y_2))(r) \ \forall r \in R
+                h(y_1 + y_2 r_2)(r) &= h'((y_1 + y_2 r_2) r)
+                = h'(y_1 r + y_2 r_2 r) \\
+                &= h'(y_1 r) + h'(y_2 r_2 r) \\
+                &= h(y)(r) + (r_2h(y_2))(r)
               \end{aligned}
-            $$
+            \]
           \item Show diagram commute $f = h \circ \alpha$
-            $$
+            Fix $y \in M_1$, then $\forall r \in R$:
+            \[
               \begin{aligned}
-                \text{Fix} y \in M_1,\ \forall r \in R \\
-                h \circ \alpha (y)(r) &= h(\alpha(y))(r)  = h'(r\alpha(y))\\
+                (h \circ \alpha)(y)(r) &= h(\alpha(y))(r)  = h'(r\alpha(y))\\
                                       &= h'(\alpha(ry)) = f'(ry) \\
                                       &= f(ry)(1) = rf(y)(1) \\
                                       &= f(y)(r)
               \end{aligned}
-            $$
-        \end{enumerate}
-        Hence, $M_1 \cong Hom_R(R,M_1) \toone Hom_\Zb(R, M_1) \toone 
-        Hom_\Zb(R,N_0) \cong N$. Note that, $Hom_\Zb(R,\cdot)$ is left
-        exact, so $M_1 \toone N_0 \leadsto Hom_\Zb(R, M) \toone 
-        Hom_\Zb(R, N_0)$.
-  \end{itemize}
+            \]
+        \end{itemize}
+        Thus $N_0$ injective.
+
+        Now notice that, $\Hom_\Zb(R, -)$ is a left exact functor,
+        so $M \toone N_0$ implies $\Hom_\Zb(R, M) \toone \Hom_\Zb(R, N_0)$,
+        thus $M \cong \Hom_R(R, M) \toone \Hom_\Zb(R, M) \toone 
+        \Hom_\Zb(R,N_0) = N$.
+    \end{enumerate}
  \end{proof}
 \end{theorem}
 
-\begin{prop}
+\begin{prop} \label{prop:tfae-of-projective-module}
   TFAE
   \begin{enumerate}
     \item $M$ is projective.
-    \item $\forall \quad 0 \to M_1 \to M_2 \to M \to 0$ is split exact.
+    \item Every exact sequence $0 \to M_1 \to M_2 \to M \to 0$ split.
     \item $\exists M'$ s.t. $M \oplus M' \cong F$: free.
   \end{enumerate}
   \begin{proof} $ $\\
-    (1) $\Rightarrow$ (2) \\
-    $$
+    (1) $\Rightarrow$ (2) : Since $M$ projective, the map $\lambda$ with
+    $\beta \circ \lambda = \Id$ exists in the following diagram:\\
+    \[
       \begin{tikzcd}
-                            & M \ar[d, "id"] \ar[dl,"\exists \lambda"swap] \\
+                            & M \ar[d, "\Id"] \ar[dl,"\exists \lambda"swap] \\
         M_2 \ar[r, "\beta"] & M \ar[r]        & 0
       \end{tikzcd}
-      s.t. \beta \circ \lambda = 1_M
-    $$
-    Therefore, since $\lambda$ is a lifting, $M_2 \cong M_1 \oplus M_2$. \\
-    (2) $\Rightarrow$ (3) \\
-    $\exists  F$ is free on generating set of $M$, then we have $F 
-    \underset{\beta}{\to} \to 0 $. And, consider $0 \to ker\beta
-    \to F \to M \to 0$ is split exact. We have $F \cong ker\beta
-    \oplus M$ and $M' = ker\beta$ \\
-    (3) $\Rightarrow$ (1) \\
-    $$
-    \begin{tikzcd}
-      0 \ar[r] & M' \ar[r] & M' \oplus M \ar[r, "\pi" swap, 
-      yshift=-0.7ex] \ar[d, "\exists \lambda'"]
-      & M \ar[r] \ar[d, "f"] \ar[l, "\mu" swap, yshift=0.7ex] & 0 \\
-       & & M_2 \ar[r, "\beta"] & M_3 \ar[r] & 0
-    \end{tikzcd}
-    $$
+    \]
+    Then $\lambda$ is a lifting, so $M_2 \cong M_1 \oplus M$ and $0 \to M_1 \to M_2 \to M \to 0$ split. \\
+
+    (2) $\Rightarrow$ (3): Let $F$ be a free module on a generating set of $M$,
+    and $\beta :: F \to M$ be the natural map,
+    then $0 \to \ker \beta \to F \to M \to 0$ split,
+    so $F \cong \ker \beta \oplus M$.
+
+    (3) $\Rightarrow$ (1):
+    For any $M_2 \to M_3 \to 0$, since $M' \oplus M$ free and thus projective,
+    $\lambda'$ exists in the following diagram:
+    \[
+      \begin{tikzcd}
+        0 \ar[r] & M' \ar[r] & M' \oplus M \ar[r, "\pi" swap, 
+        yshift=-0.7ex] \ar[d, "\exists \lambda'"]
+        & M \ar[r] \ar[d, "f"] \ar[l, "\mu" swap, yshift=0.7ex] & 0 \\
+         & & M_2 \ar[r, "\beta"] & M_3 \ar[r] & 0
+      \end{tikzcd}
+    \]
     Define $\lambda = \lambda' \circ \mu$. Then $\beta \circ \lambda= 
-    \beta \circ \lambda' \circ \mu = f \circ \pi \circ \mu = f$
+    \beta \circ \lambda' \circ \mu = f \circ \pi \circ \mu = f$.
   \end{proof}
 \end{prop}
 
@@ -285,27 +284,33 @@ injective s.t. $0 \to M \to N$?
   TFAE
   \begin{enumerate}
     \item $M$ is injective.
-    \item $\forall \quad 0 \to M \to M_2 \to M_3 \to 0$ is split exact.
+    \item Each exact sequence $0 \to M \to M_2 \to M_3 \to 0$ split.
   \end{enumerate}
   \begin{proof}
-    (1) $\Rightarrow$ (2) \\
-    $$
+    (1) $\Rightarrow$ (2): Similar to the projective case, $\mu$ exists
+    in the following diagram:
+    \[
     \begin{tikzcd}
-      0 \ar[r] & M \ar[r, "\alpha"] \ar[d, "id"] & M_2 \ar[dl, "\exists
+      0 \ar[r] & M \ar[r, "\alpha"] \ar[d, "\Id"] & M_2 \ar[dl, "\exists
       \mu", dashed] \\
                & M
     \end{tikzcd}
-    \quad \text{ s.t }\mu \circ \alpha = 1_M
-    $$
-    (2) $\Rightarrow$ (1) \\
+    \]
+    So $M_2 = M \oplus M_3$.
+
+    (2) $\Rightarrow$ (1):
+    By theorem~\ref{thm:every-module-is-in-injective-module},
+    there is a module $N \subset M$ so that $N$ is injective.
+
     Consider
     $
     \begin{tikzcd}
     0 \ar[r] & M \ar[r, "i", yshift=0.7ex] &  N \ar[r] \ar[l, "\exists \mu", 
-      yshift=-0.7ex] & coker i \ar[r]& 0
+      yshift=-0.7ex] & \Coker i \ar[r]& 0
     \end{tikzcd}
     $
-    split exact and $\mu \circ i = 1_M$.
+    split exact and $\mu \circ i = \Id_M$. Since $N$ injective,
+    $h'$ exists in the following diagram:
     $$
     \begin{tikzcd}
       0 \ar[r] & M_1 \ar[r, "\alpha"] \ar[d , "f"] \ar[dd, "i 
@@ -321,30 +326,25 @@ injective s.t. $0 \to M \to N$?
 
 \begin{prop}
   projective $\implies$ flat.
-  \begin{proof} $ $
-    \begin{itemize}
-      \item $\underset{i \in \Lambda}{\oplus}$ is flat $\iff M_i$ is 
-        flat $\forall i$ \\
-        Now, consider $0 \to N_1 \overset{\alpha}{\to} N_2$ exact.
-        $$
-          \begin{tikzcd} [cong/.style = {draw=none, 
-        "\cong" description, sloped}]
-            0 \ar[r] & (\underset{i \in \Lambda}{\oplus} M_i) \otimes 
-            N_1 \ar[r, "1_M \otimes \alpha"] \ar[d,cong] & 
-            (\underset{i \in \Lambda}{\oplus} M_i) \otimes 
-            N_2 \ar[d, cong] \\ 
-            0 \ar[r] & \underset{i \in \Lambda}{\oplus}(M_i \otimes N_1)
-            \ar[r, "\underset{i \in \Lambda}{\oplus}(1_i \otimes 
-            \alpha)"] \ar[d, Leftrightarrow]& \underset{i \in \Lambda}
-            {\oplus}(M_i \otimes N_2)\\
-            0 \ar[r] & M_i \otimes N_1 \ar[r, "1_i \otimes \alpha"] 
-            & M_i \otimes N_2 & \forall i \in \Lambda 
-          \end{tikzcd}
-        $$
-      \item $M$ is projective $\exists M'$ and $M \oplus M' \cong
-        F$ is Free. $\leadsto M \oplus M'$ is Free, and Free implies
-         flat. $\leadsto M,\ M'$ is flat.
-    \end{itemize}
+  \begin{proof}
+    Observe that $\bigoplus\limits_{i \in \Lambda} M_i$ is flat if and only if $M_i$ is
+    flat for each $i$, since if $0 \to N_1 \xrightarrow{\alpha} N_2$ exact, then
+    \[
+      \begin{tikzcd} [cong/.style = {draw=none, "\cong" description, sloped}]
+        0 \ar[r] & \left( \bigoplus M_i \right) \otimes N_1
+        \ar[r, "1 \otimes \alpha"] \ar[d,equal] &
+        \left(\bigoplus M_i \right) \otimes N_2 \ar[d, equal] \\
+        0 \ar[r] & \bigoplus (M_i \otimes N_1)
+        \ar[r, "\oplus (1 \otimes \alpha)"] \ar[d, Leftrightarrow]& 
+        \bigoplus (M_i \otimes N_2)\\
+        0 \ar[r] & M_i \otimes N_1 \ar[r, "1 \otimes \alpha"] 
+        & M_i \otimes N_2 & \forall i \in \Lambda 
+      \end{tikzcd}
+    \]
+
+    If $M$ is projective, then by proposition~\ref{prop:tfae-of-projective-module}
+    $\exists M'$ such that $M \oplus M' \cong F$ is free.
+    Since free implies flat, by above, $M$ is flat.
   \end{proof}
 \end{prop}
 
