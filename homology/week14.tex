@@ -106,7 +106,6 @@ N is injective and $0 \to M \to N$?
     So $h(r_1) - h(r_2) = f(r_1 - r_2) = \mu((r_1 - r_2)a) = \mu(x_2) - \mu(x_1)$,
     which prove $\mu'$ is well defined, and the existence of $\mu'$
     contradict the fact that $(M^*, \mu)$ is maximal.
-
   \end{proof}
 \end{theorem}
 
@@ -198,26 +197,27 @@ N is injective and $0 \to M \to N$?
         Now, define
         \[
         \begin{tikzcd}[row sep=0.1]
-          h: M_2 \ar[r] & N \\
-          y \ar[r, mapsto] & h(y) : R \ar[r] & N_0 \\
-                           & 1 \ar[r, mapsto] & h'(y) \\
-                           & r \ar[r, mapsto] & h'(yr) \\
+          h: &[-3em] M_2 \ar[r] & N \\
+             &[-3em] y \ar[r, mapsto] & h(y) : &[-3em] R \ar[r] & N_0 \\
+             &[-3em] & &[-3em] 1 \ar[r, mapsto] & h'(y) \\
+             &[-3em] & &[-3em] r \ar[r, mapsto] & h'(ry) \\
         \end{tikzcd}
         \]
         We check that $h$ is well-defined.
         \begin{itemize}
           \item $h(y) \in \Hom_\Zb(R, N_0)$
             \[
-              h(y)(r_1 + r_2) = h'(y (r_1 + r_2)) = h'(y r_1 + y r_2)
-              = h'(y r_1) + h'(y r_2) = h(y)(r_1) + h(y)(r_1)
+              h(y)(r_1 + r_2) = h'((r_1 + r_2)y) = h'(r_1 y + r_2 y)
+              = h'(r_1y) + h'(r_2y) = h(y)(r_1) + h(y)(r_1)
             \]
           \item $h \in \Hom_R(M_2, N)$
             \[
               \begin{aligned}
-                h(y_1 + y_2 r_2)(r) &= h'((y_1 + y_2 r_2) r)
-                = h'(y_1 r + y_2 r_2 r) \\
-                &= h'(y_1 r) + h'(y_2 r_2 r) \\
-                &= h(y)(r) + (r_2h(y_2))(r)
+                h(r_1y_1 + y_2)(r) &= h'(r(r_1y_1 + y_2))
+                = h'(rr_1y_1 + ry_2) \\
+                &= h'(rr_1y_1) + h'(ry_2) \\
+                &= h(y)(rr_1) + h(y_2)(r) \\
+                &= (r_1h(y))(r) + h(y_2)(r)
               \end{aligned}
             \]
           \item Show diagram commute $f = h \circ \alpha$
@@ -233,10 +233,11 @@ N is injective and $0 \to M \to N$?
         \end{itemize}
         Thus $N_0$ injective.
 
-        Now notice that, $\Hom_\Zb(R, -)$ is a left exact functor,
+        Now notice that, $\Hom_\Zb(R, \cdot)$ is a left exact functor,
         so $M \toone N_0$ implies $\Hom_\Zb(R, M) \toone \Hom_\Zb(R, N_0)$,
         thus $M \cong \Hom_R(R, M) \toone \Hom_\Zb(R, M) \toone 
         \Hom_\Zb(R,N_0) = N$.
+        \qedhere
     \end{enumerate}
  \end{proof}
 \end{theorem}
