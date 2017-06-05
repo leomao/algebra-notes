@@ -181,6 +181,54 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
         Any projective resolution also has this property, so $\Tor_0(M, N) = H_0(U_M \Ot N)$.
 
       \item $n=1$: \\
+        $0 \to W_0 \to U_0 \to M \to 0$ induces a long exact sequence:
+        $$\cdots \to \Tor_1(W_0, N) \to 0 \to \Tor_1(M, N) 
+        \to W_0 \Ot N \xto{i \Ot 1} U_0 \Ot N \to M \Ot N \to 0$$
+
+        where $\Tor_1(U_0, N) = 0$ because $U_0$ is flat.
+        We can see that $\Tor_1(M, N) \cong \ker(i \Ot 1)$.
+
+    $$
+      \begin{tikzcd}[cramped, sep=15pt]
+        U_2 \Ot N \ar[rr, "d_2 \Ot 1"] \ar[rd, "\beta' \Ot 1"] && 
+        U_1 \Ot N \ar[rr, "d_1 \Ot 1"] \ar[rd, "\alpha' \Ot 1"] 
+        && U_0 \Ot N\\
+        & W_1 \Ot N\ar[ru, "j \Ot 1"] \ar[rd] && 
+        W_0 \Ot N \ar[ru, "i \Ot 1"] \ar[rd] \\
+        && 0 && 0
+      \end{tikzcd}
+    $$
+
+    Since $\alpha' \Ot 1$ is onto, $W_0 \Ot N \cong (U_1 \Ot N) / \ker (\alpha' \Ot 1)$.
+    Also, $x \in \ker(d_1 \Ot 1) \iff (d_1 \Ot 1)(x) = 0 \iff (\alpha' \Ot 1)(x) \in \ker (i \Ot 1)$,
+    so $\ker (i \Ot 1) = (\alpha' \Ot 1)( \ker (d_1 \Ot 1)) \cong \ker (d_1 \Ot 1) / \ker(\alpha' \Ot 1)$. \\
+    ($\alpha' \Ot 1$ can be considered a quotient map, then 
+    $\ker (d_1 \Ot 1)$ descends to $\ker (d_1 \Ot 1) / \ker (\alpha' \Ot 1)$.)
+
+    Now, in the diagram $W_1 \Ot N \to U_1 \Ot N \to W_0 \Ot N \to 0$ exact, so 
+    $\ker (\alpha' \Ot 1) = \im (j \Ot 1)$. But $\beta' \Ot 1$ is onto, thus 
+    $\im (j \Ot 1) = \im (d_2 \Ot 1)$. 
+
+    Finally, 
+    $$\Tor_1(M, N) \cong \ker(i \Ot 1) \cong \ker (d_1 \Ot 1) / \ker(\alpha' \Ot 1)
+    = \ker (d_1 \Ot 1) / \im(d_2 \Ot 1) = H_1(U_M \Ot N)$$.
+
+    \item $n \ge 2$: \\
+      Let's see further in the previous long exact sequences:
+
+      $$\cdots \to \Tor_2(W_0, N) \to 0 \to \Tor_2(M, N)
+      \xto{\sim} \Tor_1(W_0, N) \to 0 \to \Tor_1(M, N) \to \cdots
+      $$
+
+      we can see that $\Tor_n(M, N) \cong \Tor_{n-1}(W_0, N)$ for $n \ge 2$.
+
+      Now, 
+      $$\cdots U_3 \xto{d_3} U_2 \xto{d_2} U_1 \to W_0 \to 0$$
+      is a flat resolution of $W_0$, and its homology is 
+      $H_{n-1}(U_{W_0} \Ot N) = \ker(d_n \Ot 1) / \im(d_{n-1} \Ot 1) = H_n(U_M \Ot N)$.
+
+      By induction, assume it's true for $n-1$, then
+      $$H_n(U_M \Ot N) = H_{n-1}(U_{W_0} \Ot N) \cong \Tor_{n-1}(W_0, N) \cong \Tor_n(M, N)$$.
 
     \end{itemize}
 
