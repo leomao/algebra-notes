@@ -101,15 +101,17 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
     and this reads
     $$\Hom (M, E^0) \xto{\phi} \Hom(M, L^1) \to \Ext_\proj^1(M, N) \to 0$$
 
-    Thus $\Ext_\proj^1(M, N) \cong \coker \phi \cong \Ext_\inj^1(M, N)$.
+    Thus $\Ext_\proj^1(M, N) \cong \coker \phi \cong \Ext_\inj^1(M, N)$.\\
+    (From now on, we don't need to distinguish $\proj / \inj$ for $\Ext^1$ !)
 
-    Also, since $\sigma$ is onto, $\im \gamma = \im (\gamma \circ \sigma)$.
+    \vspace{10pt}
+
+    Since $\sigma$ is onto, $\im \gamma = \im (\gamma \circ \sigma)$.
     Similarly, $\im \tau = \im (\tau \circ \beta)$.
 
     By the commutativity of the diagram, $\im \gamma = \im \tau$, so
     $$\Ext^1(K_0, N) \cong \coker \gamma = \Hom(K_0, L^1)/\im \gamma
     \cong \coker \tau \cong \Ext^1(M, L^1)$$.
-    (Now there's no need to distinguish $\proj / \inj$ for $\Ext^1$!)
 
     Write $K_{-1} \defeq M, L^0 \defeq N$, then $\Ext^1(K_0, L^0) = \Ext^1(K_{-1}, L^1)$ ($\star$).
 
@@ -163,5 +165,24 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
                       & 0 \ar[ru] && 0 \ar[ru] && 0
       \end{tikzcd}
     $$
+
+    $$H_\bullet(U_M \Ot N) : \cdots \to U_2 \Ot N \xto{d_2 \Ot \id} 
+    U_1 \Ot N \xto{d_1 \Ot \id} U_0 \Ot N \to 0$$
+
+    \begin{itemize}
+      \item $n=0$: \\ 
+        Since tensor is right exact, 
+        $U_1 \Ot N \xto{d_1 \Ot \id} U_0 \Ot N \xto{\alpha \Ot \id} M \Ot N \to 0$
+        is exact.
+        Hence
+        $$H_0(U_M \Ot N) = (U_0 \Ot N) / \im(d_1 \Ot \id) = (U_0 \Ot N) / \ker(\alpha \Ot \id)
+        \cong M \Ot N$$
+
+        Any projective resolution also has this property, so $\Tor_0(M, N) = H_0(U_M \Ot N)$.
+
+      \item $n=1$: \\
+
+    \end{itemize}
+
   \end{proof}
 \end{theorem}
