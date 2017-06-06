@@ -1,0 +1,63 @@
+%! TEX root=../main.tex
+\subsection{Koszul complex (week 16)}
+
+\begin{remark}
+  In this section, we assume that $R$ is commutative with $1$.
+\end{remark}
+
+\begin{definition}
+  Let $L \in \Mod_R$, with $f: L \to R$ an $R$-linear map, define
+  $$\deffunc{\df}{\Lambda^n L}{\Lambda^{n-1} L}{x_1 \we \cdots \we x_n}
+  {\sum\limits_{i=1}^n (-1)^{i+1} f(x_i) x_1 \we \cdots \we \hat{x}_i \we
+  \cdots \we x_n}$$
+  where $\Lambda^n L$ is the $n$-th exterior power of $L$, and $\hat{x}_i$ means
+  omitting $x_i$.
+
+  Then we can define a chain complex called {\bf Koszul complex}:
+  $$K_\bullet(f) : \cdots \to \Lambda^n L \xto{\df} \Lambda^{n-1} L \to \cdots \to
+  \Lambda^2 L \xto{\df} L \xto{f} R$$
+
+  Also, $\df$ can be considered as a graded $R$-homomorphism of degree $-1$:
+  $$\deffunc{\df}{\Lambda L}{\Lambda L}{x \we y}
+  {\df(x) \we y + (-1)^{\deg x}\cdot x \we \df(y)}$$
+  where $\Lambda L$ is the exterior algebra of $L$, and $x, y$ are any homogeneous 
+  elements of $\Lambda L$.
+\end{definition}
+
+\begin{definition}
+  Let $(C_\bullet, d), (C_\bullet', d')$ be chain complexes of $R$-modules, 
+  define their {\it tensor product} to be a chain complex $C_\bullet \Ot C_\bullet'$ with
+  $$\left( C_\bullet \Ot C_\bullet' \right)_n = 
+  \bigoplus\limits_{i=0}^n \left( C_i \Ot_R C_{n-i}' \right)$$
+  with the boundary maps being
+  $$\deffunc{d \Ot d'}{(C_\bullet \Ot C_\bullet')_n}{(C_\bullet \Ot C_\bullet')_{n-1}}
+  {\sum\limits_{i=0}^n x_i \Ot y_{n-i}}{\sum\limits_{i=0}^n 
+  \left( d(x_i) \Ot y_{n-i} + (-1)^i \cdot x_i \Ot d'(y_{n-i}) \right)}$$
+
+  One can verify that 
+  \begin{eqnarray*}
+    (d \Ot d') \circ (d \Ot d') (x \Ot y) 
+    &=& (d \Ot d') (d(x) \Ot y + (-1)^{\deg x} \cdot x \Ot d'(y)) \\
+    &=& d \circ d (x) \Ot y + (-1)^{\deg x - 1} \cdot d(x) \Ot d'(y)
+    + (-1)^{\deg x} \cdot d(x) \Ot d'(y) + x \Ot d' \circ d'(y) \\
+    &=& 0
+  \end{eqnarray*}
+\end{definition}
+
+\begin{prop}
+  Let $L_1, L_2 \in \Mod_R, f_1 \in \Hom_R(L_1, R), f_2 \in \Hom_R(L_2, R)$.
+  Define
+  $$\deffunc{f = f_1 + f_2}{L_1 \Op L_2}{R}{(x, y)}{f_1(x) + f_2(y)}, $$
+  then 
+  \begin{eqnarray*}
+    K_\bullet(f_1) \Ot K_\bullet(f_2) &\cong& K_\bullet(f) \\
+    \bigoplus\limits_{i=0}^n\left(\Lambda^i L_1 \Ot_R \Lambda^{n-i} L_2\right)
+    &\cong& \Lambda^n(L_1 \Op L_2)
+  \end{eqnarray*}
+  with
+  $d_{f_1} \Ot d_{f_2} = d_f$.
+
+  \begin{proof}
+    Exercise 16-1(2).
+  \end{proof}
+\end{prop}
