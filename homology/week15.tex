@@ -232,3 +232,164 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
     \end{itemize}
   \end{proof}
 \end{theorem}
+
+\begin{example}
+  $R = \Zb, M = \Zb/m\Zb$ with $m \ge 2$. Then
+  $$P : 0 \to \Zb \xto{m} \Zb \xto{/m\Zb} \Zb/m\Zb \to 0$$
+  is a projective resolution of $\Zb/m\Zb$. So for any $N \in \Mod_\Zb$,
+  $$H^n(\Hom_\Zb(P_{\Zb/m\Zb}, N)) : 0 \to \Hom_\Zb(\Zb, N) \xto{\ob{m}} \Hom_\Zb(\Zb, N) \to 0,$$
+  \begin{eqnarray*}
+    \Ext_\Zb^0(\Zb/m\Zb, N) &=& \Hom_\Zb(\Zb/m\Zb, N) \cong {}_m N \defeq \{a \in N \mid ma = 0\}\\
+    \Ext_\Zb^1(\Zb/m\Zb, N) &\cong& N / mN \\
+    \Ext_\Zb^n(\Zb/m\Zb, N) &=& 0\ \ (\textrm{for } n \ge 2)
+  \end{eqnarray*}
+\end{example}
+
+\begin{example}
+  $\Qb = \Zb_{\langle 0 \rangle}$ is a localization, thus a flat $\Zb$ module.
+  Then
+  $$U : 0 \to \Zb \xto{i} \Qb \to \Qb/\Zb \to 0$$
+  is a flat resolution of $\Qb/\Zb$. For $G \in \Mod_\Zb$ (i.e. an abelian group),
+  $$H_n(G \Ot U_{\Qb/\Zb}) : 0 \to G \Ot \Zb \xto{\id \Ot i} G \Ot \Qb \to 0$$
+  \begin{eqnarray*}
+    \Tor_0(G, \Qb/\Zb) &\cong& G \Ot \Qb/\Zb \\
+    \Tor_1(G, \Qb/\Zb) &=& \ker(\id \Ot i) \cong t(G) \defeq
+    \set{a \in G \mid ma = 0 \textrm{ for some } m \in \Nb} \\
+    \Tor_n(G, \Qb/\Zb) &=& 0\ \ (\textrm{for } n \ge 2)
+  \end{eqnarray*}
+\end{example}
+
+\begin{definition}
+  Let $M$ be a left $R$-module, then define
+  $$M^* \defeq \Hom_\Zb(M, \Qb/\Zb)$$
+  as a right $R$-module by 
+  $$\deffunc{fr}{M}{\Qb/\Zb}{x}{f(rx)}.$$
+\end{definition}
+
+\begin{fact} \mbox{}
+  \begin{enumerate}
+    \item $\Qb/\Zb$ is injective.
+    \item $A = 0 \iff A^* = 0$.
+    \item $B \toone C \iff C^* \onto B^*$.
+  \end{enumerate}
+
+  \begin{proof} \mbox{}
+    \begin{enumerate}
+      \item 
+        For $m \in \Zb \setminus \set{0}$, $m(\Qb/\Zb) = \Qb/\Zb$ by 
+        $m(\frac{a}{mb} + \Zb) \mapsfrom \frac{a}{b} + \Zb$, so $\Qb/\Zb$ is divisible.
+        But $\Zb$ is a PID, so $\Qb/\Zb$ is injective.
+
+      \item ($\Rightarrow$)
+        $A^* = \Hom_\Zb(0, \Qb/\Zb) = 0$.
+
+        ($\Leftarrow$)
+        If $A \neq 0$, then $\exists a \in A, a \neq 0$, so $0 \to \Zb a \xto{i} A$ is an inclusion.
+
+        Since $\Zb a$ is a cyclic abelian group, there is a nonzero $g : \Zb a \to \Qb/\Zb$.
+        (If $\Zb a \cong \Zb/m\Zb$, let $g : a \mapsto \frac{1}{m}$; 
+        if $\Zb a \cong \Zb$, let $g : a \mapsto \frac{1}{2}$.)
+
+        But $\Qb/\Zb$ is injective, so $\exists f : A \to \Qb/\Zb$ (i.e.
+        $f \in A^*$), and $f \circ i = g \neq 0$ so $f \neq 0$, thus $A^* \neq 0$.
+
+        $$
+        \begin{tikzcd}
+          0 \ar[r] & \Zb a \ar[r, "i"] \ar[d, "g"] & A \ar[ld, "\exists f"] \\
+                   & \Qb/\Zb 
+        \end{tikzcd}
+        $$
+
+      \item 
+        Since $\Qb/\Zb$ is injective, $\Hom(\cdot, \Qb/\Zb)$ is exact.
+        Let $0 \to \ker f \to B \xto{f} C$ exact, applying $\Hom(\cdot, \Qb/\Zb)$
+        results in
+        $C^* \xto{f^*} B^* \to (\ker f)^* \to 0$ exact.
+        Thus $\coker f^* = (\ker f)^*$.
+
+        By 2., $B \toone C \iff \ker f = 0 \iff (\ker f)^* = 0 \iff \coker f^* = 0 
+        \iff C^* \onto B^*$.
+    \end{enumerate}
+  \end{proof}
+\end{fact}
+
+\begin{prop}
+  Let $M$ be an $R$-module, then TFAE
+  \begin{enumerate}
+    \item $M$ is flat.
+    \item $M^*$ is injective (as a $R$-module).
+    \item $\Tor_1(R/I, M) = 0$ for all ideal $I \subseteq R$.
+    \item $I \Ot_R M \cong IM$ for all ideal $I \subseteq R$.
+  \end{enumerate}
+
+  \begin{proof} \mbox{}
+    \begin{itemize}
+      \item $3. \iff 4.$ \\
+        For any ideal $I \subseteq R$,
+        $0 \to I \xto{i} R \xto{q} R/I \to 0$
+        is exact.
+        This induces a long exact sequence:
+        $$\Tor_1(R, M) \to \Tor_1(R/I, M) \to I \Ot_R M \xto{i \Ot \id} R \Ot_R M \xto{q \Ot \id} R/I \Ot_R M \to 0$$
+        \begin{itemize}
+          \item $\Tor_1(R, M) = 0$ since $R$ is a flat $R$-module.
+          \item $R \Ot_R M \cong M$.
+          \item $R/I \Ot_R M \cong M/IM$ by $(r + I) \Ot a \mapsto (ra + IM)$.
+        \end{itemize}
+        So we have
+        $$0 \to \Tor_1(R/I, M) \to I \Ot_R M \xto{i'} M \xto{q'} M/IM \to 0$$
+        exact, with $q' : M \to M/IM$ being exactly the quotient map (one can check
+        that $q \Ot \id \cong q'$).
+
+        Now it's clear that $\Tor_1(R/I, M) = 0 \iff I \Ot_R M \cong \ker(q') \cong IM$.
+
+        (The reverse direction requires $I \Ot_R M \cong IM$ being the natural isomorphism
+        $r \Ot b \mapsto rb$, so $i' : IM \to M$ can then be the natural inclusion.)
+
+      \item $1. \iff 2.$ \\
+        Let $0 \to N' \xto{f} N$, then $\Hom_R(N, M^*) \xto{\ob{f}} \Hom_R(N', M^*)$.
+
+        By the adjoint relation, 
+        $$\Hom_R(N, M^*) = \Hom_R(N, \Hom_\Zb(M, \Qb/\Zb))
+        \cong \Hom_\Zb(N \Ot_R M, \Qb/\Zb) = (N \Ot_R M)^*,$$
+        we have another map $(N \Ot_R M)^* \xto{(f \Ot \id)^*} (N' \Ot_R M)^*$
+        isomorphic to the previous one, with its unstarred map
+        $N' \Ot_R M \xto{f \Ot \id} N \Ot_R M$.
+
+        Now, $M^*$ is injective $\iff \ob{f}$ is surjective $\forall N, N' \iff (f \Ot \id)^*$ 
+        is surjective $\forall N, N' \iff f \Ot \id$ is injective $\forall N, N' \iff M$ is flat.
+
+      \item $2. \iff 4.$ \\
+        Similar to the previous section, by Baer's criterion, \\ 
+        \begin{eqnarray*}
+          M^*\textrm{ is injective} &\iff& 
+          \Hom_R(R, M^*) \onto \Hom_R(I, M^*), \forall I \subseteq R \\
+          &\iff& (R \Ot_R M)^* \onto (I \Ot_R M)^*, \forall I \subseteq R \\
+          &\iff& I \Ot_R M \toone R \Ot_R M \cong M, \forall I \subseteq R \\
+          &\iff& I \Ot_R M \cong IM, \forall I \subseteq R.
+        \end{eqnarray*}
+
+        Similarly, this requires the isomorphism of $I \Ot_R M \cong IM$ be 
+        natural (the following $f$).
+
+        The map $\deffunc{f}{I \Ot_R M}{IM}{r \Ot a}{ra}$ is always onto, but may not
+        be 1-1. If it is, $I \Ot_R M \cong IM$.
+    \end{itemize}
+  \end{proof}
+\end{prop}
+
+\begin{prop}
+  For $I, J \subseteq R$ being ideals, then $\Tor_1(R/I, R/J) \cong (I \cap J) / IJ$.
+  \begin{proof}
+    $0 \to I \xto{i} R \to R/I \to 0$ induces a long exact sequence
+    $$0 \to \Tor_1(R/I, R/J) \to I \Ot_R R/J \xto{i \Ot 1}
+    R \Ot_R R/J \to R/I \Ot_R R/J \to 0,$$
+    where $\Tor_1(R, R/J) = 0$ since $R$ is flat.
+
+    Also $I \Ot_R R/J \cong I/IJ, R \Ot_R R/J \cong R/J$, so we have
+    $I/IJ \xto{i'} R/J$ with $\Tor_1(R/I, R/J) \cong \ker(i \Ot 1) \cong \ker i'$.
+
+    But $\deffunc{i'}{I/IJ}{R/J}{x+IJ}{x+J}$, so $\ob{x} \in \ker i' \iff
+    x \in I \textrm{ and } x \in J \iff x \in I \cap J$, hence
+    $\ker i' \cong (I \cap J) / IJ$.
+  \end{proof}
+\end{prop}
