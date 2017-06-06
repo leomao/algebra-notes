@@ -40,7 +40,7 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 \end{lemma}
 
 \begin{theorem}[Equivalence of $\Ext_\proj$ and $\Ext_\inj$]
-  $$\Ext_\proj^n(M, N) \cong \Ext_\inj^n(M, N)$$.
+  $$\Ext_\proj^n(M, N) \cong \Ext_\inj^n(M, N).$$
 
   \begin{proof}
     Let $P_\bullet \to M \to 0$ and $0 \to N \to E^\bullet$ be projective and 
@@ -111,7 +111,7 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 
     By the commutativity of the diagram, $\im \gamma = \im \tau$, so
     $$\Ext^1(K_0, N) \cong \coker \gamma = \Hom(K_0, L^1)/\im \gamma
-    \cong \coker \tau \cong \Ext^1(M, L^1)$$.
+    \cong \coker \tau \cong \Ext^1(M, L^1).$$
 
     Write $K_{-1} \defeq M, L^0 \defeq N$, then $\Ext^1(K_0, L^0) = \Ext^1(K_{-1}, L^1)$ ($\star$).
 
@@ -129,7 +129,7 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 
     Finally, by ($\star$),  
     $$\Ext_\inj^n(M, N) \cong \Ext^1(K_{-1}, L^{n-1}) \cong \Ext^1(K_0, L^{n-2}) \cong \cdots
-    \cong \Ext^1(K_{n-2}, L^0) \cong \Ext_\proj^n(M, N)$$.
+    \cong \Ext^1(K_{n-2}, L^0) \cong \Ext_\proj^n(M, N).$$
 
   \end{proof}
 \end{theorem}
@@ -137,7 +137,7 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 \begin{definition}[Tor functor]
   Let $M, N \in \Mod_R$, and $P_\bullet \to M \to 0$ be a projective resolution of $M$, 
   similar to the Ext case, for $n \ge 0$ we can define
-  $$\Tor_n(M, N) = H_n(P_M \Ot N)$$.
+  $$\Tor_n(M, N) = H_n(P_M \Ot N).$$
 \end{definition}
 
 \begin{fact}
@@ -211,7 +211,7 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 
     Finally, 
     $$\Tor_1(M, N) \cong \ker(i \Ot 1) \cong \ker (d_1 \Ot 1) / \ker(\alpha' \Ot 1)
-    = \ker (d_1 \Ot 1) / \im(d_2 \Ot 1) = H_1(U_M \Ot N)$$.
+    = \ker (d_1 \Ot 1) / \im(d_2 \Ot 1) = H_1(U_M \Ot N).$$
 
     \item $n \ge 2$: \\
       Let's see further in the previous long exact sequences:
@@ -228,9 +228,7 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
       $H_{n-1}(U_{W_0} \Ot N) = \ker(d_n \Ot 1) / \im(d_{n-1} \Ot 1) = H_n(U_M \Ot N)$.
 
       By induction, assume it's true for $n-1$, then
-      $$H_n(U_M \Ot N) = H_{n-1}(U_{W_0} \Ot N) \cong \Tor_{n-1}(W_0, N) \cong \Tor_n(M, N)$$.
-
+      $$H_n(U_M \Ot N) = H_{n-1}(U_{W_0} \Ot N) \cong \Tor_{n-1}(W_0, N) \cong \Tor_n(M, N).$$
     \end{itemize}
-
   \end{proof}
 \end{theorem}
