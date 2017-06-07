@@ -150,7 +150,13 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 \begin{prop}
   If $M$ is flat, then $\Tor_n(M, N) = 0$ for $n > 0, N \in \Mod_R$.
   \begin{proof}
-    Since $0 \to M \xto{\id_M} M \to 0$ is a flat resolution of $M$. 
+    $M$ is flat $\implies$ $M \otimes \cdot$ is an exact functor. If
+    $Q_\bullet \to N \to 0$ is a projective resolution of $N$, then
+    $\dotsm \to M \otimes Q_1 \to M\otimes Q_0 \to M\otimes N \to 0$ is also
+    exact. By Exercise 15-1, we have
+    \[
+      \Tor_n(M, N) \cong H_n(M\otimes Q_N) = 0. \qedhere
+    \]
   \end{proof}
 \end{prop}
 

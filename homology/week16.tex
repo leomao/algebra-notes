@@ -7,19 +7,19 @@
 
 \begin{definition}
   Let $L \in \Mod_R$, with $f: L \to R$ an $R$-linear map, define
-  $$\deffunc{\df}{\Lambda^n L}{\Lambda^{n-1} L}{x_1 \we \cdots \we x_n}
+  $$\deffunc{\dd_f}{\Lambda^n L}{\Lambda^{n-1} L}{x_1 \we \cdots \we x_n}
   {\sum\limits_{i=1}^n (-1)^{i+1} f(x_i) x_1 \we \cdots \we \hat{x}_i \we
   \cdots \we x_n}$$
   where $\Lambda^n L$ is the $n$-th exterior power of $L$, and $\hat{x}_i$ means
   omitting $x_i$.
 
   Then we can define a chain complex called {\bf Koszul complex}:
-  $$K_\bullet(f) : \cdots \to \Lambda^n L \xto{\df} \Lambda^{n-1} L \to \cdots \to
-  \Lambda^2 L \xto{\df} L \xto{f} R$$
+  $$K_\bullet(f) : \cdots \to \Lambda^n L \xto{\dd_f} \Lambda^{n-1} L \to \cdots \to
+  \Lambda^2 L \xto{\dd_f} L \xto{f} R$$
 
-  Also, $\df$ can be considered as a graded $R$-homomorphism of degree $-1$:
-  $$\deffunc{\df}{\Lambda L}{\Lambda L}{x \we y}
-  {\df(x) \we y + (-1)^{\deg x}\cdot x \we \df(y)}$$
+  Also, $\dd_f$ can be considered as a graded $R$-homomorphism of degree $-1$:
+  $$\deffunc{\dd_f}{\Lambda L}{\Lambda L}{x \we y}
+  {\dd_f(x) \we y + (-1)^{\deg x}\cdot x \we \dd_f(y)}$$
   where $\Lambda L$ is the exterior algebra of $L$, and $x, y$ are any homogeneous 
   elements of $\Lambda L$.
 \end{definition}
@@ -55,7 +55,7 @@
     &\cong& \Lambda^n(L_1 \Op L_2)
   \end{eqnarray*}
   with
-  $d_{f_1} \Ot d_{f_2} = d_f$.
+  $\dd_{f_1} \Ot \dd_{f_2} = \dd_f$.
 
   \begin{proof}
     Exercise 16-1(2).
