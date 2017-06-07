@@ -36,7 +36,7 @@
         M_2 \ar[r, "\beta"] & M_3 \ar[r] & 0
       \end{tikzcd}\]
     \item free $\implies$ flat:
-      Let $F \cong R^{\otimes \Lambda}$ be a free module,
+      Let $F \cong R^{\oplus \Lambda}$ be a free module,
       and $M_1, M_2$ be two modules such that $0 \to M_1 \to M_2$.
       Since $R \otimes_R M \cong M$, we have
       \begin{alignat*}{3}
@@ -44,8 +44,8 @@
         \implies & 0 \to R \otimes M_1 \to R \otimes M_2 & \text{ exact } \\
         \implies & 0 \to \bigoplus_{i \in \Lambda} R \otimes M_1 \to
         \bigoplus_{i \in \Lambda} R \otimes M_2 \ & \text{ exact } \\
-        \stackrel{(a)}{\implies} & 0 \to R^{\otimes \Lambda} \otimes M_1 \to
-        R^{\otimes \Lambda} \otimes M_2 & \text{ exact } \\
+        \stackrel{(a)}{\implies} & 0 \to R^{\oplus \Lambda} \otimes M_1 \to
+        R^{\oplus \Lambda} \otimes M_2 & \text{ exact } \\
         \implies & 0 \to F \otimes M_1 \to F \otimes M_2 & \text{ exact }
       \end{alignat*}
       Where (a) is by the fact that $(A \oplus B) \otimes C \cong
@@ -58,8 +58,8 @@
   \end{itemize}
 \end{fact}
 
-For any $M \in \Mod_R$, a projective module $N$ such that $N \to M \to 0$
-could be easily find: Simply let $N = F$, a free module on the set $M$.
+For any $M \in \Mod_R$, a projective module $N$ such that $N \to M \to 0$ could
+be easily found: Simply let $N = F$, a free module on the generating set of $M$.
 
 Now we shall ask for any module $M$, does there exist $N \in \Mod_R$ such that
 N is injective and $0 \to M \to N$?
@@ -96,16 +96,15 @@ N is injective and $0 \to M \to N$?
     and let $M' \triangleq M^* + Ra \supsetneq M^*$,
     $I \triangleq \Set{ r \in R \mid ra \in M^* }$.
     Define $f : I \to N$ with $r \mapsto \mu(ra)$.
-    Then we have an extension $h :: R \to N$ of $f$.
+    Then we have an extension $h : R \to N$ of $f$.
 
-    Now, let $\mu' ::  M' \to N = x + ra \mapsto \mu(x) +
-    h(r)$.
+    Now, let $\mu' :  M' \to N = x + ra \mapsto \mu(x) + h(r)$.
     We shall prove that this map is well-defined:
     If $x_1 + r_1a = x_2 + r_2a$, then $(r_1 - r_2) a = x_2 - x_1 \in M \implies
     r_1 - r_2 \in I$.
     So $h(r_1) - h(r_2) = f(r_1 - r_2) = \mu((r_1 - r_2)a) = \mu(x_2) - \mu(x_1)$,
     which prove $\mu'$ is well defined, and the existence of $\mu'$
-    contradict the fact that $(M^*, \mu)$ is maximal.
+    contradicts the fact that $(M^*, \mu)$ is maximal.
   \end{proof}
 \end{theorem}
 
@@ -118,25 +117,24 @@ N is injective and $0 \to M \to N$?
   \begin{enumerate}
     \item Every injective module $N$ over an integral domain is divisible.
       \begin{proof}
-        For any $x_0$ and $r_0 \in R \setminus \{0\}$. Let
+        For any $x_0 \in N$ and $r_0 \in R \setminus \{0\}$. Let
         $I = \gen{r_0} \subset R$. As long as $R$ is an integral domain,
         $I \cong R$ as an $R$-module, so the $R$-module homomorphism
-        $f :: I \to N = r x_0 \mapsto r r_0$ is well-defined.
-        Since $N$ injective, this map extends to $h :: R \to N$.
+        $f : I \to N = r r_0 \mapsto r x_0$ is well-defined.
+        Since $N$ injective, this map extends to $h : R \to N$.
         Let $y_0 \triangleq h(1)$, then $r_0 y_0 = r_0 h(1) = h(r_0) = x_0$.
         Thus $N$ injective.
       \end{proof}
     \item Every divisible module $N$ over an PID is injective.
       \begin{proof}
-        For any $I \subseteq R$ and a homomorphism $f :: I \to N$, if $I = 0$ then
+        For any $I \subseteq R$ and a homomorphism $f : I \to N$, if $I = 0$ then
         $h = x \mapsto 0$ is always an extension of $f$.
-        So assume $\forall I \neq 0$. Since $R$ is a PID,
-        $I = \gen{r_0}$ for some $r_0 \neq 0 \in R$.'
+        So assume $I \neq 0$. Since $R$ is a PID,
+        $I = \gen{r_0}$ for some $r_0 \neq 0 \in R$.
         By the fact that $N$ divisible, exists $y_0 \in N$
         such that $r_0 y_0 = x_0 \triangleq f(r_0)$.
 
-        Now we could define
-        $h :: R \to N$ by $1 \mapsto y_0$.
+        Now we could define $h : R \to N$ by $1 \mapsto y_0$.
         Then $h(r_0) = r_0 h(1) = r_0 y_0 = x_0$, thus
         $h$ is an extension of $f$ and $N$ injective.
      \end{proof}
@@ -150,7 +148,7 @@ N is injective and $0 \to M \to N$?
 \end{prop}
 
 \begin{theorem} \label{thm:every-module-is-in-injective-module}
- For any $M \in \Mod_R$, exists $N$ injective and contains $M$.
+ For any $M \in \Mod_R$, there exists an injective module $N$ containing $M$.
  \begin{proof} $ $
    \begin{enumerate}[label={\bf Case \arabic*:}]
       \item $R = \Zb$. \\
@@ -321,7 +319,7 @@ N is injective and $0 \to M \to N$?
     \end{tikzcd}
     $$
     Let $h = \mu \circ h'$, then $h \circ \alpha = \mu \circ h' 
-    \circ \alpha = \mu \circ i \circ f = f$
+    \circ \alpha = \mu \circ i \circ f = f$.
   \end{proof}
 \end{prop}
 
@@ -349,4 +347,128 @@ N is injective and $0 \to M \to N$?
   \end{proof}
 \end{prop}
 
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item A chain complex $C_\bullet$ of $R$-modules is a sequence and maps:
+      \[
+        C_\bullet : \dotsm \to C_{n+1} \xto{d_{n+1}} C_n \xto{d_n} C_{n-1}
+        \to \dotsm \to C_1 \xto{d_1} \to C_0 \to 0
+      \]
+      with $d_n \circ d_{n+1} = 0, \quad \forall n$.
+      (i.e. $\Image d_{n+1} \subseteq \ker d_n$)
+
+      Then define
+      \begin{itemize}
+        \item $Z_n(C_\bullet) \triangleq \ker d_n$ is the $n$-cycle.
+        \item $B_n(C_\bullet) \triangleq \Image d_{n+1}$ is the $n$-boundary.
+        \item $H_n(C_\bullet) \triangleq \quot{Z_n(C_\bullet)}{B_n(C_\bullet)}$
+          is called the $n$-th homology.
+      \end{itemize}
+    \item A cochain complex $C^\bullet$ of $R$-modules is a sequence and maps:
+      \[
+        C^\bullet : 0 \to C^0 \xto{d^1} C^1 \to \dotsm \to
+        C^{n-1} \xto{d^n} C^n \xto{d^{n+1}} C^{n+1} \to \dotsm
+      \]
+      with $d^{n+1} \circ d^n = 0, \quad \forall n$.
+      (i.e. $\Image d^n \subseteq \ker d^{n+1}$)
+
+      Then define
+      \begin{itemize}
+        \item $Z^n(C^\bullet) \triangleq \ker d^{n+1}$ is the $n$-cocycle.
+        \item $B^n(C^\bullet) \triangleq \Image d^n$ is the $n$-coboundary.
+        \item $H^n(C^\bullet) \triangleq \quot{Z^n(C^\bullet)}{B^n(C^\bullet)}$
+          is called the $n$-th cohomology.
+      \end{itemize}
+    \item $\varphi: C_\bullet \to \tilde C_\bullet$ is a chain map if the
+      following diagram commutes:
+      \[
+      \begin{tikzcd}
+        \dotsm \ar[r] & C_{n+1} \ar[r, "d_{n+1}"] \ar[d, "\varphi_{n+1}"]
+                      & C_n \ar[r, "d_n"] \ar[d, "\varphi_n"]
+                      & C_{n-1} \ar[r] \ar[d, "\varphi_{n-1}"]
+                      & \dotsm \\
+        \dotsm \ar[r] & \tilde C_{n+1} \ar[r, "d_{n+1}"] & \tilde C_n \ar[r, "d_n"]
+                      & \tilde C_{n-1} \ar[r] & \dotsm
+      \end{tikzcd}
+      \]
+      Observe that $\varphi_n(\ker d_n) \subseteq \ker \tilde d_n$ and
+      $\varphi_n(\Image d_{n+1}) \subseteq \Image \tilde d_{n+1}$.
+      This will induce the following maps:
+      \[
+        \deffunc{\varphi_*}{H_n(C_\bullet)}{H_n(\tilde C_\bullet)}
+        {x + B_n(C_\bullet)}{\varphi_n(x) + B_n(\tilde C_\bullet)}
+      \]
+    \item $f: C_\bullet \to \tilde C_\bullet$ is null homotopic if
+      $\exists s_n: C_n \to \tilde C_{n+1}$ s.t.
+      $f_n = \tilde d_{n+1} \circ s_n + s_{n-1} \circ d_n, \quad \forall n$.
+      \[
+      \begin{tikzcd}
+        \dotsm \ar[r] & C_{n+1} \ar[r, "d_{n+1}"] \ar[d, "f_{n+1}"]
+                      & C_n \ar[r, "d_n"] \ar[d, "f_n"] \ar[ld, red, "s_n" red]
+                      & C_{n-1} \ar[r] \ar[d, "f_{n-1}"]  \ar[ld, red, "s_{n-1}" red]
+                      & \dotsm \\
+        \dotsm \ar[r] & \tilde C_{n+1} \ar[r, "d_{n+1}"] & \tilde C_n \ar[r, "d_n"]
+                      & \tilde C_{n-1} \ar[r] & \dotsm
+      \end{tikzcd}
+      \]
+      If $f$ is null homotopic, then $f_* = 0$. (easy to check)
+    \item Two chain map $f, g: C_\bullet \to \tilde C_\bullet$ are homotopic
+      if $f - g$ is null homotopic. ($f_* = g_*$)
+    \item Let $M \in \Mod_R$. A projection resolution of $M$ is an exact sequence:
+      \[
+        \dotsm \to P_2 \xto{d_2} P_1 \xto{d_1} P_0 \xto{\alpha} M \to 0
+      \]
+      where $P_i$ is projective for all $i$.
+      % TODO existence
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[Comparison theorem]
+  \[
+    \begin{tikzcd}
+      \dotsm \ar[r] & P_2 \ar[r, "d_2"] \ar[d, dashed, "\exists f_2"]
+                    & P_1 \ar[r, "d_1"] \ar[d, dashed, "\exists f_1"]
+                    & P_0 \ar[r, "\alpha"] \ar[d, dashed, "\exists f_0"]
+                    & M \ar[r] \ar[d, "f"] & 0
+                    & \text{(projective resolution)} \\
+      \dotsm \ar[r] & \tilde C_2 \ar[r, "d_2'"]
+                    & \tilde C_1 \ar[r, "d_1'"]
+                    & \tilde C_0 \ar[r, "\alpha'"]
+                    & N \ar[r] & 0
+                    & \text{(exact sequence)}
+    \end{tikzcd}
+  \]
+  $\exists f_i : P_i \to C_i$ s.t. $\Set{f_i}$ forms a chain map making the
+  completed diagram commutes. And any two such chain maps are homotopic.
+  \begin{proof}
+    % TODO
+  \end{proof}
+\end{theorem}
+
+\begin{definition}
+  Let $M \in \Mod_R$ and $\dotsm \to P_2 \xto{d_2} P_1 \xto{d_1} P_0 \xto{\alpha} M \to 0$
+  be a projective resolution of $M$. Fix $N \in \Mod_R$. Applying $\Hom_R(\cdot, N)$ will
+  get a complex:
+  \[
+    0 \to \Hom_R(M, N) \xto{\bar \alpha} \Hom_R(P_0, N) \xto{\bar d_1}
+    \Hom_R(P_1, N) \to \dotsm
+  \]
+  Define
+  \begin{itemize}
+    \item $\Ext^0_R(M, N) = \ker \bar d_1 = \Image \bar \alpha \cong \Hom_R(M, N)$.
+    \item $\Ext^n_R(M, N) = H^n(\Hom(P_\bullet, N)), \quad \forall n \ge 1$.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[Indenpedency of the choice of projective resolutions]
+  %TODO
+\end{theorem}
+
+\begin{theorem}[Horseshoe Lemma]
+  %TODO
+\end{theorem}
+
+\begin{theorem}[Long exact sequence for $\Ext$]
+  %TODO
+\end{theorem}
 
