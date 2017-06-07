@@ -61,3 +61,129 @@
     Exercise 16-1(2).
   \end{proof}
 \end{prop}
+
+\begin{definition}
+  Let $L = \bigoplus\limits_{i=1}^n R e_i$ be a free $R$-module, and 
+  $\mathbf{x} =(x_1, \cdots, x_n)$ with $x_i \in R$, define
+  $$
+  K_\bullet(\mathbf{x}) \defeq K_\bullet(f), \textrm{with }
+  \deffunc{f}{L}{R}{e_i}{x_i}.
+  $$
+\end{definition}
+
+\begin{coro}
+  $K_\bullet(\mathbf{x}) \cong K_\bullet(x_1) \Ot \cdots \Ot K_\bullet(x_n)$
+  with 
+  $K_\bullet(x_i) : 0 \to R \xto{x_i} R$.
+\end{coro}
+
+\begin{prop}
+  Let $x \in R$ and $(C_\bullet, \partial)$ be a chain complex of $R$-modules, then exists
+  $$
+  0 \to C_\bullet \xto{\rho} C_\bullet \Ot K_\bullet(x) \xto{\pi} C_\bullet(-1) \to 0
+  $$
+  exact, where $\left( C_\bullet(-1) \right)_n = C_{n-1}$.
+
+  \begin{proof}
+    Since $K_\bullet(x) : 0 \to R \xto{x} R$, so
+    $$
+    (C_\bullet \Ot K_\bullet(x))_n = (C_i \Ot_R R) \Op (C_{i-1} \Ot_R R),
+    $$
+    and the boundary map is
+    $$
+    \deffunc{\dd}{(C_i \Ot_R R) \Op (C_{i-1} \Ot_R R)}{(C_{i-1} \Ot_R R) \Op (C_{i-2} \Ot_R R)}
+    {(z_1 \Ot r_1, z_2 \Ot r_2)}
+    {\left( \partial z_1 \Ot r_1 + (-1)^{i-1} z_2 \Ot x r_2,
+    \partial z_2 \Ot r_2 \right)}.
+    $$
+    Under the isomorphism $C_i \Ot_r R \cong C_i$, the boundary map become
+    $$
+    \deffunc{\dd}{C_i \Op C_{i-1}}{C_{i-1} \Op C_{i-2}}
+    {
+    \begin{pmatrix}
+      r_1 z_1 \\ r_2 z_2
+    \end{pmatrix}
+    }
+    {
+    \begingroup
+    \setlength\arraycolsep{4pt}
+    \begin{pmatrix}
+      \partial & (-1)^{i-1} x \\ 0 & \partial
+    \end{pmatrix}
+    \begin{pmatrix}
+      r_1 z_1 \\ r_2 z_2
+    \end{pmatrix}
+    \endgroup
+    }
+    $$
+
+    Let 
+    $$
+    \begin{align*}
+      \deffunc{\rho_i}{C_i}{C_i \Op C_{i-1}}{z_1}{(z_1, 0)} \\
+      \deffunc{\pi_i}{C_i \Op C_{i-1}}{C_{i-1}}{(z_1, z_2)}{z_2} \\
+    \end{align*}
+    $$
+    then
+    $$
+    \begin{tikzcd}[cramped]
+      0 \ar[r] & C_i \ar[r, "\rho_i"] \ar[d, "\partial"] & 
+      C_i \Op C_{i-1} \ar[r, "\pi_i"] \ar[d, "\dd"] 
+      & C_{i-1} \ar[r] \ar[d, "\partial"] & 0 \\
+      0 \ar[r] & C_{i-1} \ar[r, "\rho_{i-1}"] & 
+      C_{i-1} \Op C_{i-2} \ar[r, "\pi_{i-1}"] & C_{i-2} \ar[r] & 0
+    \end{tikzcd}
+    $$
+    commutes and exact:
+    \begin{itemize}
+      \item $\dd \circ \rho (z_1) = \dd (z_1, 0) = (\partial z_1, 0)$
+      \item $\rho \circ \partial (z_1) = \rho(\partial z_1) = (\partial z_1, 0)$
+      \item $\partial \circ \pi (z_1, z_2) = \partial(z_2) = \partial z_2$
+      \item $\pi \circ \dd (z_1, z_2) = \pi(\partial z_1 + (-1)^{i-1} x z_2, \partial z_2)
+        = \partial z_2$
+    \end{itemize}
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  We call $x$ to be $C_\bullet$-regular, if $x$ is not a zero divisor of $C_i$
+  and $C_i / x C_i \neq 0$, for all $i \ge 0$.
+\end{definition}
+
+\begin{prop}
+  If $x$ is $C_\bullet$-regular, then $H_i(C_\bullet \Ot K_\bullet(x)) \cong H_i(C_\bullet / x C_\bullet)$ 
+  for all $i \ge 0$.
+
+  \begin{proof}
+    Let 
+    $$
+    \deffunc{\phi_i}{C_i \Op C_{i-1}}{C_i / x C_i}{(z_1, z_2)}{\ob{z_1}},
+    $$
+    then
+    $$
+    \begin{tikzcd}[cramped]
+      C_i \Op C_{i-1} \ar[r, "\phi_i"] \ar[d, "\dd_i"] & C_i/x C_i \ar[d, "\ob{\partial}_i"] \\
+      C_{i-1} \Op C_{i-2} \ar[r, "\phi_{i-1}"] & C_{i-1}/x C_{i-1} 
+    \end{tikzcd}
+    $$
+    commutes.
+    \begin{itemize}
+      \item $\ob{\partial} \circ \phi_i(z_1, z_2) = \ob{\partial}(z_1) = \ob{\partial z_1}$.
+      \item $\phi_{i-1} \circ \dd (z_1, z_2) = \phi_{i-1}(\partial z_1 + (-1)^{i-1} xz_2, \partial z_2)
+        = \ob{\partial z_1}$, since $xz_2 \in xC_{i-1}$.
+    \end{itemize}
+
+    Now we need to show the induced maps
+    $$
+    \deffunc{\phi_{*i}}{\ker \dd_i / \im \dd_{i+1}}{\ker \ob{\partial}_i / \im \ob{\partial}_{i+1}}
+    {\ob{(z_1, z_2)}}{\ob{\ob{z_1}} = \ob{z_1} + \im \ob{\partial}_{i+1}}
+    $$
+    are isomorphisms.
+
+    \begin{itemize}
+      \item Onto: \\
+
+
+    \end{itemize}
+  \end{proof}
+\end{prop}
