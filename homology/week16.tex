@@ -35,13 +35,13 @@
   \left( d(x_i) \Ot y_{n-i} + (-1)^i \cdot x_i \Ot d'(y_{n-i}) \right)}$$
 
   One can verify that 
-  \begin{eqnarray*}
+  \begin{align*}
     (d \Ot d') \circ (d \Ot d') (x \Ot y) 
-    &=& (d \Ot d') (d(x) \Ot y + (-1)^{\deg x} \cdot x \Ot d'(y)) \\
-    &=& d \circ d (x) \Ot y + (-1)^{\deg x - 1} \cdot d(x) \Ot d'(y)
-    + (-1)^{\deg x} \cdot d(x) \Ot d'(y) + x \Ot d' \circ d'(y) \\
-    &=& 0
-  \end{eqnarray*}
+    &= (d \Ot d') (d(x) \Ot y + (-1)^{\deg x} \cdot x \Ot d'(y)) \\
+    &= d \circ d (x) \Ot y + (-1)^{\deg x - 1} \cdot d(x) \Ot d'(y) \\
+    &\qquad + (-1)^{\deg x} \cdot d(x) \Ot d'(y) + x \Ot d' \circ d'(y) \\
+    &= 0
+  \end{align*}
 \end{definition}
 
 \begin{prop}

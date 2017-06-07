@@ -156,7 +156,7 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 
 \begin{theorem}[Tor for flat resolutions]
   Let $U_\bullet \to M \to 0$ be a flat resolution of $M$, then for $n \ge 0$,
-  $$\Tor_n(M, N) \cong H_n(U_M \Ot N)$$.
+  $$\Tor_n(M, N) \cong H_n(U_M \Ot N).$$
   \begin{proof}
     $$
       \begin{tikzcd}[cramped, sep=10pt]
@@ -215,11 +215,10 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 
     \item $n \ge 2$: \\
       Let's see further in the previous long exact sequences:
-
-      $$\cdots \to \Tor_2(W_0, N) \to 0 \to \Tor_2(M, N)
-      \xto{\sim} \Tor_1(W_0, N) \to 0 \to \Tor_1(M, N) \to \cdots
       $$
-
+        \cdots \to \Tor_2(W_0, N) \to 0 \to \Tor_2(M, N)
+        \xto{\sim} \Tor_1(W_0, N) \to 0 \to \Tor_1(M, N) \to \cdots
+      $$
       we can see that $\Tor_n(M, N) \cong \Tor_{n-1}(W_0, N)$ for $n \ge 2$.
 
       Now, 
@@ -228,7 +227,10 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
       $H_{n-1}(U_{W_0} \Ot N) = \ker(d_n \Ot 1) / \im(d_{n-1} \Ot 1) = H_n(U_M \Ot N)$.
 
       By induction, assume it's true for $n-1$, then
-      $$H_n(U_M \Ot N) = H_{n-1}(U_{W_0} \Ot N) \cong \Tor_{n-1}(W_0, N) \cong \Tor_n(M, N).$$
+      $$
+        H_n(U_M \Ot N) = H_{n-1}(U_{W_0} \Ot N) \cong \Tor_{n-1}(W_0, N) \cong \Tor_n(M, N).
+      $$
+      \qedhere
     \end{itemize}
   \end{proof}
 \end{theorem}
@@ -261,9 +263,9 @@ Given $M, N \in \Mod_R$, there are two ways to define $\Ext^n(M, N)$:
 
 \begin{definition}
   Let $M$ be a left $R$-module, then define
-  $$M^* \defeq \Hom_\Zb(M, \Qb/\Zb)$$
+  $M^* \defeq \Hom_\Zb(M, \Qb/\Zb)$
   as a right $R$-module by 
-  $$\deffunc{fr}{M}{\Qb/\Zb}{x}{f(rx)}.$$
+  $$\deffunc{fr}{M}{\Qb/\Zb}{x}{f(rx)}$$
 \end{definition}
 
 \begin{fact} \mbox{}
