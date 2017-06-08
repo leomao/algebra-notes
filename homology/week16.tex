@@ -140,6 +140,21 @@ In this section, we assume that $R$ is commutative with $1$.
   \end{proof}
 \end{prop}
 
+\begin{coro}
+  This induces a long exact sequence
+  $$
+  \cdots \to H_i(C_\bullet) \xto{\rho_*} H_i(C_\bullet \Ot K_\bullet(x)) \xto{\pi_*} 
+  H_i(C_\bullet(-1)) \xto{\pm x} H_{i-1}(C_\bullet) \to \cdots.
+  $$
+  \begin{proof}
+    We only need to show the connection homomorphism is indeed $\pm x$.
+
+    Given $z \in C_{i-1}$ with $\partial z = 0$, 
+    $$z \xmapsto{\pi^{-1}} (0, z) \xmapsto{d} \left((-1)^{i-1}xz, 0\right) \xmapsto{\rho^{-1}}
+    (-1)^{i-1} xz.$$
+  \end{proof}
+\end{coro}
+
 \begin{definition}
   We call $x$ to be $C_\bullet$-regular, if $x$ is not a zero divisor of $C_i$
   and $C_i / x C_i \neq 0$, for all $i \ge 0$.
@@ -177,8 +192,151 @@ In this section, we assume that $R$ is commutative with $1$.
 
     \begin{itemize}
       \item Onto: \\
+        For $\ob{z} \in \ker \ob{\partial}_i$ with $\partial z = xz' \in xC_{i-1}$, 
+        $z' \in C_{i-1}$.
+        Then $\phi_i(z, (-1)^i z') = \ob{z}$, and 
+        $\dd(z, (-1)^i z') = (\partial z - xz', (-1)^i \partial z') = (0, 0)$, so
+        $(z, (-1)^i z') \in \ker \dd_i$.
+        (Since $x \partial z' = \partial(xz') = \partial^2 z = 0$, and $x$ is not a
+        zero divisor of $C_i$, so $\partial z' = 0$.)
 
+        Now, $\phi_{*i} \left( \ob{(z, (-1)^i z')} \right) = \ob{\ob{z}}$, so $\phi_{*i}$ is onto.
 
+      \item 1-1: \\
+        Let $(z, z') \in \ker \dd_i$ with $\phi_i(z, z') = \ob{z} \in \im \ob{\partial}_{i+1}$, i.e.
+        $\ob{z} = \partial \ob{z''}$ with $z'' \in C_{i+1}$.
+        This means $z - \partial z'' = x z'''$ with $z''' \in C_i$, so
+        $\partial (z - \partial z'') = \partial z = x \partial z'''$.
+
+        On the other hand, $\dd(z, z') = (\partial z + (-1)^{i-1} xz', \partial z') = (0, 0)$, so
+        $\partial z = (-1)^i xz', \partial z' = 0$.
+
+        So $\dd(z'', (-1)^i z''') = (\partial z'' + (-1)^{2i} x z'''), (-1)^i \partial z''')
+        = (z, z')$, i.e. $(z, z') \in \im d_{i+1}$. 
+        ($\partial z = x \partial z''' = (-1)^i xz'$, since $x$ is not a zero divisor, 
+        so $\partial z''' = (-1)^i z'$.)
+
+        Hence, $\phi_{*i}\left(\ob{(z_1, z_2)}\right) = \ob{0}$ implies 
+        $\ob{(z_1, z_2)} = \ob{0}$, so $\phi_{*i}$ is 1-1.
     \end{itemize}
   \end{proof}
 \end{prop}
+
+\begin{definition}
+  Let $M \in \Mod_R$. A sequence $\set{a_1, \cdots, a_m}, m \ge 0$ is said to be
+  $M$-regular if
+  \begin{itemize}
+    \item $M/\gen{a_1, \cdots, a_m}M \neq 0$.
+    \item $a_{i+1}$ is not a zero divisor of $M/\gen{a_1, \cdots, a_i}M$ for 
+      $0 \le i \le m-1$.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  If $\mathbf{x} = (x_1, \cdots, x_n)$ is an $R$-regular sequence, then
+  $K_\bullet(\mathbf{x}) \to R/\gen{x_1, \cdots, x_n} \to 0$ is a free resolution of 
+  $R / \gen{x_1, \cdots, x_n}$.
+
+  \begin{proof}
+    Since its modules are
+    $K_i(\mathbf{x}) = \Lambda^i R^n \cong R^{n \choose i}$
+    , i.e. free $R$-modules, so we only need to show the exactness.
+
+    By induction on $n$, 
+    \begin{itemize}
+      \item $n = 1$:  
+        $K_\bullet(x_1) : 0 \to R \xto{x_1} R \to R/\gen{x_1} \to 0$ exact.
+
+      \item $n > 1$:  
+        Assume that $\mathbf{x}' = (x_1, \cdots, x_{n-1})$ and 
+        $K_\bullet(\mathbf{x}') \to R/\gen{x_1, \cdots, x_{n-1}} \to 0$ exact, 
+        i.e. $H_i(K_\bullet(\mathbf{x}')) = 0$ for $i > 0$.
+
+        Since we have $K_\bullet(\mathbf{x}) \cong K_\bullet(\mathbf{x}') \Ot 
+        K_\bullet(x_n)$ and a long exact sequence
+        $$
+        \cdots \to H_i(K_\bullet(\mathbf{x}')) \to H_i(K_\bullet(\mathbf{x})) \to 
+        H_i(K_\bullet(\mathbf{x}')(-1)) \xto{\pm x_n} H_{i-1}(K_\bullet(\mathbf{x})) \to \cdots
+        $$
+        where $H_i(K_\bullet(\mathbf{x}')(-1)) = H_{i-1}(K_\bullet(\mathbf{x}'))$.
+
+        For $i > 1$, the sequence becomes
+        $$
+        \cdots \to 0 \to H_i(K_\bullet(\mathbf{x})) \to 0 \xto{\pm x_n} \cdots,
+        $$
+        so $H_i(K_\bullet(\mathbf{x})) = 0$. 
+
+        For $i = 1$, we have $H_0(K_\bullet(\mathbf{x})) \cong R/\gen{x_1, \cdots, x_{n-1}}$, so
+        $$
+        0 \to H_1(K_\bullet(\mathbf{x})) \to R/\gen{x_1, \cdots, x_{n-1}} \xto{\pm x_n} 
+        R/\gen{x_1, \cdots, x_{n-1}}
+        $$
+
+        But $x_n$ is not a zero divisor of $R/\gen{x_1, \cdots, x_{n-1}}$, so the map
+        $\pm x_n$ is 1-1, then $H_1(K_\bullet(\mathbf{x})) \cong \ker (\pm x_n) = 0$. 
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+\begin{example}
+  Let $\mathbf{x} = (x_1, x_2)$, then
+  $$
+  K_\bullet(\mathbf{x}) : 0 \to R \xto{\alpha} R^2 \xto{\beta} R \xto{q} R/\gen{x_1, x_2} \to 0
+  $$
+  with $\alpha : r \mapsto (-x_2r, x_1r)$ and $\beta : (r_1, r_2) \mapsto x_1r_1 + x_2r_2$.
+\end{example}
+
+\begin{coro}
+  Let $I = \gen{x_1, \cdots, x_n} \subset R$ be an ideal with $\set{x_1, \cdots, x_n}$ be $R$-regular, 
+  then $R/I$ has {\it projective dimension} $\mathrm{pd}(R/I) = n$, 
+  i.e. the shortest projective resolution of $R/I$ has length $n$.
+
+  \begin{proof}
+    $K_\bullet(\mathbf{x})$ is already a projective resolution of length $N$, so 
+    we only need to show that there's no shorter ones.
+
+    The left side of $K_\bullet(\mathbf{x})$ reads
+    $$
+    0 \to \Lambda^n R^n \xto{d_n} \Lambda^{n-1} R^n \to \cdots
+    $$
+
+    But 
+    $$
+    \Lambda^n R^n = R(e_1 \we \cdots \we e_n) \cong R, \quad
+    \Lambda^{n-1} R^n = \bigoplus\limits_{i=1}^n  R (e_1 \we \cdots \we \hat{e_i} \we \cdots \we e^n)
+    \cong R^n
+    $$
+    so
+    $$
+    \deffunc{d_n}{R}{R^n}{r}{(x_1 r, -x_2 r, \cdots, (-1)^{n-1} x_n r)}
+    $$
+
+    Taking tensor with $R/I$, we get
+    $$
+    0 \to R \Ot_R R/I \xto{d_n \Ot \id} R^n \Ot_R R/I \to \cdots
+    $$
+    but $R \Ot_R R/I \cong R/I, R^n \Ot_R R/I \cong (R/I)^n$, so
+    $$
+    \deffunc{d_n \Ot \id}{R/I}{(R/I)^n}{\ob{r}}{(\ob{x_1r}, \ob{-x_2r}, \cdots, \ob{(-1)^{n-1}x_n r})}
+    $$
+
+    Now, 
+    $$
+    \Tor_n(R/I, R/I) = H_n(K_\bullet(\mathbf{x}) \Ot R/I) = \ker (d_n \Ot \id)
+    = \Ann_{R/I} I = \set{\ob{r} \in R/I \mid rI = I} = R/I \neq 0.
+    $$
+    ($R/I \neq 0$ is because $\set{x_1, \cdots, x_n}$ is $R$-regular.)
+    
+    Thus, any projective resolution can't have length
+    shorter than $n$, since that will imply $\Tor_n(R/I, R/I) = 0$.
+  \end{proof}
+\end{coro}
+
+\begin{remark}
+  Let $I = \gen{x_1, \cdots, x_n}$ generated by $R$-regular sequence 
+  $\set{x_1, \cdots, x_n}$, then
+  \begin{itemize}
+    \item $\Tor_n(R/I, M) \cong \Ann_M I$.
+    \item $\Ext^n(R/I, M) \cong M/IM$.
+  \end{itemize}
+\end{remark}
