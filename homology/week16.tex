@@ -1,10 +1,6 @@
 %! TEX root=../main.tex
 \subsection{Koszul complex (week 16)}
-
-\begin{remark}
-  In this section, we assume that $R$ is commutative with $1$.
-\end{remark}
-
+In this section, we assume that $R$ is commutative with $1$.
 \begin{definition}
   Let $L \in \Mod_R$, with $f: L \to R$ an $R$-linear map, define
   $$\deffunc{\dd_f}{\Lambda^n L}{\Lambda^{n-1} L}{x_1 \we \cdots \we x_n}
@@ -78,11 +74,12 @@
 \end{coro}
 
 \begin{prop}
-  Let $x \in R$ and $(C_\bullet, \partial)$ be a chain complex of $R$-modules, then exists
+  Let $x \in R$ and $(C_\bullet, \partial)$ be a chain complex of $R$-modules,
+  then there exist $\rho, \pi$ s.t.
   $$
   0 \to C_\bullet \xto{\rho} C_\bullet \Ot K_\bullet(x) \xto{\pi} C_\bullet(-1) \to 0
   $$
-  exact, where $\left( C_\bullet(-1) \right)_n = C_{n-1}$.
+  is exact, where $\left( C_\bullet(-1) \right)_n = C_{n-1}$.
 
   \begin{proof}
     Since $K_\bullet(x) : 0 \to R \xto{x} R$, so
@@ -116,13 +113,11 @@
     \endgroup
     }
     $$
-
     Let 
     $$
-    \begin{align*}
-      \deffunc{\rho_i}{C_i}{C_i \Op C_{i-1}}{z_1}{(z_1, 0)} \\
-      \deffunc{\pi_i}{C_i \Op C_{i-1}}{C_{i-1}}{(z_1, z_2)}{z_2} \\
-    \end{align*}
+      \deffunc{\rho_i}{C_i}{C_i \Op C_{i-1}}{z_1}{(z_1, 0)}
+      \quad \text{and} \quad
+      \deffunc{\pi_i}{C_i \Op C_{i-1}}{C_{i-1}}{(z_1, z_2)}{z_2}
     $$
     then
     $$
