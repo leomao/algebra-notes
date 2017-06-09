@@ -352,7 +352,7 @@ N is injective and $0 \to M \to N$?
     \item A chain complex $C_\bullet$ of $R$-modules is a sequence and maps:
       \[
         C_\bullet : \dotsm \to C_{n+1} \xto{d_{n+1}} C_n \xto{d_n} C_{n-1}
-        \to \dotsm \to C_1 \xto{d_1} \to C_0 \to 0
+        \to \dotsm \to C_1 \xto{d_1} C_0 \to 0
       \]
       with $d_n \circ d_{n+1} = 0, \quad \forall n$.
       (i.e. $\Image d_{n+1} \subseteq \ker d_n$)
@@ -387,7 +387,7 @@ N is injective and $0 \to M \to N$?
                       & C_n \ar[r, "d_n"] \ar[d, "\varphi_n"]
                       & C_{n-1} \ar[r] \ar[d, "\varphi_{n-1}"]
                       & \dotsm \\
-        \dotsm \ar[r] & \tilde C_{n+1} \ar[r, "d_{n+1}"] & \tilde C_n \ar[r, "d_n"]
+        \dotsm \ar[r] & \tilde C_{n+1} \ar[r, "\tilde{d}_{n+1}"] & \tilde C_n \ar[r, "\tilde{d}_n"]
                       & \tilde C_{n-1} \ar[r] & \dotsm
       \end{tikzcd}
       \]
@@ -411,7 +411,14 @@ N is injective and $0 \to M \to N$?
                       & \tilde C_{n-1} \ar[r] & \dotsm
       \end{tikzcd}
       \]
-      If $f$ is null homotopic, then $f_* = 0$. (easy to check)
+
+      \begin{prop} \label{prop:null-homotopic-then-fstar-is-zero}
+      If $f$ is null homotopic, then $f_* = 0$.
+      \begin{proof}
+        $f_*(x) = \tilde{d}_{n+1} s_{n}(x) + s_{n-1} d_{n}(x) =
+        \tilde{d}_{n+1} s_n (x) \in B_n(\tilde{C}_\bullet) \implies f_*(\bar{x}) = 0$.
+      \end{proof}
+      \end{prop}
     \item Two chain map $f, g: C_\bullet \to \tilde C_\bullet$ are homotopic
       if $f - g$ is null homotopic. ($f_* = g_*$)
     \item Let $M \in \Mod_R$. A projection resolution of $M$ is an exact sequence:
@@ -419,11 +426,25 @@ N is injective and $0 \to M \to N$?
         \dotsm \to P_2 \xto{d_2} P_1 \xto{d_1} P_0 \xto{\alpha} M \to 0
       \]
       where $P_i$ is projective for all $i$.
-      % TODO existence
+
+      For any $M$, projection resolution always exists.
+      Let $P_0$ be a free module on the generators of $M$.
+      We get $P_0 \xto{\alpha} M \to 0$. Similarly, let $P_1$ be
+      free on $\ker \alpha$, then we could extend the map to
+      $P_1 \to P_0 \to M \to 0$. Continue the process we would
+      get a diagram as below, where $K_i$ are the kernels:
+      \[
+        \begin{tikzcd}[sep=10pt]
+          \cdots \ar[r] & P_2 \ar[rr] \ar[rd] && P_1 \ar[rr] \ar[rd] && P_0 \ar[r] & M \ar[r] & 0 \\
+                        & & K_1 \ar[ru] \ar[rd] && K_0 \ar[ru] \ar[rd] \\
+                        & 0 \ar[ru] && 0 \ar[ru] && 0
+        \end{tikzcd}
+      \]
   \end{itemize}
 \end{definition}
 
-\begin{theorem}[Comparison theorem]
+\begin{theorem}[Comparison theorem] \label{thm:comparison-theorem}
+  Given two chain as following:
   \[
     \begin{tikzcd}
       \dotsm \ar[r] & P_2 \ar[r, "d_2"] \ar[d, dashed, "\exists f_2"]
@@ -438,10 +459,38 @@ N is injective and $0 \to M \to N$?
                     & \text{(exact sequence)}
     \end{tikzcd}
   \]
-  $\exists f_i : P_i \to C_i$ s.t. $\Set{f_i}$ forms a chain map making the
+  Then $\exists f_i : P_i \to C_i$ s.t. $\Set{f_i}$ forms a chain map making the
   completed diagram commutes. And any two such chain maps are homotopic.
   \begin{proof}
-    % TODO
+    Using induction on $n$.
+
+    For $n = 0$, the existence of $f_0$ is guaranteed by the definition of projective module.
+    \[ \begin{tikzcd}
+        & P_0 \ar[d, "f \circ \alpha"] \ar[ld, dashed, "\exists f_0"'] & \\
+        C_0 \ar[r] & N \ar[r] & 0
+    \end{tikzcd} \]
+
+    For $n > 0$, we claim that $f_{n-1} d_n (P_n) \subseteq \Image d'_{n}$,
+    since $d'_{n-1} f_{n-1} d_n (x) = f_{n-2} d_{n-1} d_n (x) = 0$ and
+    by the fact that $C$ is exact, $f_{n-1} d_n (x) \in \ker d'_{n-1} = \Image d'_n$.
+    So using the diagram and again by the definition of projective module,
+    $f_n$ exists.
+
+    \[ \begin{tikzcd}
+        & P_n \ar[d, "f_{n-1} \circ d_n"] \ar[ld, dashed, "\exists f_n"'] & \\
+        C_n \ar[r] & \Image d'_n \ar[r] & 0
+    \end{tikzcd} \]
+
+    Now, for another chain map $\Set{g_i: P_i \to C_i}$, we shall construct suitable $\Set{s_n}$
+    to prove they are homotopic. For $s_{-1} : M \to C_0$ we could simply pick the
+    zero map. Again, if we could prove that
+    $g_n - f_n - s_{n-1} d_n \in \Image d'_{n+1} = \ker d'_n$, then by
+    the definition of projective module, we would obtain $s_n$ with
+    \[ d_{n+1} s_n = g_n - f_n - s_{n-1} d_n \implies g_n - f_n = d_{n+1} s_n + s_{n-1} d_n \]
+    immediately. For this we calculate $d'_n (g_n - f_n - s_{n-1} d_n)
+    = g_{n-1} d_n - f_{n-1} d_n - d'_n s_{n-1} d_n$. Notice that
+    $d'_n s_{n-1} = g_{n-1} - f_{n-1} - s_{n-2} d_{n-1}$, and
+    with $d_{n-1} d_n = 0$, we get $d'_n (g_n - f_n - s_{n-1} d_n) = 0$.
   \end{proof}
 \end{theorem}
 
@@ -461,14 +510,135 @@ N is injective and $0 \to M \to N$?
 \end{definition}
 
 \begin{theorem}[Indenpedency of the choice of projective resolutions]
-  %TODO
+  $\Ext^n(M, N)$ is independent of the choice of the projective resolution used.
+
+  \begin{proof}
+    First, consider two projective resolutions of $M, \tilde{M}$, and map $f: M \to \tilde{M}$,
+    and two liftings $\Set{f_i}, \Set{g_i}$. Use $\bar{\cdot}$ to
+    denote the natural transformation from $X \to Y$ to $\Hom(Y, N) \to \Hom(X, N)$
+    by $\bar{f} \triangleq g \mapsto g \circ f$. Then we shall prove that
+    $\bar{f_\bullet}^* = \bar{g_\bullet}^*$, which is to say
+    $\bar{f_\bullet}^*$ is independent of the lifting used.
+
+    By comparison theorem (\ref{thm:comparison-theorem}), $\Set{f_i}, \Set{g_i}$ are homotopic,
+    and we could write down the diagram below:
+    \[
+      \begin{tikzcd}
+        \dotsm \ar[r] & P_2 \ar[r, "d_2"] \ar[d, "g_2", "f_2"']
+                      & P_1 \ar[r, "d_1"] \ar[d, "g_1", "f_1"'] \ar[ld, "s_1"' near start]
+                      & P_0 \ar[r, "\alpha"] \ar[d, "f_0"', "g_0"] \ar[ld, "s_0"' near start]
+                      & M \ar[r] \ar[d, "f"] & 0 \\
+        \dotsm \ar[r] & \tilde P_2 \ar[r, "\tilde d_2"]
+                      & \tilde P_1 \ar[r, "\tilde d_1"]
+                      & \tilde P_0 \ar[r, "\tilde\alpha"]
+                      & \tilde M \ar[r] & 0
+      \end{tikzcd}
+    \]
+    Notice that $\bar{\cdot}$ act linearly, that is, $\bar{f + g} = \bar{f} + \bar{g}$,
+    and $\bar{fg} = \bar{g} \bar{f}$.
+    So we have
+    \[ g_n - f_n = s_{n-1} d_n + \tilde d_{n+1} s_n \implies
+      \bar g_n - \bar f_n = \bar d_n \bar s_{n-1} + \bar s_n \bar d_{n+1} \]
+    and $\bar f_n, \bar g_n$ are homotopic.
+    Thus by proposition~\ref{prop:null-homotopic-then-fstar-is-zero},
+    $\bar f_\bullet^* = \bar g_\bullet^*$.
+
+    Now, let $P^\bullet, {P'}^\bullet$ be two projective resolution. Consider the diagram:
+    \[
+      \begin{tikzcd}[cramped]
+        \dotsm \ar[r] & P_1 \ar[r] \ar[d, "f_1"] \ar[dd, bend right, "\Id"' near start]
+                      & P_0 \ar[r] \ar[d, "f_0"] \ar[dd, bend right, "\Id"' near start]
+                      & M \ar[r] \ar[d, "\Id"] & 0 \\
+        \dotsm \ar[r] & P'_1 \ar[r] \ar[d, "g_1"]
+                      & P'_0 \ar[r] \ar[d, "g_0"]
+                      & M \ar[r] \ar[d, "\Id"] & 0 \\
+        \dotsm \ar[r] & P_1 \ar[r]
+                      & P_0 \ar[r]
+                      & M \ar[r] & 0 \\
+      \end{tikzcd}
+    \]
+    Then $g_i \circ f_i$ and $\Id$ are two liftings, and thus by previous
+    we have $\bar g_i^* \circ \bar f_i^* = \Id^*$.
+    By symmetry, $\bar f_i^* \circ \bar g_i^* = \Id^*$, which means that
+    the homology calculated using different resolution are isomorphic.
+
+  \end{proof}
 \end{theorem}
 
-\begin{theorem}[Horseshoe Lemma]
-  %TODO
+\begin{theorem}[Horseshoe Lemma] \label{thm:horseshoe-lemma}
+  Given $0 \to L \to M \to N \to 0$ and projective resolutions
+  $P^\bullet \to L \to 0, \, \tilde P^\bullet \to N \to 0$.
+  Then there is a projective resolution for $M$ such that
+  the following diagram commutes:
+  \[ \begin{tikzcd}[cramped]
+      & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \\
+      0 \ar[r] & P_1 \ar[r] \ar[d] & \bar P_1 \ar[r] \ar[d] & \tilde P_1 \ar[r] \ar[d] & 0 \\
+      0 \ar[r] & P_0 \ar[r] \ar[d] & \bar P_0 \ar[r] \ar[d] & \tilde P_0 \ar[r] \ar[d] & 0 \\
+      0 \ar[r] & L   \ar[r] \ar[d] & M        \ar[r] \ar[d] & N          \ar[r] \ar[d] & 0 \\
+      & 0 & 0 & 0 & \\
+     \end{tikzcd} \]
+
+   \begin{proof}
+    Let $\bar P_n \triangleq P_n \oplus \tilde P_n$. $\bar P_n$ is projective
+    by the fact that sum of projective module are projective. Also
+    $0 \to P_n \to P_n \oplus \tilde P_n \to \tilde P_n \to 0$ by
+    injection and projection. It remains to show that the
+    maps in the middle column exists.
+
+    By induction on $n$. Consider the following diagram:
+  \[ \begin{tikzcd}[cramped]
+      & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \\
+      0 \ar[r] &
+      P_n \ar[r] \ar[d, "\alpha"] &
+      P_n \oplus \tilde P_n \ar[r] \ar[d, "\bar \alpha"] &
+      \tilde P_n \ar[r] \ar[d, "\tilde \alpha"] \ar[ld, "\exists \sigma"] & 0 \\
+      0 \ar[r] &
+      P_{n-1} \ar[r, "i"] \ar[d, "d"] &
+      \bar P_{n-1} \ar[r, "\pi"] \ar[d, "\bar d"] &
+      \tilde P_{n-1} \ar[r] \ar[d, "\tilde d"] & 0 \\
+      0 \ar[r] & P_{n-2} \ar[r] \ar[d] &
+      \bar P_{n-2} \ar[r] \ar[d] &
+      \tilde P_{n-2} \ar[r] \ar[d] & 0 \\
+      & \vdots & \vdots & \vdots & \\
+     \end{tikzcd} \]
+   $\sigma$ exists because $\tilde P_n$ is projective.
+   Define
+   \[ \begin{tikzcd}[row sep=0pt]
+       \bar\alpha : & P_{n} \otimes \tilde P_{n} \ar[r] & \bar P_{n-1} \\
+       & (z, y) \ar[r, mapsto] & i \alpha(z) + \sigma(y)
+      \end{tikzcd} \]
+   It easy to see that $\bar \alpha$ let the diagram commutes.
+
+   For any $x \in \ker d$, $\tilde \pi(x) = 0$, so $\pi(x) \in \ker \tilde d
+   = \Image \tilde \alpha$, so exists $y$ satisfy $\pi(x) = \tilde \alpha (y)$.
+   Then $\tilde \alpha(y) = \pi \sigma (y) = \pi (x) \implies x - \sigma(y) \in
+   \ker \pi = \Image i$. Let $z'$ be the one so that $i(z') = x - \sigma(y)$,
+   tracing the diagram again one would find out $d(z') = 0$, so exists $z$
+   such that $\alpha(z) = z'$, and then $\bar \alpha(z, y) = i \alpha(z) + \sigma(y) = x$,
+   thus $\Image \bar \alpha = \ker \bar d$.
+   \end{proof}
 \end{theorem}
 
 \begin{theorem}[Long exact sequence for $\Ext$]
-  %TODO
+  If $0 \to L \to M \to N \to 0$ exact, then there is a long exact sequence:
+  \begin{multline*} 0 \to \Hom(N, K) \to \Hom(M, K) \to \Hom(L, K) \\
+    \to \Ext^1(N, K) \to \Ext^1(M, K) \to \Ext^1(L, K) \to \Ext^2(N, K) \to \dots
+  \end{multline*}
+
+  \begin{proof}
+    Taking $\Hom({-}, K)$ in the diagram of Horseshoe' lemma (\ref{thm:horseshoe-lemma}),
+    we get
+  \[ \begin{tikzcd}[cramped]
+      & \vdots \ar[leftarrow, d] & \vdots \ar[leftarrow, d] & \vdots \ar[leftarrow, d] & \\
+      0 \ar[leftarrow, r] & \Hom(P_1, K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(\bar P_1, K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(\tilde P_1, K) \ar[leftarrow, r] \ar[leftarrow, d] & 0 \\
+      0 \ar[leftarrow, r] & \Hom(P_0, K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(\bar P_0, K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(\tilde P_0, K) \ar[leftarrow, r] \ar[leftarrow, d] & 0 \\
+      0 \ar[leftarrow, r] & \Hom(L  , K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(M       , K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(N         , K) \ar[leftarrow, r] \ar[leftarrow, d] & 0 \\
+      & 0 & 0 & 0 & \\
+     \end{tikzcd} \]
+   Notice that $\Hom(M \oplus N, K) \cong \Hom(M, K) \otimes \Hom(N, K)$, so
+   each row is indeed exact.
+
+   By exercise 14.7, the long exact sequence in the statement exists.
+  \end{proof}
 \end{theorem}
 
