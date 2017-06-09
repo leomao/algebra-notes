@@ -326,9 +326,8 @@ In this section, we assume that $R$ is commutative with $1$.
     = \Ann_{R/I} I = \set{\ob{r} \in R/I \mid rI = I} = R/I \neq 0.
     $$
     ($R/I \neq 0$ is because $\set{x_1, \cdots, x_n}$ is $R$-regular.)
-    
     Thus, any projective resolution can't have length
-    shorter than $n$, since that will imply $\Tor_n(R/I, R/I) = 0$.
+    shorter than $n$ since that will imply $\Tor_n(R/I, R/I) = 0$.
   \end{proof}
 \end{coro}
 
@@ -340,3 +339,92 @@ In this section, we assume that $R$ is commutative with $1$.
     \item $\Ext^n(R/I, M) \cong M/IM$.
   \end{itemize}
 \end{remark}
+
+\subsection{Derived category}
+\begin{definition} \mbox{}
+  \begin{itemize}
+    \item $\Cc$ is a pre-additive category if $\Hom_\Cc(X, Y)$ is an abelian group
+      $\forall X, Y \in \Cc$ s.t.
+      \[
+        \begin{tikzcd}
+          X \ar[r, "u"] & Y \ar[r, "f", shift left] \ar[r, "g"', shift right]
+                        & Z \ar[r, "v"]
+                        & T
+        \end{tikzcd}
+      \]
+      with $(f+g) u = fu + gu$ and $v(f+g) = vf + vg$.
+    \item addivitve category: a pre-additive category $\Cc$ s.t.
+      \begin{itemize}
+        \item There exists a zero object $0$ s.t. $\forall X,\, \Hom_\Cc(0, X)
+          = \set{0} = \Hom_\Cc(X, 0)$.
+        \item Finite sum and finite products exist.
+          % TODO graph
+        \item $f \in \Hom(B, C)$ is called a monomorphism if
+          $\forall X \xto{g} B \xto{f} C$ with $f \circ g = 0 \implies g = 0$.
+        \item $f \in \Hom(B, C)$ is called a epimorphism if
+          $\forall B \xto{f} C \xto{h} D$ with $h \circ f = 0 \implies h = 0$.
+        \item a kernel of $f \in \Hom(B, C)$ is a morphism $i: A \to B$ s.t.
+          $f \circ i = 0$ and $\forall g: X \to B$ with $f\circ g = 0$, we have
+          \[
+            \begin{tikzcd}[cramped]
+              A \ar[r, "i"] & B \ar[r, "f"] & C \\
+                            & X \ar[lu, dashed, "\existsuniq"] \ar[u, "g"] \ar[ru, "0"]
+            \end{tikzcd}
+          \]
+        \item a cokernel of $f \in \Hom(B, C)$ is a morphism $p: C \to D$ s.t.
+          $p \circ f = 0$ and $\forall h: C \to Y$ with $h\circ f = 0$, we have
+          \[
+            \begin{tikzcd}[cramped]
+              B \ar[r, "f"] \ar[rd, "0"] & C \ar[r, "p"] \ar[d, "h"]
+                                         & D \ar[ld, dashed, "\existsuniq"] \\
+                                         & Y
+            \end{tikzcd}
+          \]
+      \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\begin{remark} \mbox{}
+  \begin{itemize}
+    \item If $i$ is a kernel of $f$, then $i$ is a monomorphism.
+    \item If $p$ is a kernel of $f$, then $p$ is a epimorphism.
+  \end{itemize}
+\end{remark}
+
+\begin{remark}
+  An epimonrphism may not be a cokernel. Consider $\Zb \xto{\times 3} \Zb$
+  which is an epimorphism in the category of f.g. free $\Zb$-modules.
+  If $\Zb \xto{\times 3} \Zb$ is the cokernel of $G \xto{f} \Zb$, then
+  \[
+    \begin{tikzcd}[cramped]
+      G \ar[r, "f"] \ar[rd, "0"] & \Zb \ar[r, "\times 3"] \ar[d, "\times 2"]
+                                 & \Zb \ar[ld, dashed, "\existsuniq \tilde f"] \\
+                                 & \Zb
+    \end{tikzcd}
+  \]
+  This implies $\tilde f: 1 \mapsto \frac{2}{3}$, which is impossible.
+\end{remark}
+
+\begin{definition}
+  $\Ac$ is an {\bf abelian category} if it is an additive category s.t.
+  \begin{itemize}
+    \item kernels and cokernels always exist in $\Ac$.
+    \item every monomorphism is a kernel and every epimorphism is a cokernel.
+    \item every morphism is expressible as the composite of an epimorphism
+      and a monomorphism. Given $f: B \to C$, we have
+      \[
+        \begin{tikzcd}[column sep=tiny]
+          B \ar[rr, "f"] \ar[rd, twoheadarrow] & & C \\
+                                       & \Image f \ar[ru, hook]
+        \end{tikzcd}
+      \]
+      where $\Image f$ is uniqe up to isomorphism.
+    \item $0 \to A \xto{f} B \xto{g} C \to 0$ is exact if
+      $f$ is monomorphism, $g$ is epimorphism and $\Image f = \ker g$.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[Freyd-Mitchell theorem]
+  A small abelian category is equivalent to a full subcategory of a category
+  of $R$-modules.
+\end{theorem}
