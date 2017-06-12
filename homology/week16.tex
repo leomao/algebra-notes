@@ -359,28 +359,33 @@ In this section, we assume that $R$ is commutative with $1$.
           = \set{0} = \Hom_\Cc(X, 0)$.
         \item Finite sum and finite products exist.
           % TODO graph
-        \item $f \in \Hom(B, C)$ is called a monomorphism if
-          $\forall X \xto{g} B \xto{f} C$ with $f \circ g = 0 \implies g = 0$.
-        \item $f \in \Hom(B, C)$ is called a epimorphism if
-          $\forall B \xto{f} C \xto{h} D$ with $h \circ f = 0 \implies h = 0$.
-        \item a kernel of $f \in \Hom(B, C)$ is a morphism $i: A \to B$ s.t.
-          $f \circ i = 0$ and $\forall g: X \to B$ with $f\circ g = 0$, we have
-          \[
-            \begin{tikzcd}[cramped]
-              A \ar[r, "i"] & B \ar[r, "f"] & C \\
-                            & X \ar[lu, dashed, "\existsuniq"] \ar[u, "g"] \ar[ru, "0"]
-            \end{tikzcd}
-          \]
-        \item a cokernel of $f \in \Hom(B, C)$ is a morphism $p: C \to D$ s.t.
-          $p \circ f = 0$ and $\forall h: C \to Y$ with $h\circ f = 0$, we have
-          \[
-            \begin{tikzcd}[cramped]
-              B \ar[r, "f"] \ar[rd, "0"] & C \ar[r, "p"] \ar[d, "h"]
-                                         & D \ar[ld, dashed, "\existsuniq"] \\
-                                         & Y
-            \end{tikzcd}
-          \]
       \end{itemize}
+  \end{itemize}
+\end{definition}
+
+\begin{definition} \hfill
+  \begin{itemize}
+    \item $f \in \Hom(B, C)$ is called a monomorphism if
+      $\forall X \xto{g} B \xto{f} C$ with $f \circ g = 0 \implies g = 0$.
+    \item $f \in \Hom(B, C)$ is called a epimorphism if
+      $\forall B \xto{f} C \xto{h} D$ with $h \circ f = 0 \implies h = 0$.
+    \item a kernel of $f \in \Hom(B, C)$ is a morphism $i: A \to B$ s.t.
+      $f \circ i = 0$ and $\forall g: X \to B$ with $f\circ g = 0$, we have
+      \[
+        \begin{tikzcd}[cramped]
+          A \ar[r, "i"] & B \ar[r, "f"] & C \\
+                        & X \ar[lu, dashed, "\existsuniq"] \ar[u, "g"] \ar[ru, "0"]
+        \end{tikzcd}
+      \]
+    \item a cokernel of $f \in \Hom(B, C)$ is a morphism $p: C \to D$ s.t.
+      $p \circ f = 0$ and $\forall h: C \to Y$ with $h\circ f = 0$, we have
+      \[
+        \begin{tikzcd}[cramped]
+          B \ar[r, "f"] \ar[rd, "0"] & C \ar[r, "p"] \ar[d, "h"]
+                                     & D \ar[ld, dashed, "\existsuniq"] \\
+                                     & Y
+        \end{tikzcd}
+      \]
   \end{itemize}
 \end{definition}
 
@@ -410,21 +415,194 @@ In this section, we assume that $R$ is commutative with $1$.
   \begin{itemize}
     \item kernels and cokernels always exist in $\Ac$.
     \item every monomorphism is a kernel and every epimorphism is a cokernel.
+  \end{itemize}
+\end{definition}
+
+\begin{fact} If $\Ac$ is an abelian category, then:
+  \begin{itemize}
     \item every morphism is expressible as the composite of an epimorphism
       and a monomorphism. Given $f: B \to C$, we have
       \[
         \begin{tikzcd}[column sep=tiny]
-          B \ar[rr, "f"] \ar[rd, twoheadarrow] & & C \\
-                                       & \Image f \ar[ru, hook]
+          B \ar[rr, "f"] \ar[rd, twoheadrightarrow] & & C \\
+               & \Image f \ar[ru, hook] &
         \end{tikzcd}
       \]
       where $\Image f$ is uniqe up to isomorphism.
+
+      \begin{proof}
+        Consider the following diagram:
+        \[
+          \begin{tikzcd}[row sep=25pt]
+            \ker f \ar[r, "i", hookrightarrow] &
+            B \ar[r, "f"] \ar[d, "p'", twoheadrightarrow]
+            \ar[rd, "\exists ! \mu", dashed, very near start, sloped] &
+            C \ar[r, "p", twoheadrightarrow] \ar[d, "i'", hookleftarrow]
+            \ar[ld, "\exists ! \gamma", dashed, leftarrow, pos=0.4, sloped] &
+            \coker{f} \\
+            & \coker{i} \ar[r, "\exists ! \sigma"', dashed, thick, pos=0.4] &
+            \ker{p} &
+          \end{tikzcd}
+        \]
+        Where $\mu, \gamma$ exists because $i, p$ are kernel and cokernel.
+        Now, $i' \mu i = f i = 0$, and since $i'$ is a monomorphism,
+        $\mu i = 0$. Moreover, since $p$ is the cokernel of $i$,
+        there exists a unique $\sigma$ letting the diagram commute.
+
+        By exercise, $\sigma$ is both a monomorphism and epimorphism.
+        In an abelian catagory, this implies that $\sigma$ is
+        actually an isomorphism (i.e., $\sigma^{-1}$ exists).
+      \end{proof}
     \item $0 \to A \xto{f} B \xto{g} C \to 0$ is exact if
       $f$ is monomorphism, $g$ is epimorphism and $\Image f = \ker g$.
   \end{itemize}
-\end{definition}
+\end{fact}
 
 \begin{theorem}[Freyd-Mitchell theorem]
   A small abelian category is equivalent to a full subcategory of a category
   of $R$-modules.
+\end{theorem}
+
+\begin{definition} \hfill
+  \begin{itemize}
+    \item $I \in \Obj \Ac$ is injective if the functor $\Hom(-, I)$ is exact.
+    \item An abelian category is said to have {\bf enough injectives} if
+      for any $A \in \Obj \Ac$, exists $I$ injective such that $A \hookrightarrow I$.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  Given a functor $F : \Ac \to \mathcal{B}$ satisfy:
+  \begin{enumerate}
+    \item $F$ is additive, which is to say $F$ is a group
+      homomorphism $\Hom(A, A') \to \Hom(FA, FA')$.
+    \item $F$ is left exact. If $0 \to A' \to A \to A'' \to 0$,
+      then $0 \to FA' \to FA \to FA''$.
+  \end{enumerate}
+  Then the derived functor $R^i F : \Ac \to \mathcal{B}$ is defined as
+  \[ R^i F(A) = \begin{cases}
+      F(A), & \text{ if } i = 0 \\
+      H^i(F(I^\bullet)), & \text{ else } \end{cases} \]
+\end{definition}
+
+Our goal is to construct the derived category $D^+(\Ac)$ and $D^+(\mathcal{B})$
+letting $RF$ be a exact functor.
+
+\begin{definition}
+  Let $\Ac$ be an abelian category.
+  \begin{itemize}
+    \item $\Kom(\Ac)$ is the category of complexes over $\Ac$.
+    \item $K(\Ac)$ is the homotopy category of $\Ac$, defined by
+      $\Obj(K(\Ac)) = \Obj(\Kom(\Ac))$ and
+      \[ \Hom_{K(\Ac)}(A^\bullet, B^\bullet) = \left. \Hom_{\Kom(\Ac)}(A^\bullet, B^\bullet) \right/ \sim \]
+      Where $\sim$ indicates homotopy equivalences.
+  \end{itemize}
+\end{definition}
+
+\begin{remark} \hfill
+  \begin{itemize}
+    \item $\Hom_{K(\Ac)}(I^\bullet_A, I^\bullet_B) \cong \Hom_\Ac(A, B)$ by comparison theorem
+      (\ref{thm:comparison-theorem}).
+    \item It could be shown that $K(A)$ is additive but may not be abelian.
+  \end{itemize}
+\end{remark}
+
+\begin{definition}
+  $f \in \Hom_{K(\Ac)}(A^\bullet, B^\bullet)$ is called a quasi-isomorphism
+  if $H^n(f)$ is an isomorphism between $H^n(A^\bullet)$ and $H^n(B^\bullet)$
+  for each $n$.
+\end{definition}
+
+\begin{example}
+  \begin{itemize}
+    \item A quasi-isomorphism is often not invertible. For example:
+    \[ \begin{tikzcd}[cramped]
+        0 \ar[r] & \Zb \ar[r, "\times 2"] \ar[d] & \Zb \ar[r] \ar[d] & 0 \ar[r] \ar[d] & \cdots \\
+        0 \ar[r] & 0 \ar[r] & \Zb / 2\Zb \ar[r] & 0 \ar[r] & \cdots \\
+    \end{tikzcd} \]
+    \item Given $0 \to A \to I^\bullet$,
+      \[ \begin{tikzcd}[cramped]
+          0 \ar[r] & A \ar[r] \ar[d] & 0 \ar[r] \ar[d] & 0 \ar[r] \ar[d] & \cdots \\
+          0 \ar[r] & I^0 \ar[r] & I^1 \ar[r] & I^2 \ar[r] & \cdots \\
+      \end{tikzcd} \]
+    are two quasi-isomorphic complex.
+  \end{itemize}
+\end{example}
+
+\begin{definition}
+  Let $\Bc$ be a category. A class of morphism $S \subset \Mor(\Bc)$
+  is said to be {\bf localizing} if
+  \begin{enumerate}
+    \item $S$ is closed under composition with $\Id_X \in S$ for each object $X$
+      in $\Bc$.
+    \item Extension condition holds: For each $f \in \Mor \Bc, \, s \in S$,
+      exists $g \in \Mor \Bc, \, t \in S$ such that $ft = sg$.
+      The dual version should hold as well.
+    \item For any $f, g \in \Hom(X, Y)$,
+      \[ \exists s \in S \text{ s.t. } sf = sg \iff \exists t \in S \text{ s.t. } ft = gt \]
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  If $S$ is localizing, then exists a category $\Bc[S^{-1}]$ with
+  a functor $Q : \Bc \to \Bc[S^{-1}]$ such that
+  \begin{enumerate}
+    \item $Q(s)$ is an isomorphism for each $s \in S$.
+    \item Given another functor $F : B \to B'$ satisfy condition 1., exists
+      a unique functor $G : \Bc[S^{-1}] \to B'$ such that $F = G \circ Q$.
+  \end{enumerate}
+  \begin{proof}
+    Define a roof to be a pair $(s, t)$ with
+    \[ \begin{tikzcd}[column sep=tiny, row sep=small]
+        & X' \ar[ld, "S \ni s"'] \ar[rd, "t"] & \\
+      X & & Y
+    \end{tikzcd} \]
+  Also, define $(s, f) \sim (t, g)$ if exists $Z$ such that
+  \[ \begin{tikzcd}[column sep=small]
+        & X' \ar[ld, "s"'] \ar[rd, "f"] & \\
+        X & Z \ar[u, "p"] \ar[d, "q"] & Y \\
+        & X'' \ar[lu, "t"] \ar[ru, "g"']  &
+    \end{tikzcd} \]
+  with $sp = tq \in S$ and $fp = gq$.
+
+  First we check that ``$\sim$'' is indeed an equivalence relation.
+  $(s, f) \sim (s, f)$ and $(s, f) \sim (t, g) \implies (t, g) \sim (s, f)$
+  are trivial. If $(s, f) \sim (t, g)$ and $(t, g) \sim (u, h)$, then
+  we have the following diagram:
+  \[
+    \begin{tikzcd}
+      & X' \ar[ldd, "s"', red] \ar[rdd, "f"] & & & \\
+      & Z \ar[u, "p", red] \ar[d, "q"] & & & \\
+      A & X'' \ar[l, "t", red] \ar[r, "g"'] & B &
+      R \ar[llu, "\exists z"', thick] \ar[lld, "\exists a", thick] & T \ar[l, "\exists w", thick] \\
+      & W \ar[u, "r", red] \ar[d, "v"] & & & \\
+      & X''' \ar[luu, "u"] \ar[ruu, "h"'] & & & \\
+    \end{tikzcd}
+  \]
+  Using definition 2. on $tr \in S$ and $sp$, there are morphism $z, a$
+  with $z \in S$ and $spz = tra$. Moreover, $tqz = spz = tra$,
+  if we let $b = qz, c = ra$, then by 3., morphism $w \in S$ exists
+  with $bw = cw$. Define $x = pzw, y = vaw$,
+  we have $sx = spzw = tqzw = tbw = tcw = traw = uvaw = uy$
+  and $sx \in S$ since $sx = spzw$ and $sp, z, w$ are all in $S$.
+  Similarly, $fx = hy$, thus $(s, f) \sim (u, h)$.
+  Hence we've just proved that $\sim$ is an equivalence relation.
+
+  Now we could construct the localized category as following:
+  The objects are $\Obj(\Bc[S^{-1}]) = \Bc$ and
+  $\Mor(\Bc[S^{-1}]) = \Set{ \text{ equivalence classes under} \sim \, }$.
+  $[(t, g)] \circ [(s, f)] = [(su, gh)]$ could be defined as in the following
+  diagram:
+  \[ \begin{tikzcd}[column sep=tiny]
+      & & {\color{red} \exists U}
+      \ar[ld, "S \ni u"', red] \ar[rd, "h", red] & {\footnotesize \color{red} \text{by 2.}} & \\
+      & X \ar[ld, "s"'] \ar[rd, "f"] & & Y \ar[ld, "t"'] \ar[rd, "g"] & \\
+      A & & B & & C \\
+    \end{tikzcd} \]
+  \end{proof}
+
+  Finally, define functor $Q$ by $Q(X) = X, \, \forall X \in \Obj(\Bc)$
+  and $Q(f) = [(\Id_X, f)]$. For the universal property, if $F$
+  is another functor letting every morphism in $S$ be invertible,
+  then the functor $G$ exists uniquely by $G([(s, f)]) = F(f) F(s)^{-1}$.
 \end{theorem}
