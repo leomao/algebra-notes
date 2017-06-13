@@ -1,0 +1,76 @@
+%! TEX root=../main.tex
+\begin{definition}
+  The {mapping cone} of a chain map $f$ between two chain $X^\bullet \xto{f} Y^\bullet$
+  is defined as a chain with $\cone(f)^n = X^{n+1} \oplus Y^n$,
+  and the chain map is defined as
+  \[ \begin{tikzcd}[row sep=0, ampersand replacement=\&]
+      d_{\cone(f)} : \& \cone(f)^n = X^{n+1} \oplus Y^n \ar[r] \& \cone(f)^{n+1} X^{n+2} \oplus Y^{n+1} \\
+      \& (x_{n+1}, y_n) \ar[r, mapsto, "{\begin{pmatrix} -d_X & 0 \\ f & d_Y \end{pmatrix}}"']
+      \& \big(-d_X(x^{n+1}), f(x^{n+1}) + d_Y(y_n)\big) \\
+    \end{tikzcd} \]
+\end{definition}
+
+It is easy to see that $d_{\cone(f)}^2 = 0$.
+
+\begin{prop}
+  Suppose that $f : X^\bullet \to Y^\bullet$ is a chain map,
+  then there is a short exact sequence
+  \[ \begin{tikzcd}[row sep=0pt]
+      0 \ar[r] & Y \ar[r] & \cone(f) \ar[r] & X[+1] \ar[r] & 0 \\
+      & d \ar[mapsto, r] & (0, d) & & \\
+      & & (c, d) \ar[mapsto, r] & -c & \\
+    \end{tikzcd} \]
+
+  \begin{proof}
+    It is easy to see that the rows are exact.
+    Tracing the diagram shows that the diagram commutes.
+  \end{proof}
+\end{prop}
+
+\begin{coro}
+  There exists a long exact sequence of homology:
+  \[ \cdots \to H^{m}(Y^\bullet) \to H^{m}(\cone(f)) \to H^{m+1}(X^\bullet)
+    \xto{\delta} H^{m+1}(Y^\bullet) \to H^{m+1}(\cone(f)) \to \cdots \]
+  Where the connecting homomorphism $\delta = f^*$.
+
+  \begin{proof}
+    Tracing the diagram below as in the snake lemma,
+    \[ \begin{tikzcd}[cramped]
+        & X^{m} \oplus Y^{m-1} \ar[r] \ar[d] & X^{m} \ar[d] \\
+        Y^{m} \ar[r] & X^{m+1} \oplus Y^{m} \ar[r]  & X^{m+1} \\
+    \end{tikzcd} \]
+  Suppose $\bar{x} \in H^m(X^\bullet)$, then $d_X(x) = 0$,
+  so $d (-x, 0) = (dx, -f(x))$ with $dx = 0$, which implies
+  $-f(x) :: Y^m \mapsto d (-x, 0) :: X^{m+1} \oplus Y^m$,
+  so $\delta = -f^*$ (出問題)...
+  \end{proof}
+\end{coro}
+
+\begin{coro}
+  $\cone(f)$ exact $\iff$ $f$ quasi-isomorphic.
+
+  \begin{proof}
+    Directly by the exact sequence
+    \[ H^{m-1}(\cone(f)) \to H^m(X^\bullet) \to H^m(Y^\bullet) \to H^{m}(\cone(f)) \]
+  \end{proof}
+\end{coro}
+
+\begin{theorem}
+  Let $\Ac$ be an abelian category and $K(\Ac)$ be the homotopy category.
+  Then the class of quasi-isomorphisms are localizing.
+
+  \begin{proof}
+    We check that:
+    \begin{enumerate}
+      \item It is closed under composition:
+        If $f, g$ are quasi-isomorphic, then $(fg)^* = f^* g^*$ is
+        a isomorphism since both $f^*, g^*$ are, thus $fg$ is quasi-isomorphic.
+      \item The diagram could be completed:
+        \[ \begin{tikzcd}
+            \exists W^\bullet \ar[r, dashed] \ar[d, dashed] &
+            Z^\bullet \ar[d, "g:\ \text{q-iso}"] \\
+            X^\bullet \ar[r, "f"] & Y^\bullet
+          \end{tikzcd} \]
+    \end{enumerate}
+  \end{proof}
+\end{theorem}
