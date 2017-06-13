@@ -428,7 +428,7 @@ In this section, we assume that $R$ is commutative with $1$.
                & \Image f \ar[ru, hook] &
         \end{tikzcd}
       \]
-      where $\Image f$ is uniqe up to isomorphism.
+      where $\Image f$ is unique up to isomorphism.
 
       \begin{proof}
         Consider the following diagram:
@@ -466,8 +466,9 @@ In this section, we assume that $R$ is commutative with $1$.
 \begin{definition} \hfill
   \begin{itemize}
     \item $I \in \Obj \Ac$ is injective if the functor $\Hom(-, I)$ is exact.
-    \item An abelian category is said to have {\bf enough injectives} if
-      for any $A \in \Obj \Ac$, exists $I$ injective such that $A \hookrightarrow I$.
+    \item An abelian category is said to be {\bf enough injectives} if
+      for any $A \in \Obj \Ac$, there exists an injective object $I$ such that
+      $A \hookrightarrow I$.
   \end{itemize}
 \end{definition}
 
@@ -494,8 +495,8 @@ letting $RF$ be a exact functor.
     \item $\Kom(\Ac)$ is the category of complexes over $\Ac$.
     \item $K(\Ac)$ is the homotopy category of $\Ac$, defined by
       $\Obj(K(\Ac)) = \Obj(\Kom(\Ac))$ and
-      \[ \Hom_{K(\Ac)}(A^\bullet, B^\bullet) = \left. \Hom_{\Kom(\Ac)}(A^\bullet, B^\bullet) \right/ \sim \]
-      Where $\sim$ indicates homotopy equivalences.
+      \[ \Hom_{K(\Ac)}(A^\bullet, B^\bullet) = \left. \Hom_{\Kom(\Ac)}(A^\bullet, B^\bullet) \right/ \sim, \]
+      where $\sim$ indicates homotopy equivalences.
   \end{itemize}
 \end{definition}
 
@@ -503,7 +504,7 @@ letting $RF$ be a exact functor.
   \begin{itemize}
     \item $\Hom_{K(\Ac)}(I^\bullet_A, I^\bullet_B) \cong \Hom_\Ac(A, B)$ by comparison theorem
       (\ref{thm:comparison-theorem}).
-    \item It could be shown that $K(A)$ is additive but may not be abelian.
+    \item It could be shown that $K(\Ac)$ is additive but may not be abelian.
   \end{itemize}
 \end{remark}
 
@@ -525,7 +526,7 @@ letting $RF$ be a exact functor.
           0 \ar[r] & A \ar[r] \ar[d] & 0 \ar[r] \ar[d] & 0 \ar[r] \ar[d] & \cdots \\
           0 \ar[r] & I^0 \ar[r] & I^1 \ar[r] & I^2 \ar[r] & \cdots \\
       \end{tikzcd} \]
-    are two quasi-isomorphic complex.
+    are two quasi-isomorphic complexes.
   \end{itemize}
 \end{example}
 
@@ -539,7 +540,7 @@ letting $RF$ be a exact functor.
       exists $g \in \Mor \Bc, \, t \in S$ such that $ft = sg$.
       The dual version should hold as well.
     \item For any $f, g \in \Hom(X, Y)$,
-      \[ \exists s \in S \text{ s.t. } sf = sg \iff \exists t \in S \text{ s.t. } ft = gt \]
+      \[ \exists s \in S \text{ s.t. } sf = sg \iff \exists t \in S \text{ s.t. } ft = gt. \]
   \end{enumerate}
 \end{definition}
 
@@ -548,7 +549,7 @@ letting $RF$ be a exact functor.
   a functor $Q : \Bc \to \Bc[S^{-1}]$ such that
   \begin{enumerate}
     \item $Q(s)$ is an isomorphism for each $s \in S$.
-    \item Given another functor $F : B \to B'$ satisfy condition 1., exists
+    \item Given another functor $F : B \to B'$ satisfy condition 1, there exists
       a unique functor $G : \Bc[S^{-1}] \to B'$ such that $F = G \circ Q$.
   \end{enumerate}
   \begin{proof}
@@ -557,7 +558,7 @@ letting $RF$ be a exact functor.
         & X' \ar[ld, "S \ni s"'] \ar[rd, "t"] & \\
       X & & Y
     \end{tikzcd} \]
-  Also, define $(s, f) \sim (t, g)$ if exists $Z$ such that
+  Also, define $(s, f) \sim (t, g)$ if there exists $Z$ such that
   \[ \begin{tikzcd}[column sep=small]
         & X' \ar[ld, "s"'] \ar[rd, "f"] & \\
         X & Z \ar[u, "p"] \ar[d, "q"] & Y \\
@@ -603,6 +604,6 @@ letting $RF$ be a exact functor.
 
   Finally, define functor $Q$ by $Q(X) = X, \, \forall X \in \Obj(\Bc)$
   and $Q(f) = [(\Id_X, f)]$. For the universal property, if $F$
-  is another functor letting every morphism in $S$ be invertible,
+  is another functor making every morphism in $S$ be invertible,
   then the functor $G$ exists uniquely by $G([(s, f)]) = F(f) F(s)^{-1}$.
 \end{theorem}
