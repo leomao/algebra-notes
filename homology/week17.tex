@@ -46,7 +46,7 @@ It is easy to see that $d_{\cone(f)}^2 = 0$.
   \end{proof}
 \end{coro}
 
-\begin{coro}
+\begin{coro} \label{coro:cone-exact-iff-quasi-isomorphic}
   $\cone(f)$ exact $\iff$ $f$ quasi-isomorphic.
 
   \begin{proof}
@@ -54,6 +54,8 @@ It is easy to see that $d_{\cone(f)}^2 = 0$.
     \[ H^{m-1}(\cone(f)) \to H^m(X^\bullet) \to H^m(Y^\bullet) \to H^{m}(\cone(f)) \]
   \end{proof}
 \end{coro}
+
+Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d_X$ below.
 
 \begin{theorem}
   Let $\Ac$ be an abelian category and $K(\Ac)$ be the homotopy category.
@@ -71,6 +73,103 @@ It is easy to see that $d_{\cone(f)}^2 = 0$.
             Z^\bullet \ar[d, "g:\ \text{q-iso}"] \\
             X^\bullet \ar[r, "f"] & Y^\bullet
           \end{tikzcd} \]
+
+        Consider the following diagram:
+        \[ \begin{tikzcd}[column sep=2.5cm, row sep=1.5cm]
+            \cone(\pi f)[-1] \ar[r, "k", "{(x_n, z_n, y_{n-1}) \mapsto x_n}"']
+            \ar[d, "{h[-1]}", "{(x_n, z_n, y_{n-1}) \mapsto z_n}"']
+            &
+            X^\bullet \ar[r, "\pi f"] \ar[d, "f"] &
+            \cone(g) \ar[d, equal]  \\
+            Z^\bullet \ar[r, "k", "{z_n \mapsto g(z_n)}"'] &
+            Y^\bullet \ar[r, "\pi", "{y_n \mapsto (0, y_n)}"'] &
+            \cone(g)
+          \end{tikzcd} \]
+        Where $\cone(\pi f)^n \cong X^{n+1} \oplus \cone(g)^{n} \cong X^{n+1} Z^{n+1} Y^{n}$.
+
+        We claim that $fk \simeq g h[-1]$. Since $(fk - gh[-1])(x_n, z_n, y_{n-1})
+        = f(x_n) + g(z_n)$. Define
+        \[ \begin{tikzcd}[row sep=0]
+            \varphi: & \cone(\pi f)[-1]^n = \cone(\pi f)^{n-1} \ar[r] & Y^{n-1} \\
+            & (x_n, z_n, y_{n-1}) \ar[r, mapsto] & -y_{n-1}
+          \end{tikzcd} \]
+        Then
+        \begin{align*}
+          \varphi d_{C(\pi f)[-1]}(x_n, (z_n, y_{n-1}))
+          &= \varphi (d(x_n), - \pi f(x_n) - d(z_n, y_{n-1})) \\
+          &= \varphi (d(x_n), - (0, f(x_n)) - (d(z_n), g(z_n) + d(y_{n-1}))) \\
+          &= \varphi (d(x_n), - d(z_n),  - f(x_n) - g(z_n) - d(y_{n-1})) \\
+          &= f(x_n) + g(z_n) + d(y_{n-1})
+        \end{align*}
+        and $d_Y \varphi(x_n, z_n, y_{n-1}) = -d(y_{n-1})$,
+        so $\varphi d_{C(\pi f)[-1]} + d_Y \varphi = fk - gh[-1]$, thus
+        $fk \simeq gh[-1]$.
+      \item Let $f : X^\bullet \to Y^\bullet$ in $K(\Ac)$. We shall prove that
+        \[ \exists s: Y^\bullet \to Z^\bullet \text{ s.t. } sf = 0
+          \iff \exists t: Y^\bullet \to Z^\bullet \text{ s.t. } ft = 0 \]
+
+        Let $h^i : X^i \to Z^{i-1}$ be a homotopy bewteen $sf$ and $0$.
+        Consider the diagram:
+        \[ \begin{tikzcd}[column sep=1.5cm, row sep=1.5cm]
+            \cone(s)[-1] \ar[rr, leftarrow, "g", "{(f(x_n), -h(x_n)) \mapsfrom x_n}"']
+            \ar[d, equal] & &
+            X^\bullet \ar[r, leftarrow, "t"] \ar[d, "f"] &
+            \cone(g)[-1] = W & \\
+            \cone(s)[-1] \ar[rr, "{p[-1]}"] & &
+            Y^\bullet \ar[r, "s"] &
+            Z^\bullet \ar[r, "\pi"] &
+            \cone(s)
+          \end{tikzcd} \]
+        We have $ft = p[-1]gt$, but $gt \simeq 0$ by
+        \[ \begin{tikzcd}[row sep=0]
+            k_n: & W^n = X^n \oplus Y^{n-1} \oplus Z^{n-2} \ar[r]
+            & C(s)[-1]^{n-1} = Y^{n-1} \oplus Z^{n-2} \\
+            & (x_n, y_{n-1}, z_{n-2}) \ar[r, mapsto] & (y_{n-1}, z_{n-2})
+          \end{tikzcd} \]
+        since
+        \begin{align*}
+          k d (x_n, y_{n-1}, z_{n-2})
+          &= k ( -(dx_n, g(x_n) + d(y_{n-1}, z_{n-2}))) \\
+          &= k (- dx_n, - (f(x_n), -h(x_n)) + (-d y_{n-1}, g(y_{n-1}) + d z_{n-2})) \\
+          &= (-f(x_n) - dy_{n-1}, h(x_n) + g(y_{n-1}) + d z_{n-2}) \\
+        \end{align*}
+        and $dk(x_n, y_{n-1}, z_{n-2}) = d(y_{n-1}, z_{n-2}) = (d y_{n-1}, -g(y_{n-1}) - d z_{n-2})$.
+        Thus $dk + kd = -gt \implies gt \simeq 0$.
+
+        Now, since $s$ is quasi-isomorphic, by corollary~\ref{coro:cone-exact-iff-quasi-isomorphic},
+        $\cone(s)$ is acyclic, and thus $t$ is quasi-isomorphic (???????, 山山門口是頁).
+        Hence we've find $t$ so that $ft \simeq 0$. (????? $h$ 在哪裡用??)
     \end{enumerate}
+    We could then define the derived category as $D(\Ac) = K(\Ac)[S^{-1}]$ now.
   \end{proof}
 \end{theorem}
+
+\begin{prop}
+  The derived category is additive.
+
+  \begin{proof}
+    Let $\varphi, \varphi' : X \to Y$ in $D(\Ac)$ with
+    $\varphi = [(s, f)], \varphi' = [(s', f')]$, that is, we have the following two diagram
+    \[ \begin{tikzcd}[cramped]
+        & Z \ar[ld, "s"'] \ar[rd, "f"] & & & & Z' \ar[ld, "s'"'] \ar[rd, "f'"] & \\
+        X &   & Y & & X & & Y 
+      \end{tikzcd} \]
+    using 2. in the definition of localizing,
+    exists $U$ so that
+    \[ \begin{tikzcd}[cramped]
+        \exists U \ar[r, "r'"] \ar[d, "r"] & Z' \ar[d, "s'"] \\
+        Z \ar[r, "s"] & X
+      \end{tikzcd} \]
+    with one of $r, r'$ is guaranteed to be quasi-isomorphic, say $r$.
+    But then $H^n(U) \cong H^n(Z) \cong H^n(X) \cong H^n(Z')$
+    since $r, s, s'$ are all quasi-isomorphic. This implies $r'$
+    is also quasi-isomorphic, so we'll have the new roof for $\varphi$
+    \[ \begin{tikzcd}[cramped, column sep=small]
+        & & U \ar[ld, "r"'] \ar[lldd, bend right] \ar[dd, "g"] \\
+        & Z \ar[ld, "s"'] \ar[rd, "f"] & \\
+        X & & Y
+      \end{tikzcd} \]
+    Similarly this applies to $\varphi'$. Since $rs = r's'$, we could
+    define $\varphi + \varphi' = [(rs, g+g')]$.
+  \end{proof}
+\end{prop}
