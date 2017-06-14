@@ -397,7 +397,7 @@ In this section, we assume that $R$ is commutative with $1$.
 \end{remark}
 
 \begin{remark}
-  An epimonrphism may not be a cokernel. Consider $\Zb \xto{\times 3} \Zb$
+  An epimorphism may not be a cokernel. Consider $\Zb \xto{\times 3} \Zb$
   which is an epimorphism in the category of f.g. free $\Zb$-modules.
   If $\Zb \xto{\times 3} \Zb$ is the cokernel of $G \xto{f} \Zb$, then
   \[
@@ -438,19 +438,19 @@ In this section, we assume that $R$ is commutative with $1$.
             B \ar[r, "f"] \ar[d, "p'", twoheadrightarrow]
             \ar[rd, "\exists ! \mu", dashed, very near start, sloped] &
             C \ar[r, "p", twoheadrightarrow] \ar[d, "i'", hookleftarrow]
-            \ar[ld, "\exists ! \gamma", dashed, leftarrow, pos=0.4, sloped] &
+            \ar[ld, "\exists ! \nu", dashed, leftarrow, pos=0.4, sloped] &
             \coker{f} \\
             & \coker{i} \ar[r, "\exists ! \sigma"', dashed, thick, pos=0.4] &
             \ker{p} &
           \end{tikzcd}
         \]
-        Where $\mu, \gamma$ exists because $i, p$ are kernel and cokernel.
+        where $\mu, \nu$ exist because $i', p'$ are kernel and cokernel.
         Now, $i' \mu i = f i = 0$, and since $i'$ is a monomorphism,
-        $\mu i = 0$. Moreover, since $p$ is the cokernel of $i$,
+        $\mu i = 0$. Moreover, since $p'$ is the cokernel of $i$,
         there exists a unique $\sigma$ letting the diagram commute.
 
         By exercise, $\sigma$ is both a monomorphism and epimorphism.
-        In an abelian catagory, this implies that $\sigma$ is
+        In an abelian category, this implies that $\sigma$ is
         actually an isomorphism (i.e., $\sigma^{-1}$ exists).
       \end{proof}
     \item $0 \to A \xto{f} B \xto{g} C \to 0$ is exact if
