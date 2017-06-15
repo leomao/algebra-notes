@@ -173,3 +173,29 @@ Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d
     define $\varphi + \varphi' = [(rs, g+g')]$.
   \end{proof}
 \end{prop}
+
+\begin{definition}
+  Let $\Ac, \Bc$ be abelian categories, $F: A \to B$ be an additive functor.
+  \begin{itemize}
+    \item Define $D^+(\Ac)$ as a subcategory of $D(\Ac)$
+      consist of all the objects (chains) $X^\bullet$ in $D(\Ac)$
+      such that $X^i = 0$ for all $i \leq i_0(X^\bullet)$.
+      $K^+(\Ac)$ is defined similarly.
+    \item Assume that $F$ act on complexes component wise.
+      $K^+(F) : K^+(\Ac) \to K^+(\Bc)$.
+    \item A triangle in $K^+(\Ac)$ is a diagram of the form
+      $\triangle: X^\bullet \to Y^\bullet \to Z^\bullet \to X^\bullet[1]$
+    \item $\triangle$ is said to be distinguished if
+      \[ \begin{tikzcd}
+          X^\bullet \ar[r, "f"] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+          Y^\bullet \ar[r] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+          Z^\bullet \ar[r] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+          X^\bullet[1] \ar[d, "\rotatebox{90}{\(\sim\)}"] \\
+          \bar{X}^\bullet \ar[r, "\bar{f}"] &
+          \bar{Y}^\bullet \ar[r] &
+          \cone(\bar{f}) \ar[r] &
+          \bar{X}^\bullet[1]
+      \end{tikzcd} \]
+    In this case, we denote it as $\tridot$.
+  \end{itemize}
+\end{definition}
