@@ -199,3 +199,224 @@ Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d
     In this case, we denote it as $\tridot$.
   \end{itemize}
 \end{definition}
+
+Recall that $\bar{Y}^\bullet \to \cone(\bar{f}) \to \bar{X}^\bullet$
+induces a long exact sequence
+\[ \cdots \to H^i(\bar{Y}) \to H^i(\cone(\bar{f}))
+  \to H^i(\bar{X}[1]) \to H^{i+1}(\bar{Y}) \to \cdots \]
+
+\begin{prop}
+  Let $F: \Ac \to \Bc$ be an exact functor, then
+  \begin{enumerate}
+    \item The exact functor $D^+(F): D^+(A) \to D^+(B)$ exists.
+    \item $D^+(F)$ preserves distinguished triangle, (i.e., $\tridot \mapsto \tridot$.)
+  \end{enumerate}
+  \begin{proof} \hfill
+    First, we have the following observation:
+    \begin{itemize}
+      \item $F$ sends acyclic chain to acyclic chain:
+        If $X^\bullet$ acyclic, then $X^\bullet$ could be decomposed to
+        many short exact sequence:
+        \[ 0 \to \ker d_X^i \to X^i \to \ker d_X^{i+1} \to 0 \]
+        Apply $F$ we would then get
+        \[ 0 \to F(\ker d_X^i) \to F(X^i) \to \ker d_X^{i+1} \to 0 \]
+        which we could connect them and get the desired exact sequence
+        \[ \cdots \to F(X^{i-1}) \to F(X^i) \to F(X^{i+1}) \to \cdots \]
+      \item If $f : X^\bullet \to Y^\bullet$, then $F(f): F(X)^\bullet \to F(Y)^\bullet$,
+        and we have $F(\cone(f)) \cong \cone(F(f))$,
+        since $F(\cone(f))^n = F(X^{n+1} \oplus Y^n) \cong F(X^{n+1}) \oplus F(Y^n)
+        = \cone(F(f))^n$ because $F$ is additive.
+        Moreover, the boundary map $d_{\cone(F(f))}$ is
+        \[ \begin{pmatrix}
+            -F(d_X) & 0 \\ F(f) & F(d_Y)
+        \end{pmatrix} = F \begin{pmatrix}
+            d_X & 0 \\ f & d_Y
+          \end{pmatrix} = d_{F(\cone(f))}
+        \]
+        Since $F$ transform the object and morphisms consistently, thus
+        $F(\cone(f)) \cong \cone(F(f))$. Similarly we have
+        $F(\cyl(f)) \cong \cyl(F(f))$.
+    \end{itemize}
+    Now, return to our proof:
+    \begin{enumerate}
+      \item If $f$ quasi-isomorphic, then $\cone(f)$ acyclic by
+        corollary~\ref{coro:cone-exact-iff-quasi-isomorphic},
+        and $F(\cone(f)) \cong \cone(F(f))$ acyclic by the discussion
+        above, and finally $F(f)$ acyclic by the same corollary.
+        Thus $F$ preserves quasi-isomorphisms.
+
+        Moreover, we could complete the following diagram
+        \[ \begin{tikzcd}[column sep=large]
+            K^+(\Ac) \ar[r, "K^+(F)"] \ar[d, "Q_A"] &
+            K^+(\Bc) \ar[d, "Q_B"] \\
+            K^+(\Ac)[S_A^{-1}] \ar[r, "\exists ! D^+(F)"] & K^+(\Bc)[S_B^{-1}]
+          \end{tikzcd} \]
+        since $F$ send quasi-isomorphisms to quasi-isomorphism
+        and by the universal property of the localized category.
+        Thus $D^+(f)$ exists.
+      \item Apply $D^+(F)$ to the diagram
+        \[ \begin{tikzcd}
+            X^\bullet \ar[r, "f"] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+            Y^\bullet \ar[r] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+            Z^\bullet \ar[r] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+            X^\bullet[1] \ar[d, "\rotatebox{90}{\(\sim\)}"] \\
+            \bar{X}^\bullet \ar[r, "\bar{f}"] &
+            \bar{Y}^\bullet \ar[r] &
+            \cone(\bar{f}) \ar[r] &
+            \bar{X}^\bullet[1]
+        \end{tikzcd} \]
+        We get
+        \[ \begin{tikzcd}
+            F X^\bullet \ar[r, "F f"] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+            F Y^\bullet \ar[r] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+            F Z^\bullet \ar[r] \ar[d, "\rotatebox{90}{\(\sim\)}"] &
+            F X^\bullet[1] \ar[d, "\rotatebox{90}{\(\sim\)}"] \\
+            F \bar{X}^\bullet \ar[r, "F \bar{f}"] &
+            F \bar{Y}^\bullet \ar[r] &
+            F \cone(\bar{f}) \ar[r] &
+            F \bar{X}^\bullet[1]
+        \end{tikzcd} \]
+        Where the quasi-isomorphisms are preserved by the discussion above.
+    \end{enumerate}
+  \end{proof}
+\end{prop}
+
+\begin{definition}
+  A class $R$ of object in $\Obj \Ac$ is said to
+  be adapted to a left exact functor $F$ if
+  \begin{enumerate}
+    \item It is stable under finite direct sums
+    \item $F$ sends acyclic chain in $\Kom^+(R)$ to acyclic chain (in $\Kom^+(B)$).
+    \item For each $X \in A$, exists $I \in R$ such that $0 \to X \to I$.
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  Let $F$ be a left exact functor, $R$ be a class of object adpated to $F$.
+  Define $S_R$ to be the class of quasi-isomorphisms on $K^+(R)$
+  which is localizing since it is stable with the construction
+  of mapping cones. Then $D^+(A) \cong K^+(R)[S_R^{-1}]$.
+
+  \begin{proof}
+    First we claim that for all $C^\bullet \in D^+(\Ac)$ (which
+    we assume $C^i = 0, \, \forall i < 0$),
+    There exists $I^\bullet \in K^+(R)$ such that $C^\bullet \cong I^\bullet$.
+
+    We shall construct quasi-isomorphism $t^n : C^n \to I^n$.
+    Using induction on $n$:
+    \begin{enumerate}
+      \item[$n = 0$:] By the definition of adapting class we have
+        $0 \to C^0 \xto{t^0} I^0$ for some $I^0$.
+        Consider the following diagram:
+        \[ \begin{tikzcd}
+            & 0 \ar[d] & & \\
+            0 \ar[r] & C^0 \ar[r, "d_C"] \ar[d, "t^0"] &
+            C^1 \ar[r, "t^1 = c a"] \ar[d, "a", near start] & I^1 \\
+            & I^0 \ar[r, "b"'] \ar[rru, "d_I", near start] &
+            I^0 \amalg_{C^0} C^1 \ar[ru, "c"'] & \\
+            & 0 \ar[ru] & &
+        \end{tikzcd} \]
+      Where $I^0 \amalg_{C^0} C^1 \triangleq (I^0 \oplus C^1)
+      \big/ \Set{(t^0(x), -d_C(x)) \mid x \in C^0}$.
+
+      We shall prove that $t^0$ is an isomorphism
+      between $H^0(C^\bullet) = \ker d^1_C$ and
+      $H^0(I^\bullet) = \ker d^1_I$. It is
+      obviously 1-1 since $0 \to C^0 \xto{t^0} I^0$,
+      so we need to check it is onto. For any $y \in \ker d^1_I
+      = \ker b$ since $c$ is monomorphism.
+      Then $b(y) = 0 \implies (y, 0) = (t^0(x), -d^1_C(x))$
+      for some $x \in C^0$. So $y = t^0(x)$
+      with $d^1_C(x) = 0 \implies x \in \ker d^1_C$.
+
+    \item [$n = 1$:] Consider the diagram now:
+        \[ \begin{tikzcd}
+            & & C^1 \ar[r, "d^2_C"] \ar[d] \ar[ld, "t^1"'] &
+            C^2 \ar[r, "t^2"] \ar[d, "a'"] & I^2 \\
+            I^0 \ar[r, "d_I^1"] &
+            I^1 \ar[r, "f"'] \ar[rrru, "d_I^2"] &
+            \coker d^1_I \ar[r, "b'"] &
+            \coker d^1_I \amalg_{C^1} C^2 \ar[ru, "c'"] \\
+            & & 0 \ar[ru] & &
+        \end{tikzcd} \]
+      Similarly, we shall prove that
+      \[ H^1(t) : \ \frac{\ker d^2_C}{\Image d^1_C}
+        \xrightarrow{\quad\sim\quad} \frac{\ker d^2_I}{\Image d^1_I} \]
+      is an isomorphism.
+
+      \begin{itemize}
+        \item 1-1: Let $t^1(x) \in \Image d^1_I$. Since $t^1 = ca$
+          and $d^1_I = cb$, there is $y$ such that
+          $ca(x) = cb(y)$. Since $c$ 1-1, $a(x) = b(y) \implies (0, x) = (y, 0)$.
+          in the pushout, so $(y, -x) = (t^0(z), -d^1_C(z))$ for some $z \in C^0$.
+          Thus $x = d^1_c(z) \in \Image d^1_C$.
+        \item onto: For each $y \in \ker d_I^2 = \ker b'p$ since $c'$ 1-1.
+          Then
+          \[ b'p(y) = 0 \implies (y + \Image d^1_I, 0) = (t'(x) + \Image d^1_I, -d^2_C(x))
+            \text{ for some } x \in C^1 \]
+          in the pushout, so we have $y - t'(x) \in \Image d^1_I$ and
+          $ x \in \ker d^2_C$ and thus $H^1(t)(\bar{x}) = \bar{y}$.
+      \end{itemize}
+    \item[$n > 1$:] Similar as $n = 1$.
+    \end{enumerate}
+    \medskip
+
+    After proving this claim, we shall show that
+    $\Hom_{K^+(R)[S_R^{-1}]}(X^\bullet, Y^\bullet)
+    \cong \Hom_{K^+(A)[S^{-1}_A]}(X^\bullet, Y^\bullet)$. \\
+    {\bf We will use left roots instead of right roots defined before here.}
+    \begin{itemize}
+      \item 1-1: If $(f, s) \cong (g, t)$ in $K^+(\Ac)[S^{-1}_\Ac]$, then
+        \[ \begin{tikzcd}
+            & P \ar[d] & & \\
+          X \ar[ru] \ar[rd] & T \in \Ac \ar[rr, bend left, "\sim", "\exists u"', sloped, red] &
+          Y \ar[lu, "\sim"', sloped, near end] \ar[ld, "\sim", sloped] & {\color{red} Z \in R} \\
+          & Q \ar[u] & &
+        \end{tikzcd} \]
+      where $u$ exists by the previous claim.
+      \item onto: Given a root in $\Ac$
+        \[ \begin{tikzcd}[column sep=small]
+            & {\color{red} Z \in R} & \\
+            & X' \in \Ac \ar[u, "\rotatebox{90}{\(\sim\)}", red] & \\
+            X \ar[ru, "f"] & & Y \ar[lu, "s"']
+        \end{tikzcd} \]
+      We could find a root in $R$ which is equivalent to it again
+      by the previous claim.
+    \end{itemize}
+  \end{proof}
+\end{theorem}
+
+Finally, if $F: \Ac \to \Bc$ is an additive left exact functor, then
+we will have $K^+(F): K^+(A) \to K^+(B)$ which
+sends acyclic chain in $K^+(R)$ to acyclic chain in $K^+(B)$.
+This implies that $K^+(F)$ sends quasi-isomorphism in
+$K^+(R)$ to quasi-isomorphism in $K^+(B)$. So
+we have the following diagram:
+\[ \begin{tikzcd}
+  K^+(R) \ar[r, "K^+(F)"] \ar[d, "Q_R"] & K^+(B) \ar[d, "Q_R"] \\
+  I^\bullet \in K^+(R)[S_R^{-1}] \ar[r, "{\color{red} \exists ! \bar{F}}"] & D^+(B) \\
+    D^+(\Ac) \ar[u, "\rotatebox{90}{\(\sim\)}"] \ar[ru, "RF"']
+\end{tikzcd} \]
+Where $\bar{F}$ exists by the universal property of localization.
+Then the derived functor $RF$ could be defined with $R^i F(C^\bullet) = H^i(RF(C^\bullet))$.
+
+The universal property of $RF$ is as following:
+$RF : D^+(A) \to D^+(B)$ is exact and the diagram commutes:
+\[ \begin{tikzcd}[column sep=small]
+  & D^+(A) \ar[rd, "RF"] & \\
+  K^+(A) \ar[ru, "Q_A"] \ar[rd, "K^+(F)"] & & D^+(B) \\
+  & K^+(B) \ar[ru, "Q_B"] &
+\end{tikzcd} \]
+with $\epsilon_F: Q_B \circ K^+(F) \to RF \circ Q_\Ac$ being
+a morphism of functors (???). \\
+Moreover, if $G : D^+(\Ac) \to D^+(\Bc)$ is another exact functor
+with $\epsilon_G : Q_B \circ K^+(F) \to G \circ Q_\Ac$,
+then there is an unique $y: RF \to G$ such that
+\[ \begin{tikzcd}[column sep=small]
+  & Q_\Bc \circ K^+(F) \ar[ld, "\epsilon_F"] \ar[rd, "\epsilon_G"] & \\
+  RF \circ Q_\Ac \ar[rr, "y \circ Q_\Ac"] & & G \circ Q_\Ac
+\end{tikzcd} \]
+
+Now, one may ask that whether $RG \circ RF \cong R(G \circ F)$,
+the answer is no in generally, but there are spectral sequences so that ...
+Which is another story then...
