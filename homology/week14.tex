@@ -153,10 +153,10 @@ N is injective and $0 \to M \to N$?
    \begin{enumerate}[label={\bf Case \arabic*:}]
       \item $R = \Zb$. \\
         Let $X = \Set{x_i}_{i \in \Lambda}$ be a generating set for $M$
-        and $F$ is free on $X$. Let $f$ be the natural map from $f$
+        and $F$ is free on $X$. Let $f$ be the natural map from $F$
         to $M$. then $M \cong \quot{F}{\ker f}$.
 
-        Define $F' = \bigoplus_{i \in \lambda} \Qb e_i \subset F$,
+        Define $F' = \bigoplus_{i \in \Lambda} \Qb e_i \supset F$,
         which is obviously a divisible $\Zb$-module.
         Then $M \subseteq F' / \ker f \triangleq M'$,
         where $M'$ is injective by proposition~\ref{prop:injective-and-divisible}.
@@ -165,14 +165,14 @@ N is injective and $0 \to M \to N$?
         We can regard any $M$ as a $\Zb$-module, then there exists an injective
         module $N_0 \supset M$.
         Now, we have an $R$-module $N \triangleq \Hom_\Zb(R, N_0)$
-        with multiplication $r f(x) \triangleq x \mapsto f(x r)$.
+        with multiplication $rf \triangleq x \mapsto f(x r)$.
 
-        We claim that $N$ is injective. For any $f :: M_1 \to N$,
-        and a homomorphism $\alpha :: M_1 \to M_2$,
-        then $\alpha$ could be take as a $\Zb$-module homomorphism.
-        Define $f' :: M_1 \to N_0$ by $x \mapsto f(x)(1)$. Since
-        $N_0$ injective, exists $h'$, a $\Zb$ module
-        homomorphism from $M_2$ to $N_0$.
+        We claim that $N$ is injective. For any $f : M_1 \to N$,
+        and a homomorphism $\alpha : M_1 \to M_2$,
+        first we can regard $\alpha$ as a $\Zb$-module homomorphism, then
+        we define $f' : M_1 \to N_0$ as $x \mapsto f(x)(1)$. Since
+        $N_0$ injective (in $\Mod_\Zb$), there exists a $\Zb$-module
+        homomorphism $h'$ from $M_2$ to $N_0$.
         \[
           \begin{tikzcd}[contains/.style = {draw=none, 
             "\in" description ,sloped}]
@@ -218,7 +218,7 @@ N is injective and $0 \to M \to N$?
                 &= (r_1h(y))(r) + h(y_2)(r)
               \end{aligned}
             \]
-          \item Show diagram commute $f = h \circ \alpha$
+          \item Show diagram commute $f = h \circ \alpha$.
             Fix $y \in M_1$, then $\forall r \in R$:
             \[
               \begin{aligned}
@@ -229,9 +229,9 @@ N is injective and $0 \to M \to N$?
               \end{aligned}
             \]
         \end{itemize}
-        Thus $N_0$ injective.
+        Thus $N$ injective.
 
-        Now notice that, $\Hom_\Zb(R, \cdot)$ is a left exact functor,
+        Now, notice that $\Hom_\Zb(R, \cdot)$ is a left exact functor,
         so $M \toone N_0$ implies $\Hom_\Zb(R, M) \toone \Hom_\Zb(R, N_0)$,
         thus $M \cong \Hom_R(R, M) \toone \Hom_\Zb(R, M) \toone 
         \Hom_\Zb(R,N_0) = N$.
@@ -310,14 +310,14 @@ N is injective and $0 \to M \to N$?
     $
     split exact and $\mu \circ i = \Id_M$. Since $N$ injective,
     $h'$ exists in the following diagram:
-    $$
+    \[
     \begin{tikzcd}
       0 \ar[r] & M_1 \ar[r, "\alpha"] \ar[d , "f"] \ar[dd, "i 
       \circ f" swap, bend right = 60] & M_2 \ar[ddl, "\exists h'"]\\
                & M \ar[d, xshift=-0.7ex, "i" swap , hook] \\
                & N \ar[u, xshift=0.7ex, "\mu" swap]
     \end{tikzcd}
-    $$
+    \]
     Let $h = \mu \circ h'$, then $h \circ \alpha = \mu \circ h' 
     \circ \alpha = \mu \circ i \circ f = f$.
   \end{proof}
@@ -484,7 +484,7 @@ N is injective and $0 \to M \to N$?
     Now, for another chain map $\Set{g_i: P_i \to C_i}$, we shall construct suitable $\Set{s_n}$
     to prove they are homotopic. For $s_{-1} : M \to C_0$ we could simply pick the
     zero map. Again, if we could prove that
-    $g_n - f_n - s_{n-1} d_n \in \Image d'_{n+1} = \ker d'_n$, then by
+    $\Image (g_n - f_n - s_{n-1} d_n) \subset \ker d'_n$, then by
     the definition of projective module, we would obtain $s_n$ with
     \[ d_{n+1} s_n = g_n - f_n - s_{n-1} d_n \implies g_n - f_n = d_{n+1} s_n + s_{n-1} d_n \]
     immediately. For this we calculate $d'_n (g_n - f_n - s_{n-1} d_n)
@@ -534,8 +534,8 @@ N is injective and $0 \to M \to N$?
                       & \tilde M \ar[r] & 0
       \end{tikzcd}
     \]
-    Notice that $\bar{\cdot}$ act linearly, that is, $\bar{f + g} = \bar{f} + \bar{g}$,
-    and $\bar{fg} = \bar{g} \bar{f}$.
+    Notice that $\bar{\cdot}$ act linearly, that is, $\ob{f + g} = \bar{f} + \bar{g}$,
+    and $\ob{fg} = \bar{g} \bar{f}$.
     So we have
     \[ g_n - f_n = s_{n-1} d_n + \tilde d_{n+1} s_n \implies
       \bar g_n - \bar f_n = \bar d_n \bar s_{n-1} + \bar s_n \bar d_{n+1} \]
@@ -543,7 +543,8 @@ N is injective and $0 \to M \to N$?
     Thus by proposition~\ref{prop:null-homotopic-then-fstar-is-zero},
     $\bar f_\bullet^* = \bar g_\bullet^*$.
 
-    Now, let $P^\bullet, {P'}^\bullet$ be two projective resolution. Consider the diagram:
+    Now, let $P_\bullet, {P'}_\bullet$ be two projective resolutions.
+    Consider the diagram:
     \[
       \begin{tikzcd}[cramped]
         \dotsm \ar[r] & P_1 \ar[r] \ar[d, "f_1"] \ar[dd, bend right, "\Id"' near start]
@@ -567,7 +568,7 @@ N is injective and $0 \to M \to N$?
 
 \begin{theorem}[Horseshoe Lemma] \label{thm:horseshoe-lemma}
   Given $0 \to L \to M \to N \to 0$ and projective resolutions
-  $P^\bullet \to L \to 0, \, \tilde P^\bullet \to N \to 0$.
+  $P_\bullet \to L \to 0, \, \tilde P_\bullet \to N \to 0$.
   Then there is a projective resolution for $M$ such that
   the following diagram commutes:
   \[ \begin{tikzcd}[cramped]
@@ -575,48 +576,49 @@ N is injective and $0 \to M \to N$?
       0 \ar[r] & P_1 \ar[r] \ar[d] & \bar P_1 \ar[r] \ar[d] & \tilde P_1 \ar[r] \ar[d] & 0 \\
       0 \ar[r] & P_0 \ar[r] \ar[d] & \bar P_0 \ar[r] \ar[d] & \tilde P_0 \ar[r] \ar[d] & 0 \\
       0 \ar[r] & L   \ar[r] \ar[d] & M        \ar[r] \ar[d] & N          \ar[r] \ar[d] & 0 \\
-      & 0 & 0 & 0 & \\
-     \end{tikzcd} \]
+               & 0 & 0 & 0 & \\
+  \end{tikzcd} \]
 
-   \begin{proof}
+  \begin{proof}
     Let $\bar P_n \triangleq P_n \oplus \tilde P_n$. $\bar P_n$ is projective
-    by the fact that sum of projective module are projective. Also
+    by the fact that direct sum of projective modules are projective. Also
     $0 \to P_n \to P_n \oplus \tilde P_n \to \tilde P_n \to 0$ by
     injection and projection. It remains to show that the
     maps in the middle column exists.
 
-    By induction on $n$. Consider the following diagram:
-  \[ \begin{tikzcd}[cramped]
-      & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \\
-      0 \ar[r] &
-      P_n \ar[r] \ar[d, "\alpha"] &
-      P_n \oplus \tilde P_n \ar[r] \ar[d, "\bar \alpha"] &
-      \tilde P_n \ar[r] \ar[d, "\tilde \alpha"] \ar[ld, "\exists \sigma"] & 0 \\
-      0 \ar[r] &
-      P_{n-1} \ar[r, "i"] \ar[d, "d"] &
-      \bar P_{n-1} \ar[r, "\pi"] \ar[d, "\bar d"] &
-      \tilde P_{n-1} \ar[r] \ar[d, "\tilde d"] & 0 \\
-      0 \ar[r] & P_{n-2} \ar[r] \ar[d] &
-      \bar P_{n-2} \ar[r] \ar[d] &
-      \tilde P_{n-2} \ar[r] \ar[d] & 0 \\
-      & \vdots & \vdots & \vdots & \\
-     \end{tikzcd} \]
-   $\sigma$ exists because $\tilde P_n$ is projective.
-   Define
-   \[ \begin{tikzcd}[row sep=0pt]
-       \bar\alpha : & P_{n} \otimes \tilde P_{n} \ar[r] & \bar P_{n-1} \\
-       & (z, y) \ar[r, mapsto] & i \alpha(z) + \sigma(y)
-      \end{tikzcd} \]
-   It easy to see that $\bar \alpha$ let the diagram commutes.
+    Consider the following diagram:
+    \[ \begin{tikzcd}[cramped]
+        & \vdots \ar[d] &  & \vdots \ar[d] & \\
+        0 \ar[r] &
+        P_0 \ar[r] \ar[d, "\alpha"] &
+        P_0 \oplus \tilde P_0 \ar[r] \ar[d, red, "\bar \alpha" red, dashed] &
+        \tilde P_0 \ar[r] \ar[d, "\tilde \alpha"] \ar[ld, "\exists \sigma"] & 0 \\
+        0 \ar[r] & L \ar[r, "f"'] \ar[d] &
+        M \ar[r, "g"'] \ar[d] &
+        N \ar[r] \ar[d] & 0 \\
+        & 0 & 0 & 0 & \\
+    \end{tikzcd} \]
+    $\sigma$ exists because $\tilde P_0$ is projective.
+    Define
+    \[ \begin{tikzcd}[row sep=0pt]
+        \bar\alpha : &[-3em] P_0 \oplus \tilde P_0 \ar[r] & M \\
+                     &[-3em] (z, y) \ar[r, mapsto] & f \circ \alpha(z) + \sigma(y)
+    \end{tikzcd} \]
+    It easy to see that $\bar \alpha$ let the diagram commutes.
+    So we show that $P_0 \oplus \tilde P_0 \xto{\bar \alpha} M \to 0$:
 
-   For any $x \in \ker d$, $\tilde \pi(x) = 0$, so $\pi(x) \in \ker \tilde d
-   = \Image \tilde \alpha$, so exists $y$ satisfy $\pi(x) = \tilde \alpha (y)$.
-   Then $\tilde \alpha(y) = \pi \sigma (y) = \pi (x) \implies x - \sigma(y) \in
-   \ker \pi = \Image i$. Let $z'$ be the one so that $i(z') = x - \sigma(y)$,
-   tracing the diagram again one would find out $d(z') = 0$, so exists $z$
-   such that $\alpha(z) = z'$, and then $\bar \alpha(z, y) = i \alpha(z) + \sigma(y) = x$,
-   thus $\Image \bar \alpha = \ker \bar d$.
-   \end{proof}
+    For any $x \in M$, consider $g(x) \in N$. Since
+    $\tilde P_0 \xto{\tilde \alpha} N \to 0$, there exists $y \in \tilde P_0$
+    such that $\tilde\alpha(y) = g(x) \implies g\circ\sigma(y) = g(x)$.
+    Then $x - \sigma(y) = \ker g = \Image f$, so there exists $w \in L$
+    such that $f(w) + \sigma(y) = x$. Now, since $P_0 \xto{\alpha} L \to 0$,
+    there exists $z \in P_0$ such that $\alpha(z) = w$. Then we have
+    $\bar\alpha(z, y) = x$. So $P_0 \oplus \tilde P_0 \xto{\bar \alpha} M \to 0$.
+
+    By induction on $n$, but we use $\ker d_{n-1}, \ker \bar d_{n-1},
+    \ker \tilde d_{n-1}$ to replace $L, M, N$ ($d_{-1} = \alpha$ and so on).
+    Then we are done.
+  \end{proof}
 \end{theorem}
 
 \begin{theorem}[Long exact sequence for $\Ext$]
@@ -635,7 +637,7 @@ N is injective and $0 \to M \to N$?
       0 \ar[leftarrow, r] & \Hom(L  , K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(M       , K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(N         , K) \ar[leftarrow, r] \ar[leftarrow, d] & 0 \\
       & 0 & 0 & 0 & \\
      \end{tikzcd} \]
-   Notice that $\Hom(M \oplus N, K) \cong \Hom(M, K) \otimes \Hom(N, K)$, so
+   Notice that $\Hom(M \oplus N, K) \cong \Hom(M, K) \oplus \Hom(N, K)$, so
    each row is indeed exact.
 
    By exercise 14.7, the long exact sequence in the statement exists.
