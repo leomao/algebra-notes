@@ -304,7 +304,7 @@ From now on, $R$ is a commutative ring with $1$.
   \end{proof}
 \end{prop}
 
-\begin{prop}
+\begin{prop} \label{prop:property-of-contraction-if-integral}
   Let $S/R$ be integral.
   \begin{enumerate}
     \item If $q \in \Spec S$ and $p = q \cap R \in \Spec R$, then
@@ -334,33 +334,117 @@ From now on, $R$ is a commutative ring with $1$.
 
 \end{prop}
 
-\begin{theorem}[Going-up theorem]
+\begin{theorem}[Going-up theorem] \label{thm:going-up}
   Let $S/R$ be integral, then
   \begin{itemize}
     \item If $p \in \Spec R$, then $\exists q \in \Spec S$ such that $q \cap R = p$.
+      \begin{proof}
+        We have the diagram:
+        \[
+          \begin{tikzcd}[cramped]
+            p \ar[r, rightsquigarrow] & R \ar[r, hookrightarrow] \ar[d] & S \ar[d] \\
+            P_p \ar[r, rightsquigarrow] & R_p \ar[r, hookrightarrow] & S_p \\
+          \end{tikzcd}
+        \]
+        Pick $q_p = N \in \Max S_p$, then $N \cap R_p \in \Max R_p = \Set{P_p}$
+        by 1.\ of proposition~\ref{prop:property-of-contraction-if-integral},
+        so $N \cap R_p = P_p$, and $(q \cap R)_p = q_p \cap R_p = P_p$,
+        thus $q \cap R = p$.
+      \end{proof}
     \item If $p_1 \subset p_2$ in $\Spec R$ and $q_1 \in \Spec S$ with $q_1 \cap R = p_1$,
       then $\exists q_2 \in \Spec S$ with $q_1 \subset q_2$ and $q_2 \cap R = p_2$.
+      \begin{proof}
+        Let $R' = R/p_1$ and $S' = S/q_1$. Then again, $S'/R'$ is integral.
+        By the previous statement, exists $q_2/q_1 \in \Spec S'$
+        so that $q_2 / q_1 \cap R' = p_2 / p_1$, thus
+        $q_2 \cap R = p_2$ and $q_2 \supseteq q_1$.
+      \end{proof}
   \end{itemize}
 \end{theorem}
 
 \begin{theorem}
   If $S/R$ is integral, then $\dim S = \dim R$.
+
+  \begin{proof}
+    For any chain $q_0 \subsetneq q_1 \subsetneq \dotsm \subsetneq q_n$
+    in $\Spec S$, by prop 2., $q_0 \cap R \subsetneq q_1 \cap R \subsetneq
+    \dotsm \subsetneq a_n \cap R$.
+
+    Conversely, given $p_0 \subsetneq p_1 \subsetneq \dotsm \subsetneq p_n$
+    in $\Spec R$, there is $q_0 \subsetneq q_1 \subsetneq \dotsm \subsetneq q_n$
+    by the going up theorem (\ref{thm:going-up}).
+  \end{proof}
 \end{theorem}
 
-\begin{prop}
+\begin{prop} \label{prop:integral-then-coefficients-in-radical}
   Let $S, R$ be integral domains and $S/R$ be integral, assume $R$ is normal
   with the field of fractions $K$. If $a \in S$ is integral over $I \subseteq R$, then
   $f = m_{\alpha, K} = x^n + r_1 x^{n-1} + \dotsm + r_n$ with $r_i \in \sqrt{I}$.
+
+  \begin{proof}
+    Assume $\deg f = n$ and $a_1, \dots, a_n \in \overline{K}$
+    are the zeros of $f$. By assumption, $a^m + t_1 a^{m-1} + \dotsm + t_m = 0$
+    with $t_i \in I \subset R \subset K$.
+    For each $i$, exists $\varphi \in \Aut(\overline{K}/K)$ such that
+    $\varphi(a) = a_i$.
+    Then $0 = \varphi(a^m + t_1 a^{m-1} + \dots + t_m) = a_i^m + t_1 a_i^{m-1} + \dots
+    + t_m$, so $a_i$ is integral over $I$. Moveover, the coefficients
+    of $f$ are the elementary symmetry symmetric polynomial of $a_i$,
+    hence they are integral over $I$ and lie in $\sqrt{I \overline{R}} = \sqrt{IR} = \sqrt{I}$.
+  \end{proof}
 \end{prop}
 
-\begin{theorem}[Going-down theorem]
+\begin{theorem}[Going-down theorem] \label{thm:going-down}
   Let $S, R$ be integral domains and $S/R$ be integral, assume $R$ is normal
   with the field of fractions $K$. If $p_1 \supset p_2$ in $\Spec R$ and $q_1 \in \Spec S$
   with $q_1 \cap R = p_1$,
   then $\exists q_2 \in \Spec S$ such that $q_1 \supset q_2$ and $q_2 \cap R = p_2$.
+
+  \begin{proof}
+    First we claim that $p_2 S_{q_1} \cap R = p_2$.
+
+    ``$\supseteq$'': Obvious.
+
+    ``$\subseteq$'': For $b/t \in p_2 S_{q_1} \cap R$, $b \in p_2 S \subset \sqrt{p_2 S}
+    = \sqrt{p_2 \overline{R}}$, which means that $b$ is integral over $p_2$
+    and $t \in S \setminus q_1$. By proposition~\ref{prop:integral-then-coefficients-in-radical},
+    if $m_{b, K} = x^l + r_1 x^{l-1} + \dots + r_l$, then $r_i \in \sqrt{p_2} = p_2$.
+
+    Now, $a = b/t \in R$, so $t = b/a \in S_{R \setminus \Set{0}} = SK$,
+    so
+    \[ \left( \frac{b}{a} \right)^l + 
+      \left(\frac{r_1}{a}\right) \left( \frac{b}{a} \right)^{l-1} + \dots
+      + \left(\frac{r_l}{a^l}\right) \leftrightarrow b^l + r_1 b^{l-1} + \dots + r_l = 0 \]
+    is a correspondence. Thus we know that
+    $m_{t, K} = x^l + (r_1/a) x^{l-1} + \dots + (r_l/a^l)$.
+
+    Again by proposition~\ref{prop:integral-then-coefficients-in-radical},
+    since $t$ is integral over $R$, $u_i \triangleq r_i / a^i \in R$,
+    and $u_i a^i = r_i$ for each $i$.
+
+    If $a \not\in p_2$, then $u_i a^i = r_i \in p_2$, so $u_i \in p_2$.
+    But with $m_{t, K}$ we will find that $t^l \in p_2 S \subseteq p_1 S \subseteq q_1$,
+    so $t \in q_1$, which leads to an contradiction. Thus $a \in p_2$.
+
+    Now we've proved $p_2 S_{q_1} \cap R = p_2$,
+    by exercise 12.4, $p_2 = Q \cap R$ for some $Q \in S_{q_1}$.
+    Letting $q = Q \cap S$ and we're done.
+  \end{proof}
 \end{theorem}
 
 \begin{theorem}
   All maximal chain in $\Spec K[x_1, \dots, x_n]$ have the same length $n$, and thus
-  \[ \dim k[x_1, \dots, x_n] = n. \]
+  \[ \dim K[x_1, \dots, x_n] = n. \]
+
+  \begin{proof}
+    Let $P_0 \subset P_1 \subset \dots \subset P_m$ in $\Spec K[x_1, \dots, x_n]$
+    We shall use induction on $n$ to prove $m = n$.
+
+    $n = 0$: Then $\gen{0}$ is a max chain in $\Spec K$, so $m = 0 = n$.
+
+    $n > 0$: Let $K[y_1, \dots, y_n] \hookrightarrow K[x_1, \dots, x_n]$
+    be a strong Noether normalization with $P_1 \cap K[y_1, \dots, y_n] = \gen{y_{d+1}, \dots, y_n}$,
+    then $h(p_1) = 1 \implies h(p_1 \cap k[y_1, \dots, y_n])$ by
+    the going down theorem (\ref{thm:going-down}). (為什麼這樣就證完了???)
+  \end{proof}
 \end{theorem}

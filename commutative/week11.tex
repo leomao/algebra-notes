@@ -210,7 +210,18 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
   $x_1 > \dotsm > x_n$. Then $G_i \triangleq G \cap K[x_{i+1}, \dots, x_n]$
   is a Gr\"obner basis of $I_i$ (i.e., $\gen{ \LT(G_i) } = \LT(I_i)$).
   \begin{proof}
-    % TODO
+    ``$\subseteq$'': Obvious.
+
+    ``$\supseteq$'': Let $f \in I_i$. Write
+    \[ \LT(f) = \sum h_i \LT(g_i) = \sum a_k x^{\alpha_k} \LT(g_{i_k}) \]
+    Since $\LT(f)$ involves only the variables $x_{i+1}, \dots, x_n$,
+    and each terms of $x^{\alpha_k} \LT(g_{i_k})$ which uses variables
+    $x_{k}$ with $k \leq i$ must sum to zero. Remove those term
+    we could write $\LT(f)$ as a combination of $\LT(g_i)$
+    with $\LT(g_i) \in K[x_{i+1}, \dots, x_n]$.
+    But by the definition of leading term and the ordering $x_1 > \dots > x_n$,
+    we have $g_i \in K[x_{i+1}, \dots, x_n] \implies g_i \in G_i$.
+    Thus $\LT(f) \in \gen{\LT(G_i)}$.
   \end{proof}
 \end{theorem}
 
@@ -248,9 +259,19 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
 
 \begin{theorem}
   Let $I, J$ be two ideals of $K[x_1, \dots, x_n]$, then $I \cap J =
-  (t \tilde{I} + (1 - t) \tilde{J}) \cap K[x_1, \dots, x_n]$.
+  (t \tilde{I} + (1 - t) \tilde{J}) \cap K[x_1, \dots, x_n]$,
+  where $\tilde{I} \triangleq K[x_1, \dots, x_n, t] I$.
   \begin{proof}
-    % TODO
+    ``$\subseteq$'': If $f \in I \cap J$, then $f = tf + (1-t)f \in \text{RHS}$.
+
+    ``$\supseteq$'': If $f \in \text{RHS}$, then $f = t \tilde{f}_1 + (1-t) \tilde{f}_2$.
+    with $\tilde{f}_1 \in \tilde{I}$, $\tilde{f}_2 \in \tilde{J}$.
+    Write
+    \[ \tilde{f}_1 = \sum (h_i t + r_i) f_i, \quad
+      \tilde{f}_2 = \sum (h_j' t + r'_j) f_j \]
+    with each $r_i, r'_j \in K[x_1, \dots, x_n], \ h_i, h'_j \in K[t, x_1, \dots, x_n] $.
+    Take $t = 0$, $f = \sum r'_j f_j \in J$. Then take $t = 1$,
+    $f = \sum (h_i(1, x_1, \dots, x_n) + r_i) f_i \in J$. Thus $f \in I \cap J$.
   \end{proof}
 \end{theorem}
 
@@ -264,7 +285,16 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
   Let $L = \gen{ f_1, \dots, f_s } \subsetneq K[x_1, \dots, x_n]$, then
   $f \in \sqrt{I} \iff \gen{ f_1, \dots, f_s, 1 - tf } = K[x_1, \dots, x_n, t]$.
   \begin{proof}
-    % TODO
+    ``$\Leftarrow$'': By theorem~\ref{thm:weak-hilbert-null},
+    $\gen{f_1, \dots, f_s, 1-tf} = K[x_1, \dots, x_n, t]$ if and only if
+    $\Vc(f_1, \dots, f_s, 1-tf) = \varnothing$. Notice that $1-tf$
+    has no zero if $f = 0$, which means that
+    If $\bm{x}$ is a common zero of $f_1, \dots, f_s$, then
+    $f(\bm{x}) = 0$. So $f \in \Ic(\Vc(I)) \implies f \in \sqrt{I}$
+    by theorem~\ref{thm:strong-hilbert-null}.
+
+    ``$\Rightarrow$'': $f^m \in I \implies 1 = t^mf^m + 1 - t^m f^m
+    = t^m f^m + (1-tf)(1 + tf + \dots + t^{m-1} f^{m-1}) \in \gen{f_1, \dots, f_s, 1-tf}$.
   \end{proof}
 \end{theorem}
 
@@ -278,15 +308,33 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
   $V = V_1 \cap V_2 \cap \dotsm \cap V_m$ with $V_i$ irreducible and
   $V_i \not\subset V_j$.
   \begin{proof}
-    % TODO
+    \begin{itemize} \hfill
+        \item Existence: If not, then $V = V_1 \cup V_1'$,
+          and one of $V_1, V_1'$, say $V_1 = V_2 \cup V_2'$, ...
+          So we would find
+          \[ V \supsetneq V_1 \supsetneq V_2 \subsetneq \dotsm
+            \implies \Ic(V) \subsetneq \Ic(V_1) \subsetneq \Ic(V_2) \subsetneq
+            \text{ in } k[x_1, \dots, x_n] \]
+          Which contradict that $k[x_1, \dots, x_n]$ is Noetherian.
+        \item Uniqueness: If
+          \[ V = V_1 \cup \dotsm \cup V_m = V'_1 \cup \dotsm \cup V'_m \]
+          then $V_i = (V_i \cap V'_1) \cup \dotsm \cup (V_i \cap V'_m)$.
+          But $V_i$ irreducible, so $V_i = V_i \cap V'_j \implies V_i \subset V'_j$.
+          By symmetry we would find $V'_j \subset V_k$, then
+          $V_i \subset V'_j \subset V_k \implies V_i = V_k$.
+          Thus these two decomposition is equal.
+    \end{itemize}
   \end{proof}
 \end{prop}
 
 \begin{theorem}[Decomposition]
-  Assume $\sqrt{I} = I$ and $I \subset J$, then $\Vc(I : J) = \overline{\Vc(I) \setminus \Vc(J)}$.
+  Assume $\sqrt{I} = I$ and $I \subset J$, then $\Vc(I : J) = \Vc(\Ic(\Vc(I) \setminus \Vc(J)))$.
   and $\Vc(I) = \Vc(J) \cup \Vc(I: J)$.
   \begin{proof}
-    % TODO
+    Let $f \in \Ic(\Vc(I) \setminus \Vc(J))$ and $g \in J$,
+    then $fg = \Ic(\Vc(I)) = \sqrt{I} = I$ since $f(\alpha) = 0$
+    for each $\alpha \in \Vc(I) \setminus \Ic(J)$ and $g(\alpha) = 0$
+    for each $\alpha \in \Vc(J)$. Thus $f \in (I: J)$.
   \end{proof}
 \end{theorem}
 
@@ -304,17 +352,27 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
   Hence $V = \Vc(x, y) \cap \Vc(xz-y^2, x^3-yz, x^2y - z^2)$.
 \end{example}
 
+\begin{prop}
+  Let $f : V \to W$, then $\overline{f(V)} = \Vc(\ker f^*)$ where $f^* : k[W] \to k[V]$.
+  \begin{proof}
+    We claim that $\ker f^* = \Ic(f(V))$, since
+    \[ \bar{g} \in \Ic(f(V)) \iff \bar{g}(f(\alpha)) = 0, \, \forall \alpha \in V
+      \iff \bar{g} \circ f \in \Ic(V)
+      \iff f^*(\bar{g}) = \overline{g \circ f} = \bar{0}
+      \iff \bar{g} \in \ker f^* \]
+    Thus $\Vc(\ker f^*) = \Vc(\Ic(f(V))) = \overline{f(V)}$.
+  \end{proof}
+\end{prop}
+
 \begin{remark}
   In general, if $W \subseteq \Ab_k^n$ is an affine algebraic set defined by
   $x_i = f_i(t_1, \dots, t_m)$, then $W$ is irreducible.
   \begin{proof}
-    % TODO
+    $f : \Ab^m_k \twoheadrightarrow W$ is onto, so $\overline{f(\Ab^m_k)}
+    = W = \Vc(0)$. By the previous proposition, $\ker f^* = 0$,
+    thus $f^* : K[W] \cong k[x_1, \dots, x_n] / \Ic(W) \hookrightarrow k[t_1, \dots, t_m]$.
+    But $k[t_1, \dots, t_m]$ is an integer domain, so $\Ic(W)$ is a prime ideal,
+    thus $W$ is irreducible.
   \end{proof}
 \end{remark}
 
-\begin{prop}
-  Let $f : V \to W$, then $\overline{f(V)} = \Vc(\ker f^*)$ where $f^* : k[W] \to k[V]$.
-  \begin{proof}
-    % TODO 這邊好像出了問題
-  \end{proof}
-\end{prop}
