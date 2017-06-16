@@ -628,19 +628,21 @@ N is injective and $0 \to M \to N$?
   \end{multline*}
 
   \begin{proof}
-    Taking $\Hom({-}, K)$ in the diagram of Horseshoe' lemma (\ref{thm:horseshoe-lemma}),
+    Taking $\Hom({-}, K)$ in the diagram of Horseshoe' lemma
+    (\ref{thm:horseshoe-lemma}) and delete the first row,
     we get
   \[ \begin{tikzcd}[cramped]
       & \vdots \ar[leftarrow, d] & \vdots \ar[leftarrow, d] & \vdots \ar[leftarrow, d] & \\
       0 \ar[leftarrow, r] & \Hom(P_1, K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(\bar P_1, K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(\tilde P_1, K) \ar[leftarrow, r] \ar[leftarrow, d] & 0 \\
       0 \ar[leftarrow, r] & \Hom(P_0, K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(\bar P_0, K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(\tilde P_0, K) \ar[leftarrow, r] \ar[leftarrow, d] & 0 \\
-      0 \ar[leftarrow, r] & \Hom(L  , K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(M       , K) \ar[leftarrow, r] \ar[leftarrow, d] & \Hom(N         , K) \ar[leftarrow, r] \ar[leftarrow, d] & 0 \\
       & 0 & 0 & 0 & \\
      \end{tikzcd} \]
    Notice that $\Hom(M \oplus N, K) \cong \Hom(M, K) \oplus \Hom(N, K)$, so
    each row is indeed exact.
 
    By exercise 14.7, the long exact sequence in the statement exists.
+   (one can check the kernels of the first row are indeed
+   $\Hom(N, K), \Hom(M, K), \Hom(L, K)$.)
   \end{proof}
 \end{theorem}
 
