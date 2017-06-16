@@ -31,19 +31,65 @@ We shall consider $R$ to be a integral domain below.
 \begin{theorem} \hfill
   \begin{itemize}
     \item If $d \equiv 1 \pmod{4}$, then
-      \[ A_d = \big\{ a + b \frac{1 + \sqrt{d}}{2} : a, b \in \Zb \big\} \]
+      \[ A_d = \Set*{ a + b \frac{1 + \sqrt{d}}{2} : a, b \in \Zb } \]
     \item Else, $d \equiv 2, 3 \pmod{4}$, then
-      \[ A_d = \big\{ a + b \sqrt{d} : a, b \in \Zb \big\} \]
+      \[ A_d = \Set{ a + b \sqrt{d} : a, b \in \Zb } \]
   \end{itemize}
   \begin{proof}
-    %TODO
+    Let $\alpha = p + q \sqrt{d} \in A_d$ for $p, q \in \Qb$ with $q \neq 0$.
+    We have $\alpha - p = q \sqrt{d}$, then $(\alpha - p)^2 = q^2 d$
+    and thus $\alpha^2 - 2p\alpha + (p^2 - q^2d) = 0$.
+    Let $g(x) \triangleq x^2 - 2px + (p^2 - q^2 d)$.
+    Assume $f(x) \in Z[x]$ with $f$ monic and $f(\alpha) = 0$, then
+    we could write $f(x) = q(x) g(x) + (ax + b)$.
+    Since $\alpha$ is not rational, $a\alpha+b = 0 \implies a = b = 0$,
+    so $f(x) = q(x) g(x)$ in $\Qb[x]$. By gauss lemma,
+    $g(x) \in Z[x]$, so $2p \in \Zb$ and $p^2 - q^2 d \in \Zb$.
+
+    If $2p$ is even, then $p \in \Zb$, and $p^2 - q^2 d \in \Zb$
+    implies $q$ is also an integer since $d$ is square free.
+
+    If $2p$ is odd, say $2p = 2m+1$, then $(2p)^2 \equiv (2m+1)^2 \equiv 1 \pmod{4}$.
+    Also, $4(p^2 - q^2 d) \equiv 0 \pmod{4}$, so $4q^2d \equiv 4p^2 \equiv 1 \pmod{4}$.
+    Since $d$ is square free, so $4 \nmid d$, thus $q$ has to be of the form
+    $q = (2n+1)/2$. Plug in the equation we get $d \equiv 1 \pmod{4}$.
+    Thus in this case, $p, q$ are half integer and $d \equiv 1 \pmod{4}$.
   \end{proof}
 \end{theorem}
 
 \begin{theorem}
-  $A_d$ is a ED if $d = 2, 3, 5, -1, -2, -3, -7, -11$. Hence $A_d$ is also PID and UFD.
+  $A_d$ is a ED if $d = 2, 3, 5, -1, -2, -3, -7, -11$. Hence $A_d$ is also PID and UFD
+  for these value.
   \begin{proof}
-    %TODO
+    Let $N'(p + q\sqrt{d}) = (p + q\sqrt{d})(p - q\sqrt{d}) = p^2 - q^2 d$.
+    Define $N(\alpha) \triangleq \abs{N'(\alpha)}$ which is positive
+    since $p^2 - q^2 d = 0 \iff p = q = 0$. Notice also $N$
+    is multiplicative.
+
+    Now, for $\alpha, \beta \in A_d$, write $\alpha/\beta = x+y\sqrt{d}$.
+    If we could find $\lambda = a+b\sqrt{d}$ such that
+    $\abs{\alpha / \beta - \lambda} < 1$, then
+    $\alpha = \beta \lambda + \gamma$ with $N(\gamma) < N(\beta)$
+    which proves that $A_d$ is an ED.
+
+    \begin{itemize}
+      \item $d = 2, 3, -2, -1$:
+        Choose $a, b \in \Zb$ such that
+        $\abs{x - a}, \abs{y - b} \leq 1/2$.
+        Then $N \triangleq N(\alpha/\beta - \lambda) = \abs{(x - a)^2 - (y-b)^2d}$.
+        \begin{itemize}
+          \item If $d = 2, 3$, then $N \leq \max(\abs{(x - a)^2}, \abs{(y-b)^2d}) \leq
+            \max(1/4, d/4) < 1$.
+          \item If $d = -2, -1$, then $N \leq \abs{(x - a)^2} + \abs{(y-b)^2d} \leq
+            1/4 + \abs{d}/4 < 1$.
+        \end{itemize}
+      \item $d = 5, -3, -7, -11$: Similarly, but now $d \equiv 1 \pmod{4}$,
+        so we could choose $\lambda = a + b(1 + \sqrt{d})/2 = (a + b/2) + b/2 \sqrt{d}$.
+        Thus let $b$ be the one such that $\abs{2y - b} \leq 1/2$, and
+        then choose $a$ so that $x - a - b/2 \leq 1/2$.
+        We have $N(\alpha/\beta - \lambda) = \abs{(x - a - b/2)^2 - d (y - b/2)^2}
+        \leq 1/4 + d/16 < 1$.
+    \end{itemize}
   \end{proof}
 \end{theorem}
 
@@ -53,24 +99,15 @@ We shall consider $R$ to be a integral domain below.
   \begin{proof}
     Consider $6 = 2 \cdot 3 = (1 + \sqrt{-5})(1 - \sqrt{-5})$.
     Notice that $1 + \sqrt{-5}$ is irreducible, since if $1 + \sqrt{-5} = \alpha \beta$,
-    then $6 = N(1 + \sqrt{-5}) = N(\alpha) N(\beta)$. But there is
-    $a^2 + 5b^2 = 2 \text{ or } 3$ has no integer solution.
+    then $6 = N(1 + \sqrt{-5}) = N(\alpha) N(\beta)$. But this implies
+    $a^2 + 5b^2 = 2 \text{ or } 3$ which has no integer solution.
     Also $1 + \sqrt{-5} \nmid 2, 3$. Since if $(1 + \sqrt{-5}) \alpha = 2$,
-    then $N(1 + \sqrt{-5}) N(\alpha) = N(2)$, but $N(1 + \sqrt{-5}) = 6$.
+    then $N(1 + \sqrt{-5}) N(\alpha) = N(2) = 4$, but $N(1 + \sqrt{-5}) = 6$.
+    Similarly $1 + \sqrt{-5} \nmid 3$. So $A_{-5}$ is not an UFD thus not an ED.
   \end{proof}
 \end{example}
 
 \subsubsection{$A_{-1}$ and $A_{-3}$}
-First, $\alpha$ is a unit $\iff$ $N(\alpha) = 1$.
-so we have:
-\begin{itemize}
-  \item $A_{-1}$: $\pm 1, \pm \mathrm{i}$.
-  \item $A_{-3}$: $\pm 1, \pm \omega, \pm \omega^2$.
-\end{itemize}
-
-If $\alpha$ is a prime in $A_{-1}$ or $A_{-3}$, then $N(\alpha) = p \text{ or } p^2$ for some prime integer $p$.
-
-Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
 
 \begin{definition}
   If $p$ is add and $a \not\equiv 0 \pmod{p}$, then
@@ -83,10 +120,148 @@ Let $N(\alpha)  = \alpha \bar\alpha = p_1 \dotsm p_n$ in $\Zb$
 \begin{prop} \hfill
   \begin{itemize}
     \item $a \equiv b \pmod{p} \implies \left( \frac{a}{p} \right) = \left( \frac{b}{p} \right)$.
+    \item $\left( \frac{a}{p} \right) = a^{(p-1)/2}$:
+      \begin{proof}
+      Consider the sequence:
+      \[ \begin{tikzcd}[row sep = 0]
+          1 \ar[r] & (\Fb_p^\times)^2 \ar[r] & \Fb_p^\times \ar[r, "\varphi"] & \Set{\pm 1} \ar[r] & 1 \\
+          & y^2 \ar[r, mapsto] & y^2=x \ar[r, mapsto] & (-1)^{(p-1)/2} \ar[r, mapsto] & 1 \\
+      \end{tikzcd} \]
+      which is exact since $y^2 \mapsto y^2 \mapsto y^{2 (p-1)/2} \equiv 1$.
+      And since $\Fb_p^\times$ is cyclic with even elements,
+      $\big[\Fb_p^\times: (\Fb_p^\times)^2 \big] = 2$, and $(\Fb_p^\times)^2 = \ker \varphi$.
+      \end{proof}
+    \item $\left( \frac{ab}{p} \right) = \left( \frac{a}{p} \right) \left( \frac{b}{p} \right)$.
+    \item Let $t_k \equiv ka \pmod{p}$ with $0 \leq t_k < p$, for $1 \leq k \leq (p-1)/2$.
+      Assume that $n = \# \Set{t_i \mid t_i > p/2}$, then $\left(\frac{a}{p}\right) = (-1)^n$.
+      \begin{proof}
+        Define
+        \[ \abs{t_i} = \begin{cases}
+            t_j & \text{ If } 1 \leq t_j < p/2 \quad (t_j \equiv \abs{t_j}) \\
+            p - t_j & \text{ If } p/2 < t_j < p \quad (t_j \equiv -\abs{t_j})
+        \end{cases} \]
+      Notice that $\abs{t_i}$ takes value between $1$ and $(p-1)/2$,
+      and $\abs{ra} \equiv \abs{sa} \pmod{p} \implies
+      ra \equiv sa \pmod{p} \implies r \equiv \pm s \pmod{p}$ since $\gcd(a, p) = 1$.
+      So $t_k$ would have distinct value for $1 \leq k \leq (p-1)/2$.
+      Thus
+      \[ \prod t_k \equiv \frac{p-1}{2}! a^{(p-1)/2} \equiv (-1)^n \frac{p-1}{2}!
+        \implies a^{(p-1)/2} \equiv (-1)^n \]
+      \end{proof}
+    \item We have:
+      \[ \left( \frac{q}{p} \right) = (-1)^{\left( \sum_{k=1}^{(p-1)/2} \floor*{\frac{kq}{p}} \right)} \]
+      \begin{proof}
+        Write $kq = g_k p + t_k$ with $0 \leq t_k < p$ consistent with the previous definition.
+        Then we have $\floor{kq / p} = g_k$, and
+        \begin{alignat*}{4}
+          & \text{ if } \abs{t_k} = t_k && \leadsto ak = g_k p + \abs{t_k} &&
+          \leadsto k \equiv g_k + \abs{t_k} \pmod{2} \\
+          & \text{ if } \abs{t_k} = p - t_k \quad && \leadsto ak = (g_k+1) p - \abs{t_k} \quad &&
+          \leadsto k \equiv g_k + 1 + \abs{t_k} \pmod{2} \\
+        \end{alignat*}
+        So
+        \[ \sum_{i = 1}^{(p-1)/2} k \equiv n + \sum_{i=1}^{(p-1)/2} \floor*{\frac{qk}{p}}
+          + \sum_{k=1}^{(p-1)/2} \abs{t_k} \pmod{2} \]
+        As in the previous proof, $\sum k = \sum \abs{t_k}$, so $n \equiv \sum \floor{qk/p} \pmod{2}$,
+        which proves the statement.
+      \end{proof}
+    \item
+      \[ \left( \frac{p}{q} \right) \left( \frac{q}{p} \right)
+        = (-1)^{\left(\frac{p-1}{2}\right) \left(\frac{q-1}{2}\right)} \]
+      By above,
+      \[ \left( \frac{p}{q} \right) \left( \frac{q}{p} \right)
+        = (-1)^{\left( \sum_{k=1}^{(p-1)/2} \floor*{\frac{kq}{p}} \right)}
+        (-1)^{\left( \sum_{k=1}^{(q-1)/2} \floor*{\frac{kp}{q}} \right)} 
+      \]
+      Which is the number of integer points in the rectangle:
+      \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+          \draw[thick] (0, 0) rectangle (5.5, 3.5);
+          \draw[thick] (0, 0) -- (5.5, 3.5);
+          \foreach \x in {0, ..., 5} {
+            \foreach \y in {0, ..., 3}
+            \fill[black!50] (\x, \y) circle (0.06);
+          }
+          \node at (1.5, 2.5) {$\sum_{k=1}^{(q-1)/2} \floor*{\frac{kp}{q}}$};
+          \node at (3.5, 1) {$\sum_{k=1}^{(p-1)/2} \floor*{\frac{kq}{p}}$};
+          \node at (-.5, -.5) {$(0, 0)$};
+          \node at (6, 4) {$(p/2, q/2)$};
+        \end{tikzpicture}
+      \end{figure}
+      And we know that there are $\frac{p-1}{2} \frac{q-1}{2}$ points in the rectangle.
   \end{itemize}
   % TODO missing something...
 \end{prop}
 % TODO missing something...
+
+\begin{prop}
+  \begin{itemize}
+    \item $\alpha$ is a unit $\iff$ $N(\alpha) = 1$.
+      \begin{proof}
+        ``$\Rightarrow$": If $\alpha \beta = 1$, $N(\alpha) N(\beta) = 1$ so $N(\alpha) = 1$.
+
+        ``$\Leftarrow$": Immediately by $\alpha \bar{\alpha} = N(\alpha) = 1$.
+      \end{proof}
+    \item If $\alpha$ is a prime in $A_d$, then $N(\alpha) = p \text{ or } p^2$
+      for some prime integer $p$. Also $N(\alpha) = p^2 \implies \alpha \sim p$.
+      \begin{proof}
+        $\alpha \bar{\alpha} = N(\alpha) = p_1 \dotsm p_n$ where $p_i$ are
+        primes in $\Zb$. Continue using the fact that ``If $\alpha$
+        is a prime and $\alpha \mid xy$, then $\alpha \mid x$ or $\alpha \mid y$'',
+        we will get $\alpha \mid p_i$ for an $i$. Say $\alpha \beta = p_i$,
+        then $\bar{\alpha}\bar{\beta} = \bar{p}_i = p_i$,
+        so $N(\alpha) N(\beta) = p_i^2$ which means that $N(\alpha) = p_i \text{ or } p_i^2$.
+        Also, if $N(\alpha) = p_i^2$, then $N(\beta) = 1 \implies \beta \text{ is a unit }$.
+      \end{proof}
+  \end{itemize}
+\end{prop}
+
+By the proposition above we identify the unit in $A_{-1}, A_{-3}$.
+\begin{itemize}
+  \item $A_{-1}$: $\pm 1, \pm \mathrm{i}$.
+  \item $A_{-3}$: $\pm 1, \pm \omega, \pm \omega^2$.
+\end{itemize}
+
+Now, notice that $2 = (1 + \sqrt{-1})(1 - \sqrt{-1})$, $3 = (1 - \omega) (1 - \omega^2)$,
+so $2, 3$ are not prime in $A_{-1}, A_{-3}$ respectively.
+
+Let $p$ be a prime in $\Zb$.
+\begin{itemize}
+  \item In $A_{-1}$:
+    \begin{align*}
+      & p \text{ is a prime in } \Zb[\sqrt{-1}] \\
+      \iff \ & \gen{p} \text{ is maximal ideal } \\
+      \iff \ & \frac{\Zb[\sqrt{-1}]}{\gen{p}} \cong \frac{\Zb[x]}{\gen{p, x^2+1}}
+      \cong \frac{\Zb[x]/\gen{p}}{\gen{p, x^2+1}/\gen{p}} \cong \frac{\Fb_p[x]}{x^2+1}
+      \text{ is a field } \\
+      \iff \ & x^2 + 1 \text{ irreducible in } \Fb[x] \\
+      \iff \ & x^2 \equiv -1 \pmod{p} \text{ is not solvable } \\
+      \iff \ & \left(\frac{-1}{p}\right) = (-1)^{(p-1)/2} = 1 \\
+      \iff \ & p \not\equiv 1 \pmod{4}
+    \end{align*}
+    So $p$ is {\bf not} a prime in $A_{-1}$ $\iff$ $p \equiv 1 \pmod{4}$.
+  \item In $A_{-3}$: Let $\alpha = a + b \omega$, then
+    $p = \alpha \bar{\alpha} \iff a^2 + b^2 - ab \iff 4p = (2a - b)^2 + 3b^2$
+    ($p = \alpha \beta$ 怎辦 ??)
+    So if $p$ is not a prime in $\Zb[\omega]$, then $p \equiv x^2 \pmod{3}$,
+    thus $p \equiv 1 \pmod{3}$.
+
+    Conversely, if $p \equiv 1 \pmod{3}$, then
+    \[ \left(\frac{-3}{p}\right)
+      = \left(\frac{-1}{p}\right) \left(\frac{3}{p}\right)
+      = (-1)^{(p-1)/2} \left(\frac{p}{3}\right) (-1)^{(p-1)/2} (-1)^{(3-1)/2}
+      = \left(\frac{p}{3}\right) = \left(\frac{1}{3}\right) = 1 \]
+    So exists $a \in \Zb$ such that $a^2 \equiv -3 \pmod{p}$,
+    say $pb = a^2 + 3 = (a + \sqrt{-3}) (a - \sqrt{-3}) = (a+1 + 2\omega) (a - 1 - 2\omega)$.
+
+    If $p$ is a prime in $\Zb[\omega]$, then $p \mid (a+1-2\omega)$ or $p \mod (a - 1 - 2\omega)$,
+    which implies that $p \mid 2$ (摸出來 ??????), which leads to an contradiction,
+    thus $p$ is not a prime.
+
+    Hence $p \neq 3$ is not a prime in $A_{-3}$ $\iff$ $p \equiv 1 \pmod{3}$.
+\end{itemize}
+
 
 \subsection{Primary decomposition}
 \begin{definition} \hfill
