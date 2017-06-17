@@ -3,7 +3,7 @@
 
 In the following, $k$ will be an algebraically closed field.
 \begin{definition}
-  The category of affine algebraic sets $\mathcal{G}$ and its objects and morphisms are defined as following:
+  The category of affine algebraic sets $\Gc$ and its objects and morphisms are defined as following:
 
   \begin{description}[leftmargin=0cm]
     \item[objects:] The objects are affine algebraic sets in $k^n$.
@@ -34,7 +34,7 @@ In the following, $k$ will be an algebraically closed field.
 \end{definition}
 
 \begin{definition}
-  The category of finitely generated reduced $k$-algebra $\mathcal{A}$
+  The category of finitely generated reduced $k$-algebra $\Ac$
   and its objects and morphisms are defined as following:
 
   \begin{description}
@@ -86,25 +86,34 @@ The one-one correspondence is given by
 
 \begin{lemma} \label{lemma:module-finite-ring-finite}
   Given $T/S/R$, a tower of rings.
-  If $R$ is Noetherian, $T/S$ is a module finite and $T/R$ is a ring finite, then $S/R$ is a ring finite.
+  If $R$ is Noetherian, $T/S$ is module finite and $T/R$ is ring finite, then
+  $S/R$ is ring finite.
 
   \begin{proof}
-    Let $T = R[a_1, \dots, a_n] = S \omega_1 + \dots + S \omega_m$.
-    Then $a_i = \sum_j r_{i, k} \omega_k$ for some $r_{i, k}$
-    and $\omega_{i, j} = \sum t_{i, j, k} w_k$ for some $t_{i, j, k}$.
+    Let $T = R[a_1, \dots, a_n] = S w_1 + \dots + S w_m$.
+    Then $a_i = \sum r_{i, j} w_j$ for some $r_{i, j}$
+    and $w_i w_j = \sum t_{i, j, k} w_k$ for some $t_{i, j, k}$.
 
-    Let $S' = R\big[ \Set{r_{i, k}}, \Set{t_{i, j, k}} \big] \subseteq S$, which
-    is Noetherian by the Hilbert basis theorem ($R$ Notherian $\implies$ $R[x]$ Notherian).
+    Let $S' = R\big[ \Set{r_{i, j}}, \Set{t_{i, j, k}} \big] \subseteq S$, which
+    is Noetherian by the Hilbert basis theorem
+    ($R$ Notherian $\implies$ $R[x]$ Notherian).
     Thus $T = S' \omega_1 + \dots + S' \omega_m$ is a Noetherian $S'$-module
-    by the fact that finitely generated module over a Noetherian ring is a Noetherian module.
+    by the fact that finitely generated module over a Noetherian ring is a
+    Noetherian module.
 
     Since $S \subset T$, $S$ is a finitely generated $S'$ submodule,
-    so $S = S' v_1 + \dots + S' v_r = R\big[ \Set{r_{i, k}}, \Set{t_{i, j, k}}, \Set{v_i} \big]$.
+    so
+    \[
+      S = S' v_1 + \dots + S' v_r = R\big[ \Set{r_{i, k}}, \Set{t_{i, j, k}},
+      \Set{v_i} \big].
+      \qedhere
+    \]
   \end{proof}
 \end{lemma}
 
 \begin{lemma} \label{lemma:transcendental-is-not-ring-finite}
-    If $S = k(z_1, \dots, z_p), \, p > 0$ with each $z_i$ transcendental, then $S/k$ is not ring finite.
+    If $S = k(z_1, \dots, z_p), \, p > 0$ with each $z_i$ transcendental,
+    then $S/k$ is not ring finite.
 
   \begin{proof}
     If not, say $S = k[f_1, \dots, f_n]$ with $f_i = g_i / h_i$, $g_i, h_i \in k[z_1, \dots, z_p]$.
@@ -120,9 +129,10 @@ The one-one correspondence is given by
 
   \begin{proof}
     If $A/k$ is transcendental and let $\Set{z_1, \dots, z_t}$ be a transcendental base.
-    Then $A/k(z_1, \dots, z_t)$ is algebraic, thus a module finite.
+    Then $A/k(z_1, \dots, z_t)$ is algebraic, thus module finite
+    (note that $A/k$ is ring finite).
     By lemma~\ref{lemma:module-finite-ring-finite}, $k(z_1, \dots, z_t)$ is ring finite,
-    which contradict with lemma~\ref{lemma:transcendental-is-not-ring-finite}.
+    which contradicts with lemma~\ref{lemma:transcendental-is-not-ring-finite}.
   \end{proof}
 \end{lemma}
 
@@ -131,7 +141,7 @@ The one-one correspondence is given by
 
   \begin{proof}
     Since $I$ proper, by lemma~\ref{lemma:max-ideal-exists},
-    exists a maximal ideal $M$ such that $I \subseteq M$.
+    there exists a maximal ideal $M$ such that $I \subseteq M$.
     Consider $K \triangleq k[x_1, \dots, x_n] / M = k[\bar{x}_1, \dots, \bar{x}_n]$.
     By proposition~\ref{prop:max-prime-to-field-int-domain}, $K$ is a field,
     and by lemma~\ref{lemma:ring-finite-is-alg}, $K/k$ is algebraic. Since $k$
@@ -167,14 +177,14 @@ The one-one correspondence is given by
 \end{theorem}
 
 \begin{definition}
-  Let $V \in \mathcal{G}$, the coordinate ring of $V$ is $k[V] \triangleq k[x_1, \dots, x_n] / \mathcal{I}(V)$
+  Let $V \in \Gc$, the coordinate ring of $V$ is $k[V] \triangleq k[x_1, \dots, x_n] / \Ic(V)$.
 \end{definition}
 
-\subsubsection{Equivalence of $\mathcal{G}$ and $\mathcal{A}$}
-We define a functor $F$ from $\mathcal{G}$ to $\mathcal{A}$ by
+\subsubsection{Equivalence of $\Gc$ and $\Ac$}
+We define a functor $F$ from $\Gc$ to $\Ac$ by
   \[
     \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
-      F: &[-0.7cm] \mathcal{G} \arrow[r] & \mathcal{A} \\
+      F: &[-0.7cm] \Gc \arrow[r] & \Ac \\
       & V \arrow[r, mapsto] & k[V]
     \end{tikzcd}
   \]
@@ -190,7 +200,7 @@ We define a functor $F$ from $\mathcal{G}$ to $\mathcal{A}$ by
 
   \[
     \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
-      G: &[-0.7cm] \mathcal{A} \arrow[r] & \mathcal{G} \\
+      G: &[-0.7cm] \Ac \arrow[r] & \Gc \\
       & k[x_1, \dots, x_n]/I \arrow[r, mapsto] & \Vc(I)
     \end{tikzcd}
   \]
