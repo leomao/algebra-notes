@@ -195,7 +195,7 @@ We shall consider $R$ to be a integral domain below.
 \end{prop}
 % TODO missing something...
 
-\begin{prop}
+\begin{prop} \hfill
   \begin{itemize}
     \item $\alpha$ is a unit $\iff$ $N(\alpha) = 1$.
       \begin{proof}
@@ -242,7 +242,7 @@ Let $p$ be a prime in $\Zb$.
     \end{align*}
     So $p$ is {\bf not} a prime in $A_{-1}$ $\iff$ $p \equiv 1 \pmod{4}$.
   \item In $A_{-3}$: Let $\alpha = a + b \omega$, then
-    $p = \alpha \bar{\alpha} \iff a^2 + b^2 - ab \iff 4p = (2a - b)^2 + 3b^2$
+    $p = \alpha \bar{\alpha} \iff p^2 = a^2 + b^2 - ab \iff 4p = (2a - b)^2 + 3b^2$
     ($p = \alpha \beta$ 怎辦 ??)
     So if $p$ is not a prime in $\Zb[\omega]$, then $p \equiv x^2 \pmod{3}$,
     thus $p \equiv 1 \pmod{3}$.
@@ -255,8 +255,9 @@ Let $p$ be a prime in $\Zb$.
     So exists $a \in \Zb$ such that $a^2 \equiv -3 \pmod{p}$,
     say $pb = a^2 + 3 = (a + \sqrt{-3}) (a - \sqrt{-3}) = (a+1 + 2\omega) (a - 1 - 2\omega)$.
 
-    If $p$ is a prime in $\Zb[\omega]$, then $p \mid (a+1-2\omega)$ or $p \mod (a - 1 - 2\omega)$,
-    which implies that $p \mid 2$ (摸出來 ??????), which leads to an contradiction,
+    If $p$ is a prime in $\Zb[\omega]$, then $p \mid (a+1-2\omega)$ or $p \mid (a - 1 - 2\omega)$,
+    but $p \mid a + b \mathrm{i} \implies p \mid 2b$ (since there are half integer in $A_{-3}$),
+    so $p \mid 2$, which leads to an contradiction,
     thus $p$ is not a prime.
 
     Hence $p \neq 3$ is not a prime in $A_{-3}$ $\iff$ $p \equiv 1 \pmod{3}$.
@@ -319,7 +320,7 @@ Let $p$ be a prime in $\Zb$.
   implies $y^n \in q$ for some $n \in \Nb$.
 \end{definition}
 
-\begin{prop} \hfill
+\begin{prop} \label{prop:property-of-prime-and-primary} \hfill
   \begin{itemize}
     \item $\text{prime} \implies \text{primary}$.
     \item $\sqrt\text{primary} \implies \text{prime}$. Also, if $q$ is primary, then $p = \sqrt{q}$

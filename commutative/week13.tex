@@ -23,28 +23,28 @@
     \item  $\sqrt{\mf_i^{n_i} + \mf_j^{n_j}} = \sqrt{\sqrt{\mf_i^{n_i}} + 
       \sqrt{\mf_j^{n_j}}}$
       \begin{proof} $ $\\ 
-        "$\subseteq$" $\forall a \in \text{LHS}$, that is, $a^n  = b + c$ with 
-        $b \in m_i^{n_i} \subseteq \sqrt{m_i^{n_i}}$ and 
-        $c \in m_j^{n_j} \subseteq{m_j^{n_j}}$ then $a \in \text{RHS}$. \\
+        "$\subseteq$": Obvious.
+
         "$\supseteq$" $\forall a \in \text{RHS}$, that is, $a^n = b + c$ with 
         $b^k \in m_i^{n_i}$ and $c^t \in m_j^{n_j}$. Then 
-        $(a^n)^{k+t} = (b + c)^{k + t} = b^{k+t} + \dots + C_{t}^{k}b^kc^t
-        + \dots + c^{k+t}$. Every term either in $m_i^{n_i}$ or $m_j^{m_j}$,
-         then $(a^n)^{k+t} = c + d$ with $c \in m_i^{n_i}\ d \in m_j^{n_j}$
+        $(a^n)^{k+t} = (b + c)^{k + t} = b^{k+t} + \dots + C_{t}^{k+t} b^kc^t
+        + \dots + c^{k+t}$. Every term is either in $m_i^{n_i}$ or $m_j^{m_j}$,
+         then $(a^n)^{k+t} = c + d$ with $c \in m_i^{n_i},\ d \in m_j^{n_j}$
          $\Rightarrow a \in \text{LHS}$
       \end{proof}
     \item If $m$ is prime, $\sqrt{m^{n}} = m$
       \begin{proof} $ $\\
-        $"\subseteq"$ $a \in \text{LHS} \Rightarrow a^k \in m^{n}$ and $m$ is prime.
-        $\Rightarrow a \in m$. \\
-        $"\subseteq"$ $a \in \text{RHS} a \in m \Rightarrow a^n \in \text{LHS}$.
+        $"\subseteq"$: If $a \in \text{LHS}$, then $a^k \in m^{n} \subset m$ and $m$ is prime.
+        $\Rightarrow a \in m$.
+
+        $"\supseteq"$: If $a \in \text{RHS}$, then $a^n \in m^n \implies a^n \in \text{LHS}$.
       \end{proof}
      \item If $m$, $m_i, i = 1, \cdots, n$ are prime and $m \supseteq m_1 \cap
        \cdots \cap m_n$, then $m \supseteq m_i$ for some i.
        \begin{proof} $ $\\
-         Suppose not, then we pick $a_i \in m_i \ m$. $b = a_1\cdots a_n \in m_i 
-         \forall i$. $\leadsto b \in m_1 \cap \cdots \cap m_n \subseteq m$. But,
-         m is prime, exist $a_i \in m$, a contradiction. 
+         Suppose not, then we pick $a_i \in m_i \setminus m$. Then $b \triangleq a_1\cdots a_n \in m_i
+         , \, \forall i$. So $b \in m_1 \cap \cdots \cap m_n \subseteq m$. But
+         $m$ is prime, so exist $a_i \in m$, which is a contradiction. 
        \end{proof}
   \end{itemize}
 \end{prop}
@@ -53,73 +53,75 @@
 \begin{prop} \label{artin-ring-basic-property}
   Let $R$ be an Artinian ring
   \begin{enumerate}[(1)]
-    \item $I \subseteq R \leadsto \quot{R}{I}$ is also Artinian.
+    \item If $I \subseteq R$, then $\quot{R}{I}$ is also Artinian.
     \item If $R$ is an integral domain, then $R$ is a field.
       \begin{proof}
-        $\forall \underset{\ne 0}{a} \in R, \gen{a} \supseteq \gen{a^2} \supseteq \dotsm$
+        $\forall a \neq 0 \in R, \gen{a} \supseteq \gen{a^2} \supseteq \dotsm$
         is a descending chain of ideals $\implies \gen{a^l} = \gen{a^{l+1}} = \dotsm$
         for some $l \in \Nb \implies a^l = ba^{l+1} \implies a^l(1 - ab) = 0
-        \implies ab = 1$ since $a^l \ne 0$.
+        \implies ab = 1$ since cancellation works in integral domain.
       \end{proof}
     \item $\Spec R = \Max R$. ($\implies \dim R = 0$)
       \begin{proof}
         $\forall p \in \Spec R, \quot{R}{p}$ is an integral domain
-        $\leadsto \quot{R}{p}$ is a field $\leadsto p \in \Max R$.
+        $\implies \quot{R}{p}$ is a field $\implies p \in \Max R$.
       \end{proof}
     \item $\abs{\Max R} < \infty$.
       \begin{proof}
         Consider the set $\Set*{ \bigcap\limits_{\text{finite}} \mf \given \mf \in \Max R}
-        \ne \varnothing$. So there exists a minimal element in this set ($R$ is Artinian),
+        \ne \varnothing$. So there exists a minimal element in this set since $R$ is Artinian,
         say $\mf_1 \cap \dots \cap \mf_k$.  Now, for $\mf \in \Max R$, we have
         $\mf\cap \mf_1\cap \dots \cap\mf_k = \mf_1\cap \dots \cap\mf_k$ since the
-        latter is minimal $\implies \mf \supseteq \mf_1\cap \dots\cap\mf_k
-        \leadsto \mf \supseteq \mf_i$ for some $i$, by Prop~\ref{prop:radical-power-relation}.
-        $\leadsto m = m_i$, since $m_i$ is max. So $\Max R = \set{\mf_1, \dots, \mf_k}$.
+        latter is minimal, so $\mf \supseteq \mf_1\cap \dots\cap\mf_k
+        \implies \mf \supseteq \mf_i$ for some $i$, by 3.\ of proposition~\ref{prop:radical-power-relation}.
+        Then $\mf = \mf_i$, since $\mf_i$ is max. So $\Max R = \set{\mf_1, \dots, \mf_k}$.
       \end{proof}
     \item $\exists n_1, \dots, n_k \in \Nb$ s.t.
       $\gen{0} = \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k}
       = \mf_1^{n_1}\cap \mf_2^{n_2} \cap \dots \cap \mf_k^{n_k}$.
-      \begin{proof} $ $\\
-        \begin{itemize}
-          \item $ \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} 
-            = \mf_1^{n_1}\cap \mf_2^{n_2} \cap \dots \cap \mf_k^{n_k}$. \\
-            Recall $I_i, I_j$ are coprime for $i \ne j \leadsto
-            \prod\limits_{i=1}^n I_i = \bigcap\limits_{i=1}^n I_i$.
-            And, by Prop~\ref{prop:radical-power-relation}
-             \[
-              \sqrt{\mf_i^{n_i} + \mf_j^{n_j}}
-              = \sqrt{\sqrt{\mf_i^{n_i}} + \sqrt{\mf_j^{n_j}}}
-              = \sqrt{\mf_i + \mf_j} = \sqrt{R} = R
-              \leadsto \mf_i^{n_i} + \mf_j^{n_j} = R.
-            \]
-          \item $\gen{0} = \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} $ for suitable $\{n_i\}$
-            that $\mf_i^{n_i} = \mf_i^{n_i+1}$\\
-             Let $\Sc = \Set{J \subseteq R \given J \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \neq 0}$.
-             If $\gen{0} \neq \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} $, then $\mf_i \in S$.
-             $\leadsto \Sc \neq \varnothing$. Since $R$ is Artinian, there exists
-             a minimal element $J_0 \in \Sc$.
-             By definition of S, $\exists x \in J_0$, $x\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} 
-             \neq 0 \leadsto \gen{x} \in S$ and $\gen{x} \subseteq J_0 \Rightarrow \gen{x} = J_0$.\\
-             Also, $x \mf_1^{n_1+1}\mf_2^{n_2+1} \dotsm \mf_k^{n_k+1} =
-             x \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne 0 \leadsto 
-             I = x \mf_1\dots \mf_k\in S$ and $I \subseteq J_0 = xR \leadsto I = xR$.
-            \[
-              (\mf_1\mf_2 \dotsm \mf_k) x R = xR \leadsto
-              (\mf_1 \cap \mf_2 \cap \dotsm \cap \mf_k) x R = xR \leadsto
-              (\Jac R) xR = xR
-            \]
-            By Nakayama's lemma, $xR = 0 \implies x = 0$, which is a contradiction.
-        \end{itemize}
+      \begin{proof}
+        First we claim that $\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k}
+        = \mf_1^{n_1}\cap \mf_2^{n_2} \cap \dots \cap \mf_k^{n_k}$.
+        Recall that if $I_i, I_j$ are coprime for $i \ne j$, then
+        $\prod\limits_{i=1}^n I_i = \bigcap\limits_{i=1}^n I_i$.
+        By Prop~\ref{prop:radical-power-relation}
+         \[
+          \sqrt{\mf_i^{n_i} + \mf_j^{n_j}}
+          = \sqrt{\sqrt{\mf_i^{n_i}} + \sqrt{\mf_j^{n_j}}}
+          = \sqrt{\mf_i + \mf_j} = \sqrt{R} = R
+          \implies \mf_i^{n_i} + \mf_j^{n_j} = R.
+        \]
+
+        Now, let $n_i$ be the one so that $\mf_i^{n_i} = \mf_{i+1}^{n_{i+1}}$.
+        We claim that $\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
+
+        If not, let $\Sc = \Set{J \subseteq R \given J \mf_1^{n_1}
+          \mf_2^{n_2} \dotsm \mf_k^{n_k} \neq 0} \neq \varnothing$
+        since $\mf_i \in S$.
+        By the fact that $R$ is Artinian, there exists
+        a minimal element $J_0 \in \Sc$.
+        By definition of $\Sc$, Exists $x \in J_0$ so that $x\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k}
+        \neq 0$. Then $\gen{x} \in \Sc$ $\gen{x} \subseteq J_0$
+        which by the minimality we must have $\gen{x} = J_0$.\\
+
+        Also, $x \mf_1^{n_1+1}\mf_2^{n_2+1} \dotsm \mf_k^{n_k+1} =
+        x \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne \gen{0}$,
+        so $I = x \mf_1\dots \mf_k\in S$ and $I \subseteq xR = J_0 \implies I = xR$.
+        Then we have $\mf_1 \mf_2 \dotsm \mf_k = \mf_1 \cap \mf_2 \cap \dots \cap \mf_k = \Jac R$
+        with $\Jac R (xR) = xR$ since $\Max R = \Spec R$. By Nakayama's lemma, $xR = 0 \implies x = 0$
+        which leads to an contradiction.
       \end{proof}
     \item The nilradical $\nf_R$ of $R$ is nilpotent.
       \begin{proof}
-        By (3), $\nf_R = \Jac R$. Let $n = \max \set{n_1, \dots, n_k}$ in (5),
+        Again, $\nf_R = \mf_1 \cap \dotsm \mf_k = \Jac R$. Let $n = \max \set{n_1, \dots, n_k}$ in (5),
         then $\nf_R^n = (\mf_1\mf_2 \dotsm\mf_k)^n = 0$.
       \end{proof}
   \end{enumerate}
 \end{prop}
 
-\underline{Goal 1:} $R \cong R_1 \times R_k$ where $R_i$ is Artinian local ring.
+\begin{theorem}
+  If $R$ is an Artinian ring,
+  then $R \cong R_1 \times \dots \times R_k$ where each $R_i$ is Artinian local ring.
 \begin{proof}
   By Chinese Remainder theorem,
   \[
@@ -127,10 +129,15 @@
     \cong 
     \quot{R}{\mf_1^{n_1}} \times \quot{R}{\mf_2^{n_2}} \times \dots \times \quot{R}{\mf_k^{n_k}}
   \]
-  Let $R_i = \quot{R}{\mf_i^{n_i}}$, then $\bar{\mf} \in \Max R_i$ if
-  $\mf \in \Max R$ and $\mf \supset \mf_i^{n_i} \leadsto \mf = \mf_i$.
+  Let $R_i = \quot{R}{\mf_i^{n_i}}$, which is Artinian since
+  it is the quotient of an Artinian ring. Since
+  quotient preserves maximality, $\bar{\mf} \in \Max R_i \iff
+  \mf \in \Max R$. But then $\mf \supset \mf_i^{n_i} \implies \mf = \mf_i$.
+  Since $\mf_i = \sqrt{\mf_i^{n_i}}$ is the smallest prime containing $\mf_i^{n_i}$
+  by proposition~\ref{prop:property-of-prime-and-primary}.
   So $\Max R_i = \Set{\bar{\mf_i}} \implies R_i$ is a local ring.
 \end{proof}
+\end{theorem}
 
 \begin{lemma} \label{vector-space-dim-acc-dcc-relation}
   Let $V$ be a $K$-vector space, TFAE
@@ -160,65 +167,72 @@
   \end{proof}
 \end{lemma}
 
-\underline{Observation:} If $R$ is Northerian and $\dim R = 0$, then
-$\gen{0} = \bigcap_{i=1}^k q_i$ (primary decomposition) and
-$\sqrt{q_i} = \mf_i \in \Spec R = \Max R$. Also,  $\exists n_i $ 
-$\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$
-
-
-Since $\mf_i$ is finitely generated, $\exists n_i$ s.t.
-$\mf_i^{n_i} \subseteq q_i$. Hence 
-$$
-\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = 
-\mf_1^{n_1} \cap \mf_2^{n_2} \cap \dotsm \cap \mf_k^{n_k} \subseteq
-q_1 \cap q_2 \cap \dotsm \cap q_k = \gen{0} \\
-$$
-$\implies \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$ \\
-
-\underline{Goal 2:} In a ring $R$, let $\mf_1, \dots, \mf_n$ be,
-not necessarily different, maximal ideals in $R$ s.t.
-$\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
+\begin{lemma}
+If $R$ is Northerian and $\dim R = 0$, then exists $\mf_i, n_i$ so that
+$\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
 
 \begin{proof}
-  We have a chain of ideals in $R$:
-  $\mf_0 = R \supset \mf_1 \supset \mf_1\mf_2 \supset \dots \supset
-  \mf_1\mf_2\dotsm\mf_n = 0$.
-
-  Let $M_i = \quot{\mf_1\mf_2\dotsm\mf_{i-1}}{\mf_1\mf_2\dotsm\mf_i}$
-  as $R$-module.
-  Notice that $\mf_i M_i = 0$, we can treat $M_i$ as $\quot{R}{\mf_i}$-module.
-  But $\quot{R}{\mf_i}$ is a field, so $M_i$ can be regarded as a vector
-  space. Hence, by lemma~\ref{vector-space-dim-acc-dcc-relation}
-  \[ 
-  \text{ $M_i$ is Artinian $\iff$ $M_i$ is Noetherian. } 
+  By primary decomposition, $\gen{0} = \bigcap_{i=1}^k q_i$ for
+  some primary ideals $q_i$. Let $\mf_i = \sqrt{q_i}$, since
+  $\mf_i$ finitely generated, say $\mf_i = \gen{x_1, \dots, x_k}$.
+  Since $\mf_i = \sqrt{q_i}$, for each $x_i$, exists $r_i$
+  so that $x_i^{r_i} \in q_i$. Let $n_i = \max \Set{r_i}$
+  and one could easily see that $\mf_i^{n_i} \subset q_i$.
+  Thus
+  \[
+    \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = 
+    \mf_1^{n_1} \cap \mf_2^{n_2} \cap \dotsm \cap \mf_k^{n_k} \subseteq
+    q_1 \cap q_2 \cap \dotsm \cap q_k = \gen{0}
   \]
-  By definition, 
-  $$
-  0 \to \mf_1\mf_2\dotsm\mf_i \to \mf_1\mf_2\dotsm\mf_{i-1}
-  \to M_i \to 0
-  $$
-  By Ex1,
-  $$
+\end{proof}
+\end{lemma}
+
+\begin{theorem}
+  $R$ is Artinian $\iff$ $R$ is Noetherian with dimension $0$.
+
+
+\begin{proof}
+  In both case we could find maximal ideals $\mf_1, \dots, \mf_n$
+  not necessarily different in $R$ such that $\mf_1\mf_2 \dotsm \mf_n = 0$.
+  So we shall prove tha this implies Artinian $\iff$ Noetherian.
+
+  Observe that we have a chain of ideals in $R$:
+  $R \supset \mf_1 \supset \mf_1\mf_2 \supset \dots \supset
+  \mf_1\mf_2\dotsm\mf_n = 0$.
+  Let $M_i = \quot{\mf_1\mf_2\dotsm\mf_{i-1}}{\mf_1\mf_2\dotsm\mf_i}$
+  which could be see as an $R$-module.
+  Moreover, notice that $\mf_i M_i = 0$, so we $M_i$
+  could be regard as $\quot{R}{\mf_i}$-module.
+  But $\quot{R}{\mf_i}$ is a field, so $M_i$ can be further regarded as a vector
+  space. Hence we could use lemma~\ref{vector-space-dim-acc-dcc-relation} now:
+  \[
+  \text{ $M_i$ is Artinian $\iff$ $M_i$ is Noetherian. }
+  \]
+
+  By definition,
+  \[
+    0 \to \mf_1\mf_2\dotsm\mf_i \to \mf_1\mf_2\dotsm\mf_{i-1}
+    \to M_i \to 0
+  \] exact.
+  By exercise, given $0 \to K \to M \to L$ exact, then $M$ Noetherian (Artinian)
+  $\iff$ $K, M$ Noetherian (Artinian). Thus
+
+  \[
     \begin{aligned}
       \mf_0 = R \text{ Artinian} & \iff \mf_1 , M_1 \text{ Artinian} \\
       & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Artinian} \\
       & \hspace{13pt} \vdots \\
-      & \iff \underset{\text{is } 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
+      & \iff \mf_1 \mf_2 \cdots \mf_n = \gen{0},\, M_1, 
       \dots, M_n \text{ Artinian} \\
-      & \iff \underset{\text{is } 0}{\mf_1 \mf_2 \cdots \mf_n}, M_1, 
+      & \iff \mf_1 \mf_2 \cdots \mf_n = \gen{0},\, M_1, 
       \dots, M_n \text{ Noetherian} \\
       & \hspace{13pt} \vdots \\
       & \iff \mf_1 \mf_2 , M_1, M_2 \text{ Noetherian} \\
       & \iff \mf_1 , M_1 \text{ Noetherian} \iff \mf_0 = R \text{ Noetherian}
     \end{aligned}
-  $$
-  Note: \underline{Goal 2} is accomplished by recongnizing that,
-  \begin{itemize}
-    \item $R$ is Artinian $\implies \mf_1^{n_1}\cdots \mf_k^{n_k} = \gen{0}$
-      by prop~\ref{artin-ring-basic-property} (4).
-  \item $R$ is Noetherian $+ \dim 0 \implies \mf_1^{n_1} \cdots \mf_k^{n_k} = \gen{0}$ by \underline{Observation}.
-  \end{itemize}
+  \]
 \end{proof}
+\end{theorem}
 
 
 \subsubsection{DVR (Discrete Valuation Ring)}
@@ -233,26 +247,6 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
       \end{itemize}
     \item The valuation ring of $\nu$ is $R = \Set{x \in K \given \nu(x) \ge 0}$,
       called a DVR.
-      \begin{itemize}
-        \item Fact \\
-          $\nu(1) = 0$ : $\nu(1) = \nu(1) + \nu(1) \implies \nu(1) = 0$ \\
-          $\nu(x) = -\nu(x^{-1})$ : $0 = \nu(xx^{-1}) = \nu(x) + \nu(x^{-1})$
-        \item $\mf = \Set{x \in R \given \nu(x) > 0}$ is the unique maximal ideal
-          in $R$ since $\nu(x) = 0 \iff x$ is a unit.
-          \begin{proof} $ $\\
-            $"\Rightarrow"$
-              $\nu(x) = 0 \leadsto \nu(x^{-1}) = 0 \leadsto x^{-1} \in R$ \\
-            $"\Leftarrow"$
-              $\nu(x^{-1}),\nu(x) \ge 0.$ And, $\nu(x) = -\nu(x) \le 0 \leadsto 
-              \nu(x) = 0$
-          \end{proof}
-        \item Let $t \in R$ with $\nu(t) = 1$, then $\mf = \gen{t}$.\\
-          $\forall x \in \mf, \nu(x) = k > 0. \leadsto \nu(x(t^k)^-1) = 
-          \nu(x) - k\nu(t) = 0 \leadsto x = t^ku$, $u$ is unit in R.
-        \item Let $I \subseteq \mf$ and define
-          $m = \min\Set{l \in \Nb \given x = t^l u \quad \forall x \in I}$.
-          Then $I = \gen{t^m}$.\\
-      \end{itemize}
   \end{enumerate}
 \end{definition}
 \iffalse
@@ -274,9 +268,44 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
   \end{proof}
 \end{prop}
 \fi
+\begin{prop} \hfill \label{prop:property-of-dvr}
+\begin{enumerate}
+  \item $\nu(1) = 0$:
+    \begin{proof}
+      $\nu(1) = \nu(1) + \nu(1) \implies \nu(1) = 0$
+    \end{proof}
+  \item $\nu(x) = -\nu(x^{-1})$:
+    \begin{proof}
+      $0 = \nu(xx^{-1}) = \nu(x) + \nu(x^{-1})$
+    \end{proof}
+  \item $\nu(x) = 0 \iff$ $x$ is a unit,
+    so $\mf = \Set{x \in R \given \nu(x) > 0}$ is the unique maximal ideal
+    \begin{proof}
+      ``$\Rightarrow$'': $\nu(x) = 0 \implies \nu(x^{-1}) = 0 \implies x^{-1} \in R$ \\
+      ``$\Leftarrow$'':
+        Then $\nu(x^{-1}), \nu(x) \ge 0.$, so $\nu(x) = -\nu(x) \le 0 \implies
+        \nu(x) = 0$.
+    \end{proof}
+  \item Let $t \in R$ with $\nu(t) = 1$, then $\mf = \gen{t}$.
+    More over, each element $x \in \mf$ could be uniquely written as $x = t^k u$
+    where $u$ is an unit.
+    \begin{proof}
+      $\forall x \in \mf, \nu(x) = k > 0$, so $\nu\big(x(t^k)^{-1}\big) =
+      \nu(x) - k\nu(t) = 0 \implies x = t^ku$, where $u$ is unit in $R$.
+    \end{proof}
+  \item Let $I \subseteq \mf$ and define
+    $m = \min\Set{l \in \Nb \mid x = t^l u, \, \forall x \in I}$.
+    Then $I = \gen{t^m}$.
+    \begin{proof}
+      ``$\subseteq$'': Immediate by the previous statement.
+      ``$\supseteq$'': Let $x = t^m u$ be the one letting $l = m$,
+      then $t^m = x u'$ for some $u'$ since where $u$ is a unit.
+    \end{proof}
+\end{enumerate}
+\end{prop}
 
 \begin{prop} \label{dvr-equiv-condition}
-  $R$ is a DVR $\iff$ $R$ is 1-dimensional normal, Noetherian local domain.
+  $R$ is a DVR $\iff$ $R$ is 1-dimensional normal, Noetherian local integral domain.
   \begin{proof} \hfill \\
     ``$\Rightarrow$'':
     \begin{tikzpicture}[baseline,
@@ -292,47 +321,52 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
       \draw (UFD.east) edge[implies] (normal.west);
       \draw (PID.east) edge[implies] (Noeth.west);
     \end{tikzpicture} \\
-    $\forall P \neq 0 \in \Spec R$, $P = \gen{t^k} = m^k$ for some $k \in \Nb$
-    $\leadsto P = \sqrt{P} = \sqrt{m^k} = m \leadsto P = m \leadsto
-    \gen{0} \subset m \leadsto \dim R = 1$. \\
-    $"\Leftarrow"$:
+    Where $\text{UFD} \implies \text{normal}$ by theorem~\ref{thm:ufd-is-normal}.
+
+    Now if $P$ is a prime ideal in $R$, then by 5.\ of proposition~\ref{prop:property-of-dvr},
+    $P = \gen{t^k} = \mf^k$ where $\mf$ is the maximal ideal.
+    Then $P = \sqrt{P} = \sqrt{\mf^k} = \mf$ since $\mf$ maximal. Thus the only
+    prime ideals are $\Set{0, \mf}$ and thus $R$ has dimension $1$.
+
+    $"\Leftarrow"$: Let $\mf$ be the unique maximal ideal.
+    Then $\Spec R = \Set{0, \mf}$.
+    If $\mf = \mf^2$ then since $\Jac R = \mf$, $\mf = 0$ by Nakayama's lemma,
+    so $\mf^2 \neq \mf$. Pick $t \in \mf^2 \setminus \mf$.
+    We claim that $\gen{t} = \mf$. If not, then $M \triangleq \mf / \gen{t} \neq 0$.
+    See $M$ as an $R$-module and consider $S \triangleq \Set{ \Ann(\bar{x}) \mid \bar{x} \neq 0 \in M }$.
+    Since $R$ Noetherian, there is a maximal element, say $I = \Ann(\bar{x})$.
+
+    We shall prove that $I$ is prime. If not, then there are $ab \in I$
+    but $a, b \not\in I$, which is to say that $ab\bar{x} = 0$ but $b \bar{x} \neq 0$.
+    Notice the obvious fact $\Ann(\bar{x}) \subseteq \Ann(b\bar{x})$,
+    but $b \bar{x} \ne 0$ and by the maximality of $\Ann(\bar{x})$,
+    $\Ann(\bar{x}) = \Ann(b\bar{x})$, then $a \in \Ann(b\bar{x}) = \Ann(\bar{x})
+    \implies ax = 0$, which is an contradiction, thus $I$ is prime.
+
+    So, if $M \neq 0$, then we could pick $\bar{x}$ such that $\Ann(\bar{x})$
+    is a prime, and thus $\Ann(\bar{x}) = \mf$.
+    Now, $x \mf \subset \gen{t} = tR$, so $J \triangleq (x/t) \mf \subset R$ in the field of fraction.
     \begin{itemize}
-      \item $\mf \ne \mf^2$ : \\
-        If $\mf = \mf^2$ and $\mf = \Jac R$, then $m = \gen{0}$ by Nakayama's lemma,
-        which is a contradiction to $\dim R = 1$.
-      \item Let $t \in \mf - \mf^2$ and $\mf = \gen{t}$ \\
-        Consider $M = \mf / \gen{t}$ and assume $M \neq 0$ \\
-        \underline{Fact}: $I = \Ann(\bar{x})\ \bar{x} \in M \implies I \in \Spec R$
-        Since $ab \in I,\ a,b \notin I$, then $ab\bar{x} = 0$, 
-        and $b\bar{x} \neq 0$. \\
-        Suppose I is maximal, $\Ann(b\bar{x}) \supseteq \Ann(\bar{x})
-        \leadsto \Ann(b\bar{x}) = \Ann(\bar{x})$ Then, $a \in \Ann(b\bar{x})
-        = \Ann(\bar{x})$, which is a contradiction. \\
-        By the Fact, $\exists \bar{x} \neq 0 \in M$ s.t. $\Ann(\bar{x}) = \mf \leadsto
-        x\mf = \gen{t} = tR \leadsto \frac{x}{t}\mf \subseteq R$. \\
-        (1) If $\frac{x}{t} = R \leadsto \frac{xy}{t} = 1$ for some $y \in \mf
-        \leadsto t = xy \in \mf$, which is a contratiction. \\
-        (2) If $\frac{x}{t} \subset \mf$, let $\mf = \gen{y_1,\cdots, y_n}_R$ Write
-        $\frac{x}{t} y_i = \sum\limits_{j = 1}^{l} a_{ij}y_j \forall i = 1, \cdots,
-        l$ By using determinant trick, we have $\frac{x}{t}$ is integral over $R$,
-        but $R$ is normal $\leadsto \frac{x}{t} \in R \leadsto x \in \gen{t} \leadsto 
-        \bar{x} = \bar{0}$, which is a contradiction. \\
-        Therefore, $\mf = \gen{t}$.
-      \item By Ex3, $\bigcap\limits_{n = 0}^{\infty} m^n = 0$. Thus, $\forall x \in R$,
-        $\existsuniq k$ s.t. $x \in m^k$ and $x \notin m^k+1$. $\leadsto x = t^ku$,
-        $u$ is units.
-      \item Define $\nu(x) = k$ and $\forall \frac{x}{y} \in \Frac{R} 
-        \nu(\frac{x}{y}) = \nu(x) - \nu{y}$. \\
-        (1) $\frac{x}{y} = \frac{x'}{y'} \leadsto xy' = x'y \leadsto \nu(xy') = 
-        \nu(x'y)$. \\
-        (2) $\nu(\frac{a}{b} \frac{c}{d}) = \nu(ac) - \nu(bd) = \big[\nu(a) - 
-        \nu(b)\big] - \big[\nu(c) - \nu(d)\big] = \nu(\frac{a}{b}) - \nu(\frac{c}{d})$ \\
-        (3) $\nu(\frac{a}{b} + \frac{c}{d})$, $\nu(a) = v_a$, $\nu(b) = v_b$,
-        $\nu(c) = v_c$,$\nu(d) = v_d$. $\nu{\frac{a}{b} + \frac{c}{d}} = 
-        \min\big\{\nu(\frac{a}{b}), \nu(\frac{c}{d})\big\} = \min\big\{\nu(\frac{ad}{bd}), 
-        \nu(\frac{bc}{bd})\big\} = \nu(\frac{ad + bd}{bd})$.
+      \item If $J = R$, then exists $y \in \mf$ so that $xy / t = 1 \implies t = xy \in M^2$,
+        contradict the definition of $t$.
+      \item If $J \neq R$, then $J$ is contained in the maximal ideal $\mf$,
+        so $(x/t) \mf = \mf$. Since $\mf$ finitely generated, $\mf = \gen{y_1, \dots, y_k}$.
+        Then $(x/t) y_i = \sum a_{i, j} y_j$. Using the routine determinant trick,
+        $f(x/t) m = 0, \forall m \in M \implies f(x/t) = 0$ for some monic polynomial $f \in R[x]$.
+        Then $x/t$ is integral over $R$. But then $x/t \in R$ since $R$ normal,
+        and thus $x \in Rt$, which contradict how we picked $x$.
     \end{itemize}
-    Therefore, $R$ is DVR.
+
+    Thus $\mf = \gen{t}$ is principle. Now, by exercise problem,
+    $\bigcap_{n = 0}^\infty \mf^n = 0$, so for each $x \in R$,
+    exists an unique $k$ so $x \in \mf^k$ but $x \not\in \mf^{k+1}$.
+    Write $x = t^k u$, then $u \not\in \mf$ implies that $u$
+    is an unit. One could easily see that this representation is
+    actually unique.
+
+    Finally, define $\nu(x) = k$, one could easily checked
+    that this definition extends well to the field of fraction,
+    so $R$ is a DVR.
   \end{proof}
 \end{prop}
 
@@ -347,8 +381,9 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
   $\exists 0 \ne a \in R$ s.t. $aI \subset R$.
 \end{definition}
 
-\begin{example}
-  If $I = \gen{f_1, \dots, f_n}_R$ with $f_i = \frac{a_i}{b_i} \in K$, then
+\begin{example} \label{eg:finitely-generated-is-fractional-ideal}
+  If $I = \gen{f_1, \dots, f_n}_R$, a finitely generated $R$-module
+  with $f_i = \frac{a_i}{b_i} \in K$, then
   $a = b_1b_2 \dotsm b_n$ and $aI \subset R \implies I$ is fractional.
 
   In general, if $R$ is a Noetherian, then every fractional ideal $I$ of $R$
@@ -360,52 +395,58 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
   of $R$ s.t. $IJ = R$.
 \end{definition}
 
-\begin{prop}\mbox{}
+\begin{prop}\mbox{} \label{prop:property-of-fractional-ideal}
   \begin{enumerate}
     \item If $I$ is invertible, then $J = I^{-1}$ is unique and equals
       $J = (R:I) \triangleq \Set{a \in K \given aI \subset R}$.
       \begin{proof}
         $ J \subseteq (R:I) \subseteq (R:I)R \subseteq (R:I)IJ \subseteq RJ = J
-        \leadsto J = (R:I) $
+        \implies J = (R:I) $
       \end{proof}
     \item If $I$ is invertible, then $I$ is a finitely generated $R$-module.
       \begin{proof}
-        $I(R:I) = R \leadsto 1 = \sum\limits_{i = 0}^{k} x_iy_i$, $x_i \in I$ and
+        If $I(R:I) = R$ then $1 = \sum\limits_{i = 0}^{k} x_iy_i$, for some $x_i \in I$ and
         $y_i \in (R:I)$. Then, $\forall x \in I$, $x = \sum\limits_{i = 0}^{k} 
-        \underbrace{(xy_i)}_{\in R}x_i \leadsto I = \gen{x_0, \dots, x_k}_R$.
-      \end{proof}
-    \item Let $R$ be a local domain but not a field, $K = \Frac(R)$.
-      Then $R$ is a DVR $\iff$ every nonzero fractional ideal $I$ of $R$ is
-      invertible.
-      \begin{proof} $ $\\
-        $"\Rightarrow"$:
-        Let $I$ be fractional ideal of $R$, then $\exists a \in R \leadsto aI 
-        \subseteq R$. And, $\mf = \gen{t}$, since R is not a field $t \ne 0$.
-        $\leadsto a = t^k u$ where $u$ is a unit in $R$.
-        If $aI = R$, then $J = \gen{a}_R$. $\leadsto IJ = R$. If not,
-        $aI \subsetneq R$ $\leadsto aI \subseteq \mf \leadsto aI = \gen{t^l}
-        \leadsto I = \gen{t^{l - k}}_R$. Let $J = \gen{t^{k - l}}_R$, then $IJ
-         = R$.
-
-        $"\Leftarrow"$: \mbox{}
-        \begin{itemize}
-          \item R is Neotherian:
-            $\forall I \subsetneq R$ and $I$ is invertible $\leadsto I$ is f.g.
-            $R$-module.
-          \item $\mf \neq \mf^2$, $\mf$ is the unique maximal in $R$:
-            $\mf = \mf^2$ and $\mf = \Jac R \leadsto \mf = 0 \leadsto R$ is a field,
-             which is a contradiction.
-          \item $\mf = \gen{t}_R$:
-            Pick $t \in \mf - \mf^2$ and let $\mf\mf^{-1} = R \leadsto t\mf^{-1}
-            \subseteq R$. If $t\mf \subseteq \m$, then $t\mf\mf^{-1} = tR \subseteq
-            \mf^{2}$, a contradiction. Therefore, $\mf \subset t\mf \leadsto t\mf 
-            = R \leadsto t\mf\mf^{-1} = tR = \mf \leadsto \mf = \gen{t}_R$. 
-          \item Using the same construction $\nu$ in prop~\ref{dvr-equiv-condition}
-            we have the $R$ is DVR.
-            \qedhere
-        \end{itemize}
+        \underbrace{(xy_i)}_{\in R}x_i$ Thus $I = \gen{x_0, \dots, x_k}_R$.
       \end{proof}
   \end{enumerate}
+\end{prop}
+
+\begin{prop} \label{prop:equvalence-of-dvr-with-fractional-ideal}
+    Let $R$ be a local domain but not a field, $K = \Frac(R)$.
+      Then $R$ is a DVR $\iff$ every nonzero fractional ideal $I$ of $R$ is
+      invertible.
+      \begin{proof}
+        $"\Rightarrow"$:
+        Let $I$ be fractional ideal of $R$,
+        then $\exists a \in R \text{ s.t. } aI \subseteq R$.
+        Since $R$ is a DVR which is not a field,
+        the maximal ideal $\mf = \gen{t}$ for some $t \ne 0$.
+        We know from proposition~\ref{prop:property-of-dvr}
+        that $a = t^k u$ where $u$ is a unit in $R$.
+        \begin{itemize}
+          \item If $aI = R$, then let $J \triangleq \gen{a}_R$ and $JI = R$.
+          \item If $aI \ne R$, then $aI = \gen{t^l}$ again since $R$
+            is DVR. Then $I = \gen{t^{l-k}}$, let $J = \gen{t^{k-l}}$
+            and we have $IJ = R$.
+        \end{itemize}
+
+        $"\Leftarrow"$:
+        First, for any $I \subset R$, which is obvious a fractional ideal,
+        so $I$ is invertible, and hence by proposition~\ref{prop:property-of-fractional-ideal},
+        $I$ is finitely generated, thus $R$ Noetherian.
+
+        Let $\mf$ be the unique maximal ideal, then if $\mf^2 = \mf$,
+        since $R$ Noetherian, by Nakayama's lemma, $\mf = 0$,
+        which contradict the fact that $R$ is not a field.
+
+        Thus pick $t \in \mf \setminus \mf^2$. Consider $t \mf^{-1}$
+        which is in $R$ since $t \in \mf$.
+        If $t \mf^{-1} \subseteq \mf$, then $t \mf^{-1} \mf = t R \subseteq \mf^2 \implies
+        t \in \mf^2$, which is an contradiction. So $t \mf^{-1} = R \implies tR = \mf$.
+        Using the same construction $\nu$ in proposition~\ref{dvr-equiv-condition},
+        $R$ is a DVR.
+      \end{proof}
 \end{prop}
 
 \begin{theorem}
@@ -420,78 +461,93 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
 
   \begin{proof} \mbox{}
     \begin{description}
-      \item[\rm (a)$\Leftrightarrow$(b):] $ $
-        \begin{itemize}
-          \item $R$ is normal $\iff$ $R_P$ is normal for all $P \in \Spec R$.
-          \item $\dim R_P = 1 \quad \forall P \in \Spec R \iff h(P) = 1 \quad
-            \forall 0 \ne P \in \Spec R \iff \dim R = 1$.
-        \end{itemize}
-      \item[\rm (b)$\Leftrightarrow$(c):] $ $
-        \begin{itemize}
-          \item (b) and (c) $\implies R$ is Noetherian
-          \item $I_P(R:I)_P = I_P(R_P:I_P)$ (Hint: $I$ is f.g.)
-          \item $R_P$ is DVR $\forall P \in \Spec R \iff$ Every nonzero fractional
-            ideal of $R$ is invertable.
-            $$
-            \forall P \in \Spec R\ R_P = I_P(R_P:I_P) = I_P(R:I)_P
-             = I(R:I)_P \iff R = I(R:I)
-            $$
-        \end{itemize}
+      \item[\rm (a)$\Leftrightarrow$(b):]
+        Recall that $R$ is a Dedekind domain if $R$ is (1) Noetherian,
+        (2) normal, (3) integral domain with (4) Dimension 1.
+        And $R_p$ is a DVR if it is a local Dedekind domain.
+        All of these are guaranteed by proposition~\ref{prop:property-of-localization},
+        where (4) is by the correspondence of prime ideals.
+      \item[\rm (b)$\Leftrightarrow$(c):] We need a small lemma
+        \begin{lemma}
+          If $I$ is finitely generated, then $(R_P : I_P) = (R: I)_P$.
+          \begin{proof}
+            Notice that $I_P$ is then a finitely generated $R_P$-module,
+            and thus by example~\ref{eg:finitely-generated-is-fractional-ideal}
+            $(R_P: I_P)$ is a fractional ideal.
+            Then $(R: I)_P = \Set{ x \mid xI \subset R}_P
+            = \Set{x \mid x I_P \subset R_P} = (R_P: I_P)$.
+          \end{proof}
+        \end{lemma}
+        Now,
+        \[ \forall P \in \Spec R, \ R_P = I_P(R_P : I_P)
+          = I_P (R: I)_P = (I (R:I))_P \iff I (R:I) = R \]
+        by corollary~\ref{coro:modules-are-equal-iff-equal-in-localization}.
+
       \item[\rm (a)(b)(c)$\Rightarrow$(d):] $ $ \\
-        Existence:
-        \begin{itemize} 
-          \item $I = q_1 \cap \cdots \cap q_n$ and $\sqrt{q_i} = P_i \in R $ by
-             primary decomposition thm.
-          \item $q_1 \cap \cdots \cap q_n = q_1 \cdots q_n$ \\
-            Since $\dim R = 1$, $P_i \in \Max R$. And, $R$ is Noetherian,
-            $\exists n_i \in \Nb$ s.t. $m_i^{n_i} \subseteq q_i$. Then,
-            $m_i^{n_i} + m_j^{n_j} = R \forall i \neq
-            j \leadsto q_i + q_j  = R \leadsto q_1 \cap \cdots \cap q_n = q_1 \cdots
-             q_n$
-           \item $I = m_i^{r_i} \cdots m_n^{r_n}$ \\
-             Since $R_{m_i}$ is DVR $\leadsto (q_i)_{m_i} = (m_i^{r_i})_{m_i} \leadsto
-              q_i = m_i^{r_i}$ by prime ideals have 1-1 correspondence in localization. 
-              Therefore,  $I = m_i^{r_i} \cdots m_n^{r_n}$. 
-        \end{itemize}
-        Uniqueness: 
-        \begin{itemize}
-          \item $P_1\cdots P_k = Q_1\cdots Q_r$ $P_i, Q_i$ is prime. Then, $P_1\cdots
-             P_k \subseteq Q_1 \leadsto P_i \subseteq Q_1$, say $i = 1$ by 
-             prop~\ref{prop:radical-power-relation}. \\
-             Since $Q_1$ is invertible, then $P_2\cdots P_k = Q_2\cdots Q_r$. By 
-             induction by hypothesis, we have the uniqueness result.
-        \end{itemize}
-      \item[\rm (d)$\Rightarrow$(c):] \mbox{}
-        \begin{itemize}
-          \item Every invertible prime is maximal: \\
-            If not, let $p + aR = P_1 \cdots P_k$ and $p + a^2R = Q_1 \cdots Q_r$. 
-            $\leadsto p \subseteq P_i$ and $Q_j$\\
-            \underline{Claim} $(p + aR)^2 = (p + a^2R)$: \\
-            In $R/p$, $\gen{\bar{a}} = \big(P_1/p\big) \cdots \big(P_k/p\big)$ and 
-            $\gen{\bar{a}^2}= \big(Q_1/p\big)\big(Q_r/p\big)$. And, $\gen{\bar{a}}
-             = \big(P_1/p\big)^2 \cdots \big(P_k/p\big)^2 = \big(Q_1/p\big) \cdots
-             \big(Q_r/p\big)$
-          \item $P = P^2 + aP$
-             $$
-             P \subseteq P + a^2R = (P + aR)^2 \subseteq P^2 + aR
-             $$
-             Then,
-             $$
-             \forall x \in P, \quad \underset{\in P}{x} = \underset{\in P^2}{y}
-             + a\underset{\in R}{z} \leadsto z \in P
-             $$
-             Therefore, $P\subseteq P^2 + aP \leadsto P = P^2 + aP$. 
-        By invertibility of $P$, we have $R = P + aR$, which is a contradiction.
-        \item Every nonzero prime is invertible: \\
-          Let $0 \neq a \in P$, and $P \supseteq \gen{a}$ is invertible. $\gen{a}
-            = P_1 \cdots P_n$ and $P_i$ is invertible. And, $P \subseteq P_i 
-            \leadsto P = P_i$ since $P_i$ is maximal.
-        \item $\forall$ ideal $0 \neq I \subseteq R$, $I = P_1 \cdots P_m \leadsto 
-          I$ is invertible.
-        \item If $I$ is fractional ideal of $R$, say $aI \subseteq R \leadsto 
-          \exists J$ ideal in $R$ $\leadsto aIJ = R \leadsto I(aJ) = R$. $I$ is
-            invertible.
-        \end{itemize}
+        {\bf Existence:} Since $R$ is Noetherian,
+        $I = q_1 \cap \cdots \cap q_n = q_1 q_2 \dotsm q_n$
+        Where the intersection equals product is because
+        if we let $P_i \triangleq \sqrt{q_i}$, then $P_i \in \Spec R$,
+        and $P_i \ne 0$ is always maximal, so $P_i + P_j = R$,
+        which implies $q_i + q_j = R$ (as in proposition~\ref{prop:radical-power-relation}).
+
+        Now, we shall prove that $q_i = P_i^{k_i}$ for some $k_i$.
+        By (b), each $R_{P_i}$ is a DVR, which has primary ideals
+        of the form $\Set{\mf^k}$. By proposition~\ref{prop:property-of-localization},
+        primary ideals are correspondent in localization,
+        so $(q_i)_{P_i} = \mf^k \iff q_i = P_i^k$. Thus $k_i = k$
+        is what we want. Then we could write $I = P_1^{k_1} \dotsm P_n^{k_n}$.
+
+        {\bf Uniqueness:}
+        Actually, the factorization into product of invertible
+        prime ideal is unique in any integral domain.
+
+        If $P_1 P_2 \dotsm P_k = Q_1 Q_2 \dotsm Q_r$,
+        then $P_1 P_2 \dotsm P_k = P_1 \cap \dots \cap P_k \in Q_1$,
+        so there is one, say $P_1 \subset Q_1$. Assume
+        $Q_1$ is the minimal among $Q_i$. Similarly we could find $Q_i \subset P_1$.
+        But then $Q_i \subseteq Q_1$. Since $Q_i$ minimal, $Q_i = Q_1$.
+        Now, since these ideals are invertible,
+        $P_2 P_3 \dotsm P_k = Q_2 Q_3 \dotsm Q_r$. By induction, the proof is completed.
+      \item[\rm (d)$\Rightarrow$(c):]
+        \begin{lemma}
+          Let $P_i$ be fractional ideals. If $P_1 P_2 \dotsm P_n = \gen{a}$
+          is principle, then $P_i$ are invertible.
+
+          \begin{proof}
+            $P_i^{-1}$ is actually $a^{-1} P_1 P_2 \dotsm P_{i-1} P_{i+1} \dotsm P_n$.
+          \end{proof}
+        \end{lemma}
+        First we prove that $p$ is maximal if $p$ is prime and invertible.
+
+        If not, let $p + aR = P_1 \dotsm P_k$ and $p + a^2 R = Q_1 \dotsm Q_r$
+        with $a \not\in p$.
+        Since $P_i, Q_j \subset p$, passing to the quotient $R/p$, we have
+        $\bar{a} = P_1 \dotsm P_k, \, \bar{a}^2 = Q_1 \dotsm Q_r$.
+        Using the uniqueness of factorization, which only requires $R/p$
+        to be an integral domain (which is the case) and $P_i, Q_j$
+        be invertible (by lemma above),
+        by $\bar{a}^2 = P_1^2 \dotsm P_k^2 = Q_1 \dotsm Q_r$,
+        we have $2k = r$ and we could assume $Q_{2i-1} = Q_{2i} = P_i$.
+        This shows that $p + a^2 R = (p + aR)^2 \subseteq p^2 + aR$.
+        So $p \subseteq p + a^2 R \subseteq p^2 + aR$. Now, if $x \in p$,
+        $x = y + az$ for some $y \in p^2, z \in R$. Then $az = x - y \in p$
+        but $a \not\in p$, so $z \in p$. Thus we could
+        refine the relation to $p \subseteq p^2 + ap$.
+        But then $p \subseteq p (p + aR)$, since $p$ invertible, $R \subseteq p + aR$
+        which implies that $p + aR = R$. Thus $p$ is maximal.
+
+        Now, we show that every prime ideal $p$ is invertible. By assumption,
+        let $a \in p$, then $Ra = P_1 \dotsm P_k$, so by the lemma above,
+        each $P_i$ is invertible and thus maximal by the previous paragraph.
+        Then $P_1 \dotsm P_k \subset p$, so again $P_i \subset p$, which
+        implies $P_i = p$. Thus $p$ is invertible.
+
+        Finally, since each ideal is the product of prime ideals,
+        and we've just prove that priome ideals are invertible,
+        any ideal are invertible. For a fractional ideal $I$,
+        $aI \subseteq R \implies \exists J, \, aIJ = R \implies I(aJ) = R$,
+        which is to say that $I$ is invertible.
   \end{description}
   \end{proof}
 \end{theorem}

@@ -3,6 +3,18 @@
 
 From now on, $R$ is a commutative ring with $1$.
 
+We list some facts about localization.
+\begin{prop} \label{prop:property-of-localization}
+  Let $p$ be a prime ideal in $R$, $R_p$ be the localization about $p$.
+\item Extension and contraction gives a bijective correspondence between
+  $\Set{ \text{ prime ideal } q \subset p }$ and $\Set{ \text{ prime ideal in } R_p}$.
+\item Extension and contraction gives a bijective correspondence between
+  $\Set{ p-\text{primary ideal } q }$ and $\Set{ \text{ primary ideal in } R_p}$.
+\item Localization commutes with intersection.
+\item Localization preserves exact sequence.
+\item If $R$ is Noetherian (Artinian), then $R_p$ is Noetherian (Artinian).
+\end{prop}
+
 \begin{definition}
   $R$ is called a local ring if it has a unique maximal ideal.
 \end{definition}
@@ -164,7 +176,7 @@ From now on, $R$ is a commutative ring with $1$.
   \end{itemize}
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \label{thm:ufd-is-normal}
   UFD is normal.
   \begin{proof}
     Let $R$ be a UFD and $K$ be its field of fractions.
