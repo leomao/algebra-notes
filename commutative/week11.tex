@@ -299,13 +299,13 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
 \end{theorem}
 
 \begin{example}
-  Let $I = \gen{ xy^2 + 2y^2, x^4 - 2x^2 + 1 }$, and we are to determine
+  Let $I = \gen{ xy^2 + 2y^2, x^4 - 2x^2 + 1 }$, and we want to determine
   $f = y - x^2 + 1$ is in $\sqrt{I}$ or not.
 \end{example}
 
 \begin{prop}
   An affine algebraic set $V$ in $\Ab^n_k$ has a unique minimal decomposition.
-  $V = V_1 \cap V_2 \cap \dotsm \cap V_m$ with $V_i$ irreducible and
+  $V = V_1 \cup V_2 \cup \dotsm \cup V_m$ with $V_i$ irreducible and
   $V_i \not\subset V_j$.
   \begin{proof}
     \begin{itemize} \hfill
@@ -314,15 +314,15 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
           So we would find
           \[ V \supsetneq V_1 \supsetneq V_2 \subsetneq \dotsm
             \implies \Ic(V) \subsetneq \Ic(V_1) \subsetneq \Ic(V_2) \subsetneq
-            \text{ in } k[x_1, \dots, x_n] \]
-          Which contradict that $k[x_1, \dots, x_n]$ is Noetherian.
+            \text{ in } k[x_1, \dots, x_n], \]
+          which contradicts that $k[x_1, \dots, x_n]$ is Noetherian.
         \item Uniqueness: If
           \[ V = V_1 \cup \dotsm \cup V_m = V'_1 \cup \dotsm \cup V'_m \]
           then $V_i = (V_i \cap V'_1) \cup \dotsm \cup (V_i \cap V'_m)$.
           But $V_i$ irreducible, so $V_i = V_i \cap V'_j \implies V_i \subset V'_j$.
           By symmetry we would find $V'_j \subset V_k$, then
           $V_i \subset V'_j \subset V_k \implies V_i = V_k$.
-          Thus these two decomposition is equal.
+          Thus these two decompositions are equal.
     \end{itemize}
   \end{proof}
 \end{prop}
@@ -371,7 +371,7 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
     $f : \Ab^m_k \twoheadrightarrow W$ is onto, so $\overline{f(\Ab^m_k)}
     = W = \Vc(0)$. By the previous proposition, $\ker f^* = 0$,
     thus $f^* : K[W] \cong k[x_1, \dots, x_n] / \Ic(W) \hookrightarrow k[t_1, \dots, t_m]$.
-    But $k[t_1, \dots, t_m]$ is an integer domain, so $\Ic(W)$ is a prime ideal,
+    But $k[t_1, \dots, t_m]$ is an integral domain, so $\Ic(W)$ is a prime ideal,
     thus $W$ is irreducible.
   \end{proof}
 \end{remark}

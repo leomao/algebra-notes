@@ -3,7 +3,7 @@
 
 \subsection{ED, PID and UFD (week 9)}
 
-We shall consider $R$ to be a integral domain below.
+We shall consider $R$ to be an integral domain below.
 \begin{definition}
   A function $N: R \to \Nb$ with $N(0) = 0$ is called a norm on $R$.
 \end{definition}
@@ -40,11 +40,11 @@ We shall consider $R$ to be a integral domain below.
     We have $\alpha - p = q \sqrt{d}$, then $(\alpha - p)^2 = q^2 d$
     and thus $\alpha^2 - 2p\alpha + (p^2 - q^2d) = 0$.
     Let $g(x) \triangleq x^2 - 2px + (p^2 - q^2 d)$.
-    Assume $f(x) \in Z[x]$ with $f$ monic and $f(\alpha) = 0$, then
+    Assume $f(x) \in \Zb[x]$ with $f$ monic and $f(\alpha) = 0$, then
     we could write $f(x) = q(x) g(x) + (ax + b)$.
     Since $\alpha$ is not rational, $a\alpha+b = 0 \implies a = b = 0$,
     so $f(x) = q(x) g(x)$ in $\Qb[x]$. By gauss lemma,
-    $g(x) \in Z[x]$, so $2p \in \Zb$ and $p^2 - q^2 d \in \Zb$.
+    $g(x) \in \Zb[x]$, so $2p \in \Zb$ and $p^2 - q^2 d \in \Zb$.
 
     If $2p$ is even, then $p \in \Zb$, and $p^2 - q^2 d \in \Zb$
     implies $q$ is also an integer since $d$ is square free.
@@ -110,7 +110,7 @@ We shall consider $R$ to be a integral domain below.
 \subsubsection{$A_{-1}$ and $A_{-3}$}
 
 \begin{definition}
-  If $p$ is add and $a \not\equiv 0 \pmod{p}$, then
+  If $p$ is odd and $a \not\equiv 0 \pmod{p}$, then
   \begin{itemize}
     \item If $x^2 \equiv a \pmod{p}$ is solvable, then define $\left( \frac{a}{p} \right) = 1$.
     \item Else $x^2 \equiv a \pmod{p}$ is not solvable and define $\left( \frac{a}{p} \right) = -1$.
@@ -142,21 +142,21 @@ We shall consider $R$ to be a integral domain below.
         \end{cases} \]
       Notice that $\abs{t_i}$ takes value between $1$ and $(p-1)/2$,
       and $\abs{ra} \equiv \abs{sa} \pmod{p} \implies
-      ra \equiv sa \pmod{p} \implies r \equiv \pm s \pmod{p}$ since $\gcd(a, p) = 1$.
-      So $t_k$ would have distinct value for $1 \leq k \leq (p-1)/2$.
+      ra \equiv \pm sa \pmod{p} \implies r \equiv \pm s \pmod{p}$ since $\gcd(a, p) = 1$.
+      So $\abs{t_k}$ would have distinct value for $1 \leq k \leq (p-1)/2$.
       Thus
       \[ \prod t_k \equiv \frac{p-1}{2}! a^{(p-1)/2} \equiv (-1)^n \frac{p-1}{2}!
         \implies a^{(p-1)/2} \equiv (-1)^n \]
       \end{proof}
-    \item We have:
+    \item If $p, q$ are odd primes, then we have:
       \[ \left( \frac{q}{p} \right) = (-1)^{\left( \sum_{k=1}^{(p-1)/2} \floor*{\frac{kq}{p}} \right)} \]
       \begin{proof}
         Write $kq = g_k p + t_k$ with $0 \leq t_k < p$ consistent with the previous definition.
         Then we have $\floor{kq / p} = g_k$, and
         \begin{alignat*}{4}
-          & \text{ if } \abs{t_k} = t_k && \leadsto ak = g_k p + \abs{t_k} &&
+          & \text{ if } \abs{t_k} = t_k && \leadsto qk = g_k p + \abs{t_k} &&
           \leadsto k \equiv g_k + \abs{t_k} \pmod{2} \\
-          & \text{ if } \abs{t_k} = p - t_k \quad && \leadsto ak = (g_k+1) p - \abs{t_k} \quad &&
+          & \text{ if } \abs{t_k} = p - t_k \quad && \leadsto qk = (g_k+1) p - \abs{t_k} \quad &&
           \leadsto k \equiv g_k + 1 + \abs{t_k} \pmod{2} \\
         \end{alignat*}
         So
@@ -235,30 +235,32 @@ Let $p$ be a prime in $\Zb$.
       \iff \ & \frac{\Zb[\sqrt{-1}]}{\gen{p}} \cong \frac{\Zb[x]}{\gen{p, x^2+1}}
       \cong \frac{\Zb[x]/\gen{p}}{\gen{p, x^2+1}/\gen{p}} \cong \frac{\Fb_p[x]}{x^2+1}
       \text{ is a field } \\
-      \iff \ & x^2 + 1 \text{ irreducible in } \Fb[x] \\
+      \iff \ & x^2 + 1 \text{ irreducible in } \Fb_p[x] \\
       \iff \ & x^2 \equiv -1 \pmod{p} \text{ is not solvable } \\
-      \iff \ & \left(\frac{-1}{p}\right) = (-1)^{(p-1)/2} = 1 \\
+      \iff \ & \left(\frac{-1}{p}\right) = (-1)^{(p-1)/2} \neq 1 \\
       \iff \ & p \not\equiv 1 \pmod{4}
     \end{align*}
     So $p$ is {\bf not} a prime in $A_{-1}$ $\iff$ $p \equiv 1 \pmod{4}$.
-  \item In $A_{-3}$: Let $\alpha = a + b \omega$, then
-    $p = \alpha \bar{\alpha} \iff p^2 = a^2 + b^2 - ab \iff 4p = (2a - b)^2 + 3b^2$
-    ($p = \alpha \beta$ 怎辦 ??)
-    So if $p$ is not a prime in $\Zb[\omega]$, then $p \equiv x^2 \pmod{3}$,
-    thus $p \equiv 1 \pmod{3}$.
+
+  \item In $A_{-3}$: 
+    If a prime $p \neq 3$ in $\Zb$ is not a prime in $\Zb[\omega]$, then it has
+    a nontrivial factor $\alpha \mid p$. But $N(p) = p^2$, so 
+    we must have $N(\alpha) = p$, i.e. $\alpha \bar{\alpha} = p$.
+    Let $\alpha = a + b \omega$, then
+    $p = \alpha \bar{\alpha} = a^2 + b^2 - ab \implies 4p = (2a - b)^2 + 3b^2$,
+    so $p \equiv (2a - b)^2 \equiv 1 \pmod{3}$. ($p \not\equiv 0$ since $p \neq 3$)
 
     Conversely, if $p \equiv 1 \pmod{3}$, then
     \[ \left(\frac{-3}{p}\right)
       = \left(\frac{-1}{p}\right) \left(\frac{3}{p}\right)
-      = (-1)^{(p-1)/2} \left(\frac{p}{3}\right) (-1)^{(p-1)/2} (-1)^{(3-1)/2}
+      = (-1)^{(p-1)/2} \left(\frac{p}{3}\right) (-1)^{\frac{p-1}{2} \cdot \frac{3-1}{2}}
       = \left(\frac{p}{3}\right) = \left(\frac{1}{3}\right) = 1 \]
     So exists $a \in \Zb$ such that $a^2 \equiv -3 \pmod{p}$,
     say $pb = a^2 + 3 = (a + \sqrt{-3}) (a - \sqrt{-3}) = (a+1 + 2\omega) (a - 1 - 2\omega)$.
 
-    If $p$ is a prime in $\Zb[\omega]$, then $p \mid (a+1-2\omega)$ or $p \mid (a - 1 - 2\omega)$,
-    but $p \mid a + b \mathrm{i} \implies p \mid 2b$ (since there are half integer in $A_{-3}$),
-    so $p \mid 2$, which leads to an contradiction,
-    thus $p$ is not a prime.
+    If $p$ is a prime in $\Zb[\omega]$, then $p \mid (a+1+2\omega)$ or $p \mod (a - 1 - 2\omega)$,
+    which implies that $p \mid 2$ (since $p \in \Zb$, $p \mid a + b\omega \implies p \mid a, p \mid b$), 
+    which leads to a contradiction, thus $p$ is not a prime.
 
     Hence $p \neq 3$ is not a prime in $A_{-3}$ $\iff$ $p \equiv 1 \pmod{3}$.
 \end{itemize}
@@ -291,7 +293,7 @@ Let $p$ be a prime in $\Zb$.
     ``$\supset$'':
     Let $\Sc \triangleq \Set{ I : \text{ ideal in } R \given a^n \notin I, \, \forall n \in \Nb}$.
     By the routine argument of Zorn's lemma, exists maximal element $Q$ in $\Sc$.
-    We claim that $\Sc$ is a prime ideal.
+    We claim that $Q$ is a prime ideal.
 
     For each $x, y \notin Q$, we have $Q + Rx \supsetneq Q$ and $Q + Ry \supsetneq Q$.
     By the maximality of $Q$, these two ideals are not in $\Sc$.
@@ -371,10 +373,10 @@ Let $p$ be a prime in $\Zb$.
     We claim that $I = (I + Ry^n) \cap (I + Rx)$.
     \begin{itemize}
       \item ``$\subset$'': Obvious.
-      \item ``$\supset$'': For any $b \in (I + ry^n) \cap (I + Rx)$,
+      \item ``$\supset$'': For any $b \in (I + Ry^n) \cap (I + Rx)$,
         write $b = a_1 + r_1 y^{n} = a_2 + r_2 x$. Then
         $r_1 y^{n+1} = a_2 y - a_1 y + r_2 x y \in I$ since $a_1, a_2, xy \in I$.
-        So $r_1 \in (I: y^{n+1}) = (I: y_n) \implies r_1 y^n \in I$.
+        So $r_1 \in (I: y^{n+1}) = (I: y^n) \implies r_1 y^n \in I$.
         Thus $b = a_1 + r_1 y^n \in I$.
     \end{itemize}
 
@@ -394,7 +396,7 @@ Let $p$ be a prime in $\Zb$.
     Write $I_0 = I_1 \cap I_2$, with $I_1, I_2 \neq I_0$. Then $I_1, I_2 \notin \Ic$,
     so these two ideals could be written as a finite intersection of irreducible ideals,
     implying that $I_0$ could also be written as a finite intersection of irreducible ideals,
-    which is an contradiction.
+    which is a contradiction.
   \end{proof}
 \end{theorem}
 
@@ -439,7 +441,8 @@ Let $p$ be a prime in $\Zb$.
     We check that $\sqrt{q} = \bigcap_{i = 1}^n \sqrt{q_i} = \bigcap_{i = 1}^n p = p$.
 
     Also, if $xy \in q$ with $x \notin q$, then $x \notin q_k$ for some $k$.
-    But $xy \in q_k$, thus $y^n \in q_k$. Since $\sqrt{q} = q_k$, $(y^n)^{m'} = y^m \in p \subset q$,
+    But $xy \in q_k$, thus $y^n \in q_k$.
+    But $q_k \subseteq \sqrt{q_k} = p = \sqrt{q}$, so $(y^n)^{m'} = y^m \in q$, 
     thus $q$ is $p$-primary.
   \end{proof}
 \end{prop}
@@ -452,10 +455,10 @@ Let $p$ be a prime in $\Zb$.
 A minimal primary decomposition of an ideal always exists in Noetherian ring since by
 theorem~\ref{thm:noeth-ideal-is-finite-intersection}, the ideal could be written
 as a finite intersection of irreducible ideals, and then by theorem~\ref{thm:noeth-irr-ideal-is-primary},
-these ideals are primary. Now If $\sqrt{q_i} = \sqrt{q_j}$ happen in these ideal,
+these ideals are primary. Now If $\sqrt{q_i} = \sqrt{q_j}$ happen in these ideals,
 we could remove these two ideals and add $q' = \sqrt{q_i} \cap \sqrt{q_j}$.
 By proposition~\ref{prop:intersection-of-primary-is-primary}, $q'$ is also primary.
-And if $q_i \subseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
+And if $q_i \supseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
 
 \medskip
 
@@ -473,12 +476,12 @@ And if $q_i \subseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
     Now, we have the following observation. ``If $p \in \Spec R$ with $p = \bigcap_{i=1}^n J_i$,
     then $p = J_j$ for some $j$.'' If not, then $J_i \not\subset p$ for all $i$,
     so we could pick $x_i \in J_i \setminus p$.
-    But then $x_1 x_2 \dotsm x_n \in \cap J_i \in p$ since $J_i$ are ideals,
+    But then $x_1 x_2 \dotsm x_n \in \cap J_i = p$ since $J_i$ are ideals,
     which leads to a contradiction since $p$ is prime.
 
     So if $\sqrt{(I: x)}$ is a prime, then it is equal to some $p_i$.
 
-    ``$\subset$'': By assumption, $q_i \not\subseteq \bigcap_{j \neq i} q_j$ for each $i$,
+    ``$\subset$'': By assumption, $q_i \not\supseteq \bigcap_{j \neq i} q_j$ for each $i$,
     thus we could pick $x \in \bigcap_{j \neq i} q_j \setminus q_i$,
     then $\sqrt{(I: x)} = \bigcap_j \sqrt{(q_j: x)} = \sqrt{(q_i: x)} = p_i$.
   \end{proof}
