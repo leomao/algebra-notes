@@ -4,8 +4,8 @@
   is defined as a chain with $\cone(f)^n = X^{n+1} \oplus Y^n$,
   and the chain map is defined as
   \[ \begin{tikzcd}[row sep=0, ampersand replacement=\&]
-      d_{\cone(f)} : \& \cone(f)^n = X^{n+1} \oplus Y^n \ar[r] \& \cone(f)^{n+1} X^{n+2} \oplus Y^{n+1} \\
-      \& (x_{n+1}, y_n) \ar[r, mapsto, "{\begin{pmatrix} -d_X & 0 \\ f & d_Y \end{pmatrix}}"']
+      d_{\cone(f)} : \&[-3em] \cone(f)^n = X^{n+1} \oplus Y^n \ar[r] \& \cone(f)^{n+1} = X^{n+2} \oplus Y^{n+1} \\
+      \&[-3em] (x_{n+1}, y_n) \ar[r, mapsto, "{\begin{pmatrix} -d_X & 0 \\ f & d_Y \end{pmatrix}}"']
       \& \big(-d_X(x^{n+1}), f(x^{n+1}) + d_Y(y_n)\big) \\
     \end{tikzcd} \]
 \end{definition}
@@ -17,8 +17,8 @@ It is easy to see that $d_{\cone(f)}^2 = 0$.
   then there is a short exact sequence
   \[ \begin{tikzcd}[row sep=0pt]
       0 \ar[r] & Y \ar[r] & \cone(f) \ar[r] & X[+1] \ar[r] & 0 \\
-      & d \ar[mapsto, r] & (0, d) & & \\
-      & & (c, d) \ar[mapsto, r] & -c & \\
+      & y \ar[mapsto, r] & (0, y) & & \\
+      & & (x, y) \ar[mapsto, r] & x & \\
     \end{tikzcd} \]
 
   \begin{proof}
@@ -40,14 +40,14 @@ It is easy to see that $d_{\cone(f)}^2 = 0$.
         Y^{m} \ar[r] & X^{m+1} \oplus Y^{m} \ar[r]  & X^{m+1} \\
     \end{tikzcd} \]
   Suppose $\bar{x} \in H^m(X^\bullet)$, then $d_X(x) = 0$,
-  so $d (-x, 0) = (dx, -f(x))$ with $dx = 0$, which implies
-  $-f(x) :: Y^m \mapsto d (-x, 0) :: X^{m+1} \oplus Y^m$,
-  so $\delta = -f^*$ (Chu Wen Ti)...
+  so $d (x, 0) = (-d_X(x), f(x)) = (0, f(x))$, which implies
+  $f(x) :: Y^m \mapsto d (x, 0) :: X^{m+1} \oplus Y^m$, then
+  $\delta(\bar{x}) = \ob{f(x)}$, so $\delta = f^*$.
   \end{proof}
 \end{coro}
 
 \begin{coro} \label{coro:cone-exact-iff-quasi-isomorphic}
-  $\cone(f)$ exact $\iff$ $f$ quasi-isomorphic.
+  $\cone(f)$ acyclic (exact) $\iff$ $f$ quasi-isomorphic.
 
   \begin{proof}
     Directly by the exact sequence
@@ -55,7 +55,7 @@ It is easy to see that $d_{\cone(f)}^2 = 0$.
   \end{proof}
 \end{coro}
 
-Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d_X$ below.
+Notice that $X[-k]$ is defined as $X[-k]^n = X^{n-k}$ with $d_{X[-k]} = (-1)^k d_X$ below.
 
 \begin{theorem}
   Let $\Ac$ be an abelian category and $K(\Ac)$ be the homotopy category.
@@ -90,8 +90,8 @@ Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d
         We claim that $fk \simeq g h[-1]$. Since $(fk - gh[-1])(x_n, z_n, y_{n-1})
         = f(x_n) + g(z_n)$. Define
         \[ \begin{tikzcd}[row sep=0]
-            \varphi: & \cone(\pi f)[-1]^n = \cone(\pi f)^{n-1} \ar[r] & Y^{n-1} \\
-            & (x_n, z_n, y_{n-1}) \ar[r, mapsto] & -y_{n-1}
+            \varphi: &[-3em] \cone(\pi f)[-1]^n = \cone(\pi f)^{n-1} \ar[r] & Y^{n-1} \\
+                     &[-3em] (x_n, z_n, y_{n-1}) \ar[r, mapsto] & -y_{n-1}
           \end{tikzcd} \]
         Then
         \begin{align*}
@@ -106,7 +106,7 @@ Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d
         $fk \simeq gh[-1]$.
       \item Let $f : X^\bullet \to Y^\bullet$ in $K(\Ac)$. We shall prove that
         \[ \exists s: Y^\bullet \to Z^\bullet \text{ s.t. } sf = 0
-          \iff \exists t: Y^\bullet \to Z^\bullet \text{ s.t. } ft = 0 \]
+          \iff \exists t: W^\bullet \to X^\bullet \text{ s.t. } ft = 0 \]
 
         Let $h^i : X^i \to Z^{i-1}$ be a homotopy bewteen $sf$ and $0$.
         Consider the diagram:
@@ -114,13 +114,14 @@ Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d
             \cone(s)[-1] \ar[rr, leftarrow, "g", "{(f(x_n), -h(x_n)) \mapsfrom x_n}"']
             \ar[d, equal] & &
             X^\bullet \ar[r, leftarrow, "t"] \ar[d, "f"] &
-            \cone(g)[-1] = W & \\
+            \cone(g)[-1] = W^\bullet & \\
             \cone(s)[-1] \ar[rr, "{p[-1]}"] & &
             Y^\bullet \ar[r, "s"] &
             Z^\bullet \ar[r, "\pi"] &
             \cone(s)
           \end{tikzcd} \]
-        We have $ft = p[-1]gt$, but $gt \simeq 0$ by
+        One can check that $g$ is a chain map. Now, we have $ft = p[-1]gt$,
+        but $gt \simeq 0$ by
         \[ \begin{tikzcd}[row sep=0]
             k_n: & W^n = X^n \oplus Y^{n-1} \oplus Z^{n-2} \ar[r]
             & C(s)[-1]^{n-1} = Y^{n-1} \oplus Z^{n-2} \\
@@ -137,8 +138,8 @@ Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d
         Thus $dk + kd = -gt \implies gt \simeq 0$.
 
         Now, since $s$ is quasi-isomorphic, by corollary~\ref{coro:cone-exact-iff-quasi-isomorphic},
-        $\cone(s)$ is acyclic, and thus $t$ is quasi-isomorphic (???????, 山山門口是頁).
-        Hence we've find $t$ so that $ft \simeq 0$. (????? $h$ 在哪裡用??)
+        $\cone(s)$ is acyclic, and thus $t$ is quasi-isomorphic.
+        Hence we've find $t$ so that $ft \simeq 0$.
     \end{enumerate}
     We could then define the derived category as $D(\Ac) = K(\Ac)[S^{-1}]$ now.
   \end{proof}
@@ -146,7 +147,6 @@ Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d
 
 \begin{prop}
   The derived category is additive.
-
   \begin{proof}
     Let $\varphi, \varphi' : X \to Y$ in $D(\Ac)$ with
     $\varphi = [(s, f)], \varphi' = [(s', f')]$, that is, we have the following two diagram
@@ -169,13 +169,13 @@ Notice that $X[-k]$ is defined as $X[-k]^n = Z^{n-k}$ with $d_{X[-k]} = (-1)^k d
         & Z \ar[ld, "s"'] \ar[rd, "f"] & \\
         X & & Y
       \end{tikzcd} \]
-    Similarly this applies to $\varphi'$. Since $rs = r's'$, we could
+    Similarly, this applies to $\varphi'$. Since $rs = r's'$, we could
     define $\varphi + \varphi' = [(rs, g+g')]$.
   \end{proof}
 \end{prop}
 
 \begin{definition}
-  Let $\Ac, \Bc$ be abelian categories, $F: A \to B$ be an additive functor.
+  Let $\Ac, \Bc$ be abelian categories, $F: \Ac \to \Bc$ be an additive functor.
   \begin{itemize}
     \item Define $D^+(\Ac)$ as a subcategory of $D(\Ac)$
       consist of all the objects (chains) $X^\bullet$ in $D(\Ac)$
@@ -208,10 +208,10 @@ induces a long exact sequence
 \begin{prop}
   Let $F: \Ac \to \Bc$ be an exact functor, then
   \begin{enumerate}
-    \item The exact functor $D^+(F): D^+(A) \to D^+(B)$ exists.
+    \item The exact functor $D^+(F): D^+(\Ac) \to D^+(\Bc)$ exists.
     \item $D^+(F)$ preserves distinguished triangle, (i.e., $\tridot \mapsto \tridot$.)
   \end{enumerate}
-  \begin{proof} \hfill
+  \begin{proof}
     First, we have the following observation:
     \begin{itemize}
       \item $F$ sends acyclic chain to acyclic chain:
@@ -282,20 +282,20 @@ induces a long exact sequence
 \end{prop}
 
 \begin{definition}
-  A class $R$ of object in $\Obj \Ac$ is said to
+  A class $R$ of objects in $\Obj \Ac$ is said to
   be adapted to a left exact functor $F$ if
   \begin{enumerate}
     \item It is stable under finite direct sums
-    \item $F$ sends acyclic chain in $\Kom^+(R)$ to acyclic chain (in $\Kom^+(B)$).
-    \item For each $X \in A$, exists $I \in R$ such that $0 \to X \to I$.
+    \item $F$ sends acyclic chain in $\Kom^+(R)$ to acyclic chain (in $\Kom^+(\Bc)$).
+    \item For each $X \in \Obj \Ac$, exists $I \in R$ such that $0 \to X \to I$.
   \end{enumerate}
 \end{definition}
 
 \begin{theorem}
-  Let $F$ be a left exact functor, $R$ be a class of object adpated to $F$.
+  Let $F$ be a left exact functor, $R$ be a class of objects adpated to $F$.
   Define $S_R$ to be the class of quasi-isomorphisms on $K^+(R)$
   which is localizing since it is stable with the construction
-  of mapping cones. Then $D^+(A) \cong K^+(R)[S_R^{-1}]$.
+  of mapping cones. Then $D^+(\Ac) \cong K^+(R)[S_R^{-1}]$.
 
   \begin{proof}
     First we claim that for all $C^\bullet \in D^+(\Ac)$ (which
@@ -364,7 +364,7 @@ induces a long exact sequence
     After proving this claim, we shall show that
     $\Hom_{K^+(R)[S_R^{-1}]}(X^\bullet, Y^\bullet)
     \cong \Hom_{K^+(A)[S^{-1}_A]}(X^\bullet, Y^\bullet)$. \\
-    {\bf We will use left roots instead of right roots defined before here.}
+    {\bf We will use left roofs instead of right roofs defined before here.}
     \begin{itemize}
       \item 1-1: If $(f, s) \cong (g, t)$ in $K^+(\Ac)[S^{-1}_\Ac]$, then
         \[ \begin{tikzcd}
