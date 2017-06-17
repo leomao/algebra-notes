@@ -377,30 +377,32 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
     \item Let $R$ be a local domain but not a field, $K = \Frac(R)$.
       Then $R$ is a DVR $\iff$ every nonzero fractional ideal $I$ of $R$ is
       invertible.
-      \begin{proof} $ $\\
-        $"\Rightarrow"$:
-        Let $I$ be fractional ideal of $R$, then $\exists a \in R \leadsto aI 
-        \subseteq R$. And, $\mf = \gen{t}$, since R is not a field $t \ne 0$.
-        $\leadsto a = t^k u$ where $u$ is a unit in $R$.
+      \begin{proof} \mbox{} \\
+        ``$\Rightarrow$'':
+        Let $I$ be a fractional ideal of $R$, then $\exists a \in R$ s.t.
+        $aI \subseteq R$. Assume $\mf = \gen{t} \ne 0$ since $R$ is not a field.
+        we can write $a = t^k u$ where $u$ is a unit in $R$.
         If $aI = R$, then $J = \gen{a}_R$. $\leadsto IJ = R$. If not,
-        $aI \subsetneq R$ $\leadsto aI \subseteq \mf \leadsto aI = \gen{t^l}
-        \leadsto I = \gen{t^{l - k}}_R$. Let $J = \gen{t^{k - l}}_R$, then $IJ
+        $aI \subsetneq R \implies aI \subseteq \mf \implies aI = \gen{t^l}
+        \implies I = \gen{t^{l - k}}_R$. Let $J = \gen{t^{k - l}}_R$, then $IJ
          = R$.
 
-        $"\Leftarrow"$: \mbox{}
+        ``$\Leftarrow$'': \mbox{}
         \begin{itemize}
-          \item R is Neotherian:
-            $\forall I \subsetneq R$ and $I$ is invertible $\leadsto I$ is f.g.
-            $R$-module.
+          \item $R$ is Neotherian:
+            $\forall I \subsetneq R$, $I$ is invertible $\implies I$ is finitely
+            generated.
           \item $\mf \neq \mf^2$, $\mf$ is the unique maximal in $R$:
-            $\mf = \mf^2$ and $\mf = \Jac R \leadsto \mf = 0 \leadsto R$ is a field,
+            $\mf = \mf^2$ and $\mf = \Jac R \implies \mf = 0 \implies R$ is a field,
              which is a contradiction.
           \item $\mf = \gen{t}_R$:
-            Pick $t \in \mf - \mf^2$ and let $\mf\mf^{-1} = R \leadsto t\mf^{-1}
-            \subseteq R$. If $t\mf \subseteq \m$, then $t\mf\mf^{-1} = tR \subseteq
-            \mf^{2}$, a contradiction. Therefore, $\mf \subset t\mf \leadsto t\mf 
-            = R \leadsto t\mf\mf^{-1} = tR = \mf \leadsto \mf = \gen{t}_R$. 
-          \item Using the same construction $\nu$ in prop~\ref{dvr-equiv-condition}
+            Pick $t \in \mf - \mf^2$. By assumption, $\mf$ is invertible, so we
+            can write $\mf\mf^{-1} = R \implies t\mf^{-1} \subseteq R$.
+            If $t\mf^{-1} \subseteq \mf$, then $t\mf^{-1}\mf = tR \subseteq
+            \mf^{2}$, which is a contradiction.
+            Therefore, $\mf \subset t\mf^{-1} \leadsto t\mf^{-1} = R \leadsto
+            tR = t\mf^{-1}\mf = R\mf = \mf \leadsto \mf = \gen{t}_R$.
+          \item By using the same construction $\nu$ in prop~\ref{dvr-equiv-condition},
             we have the $R$ is DVR.
             \qedhere
         \end{itemize}
@@ -468,28 +470,30 @@ $\mf_1\mf_2 \dotsm \mf_n = 0$. Then $R$ is Artinian $\iff$ $R$ is Noetherian.
             $\leadsto p \subseteq P_i$ and $Q_j$\\
             \underline{Claim} $(p + aR)^2 = (p + a^2R)$: \\
             In $R/p$, $\gen{\bar{a}} = \big(P_1/p\big) \cdots \big(P_k/p\big)$ and 
-            $\gen{\bar{a}^2}= \big(Q_1/p\big)\big(Q_r/p\big)$. And, $\gen{\bar{a}}
-             = \big(P_1/p\big)^2 \cdots \big(P_k/p\big)^2 = \big(Q_1/p\big) \cdots
-             \big(Q_r/p\big)$
+            $\gen{\bar{a}^2}= \big(Q_1/p\big)\big(Q_r/p\big)$. And
+            \[
+              \gen{\bar{a}} = \big(P_1/p\big)^2 \cdots \big(P_k/p\big)^2
+              = \big(Q_1/p\big) \cdots \big(Q_r/p\big)
+            \]
           \item $P = P^2 + aP$
-             $$
-             P \subseteq P + a^2R = (P + aR)^2 \subseteq P^2 + aR
-             $$
+             \[
+               P \subseteq P + a^2R = (P + aR)^2 \subseteq P^2 + aR
+             \]
              Then,
-             $$
-             \forall x \in P, \quad \underset{\in P}{x} = \underset{\in P^2}{y}
-             + a\underset{\in R}{z} \leadsto z \in P
-             $$
+             \[
+               \forall x \in P, \quad \underset{\in P}{x} = \underset{\in P^2}{y}
+               + a\underset{\in R}{z} \leadsto z \in P
+             \]
              Therefore, $P\subseteq P^2 + aP \leadsto P = P^2 + aP$. 
-        By invertibility of $P$, we have $R = P + aR$, which is a contradiction.
+             By invertibility of $P$, we have $R = P + aR$, which is a contradiction.
         \item Every nonzero prime is invertible: \\
           Let $0 \neq a \in P$, and $P \supseteq \gen{a}$ is invertible. $\gen{a}
             = P_1 \cdots P_n$ and $P_i$ is invertible. And, $P \subseteq P_i 
             \leadsto P = P_i$ since $P_i$ is maximal.
         \item $\forall$ ideal $0 \neq I \subseteq R$, $I = P_1 \cdots P_m \leadsto 
           I$ is invertible.
-        \item If $I$ is fractional ideal of $R$, say $aI \subseteq R \leadsto 
-          \exists J$ ideal in $R$ $\leadsto aIJ = R \leadsto I(aJ) = R$. $I$ is
+        \item If $I$ is fractional ideal of $R$, say $aI \subseteq R \implies
+          \exists J$ ideal in $R$ s.t. $aIJ = R \implies I(aJ) = R$. So $I$ is
             invertible.
         \end{itemize}
   \end{description}
