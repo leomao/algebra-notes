@@ -372,10 +372,10 @@ Let $p$ be a prime in $\Zb$.
     We claim that $I = (I + Ry^n) \cap (I + Rx)$.
     \begin{itemize}
       \item ``$\subset$'': Obvious.
-      \item ``$\supset$'': For any $b \in (I + ry^n) \cap (I + Rx)$,
+      \item ``$\supset$'': For any $b \in (I + Ry^n) \cap (I + Rx)$,
         write $b = a_1 + r_1 y^{n} = a_2 + r_2 x$. Then
         $r_1 y^{n+1} = a_2 y - a_1 y + r_2 x y \in I$ since $a_1, a_2, xy \in I$.
-        So $r_1 \in (I: y^{n+1}) = (I: y_n) \implies r_1 y^n \in I$.
+        So $r_1 \in (I: y^{n+1}) = (I: y^n) \implies r_1 y^n \in I$.
         Thus $b = a_1 + r_1 y^n \in I$.
     \end{itemize}
 
@@ -440,7 +440,8 @@ Let $p$ be a prime in $\Zb$.
     We check that $\sqrt{q} = \bigcap_{i = 1}^n \sqrt{q_i} = \bigcap_{i = 1}^n p = p$.
 
     Also, if $xy \in q$ with $x \notin q$, then $x \notin q_k$ for some $k$.
-    But $xy \in q_k$, thus $y^n \in q_k$. Since $\sqrt{q} = q_k$, $(y^n)^{m'} = y^m \in p \subset q$,
+    But $xy \in q_k$, thus $y^n \in q_k$.
+    But $q_k \subseteq \sqrt{q_k} = p = \sqrt{q}$, so $(y^n)^{m'} = y^m \in q$, 
     thus $q$ is $p$-primary.
   \end{proof}
 \end{prop}
