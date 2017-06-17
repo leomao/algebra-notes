@@ -40,11 +40,11 @@ We shall consider $R$ to be a integral domain below.
     We have $\alpha - p = q \sqrt{d}$, then $(\alpha - p)^2 = q^2 d$
     and thus $\alpha^2 - 2p\alpha + (p^2 - q^2d) = 0$.
     Let $g(x) \triangleq x^2 - 2px + (p^2 - q^2 d)$.
-    Assume $f(x) \in Z[x]$ with $f$ monic and $f(\alpha) = 0$, then
+    Assume $f(x) \in \Zb[x]$ with $f$ monic and $f(\alpha) = 0$, then
     we could write $f(x) = q(x) g(x) + (ax + b)$.
     Since $\alpha$ is not rational, $a\alpha+b = 0 \implies a = b = 0$,
     so $f(x) = q(x) g(x)$ in $\Qb[x]$. By gauss lemma,
-    $g(x) \in Z[x]$, so $2p \in \Zb$ and $p^2 - q^2 d \in \Zb$.
+    $g(x) \in \Zb[x]$, so $2p \in \Zb$ and $p^2 - q^2 d \in \Zb$.
 
     If $2p$ is even, then $p \in \Zb$, and $p^2 - q^2 d \in \Zb$
     implies $q$ is also an integer since $d$ is square free.
@@ -110,7 +110,7 @@ We shall consider $R$ to be a integral domain below.
 \subsubsection{$A_{-1}$ and $A_{-3}$}
 
 \begin{definition}
-  If $p$ is add and $a \not\equiv 0 \pmod{p}$, then
+  If $p$ is odd and $a \not\equiv 0 \pmod{p}$, then
   \begin{itemize}
     \item If $x^2 \equiv a \pmod{p}$ is solvable, then define $\left( \frac{a}{p} \right) = 1$.
     \item Else $x^2 \equiv a \pmod{p}$ is not solvable and define $\left( \frac{a}{p} \right) = -1$.
@@ -142,21 +142,21 @@ We shall consider $R$ to be a integral domain below.
         \end{cases} \]
       Notice that $\abs{t_i}$ takes value between $1$ and $(p-1)/2$,
       and $\abs{ra} \equiv \abs{sa} \pmod{p} \implies
-      ra \equiv sa \pmod{p} \implies r \equiv \pm s \pmod{p}$ since $\gcd(a, p) = 1$.
-      So $t_k$ would have distinct value for $1 \leq k \leq (p-1)/2$.
+      ra \equiv \pm sa \pmod{p} \implies r \equiv \pm s \pmod{p}$ since $\gcd(a, p) = 1$.
+      So $\abs{t_k}$ would have distinct value for $1 \leq k \leq (p-1)/2$.
       Thus
       \[ \prod t_k \equiv \frac{p-1}{2}! a^{(p-1)/2} \equiv (-1)^n \frac{p-1}{2}!
         \implies a^{(p-1)/2} \equiv (-1)^n \]
       \end{proof}
-    \item We have:
+    \item If $p, q$ are odd primes, then we have:
       \[ \left( \frac{q}{p} \right) = (-1)^{\left( \sum_{k=1}^{(p-1)/2} \floor*{\frac{kq}{p}} \right)} \]
       \begin{proof}
         Write $kq = g_k p + t_k$ with $0 \leq t_k < p$ consistent with the previous definition.
         Then we have $\floor{kq / p} = g_k$, and
         \begin{alignat*}{4}
-          & \text{ if } \abs{t_k} = t_k && \leadsto ak = g_k p + \abs{t_k} &&
+          & \text{ if } \abs{t_k} = t_k && \leadsto qk = g_k p + \abs{t_k} &&
           \leadsto k \equiv g_k + \abs{t_k} \pmod{2} \\
-          & \text{ if } \abs{t_k} = p - t_k \quad && \leadsto ak = (g_k+1) p - \abs{t_k} \quad &&
+          & \text{ if } \abs{t_k} = p - t_k \quad && \leadsto qk = (g_k+1) p - \abs{t_k} \quad &&
           \leadsto k \equiv g_k + 1 + \abs{t_k} \pmod{2} \\
         \end{alignat*}
         So
