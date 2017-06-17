@@ -235,28 +235,31 @@ Let $p$ be a prime in $\Zb$.
       \iff \ & \frac{\Zb[\sqrt{-1}]}{\gen{p}} \cong \frac{\Zb[x]}{\gen{p, x^2+1}}
       \cong \frac{\Zb[x]/\gen{p}}{\gen{p, x^2+1}/\gen{p}} \cong \frac{\Fb_p[x]}{x^2+1}
       \text{ is a field } \\
-      \iff \ & x^2 + 1 \text{ irreducible in } \Fb[x] \\
+      \iff \ & x^2 + 1 \text{ irreducible in } \Fb_p[x] \\
       \iff \ & x^2 \equiv -1 \pmod{p} \text{ is not solvable } \\
-      \iff \ & \left(\frac{-1}{p}\right) = (-1)^{(p-1)/2} = 1 \\
+      \iff \ & \left(\frac{-1}{p}\right) = (-1)^{(p-1)/2} \neq 1 \\
       \iff \ & p \not\equiv 1 \pmod{4}
     \end{align*}
     So $p$ is {\bf not} a prime in $A_{-1}$ $\iff$ $p \equiv 1 \pmod{4}$.
-  \item In $A_{-3}$: Let $\alpha = a + b \omega$, then
-    $p = \alpha \bar{\alpha} \iff a^2 + b^2 - ab \iff 4p = (2a - b)^2 + 3b^2$
-    ($p = \alpha \beta$ 怎辦 ??)
-    So if $p$ is not a prime in $\Zb[\omega]$, then $p \equiv x^2 \pmod{3}$,
-    thus $p \equiv 1 \pmod{3}$.
+  \item In $A_{-3}$: 
+    If a prime $p \neq 3$ in $\Zb$ is not a prime in $\Zb[\omega]$, then it has
+    a nontrivial factor $\alpha \mid p$. But $N(p) = p^2$, so 
+    we must have $N(\alpha) = p$, i.e. $\alpha \bar{\alpha} = p$.
+    Let $\alpha = a + b \omega$, then
+    $p = \alpha \bar{\alpha} = a^2 + b^2 - ab \implies 4p = (2a - b)^2 + 3b^2$,
+    so $p \equiv (2a - b)^2 \equiv 1 \pmod{3}$. ($p \not\equiv 0$ since $p \neq 3$)
 
     Conversely, if $p \equiv 1 \pmod{3}$, then
     \[ \left(\frac{-3}{p}\right)
       = \left(\frac{-1}{p}\right) \left(\frac{3}{p}\right)
-      = (-1)^{(p-1)/2} \left(\frac{p}{3}\right) (-1)^{(p-1)/2} (-1)^{(3-1)/2}
+      = (-1)^{(p-1)/2} \left(\frac{p}{3}\right) (-1)^{\frac{p-1}{2} \cdot \frac{3-1}{2}}
       = \left(\frac{p}{3}\right) = \left(\frac{1}{3}\right) = 1 \]
     So exists $a \in \Zb$ such that $a^2 \equiv -3 \pmod{p}$,
     say $pb = a^2 + 3 = (a + \sqrt{-3}) (a - \sqrt{-3}) = (a+1 + 2\omega) (a - 1 - 2\omega)$.
 
-    If $p$ is a prime in $\Zb[\omega]$, then $p \mid (a+1-2\omega)$ or $p \mod (a - 1 - 2\omega)$,
-    which implies that $p \mid 2$ (摸出來 ??????), which leads to an contradiction,
+    If $p$ is a prime in $\Zb[\omega]$, then $p \mid (a+1+2\omega)$ or $p \mod (a - 1 - 2\omega)$,
+    which implies that $p \mid 2$ (since $p \in \Zb$, $p \mid a + b\omega \implies p \mid a, p \mid b$), 
+    which leads to an contradiction,
     thus $p$ is not a prime.
 
     Hence $p \neq 3$ is not a prime in $A_{-3}$ $\iff$ $p \equiv 1 \pmod{3}$.
