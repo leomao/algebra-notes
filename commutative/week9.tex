@@ -454,10 +454,10 @@ Let $p$ be a prime in $\Zb$.
 A minimal primary decomposition of an ideal always exists in Noetherian ring since by
 theorem~\ref{thm:noeth-ideal-is-finite-intersection}, the ideal could be written
 as a finite intersection of irreducible ideals, and then by theorem~\ref{thm:noeth-irr-ideal-is-primary},
-these ideals are primary. Now If $\sqrt{q_i} = \sqrt{q_j}$ happen in these ideal,
+these ideals are primary. Now If $\sqrt{q_i} = \sqrt{q_j}$ happen in these ideals,
 we could remove these two ideals and add $q' = \sqrt{q_i} \cap \sqrt{q_j}$.
 By proposition~\ref{prop:intersection-of-primary-is-primary}, $q'$ is also primary.
-And if $q_i \subseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
+And if $q_i \supseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
 
 \medskip
 
@@ -480,7 +480,7 @@ And if $q_i \subseteq \bigcap_{j \neq i} q_j$, we could simply remove $q_i$.
 
     So if $\sqrt{(I: x)}$ is a prime, then it is equal to some $p_i$.
 
-    ``$\subset$'': By assumption, $q_i \not\subseteq \bigcap_{j \neq i} q_j$ for each $i$,
+    ``$\subset$'': By assumption, $q_i \not\supseteq \bigcap_{j \neq i} q_j$ for each $i$,
     thus we could pick $x \in \bigcap_{j \neq i} q_j \setminus q_i$,
     then $\sqrt{(I: x)} = \bigcap_j \sqrt{(q_j: x)} = \sqrt{(q_i: x)} = p_i$.
   \end{proof}
