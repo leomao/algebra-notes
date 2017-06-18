@@ -92,7 +92,7 @@
           \implies \mf_i^{n_i} + \mf_j^{n_j} = R.
         \]
 
-        Now, let $n_i$ be the one so that $\mf_i^{n_i} = \mf_{i+1}^{n_{i+1}}$.
+        Now, let $n_i$ be the one so that $\mf_i^{n_i} = \mf_i^{n_i+1}$.
         We claim that $\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
 
         If not, let $\Sc = \Set{J \subseteq R \given J \mf_1^{n_1}
@@ -100,16 +100,16 @@
         since $\mf_i \in S$.
         By the fact that $R$ is Artinian, there exists
         a minimal element $J_0 \in \Sc$.
-        By definition of $\Sc$, Exists $x \in J_0$ so that $x\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k}
+        By definition of $\Sc$, $\exists x \in J_0$ so that $x\mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k}
         \neq 0$. Then $\gen{x} \in \Sc$ $\gen{x} \subseteq J_0$
         which by the minimality we must have $\gen{x} = J_0$.\\
 
         Also, $x \mf_1^{n_1+1}\mf_2^{n_2+1} \dotsm \mf_k^{n_k+1} =
         x \mf_1^{n_1}\mf_2^{n_2} \dotsm \mf_k^{n_k} \ne \gen{0}$,
-        so $I = x \mf_1\dots \mf_k\in S$ and $I \subseteq xR = J_0 \implies I = xR$.
+        so $I = x \mf_1\dots \mf_k\in \Sc$ and $I \subseteq xR = J_0 \implies I = xR$.
         Then we have $\mf_1 \mf_2 \dotsm \mf_k = \mf_1 \cap \mf_2 \cap \dots \cap \mf_k = \Jac R$
         with $\Jac R (xR) = xR$ since $\Max R = \Spec R$. By Nakayama's lemma, $xR = 0 \implies x = 0$
-        which leads to an contradiction.
+        which leads to a contradiction.
       \end{proof}
     \item The nilradical $\nf_R$ of $R$ is nilpotent.
       \begin{proof}
@@ -136,33 +136,33 @@
   \mf \in \Max R$. But then $\mf \supset \mf_i^{n_i} \implies \mf = \mf_i$.
   Since $\mf_i = \sqrt{\mf_i^{n_i}}$ is the smallest prime containing $\mf_i^{n_i}$
   by proposition~\ref{prop:property-of-prime-and-primary}.
-  So $\Max R_i = \Set{\bar{\mf_i}} \implies R_i$ is a local ring.
+  So $\Max R_i = \Set{\ob{\mf_i}} \implies R_i$ is a local ring.
 \end{proof}
 \end{theorem}
 
 \begin{lemma} \label{vector-space-dim-acc-dcc-relation}
   Let $V$ be a $K$-vector space, TFAE
   \begin{enumerate}[(1)]
-    \item $\dim_k V < \infty$
+    \item $\dim_K V < \infty$
     \item $V$ has DCC on subspaces.
     \item $V$ has ACC on subspaces.
   \end{enumerate}
 
   \begin{proof} $ $ \\
     \underline{Fact} : If $V_1 \subseteq V_2$ is finite dimensional vector space
-    over $K$, then $V_1 = V_2 \iff \dim_k V_1 = \dim_k V_2$. Otherwise, $\dim_k V_1 < \dim_k V_2$. \\
+    over $K$, then $V_1 = V_2 \iff \dim_K V_1 = \dim_K V_2$. Otherwise, $\dim_K V_1 < \dim_K V_2$. \\
     (1) $\Leftrightarrow$ (3) \\
     $"\Rightarrow"$ Suppose there exists a chain in vector space $V$ with strictly
     increasing and infinite length,
-    $$
-      V_1 \subset V_2 \subset \cdots \subseteq V \Rightarrow \dim_k V_1 < \dim_k V_2 < \cdots 
-      \leq \dim_k V
-    $$
-    Then, $\dim_k V$ must be infinite. \\
-    $"\Leftarrow"$ If $\dim_k V$ is infinite, let S = $\{b_1, b_2, \dots \}$ be basis of V.
-    $$
+    \[
+      V_1 \subset V_2 \subset \cdots \subseteq V \Rightarrow \dim_K V_1 < \dim_K V_2 < \cdots 
+      \leq \dim_K V
+    \]
+    Then, $\dim_K V$ must be infinite. \\
+    $"\Leftarrow"$ If $\dim_K V$ is infinite, let S = $\{b_1, b_2, \dots \}$ be basis of V.
+    \[
       \gen{b_1}_K \subset \gen{b_1 , b_2}_K \subset \cdots
-    $$
+    \]
     is a infinite ascending chain.\\
     Similarily, (1) $\Leftrightarrow$ (2).
   \end{proof}
@@ -195,7 +195,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
 \begin{proof}
   In both case we could find maximal ideals $\mf_1, \dots, \mf_n$
   not necessarily different in $R$ such that $\mf_1\mf_2 \dotsm \mf_n = 0$.
-  So we shall prove tha this implies Artinian $\iff$ Noetherian.
+  So we shall prove that this implies Artinian $\iff$ Noetherian.
 
   Observe that we have a chain of ideals in $R$:
   $R \supset \mf_1 \supset \mf_1\mf_2 \supset \dots \supset
@@ -215,9 +215,8 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
     0 \to \mf_1\mf_2\dotsm\mf_i \to \mf_1\mf_2\dotsm\mf_{i-1}
     \to M_i \to 0
   \] exact.
-  By exercise, given $0 \to K \to M \to L$ exact, then $M$ Noetherian (Artinian)
-  $\iff$ $K, M$ Noetherian (Artinian). Thus
-
+  By exercise, given $0 \to K \to M \to L \to 0$ exact, then $M$ Noetherian (Artinian)
+  $\iff$ $K, L$ Noetherian (Artinian). Thus
   \[
     \begin{aligned}
       \mf_0 = R \text{ Artinian} & \iff \mf_1 , M_1 \text{ Artinian} \\
@@ -289,7 +288,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
     \end{proof}
   \item Let $t \in R$ with $\nu(t) = 1$, then $\mf = \gen{t}$.
     More over, each element $x \in \mf$ could be uniquely written as $x = t^k u$
-    where $u$ is an unit.
+    where $u$ is a unit.
     \begin{proof}
       $\forall x \in \mf, \nu(x) = k > 0$, so $\nu\big(x(t^k)^{-1}\big) =
       \nu(x) - k\nu(t) = 0 \implies x = t^ku$, where $u$ is unit in $R$.
@@ -332,13 +331,13 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
     $"\Leftarrow"$: Let $\mf$ be the unique maximal ideal.
     Then $\Spec R = \Set{0, \mf}$.
     If $\mf = \mf^2$ then since $\Jac R = \mf$, $\mf = 0$ by Nakayama's lemma,
-    so $\mf^2 \neq \mf$. Pick $t \in \mf^2 \setminus \mf$.
+    so $\mf^2 \neq \mf$. Pick $t \in \mf \setminus \mf^2$.
     We claim that $\gen{t} = \mf$. If not, then $M \triangleq \mf / \gen{t} \neq 0$.
     See $M$ as an $R$-module and consider $S \triangleq \Set{ \Ann(\bar{x}) \mid \bar{x} \neq 0 \in M }$.
     Since $R$ Noetherian, there is a maximal element, say $I = \Ann(\bar{x})$.
 
     We shall prove that $I$ is prime. If not, then there are $ab \in I$
-    but $a, b \not\in I$, which is to say that $ab\bar{x} = 0$ but $b \bar{x} \neq 0$.
+    but $a, b \notin I$, which is to say that $ab\bar{x} = 0$ but $b \bar{x} \neq 0$.
     Notice the obvious fact $\Ann(\bar{x}) \subseteq \Ann(b\bar{x})$,
     but $b \bar{x} \ne 0$ and by the maximality of $\Ann(\bar{x})$,
     $\Ann(\bar{x}) = \Ann(b\bar{x})$, then $a \in \Ann(b\bar{x}) = \Ann(\bar{x})
@@ -346,28 +345,26 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
 
     So, if $M \neq 0$, then we could pick $\bar{x}$ such that $\Ann(\bar{x})$
     is a prime, and thus $\Ann(\bar{x}) = \mf$.
-    Now, $x \mf \subset \gen{t} = tR$, so $J \triangleq (x/t) \mf \subset R$ in the field of fraction.
+    Now, $x \mf \subset \gen{t} = tR$, so $J \triangleq (x/t) \mf \subset R$ in the field of fractions.
     \begin{itemize}
-      \item If $J = R$, then there exists $y \in \mf$ so that $xy / t = 1 \implies t = xy \in M^2$,
-        which is a contradiction the definition of $t$.
+      \item If $J = R$, then there exists $y \in \mf$ so that $xy / t = 1 \implies t = xy \in \mf^2$,
+        which is a contradiction to the definition of $t$.
       \item If $J \neq R$, then $J$ is contained in the maximal ideal $\mf$,
-        so $(x/t) \mf = \mf$. Since $\mf$ finitely generated, $\mf = \gen{y_1, \dots, y_k}$.
+        so $(x/t) \mf = \mf$. Since $\mf$ is finitely generated, $\mf = \gen{y_1, \dots, y_k}$.
         Then $(x/t) y_i = \sum a_{i, j} y_j$. Using the routine determinant trick,
-        $f(x/t) m = 0, \forall m \in M \implies f(x/t) = 0$ for some monic polynomial $f \in R[x]$.
+        $f(x/t) m = 0, \forall m \in \mf \implies f(x/t) = 0$ for some monic polynomial $f \in R[x]$.
         Then $x/t$ is integral over $R$. But then $x/t \in R$ since $R$ normal,
-        and thus $x \in Rt$, which contradict how we picked $x$.
+        and thus $x \in Rt$, which contradicts how we picked $x$.
     \end{itemize}
 
-    Thus $\mf = \gen{t}$ is principle. Now, by exercise problem,
-    $\bigcap_{n = 0}^\infty \mf^n = 0$, so for each $x \in R$,
-    exists an unique $k$ so $x \in \mf^k$ but $x \not\in \mf^{k+1}$.
-    Write $x = t^k u$, then $u \not\in \mf$ implies that $u$
-    is an unit. One could easily see that this representation is
-    actually unique.
+    Thus $\mf = \gen{t}$ is principal. Now, by the exercise problem,
+    $\bigcap_{n = 0}^\infty \mf^n = 0$. So for each $x \in R$,
+    there exists a unique $k$ such that $x \in \mf^k$ but $x \notin \mf^{k+1}$.
+    Write $x = t^k u$, then $u \notin \mf$ implies that $u$ is a unit.
+    One could easily see that this representation is actually unique.
 
-    Finally, define $\nu(x) = k$, one could easily checked
-    that this definition extends well to the field of fraction,
-    so $R$ is a DVR.
+    Finally, define $\nu(x) = k$, one could easily check that this definition
+    extends well to the field of fractions, so $R$ is a DVR.
   \end{proof}
 \end{prop}
 
@@ -398,7 +395,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
 
 \begin{prop}\mbox{} \label{prop:property-of-fractional-ideal}
   \begin{enumerate}
-    \item If $I$ is invertible, then $J = I^{-1}$ is unique and equals
+    \item If $I$ is invertible, then $J = I^{-1}$ is unique and equal to
       $J = (R:I) \triangleq \Set{a \in K \given aI \subset R}$.
       \begin{proof}
         $ J \subseteq (R:I) \subseteq (R:I)R \subseteq (R:I)IJ \subseteq RJ = J
@@ -465,7 +462,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
       \item[\rm (a)$\Leftrightarrow$(b):]
         Recall that $R$ is a Dedekind domain if $R$ is (1) Noetherian,
         (2) normal, (3) integral domain with (4) Dimension 1.
-        And $R_p$ is a DVR if it is a local Dedekind domain.
+        And $R_P$ is a DVR if it is a local Dedekind domain.
         All of these are guaranteed by proposition~\ref{prop:property-of-localization},
         where (4) is by the correspondence of prime ideals.
       \item[\rm (b)$\Leftrightarrow$(c):] We need a small lemma:
@@ -479,15 +476,19 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
             = \Set{x \mid x I_P \subset R_P} = (R_P: I_P)$.
           \end{proof}
         \end{lemma}
-        Now,
-        \[ \forall P \in \Spec R, \ R_P = I_P(R_P : I_P)
-          = I_P (R: I)_P = (I (R:I))_P \iff I (R:I) = R \]
-        by corollary~\ref{coro:modules-are-equal-iff-equal-in-localization}.
+        By corollary~\ref{coro:modules-are-equal-iff-equal-in-localization},
+        we have
+        \[
+          \forall P \in \Spec R, \ R_P = I_P(R_P : I_P)
+          = I_P (R: I)_P = (I (R:I))_P \iff I (R:I) = R.
+        \]
+        Then use prop~\ref{prop:equvalence-of-dvr-with-fractional-ideal},
+        done.
 
       \item[\rm (a)(b)(c)$\Rightarrow$(d):] $ $ \\
         {\bf Existence:} Since $R$ is Noetherian,
-        $I = q_1 \cap \cdots \cap q_n = q_1 q_2 \dotsm q_n$
-        Where the intersection equals product is because
+        $I = q_1 \cap \cdots \cap q_n = q_1 q_2 \dotsm q_n$.
+        Note that the intersection equals the product since
         if we let $P_i \triangleq \sqrt{q_i}$, then $P_i \in \Spec R$,
         and $P_i \ne 0$ is always maximal, so $P_i + P_j = R$,
         which implies $q_i + q_j = R$ (as in proposition~\ref{prop:radical-power-relation}).
@@ -513,7 +514,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
       \item[\rm (d)$\Rightarrow$(c):]
         \begin{lemma}
           Let $P_i$ be fractional ideals. If $P_1 P_2 \dotsm P_n = \gen{a}$
-          is principle, then $P_i$ are invertible.
+          is principal, then $P_i$ are invertible.
 
           \begin{proof}
             $P_i^{-1}$ is actually $a^{-1} P_1 P_2 \dotsm P_{i-1} P_{i+1} \dotsm P_n$.
@@ -522,7 +523,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
         First we prove that $p$ is maximal if $p$ is prime and invertible.
 
         If not, let $p + aR = P_1 \dotsm P_k$ and $p + a^2 R = Q_1 \dotsm Q_r$
-        with $a \not\in p$.
+        with $a \notin p$.
         Since $P_i, Q_j \subset p$, passing to the quotient $R/p$, we have
         $\bar{a} = P_1 \dotsm P_k, \, \bar{a}^2 = Q_1 \dotsm Q_r$.
         Using the uniqueness of factorization, which only requires $R/p$
@@ -533,7 +534,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
         This shows that $p + a^2 R = (p + aR)^2 \subseteq p^2 + aR$.
         So $p \subseteq p + a^2 R \subseteq p^2 + aR$. Now, if $x \in p$,
         $x = y + az$ for some $y \in p^2, z \in R$. Then $az = x - y \in p$
-        but $a \not\in p$, so $z \in p$. Thus we could
+        but $a \notin p$, so $z \in p$. Thus we could
         refine the relation to $p \subseteq p^2 + ap$.
         But then $p \subseteq p (p + aR)$, since $p$ invertible, $R \subseteq p + aR$
         which implies that $p + aR = R$. Thus $p$ is maximal.

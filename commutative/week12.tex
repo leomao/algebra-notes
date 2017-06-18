@@ -10,7 +10,7 @@ We list some facts about localization.
     \item Extension and contraction gives a bijective correspondence between
       $\Set{ \text{ prime ideal } q \subset p }$ and $\Set{ \text{ prime ideal in } R_p}$.
     \item Extension and contraction gives a bijective correspondence between
-      $\Set{ p\text{-primary ideal } q }$ and $\Set{ \text{ primary ideal in } R_p}$.
+      $\Set{ \text{primary ideal } q \subset p }$ and $\Set{ \text{ primary ideal in } R_p}$.
     \item Localization commutes with intersection.
     \item Localization preserves exact sequence.
     \item If $R$ is Noetherian (Artinian), then $R_p$ is Noetherian (Artinian).
@@ -128,10 +128,10 @@ We list some facts about localization.
 
     (3) $\Rightarrow$ (1):
     If $M \neq 0$, let $x \in M$ such that $x \neq 0$,
-    then $\Ann(x) \subsetneq R$ since $1 \not\in \Ann(x)$.
+    then $\Ann(x) \subsetneq R$ since $1 \notin \Ann(x)$.
     Let $\Ann(x) \subset Q \in \Max R$.
     By assumption, $M_Q = 0$ implies $\frac{x}{1} = \frac{0}{1}$.
-    By the definition of equal in localization, $\exists r \not\in Q$
+    By the definition of equal in localization, $\exists r \notin Q$
     such that $rx = 0$, thus $r \in \Ann(x)$ which leads to a contradiction.
   \end{proof}
 \end{prop}
@@ -438,7 +438,7 @@ We list some facts about localization.
     since $t$ is integral over $R$, $u_i \triangleq r_i / a^i \in R$,
     and $u_i a^i = r_i$ for each $i$.
 
-    If $a \not\in p_2$, then $u_i a^i = r_i \in p_2$, so $u_i \in p_2$.
+    If $a \notin p_2$, then $u_i a^i = r_i \in p_2$, so $u_i \in p_2$.
     But with $m_{t, K}$ we will find that $t^l \in p_2 S \subseteq p_1 S \subseteq q_1$,
     so $t \in q_1$, which leads to a contradiction. Thus $a \in p_2$.
 
