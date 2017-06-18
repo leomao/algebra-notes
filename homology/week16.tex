@@ -256,7 +256,7 @@ In this section, we assume that $R$ is commutative with $1$.
         K_\bullet(x_n)$ and a long exact sequence
         $$
         \cdots \to H_i(K_\bullet(\mathbf{x}')) \to H_i(K_\bullet(\mathbf{x})) \to 
-        H_i(K_\bullet(\mathbf{x}')(-1)) \xto{\pm x_n} H_{i-1}(K_\bullet(\mathbf{x})) \to \cdots
+        H_i(K_\bullet(\mathbf{x}')(-1)) \xto{\pm x_n} H_{i-1}(K_\bullet(\mathbf{x}')) \to \cdots
         $$
         where $H_i(K_\bullet(\mathbf{x}')(-1)) = H_{i-1}(K_\bullet(\mathbf{x}'))$.
 
@@ -266,7 +266,7 @@ In this section, we assume that $R$ is commutative with $1$.
         $$
         so $H_i(K_\bullet(\mathbf{x})) = 0$. 
 
-        For $i = 1$, we have $H_0(K_\bullet(\mathbf{x})) \cong R/\gen{x_1, \cdots, x_{n-1}}$, so
+        For $i = 1$, we have $H_0(K_\bullet(\mathbf{x}')) \cong R/\gen{x_1, \cdots, x_{n-1}}$, so
         $$
         0 \to H_1(K_\bullet(\mathbf{x})) \to R/\gen{x_1, \cdots, x_{n-1}} \xto{\pm x_n} 
         R/\gen{x_1, \cdots, x_{n-1}}
@@ -536,9 +536,13 @@ letting $RF$ be a exact functor.
   \begin{enumerate}
     \item $S$ is closed under composition with $\Id_X \in S$ for each object $X$
       in $\Bc$.
-    \item Extension condition holds: For each $f \in \Mor \Bc, \, s \in S$,
-      exists $g \in \Mor \Bc, \, t \in S$ such that $ft = sg$.
+    \item Extension condition holds: For each $f \in \Mor \Bc, \, s \in S$ as in the
+      following diagram, exists $g \in \Mor \Bc, \, t \in S$ such that $ft = sg$.
       The dual version should hold as well.
+      \[ \begin{tikzcd}
+        A \ar[r, red, "g"] \ar[d, red, "t"] & B \ar[d, "s"] \\
+        C \ar[r, "f"] & D
+      \end{tikzcd} \]
     \item For any $f, g \in \Hom(X, Y)$,
       \[ \exists s \in S \text{ s.t. } sf = sg \iff \exists t \in S \text{ s.t. } ft = gt. \]
   \end{enumerate}
