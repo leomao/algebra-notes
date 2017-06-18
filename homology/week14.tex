@@ -44,7 +44,7 @@
         \implies & 0 \to R \otimes M_1 \to R \otimes M_2 & \text{ exact } \\
         \implies & 0 \to \bigoplus_{i \in \Lambda} R \otimes M_1 \to
         \bigoplus_{i \in \Lambda} R \otimes M_2 \ & \text{ exact } \\
-        \stackrel{(a)}{\implies} & 0 \to R^{\oplus \Lambda} \otimes M_1 \to
+        \stackrel{\text{(a)}}{\implies} & 0 \to R^{\oplus \Lambda} \otimes M_1 \to
         R^{\oplus \Lambda} \otimes M_2 & \text{ exact } \\
         \implies & 0 \to F \otimes M_1 \to F \otimes M_2 & \text{ exact }
       \end{alignat*}
@@ -62,7 +62,7 @@ For any $M \in \Mod_R$, a projective module $N$ such that $N \to M \to 0$ could
 be easily found: Simply let $N = F$, a free module on the generating set of $M$.
 
 Now we shall ask for any module $M$, does there exist $N \in \Mod_R$ such that
-N is injective and $0 \to M \to N$?
+$N$ is injective and $0 \to M \to N$?
 
 \begin{theorem}[Baer's criterion] \label{thm:boers-criterion}
   $N$ is injective $\iff \forall I \subset R$, and a homomorphism
@@ -121,9 +121,9 @@ N is injective and $0 \to M \to N$?
         $I = \gen{r_0} \subset R$. As long as $R$ is an integral domain,
         $I \cong R$ as an $R$-module, so the $R$-module homomorphism
         $f : I \to N = r r_0 \mapsto r x_0$ is well-defined.
-        Since $N$ injective, this map extends to $h : R \to N$.
+        Since $N$ is injective, this map extends to $h : R \to N$.
         Let $y_0 \triangleq h(1)$, then $r_0 y_0 = r_0 h(1) = h(r_0) = x_0$.
-        Thus $N$ injective.
+        Thus $N$ is divisible.
       \end{proof}
     \item Every divisible module $N$ over an PID is injective.
       \begin{proof}
@@ -136,13 +136,13 @@ N is injective and $0 \to M \to N$?
 
         Now we could define $h : R \to N$ by $1 \mapsto y_0$.
         Then $h(r_0) = r_0 h(1) = r_0 y_0 = x_0$, thus
-        $h$ is an extension of $f$ and $N$ injective.
+        $h$ is an extension of $f$ and $N$ is injective.
      \end{proof}
-     \item If $R$ is a PID, then any quotient $N$ of a injective $R$-module $M$
+     \item If $R$ is a PID, then any quotient $N$ of an injective $R$-module $M$
        is injective.
        \begin{proof}
         By 2., $rM = M$ for any $r \neq 0$, thus $rN = N$ for any $r \neq 0$,
-        and hence $N$ injective.
+        and hence $N$ is injective.
        \end{proof}
   \end{enumerate}
 \end{prop}
@@ -588,10 +588,15 @@ N is injective and $0 \to M \to N$?
 
     Consider the following diagram:
     \[ \begin{tikzcd}[cramped]
-        & \vdots \ar[d] &  & \vdots \ar[d] & \\
+        & 0 \ar[d] & 0 \ar[d] & 0 \ar[d] & \\
+        {\color{blue} 0} \ar[r, blue] &
+        \ker \alpha \ar[r] \ar[d] &
+        \ker \bar \alpha \ar[r] \ar[d] &
+        \ker \tilde \alpha \ar[r, blue] \ar[d] \ar[dddll, dashed, orange, controls={+(3,-0.8) and +(-3,0.8)}]
+        & {\color{blue} 0} \\
         0 \ar[r] &
         P_0 \ar[r] \ar[d, "\alpha"] &
-        P_0 \oplus \tilde P_0 \ar[r] \ar[d, red, "\bar \alpha" red, dashed] &
+        P_0 \oplus \tilde P_0 \ar[r] \ar[d, red, "\bar \alpha" red] &
         \tilde P_0 \ar[r] \ar[d, "\tilde \alpha"] \ar[ld, "\exists \sigma"] & 0 \\
         0 \ar[r] & L \ar[r, "f"'] \ar[d] &
         M \ar[r, "g"'] \ar[d] &
@@ -614,10 +619,15 @@ N is injective and $0 \to M \to N$?
     such that $f(w) + \sigma(y) = x$. Now, since $P_0 \xto{\alpha} L \to 0$,
     there exists $z \in P_0$ such that $\alpha(z) = w$. Then we have
     $\bar\alpha(z, y) = x$. So $P_0 \oplus \tilde P_0 \xto{\bar \alpha} M \to 0$.
+    
+    Now apply the snake lemma, we can obtain
+    $
+      0 \to \ker \alpha \to \ker \bar \alpha \to \ker \tilde \alpha \to 0.
+    $
 
-    By induction on $n$, but we use $\ker d_{n-1}, \ker \bar d_{n-1},
-    \ker \tilde d_{n-1}$ to replace $L, M, N$ ($d_{-1} = \alpha$ and so on).
-    Then we are done.
+    Use $d_{-1} \triangleq \alpha$ and so on, we can do induction on $n$ by
+    using $\ker d_{n-1}, \ker \bar d_{n-1}, \ker \tilde d_{n-1}$ to replace
+    $L, M, N$. Then we are done.
   \end{proof}
 \end{theorem}
 
@@ -628,7 +638,7 @@ N is injective and $0 \to M \to N$?
   \end{multline*}
 
   \begin{proof}
-    Taking $\Hom({-}, K)$ in the diagram of Horseshoe' lemma
+    Taking $\Hom({-}, K)$ in the diagram of Horseshoe lemma
     (\ref{thm:horseshoe-lemma}) and delete the first row,
     we get
   \[ \begin{tikzcd}[cramped]
