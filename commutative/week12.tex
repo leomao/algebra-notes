@@ -362,9 +362,9 @@ We list some facts about localization.
             p_p \ar[r, rightsquigarrow] & R_p \ar[r, hookrightarrow] & S_p \\
           \end{tikzcd}
         \]
-        Pick $q_p = N \in \Max S_p$, then $N \cap R_p \in \Max R_p = \Set{P_p}$
+        Pick $q_p = N \in \Max S_p$, then $N \cap R_p \in \Max R_p = \Set{p_p}$
         by 1.\ of proposition~\ref{prop:property-of-contraction-if-integral},
-        so $N \cap R_p = p_p$, and $(q \cap R)_p = q_p \cap R_p = P_p$,
+        so $N \cap R_p = p_p$, and $(q \cap R)_p = q_p \cap R_p = p_p$,
         thus $q \cap R = p$.
       \end{proof}
     \item If $p_1 \subset p_2$ in $\Spec R$ and $q_1 \in \Spec S$ with $q_1 \cap R = p_1$,
@@ -460,7 +460,10 @@ We list some facts about localization.
 
     $n > 0$: Let $K[y_1, \dots, y_n] \hookrightarrow K[x_1, \dots, x_n]$
     be a strong Noether normalization with $P_1 \cap K[y_1, \dots, y_n] = \gen{y_{d+1}, \dots, y_n}$,
-    then $h(p_1) = 1 \implies h(p_1 \cap k[y_1, \dots, y_n])$ by
-    the going down theorem (\ref{thm:going-down}). (為什麼這樣就證完了???)
+    then $h(P_1) = 1 \implies h(P_1 \cap K[y_1, \dots, y_n]) = 1$ by
+    the going down theorem (\ref{thm:going-down}).
+    Then we can say $P_1 \cap K[y_1, \dots, y_n] = \gen{y_n}$.
+    Then we can consider $\quot{K[x_1, \dots, x_n]}{P_1}$ and
+    $\quot{K[y_1, \dots, y_n]}{\gen{y_n}} \cong K[y_1, \dots, y_{n-1}]$.
   \end{proof}
 \end{theorem}
