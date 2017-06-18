@@ -6,20 +6,23 @@ From now on, $R$ is a commutative ring with $1$.
 We list some facts about localization.
 \begin{prop} \label{prop:property-of-localization}
   Let $p$ be a prime ideal in $R$, $R_p$ be the localization about $p$.
-\item Extension and contraction gives a bijective correspondence between
-  $\Set{ \text{ prime ideal } q \subset p }$ and $\Set{ \text{ prime ideal in } R_p}$.
-\item Extension and contraction gives a bijective correspondence between
-  $\Set{ p-\text{primary ideal } q }$ and $\Set{ \text{ primary ideal in } R_p}$.
-\item Localization commutes with intersection.
-\item Localization preserves exact sequence.
-\item If $R$ is Noetherian (Artinian), then $R_p$ is Noetherian (Artinian).
+  \begin{itemize}
+    \item Extension and contraction gives a bijective correspondence between
+      $\Set{ \text{ prime ideal } q \subset p }$ and $\Set{ \text{ prime ideal in } R_p}$.
+    \item Extension and contraction gives a bijective correspondence between
+      $\Set{ p\text{-primary ideal } q }$ and $\Set{ \text{ primary ideal in } R_p}$.
+    \item Localization commutes with intersection.
+    \item Localization preserves exact sequence.
+    \item If $R$ is Noetherian (Artinian), then $R_p$ is Noetherian (Artinian).
+  \end{itemize}
 \end{prop}
 
 \begin{definition}
   $R$ is called a local ring if it has a unique maximal ideal.
 \end{definition}
 
-\begin{prop} \mbox{}
+\begin{prop}
+  TFAE
   \begin{enumerate}[(1)]
     \item $R$ is a local ring.
     \item The set of non-units forms an ideal.
@@ -192,17 +195,17 @@ We list some facts about localization.
 \begin{prop} \mbox{}
   \begin{itemize}
     \item Let $S/R$ is an integral extension and $T \subset R$ be a m.c. set
-      with $1 \in T$.
-      Then $S_T$ is also integral over $R_T$.
+      with $1 \in T$. Then $S_T$ is also integral over $R_T$.
 
     \begin{proof}
       Let $a/t \in S_T$ with $a^n + r_1 a^{n-1} + \dotsb + r_n = 0$,
       then we have
-      \[ \left(\frac{a}{t}\right)^n +
-          \frac{r_1}{t}\left(\frac{a}{t}\right)^{n-1} +
-          \dotsb +
-          \frac{r_n}{t^n}\left(\frac{a}{t}\right)^n = 0 \]
-        Thus $a/t$ is integral over $R_T$.
+      \[
+        \left(\frac{a}{t}\right)^n +
+        \frac{r_1}{t}\left(\frac{a}{t}\right)^{n-1} +
+        \dotsb + \frac{r_n}{t^n} = 0.
+      \]
+      Thus $a/t$ is integral over $R_T$.
     \end{proof}
     \item Let $S/R$ be an arbitrary extension and $T \subset R$ be m.c.
       with $1 \in T$. Then $(\bar{R})_T = \ob{(R_T)}$ in $S_T$.
@@ -210,11 +213,12 @@ We list some facts about localization.
     \begin{proof}
       By 1., $(\overline{R})_T$ is integral over $R_T$.
       If $a/t \in S_T$ is integral over $R_T$, say
-      \[ \left(\frac{a}{t}\right)^n +
-          \frac{r_1}{t_1}\left(\frac{a}{t}\right)^n +
-          \dotsb +
-          \frac{r_n}{t_n}\left(\frac{a}{t}\right)^n = 0 \]
-      If we let $v = t_1 t_2 \dotsm t_n$,
+      \[
+        \left(\frac{a}{t}\right)^n +
+        \frac{r_1}{t_1}\left(\frac{a}{t}\right)^{n-1} +
+        \dotsb + \frac{r_n}{t_n} = 0.
+      \]
+      Then we let $v = t_1 t_2 \dotsm t_n$,
       multiply the equation by $(tv)^n$, we get
       \[ (va)^n +
           (r_1 t t_2 \dotsm t_n) (v a)^{n-1} +
@@ -326,7 +330,7 @@ We list some facts about localization.
       It is easy to see that $S/q$ is integral over $R/p$ by the identification
       \[
         \begin{tikzcd}[column sep=0.8cm,row sep=0ex]
-          R/p \arrow[r, hookrightarrow] & S/p \\
+          R/p \arrow[r, hookrightarrow] & S/q \\
           r+p \arrow[r, mapsto] & r+q
         \end{tikzcd}
       \]
@@ -335,10 +339,10 @@ We list some facts about localization.
     \item If $q, q' \in \Spec S$ with $q \subseteq q'$ and $q \cap R = p = q' \cap R$.
       Then $q = q'$.
     \begin{proof}
-      We know that $S_P \triangleq S_{R \setminus P}$ is integral over $R_P$.
-      Since $q_P \subseteq q'_P$ and both $q_p \cap R_P$ and $q'_p \cap R_P$
-      equal $P_P$ is maximal in $R_P$. Using 1., $q_P, q'_P$ are maximal
-      in $S_P$, but $q_P \subseteq q'_P \implies q_P = q'_P$.
+      We know that $S_p \triangleq S_{R \setminus p}$ is integral over $R_p$.
+      Since $q_p \subseteq q'_p$ and both $q_p \cap R_p$ and $q'_p \cap R_p$
+      equal $p_p$ is maximal in $R_p$. Using 1., $q_p, q'_p$ are maximal
+      in $S_p$, but $q_p \subseteq q'_p \implies q_p = q'_p$.
       By corollary~\ref{coro:modules-are-equal-iff-equal-in-localization},
       $q = q'$.
     \end{proof}
@@ -355,12 +359,12 @@ We list some facts about localization.
         \[
           \begin{tikzcd}[cramped]
             p \ar[r, rightsquigarrow] & R \ar[r, hookrightarrow] \ar[d] & S \ar[d] \\
-            P_p \ar[r, rightsquigarrow] & R_p \ar[r, hookrightarrow] & S_p \\
+            p_p \ar[r, rightsquigarrow] & R_p \ar[r, hookrightarrow] & S_p \\
           \end{tikzcd}
         \]
         Pick $q_p = N \in \Max S_p$, then $N \cap R_p \in \Max R_p = \Set{P_p}$
         by 1.\ of proposition~\ref{prop:property-of-contraction-if-integral},
-        so $N \cap R_p = P_p$, and $(q \cap R)_p = q_p \cap R_p = P_p$,
+        so $N \cap R_p = p_p$, and $(q \cap R)_p = q_p \cap R_p = P_p$,
         thus $q \cap R = p$.
       \end{proof}
     \item If $p_1 \subset p_2$ in $\Spec R$ and $q_1 \in \Spec S$ with $q_1 \cap R = p_1$,

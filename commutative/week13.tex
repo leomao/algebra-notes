@@ -13,7 +13,7 @@
 
 \underline{Goal:}
 \begin{enumerate}
-  \item $R = \cong R_1 \times \dots \times R_l$ where $R_i$ is an Artinian
+  \item $R \cong R_1 \times \dots \times R_l$ where $R_i$ is an Artinian
     local rings.
   \item Artinian $\iff$ Noetherian $+ \dim = 0$.
 \end{enumerate}
@@ -26,10 +26,10 @@
         "$\subseteq$": Obvious.
 
         "$\supseteq$" $\forall a \in \text{RHS}$, that is, $a^n = b + c$ with 
-        $b^k \in m_i^{n_i}$ and $c^t \in m_j^{n_j}$. Then 
-        $(a^n)^{k+t} = (b + c)^{k + t} = b^{k+t} + \dots + C_{t}^{k+t} b^kc^t
-        + \dots + c^{k+t}$. Every term is either in $m_i^{n_i}$ or $m_j^{m_j}$,
-         then $(a^n)^{k+t} = c + d$ with $c \in m_i^{n_i},\ d \in m_j^{n_j}$
+        $b^k \in \mf_i^{n_i}$ and $c^t \in \mf_j^{n_j}$. Then 
+        $(a^n)^{k+t} = (b + c)^{k + t} = b^{k+t} + \dots + {{k+t} \choose t} b^kc^t
+        + \dots + c^{k+t}$. Every term is in either $\mf_i^{n_i}$ or $\mf_j^{n_j}$,
+         then $(a^n)^{k+t} = c + d$ with $c \in \mf_i^{n_i},\ d \in \mf_j^{n_j}$
          $\Rightarrow a \in \text{LHS}$
       \end{proof}
     \item If $m$ is prime, $\sqrt{m^{n}} = m$
@@ -113,8 +113,9 @@
       \end{proof}
     \item The nilradical $\nf_R$ of $R$ is nilpotent.
       \begin{proof}
-        Again, $\nf_R = \mf_1 \cap \dotsm \mf_k = \Jac R$. Let $n = \max \set{n_1, \dots, n_k}$ in (5),
-        then $\nf_R^n = (\mf_1\mf_2 \dotsm\mf_k)^n = 0$.
+        Again, $\nf_R = \mf_1 \cap \dotsb \cap \mf_k = \Jac R$. Let
+        $n = \max \set{n_1, \dots, n_k}$ in (5), then
+        $\nf_R^n = (\mf_1\mf_2 \dotsm\mf_k)^n = 0$.
       \end{proof}
   \end{enumerate}
 \end{prop}
@@ -341,7 +342,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
     Notice the obvious fact $\Ann(\bar{x}) \subseteq \Ann(b\bar{x})$,
     but $b \bar{x} \ne 0$ and by the maximality of $\Ann(\bar{x})$,
     $\Ann(\bar{x}) = \Ann(b\bar{x})$, then $a \in \Ann(b\bar{x}) = \Ann(\bar{x})
-    \implies ax = 0$, which is an contradiction, thus $I$ is prime.
+    \implies ax = 0$, which is a contradiction, thus $I$ is prime.
 
     So, if $M \neq 0$, then we could pick $\bar{x}$ such that $\Ann(\bar{x})$
     is a prime, and thus $\Ann(\bar{x}) = \mf$.
@@ -434,16 +435,16 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
         $"\Leftarrow"$:
         First, for any $I \subset R$, which is obvious a fractional ideal,
         so $I$ is invertible, and hence by proposition~\ref{prop:property-of-fractional-ideal},
-        $I$ is finitely generated, thus $R$ Noetherian.
+        $I$ is finitely generated, thus $R$ is Noetherian.
 
         Let $\mf$ be the unique maximal ideal, then if $\mf^2 = \mf$,
         since $R$ Noetherian, by Nakayama's lemma, $\mf = 0$,
-        which contradict the fact that $R$ is not a field.
+        which contradicts the fact that $R$ is not a field.
 
         Thus pick $t \in \mf \setminus \mf^2$. Consider $t \mf^{-1}$
         which is in $R$ since $t \in \mf$.
         If $t \mf^{-1} \subseteq \mf$, then $t \mf^{-1} \mf = t R \subseteq \mf^2 \implies
-        t \in \mf^2$, which is an contradiction. So $t \mf^{-1} = R \implies tR = \mf$.
+        t \in \mf^2$, which is a contradiction. So $t \mf^{-1} = R \implies tR = \mf$.
         Using the same construction $\nu$ in proposition~\ref{dvr-equiv-condition},
         $R$ is a DVR.
       \end{proof}
@@ -467,7 +468,7 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
         And $R_p$ is a DVR if it is a local Dedekind domain.
         All of these are guaranteed by proposition~\ref{prop:property-of-localization},
         where (4) is by the correspondence of prime ideals.
-      \item[\rm (b)$\Leftrightarrow$(c):] We need a small lemma
+      \item[\rm (b)$\Leftrightarrow$(c):] We need a small lemma:
         \begin{lemma}
           If $I$ is finitely generated, then $(R_P : I_P) = (R: I)_P$.
           \begin{proof}
