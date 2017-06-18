@@ -375,43 +375,43 @@ induces a long exact sequence
           & Q \ar[u] & &
         \end{tikzcd} \]
       where $u$ exists by the previous claim.
-      \item onto: Given a root in $\Ac$
+      \item onto: Given a roof in $\Ac$
         \[ \begin{tikzcd}[column sep=small]
             & {\color{red} Z \in R} & \\
             & X' \in \Ac \ar[u, "\rotatebox{90}{\(\sim\)}", red] & \\
             X \ar[ru, "f"] & & Y \ar[lu, "s"']
         \end{tikzcd} \]
-      We could find a root in $R$ which is equivalent to it again
+      We could find a roof in $R$ which is equivalent to it again
       by the previous claim.
     \end{itemize}
   \end{proof}
 \end{theorem}
 
 Finally, if $F: \Ac \to \Bc$ is an additive left exact functor, then
-we will have $K^+(F): K^+(A) \to K^+(B)$ which
-sends acyclic chain in $K^+(R)$ to acyclic chain in $K^+(B)$.
+we will have $K^+(F): K^+(\Ac) \to K^+(\Bc)$ which
+sends acyclic chain in $K^+(R)$ to acyclic chain in $K^+(\Bc)$.
 This implies that $K^+(F)$ sends quasi-isomorphism in
-$K^+(R)$ to quasi-isomorphism in $K^+(B)$. So
+$K^+(R)$ to quasi-isomorphism in $K^+(\Bc)$. So
 we have the following diagram:
 \[ \begin{tikzcd}
-  K^+(R) \ar[r, "K^+(F)"] \ar[d, "Q_R"] & K^+(B) \ar[d, "Q_R"] \\
-  I^\bullet \in K^+(R)[S_R^{-1}] \ar[r, "{\color{red} \exists ! \bar{F}}"] & D^+(B) \\
+  K^+(R) \ar[r, "K^+(F)"] \ar[d, "Q_R"] & K^+(\Bc) \ar[d, "Q_\Bc"] \\
+  I^\bullet \in K^+(R)[S_R^{-1}] \ar[r, "{\color{red} \exists ! \bar{F}}"] & D^+(\Bc) \\
     D^+(\Ac) \ar[u, "\rotatebox{90}{\(\sim\)}"] \ar[ru, "RF"']
 \end{tikzcd} \]
 Where $\bar{F}$ exists by the universal property of localization.
 Then the derived functor $RF$ could be defined with $R^i F(C^\bullet) = H^i(RF(C^\bullet))$.
 
 The universal property of $RF$ is as following:
-$RF : D^+(A) \to D^+(B)$ is exact and the diagram commutes:
+$RF : D^+(\Ac) \to D^+(\Bc)$ is exact and the diagram commutes:
 \[ \begin{tikzcd}[column sep=small]
-  & D^+(A) \ar[rd, "RF"] & \\
-  K^+(A) \ar[ru, "Q_A"] \ar[rd, "K^+(F)"] & & D^+(B) \\
-  & K^+(B) \ar[ru, "Q_B"] &
+  & D^+(\Ac) \ar[rd, "RF"] & \\
+  K^+(\Ac) \ar[ru, "Q_\Ac"] \ar[rd, "K^+(F)"] & & D^+(\Bc) \\
+  & K^+(\Bc) \ar[ru, "Q_\Bc"] &
 \end{tikzcd} \]
-with $\epsilon_F: Q_B \circ K^+(F) \to RF \circ Q_\Ac$ being
+with $\epsilon_F: Q_\Bc \circ K^+(F) \to RF \circ Q_\Ac$ being
 a morphism of functors (???). \\
 Moreover, if $G : D^+(\Ac) \to D^+(\Bc)$ is another exact functor
-with $\epsilon_G : Q_B \circ K^+(F) \to G \circ Q_\Ac$,
+with $\epsilon_G : Q_\Bc \circ K^+(F) \to G \circ Q_\Ac$,
 then there is an unique $y: RF \to G$ such that
 \[ \begin{tikzcd}[column sep=small]
   & Q_\Bc \circ K^+(F) \ar[ld, "\epsilon_F"] \ar[rd, "\epsilon_G"] & \\
