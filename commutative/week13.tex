@@ -505,9 +505,9 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
         prime ideal is unique in any integral domain.
 
         If $P_1 P_2 \dotsm P_k = Q_1 Q_2 \dotsm Q_r$,
-        then $P_1 P_2 \dotsm P_k = P_1 \cap \dots \cap P_k \in Q_1$,
-        so there is one, say $P_1 \subset Q_1$. Assume
-        $Q_1$ is the minimal among $Q_i$. Similarly we could find $Q_i \subset P_1$.
+        then $P_1 P_2 \dotsm P_k \subset Q_1$, so there is one,
+        say $P_1 \subset Q_1$. Assume $Q_1$ is the minimal among $Q_i$.
+        Similarly we could find $Q_i \subset P_1$.
         But then $Q_i \subseteq Q_1$. Since $Q_i$ minimal, $Q_i = Q_1$.
         Now, since these ideals are invertible,
         $P_2 P_3 \dotsm P_k = Q_2 Q_3 \dotsm Q_r$. By induction, the proof is completed.
@@ -522,14 +522,16 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
         \end{lemma}
         First we prove that $p$ is maximal if $p$ is prime and invertible.
 
+        \underline{Claim}: For $a \in R \setminus p$, we have $p+ aR = R$
+        ($\implies p$ is maximal). \\
         If not, let $p + aR = P_1 \dotsm P_k$ and $p + a^2 R = Q_1 \dotsm Q_r$
         with $a \notin p$.
-        Since $P_i, Q_j \subset p$, passing to the quotient $R/p$, we have
-        $\bar{a} = P_1 \dotsm P_k, \, \bar{a}^2 = Q_1 \dotsm Q_r$.
+        Since $P_i, Q_j \supset p$, passing to the quotient $R/p$, we have
+        $\bar{a} = \bar P_1 \dotsm \bar P_k, \, \bar{a}^2 = \bar Q_1 \dotsm \bar Q_r$.
         Using the uniqueness of factorization, which only requires $R/p$
-        to be an integral domain (which is the case) and $P_i, Q_j$
+        to be an integral domain (which is the case) and $\bar P_i, \bar Q_j$
         be invertible (by lemma above),
-        by $\bar{a}^2 = P_1^2 \dotsm P_k^2 = Q_1 \dotsm Q_r$,
+        by $\bar{a}^2 = \bar P_1^2 \dotsm \bar P_k^2 = \bar Q_1 \dotsm \bar Q_r$,
         we have $2k = r$ and we could assume $Q_{2i-1} = Q_{2i} = P_i$.
         This shows that $p + a^2 R = (p + aR)^2 \subseteq p^2 + aR$.
         So $p \subseteq p + a^2 R \subseteq p^2 + aR$. Now, if $x \in p$,
@@ -537,19 +539,20 @@ $\mf_1^{n_1} \mf_2^{n_2} \dotsm \mf_k^{n_k} = \gen{0}$.
         but $a \notin p$, so $z \in p$. Thus we could
         refine the relation to $p \subseteq p^2 + ap$.
         But then $p \subseteq p (p + aR)$, since $p$ invertible, $R \subseteq p + aR$
-        which implies that $p + aR = R$. Thus $p$ is maximal.
+        which implies that $p + aR = R$, which is a contradiction.
 
-        Now, we show that every prime ideal $p$ is invertible. By assumption,
-        let $a \in p$, then $Ra = P_1 \dotsm P_k$, so by the lemma above,
+        Now, we show that every prime ideal $p$ is invertible. By the assumption,
+        let $a \in p$ and $p \supseteq \gen{a} = P_1 \dotsm P_k$, by the lemma above,
         each $P_i$ is invertible and thus maximal by the previous paragraph.
-        Then $P_1 \dotsm P_k \subset p$, so again $P_i \subset p$, which
-        implies $P_i = p$. Thus $p$ is invertible.
+        Since $P_1 \dotsm P_k \subset p$, we have $P_i \subset p$ for some $i$,
+        which implies $P_i = p$ since $P_i$ is maximaw. Thus $p$ is invertible.
 
         Finally, since each ideal is the product of prime ideals,
-        and we've just prove that priome ideals are invertible,
+        and we've just proved that prime ideals are invertible,
         any ideal are invertible. For a fractional ideal $I$,
         $aI \subseteq R \implies \exists J, \, aIJ = R \implies I(aJ) = R$,
         which is to say that $I$ is invertible.
+        \qedhere
   \end{description}
   \end{proof}
 \end{theorem}
