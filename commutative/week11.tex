@@ -271,7 +271,7 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
       \tilde{f}_2 = \sum (h_j' t + r'_j) f_j \]
     with each $r_i, r'_j \in K[x_1, \dots, x_n], \ h_i, h'_j \in K[t, x_1, \dots, x_n] $.
     Take $t = 0$, $f = \sum r'_j f_j \in J$. Then take $t = 1$,
-    $f = \sum (h_i(1, x_1, \dots, x_n) + r_i) f_i \in J$. Thus $f \in I \cap J$.
+    $f = \sum (h_i(1, x_1, \dots, x_n) + r_i) f_i \in I$. Thus $f \in I \cap J$.
   \end{proof}
 \end{theorem}
 
@@ -282,7 +282,7 @@ A Gr\"{o}bner basis of $I$ can be constructed by the following algorithm:
 \end{example}
 
 \begin{theorem}
-  Let $L = \gen{ f_1, \dots, f_s } \subsetneq K[x_1, \dots, x_n]$, then
+  Let $I = \gen{ f_1, \dots, f_s } \subsetneq K[x_1, \dots, x_n]$, then
   $f \in \sqrt{I} \iff \gen{ f_1, \dots, f_s, 1 - tf } = K[x_1, \dots, x_n, t]$.
   \begin{proof}
     ``$\Leftarrow$'': By theorem~\ref{thm:weak-hilbert-null},
