@@ -22,7 +22,7 @@
 \begin{fact}
   $S_n$ is a finite group of order $n!$, i.e. $\abs{S_n} = n!$.
   \begin{proof}
-    EASY =O
+    Obviously. Just count the possibilities of all permutations.
   \end{proof}
 \end{fact}
 
@@ -63,11 +63,16 @@ $\sigma \cycle{j_1, \dots, j_m} \sigma^{-1} =
 \end{example}
 
 \begin{proof}
-  Note that both sides are functions. For $i \in \{1,\dots,n\}$,
+  Note that both sides are functions. Let $j_{m+1} = j_1$ for convenience.
+  For $i \in \{1,\dots,n\}$,
   \begin{enumerate}[\underline{Case \arabic*}:]
-    \item $\exists k$ s.t.  $\sigma(j_k) = i$, CONCON
-    \item Otherwise, CONCON
+    \item $\exists k$ s.t.  $\sigma(j_k) = i$,
+      $\sigma\cycle{j_1,\dots,j_m}\sigma^{-1}(i) = \sigma\cycle{j_1,\dots,j_m}(j_k)
+      = \sigma(j_{k+1})$. (So $\sigma(j_k) \mapsto \sigma(j_{k+1})$)
+    \item Otherwise, $\sigma\cycle{j_1,\dots,j_m}\sigma^{-1}(i) = \sigma\sigma^{-1}(i) = i$.
   \end{enumerate}
+  Then we can conclude that 
+  $\sigma \cycle{j_1, \dots, j_m} \sigma^{-1} = \cycle{\sigma(j_1),\dots,\sigma(j_m)}$.
 \end{proof}
 
 \begin{fact}

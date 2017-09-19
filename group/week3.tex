@@ -30,13 +30,21 @@ Notice that $\Image f \le G_2$.
   \begin{enumerate}
     \item For 2 right cosets $Ha, Hb$, either $Ha = Hb$ or $Ha \cap Hb = \varnothing$
       must hold.
-    \item $\{\, Ha : a\in G \,\}$ forms a partition of $G$.
+    \item $\Set{ Ha : a\in G }$ forms a partition of $G$.
   \end{enumerate}
 \end{fact}
 
 \begin{theorem}[Lagrange]
   Let $\abs{G} < \infty$ and $H \le G$, $\abs{H} \mid \abs{G}$.
   \begin{proof}
+    Let $r = \abs{\Set{ Ha : a \in G }}$. Since either $Ha = Hb$ or $Ha \cap Hb = \varnothing$
+    for any $a, b\in G$, we only need to show that $\abs{Ha} = \abs{Hb}$ for any
+    $a, b \in G$.
+    Now define $f: Ha \to Hb$ as $f: ha \mapsto hb$ for all $h \in H$.
+    $f$ is clearly onto, and $f$ is 1-1 since $h_1b = h_2b \implies h_1 = h_2
+    \implies h_1a = h_2a$.
+    So $f$ is bijective $\implies \abs{Ha} = \abs{Hb}$.
+    We can conclude that $r \cdot \abs{H} = \abs{G}$.
   \end{proof}
 \end{theorem}
 
@@ -53,12 +61,20 @@ Notice that $\Image f \le G_2$.
 \begin{coro}
   If $\abs{G} = p$ is a prime in $\Zb$, then $G$ is cyclic.
   \begin{proof}
+    Since $\abs{G} = p > 1$, we can pick $a \in G$ s.t. $a \ne 1$.
+    Consider $H = \gen{a} \le G$, then $\abs{H} \mid \abs{G}$ by Lagrange's Theorem.
+    Since $\abs{G} = p$ is a prime, we have $\abs{H} = 1$ or $p$.
+    But $a \ne 1$ and $1, a \in H$ by the definition, we have $\abs{H} \ge 2$.
+    So $\abs{H} = p \implies H = G \implies G = \gen{a}$.
   \end{proof}
 \end{coro}
 
 \begin{coro}
   If $\abs{G} < \infty, a \in G$, then $a^{\abs{G}} = 1$.
   \begin{proof}
+    Let $H = \gen{a}$, we have $\abs{H} \mid \abs{G}$. Write $\abs{G} = r \abs{H}$.
+    Now $a^{\abs{H}} = 1$ by the definition of $H$. So
+    $a^{\abs{G}} = (a^{\abs{H}})^r = 1$.
   \end{proof}
 \end{coro}
 
